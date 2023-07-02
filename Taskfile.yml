@@ -4,6 +4,10 @@
 version: '3'
 
 tasks:
+  default:
+    silent: true
+    cmds:
+      - task -l
   ping:
     desc: check node online status
     cmds:
@@ -20,6 +24,7 @@ tasks:
     dir: kubernetes
     cmds:
       - kubectl apply --kustomize bootstrap/
+      - kubectl apply --kustomize flux/config
 
   kubeconfig:
     desc: Fetch kubeconfig from controller
