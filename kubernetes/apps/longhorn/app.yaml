@@ -5,6 +5,9 @@ metadata:
   name: longhorn
   namespace: flux-system
 spec:
+  releaseName: longhorn
+  targetNamespace: longhorn-system
+  interval: 5m
   chart:
     spec:
       chart: longhorn
@@ -13,8 +16,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: longhorn
+        namespace: flux-system
   install:
     createNamespace: true
-  targetNamespace: longhorn-system
-  interval: 5m
 
