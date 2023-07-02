@@ -1,0 +1,16 @@
+---
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  kubeconfig:
+    desc: Fetch kubeconfig
+    vars:
+      MASTER_USERNAME: '{{.MASTER_USERNAME | default "root"}}'
+      MASTER_HOST: '{{.MASTER_HOST | default "192.168.1.41"}}'
+      KUBERNETES_API: '{{.KUBERNETES_API | default "192.168.1.41"}}'
+    cmds:
+      - scp {{.MASTER_USERNAME}}@{{.MASTER_HOST}}:/etc/rancher/k3s/k3s.yaml "${KUBECONFIG}"
+      - sed -i '' 's/127.0.0.1/{{.KUBERNETES_API}}/g' "${KUBECONFIG}"
+      - chmod go-r "${KUBECONFIG}"
