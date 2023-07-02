@@ -4,8 +4,25 @@
 version: '3'
 
 tasks:
+  ping:
+    desc: check node online status
+    cmds:
+      - ansible all -i ansible/inventory/hosts --one-line -m 'ping'
+
+  provision:
+    desc: Provision cluster with ansible
+    dir: ansible
+    cmds:
+      - ansible-playbook playbooks/setup.yaml
+
+  bootstrap:
+    desc: Bootstrap flux
+    dir: kubernetes
+    cmds:
+      - kubectl apply --kustomize bootstrap/
+
   kubeconfig:
-    desc: Fetch kubeconfig
+    desc: Fetch kubeconfig from controller
     vars:
       MASTER_USERNAME: '{{.MASTER_USERNAME | default "root"}}'
       MASTER_HOST: '{{.MASTER_HOST | default "192.168.1.41"}}'
