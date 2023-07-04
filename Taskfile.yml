@@ -8,6 +8,12 @@ tasks:
     silent: true
     cmds:
       - task -l
+
+  brew:
+    desc: Install local dependencies with brew
+    cmds:
+      - brew bundle --file Brewfile --no-lock
+
   ping:
     desc: check node online status
     cmds:

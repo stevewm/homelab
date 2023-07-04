@@ -1,0 +1,7 @@
+brew "direnv"
+brew "sops"
+brew "age"
+brew "kubectl"
+brew "kustomize"
+brew "kubectx"
+brew "go-task"
