@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - ./cluster.yaml
   - ./flux.yaml
+  - ./metallb.yaml
