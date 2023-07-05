@@ -5,7 +5,7 @@ metadata:
   name: homelab
   namespace: flux-system
 spec:
-  interval: 30m
+  interval: 10m
   ref:
     branch: main
   url: https://github.com/duhio/homelab
@@ -16,7 +16,7 @@ metadata:
   name: cluster
   namespace: flux-system
 spec:
-  interval: 30m
+  interval: 10m
   path: ./kubernetes/flux/
   prune: true
   sourceRef:
