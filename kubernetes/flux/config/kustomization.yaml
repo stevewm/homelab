@@ -5,3 +5,4 @@ resources:
   - ./cluster.yaml
   - ./flux.yaml
   - ./metallb.yaml
+  - ./github-key.sops.yaml
