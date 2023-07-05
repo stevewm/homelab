@@ -29,7 +29,8 @@ tasks:
     desc: Bootstrap flux
     dir: kubernetes
     cmds:
-      - kubectl apply --kustomize bootstrap/
+      - kubectl apply --kustomize bootstrap/kustomization.yaml
+      - sops --decrypt ./bootstrap/sops-age.sops.yaml | kubectl apply -f -
       - kubectl apply --kustomize flux/config
 
   kubeconfig:
