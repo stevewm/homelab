@@ -16,18 +16,6 @@ spec:
     !/kubernetes
 
 ---
-apiVersion: notification.toolkit.fluxcd.io/v1beta2
-kind: Provider
-metadata:
-  name: flux-system
-  namespace: flux-system
-spec:
-  type: github
-  address: https://github.com/duhio/homelab
-  secretRef:
-    name: github
-
----
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
@@ -44,3 +32,27 @@ spec:
     provider: sops
     secretRef:
       name: sops-age
+
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta2
+kind: Provider
+metadata:
+  name: flux-system
+  namespace: flux-system
+spec:
+  type: github
+  address: https://github.com/duhio/homelab
+  secretRef:
+    name: github
+
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta2
+kind: Alert
+metadata:
+  name: github
+spec:
+  eventSources:
+    - kind: GitRepository
+      name: homelab
+  exclusionList:
+    - "waiting.*socket"
