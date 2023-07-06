@@ -52,6 +52,8 @@ metadata:
   name: github
   namespace: flux-system
 spec:
+  providerRef:
+    name: flux-system
   eventSources:
     - kind: GitRepository
       name: homelab
