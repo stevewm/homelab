@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - ./longhorn.yaml
   - ./metallb.yaml
+  - ./external-secrets.yaml
