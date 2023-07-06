@@ -50,6 +50,7 @@ apiVersion: notification.toolkit.fluxcd.io/v1beta2
 kind: Alert
 metadata:
   name: github
+  namespace: flux-system
 spec:
   eventSources:
     - kind: GitRepository
