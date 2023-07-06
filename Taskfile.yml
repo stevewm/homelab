@@ -30,6 +30,7 @@ tasks:
     dir: kubernetes
     cmds:
       - kubectl apply --kustomize bootstrap/kustomization.yaml
+      - sops --decrypt bootstrap/age-key.sops.yaml | kubectl apply -f -
       - kubectl apply --kustomize flux/config
 
   kubeconfig:

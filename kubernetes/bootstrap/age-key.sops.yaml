@@ -1,0 +1,28 @@
+apiVersion: v1
+data:
+    age.agekey: ENC[AES256_GCM,data:g8iKWzKSP51wby3axsCveTJfCKgvpa2HDkm7coCZ5BYKoRrWScby21a6IScjKZlS/6PQQw/KGUAK258+lylCm6a5M6JmJi0KItFGB/Tm/Im3RR83j+/4au6xTlJmrkEyDm1b2xzPWiBbf0wwjFOEQQ4D2s2LffHsbOMbhfp9YXg9+wau7rM+23K7PeE1KrKVlv6tgkNBjBWJY4JeKvq8o7LkIkTY/fJby5C8xu+Xs6+BpVd00+pNBBT130lpOB1koK+IA6V0YWpT0nz7fNU7qKcMc2TEXmn/6ybZbUBB1xiEYTlm8CSrcIO2KBEM8fBW+yjSGE9OmK1w71Zi,iv:+F+A8SJTtxecFs1045Uaem7fYHBfGD02VxhUafkEzcE=,tag:gVgsfLWZQaRG9FohS45hYg==,type:str]
+kind: Secret
+metadata:
+    creationTimestamp: null
+    name: sops-age
+    namespace: flux-system
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age16fecg9xqa6u2sd95ajr8ljd2eag6fq5mmtatd2wqv75y6h028d8s93u8xf
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBNZHhiRnFBZUJteW84RzNx
+            K0h4ZHQ2MTJjRmZKYjZnVy9ramNmV3FEZ2lZCkovb1N2VXRhYjRISmlaV0pDQk55
+            Wk9GeXd2NW1Rb2NRREJ2dW96T2p2QXcKLS0tIE5PM2FVaE5SMTBxVFpSQVVMNUF1
+            c0pTSU9QNTRYVTlDaVQ5azJHRk9vTncKEGP7R4rZCWPVuM0RlMiNegdf227KkV/t
+            YtMqJm0DEW6J5nYtrERu3DRzZA0/DIyENnXB5SMK8wrN5zxTaOiAcw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2023-07-06T22:44:59Z"
+    mac: ENC[AES256_GCM,data:J05g8vOfSDSzfybN36NPuSm7AyJVhiYKnOskTHpGyThJmSzZrxV4WbUBN7KbUuYd6077QXoAo7oIfQy83THmfA6WuzjfJqX7ABMMmIXC0Q9q7wattZ+Ug2Q5WqEDRHfEf/C7S5RLDYLpkdS9g+PcDHBxJBPTisbMD6BKr0Qdvo8=,iv:aHuXc1yUNQMQv4s51PNKXaHBaTuVfPrnnassfIlmR1c=,tag:Ux0yyLrOd67K79IIe8NB7g==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.3
