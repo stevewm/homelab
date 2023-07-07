@@ -54,8 +54,9 @@ metadata:
 spec:
   providerRef:
     name: flux-system
+  eventSeverity: info
   eventSources:
-    - kind: GitRepository
-      name: homelab
+    - kind: Kustomization
+      name: '*'
   exclusionList:
     - "waiting.*socket"
