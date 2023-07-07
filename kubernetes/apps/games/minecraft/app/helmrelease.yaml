@@ -20,6 +20,7 @@ spec:
         memory: 2G
         cpu: 1500m
     minecraftServer:
+      memory: 2G
       eula: 'TRUE'
       difficulty: hard
       maxPlayers: 4
