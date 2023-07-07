@@ -35,4 +35,6 @@ spec:
         Size: 5Gi
     readinessProbe:
       initialDelaySeconds: 300
+    livenessProbe:
+      initialDelaySeconds: 300
 
