@@ -45,3 +45,8 @@ tasks:
       - scp {{.MASTER_USERNAME}}@{{.MASTER_HOST}}:/etc/rancher/k3s/k3s.yaml "${KUBECONFIG}"
       - sed -i '' 's/127.0.0.1/{{.MASTER_HOST}}/g' "${KUBECONFIG}"
       - chmod go-r "${KUBECONFIG}"
+
+  reconcile:
+    desc: Force flux to reconcile
+    cmds:
+      - flux reconcile source git homelab
