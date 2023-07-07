@@ -25,6 +25,7 @@ spec:
       maxPlayers: 4
       maxWorldSize: 1000
       spawnProtection: 0
+      serviceType: LoadBalancer
     persistence:
       storageClass: longhorn
       dataDir:
