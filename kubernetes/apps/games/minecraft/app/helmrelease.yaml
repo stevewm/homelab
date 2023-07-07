@@ -26,6 +26,7 @@ spec:
       maxWorldSize: 1000
       spawnProtection: 0
       serviceType: LoadBalancer
+      servicePort: 25565
     persistence:
       storageClass: longhorn
       dataDir:
