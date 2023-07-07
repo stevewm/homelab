@@ -41,7 +41,7 @@ tasks:
       MASTER_USERNAME: root
       MASTER_HOST:
         sh: yq '.all[].cluster[].controller[].node01.ansible_host' hosts.yaml
-    cmds: # TODO: Parse inventory file using yq to get: node IP, node username
+    cmds:
       - scp {{.MASTER_USERNAME}}@{{.MASTER_HOST}}:/etc/rancher/k3s/k3s.yaml "${KUBECONFIG}"
       - sed -i '' 's/127.0.0.1/{{.MASTER_HOST}}/g' "${KUBECONFIG}"
       - chmod go-r "${KUBECONFIG}"
