@@ -17,7 +17,7 @@ spec:
   values:
     resources:
       requests:
-        memory: 1Gb
+        memory: 1G
         cpu: 1500m
     minecraftServer:
       eula: 'TRUE'
