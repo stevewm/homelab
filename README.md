@@ -2,12 +2,13 @@
 
 This repo contains the configuration and documentation for a self-hosted Kubernetes (k3s) cluster that I run at home.
 
+
 ## Hardware
 
 The cluster consists of:
-- 4x Raspberry Pi 4B
-- 4x 1TB SDD
+- 4x Raspberry Pi 4B 8GB
 - 4x WaveShare PoE HAT (E)
+- 4x 1TB SDD
 - 1x NETGEAR PoE 5-port switch
 - 1x UCTRONICS Pi Cluster Case
 
