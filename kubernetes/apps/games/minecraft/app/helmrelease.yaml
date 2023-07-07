@@ -17,11 +17,11 @@ spec:
   values:
     resources:
       requests:
-        memory: 1.25G
+        memory: 2G
         cpu: 1500m
     minecraftServer:
       eula: 'TRUE'
-      difficulty: easy
+      difficulty: hard
       maxPlayers: 4
       maxWorldSize: 1000
       spawnProtection: 0
