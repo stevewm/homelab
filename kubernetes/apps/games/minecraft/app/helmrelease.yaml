@@ -32,4 +32,6 @@ spec:
       dataDir:
         enabled: true
         Size: 5Gi
+    readinessProbe:
+      initialDelaySeconds: 300
 
