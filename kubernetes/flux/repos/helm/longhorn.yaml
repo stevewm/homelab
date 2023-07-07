@@ -7,5 +7,3 @@ metadata:
 spec:
   interval: 1h
   url: https://charts.longhorn.io
-
-
