@@ -3,8 +3,10 @@ k3s_control_node: true
 
 k3s_server:
   node-ip: "{{ ansible_host }}"
-  #advertise-address: "{{ ansible_host }}"
   docker: false
   prefer-bundled-bin: true
   disable:
     - servicelb # replace with MetalLB
+    - local-storage
+    - traefik
+    - metrics-server
