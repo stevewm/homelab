@@ -8,3 +8,5 @@ resources:
   - ./minecraft.yaml
   - ./cert-manager.yaml
   - ./weave-gitops.yaml
+  - ./traefik.yaml
+  - ./metrics-server.yaml
