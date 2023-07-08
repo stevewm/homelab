@@ -17,5 +17,5 @@ spec:
         name: longhorn
         namespace: flux-system
   values:
-
-
+    persistence:
+      defaultClassReplicaCount: 2 # one replica is okay
