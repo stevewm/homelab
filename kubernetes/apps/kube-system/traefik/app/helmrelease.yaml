@@ -1,0 +1,18 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: traefik
+  namespace: kube-system
+spec:
+  releaseName: traefik
+  targetNamespace: kube-system
+  interval: 1h
+  chart:
+    spec:
+      chart: traefik
+      version: 3.10.0
+      sourceRef:
+        kind: HelmRepository
+        name: traefik
+        namespace: flux-system
