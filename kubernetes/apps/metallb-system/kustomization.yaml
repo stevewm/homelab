@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./metallb/ks.yaml
+  - ./cluster-pool/ks.yaml
