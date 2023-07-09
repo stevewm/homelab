@@ -57,6 +57,8 @@ spec:
   eventSeverity: info
   eventSources:
     - kind: Kustomization
-      name: '*'
+      name: 'cluster'
+    - kind: Kustomization
+      name: 'apps'
   exclusionList:
     - "waiting.*socket"
