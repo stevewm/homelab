@@ -10,3 +10,4 @@ resources:
   - ./weave-gitops.yaml
   - ./traefik.yaml
   - ./metrics-server.yaml
+  - ./pihole.yaml
