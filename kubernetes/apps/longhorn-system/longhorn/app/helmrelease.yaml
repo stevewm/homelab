@@ -23,4 +23,5 @@ spec:
       enabled: true
       ingressClassName: traefik
       path: /longhorn
-  dependsOn: app-traefik
+  dependsOn:
+    - name: app-traefik
