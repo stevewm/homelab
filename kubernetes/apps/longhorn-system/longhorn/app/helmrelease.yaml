@@ -18,4 +18,9 @@ spec:
         namespace: flux-system
   values:
     persistence:
-      defaultClassReplicaCount: 2 # one replica is okay
+      defaultClassReplicaCount: 2
+    ingress:
+      enabled: true
+      ingressClassName: traefik
+      path: /longhorn
+  dependsOn: app-traefik
