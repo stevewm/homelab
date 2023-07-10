@@ -16,7 +16,7 @@ spec:
         kind: HelmRepository
         name: traefik
         namespace: flux-system
-    values:
-      ingressRoute:
-        dashboard:
-          entryPoints: ["web", "traefik"]
+  values:
+    ingressRoute:
+      dashboard:
+        entryPoints: ["web", "traefik"]
