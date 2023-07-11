@@ -17,6 +17,10 @@ spec:
         name: longhorn
         namespace: flux-system
   values:
+    defaultSettings:
+      storageMinimalAvailablePercentage: 5 # 50GB~
+    longhornUI:
+      replicas: 1
     persistence:
       defaultClassReplicaCount: 2
     ingress:
