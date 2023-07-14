@@ -11,3 +11,4 @@ resources:
   - ./traefik.yaml
   - ./metrics-server.yaml
   - ./pihole.yaml
+  - ./bjw-s.yaml

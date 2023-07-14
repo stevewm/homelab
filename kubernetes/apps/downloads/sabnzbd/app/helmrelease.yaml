@@ -1,0 +1,75 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: sabnzbd
+  namespace: downloads
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.5.1
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  values:
+    image:
+      repository: ghcr.io/onedr0p/sabnzbd
+      tag: 4.0.3@sha256:aff676e3c234f7a4493c75813e296c347c02b6e5374acd1858f8244ea44f2b4a
+    podSecurityContext:
+      runAsUser: 1001
+      runAsGroup: 1001
+      fsGroup: 1001
+      fsGroupChangePolicy: "OnRootMismatch"
+    env:
+      SABNZBD__PORT: &port 8080
+      SABNZBD__API_KEY:
+        valueFrom:
+          secretKeyRef:
+            name: sabnzbd
+            key: api_key
+      SABNZBD__NZB_KEY:
+        valueFrom:
+          secretKeyRef:
+            name: sabnzbd
+            key: nzb_key
+    service:
+      main:
+        ports:
+          http:
+            port: *port
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "traefik"
+        hosts:
+          - host: picluster.local
+            paths:
+              - path: /sabnzbd
+                pathType: Exact
+                backend:
+                  service:
+                  name: sabnzbd
+                  port:
+                    number: 8080
+    persistence:
+      media:
+        enabled: true
+        type: nfs
+        server: "192.168.1.234"
+        path: /volume1/Media
+        mountPath: /data/media
+      config:
+        mountPath: config
+        accessMode: ReadWriteOnce
+        size: 1Gi
+        storageClass: longhorn
+    resources:
+      requests:
+        cpu: 5m
+        memory: 1.5G
+      limits:
+        memory: 1.5G
