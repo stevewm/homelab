@@ -20,10 +20,11 @@ spec:
       repository: ghcr.io/onedr0p/sabnzbd
       tag: 4.0.3@sha256:aff676e3c234f7a4493c75813e296c347c02b6e5374acd1858f8244ea44f2b4a
     podSecurityContext:
-      runAsUser: 1001
-      runAsGroup: 1001
-      fsGroup: 1001
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
       fsGroupChangePolicy: "OnRootMismatch"
+      supplementalGroups: [1001]
     env:
       SABNZBD__PORT: &port 8080
       SABNZBD__API_KEY:
@@ -46,15 +47,13 @@ spec:
         enabled: true
         ingressClassName: "traefik"
         hosts:
-          - host: picluster.local
+          - host: ''
             paths:
               - path: /sabnzbd
-                pathType: Exact
+                pathType: Prefix
                 backend:
                   service:
                   name: sabnzbd
-                  port:
-                    number: 8080
     persistence:
       media:
         enabled: true
@@ -63,10 +62,15 @@ spec:
         path: /volume1/Media
         mountPath: /data/media
       config:
-        mountPath: config
+        enabled: true
+        mountPath: /config
         accessMode: ReadWriteOnce
+        type: pvc
         size: 1Gi
         storageClass: longhorn
+      incomplete:
+        enabled: true
+        type: emptyDir
     resources:
       requests:
         cpu: 5m
