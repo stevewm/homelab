@@ -1,0 +1,72 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: sonarr
+  namespace: downloads
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.5.1
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  values:
+    image:
+      repository: ghcr.io/onedr0p/sonarr
+      tag: 3.0.10.1567@sha256:c890d6cada4319afb9c15e08d443b96040b183e9d74585166ce1c696f9494c65
+    podSecurityContext:
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
+      fsGroupChangePolicy: "OnRootMismatch"
+      supplementalGroups: [1001]
+    env:
+      SONARR__PORT: &port 8989
+      SONARR__URL_BASE: &base /sonarr
+      SONARR__API_KEY:
+        valueFrom:
+          secretKeyRef:
+            name: sonarr
+            key: api_key
+    service:
+      main:
+        ports:
+          http:
+            port: *port
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "traefik"
+        hosts:
+          - host: ''
+            paths:
+              - path: *base
+                pathType: Prefix
+                backend:
+                  service:
+                  name: sonarr
+    persistence:
+      media:
+        enabled: true
+        type: nfs
+        server: "192.168.1.234"
+        path: /volume1/Media
+        mountPath: /data/media
+      config:
+        enabled: true
+        mountPath: /config
+        accessMode: ReadWriteOnce
+        type: pvc
+        size: 1Gi
+        storageClass: longhorn
+    resources:
+      requests:
+        cpu: 20m
+        memory: 256M
+      limits:
+        memory: 256M
