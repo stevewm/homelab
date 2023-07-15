@@ -23,7 +23,7 @@ spec:
       runAsUser: 568
       runAsGroup: 568
       fsGroup: 568
-      fsGroupChangePolicy: "OnRootMismatch"
+      fsGroupChangePolicy: OnRootMismatch
       supplementalGroups: [1001]
     env:
       RADARR__PORT: &port 7878
@@ -41,7 +41,7 @@ spec:
     ingress:
       main:
         enabled: true
-        ingressClassName: "traefik"
+        ingressClassName: traefik
         hosts:
           - host: ''
             paths:
@@ -54,7 +54,7 @@ spec:
       media:
         enabled: true
         type: nfs
-        server: "192.168.1.234"
+        server: 192.168.1.234
         path: /volume1/Media
         mountPath: /data/media
       config:

@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: "./kubernetes/apps/games/minecraft/app"
+  path: ./kubernetes/apps/games/minecraft/app
   prune: true
   sourceRef:
     kind: GitRepository

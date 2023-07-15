@@ -29,4 +29,4 @@ spec:
       path: /longhorn
       host: ''
       annotations:
-        traefik.ingress.kubernetes.io/router.middlewares: 'longhorn-system-rewrite-longhorn-dashboard@kubernetescrd'
+        traefik.ingress.kubernetes.io/router.middlewares: longhorn-system-rewrite-longhorn-dashboard@kubernetescrd

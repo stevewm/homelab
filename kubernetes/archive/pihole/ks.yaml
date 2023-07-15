@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: "./kubernetes/apps/network/pihole/app"
+  path: ./kubernetes/apps/network/pihole/app
   prune: true
   sourceRef:
     kind: GitRepository
