@@ -17,8 +17,8 @@ spec:
         namespace: flux-system
   values:
     image:
-      repository: ghcr.io/onedr0p/sonarr
-      tag: 3.0.10.1567@sha256:c890d6cada4319afb9c15e08d443b96040b183e9d74585166ce1c696f9494c65
+      repository: ghcr.io/onedr0p/sonarr-develop
+      tag: 4.0.0.565@sha256:18ea11679816e022606e1de13361c6496402732a4c2728c10979f2c2615a68a1
     podSecurityContext:
       runAsUser: 568
       runAsGroup: 568
