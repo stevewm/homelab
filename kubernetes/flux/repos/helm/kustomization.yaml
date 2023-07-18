@@ -12,3 +12,4 @@ resources:
   - ./metrics-server.yaml
   - ./pihole.yaml
   - ./bjw-s.yaml
+  - ./prometheus-community.yaml
