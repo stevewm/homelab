@@ -26,6 +26,7 @@ spec:
       fsGroupChangePolicy: OnRootMismatch
       supplementalGroups: [1001]
     env:
+      RADARR__URL_BASE: &path /
       RADARR__PORT: &port 7878
       RADARR__API_KEY:
         valueFrom:
@@ -44,7 +45,7 @@ spec:
         hosts:
           - host: radarr.cloud.home
             paths:
-              - path: /
+              - path: &path
                 pathType: Prefix
     persistence:
       media:

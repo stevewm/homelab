@@ -26,8 +26,8 @@ spec:
       fsGroupChangePolicy: OnRootMismatch
       supplementalGroups: [1001]
     env:
+      SONARR__URL_BASE: &path /
       SONARR__PORT: &port 8989
-      SONARR__URL_BASE: &base /sonarr
       SONARR__API_KEY:
         valueFrom:
           secretKeyRef:
@@ -45,7 +45,7 @@ spec:
         hosts:
           - host: sonarr.cloud.home
             paths:
-              - path: /
+              - path: *path
                 pathType: Prefix
                 backend:
                   service:
