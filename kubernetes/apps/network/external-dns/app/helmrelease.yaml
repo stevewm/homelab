@@ -6,7 +6,7 @@ metadata:
   namespace: external-ds
 spec:
   releaseName: external-dns
-  targetNamespace: external-dns
+  targetNamespace: network
   interval: 30m
   chart:
     spec:
@@ -19,6 +19,7 @@ spec:
   values:
     serviceMonitor:
       enabled: true
+    logLevel: debug
     policy: upsert-only
     registry: noop
     provider: pihole

@@ -20,3 +20,5 @@ spec:
     ingressRoute:
       dashboard:
         entryPoints: ["web", "traefik"]
+    publishedService:
+      enabled: true  # Required for External-DNS to function
