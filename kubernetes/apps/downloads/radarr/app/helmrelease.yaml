@@ -45,8 +45,12 @@ spec:
         hosts:
           - host: radarr.cloud.home
             paths:
-              - path: &path
+              - path: *path
                 pathType: Prefix
+                backend:
+                  service:
+                    name: radarr
+                    port: *port
     persistence:
       media:
         enabled: true
