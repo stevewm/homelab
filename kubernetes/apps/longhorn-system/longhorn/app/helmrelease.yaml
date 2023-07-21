@@ -26,7 +26,6 @@ spec:
     ingress:
       enabled: true
       ingressClassName: traefik
-      path: /longhorn
-      host: ''
+      host: longhorn.cloud.home
       annotations:
         traefik.ingress.kubernetes.io/router.middlewares: longhorn-system-rewrite-longhorn-dashboard@kubernetescrd

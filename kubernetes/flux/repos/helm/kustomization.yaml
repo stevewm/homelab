@@ -13,3 +13,4 @@ resources:
   - ./pihole.yaml
   - ./bjw-s.yaml
   - ./prometheus-community.yaml
+  - ./external-dns.yaml

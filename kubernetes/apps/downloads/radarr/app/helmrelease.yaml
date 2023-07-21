@@ -27,7 +27,6 @@ spec:
       supplementalGroups: [1001]
     env:
       RADARR__PORT: &port 7878
-      RADARR__URL_BASE: &base /radarr
       RADARR__API_KEY:
         valueFrom:
           secretKeyRef:
@@ -43,13 +42,10 @@ spec:
         enabled: true
         ingressClassName: traefik
         hosts:
-          - host: ''
+          - host: radarr.cloud.home
             paths:
-              - path: *base
+              - path: /
                 pathType: Prefix
-                backend:
-                  service:
-                  name: radarr
     persistence:
       media:
         enabled: true

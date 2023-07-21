@@ -47,9 +47,9 @@ spec:
         enabled: true
         ingressClassName: traefik
         hosts:
-          - host: ''
+          - host: sabnzbd.cloud.home
             paths:
-              - path: /sabnzbd
+              - path: /
                 pathType: Prefix
                 backend:
                   service:

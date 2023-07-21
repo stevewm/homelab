@@ -23,11 +23,10 @@ spec:
       runAsUser: 568
       runAsGroup: 568
       fsGroup: 568
-      fsGroupChangePolicy: "OnRootMismatch"
+      fsGroupChangePolicy: OnRootMismatch
       supplementalGroups: [1001]
     env:
       PROWLARR__PORT: &port 9696
-      PROWLARR__URL_BASE: &base /prowlarr
       PROWLARR__API_KEY:
         valueFrom:
           secretKeyRef:
@@ -41,15 +40,12 @@ spec:
     ingress:
       main:
         enabled: true
-        ingressClassName: "traefik"
+        ingressClassName: traefik
         hosts:
-          - host: ''
+          - host: prowlarr.cloud.home
             paths:
-              - path: *base
+              - path: /
                 pathType: Prefix
-                backend:
-                  service:
-                  name: prowlarr
     persistence:
       config:
         enabled: true

@@ -21,20 +21,14 @@ spec:
       ingress:
         enabled: true
         hosts:
-          - ''
-        paths:
-          - /prometheus
+          - prometheus.cloud.home
     grafana:
       ingress:
         enabled: true
         hosts:
-          - ''
-        paths:
-          - /grafana
+          - grafana.cloud.home
     alertmanager:
       ingress:
         enabled: true
         hosts:
-          - ''
-        paths:
-          - /alertmanager
+          - alertmanager.cloud.home

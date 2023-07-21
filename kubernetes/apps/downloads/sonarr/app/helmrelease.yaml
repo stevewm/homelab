@@ -43,9 +43,9 @@ spec:
         enabled: true
         ingressClassName: traefik
         hosts:
-          - host: ''
+          - host: sonarr.cloud.home
             paths:
-              - path: *base
+              - path: /
                 pathType: Prefix
                 backend:
                   service:
