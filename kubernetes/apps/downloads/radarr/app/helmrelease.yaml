@@ -2,8 +2,8 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: radarr
-  namespace: downloads
+  name: &name radarr
+  namespace: &namespace downloads
 spec:
   interval: 30m
   chart:
@@ -51,6 +51,11 @@ spec:
                   service:
                     name: radarr
                     port: *port
+        annotations:
+          gethomepage.dev/name: *name
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: *namespace
+          gethomepage.dev/icon: radarr.png
     persistence:
       media:
         enabled: true

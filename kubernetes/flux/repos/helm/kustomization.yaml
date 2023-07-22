@@ -14,3 +14,4 @@ resources:
   - ./bjw-s.yaml
   - ./prometheus-community.yaml
   - ./external-dns.yaml
+  - ./jameswynn.yaml

@@ -2,8 +2,8 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: sonarr
-  namespace: downloads
+  name: &name sonarr
+  namespace: &namespace downloads
 spec:
   interval: 30m
   chart:
@@ -51,6 +51,11 @@ spec:
                   service:
                     name: sonarr
                     port: *port
+        annotations:
+          gethomepage.dev/name: *name
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: *namespace
+          gethomepage.dev/icon: sonarr.png
     persistence:
       media:
         enabled: true
