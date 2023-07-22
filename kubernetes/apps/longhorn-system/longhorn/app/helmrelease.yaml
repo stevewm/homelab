@@ -25,7 +25,5 @@ spec:
       defaultClassReplicaCount: 2
     ingress:
       enabled: true
-      ingressClassName: traefik
+      ingressClassName: nginx
       host: longhorn.cloud.home
-      annotations:
-        traefik.ingress.kubernetes.io/router.middlewares: longhorn-system-rewrite-longhorn-dashboard@kubernetescrd

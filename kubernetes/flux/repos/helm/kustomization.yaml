@@ -8,7 +8,7 @@ resources:
   - ./minecraft.yaml
   - ./cert-manager.yaml
   - ./weave-gitops.yaml
-  - ./traefik.yaml
+  - ./ingress-nginx.yaml
   - ./metrics-server.yaml
   - ./pihole.yaml
   - ./bjw-s.yaml
