@@ -32,5 +32,5 @@ spec:
         valueFrom:
           secretKeyRef:
             name: pihole
-            key: EXTERNAL_DNS_PIHOLE_PASSWORD
+            key: PIHOLE_PASSWORD
 
