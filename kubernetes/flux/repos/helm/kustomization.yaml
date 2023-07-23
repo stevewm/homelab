@@ -2,17 +2,17 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
+  - ./bjw-s.yaml
+  - ./cert-manager.yaml
+  - ./cloudnative-pg.yaml
+  - ./external-dns.yaml
+  - ./external-secrets.yaml
+  - ./ingress-nginx.yaml
+  - ./jameswynn.yaml
   - ./longhorn.yaml
   - ./metallb.yaml
-  - ./external-secrets.yaml
-  - ./minecraft.yaml
-  - ./cert-manager.yaml
-  - ./weave-gitops.yaml
-  - ./ingress-nginx.yaml
   - ./metrics-server.yaml
+  - ./minecraft.yaml
   - ./pihole.yaml
-  - ./bjw-s.yaml
   - ./prometheus-community.yaml
-  - ./external-dns.yaml
-  - ./jameswynn.yaml
-  - ./cloudnative-pg.yaml
+  - ./weave-gitops.yaml

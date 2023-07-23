@@ -1,3 +1,4 @@
+---
 apiVersion: v1
 data:
     age.agekey: ENC[AES256_GCM,data:g8iKWzKSP51wby3axsCveTJfCKgvpa2HDkm7coCZ5BYKoRrWScby21a6IScjKZlS/6PQQw/KGUAK258+lylCm6a5M6JmJi0KItFGB/Tm/Im3RR83j+/4au6xTlJmrkEyDm1b2xzPWiBbf0wwjFOEQQ4D2s2LffHsbOMbhfp9YXg9+wau7rM+23K7PeE1KrKVlv6tgkNBjBWJY4JeKvq8o7LkIkTY/fJby5C8xu+Xs6+BpVd00+pNBBT130lpOB1koK+IA6V0YWpT0nz7fNU7qKcMc2TEXmn/6ybZbUBB1xiEYTlm8CSrcIO2KBEM8fBW+yjSGE9OmK1w71Zi,iv:+F+A8SJTtxecFs1045Uaem7fYHBfGD02VxhUafkEzcE=,tag:gVgsfLWZQaRG9FohS45hYg==,type:str]

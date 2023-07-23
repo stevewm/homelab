@@ -5,16 +5,16 @@ metadata:
   name: minecraft
   namespace: games
 spec:
+  maxHistory: 3
+  interval: 30m0s
   chart:
     spec:
       chart: minecraft
       version: 4.9.1
-      maxHistory: 3
       sourceRef:
         kind: HelmRepository
         name: minecraft
         namespace: flux-system
-  interval: 30m0s
   values:
     resources:
       requests:
@@ -38,4 +38,3 @@ spec:
       initialDelaySeconds: 300
     livenessProbe:
       initialDelaySeconds: 300
-

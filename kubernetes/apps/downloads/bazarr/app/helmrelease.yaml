@@ -6,11 +6,11 @@ metadata:
   namespace: &namespace downloads
 spec:
   interval: 30m
+  maxHistory: 3
   chart:
     spec:
       chart: app-template
       version: 1.5.1
-      maxHistory: 3
       interval: 30m
       sourceRef:
         kind: HelmRepository

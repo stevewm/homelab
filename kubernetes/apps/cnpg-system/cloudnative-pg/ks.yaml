@@ -6,10 +6,9 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: ./kubernetes/apps/downloads/cloudnative-pg/app
+  path: ./kubernetes/apps/cnpg-system/cloudnative-pg/app
   prune: true
   sourceRef:
     kind: GitRepository
     name: homelab
   wait: false
-

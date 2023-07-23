@@ -6,13 +6,12 @@ metadata:
   namespace: kube-system
 spec:
   releaseName: ingress-nginx
-  targetNamespace: kube-system
   interval: 1h
+  maxHistory: 3
   chart:
     spec:
       chart: ingress-nginx
       version: 4.7.1
-      maxHistory: 3
       sourceRef:
         kind: HelmRepository
         name: ingress-nginx

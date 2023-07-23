@@ -1,4 +1,0 @@
----
-
-custom_manifests:
-  - metallb-native.yaml
