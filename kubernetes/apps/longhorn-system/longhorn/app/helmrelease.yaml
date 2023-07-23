@@ -27,3 +27,9 @@ spec:
       enabled: true
       ingressClassName: nginx
       host: longhorn.cloud.home
+      annotations:
+        gethomepage.dev/name: longhorn
+        gethomepage.dev/description: storage
+        gethomepage.dev/enabled: "true"
+        gethomepage.dev/group: management
+        gethomepage.dev/icon: longhorn.png

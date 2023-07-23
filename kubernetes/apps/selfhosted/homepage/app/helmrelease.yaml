@@ -37,21 +37,36 @@ spec:
           - github:
             - abbr: gh
               href: https://github.com/
+          - hacker news:
+            - abbr: hn
+              href: https://news.ycombinator.com/
+
         - social:
           - twitter:
             - abbr: twtr
               href: https://twitter.com/
+          - reddit:
+            - abbr: rdt
+              href: https://reddit.com/
       services:
-        - NAS:
-            - Portal:
-                description: NAS management portal
+        - nas:
+            - portal:
+                description: management
                 href: http://lilnas:8000
-            - PiHole:
-                description: PiHole management portal
+                icon: asustor.png
+            - pi-hole:
+                description: dns
                 href: http://lilnas:3001/admin/
-            - Portainer:
-                description: Portainer management portal
+                icon: pi-hole.png
+            - portainer:
+                description: containers
                 href: http://lilnas:19943
+                icon: portainer.png
+        - media:
+            - jellyfin:
+                description: streaming
+                href: http://lilnas:8096
+                icon: jellyfin.png
       widgets:
         - resources:
             backend: kubernetes
@@ -63,9 +78,8 @@ spec:
             target: _blank
         - kubernetes:
             cluster:
-              show: false
-            nodes:
               show: true
               cpu: true
               memory: true
-              showLabel: true
+            nodes:
+              show: false

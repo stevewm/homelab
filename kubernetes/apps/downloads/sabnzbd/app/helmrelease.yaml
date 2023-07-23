@@ -64,7 +64,7 @@ spec:
                     port: *port
         annotations:
           gethomepage.dev/name: *name
-          gethomepage.dev/description: Downloads
+          gethomepage.dev/description: downloads
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: *namespace
           gethomepage.dev/icon: sabnzbd-alt.png
