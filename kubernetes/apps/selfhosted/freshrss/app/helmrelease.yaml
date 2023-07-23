@@ -1,0 +1,36 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: freshrss
+  namespace: selfhosted
+spec:
+  releaseName: freshrss
+  targetNamespace: selfhosted
+  interval: 30m
+  chart:
+    spec:
+      chart: freshrss
+      version: 14.0.25
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+  values:
+    image:
+      repository: linuxserver/freshrss
+      pullPolicy: IfNotPresent
+      tag: 1.21.0@sha256:1ffcf7ff8a18f2e5a7b748b43beaa843a00da84ef36b02e88416a42921478a12
+    persistence:
+      config:
+        enabled: true
+        mountPath: /config
+    ingress:
+      main:
+        ingressClassName: nginx
+        enabled: true
+        hosts:
+          - host: &host freshrss.cloud.home
+            paths:
+            - path: /
+              pathType: Prefix
