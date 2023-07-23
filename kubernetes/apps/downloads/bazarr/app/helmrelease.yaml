@@ -45,6 +45,7 @@ spec:
                     port: *port
         annotations:
           gethomepage.dev/name: *name
+          gethomepage.dev/description: subtitles
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: *namespace
           gethomepage.dev/icon: bazarr.png

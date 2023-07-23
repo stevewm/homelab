@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: kube-prometheus-stack
-  namespace: monitoring
+  namespace: &namespace monitoring
 spec:
   releaseName: kube-prometheus-stack
   targetNamespace: monitoring
@@ -22,13 +22,28 @@ spec:
         enabled: true
         hosts:
           - prometheus.cloud.home
+        annotations:
+          gethomepage.dev/name: prometheus
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: *namespace
+          gethomepage.dev/icon: prometheus.png
     grafana:
       ingress:
         enabled: true
         hosts:
           - grafana.cloud.home
+        annotations:
+          gethomepage.dev/name: grafana
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: *namespace
+          gethomepage.dev/icon: grafana.png
     alertmanager:
       ingress:
         enabled: true
         hosts:
           - alertmanager.cloud.home
+        annotations:
+          gethomepage.dev/name: alertmanager
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: *namespace
+          gethomepage.dev/icon: alertmanager.png

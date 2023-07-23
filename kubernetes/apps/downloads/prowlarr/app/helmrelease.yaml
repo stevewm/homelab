@@ -53,6 +53,7 @@ spec:
                     port: *port
         annotations:
           gethomepage.dev/name: *name
+          gethomepage.dev/description: indexers
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: *namespace
           gethomepage.dev/icon: prowlarr.png

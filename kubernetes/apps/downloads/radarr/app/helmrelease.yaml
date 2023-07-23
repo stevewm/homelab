@@ -53,6 +53,7 @@ spec:
                     port: *port
         annotations:
           gethomepage.dev/name: *name
+          gethomepage/dev/description: movies
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: *namespace
           gethomepage.dev/icon: radarr.png
