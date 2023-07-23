@@ -15,3 +15,4 @@ resources:
   - ./prometheus-community.yaml
   - ./external-dns.yaml
   - ./jameswynn.yaml
+  - ./cloudnative-pg.yaml
