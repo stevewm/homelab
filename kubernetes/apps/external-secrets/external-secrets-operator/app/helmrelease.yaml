@@ -12,6 +12,7 @@ spec:
     spec:
       chart: external-secrets
       version: 0.9.1
+      maxHistory: 3
       sourceRef:
         kind: HelmRepository
         name: external-secrets

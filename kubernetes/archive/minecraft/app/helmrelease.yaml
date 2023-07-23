@@ -9,6 +9,7 @@ spec:
     spec:
       chart: minecraft
       version: 4.9.1
+      maxHistory: 3
       sourceRef:
         kind: HelmRepository
         name: minecraft
