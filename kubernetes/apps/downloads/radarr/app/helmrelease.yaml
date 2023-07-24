@@ -48,10 +48,6 @@ spec:
             paths:
               - path: *path
                 pathType: Prefix
-                backend:
-                  service:
-                    name: radarr
-                    port: *port
         annotations:
           gethomepage.dev/name: *name
           gethomepage.dev/description: movies

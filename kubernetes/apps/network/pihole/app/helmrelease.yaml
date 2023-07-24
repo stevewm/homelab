@@ -21,19 +21,24 @@ spec:
       mixedService: true
       type: LoadBalancer
       loadBalancerIP: 192.168.1.222
-      annotations:
-        metallb.universe.tf/allow-shared-ip: pihole-svc
     serviceWeb:
-      mixedService: true
-      type: LoadBalancer
-      loadBalancerIP: 192.168.1.222
-      annotations:
-        metallb.universe.tf/allow-shared-ip: pihole-svc
+      http:
+        enabled: true
     serviceDhcp:
       enabled: false
+    ingress:
+      enabled: true
+      ingressClassName: nginx
+      hosts:
+        - pihole.cloud.home
+      annotations:
+        gethomepage.dev/name: pi-hole
+        gethomepage.dev/description: dns
+        gethomepage.dev/enabled: "true"
+        gethomepage.dev/group: network
+        gethomepage.dev/icon: pi-hole.png
     persistentVolumeClaim:
       enabled: true
-    dnsMasq:
-      customDnsEntries:
-        - address=/pihole.local/192.168.1.222
-        - address=/*.pi.local/192.168.1.201
+    monitoring:
+      podMonitor:
+        enabled: true
