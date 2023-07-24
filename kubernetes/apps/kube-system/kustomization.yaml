@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - ./ingress-nginx/ks.yaml
   - ./metrics-server/ks.yaml
+  - ./descheduler/ks.yaml
