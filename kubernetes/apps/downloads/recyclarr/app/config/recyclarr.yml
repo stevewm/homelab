@@ -77,23 +77,33 @@ sonarr:
 
 radarr:
   main:
-    base_url: http://radarr.downloads.svc.cluster.local:7878/
+    #base_url: http://radarr.downloads.svc.cluster.local:7878/
+    base_url: http://radarr.cloud.home/
     api_key: !env_var RADARR_API_KEY
     delete_old_custom_formats: true
+    replace_existing_custom_formats: true
     quality_definition:
       type: movie
     quality_profiles:
-      - name: HD-1080p
+      - name: 1080p to 4K
         reset_unmatched_scores: true
-      - name: Ultra-HD
-        reset_unmatched_scores: true
+        upgrade:
+          allowed: true
+          until_quality: WEBDL-2160p
+        qualities:
+          - name: Bluray-2160p
+          - name: WEBDL-2160p
+          - name: WEBRIP-2160p
+          - name: HDTV-2160p
+          - name: Bluray-1080p
+          - name: WEBDL-1080p
+          - name: WEBRip-1080p
+          - name: HDTV-1080p
     custom_formats:
       - trash_ids:
           - ff5bc9e8ce91d46c997ca3ac6994d6f8 # UHD FraMeSToR (set to 0, 1 or 3200)
         quality_profiles:
-          - name: HD-1080p
-            score: 1
-          - name: Ultra-HD
+          - name: 1080p to 4K
             score: 1
       - trash_ids:
           - 496f355514737f7d83bf7aa4d24f8169 # TrueHD Atmos
@@ -144,20 +154,15 @@ radarr:
           - ae9b7c9ebde1f3bd336a8cbd1ec4c5e5 # No-RlsGroup removed do avoid multiple downloads
           - dc98083864ea246d05a42df0d05f81cc # x265 (720/1080p)
         quality_profiles:
-          - name: HD-1080p
-          - name: Ultra-HD
+          - name: 1080p to 4K
       - trash_ids:
           - 1c7d7b04b15cc53ea61204bebbcc1ee2 # HQ
         quality_profiles:
-          - name: HD-1080p
-            score: 0
-          - name: Ultra-HD
+          - name: 1080p to 4K
             score: 0
       - trash_ids:
           - 4b900e171accbfb172729b63323ea8ca # Optional: Multi
           - 923b6abef9b17f937fab56cfcf89e1f1 # Optional: DV (WEBDL) without fallback to HDR, set to manual score 0 or -10000
         quality_profiles:
-          - name: HD-1080p
-            score: -10000
-          - name: Ultra-HD
+          - name: 1080p to 4K
             score: -10000
