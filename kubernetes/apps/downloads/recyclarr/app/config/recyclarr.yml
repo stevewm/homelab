@@ -6,15 +6,26 @@ sonarr:
     base_url: http://sonarr.downloads.svc.cluster.local:8989/
     api_key: !env_var SONARR_API_KEY
     delete_old_custom_formats: true
+    replace_existing_custom_formats: true
     quality_definition:
       type: series
     quality_profiles:
-      - name: HD-1080p
+      # Minimum 1080p, upgrade to 4K if possible
+      # I don't want to manage shows being different qualities
+      - name: 1080p to 4K
         reset_unmatched_scores: true
-      - name: WEB-1080p
-        reset_unmatched_scores: true
-      - name: Ultra-HD
-        reset_unmatched_scores: true
+        upgrade:
+          allowed: true
+          until_quality: WEBDL-2160p
+        qualities:
+          - name: Bluray-2160p
+          - name: WEBDL-2160p
+          - name: WEBRIP-2160p
+          - name: HDTV-2160p
+          - name: Bluray-1080p
+          - name: WEBDL-1080p
+          - name: WEBRip-1080p
+          - name: HDTV-1080p
     custom_formats:
       - trash_ids:
           # Streaming Services
@@ -62,9 +73,7 @@ sonarr:
           - 06d66ab109d4d2eddb2794d21526d140 # Retags
           - 47435ece6b99a0b477caf360e79ba0bb # x265 (HD)
         quality_profiles:
-          - name: HD-1080p
-          - name: WEB-1080p
-          - name: Ultra-HD
+          - name: 1080p to 4K
 
 radarr:
   main:
