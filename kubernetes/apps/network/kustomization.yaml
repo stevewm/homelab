@@ -4,4 +4,3 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./external-dns/ks.yaml
-  - ./pihole/ks.yaml
