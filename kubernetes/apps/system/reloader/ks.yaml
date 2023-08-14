@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 30m
-  path: ./kubernetes/apps/kube-system/reloader/app
+  path: ./kubernetes/apps/system/reloader/app
   prune: true
   sourceRef:
     kind: GitRepository
