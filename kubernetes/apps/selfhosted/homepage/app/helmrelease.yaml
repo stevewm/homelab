@@ -60,7 +60,7 @@ spec:
                 icon: pi-hole.png
             - portainer:
                 description: containers
-                href: http://lilnas:19943
+                href: https://lilnas:19943
                 icon: portainer.png
         - media:
             - jellyfin:
