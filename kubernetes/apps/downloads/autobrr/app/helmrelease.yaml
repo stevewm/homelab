@@ -45,6 +45,7 @@ spec:
     ingress:
       main:
         enabled: true
+        className: nginx
         hosts:
           - host: autobrr.cloud.home
             paths:
