@@ -6,3 +6,4 @@ resources:
   - ./descheduler/ks.yaml
   - ./kured/ks.yaml
   - ./reloader/ks.yaml
+  - ./secrets-generator/ks.yaml

@@ -14,6 +14,7 @@ resources:
   - ./longhorn.yaml
   - ./metallb.yaml
   - ./metrics-server.yaml
+  - ./mittwald.yaml
   - ./minecraft.yaml
   - ./pihole.yaml
   - ./prometheus-community.yaml
