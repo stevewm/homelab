@@ -2,19 +2,19 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: secrets-generator
+  name: secret-generator
   namespace: system
 spec:
-  releaseName: secrets-generator
+  releaseName: secret-generator
   interval: 1h
   maxHistory: 3
   chart:
     spec:
-      chart: kubernetes-secrets-generator
+      chart: kubernetes-secret-generator
       version: 3.4.0
       sourceRef:
         kind: HelmRepository
-        name: kubernetes-secrets-generator
+        name: kubernetes-secret-generator
         namespace: flux-system
   values:
     image:
