@@ -45,11 +45,11 @@ spec:
     ingress:
       main:
         enabled: true
-        className: nginx
+        className: "nginx"
         hosts:
           - host: autobrr.cloud.home
             paths:
-              path: /
+              - path: /
         annotations:
           gethomepage.dev/name: *name
           gethomepage.dev/description: download filtering
