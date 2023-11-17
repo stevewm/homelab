@@ -20,21 +20,21 @@ spec:
       main:
         strategy: Recreate
 
-    containers:
-      main:
-        image:
-          repository: ghcr.io/autobrr/autobrr
-          tag: v1.33.0
-        env:
-          AUTOBRR__HOST: 0.0.0.0
-          AUTOBRR__PORT: &port 7474
-          AUTOBRR__CHECKFORUPDATES: "false"
-        resources:
-          requests:
-            cpu: 10m
-            memory: 128Mi
-          limits:
-            memory: 256Mi
+        containers:
+          main:
+            image:
+              repository: ghcr.io/autobrr/autobrr
+              tag: v1.33.0
+            env:
+              AUTOBRR__HOST: 0.0.0.0
+              AUTOBRR__PORT: &port 7474
+              AUTOBRR__CHECKFORUPDATES: "false"
+            resources:
+              requests:
+                cpu: 10m
+                memory: 128Mi
+              limits:
+                memory: 256Mi
 
     service:
       main:
