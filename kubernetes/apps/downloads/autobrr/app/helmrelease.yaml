@@ -2,8 +2,8 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: autobrr
-  namespace: downloads
+  name: &name autobrr
+  namespace: &namespace downloads
 spec:
   interval: 30m
   maxHistory: 3
@@ -49,6 +49,12 @@ spec:
           - host: autobrr.cloud.home
             paths:
               path: /
+        annotations:
+          gethomepage.dev/name: *name
+          gethomepage.dev/description: download filtering
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: *namespace
+          gethomepage.dev/icon: autobrr.svg
 
     persistence:
       config:
