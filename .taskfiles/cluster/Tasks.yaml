@@ -5,7 +5,7 @@ version: '3'
 
 tasks:
   ping:
-      desc: check node online status
+      desc: Check node online status
       cmds:
         - ansible all -i ansible/inventory/hosts.yaml --one-line -m 'ping'
 
