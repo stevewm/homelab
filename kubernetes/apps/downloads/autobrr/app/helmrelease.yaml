@@ -38,7 +38,7 @@ spec:
               AUTOBRR__SESSION_SECRET:
                 valueFrom:
                   secretKeyRef:
-                    name: autobrr-session-secret
+                    name: autobrr
                     key: session-secret
             resources:
               requests:
