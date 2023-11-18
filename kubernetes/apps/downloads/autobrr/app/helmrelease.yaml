@@ -19,7 +19,12 @@ spec:
     controllers:
       main:
         strategy: Recreate
-
+        pod:
+          securityContext:
+            runAsUser: 568
+            runAsGroup: 568
+            fsGroup: 568
+            fsGroupChangePolicy: OnRootMismatch
         containers:
           main:
             image:
@@ -30,6 +35,11 @@ spec:
               AUTOBRR__PORT: &port 7474
               AUTOBRR__CHECKFORUPDATES: "false"
               AUTOBRR__LOGLEVEL: DEBUG
+              AUTOBRR__SESSION_SECRET:
+                valueFrom:
+                  secretKeyRef:
+                    name: autobrr-session-secret
+                    key: session-secret
             resources:
               requests:
                 cpu: 10m
@@ -64,7 +74,7 @@ spec:
     persistence:
       config:
         enabled: true
-        type: emptyDir
+        type: persistentVolumeClaim
       config-file:
         type: configMap
         name: autobrr-configmap
