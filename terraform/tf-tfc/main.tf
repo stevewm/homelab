@@ -18,13 +18,12 @@ terraform {
 
 
 provider "tfe" {
-  token = var.terraform_cloud_token != "" ? var.terraform_cloud_token : null
+
 }
 
 locals {
   variables = {
     "github_pat" : var.github_pat,
-    "terraform_cloud_token": "" # Lazy solution
   }
 
   projects = [
