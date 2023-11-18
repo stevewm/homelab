@@ -8,4 +8,4 @@ tasks:
       desc: Bootstrap Terraform Cloud
       dir: terraform/tf-tfc
       cmds:
-        - terraform apply -var="terraform_cloud_token=${TFC_TOKEN}" -var="github_pat=${TFC_BOOTSTRAP_GITHUB_TOKEN}"
+        - terraform apply -var="github_pat=${TFC_BOOTSTRAP_GITHUB_TOKEN}"
