@@ -24,6 +24,7 @@ provider "tfe" {
 locals {
   variables = {
     "github_pat" : var.github_pat,
+    "terraform_cloud_token": "" # Lazy solution
   }
 
   projects = [
