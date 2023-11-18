@@ -2,18 +2,19 @@
 # Simple two-file Terraform config to provision an org, projects and VCS-driven workspaces.
 #
 # If bootstrapping this needs to be commented out on the intial apply and
-# uncommented once that has been done to migrate the state using `terraform init -migrate-state`
+# uncommented once that has been done to migrate the state using `terraform init`.
+# Enter 'tfc' for the workspace name and type 'yes' to migrating the state.
 #
 
 terraform {
-  required_version = ">= 1.0"
+ required_version = ">= 1.0"
 
-  backend "remote" {
-    organization = "steve-homelab"
-    workspaces {
-      prefix = "tf-"
-    }
-  }
+ backend "remote" {
+   organization = "steve-homelab"
+   workspaces {
+     prefix = "tf-"
+   }
+ }
 }
 
 
