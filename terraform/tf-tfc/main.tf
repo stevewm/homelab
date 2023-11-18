@@ -83,4 +83,5 @@ resource "tfe_variable" "this" {
   value        = each.value
   category     = "terraform"
   workspace_id = tfe_workspace.this["tf-tfc"].id
+  sensitive    = true
 }
