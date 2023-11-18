@@ -9,37 +9,42 @@ terraform {
   required_version = ">= 1.0"
 
   backend "remote" {
-		organization = "steve-homelab"
-		workspaces {
-			prefix = "tf-"
-		}
-	}
+    organization = "steve-homelab"
+    workspaces {
+      prefix = "tf-"
+    }
+  }
 }
 
 
 provider "tfe" {
-  token    = var.terraform_cloud_token
+  token = var.terraform_cloud_token != "" ? var.terraform_cloud_token : null
 }
 
 locals {
+  variables = {
+    "github_pat" : var.github_pat,
+  }
+
   projects = [
     "external"
-    ]
+  ]
+
   workspaces = {
     # Workspace per directory
-    "tf-tfc": {
-      "desc": "Terraform Cloud configuration"
-      "proj": "external"
+    "tf-tfc" : {
+      "desc" : "Terraform Cloud configuration"
+      "proj" : "external"
     },
-    "tf-dns": {
-      "desc": "DNS configuration"
-      "proj": "external"
+    "tf-dns" : {
+      "desc" : "DNS configuration"
+      "proj" : "external"
     }
   }
 }
 
 resource "tfe_organization" "this" {
-  name = "steve-homelab"
+  name  = "steve-homelab"
   email = "steve@cfg.sh"
 }
 
@@ -52,22 +57,30 @@ resource "tfe_oauth_client" "this" {
 }
 
 resource "tfe_project" "this" {
-  for_each = toset(local.projects)
-  name = each.value
+  for_each     = toset(local.projects)
+  name         = each.value
   organization = tfe_organization.this.name
 }
 
 resource "tfe_workspace" "this" {
-  for_each = local.workspaces
-  name = each.key
-  description = each.value["desc"]
+  for_each     = local.workspaces
+  name         = each.key
+  description  = each.value["desc"]
   organization = tfe_organization.this.name
-  project_id = tfe_project.this[each.value["proj"]].id
+  project_id   = tfe_project.this[each.value["proj"]].id
 
   vcs_repo {
-    identifier = "duhio/homelab"
+    identifier     = "duhio/homelab"
     oauth_token_id = tfe_oauth_client.this.oauth_token_id
   }
-  trigger_prefixes = ["terraform/${each.key}"]
+  trigger_prefixes  = ["terraform/${each.key}"]
   working_directory = "terraform/${each.key}"
+}
+
+resource "tfe_variable" "this" {
+  for_each     = local.variables
+  key          = each.key
+  value        = each.value
+  category     = "terraform"
+  workspace_id = tfe_workspace.this["tf-tfc"].id
 }

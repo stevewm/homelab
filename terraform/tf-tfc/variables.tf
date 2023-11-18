@@ -1,11 +1,11 @@
 variable "terraform_cloud_token" {
-  type = string
+  type        = string
   description = "Terraform Cloud User Token"
-  sensitive = true
+  sensitive   = true
 }
 
 variable "github_pat" {
-  type = string
+  type        = string
   description = "GitHub Personal Access Token"
-  sensitive = true
+  sensitive   = true
 }
