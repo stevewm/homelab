@@ -14,5 +14,5 @@ spec:
   wait: false
   dependsOn:
     - name: app-longhorn
-    - name: app-external-secrets-operator
+    - name: app-secret-generator
     - name: app-sabnzbd
