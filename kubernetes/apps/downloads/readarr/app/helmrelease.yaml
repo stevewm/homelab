@@ -32,7 +32,7 @@ spec:
               tag: 0.3.10.2287
             env:
               READARR__URL_BASE: &path /
-              READARR__PORT: 8787
+              READARR__PORT: &port 8787
               READARR__API_KEY:
                 valueFrom:
                   secretKeyRef:
