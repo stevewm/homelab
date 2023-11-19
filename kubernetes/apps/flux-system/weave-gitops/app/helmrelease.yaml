@@ -19,12 +19,11 @@ spec:
   values:
     adminUser:
       create: true
-      createSecret: false
-      username: &root admin
+      username: &admin_user admin
     rbac:
       create: true
       impersonationResourceNames:
-        - *root
+        - *admin_user
     fullnameOverride: *name
     ingress:
       className: nginx
@@ -43,3 +42,8 @@ spec:
         gethomepage.dev/enabled: "true"
         gethomepage.dev/group: management
         gethomepage.dev/icon: kubernetes.png
+  valuesFrom:
+    - kind: Secret
+      name: weave-gitops
+      valuesKey: password_hash
+      targetPath: adminUser.passwordHash
