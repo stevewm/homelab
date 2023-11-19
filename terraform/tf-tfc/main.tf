@@ -9,14 +9,13 @@
 terraform {
  required_version = ">= 1.0"
 
- backend "remote" {
+ cloud {
    organization = "steve-homelab"
    workspaces {
-     prefix = "tf-"
+     name = "tf-tfc"
    }
  }
 }
-
 
 provider "tfe" {
 
