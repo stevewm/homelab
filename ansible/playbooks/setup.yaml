@@ -1,6 +1,5 @@
 ---
 # Sets up a cluster
-
 - hosts:
     - controller
     - worker

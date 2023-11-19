@@ -1,8 +1,6 @@
 ---
 # https://taskfile.dev
-
 version: '3'
-
 tasks:
   default:
     silent: true
@@ -11,8 +9,18 @@ tasks:
 
   brew:
     desc: Install local dependencies with brew
+    preconditions:
+      - which brew
     cmds:
       - brew bundle --file Brewfile --no-lock
+
+  yamlfmt:
+    desc: Format YAML files
+    silent: true
+    preconditions:
+      - which yamlfmt
+    cmds:
+      - find $(git rev-parse --show-toplevel) -type f \( -name "*.yaml" \) -exec sh -c 'yamlfmt -conf $(git rev-parse --show-toplevel)/.yamlfmt "$1"' _ {} \;
 
 includes:
   cluster: ./.taskfiles/cluster/Tasks.yaml

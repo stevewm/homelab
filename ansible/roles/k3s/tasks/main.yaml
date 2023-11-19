@@ -1,10 +1,8 @@
 ---
-
 - name: Install packages
   ansible.builtin.apt:
     name:
       - open-iscsi # required by Longhorn
-
 - name: Install k3s
   ansible.builtin.include_role:
     name: xanmanning.k3s

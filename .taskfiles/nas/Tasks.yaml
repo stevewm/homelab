@@ -1,8 +1,6 @@
 ---
 # https://taskfile.dev
-
 version: '3'
-
 tasks:
   discover:
     desc: Find the NAS on the network

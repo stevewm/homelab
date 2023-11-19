@@ -51,7 +51,7 @@ spec:
         annotations:
           gethomepage.dev/name: *name
           gethomepage.dev/description: indexers
-          gethomepage.dev/enabled: "true"
+          gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: *namespace
           gethomepage.dev/icon: prowlarr.png
     persistence:
@@ -66,3 +66,6 @@ spec:
       requests:
         cpu: 20m
         memory: 128M
+      limits:
+        cpu: 20m
+        memory: 256M

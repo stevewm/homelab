@@ -29,7 +29,7 @@ spec:
           - prometheus.cloud.home
         annotations:
           gethomepage.dev/name: prometheus
-          gethomepage.dev/enabled: "true"
+          gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: *namespace
           gethomepage.dev/icon: prometheus.png
     grafana:
@@ -39,7 +39,7 @@ spec:
           - grafana.cloud.home
         annotations:
           gethomepage.dev/name: grafana
-          gethomepage.dev/enabled: "true"
+          gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: *namespace
           gethomepage.dev/icon: grafana.png
     alertmanager:
@@ -49,6 +49,6 @@ spec:
           - alertmanager.cloud.home
         annotations:
           gethomepage.dev/name: alertmanager
-          gethomepage.dev/enabled: "true"
+          gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: *namespace
           gethomepage.dev/icon: alertmanager.png
