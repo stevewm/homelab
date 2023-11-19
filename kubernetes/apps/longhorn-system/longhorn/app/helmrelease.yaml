@@ -18,7 +18,7 @@ spec:
         namespace: flux-system
   values:
     defaultSettings:
-      storageMinimalAvailablePercentage: 5  # 50GB~
+      storageMinimalAvailablePercentage: 5 # 50GB~
     longhornUI:
       replicas: 1
     persistence:
@@ -30,6 +30,6 @@ spec:
       annotations:
         gethomepage.dev/name: longhorn
         gethomepage.dev/description: storage
-        gethomepage.dev/enabled: "true"
+        gethomepage.dev/enabled: 'true'
         gethomepage.dev/group: management
         gethomepage.dev/icon: longhorn.png

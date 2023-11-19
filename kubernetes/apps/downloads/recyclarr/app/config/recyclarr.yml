@@ -1,6 +1,5 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/recyclarr/recyclarr/master/schemas/config-schema.json
-
 sonarr:
   main:
     base_url: http://sonarr.downloads.svc.cluster.local:8989/
@@ -74,7 +73,6 @@ sonarr:
           - 47435ece6b99a0b477caf360e79ba0bb # x265 (HD)
         quality_profiles:
           - name: 1080p to 4K
-
 radarr:
   main:
     base_url: http://radarr.downloads.svc.cluster.local:7878/

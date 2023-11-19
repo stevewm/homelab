@@ -33,7 +33,7 @@ spec:
             env:
               AUTOBRR__HOST: 0.0.0.0
               AUTOBRR__PORT: &port 7474
-              AUTOBRR__CHECKFORUPDATES: "false"
+              AUTOBRR__CHECKFORUPDATES: 'false'
               AUTOBRR__LOGLEVEL: DEBUG
               AUTOBRR__SESSION_SECRET:
                 valueFrom:
@@ -46,17 +46,15 @@ spec:
                 memory: 128Mi
               limits:
                 memory: 256Mi
-
     service:
       main:
         ports:
           http:
             port: *port
-
     ingress:
       main:
         enabled: true
-        className: "nginx"
+        className: nginx
         hosts:
           - host: autobrr.cloud.home
             paths:
@@ -67,10 +65,9 @@ spec:
         annotations:
           gethomepage.dev/name: *name
           gethomepage.dev/description: download filtering
-          gethomepage.dev/enabled: "true"
+          gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: *namespace
           gethomepage.dev/icon: autobrr.png
-
     persistence:
       config:
         enabled: true
@@ -82,5 +79,3 @@ spec:
           - path: /config/config.toml
             subPath: config.toml
             readOnly: true
-
-

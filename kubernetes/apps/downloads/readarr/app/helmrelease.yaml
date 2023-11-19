@@ -43,18 +43,16 @@ spec:
                 cpu: 20m
                 memory: 256M
               limits:
-                memory: 256M
-
+                memory: 1Gi
     service:
       main:
         ports:
           http:
             port: *port
-
     ingress:
       main:
         enabled: true
-        className: "nginx"
+        className: nginx
         hosts:
           - host: readarr.cloud.home
             paths:
@@ -65,10 +63,9 @@ spec:
         annotations:
           gethomepage.dev/name: *name
           gethomepage.dev/description: ebooks
-          gethomepage.dev/enabled: "true"
+          gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: *namespace
           gethomepage.dev/icon: readarr.png
-
     persistence:
       config:
         enabled: true

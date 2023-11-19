@@ -2,27 +2,27 @@
 apiVersion: v1
 kind: Secret
 metadata:
-    name: github
-    namespace: flux-system
+  name: github
+  namespace: flux-system
 data:
-    token: ENC[AES256_GCM,data:iFxVadXbPiUke/dLzWU8L1RIfYVJkMRRg/QBheb1sJLrlf+Ry31eOY3GnHsgB6BgYPkv3yfu2qHIh6Aesqpfikh4z3L4LtwPFxD0tCsXp2jAS+p/XXkvPomhbcOfha1OA0PHxVpuoBrdf5y/GWVbSzhIMAc1XCftyb0fbA==,iv:DLKlORnszOad2gzLs6QSdCxJSWhEy6mVvT2bnsDt6BY=,tag:riaNAWpjeVt2TDCksI+zCQ==,type:str]
+  token: ENC[AES256_GCM,data:iFxVadXbPiUke/dLzWU8L1RIfYVJkMRRg/QBheb1sJLrlf+Ry31eOY3GnHsgB6BgYPkv3yfu2qHIh6Aesqpfikh4z3L4LtwPFxD0tCsXp2jAS+p/XXkvPomhbcOfha1OA0PHxVpuoBrdf5y/GWVbSzhIMAc1XCftyb0fbA==,iv:DLKlORnszOad2gzLs6QSdCxJSWhEy6mVvT2bnsDt6BY=,tag:riaNAWpjeVt2TDCksI+zCQ==,type:str]
 sops:
-    kms: []
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
-    age:
-        - recipient: age16fecg9xqa6u2sd95ajr8ljd2eag6fq5mmtatd2wqv75y6h028d8s93u8xf
-          enc: |
-            -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBjOVE1THhPWW4vKzdubHhP
-            MlROUUwrd0R0NU5OTzloTTg0RFNoQ0hEYnhvClZZSWE0bDZ0QStQeTVSbzkxWnE0
-            cmZtcDl4UlhxdHJFUGkrQkFrejZVVTAKLS0tIDM4QWxZVFRiSmlpa25HVXdBMFdV
-            TTU2KyszcHhzT1V4ejVXbmdpY0dOK00KEB1YFt1FMUWEVXrRo/NisiWCjkiZKR9/
-            TbiYtvGR7VzE7nItjRZ84rJvVveidx987zH9UChnhYZQ7/+kCak6Hg==
-            -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-07-07T00:27:31Z"
-    mac: ENC[AES256_GCM,data:l496FxMT3Z2pekk37Hh624iB2Q5Q+tL/fLKfz+UxH03o9A71dWJQ9psVgSZtn6yr8c58ZkX3Q0DIzZtolqVEb+A70d9uqerPdrN0LBpj0Rtd++Nr/OCMENaqEX5DBpQAZbwOnJtv9n2/JBsXSRAAX8bIarciSmkkIFxBhxc6xl0=,iv:70Dqwm3nut3IiZO41xPSGFQ+LNgVJiBwN1LTqJaqas0=,tag:BDvBOkQPlG5vbJxn1OKfbQ==,type:str]
-    pgp: []
-    encrypted_regex: ^(data|stringData)$
-    version: 3.7.3
+  kms: []
+  gcp_kms: []
+  azure_kv: []
+  hc_vault: []
+  age:
+    - recipient: age16fecg9xqa6u2sd95ajr8ljd2eag6fq5mmtatd2wqv75y6h028d8s93u8xf
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBjOVE1THhPWW4vKzdubHhP
+        MlROUUwrd0R0NU5OTzloTTg0RFNoQ0hEYnhvClZZSWE0bDZ0QStQeTVSbzkxWnE0
+        cmZtcDl4UlhxdHJFUGkrQkFrejZVVTAKLS0tIDM4QWxZVFRiSmlpa25HVXdBMFdV
+        TTU2KyszcHhzT1V4ejVXbmdpY0dOK00KEB1YFt1FMUWEVXrRo/NisiWCjkiZKR9/
+        TbiYtvGR7VzE7nItjRZ84rJvVveidx987zH9UChnhYZQ7/+kCak6Hg==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: '2023-07-07T00:27:31Z'
+  mac: ENC[AES256_GCM,data:l496FxMT3Z2pekk37Hh624iB2Q5Q+tL/fLKfz+UxH03o9A71dWJQ9psVgSZtn6yr8c58ZkX3Q0DIzZtolqVEb+A70d9uqerPdrN0LBpj0Rtd++Nr/OCMENaqEX5DBpQAZbwOnJtv9n2/JBsXSRAAX8bIarciSmkkIFxBhxc6xl0=,iv:70Dqwm3nut3IiZO41xPSGFQ+LNgVJiBwN1LTqJaqas0=,tag:BDvBOkQPlG5vbJxn1OKfbQ==,type:str]
+  pgp: []
+  encrypted_regex: ^(data|stringData)$
+  version: 3.7.3

@@ -1,11 +1,13 @@
 ---
 # https://taskfile.dev
-
 version: '3'
-
 tasks:
   bootstrap:
-      desc: Bootstrap Terraform Cloud
-      dir: terraform/tf-tfc
-      cmds:
-        - terraform apply -var="github_pat=${TFC_BOOTSTRAP_GITHUB_TOKEN}"
+    desc: Bootstrap Terraform Cloud
+    dir: terraform/tf-tfc
+    requires:
+      vars: [TFC_BOOTSTRAP_GITHUB_TOKEN]
+    preconditions:
+      - which terraform
+    cmds:
+      - terraform apply -var="github_pat=${TFC_BOOTSTRAP_GITHUB_TOKEN}"

@@ -27,27 +27,26 @@ spec:
         hosts:
           - host: &host cloud.home
             paths:
-            - path: /
-              pathType: Prefix
+              - path: /
+                pathType: Prefix
     config:
       kubernetes:
         mode: cluster
       bookmarks:
         - dev:
-          - github:
-            - abbr: gh
-              href: https://github.com/
-          - hacker news:
-            - abbr: hn
-              href: https://news.ycombinator.com/
-
+            - github:
+                - abbr: gh
+                  href: https://github.com/
+            - hacker news:
+                - abbr: hn
+                  href: https://news.ycombinator.com/
         - social:
-          - twitter:
-            - abbr: twtr
-              href: https://twitter.com/
-          - reddit:
-            - abbr: rdt
-              href: https://reddit.com/
+            - twitter:
+                - abbr: twtr
+                  href: https://twitter.com/
+            - reddit:
+                - abbr: rdt
+                  href: https://reddit.com/
       services:
         - nas:
             - portal:

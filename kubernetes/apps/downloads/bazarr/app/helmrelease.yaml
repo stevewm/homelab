@@ -43,7 +43,7 @@ spec:
         annotations:
           gethomepage.dev/name: *name
           gethomepage.dev/description: subtitles
-          gethomepage.dev/enabled: "true"
+          gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: *namespace
           gethomepage.dev/icon: bazarr.png
     persistence:
@@ -65,4 +65,4 @@ spec:
         cpu: 20m
         memory: 256M
       limits:
-        memory: 256M
+        memory: 512M

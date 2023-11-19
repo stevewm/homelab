@@ -1,8 +1,7 @@
 ---
 k3s_control_node: true
-
 k3s_server:
-  node-ip: "{{ ansible_host }}"
+  node-ip: '{{ ansible_host }}'
   docker: false
   prefer-bundled-bin: true
   disable:

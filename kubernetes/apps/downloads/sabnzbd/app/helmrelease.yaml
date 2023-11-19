@@ -39,12 +39,7 @@ spec:
             name: sabnzbd
             key: nzb_key
       SABNZBD__HOST_WHITELIST_ENTRIES: >-
-        sabnzbd,
-        sabnzbd.default,
-        sabnzbd.default.svc,
-        sabnzbd.default.svc.cluster,
-        sabnzbd.default.svc.cluster.local,
-        sabnzbd.cloud.home
+        sabnzbd, sabnzbd.default, sabnzbd.default.svc, sabnzbd.default.svc.cluster, sabnzbd.default.svc.cluster.local, sabnzbd.cloud.home
     service:
       main:
         ports:
@@ -62,7 +57,7 @@ spec:
         annotations:
           gethomepage.dev/name: *name
           gethomepage.dev/description: downloads
-          gethomepage.dev/enabled: "true"
+          gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: *namespace
           gethomepage.dev/icon: sabnzbd-alt.png
     persistence:
@@ -84,7 +79,7 @@ spec:
         type: emptyDir
     resources:
       requests:
-        cpu: 5m
-        memory: 1.5G
+        cpu: 20m
+        memory: 2G
       limits:
         memory: 3G

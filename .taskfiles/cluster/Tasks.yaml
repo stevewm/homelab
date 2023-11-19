@@ -1,13 +1,11 @@
 ---
 # https://taskfile.dev
-
 version: '3'
-
 tasks:
   ping:
-      desc: Check node online status
-      cmds:
-        - ansible all -i ansible/inventory/hosts.yaml --one-line -m 'ping'
+    desc: Check node online status
+    cmds:
+      - ansible all -i ansible/inventory/hosts.yaml --one-line -m 'ping'
 
   create:
     desc: Provision cluster with ansible
@@ -24,6 +22,9 @@ tasks:
   bootstrap:
     desc: Bootstrap flux
     dir: kubernetes
+    preconditions:
+      - which kubectl
+      - which sops
     cmds:
       - kubectl apply --kustomize bootstrap/kustomization.yaml
       - sops --decrypt bootstrap/age-key.sops.yaml | kubectl apply -f -
@@ -37,15 +38,12 @@ tasks:
       MASTER_USERNAME: root
       MASTER_HOST:
         sh: yq '.all[].cluster[].controller[].node01.ansible_host' hosts.yaml
+    requires:
+      env: [KUBECONFIG]
     cmds:
       - scp {{.MASTER_USERNAME}}@{{.MASTER_HOST}}:/etc/rancher/k3s/k3s.yaml "${KUBECONFIG}"
       - sed -i '' 's/127.0.0.1/{{.MASTER_HOST}}/g' "${KUBECONFIG}"
       - chmod go-r "${KUBECONFIG}"
-
-  validate:
-    desc: Validate the cluster configuration
-    cmds:
-      - tools/validate.sh
 
   reconcile:
     desc: Force flux to reconcile
