@@ -1,0 +1,38 @@
+
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  annotations:
+    metadata.weave.works/description: This is the Weave GitOps Dashboard.  It provides
+      a simple way to get insights into your GitOps workloads.
+  name: &name weave
+  namespace: flux-system
+spec:
+  chart:
+    spec:
+      chart: weave-gitops
+      sourceRef:
+        kind: HelmRepository
+        name: ww-gitops
+  interval: 1h0m0s
+  values:
+    fullnameOverride: *name
+    ingress:
+      className: nginx
+      enabled: true
+      hosts:
+        - host: weave.cloud.home
+          paths:
+          - path: /
+            service:
+              name: weave
+              port: http
+      annotations:
+        gethomepage.dev/name: *name
+        gethomepage.dev/description: gitops ui
+        gethomepage.dev/enabled: "true"
+        gethomepage.dev/group: *namespace
+        gethomepage.dev/icon: kubernetes.png
+
+
