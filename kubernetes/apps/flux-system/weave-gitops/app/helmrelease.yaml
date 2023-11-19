@@ -25,6 +25,7 @@ spec:
         - host: weave.cloud.home
           paths:
           - path: /
+            pathType: Prefix
             service:
               name: weave
               port: http
