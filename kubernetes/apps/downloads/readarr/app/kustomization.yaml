@@ -4,11 +4,4 @@ kind: Kustomization
 namespace: downloads
 resources:
   - ./helmrelease.yaml
-configMapGenerator:
-  - name: recyclarr
-    files:
-      - recyclarr.yml=./config/recyclarr.yml
-generatorOptions:
-  disableNameSuffixHash: true
-  annotations:
-    kustomize.toolkit.fluxcd.io/substitute: disabled
+  - ./secret.yaml
