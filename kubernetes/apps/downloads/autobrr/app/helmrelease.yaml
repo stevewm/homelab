@@ -69,7 +69,7 @@ spec:
           gethomepage.dev/description: download filtering
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: *namespace
-          gethomepage.dev/icon: autobrr.svg
+          gethomepage.dev/icon: autobrr.png
 
     persistence:
       config:
