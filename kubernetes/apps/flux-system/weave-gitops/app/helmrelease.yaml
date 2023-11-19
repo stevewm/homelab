@@ -32,7 +32,7 @@ spec:
         gethomepage.dev/name: *name
         gethomepage.dev/description: gitops ui
         gethomepage.dev/enabled: "true"
-        gethomepage.dev/group: *namespace
+        gethomepage.dev/group: management
         gethomepage.dev/icon: kubernetes.png
 
 
