@@ -1,1 +1,3 @@
-Do with this what you will
+# License
+
+Do with this what you will with no warranty
