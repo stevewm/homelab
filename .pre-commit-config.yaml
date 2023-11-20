@@ -13,12 +13,6 @@ repos:
       - id: yamllint
 
   - repo: https://github.com/Lucas-C/pre-commit-hooks
-    # Doesnt appear to properly support retaining line breaks in yaml files
-    # - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
-    #   rev: 0.2.3
-    #   hooks:
-    #     - id: yamlfmt
-    #       args: [--mapping, "2", --sequence, "4", --offset, "2"]
     rev: v1.5.4
     hooks:
       - id: remove-tabs
