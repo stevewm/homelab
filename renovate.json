@@ -3,8 +3,15 @@
   "extends": [
     "config:recommended"
   ],
+  "packageRules": [
+    {
+      "description": "container digests",
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["digest"],
+      "matchPackagePatterns": ["ghcr.io/bjw-s", "ghcr.io/onedr0p"]
+    }
+  ],
     "flux": {
       "fileMatch": ["kubernetes/.+\\.yaml$"]
   }
-
 }
