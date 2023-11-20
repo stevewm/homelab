@@ -18,7 +18,7 @@ spec:
   values:
     image:
       repository: ghcr.io/recyclarr/recyclarr
-      tag: 5.1.1
+      tag: 6.0.2
     env:
       RADARR_API_KEY:
         secretKeyRef:
