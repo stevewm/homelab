@@ -2,6 +2,8 @@ TODO.md
 .vscode/
 kubeconfig
 Brewfile.lock.json
+*.log
+.DS_Store
 
 # Local .terraform directories
 **/.terraform/*
