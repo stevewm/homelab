@@ -18,8 +18,8 @@ spec:
         namespace: flux-system
   values:
     image:
-      repository: ghcr.io/onedr0p/prowlarr-develop
-      tag: 1.7.1.3684@sha256:8f8350415d6ce5905f3e8c7e56e70eadbf5579d58ab7827b5ea3c2a71bf5566b
+      repository: ghcr.io/onedr0p/prowlarr
+      tag: 1.9.4@sha256:2bca4ef529e801966f3b5f13efd27f605983dcd5b311dcbadabf54df22be9c5b
     podSecurityContext:
       runAsUser: 568
       runAsGroup: 568
