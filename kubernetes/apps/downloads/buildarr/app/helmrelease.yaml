@@ -77,10 +77,19 @@ spec:
           - path: /config-template/buildarr.yaml.tmpl
             subPath: buildarr.yaml.tmpl
             readOnly: true
+    service:
+      enabled: false
+    probes:
+      startup:
+        enabled: false
+      readiness:
+        enabled: false
+      liveness:
+        enabled: false
     resources:
       requests:
-        cpu: 20m
+        cpu: 10m
         memory: 128M
       limits:
-        cpu: 40m
+        cpu: 20m
         memory: 256M
