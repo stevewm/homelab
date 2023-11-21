@@ -43,7 +43,11 @@ spec:
               readiness:
                 enabled: true
                 spec:
-                  initialDelaySeconds: 120
+                  initialDelaySeconds: 600
+              startup:
+                enabled: true
+                spec:
+                  initialDelaySeconds: 600
             resources:
               requests:
                 cpu: 10m
