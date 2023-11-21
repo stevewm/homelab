@@ -32,7 +32,7 @@ spec:
               tag: 0.7
             command:
               command: ["/bin/sh"]
-              args: ["-c", "envsubst < /app/config.xml.tmpl > /config/config.xml", "/entrypoint.sh"]
+              args: ["-c", "envsubst < /config-template/buildarr.yaml.tmpl > /config/buildarr.yaml", "/bootstrap.sh"]
             resources:
               requests:
                 cpu: 10m
