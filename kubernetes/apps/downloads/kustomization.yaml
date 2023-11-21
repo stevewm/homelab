@@ -5,6 +5,7 @@ resources:
   - ./namespace.yaml
   - ./autobrr/ks.yaml
   - ./bazarr/ks.yaml
+  - ./buildarr/ks.yaml
   - ./prowlarr/ks.yaml
   - ./recyclarr/ks.yaml
   - ./radarr/ks.yaml
