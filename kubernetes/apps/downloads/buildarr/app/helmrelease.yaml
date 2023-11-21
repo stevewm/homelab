@@ -30,6 +30,32 @@ spec:
             image:
               repository: callum027/buildarr
               tag: 0.7
+            env:
+              RADARR__API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: radarr
+                    key: api_key
+              SONARR__API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: sonarr
+                    key: api_key
+              PROWLARR__API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: prowlarr
+                    key: api_key
+              SABNZBD__API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: sabznbd
+                    key: api_key
+              DS__API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: ds
+                    key: api_key
             command:
               command: ["/bin/sh"]
               args: ["-c", "envsubst < /config-template/buildarr.yaml.tmpl > /config/buildarr.yaml", "/bootstrap.sh"]
@@ -51,7 +77,6 @@ spec:
           - path: /config-template/buildarr.yaml.tmpl
             subPath: buildarr.yaml.tmpl
             readOnly: true
-
     resources:
       requests:
         cpu: 20m
