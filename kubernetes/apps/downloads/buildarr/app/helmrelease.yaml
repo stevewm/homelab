@@ -78,7 +78,8 @@ spec:
             subPath: buildarr.yaml.tmpl
             readOnly: true
     service:
-      enabled: false
+      main:
+        enabled: false
     probes:
       startup:
         enabled: false
