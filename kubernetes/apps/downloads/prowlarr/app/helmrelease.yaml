@@ -70,11 +70,7 @@ spec:
     persistence:
       config:
         enabled: true
-        mountPath: /config
-        accessMode: ReadWriteOnce
-        type: pvc
-        size: 1Gi
-        storageClass: longhorn
+        type: persistentVolumeClaim
     resources:
       requests:
         cpu: 20m
