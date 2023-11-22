@@ -18,6 +18,9 @@ spec:
         namespace: flux-system
   values:
     controller:
+    config:
+      custom-http-errors: >-
+        401,403,404,500,501,502,503
       ingressclassResource:
         default: true
     defaultBackend:
@@ -27,3 +30,8 @@ spec:
         registry: ghcr.io
         image: tarampampam/error-pages
         tag: 2.26
+      extraEnvs:
+        - name: TEMPLATE_NAME
+          value: hacker-terminal
+        - name: SHOW_DETAILS
+          value: 'true'
