@@ -47,7 +47,7 @@ spec:
                   name: main
                   port: http
         annotations:
-          gethomepage.dev/name: *name
+          gethomepage.dev/name: uptime kuma
           gethomepage.dev/description: uptime
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: *namespace
