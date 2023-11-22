@@ -18,9 +18,9 @@ spec:
         namespace: flux-system
   values:
     controller:
-    config:
-      custom-http-errors: >-
-        401,403,404,500,501,502,503
+      config:
+        custom-http-errors: >-
+          401,403,404,500,501,502,503
       ingressclassResource:
         default: true
     defaultBackend:
