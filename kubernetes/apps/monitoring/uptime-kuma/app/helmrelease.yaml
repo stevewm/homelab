@@ -40,7 +40,7 @@ spec:
         enabled: true
         className: nginx
         hosts:
-          - host: uptime.cloud.home
+          - host: status.cloud.home
             paths:
               - path: /
                 service:
@@ -56,3 +56,4 @@ spec:
       data:
         enabled: true
         type: persistentVolumeClaim
+        accessMode: ReadWriteOnce
