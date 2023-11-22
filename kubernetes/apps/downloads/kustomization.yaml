@@ -5,9 +5,10 @@ resources:
   - ./namespace.yaml
   - ./autobrr/ks.yaml
   - ./bazarr/ks.yaml
+  - ./buildarr/ks.yaml
   - ./prowlarr/ks.yaml
+  - ./readarr/ks.yaml
   - ./recyclarr/ks.yaml
   - ./radarr/ks.yaml
-  - ./readarr/ks.yaml
   - ./sabnzbd/ks.yaml
   - ./sonarr/ks.yaml
