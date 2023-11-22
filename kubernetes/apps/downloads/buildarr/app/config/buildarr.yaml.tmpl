@@ -80,6 +80,22 @@ buildarr:
               anime_sync_categories:
               - tv/anime
               sync_anime_standard_format_search: false
+            Readarr:
+              type: readarr
+              prowlarr_url: http://prowlarr:9696
+              base_url: http://readarr:8787
+              sync_level: full-sync
+              sync_categories:
+              - books/ebook
+              - books/foreign
+              - books/other
+              - audio/audiobook
+              - books/comics
+              - books/mags
+              - books/technical
+              - books
+              tags: []
+              api_key: ${READARR__API_KEY}
       download_clients:
         delete_unmanaged: true
         definitions:
