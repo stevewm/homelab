@@ -16,3 +16,14 @@ spec:
         kind: HelmRepository
         name: ingress-nginx
         namespace: flux-system
+  values:
+    controller:
+      ingressclassResource:
+        default: true
+    defaultBackend:
+      enabled: true
+      name: error-pages
+      image:
+        registry: ghcr.io
+        image: tarampampam/error-pages
+        tag: 2.26
