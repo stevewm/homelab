@@ -27,8 +27,7 @@ spec:
       enabled: true
       name: error-pages
       image:
-        registry: ghcr.io
-        image: tarampampam/error-pages
+        repository: ghcr.io/tarampampam/error-pages
         tag: 2.26
       extraEnvs:
         - name: TEMPLATE_NAME
