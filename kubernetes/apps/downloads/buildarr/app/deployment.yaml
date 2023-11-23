@@ -23,7 +23,7 @@ spec:
         - image: alpine:3.18.4
           name: init-config
           # Ideally the Buildarr container would support substitution, but this will do for now
-          command: ['sh', '-c', 'apk add --no-cache gettext && envsubst < /config-template/buildarr.yaml.tmpl > /config/buildarr.yaml']
+          command: ['sh', '-c', 'apk add --no-cache gettext && envsubst < /config-template/buildarr.yml.tmpl > /config/buildarr.yml']
           volumeMounts:
             - name: config-template
               mountPath: /config-template

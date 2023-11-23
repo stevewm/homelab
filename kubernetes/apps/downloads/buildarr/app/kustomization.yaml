@@ -8,7 +8,7 @@ resources:
 configMapGenerator:
   - name: buildarr-configmap
     files:
-      - buildarr.yaml.tmpl=./config/buildarr.yaml.tmpl
+      - buildarr.yml.tmpl=./config/buildarr.yml.tmpl
 generatorOptions:
   disableNameSuffixHash: true
   annotations:
