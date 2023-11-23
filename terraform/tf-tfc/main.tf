@@ -1,20 +1,19 @@
 #
-# Simple two-file Terraform config to provision an org, projects and VCS-driven workspaces.
 #
-# If bootstrapping this needs to be commented out on the intial apply and
-# uncommented once that has been done to migrate the state using `terraform init`.
-# Enter 'tfc' for the workspace name and type 'yes' to migrating the state.
+# This should be commented out when bootstrapping initially.
+# Once an initial apply has been completed, uncomment and run `terraform init`
+# The tf-tfc workspace will need to be unlocked prior to migrating the state
 #
 
 terraform {
- required_version = ">= 1.0"
+  required_version = ">= 1.0"
 
- cloud {
-   organization = "steve-homelab"
-   workspaces {
-     name = "tf-tfc"
-   }
- }
+  cloud {
+    organization = "steve-homelab"
+    workspaces {
+      name = "tf-tfc"
+    }
+  }
 }
 
 provider "tfe" {
@@ -35,10 +34,6 @@ locals {
     "tf-tfc" : {
       "desc" : "Terraform Cloud configuration"
       "proj" : "external"
-    },
-    "tf-dns" : {
-      "desc" : "DNS configuration"
-      "proj" : "external"
     }
   }
 }
@@ -46,6 +41,19 @@ locals {
 resource "tfe_organization" "this" {
   name  = "steve-homelab"
   email = "steve@cfg.sh"
+}
+
+resource "tfe_organization_token" "this" {
+  organization = tfe_organization.this.name
+}
+
+resource "tfe_variable" "token" {
+  key          = "TFE_TOKEN"
+  value        = tfe_organization_token.this.token
+  category     = "env"
+  description  = "Organization token"
+  workspace_id = tfe_workspace.this["tf-tfc"].id
+  sensitive    = true
 }
 
 resource "tfe_oauth_client" "this" {
@@ -63,18 +71,20 @@ resource "tfe_project" "this" {
 }
 
 resource "tfe_workspace" "this" {
-  for_each     = local.workspaces
-  name         = each.key
-  description  = each.value["desc"]
-  organization = tfe_organization.this.name
-  project_id   = tfe_project.this[each.value["proj"]].id
+  for_each          = local.workspaces
+  name              = each.key
+  description       = each.value["desc"]
+  organization      = tfe_organization.this.name
+  project_id        = tfe_project.this[each.value["proj"]].id
+  working_directory = "terraform/${each.key}"
+
+  assessments_enabled = true
+  speculative_enabled = false
 
   vcs_repo {
     identifier     = "duhio/homelab"
     oauth_token_id = tfe_oauth_client.this.oauth_token_id
   }
-  trigger_prefixes  = ["terraform/${each.key}"]
-  working_directory = "terraform/${each.key}"
 }
 
 resource "tfe_variable" "this" {
