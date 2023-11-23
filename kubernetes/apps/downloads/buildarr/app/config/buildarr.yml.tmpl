@@ -10,116 +10,116 @@ buildarr:
     - "18:00"
     - "21:00"
     - "00:00"
-  prowlarr:
-    port: 9696
-    hostname: "prowlarr"
-    api_key: ${PROWLARR__API_KEY}
-    settings:
+prowlarr:
+  port: 9696
+  hostname: "prowlarr"
+  api_key: ${PROWLARR__API_KEY}
+  settings:
+    indexers:
       indexers:
-        indexers:
-          delete_unmanaged: true
-          definitions:
-            DrunkenSlug:
-              type: newznab
-              enable: true
-              sync_profile: Standard
-              redirect: false
-              priority: 25
-              query_limit: null
-              grab_limit: null
-              tags: []
-              fields:
-                baseUrl: https://drunkenslug.com
-                apiPath: /api
-                additionalParameters: null
-                vipExpiration: ''
-                baseSettings.limitsUnit: Day
-              secret_fields:
-                apiKey: ${DS__API_KEY}
-      apps:
-        applications:
-          delete_unmanaged: false
-          definitions:
-            Radarr:
-              type: radarr
-              prowlarr_url: http://prowlarr:9696
-              base_url: http://radarr:7878
-              sync_level: full-sync
-              sync_categories:
-              - movies/web-dl
-              - movies/dvd
-              - movies/x265
-              - movies/hd
-              - movies/foreign
-              - movies/sd
-              - movies
-              - movies/uhd
-              - movies/3d
-              - movies/bluray
-              - movies/other
-              api_key: ${RADARR__API_KEY}
-            Sonarr:
-              type: sonarr
-              prowlarr_url: http://prowlarr:9696
-              base_url: http://sonarr:8989
-              sync_level: full-sync
-              sync_categories:
-              - tv/uhd
-              - tv/sd
-              - tv/web-dl
-              - tv/foreign
-              - tv/other
-              - tv
-              - tv/x265
-              - tv/hd
-              api_key: ${SONARR__API_KEY}
-              anime_sync_categories:
-              - tv/anime
-              sync_anime_standard_format_search: false
-            Readarr:
-              type: readarr
-              prowlarr_url: http://prowlarr:9696
-              base_url: http://readarr:8787
-              sync_level: full-sync
-              sync_categories:
-              - books/ebook
-              - books/foreign
-              - books/other
-              - audio/audiobook
-              - books/comics
-              - books/mags
-              - books/technical
-              - books
-              tags: []
-              api_key: ${READARR__API_KEY}
-      download_clients:
         delete_unmanaged: true
         definitions:
-          SABnzbd:
+          DrunkenSlug:
+            type: newznab
             enable: true
-            priority: 1
+            sync_profile: Standard
+            redirect: false
+            priority: 25
+            query_limit: null
+            grab_limit: null
             tags: []
-            type: sabnzbd
-            host: sabnzbd
-            port: 8080
-            api_key: ${SABNZBD__API_KEY}
-            category: prowlarr
-            client_priority: default
-      tags:
-        definitions: []
-        security:
-          authentication: external
-          authentication_required: disabled
-          username: null
-          password: null
-          certificate_validation: enabled
-        analytics:
-          send_anonymous_usage_data: false
-      ui:
-        first_day_of_week: sunday
-        week_column_header: month-first
-        short_date_format: word-month-first
-        long_date_format: month-first
-        time_format: twentyfour-hour
-        show_relative_dates: true
-        ui_language: en
+            fields:
+              baseUrl: https://drunkenslug.com
+              apiPath: /api
+              additionalParameters: null
+              vipExpiration: ''
+              baseSettings.limitsUnit: Day
+            secret_fields:
+              apiKey: ${DS__API_KEY}
+    apps:
+      applications:
+        delete_unmanaged: false
+        definitions:
+          Radarr:
+            type: radarr
+            prowlarr_url: http://prowlarr:9696
+            base_url: http://radarr:7878
+            sync_level: full-sync
+            sync_categories:
+            - movies/web-dl
+            - movies/dvd
+            - movies/x265
+            - movies/hd
+            - movies/foreign
+            - movies/sd
+            - movies
+            - movies/uhd
+            - movies/3d
+            - movies/bluray
+            - movies/other
+            api_key: ${RADARR__API_KEY}
+          Sonarr:
+            type: sonarr
+            prowlarr_url: http://prowlarr:9696
+            base_url: http://sonarr:8989
+            sync_level: full-sync
+            sync_categories:
+            - tv/uhd
+            - tv/sd
+            - tv/web-dl
+            - tv/foreign
+            - tv/other
+            - tv
+            - tv/x265
+            - tv/hd
+            api_key: ${SONARR__API_KEY}
+            anime_sync_categories:
+            - tv/anime
+            sync_anime_standard_format_search: false
+          Readarr:
+            type: readarr
+            prowlarr_url: http://prowlarr:9696
+            base_url: http://readarr:8787
+            sync_level: full-sync
+            sync_categories:
+            - books/ebook
+            - books/foreign
+            - books/other
+            - audio/audiobook
+            - books/comics
+            - books/mags
+            - books/technical
+            - books
+            tags: []
+            api_key: ${READARR__API_KEY}
+    download_clients:
+      delete_unmanaged: true
+      definitions:
+        SABnzbd:
+          enable: true
+          priority: 1
+          tags: []
+          type: sabnzbd
+          host: sabnzbd
+          port: 8080
+          api_key: ${SABNZBD__API_KEY}
+          category: prowlarr
+          client_priority: default
+    tags:
+      definitions: []
+      security:
+        authentication: external
+        authentication_required: disabled
+        username: null
+        password: null
+        certificate_validation: enabled
+      analytics:
+        send_anonymous_usage_data: false
+    ui:
+      first_day_of_week: sunday
+      week_column_header: month-first
+      short_date_format: word-month-first
+      long_date_format: month-first
+      time_format: twentyfour-hour
+      show_relative_dates: true
+      ui_language: en
