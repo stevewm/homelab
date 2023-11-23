@@ -30,6 +30,11 @@ spec:
             - name: config
               mountPath: /config
           env:
+            - name: RADARR__PASSWORD # UI Password
+              valueFrom:
+                secretKeyRef:
+                  name: radarr
+                  key: password
             - name: RADARR__API_KEY
               valueFrom:
                 secretKeyRef:
