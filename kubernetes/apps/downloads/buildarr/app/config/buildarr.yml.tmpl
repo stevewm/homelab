@@ -25,9 +25,6 @@ prowlarr:
             sync_profile: Standard
             redirect: false
             priority: 25
-            query_limit: null
-            grab_limit: null
-            tags: []
             fields:
               baseUrl: https://drunkenslug.com
               apiPath: /api
@@ -123,3 +120,61 @@ prowlarr:
       time_format: twentyfour-hour
       show_relative_dates: true
       ui_language: en
+radarr:
+  hostname: radarr.cloud.home
+  port: 80
+  protocol: http
+  api_key: ${RADARR__API_KEY}
+  settings:
+    media_management:
+      rename_movies: true
+      replace_illegal_characters: true
+      colon_replacement: delete
+      standard_movie_format: '{Movie CleanTitle} {(Release Year)} [imdbid-{ImdbId}]
+        - {Edition Tags }{[Custom Formats]}{[Quality Full]}{[MediaInfo 3D]}{[MediaInfo
+        VideoDynamicRangeType]}{[Mediainfo AudioCodec}{ Mediainfo AudioChannels}]{MediaInfo
+        AudioLanguages}[{MediaInfo VideoBitDepth}bit][{Mediainfo VideoCodec}]{-Release
+        Group}'
+      movie_folder_format: '{Movie Title} ({Release Year})'
+      create_missing_movie_folders: false
+      delete_empty_folders: true
+      skip_free_space_check: false
+      minimum_free_space: 100
+      use_hardlinks: true
+      unmonitor_deleted_movies: true
+      propers_and_repacks: prefer-and-upgrade
+      analyze_video_files: true
+      rescan_folder_after_refresh: always
+      change_file_date: none
+      recycling_bin_cleanup: 7
+      set_permissions: false
+      chmod_folder: drwxr-xr-x
+    download_clients:
+      delete_unmanaged: false
+      definitions:
+        SABnzbd:
+          enable: true
+          priority: 1
+          tags: []
+          type: sabnzbd
+          host: sabnzbd
+          port: 8080
+          api_key: ${SABNZBD__API_KEY}
+          category: prowlarr
+          client_priority: default
+      security:
+        authentication: form
+        authentication_required: local-disabled
+        username: admin
+        password: ${RADARR__PASSWORD}
+        certificate_validation: enabled
+    ui:
+      first_day_of_week: sunday
+      week_column_header: month-first
+      runtime_format: hours-minutes
+      short_date_format: word-month-first
+      long_date_format: month-first
+      time_format: twelve-hour
+      show_relative_dates: true
+      movie_info_language: english
+      ui_language: english
