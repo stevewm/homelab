@@ -16,3 +16,7 @@ spec:
         kind: HelmRepository
         name: backube
         namespace: flux-system
+  values:
+    image:
+      repository: ghcr.io/onedr0p/volsync
+      tag: 0.8.0@sha256:7745256cef16d0c44d387d5bdd75292844dd312bd399ebf81208491c644be2b6
