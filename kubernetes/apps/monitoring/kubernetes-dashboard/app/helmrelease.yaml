@@ -22,6 +22,8 @@ spec:
       installCRDs: false
     nginx:
       enabled: false
+    metrics-server:
+      enabled: false
     extras:
       clusterReadOnlyRole: true
     app:
