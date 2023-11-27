@@ -12,6 +12,7 @@ resources:
   - ./jameswynn.yaml
   - ./jetstack.yaml
   - ./kubereboot.yaml
+  - ./k8s-dashboard.yaml
   - ./longhorn.yaml
   - ./metallb.yaml
   - ./metrics-server.yaml
