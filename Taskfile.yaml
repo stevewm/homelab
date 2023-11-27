@@ -25,4 +25,3 @@ tasks:
 includes:
   cluster: ./.taskfiles/cluster/Tasks.yaml
   nas: ./.taskfiles/nas/Tasks.yaml
-  tf: ./.taskfiles/terraform/Tasks.yaml
