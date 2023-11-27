@@ -1,0 +1,84 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: &name mealie
+  namespace: &namespace selfhosted
+spec:
+  interval: 30m
+  maxHistory: 3
+  chart:
+    spec:
+      chart: app-template
+      version: 2.3.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  values:
+    controllers:
+      main:
+        annotations:
+          reloader.stakater.com/auto: 'true'
+        strategy: Recreate
+        containers:
+          main:
+            image:
+              repository: ghcr.io/mealie-recipes/mealie
+              tag: v1.0.0-RC1.1@sha256:6df1e795f17af43f082146e471113315487b5f0882f2ee7553d469034d929af1
+            env:
+              ALLOW_SIGNUP: 'false'
+              DB_ENGINE: postgres
+              POSTGRES_USER:
+                valueFrom:
+                  secretKeyRef:
+                    name: pg-db-mealie-app
+                    key: username
+              POSTGRES_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: pg-db-mealie-app
+                    key: password
+              POSTGRES_SERVER:
+                valueFrom:
+                  secretKeyRef:
+                    name: pg-db-mealie-app
+                    key: host
+              POSTGRES_PORT:
+                valueFrom:
+                  secretKeyRef:
+                    name: pg-db-mealie-app
+                    key: port
+              POSTGRES_DB:
+                valueFrom:
+                  secretKeyRef:
+                    name: pg-db-mealie-app
+                    key: dbname
+            resources:
+              requests:
+                cpu: 10m
+                memory: 128Mi
+              limits:
+                memory: 256Mi
+    service:
+      main:
+        ports:
+          http:
+            port: 9000
+    ingress:
+      main:
+        enabled: true
+        className: nginx
+        hosts:
+          - host: mealie.cloud.home
+            paths:
+              - path: /
+                service:
+                  name: main
+                  port: http
+        annotations:
+          gethomepage.dev/name: *name
+          gethomepage.dev/description: food
+          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/group: *namespace
+          gethomepage.dev/icon: mealie.png
