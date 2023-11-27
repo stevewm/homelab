@@ -17,7 +17,7 @@ spec:
         name: &name k8s-dashboard
         namespace: flux-system
   values:
-    certmanager:
+    cert-manager:
       enabled: false
       installCRDs: false
     nginx:
