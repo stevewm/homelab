@@ -12,6 +12,6 @@ spec:
     kind: GitRepository
     name: homelab
   wait: false
-dependsOn:
-  - name: app-cert-manager
-  - name: app-ingress-nginx
+  dependsOn:
+    - name: app-cert-manager
+    - name: app-ingress-nginx
