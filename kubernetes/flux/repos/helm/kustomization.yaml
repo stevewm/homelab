@@ -4,13 +4,13 @@ kind: Kustomization
 resources:
   - ./backube.yaml
   - ./bjw-s.yaml
-  - ./cert-manager.yaml
   - ./cloudnative-pg.yaml
   - ./descheduler.yaml
   - ./external-dns.yaml
   - ./external-secrets.yaml
   - ./ingress-nginx.yaml
   - ./jameswynn.yaml
+  - ./jetstack.yaml
   - ./kubereboot.yaml
   - ./longhorn.yaml
   - ./metallb.yaml
