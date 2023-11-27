@@ -44,3 +44,10 @@ tasks:
       - scp {{.MASTER_USERNAME}}@{{.MASTER_HOST}}:/etc/rancher/k3s/k3s.yaml "${KUBECONFIG}"
       - sed -i '' 's/127.0.0.1/{{.MASTER_HOST}}/g' "${KUBECONFIG}"
       - chmod go-r "${KUBECONFIG}"
+
+  rotate:
+    desc: Rotate randomly-generated secrets
+    preconditions:
+      - which kubectl
+    cmds:
+      - $ kubectl annotate secrets --all secret-generator.v1.mittwald.de/regenerate=true
