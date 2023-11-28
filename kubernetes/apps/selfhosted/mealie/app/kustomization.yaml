@@ -5,3 +5,4 @@ namespace: selfhosted
 resources:
   - ./helmrelease.yaml
   - ./postgres.yaml
+  - ./scheduledbackup.yaml

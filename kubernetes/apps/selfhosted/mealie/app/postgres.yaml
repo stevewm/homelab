@@ -9,3 +9,14 @@ spec:
     size: 2Gi
   monitoring:
     enablePodMonitor: true
+  backup:
+    barmanObjectStore:
+      destinationPath: "s3://pi-cluster-backup/mealie"
+      endpointURL: "https://s3.us-east-005.backblazeb2.com"
+      s3Credentials:
+        accessKeyId:
+          name: backblaze-b2
+          key: APPLICATION_KEY_ID
+        secretAccessKey:
+          name: backblaze-b2
+          key: APPLICATION_KEY
