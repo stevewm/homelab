@@ -6,3 +6,4 @@ resources:
   - ./helmrelease.yaml
   - ./postgres.yaml
   - ./scheduledbackup.yaml
+  - ./externalsecret.yaml
