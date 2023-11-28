@@ -18,8 +18,8 @@ spec:
         namespace: flux-system
   values:
     image:
-    repository: ghcr.io/benphelps/homepage
-    tag: v0.7.1
+      repository: ghcr.io/benphelps/homepage
+      tag: v0.7.1
     enableRbac: true
     serviceAccount:
       create: true
