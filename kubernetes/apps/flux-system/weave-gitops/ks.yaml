@@ -5,6 +5,7 @@ metadata:
   name: app-weave-gitops
   namespace: flux-system
 spec:
+  targetNamespace: flux-system
   interval: 10m
   path: ./kubernetes/apps/flux-system/weave-gitops/app
   prune: true

@@ -5,6 +5,7 @@ metadata:
   name: app-uptime-kuma
   namespace: flux-system
 spec:
+  targetNamespace: monitoring
   interval: 10m
   path: ./kubernetes/apps/monitoring/uptime-kuma/app
   prune: true

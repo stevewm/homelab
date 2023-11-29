@@ -6,7 +6,7 @@ metadata:
   namespace: system
 spec:
   releaseName: secret-generator
-  interval: 1h
+  interval: 30m
   maxHistory: 3
   chart:
     spec:

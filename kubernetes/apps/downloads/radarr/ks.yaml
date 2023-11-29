@@ -5,6 +5,7 @@ metadata:
   name: app-radarr
   namespace: flux-system
 spec:
+  targetNamespace: downloads
   interval: 10m
   path: ./kubernetes/apps/downloads/radarr/app
   prune: true

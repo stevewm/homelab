@@ -3,7 +3,6 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: github
-  namespace: flux-system
 data:
   token: ENC[AES256_GCM,data:iFxVadXbPiUke/dLzWU8L1RIfYVJkMRRg/QBheb1sJLrlf+Ry31eOY3GnHsgB6BgYPkv3yfu2qHIh6Aesqpfikh4z3L4LtwPFxD0tCsXp2jAS+p/XXkvPomhbcOfha1OA0PHxVpuoBrdf5y/GWVbSzhIMAc1XCftyb0fbA==,iv:DLKlORnszOad2gzLs6QSdCxJSWhEy6mVvT2bnsDt6BY=,tag:riaNAWpjeVt2TDCksI+zCQ==,type:str]
 sops:
