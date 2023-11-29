@@ -45,7 +45,7 @@ spec:
                   secretKeyRef:
                     name: pg-db-speedtest-app
                     key: dbname
-              DB_USER:
+              DB_USERNAME:
                 valueFrom:
                   secretKeyRef:
                     name: pg-db-speedtest-app
