@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: selfhosted
-  interval: 30m
+  interval: 10m
   path: ./kubernetes/apps/selfhosted/homepage/app
   prune: true
   sourceRef:

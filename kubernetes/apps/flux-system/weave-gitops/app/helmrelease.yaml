@@ -11,7 +11,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: ww-gitops
-  interval: 1h0m0s
+  interval: 30m
   values:
     adminUser:
       create: true

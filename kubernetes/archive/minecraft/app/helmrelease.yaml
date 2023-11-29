@@ -6,7 +6,7 @@ metadata:
   namespace: games
 spec:
   maxHistory: 3
-  interval: 30m0s
+  interval: 30m
   chart:
     spec:
       chart: minecraft
