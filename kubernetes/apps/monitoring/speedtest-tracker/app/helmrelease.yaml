@@ -27,7 +27,6 @@ spec:
               repository: ajustesen/speedtest-tracker
               tag: v0.14.0-beta1
             env:
-              TZ: America/Vancouver
               DB_CONNECTION: pgsql
               DB_HOST:
                 valueFrom:
