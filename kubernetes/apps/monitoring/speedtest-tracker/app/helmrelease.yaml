@@ -28,7 +28,6 @@ spec:
               tag: v0.14.0-beta1
             env:
               TZ: America/Vancouver
-              CACHE_DRIVER: database
               DB_CONNECTION: pgsql
               DB_HOST:
                 valueFrom:
