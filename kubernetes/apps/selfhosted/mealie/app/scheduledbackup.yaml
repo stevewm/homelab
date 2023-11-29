@@ -4,7 +4,7 @@ metadata:
   name: mealie-backup
 spec:
   immediate: true
-  schedule: "0 0 0 * * *"
+  schedule: '0 0 0 * * *'
   backupOwnerReference: self
   cluster:
     name: pg-db-mealie
