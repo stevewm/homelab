@@ -5,4 +5,5 @@ resources:
   - ./namespace.yaml
   - ./kubernetes-dashboard/ks.yaml
   - ./kube-prometheus-stack/ks.yaml
+  - ./speedtest-tracker/ks.yaml
   - ./uptime-kuma/ks.yaml
