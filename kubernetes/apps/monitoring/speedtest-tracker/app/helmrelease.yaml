@@ -40,17 +40,17 @@ spec:
                   secretKeyRef:
                     name: pg-db-speedtest-app
                     key: port
-              POSTGRES_DB:
+              DB_DATABASE:
                 valueFrom:
                   secretKeyRef:
                     name: pg-db-speedtest-app
                     key: dbname
-              POSTGRES_USER:
+              DB_USER:
                 valueFrom:
                   secretKeyRef:
                     name: pg-db-speedtest-app
                     key: username
-              POSTGRES_PASSWORD:
+              DB_PASSWORD:
                 valueFrom:
                   secretKeyRef:
                     name: pg-db-speedtest-app
