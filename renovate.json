@@ -18,6 +18,13 @@
   "kubernetes": {
     "fileMatch": [
       "(^|/)kubernetes/.+\\.ya?ml(\\.j2)?$"
-    ]
-  }
+    ],
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["ghcr.io/onedr0p/*"],
+      "matchUpdateTypes": ["minor"],
+      "automerge": true
+    }
+  ]
+}
 }
