@@ -5,6 +5,7 @@ metadata:
   name: app-cloudnative-pg
   namespace: flux-system
 spec:
+  targetNamespace: cnpg-system
   interval: 10m
   path: ./kubernetes/apps/cnpg-system/cloudnative-pg/app
   prune: true

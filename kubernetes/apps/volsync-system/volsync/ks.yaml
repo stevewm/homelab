@@ -5,7 +5,8 @@ metadata:
   name: app-volsync
   namespace: flux-system
 spec:
-  interval: 30m
+  targetNamespace: volsync-system
+  interval: 10m
   path: ./kubernetes/apps/volsync-system/volsync/app
   prune: true
   sourceRef:

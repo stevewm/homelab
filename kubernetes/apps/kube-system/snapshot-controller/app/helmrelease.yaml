@@ -6,7 +6,7 @@ metadata:
   namespace: kube-system
 spec:
   releaseName: snapshot-controller
-  interval: 1h
+  interval: 30m
   maxHistory: 3
   chart:
     spec:

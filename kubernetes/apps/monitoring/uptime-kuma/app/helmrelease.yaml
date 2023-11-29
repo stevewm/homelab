@@ -3,7 +3,6 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: &name uptime-kuma
-  namespace: &namespace monitoring
 spec:
   interval: 30m
   maxHistory: 3
@@ -50,7 +49,7 @@ spec:
           gethomepage.dev/name: uptime kuma
           gethomepage.dev/description: uptime
           gethomepage.dev/enabled: 'true'
-          gethomepage.dev/group: *namespace
+          gethomepage.dev/group: monitoring
           gethomepage.dev/icon: uptime-kuma.png
     persistence:
       data:

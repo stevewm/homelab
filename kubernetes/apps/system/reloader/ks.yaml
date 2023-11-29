@@ -5,7 +5,7 @@ metadata:
   name: app-reloader
   namespace: flux-system
 spec:
-  interval: 30m
+  interval: 10m
   path: ./kubernetes/apps/system/reloader/app
   prune: true
   sourceRef:
