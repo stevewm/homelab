@@ -5,7 +5,6 @@ metadata:
   name: app-sonarr
   namespace: flux-system
 spec:
-  targetNamespace: downloads
   interval: 10m
   path: ./kubernetes/apps/downloads/sonarr/app
   prune: true

@@ -5,7 +5,6 @@ metadata:
   name: app-recyclarr
   namespace: flux-system
 spec:
-  targetNamespace: downloads
   interval: 10m
   path: ./kubernetes/apps/downloads/recyclarr/app
   prune: true

@@ -3,6 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: &name speedtest-tracker
+  namespace: &namespace monitoring
 spec:
   interval: 30m
   maxHistory: 3
@@ -79,7 +80,7 @@ spec:
           gethomepage.dev/name: *name
           gethomepage.dev/description: speedtest
           gethomepage.dev/enabled: 'true'
-          gethomepage.dev/group: monitoring
+          gethomepage.dev/group: *namespace
           gethomepage.dev/icon: speedtest-tracker.png
     persistence:
       config:

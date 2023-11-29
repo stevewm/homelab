@@ -5,6 +5,7 @@ data:
 kind: Secret
 metadata:
   name: sops-age
+  namespace: flux-system
 sops:
   kms: []
   gcp_kms: []
