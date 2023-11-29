@@ -5,7 +5,6 @@ metadata:
   name: app-metallb-cluster-pool
   namespace: flux-system
 spec:
-  targetNamespace: metallb-system
   interval: 10m
   path: ./kubernetes/apps/metallb-system/cluster-pool/app
   prune: true

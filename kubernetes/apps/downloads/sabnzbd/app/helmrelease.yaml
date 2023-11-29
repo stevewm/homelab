@@ -3,6 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: &name sabnzbd
+  namespace: &namespace downloads
 spec:
   interval: 30m
   maxHistory: 3
@@ -57,7 +58,7 @@ spec:
           gethomepage.dev/name: *name
           gethomepage.dev/description: downloads
           gethomepage.dev/enabled: 'true'
-          gethomepage.dev/group: downloads
+          gethomepage.dev/group: *namespace
           gethomepage.dev/icon: sabnzbd-alt.png
     persistence:
       media:

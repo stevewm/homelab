@@ -3,9 +3,10 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: minecraft
+  namespace: games
 spec:
   maxHistory: 3
-  interval: 30m
+  interval: 30m0s
   chart:
     spec:
       chart: minecraft

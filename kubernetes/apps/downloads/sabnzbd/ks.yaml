@@ -5,7 +5,6 @@ metadata:
   name: app-sabnzbd
   namespace: flux-system
 spec:
-  targetNamespace: downloads
   interval: 10m
   path: ./kubernetes/apps/downloads/sabnzbd/app
   prune: true

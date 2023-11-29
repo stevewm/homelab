@@ -5,8 +5,7 @@ metadata:
   name: app-speedtest-tracker
   namespace: flux-system
 spec:
-  targetNamespace: monitoring
-  interval: 10m
+  interval: 30m
   path: ./kubernetes/apps/monitoring/speedtest-tracker
   prune: true
   sourceRef:
