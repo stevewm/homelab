@@ -11,13 +11,13 @@ resources:
   - ./ingress-nginx.yaml
   - ./jameswynn.yaml
   - ./jetstack.yaml
-  - ./k8s-dashboard.yaml
   - ./kubereboot.yaml
+  - ./k8s-dashboard.yaml
   - ./longhorn.yaml
   - ./metallb.yaml
   - ./metrics-server.yaml
-  - ./minecraft.yaml
   - ./mittwald.yaml
+  - ./minecraft.yaml
   - ./pihole.yaml
   - ./piraeus.yaml
   - ./prometheus-community.yaml

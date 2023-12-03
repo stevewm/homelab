@@ -22,15 +22,6 @@ tasks:
     cmds:
       - find $(git rev-parse --show-toplevel) -type f \( -name "*.yaml" \) -exec sh -c 'yamlfmt -conf $(git rev-parse --show-toplevel)/.yamlfmt "$1"' _ {} \;
 
-  sort:
-    desc: Sorts resources in kustomzations
-    silent: true
-    dir: kubernetes/apps
-    preconditions:
-      - which jq
-    cmds: # Very lazy way to achieve this. Just delete ./namespace.yaml, sort and then add it.
-      - find . -type f -name 'kustomization.yaml' -exec yq eval --inplace 'del(.resources[] | select(. == "./namespace.yaml")) | .resources = ["./namespace.yaml"] + (.resources | sort)' {} \;
-
 includes:
   cluster: ./.taskfiles/cluster/Taskfile.yaml
   nas: ./.taskfiles/nas/Taskfile.yaml
