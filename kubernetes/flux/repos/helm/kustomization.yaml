@@ -2,13 +2,13 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ./alekc-charts.yaml
   - ./backube.yaml
   - ./bjw-s.yaml
   - ./cloudnative-pg.yaml
   - ./descheduler.yaml
   - ./external-dns.yaml
   - ./external-secrets.yaml
+  - ./gabe565.yaml
   - ./ingress-nginx.yaml
   - ./jameswynn.yaml
   - ./jetstack.yaml
