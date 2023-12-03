@@ -1,0 +1,61 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: &name themepark
+spec:
+  interval: 30m
+  maxHistory: 3
+  chart:
+    spec:
+      chart: app-template
+      version: 2.3.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  values:
+    controllers:
+      main:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        strategy: Recreate
+        containers:
+          main:
+            image:
+              repository: ghcr.io/onedr0p/theme-park
+              tag: 1.14.1@sha256:4b99cd5b29b9375b889818e86ec3be34c06ddfa9190a66216bb71e2534c4da17
+            env:
+              TP_DOMAIN: &host themepark.cloud.home
+              TP_THEME: plex
+            resources:
+              requests:
+                cpu: 10m
+                memory: 64Mi
+              limits:
+                memory: 128Mi
+    service:
+      main:
+        ports:
+          http:
+            port: 80
+    ingress:
+      main:
+        enabled: true
+        className: nginx
+        hosts:
+          - host: *host
+            paths:
+              - path: /
+                service:
+                  name: main
+                  port: http
+        annotations:
+          gethomepage.dev/name: *name
+          gethomepage.dev/description: app themes
+          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/group: selfhosted
+          gethomepage.dev/icon: themepark.png
+    persistence:
+      enabled: true
+      type: emptyDir
