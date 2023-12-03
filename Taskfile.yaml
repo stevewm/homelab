@@ -32,5 +32,5 @@ tasks:
       - find . -type f -name 'kustomization.yaml' -exec yq eval --inplace 'del(.resources[] | select(. == "./namespace.yaml")) | .resources = ["./namespace.yaml"] + (.resources | sort)' {} \;
 
 includes:
-  cluster: ./.taskfiles/cluster/Tasks.yaml
-  nas: ./.taskfiles/nas/Tasks.yaml
+  cluster: ./.taskfiles/cluster/Taskfile.yaml
+  nas: ./.taskfiles/nas/Taskfile.yaml
