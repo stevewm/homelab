@@ -58,7 +58,7 @@ spec:
             proxy_set_header Accept-Encoding "";
             sub_filter
             '</head>'
-            '<link rel="stylesheet" type="text/css" href="http://themepark.cloud.home/css/base/radarr/plex.css">
+            '<link rel="stylesheet" type="text/css" href="http://themes.cloud.home/css/base/radarr/plex.css">
             </head>';
             sub_filter_once on;
     persistence:
