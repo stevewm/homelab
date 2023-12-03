@@ -52,6 +52,13 @@ spec:
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: *namespace
           gethomepage.dev/icon: uptime-kuma.png
+          nginx.ingress.kubernetes.io/configuration-snippet: |
+            proxy_set_header Accept-Encoding "";
+            sub_filter
+            '</head>'
+            '<link rel="stylesheet" type="text/css" href="http://themepark.cloud.home/css/base/uptime-kuma/plex.css">
+            </head>';
+            sub_filter_once on;
     persistence:
       data:
         enabled: true

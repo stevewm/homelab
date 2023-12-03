@@ -54,6 +54,13 @@ spec:
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: *namespace
           gethomepage.dev/icon: radarr.png
+          nginx.ingress.kubernetes.io/configuration-snippet: |
+            proxy_set_header Accept-Encoding "";
+            sub_filter
+            '</head>'
+            '<link rel="stylesheet" type="text/css" href="http://themepark.cloud.home/css/base/radarr/plex.css">
+            </head>';
+            sub_filter_once on;
     persistence:
       media:
         enabled: true

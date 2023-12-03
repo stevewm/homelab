@@ -7,6 +7,9 @@ spec:
   instances: 2
   storage:
     size: 1Gi
+  bootstrap:
+    initdb:
+      database: radarr-main
   monitoring:
     enablePodMonitor: true
   backup:

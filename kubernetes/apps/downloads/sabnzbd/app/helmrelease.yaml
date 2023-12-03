@@ -60,6 +60,13 @@ spec:
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: *namespace
           gethomepage.dev/icon: sabnzbd-alt.png
+          nginx.ingress.kubernetes.io/configuration-snippet: |
+            proxy_set_header Accept-Encoding "";
+            sub_filter
+            '</head>'
+            '<link rel="stylesheet" type="text/css" href="http://themepark.cloud.home/css/base/sabnzbd/plex.css">
+            </head>';
+            sub_filter_once on;
     persistence:
       media:
         enabled: true
