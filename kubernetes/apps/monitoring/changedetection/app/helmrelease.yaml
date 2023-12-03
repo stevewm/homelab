@@ -9,18 +9,35 @@ spec:
   maxHistory: 3
   chart:
     spec:
-      chart: changedetection
-      version: 0.2.0
+      chart: changedetection-io
+      version: 0.11.9
       sourceRef:
         kind: HelmRepository
-        name: alekc-charts
+        name: gabe565
         namespace: flux-system
   values:
     image:
+      repository: ghcr.io/dgtlmoon/changedetection.io
       tag: 0.45.8.1
     env:
-      simple:
-        BASE_URL: http://changedetection.cloud.home/
+      BASE_URL: http://changedetection.cloud.home/
+    ingress:
+      enabled: true
+      hosts:
+        - host: changedetection.cloud.home
+          paths:
+            - path: /
+              pathType: Prefix
+      className: nginx
+      annotations:
+        gethomepage.dev/name: change-detection
+        gethomepage.dev/enabled: 'true'
+        gethomepage.dev/group: monitoring
+        gethomepage.dev/icon: changedetection-io.png
+    data:
+      enabled: true
+      mountPath: /datastore
+      size: 1Gi
     resources:
       limits:
         cpu: 100m
@@ -28,16 +45,3 @@ spec:
       requests:
         cpu: 100m
         memory: 128Mi
-    ingress:
-      enabled: true
-      hosts:
-        - host: 'changedetection.cloud.home'
-          paths:
-            - path: /
-              pathType: Prefix
-      className: nginx
-      annotations:
-        gethomepage.dev/name: *name
-        gethomepage.dev/enabled: 'true'
-        gethomepage.dev/group: monitoring
-        gethomepage.dev/icon: changedetection-io.png
