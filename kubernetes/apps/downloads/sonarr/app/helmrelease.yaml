@@ -54,6 +54,13 @@ spec:
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: *namespace
           gethomepage.dev/icon: sonarr.png
+          nginx.ingress.kubernetes.io/configuration-snippet: |
+            proxy_set_header Accept-Encoding "";
+            sub_filter
+            '</head>'
+            '<link rel="stylesheet" type="text/css" href="http://themepark.cloud.home/css/base/sonarr/plex.css">
+            </head>';
+            sub_filter_once on;
     persistence:
       media:
         enabled: true
@@ -70,7 +77,7 @@ spec:
         storageClass: longhorn
     resources:
       requests:
-        cpu: 20m
+        cpu: 100m
         memory: 256M
       limits:
         memory: 1Gi
