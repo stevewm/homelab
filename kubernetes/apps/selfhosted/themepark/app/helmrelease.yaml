@@ -57,5 +57,6 @@ spec:
           gethomepage.dev/group: selfhosted
           gethomepage.dev/icon: themepark.png
     persistence:
-      enabled: true
-      type: emptyDir
+      config:
+        enabled: true
+        type: emptyDir
