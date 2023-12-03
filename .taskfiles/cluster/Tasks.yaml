@@ -7,6 +7,11 @@ tasks:
     cmds:
       - ansible all -i ansible/inventory/hosts.yaml --one-line -m 'ping'
 
+  uptime:
+    desc: Get uptime for nodes
+    cmds:
+      - ansible all -i ansible/inventory/hosts.yaml --one-line -a 'uptime'
+
   create:
     desc: Provision cluster with ansible
     dir: ansible
@@ -35,13 +40,13 @@ tasks:
     desc: Fetch kubeconfig from controller
     dir: ansible/inventory
     vars:
-      MASTER_USERNAME: root
-      MASTER_HOST:
+      CONTROLLER_USERNAME: root
+      CONTROLLER_HOST:
         sh: yq '.all[].cluster[].controller[].node01.ansible_host' hosts.yaml
     requires:
       env: [KUBECONFIG]
     cmds:
-      - scp {{.MASTER_USERNAME}}@{{.MASTER_HOST}}:/etc/rancher/k3s/k3s.yaml "${KUBECONFIG}"
+      - scp {{.CONTROLLER_USERNAME}}@{{.CONTROLLER_HOST}}:/etc/rancher/k3s/k3s.yaml "${KUBECONFIG}"
       - sed -i '' 's/127.0.0.1/{{.MASTER_HOST}}/g' "${KUBECONFIG}"
       - chmod go-r "${KUBECONFIG}"
 
