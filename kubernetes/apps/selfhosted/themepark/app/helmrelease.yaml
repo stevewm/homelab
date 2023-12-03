@@ -28,6 +28,10 @@ spec:
             env:
               TP_DOMAIN: &host themepark.cloud.home
               TP_THEME: plex
+            probes:
+              startup:
+                spec:
+                  initialDelaySeconds: 120
             resources:
               requests:
                 cpu: 10m
