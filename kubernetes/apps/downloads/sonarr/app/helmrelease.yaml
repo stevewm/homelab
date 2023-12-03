@@ -59,7 +59,7 @@ spec:
             sub_filter
             '</head>'
             '<link rel="stylesheet" type="text/css" href="http://themes.cloud.home/css/base/sonarr/plex.css">
-            '<link ref="stylesheet" type="text/css" href="http://themes.cloud.home/css/addons/sonarr/sonarr-text-logo/sonarr-text-logo.css">'
+            <link ref="stylesheet" type="text/css" href="http://themes.cloud.home/css/addons/sonarr/sonarr-text-logo/sonarr-text-logo.css">
             </head>';
             sub_filter_once on;
     persistence:
