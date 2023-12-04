@@ -22,18 +22,19 @@ spec:
     env:
       BASE_URL: http://changedetection.cloud.home/
     ingress:
-      enabled: true
-      hosts:
-        - host: changedetection.cloud.home
-          paths:
-            - path: /
-              pathType: Prefix
-      className: nginx
-      annotations:
-        gethomepage.dev/name: change-detection
-        gethomepage.dev/enabled: 'true'
-        gethomepage.dev/group: monitoring
-        gethomepage.dev/icon: changedetection-io.png
+      main:
+        enabled: true
+        hosts:
+          - host: changedetection.cloud.home
+            paths:
+              - path: /
+                pathType: Prefix
+        ingressClassName: nginx
+        annotations:
+          gethomepage.dev/name: change-detection
+          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/group: monitoring
+          gethomepage.dev/icon: changedetection-io.png
     data:
       enabled: true
       mountPath: /datastore
