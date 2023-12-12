@@ -71,7 +71,6 @@ spec:
               cpu: 10m
               memory: 128M
             limits:
-              cpu: 20m
               memory: 256M
       volumes:
         - name: config-template
