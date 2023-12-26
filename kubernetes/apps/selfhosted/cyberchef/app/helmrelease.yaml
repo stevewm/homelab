@@ -52,4 +52,4 @@ spec:
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: *namespace
           gethomepage.dev/icon: cyberchef.png
-          nginx.org/client-max-body-size: "1024m"
+          nginx.org/client-max-body-size: '1024m'

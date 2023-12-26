@@ -5,4 +5,3 @@ namespace: downloads
 resources:
   - ./helmrelease.yaml
   - ./externalsecret.yaml
-  - ./postgres.yaml
