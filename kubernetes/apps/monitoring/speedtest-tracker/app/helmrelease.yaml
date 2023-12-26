@@ -25,7 +25,7 @@ spec:
           main:
             image:
               repository: ajustesen/speedtest-tracker
-              tag: v0.14.0-beta1
+              tag: v0.14.2-beta1
             env:
               DB_CONNECTION: pgsql
               DB_HOST:
