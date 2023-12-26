@@ -54,4 +54,4 @@ spec:
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: *namespace
           gethomepage.dev/icon: stirling-pdf.png
-          nginx.org/client-max-body-size: "150m"
+          nginx.org/client-max-body-size: '150m'
