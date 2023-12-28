@@ -22,9 +22,10 @@
   "packageRules": [
     {
       "matchPackagePatterns": ["ghcr.io/onedr0p/*"],
-      "matchUpdateTypes": ["minor"],
+      "matchUpdateTypes": ["minor", "patch", "digest"],
       "automerge": true
     }
-  ]
+  ],
+  "platformAutomerge": true
 }
 }
