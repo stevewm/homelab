@@ -3,7 +3,6 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
   name: &name cyberchef
-  namespace: &namespace selfhosted
 spec:
   interval: 30m
   maxHistory: 3
@@ -50,6 +49,6 @@ spec:
           gethomepage.dev/name: *name
           gethomepage.dev/description: selfhosted
           gethomepage.dev/enabled: 'true'
-          gethomepage.dev/group: *namespace
+          gethomepage.dev/group: selfhosted
           gethomepage.dev/icon: cyberchef.png
           nginx.org/client-max-body-size: '1024m'

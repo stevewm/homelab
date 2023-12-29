@@ -3,7 +3,6 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
   name: kubernetes-dashboard
-  namespace: &namespace monitoring
 spec:
   releaseName: kubernetes-dashboard
   interval: 30m
@@ -37,5 +36,5 @@ spec:
           gethomepage.dev/name: *name
           gethomepage.dev/description: cluster mgmt
           gethomepage.dev/enabled: 'true'
-          gethomepage.dev/group: *namespace
+          gethomepage.dev/group: monitoring
           gethomepage.dev/icon: kubernetes-dashboard.png
