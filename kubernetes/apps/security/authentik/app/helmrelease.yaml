@@ -61,7 +61,7 @@ spec:
         gethomepage.dev/name: *name
         gethomepage.dev/description: auth
         gethomepage.dev/enabled: 'true'
-        gethomepage.dev/group: security
+        gethomepage.dev/group: management
         gethomepage.dev/icon: authentik.png
     prometheus:
       serviceMonitor:
