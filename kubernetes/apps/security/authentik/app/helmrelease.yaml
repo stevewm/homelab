@@ -51,6 +51,7 @@ spec:
           key: AUTHENTIK_REDIS_PASSWORD
     ingress:
       enabled: true
+      ingressClassName: nginx
       hosts:
         - host: sec.cloud.home
           paths:
