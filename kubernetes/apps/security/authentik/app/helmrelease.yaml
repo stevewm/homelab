@@ -16,7 +16,6 @@ spec:
         name: authentik
         namespace: flux-system
   values:
-    authentik:
     env:
       AUTHENTIK_DISABLE_UPDATE_CHECK: 'true'
       AUTHENTIK_REDIS__HOST: authentik-redis.security.svc.cluster.local
