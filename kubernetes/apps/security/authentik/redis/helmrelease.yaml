@@ -33,7 +33,7 @@ spec:
               REDIS_PASSWORD:
                 valueFrom:
                   secretKeyRef:
-                    name: redis-authentik
+                    name: authentik-redis
                     key: AUTHENTIK_REDIS_PASSWORD
             resources:
               requests:

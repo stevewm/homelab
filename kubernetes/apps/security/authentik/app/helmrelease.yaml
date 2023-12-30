@@ -24,7 +24,7 @@ spec:
             key: secret_key
       env:
         AUTHENTIK_DISABLE_UPDATE_CHECK: 'true'
-        AUTHENTIK_REDIS__HOST: redis-authentik.security.svc.cluster.local
+        AUTHENTIK_REDIS__HOST: authentik-redis.security.svc.cluster.local
         AUTHENTIK_REDIS__PORT: 6379
       envValueFrom:
         AUTHENTIK_POSTGRESQL__HOST:
@@ -55,7 +55,7 @@ spec:
         AUTHENTIK_REDIS__PASSWORD:
           valueFrom:
             secretKeyRef:
-              name: redis-authentik
+              name: authentik-redis
               key: AUTHENTIK_REDIS_PASSWORD
     ingress:
       enabled: true
