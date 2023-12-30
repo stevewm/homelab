@@ -13,7 +13,6 @@ spec:
     name: homelab
   wait: false
   dependsOn:
-    - name: app-external-secrets-operator
     - name: app-secret-generator
     - name: app-authentik-redis
 ---
@@ -31,4 +30,4 @@ spec:
     name: homelab
   wait: false
   dependsOn:
-    - name: app-external-secrets-operator
+    - name: app-secret-generator
