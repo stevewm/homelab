@@ -60,7 +60,7 @@ spec:
     ingress:
       enabled: true
       hosts:
-        - host: auth.cloud.home
+        - host: sec.cloud.home
           paths:
             - path: /
               pathType: Prefix
