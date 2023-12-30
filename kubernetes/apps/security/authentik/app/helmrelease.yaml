@@ -17,16 +17,16 @@ spec:
         namespace: flux-system
   values:
     authentik:
-      secret_key:
-        valueFrom:
-          secretKeyRef:
-            name: authentik
-            key: secret_key
       env:
         AUTHENTIK_DISABLE_UPDATE_CHECK: 'true'
         AUTHENTIK_REDIS__HOST: authentik-redis.security.svc.cluster.local
         AUTHENTIK_REDIS__PORT: 6379
       envValueFrom:
+        AUTHENTIK_SECRET_KEY:
+          valueFrom:
+            secretKeyRef:
+              name: authentik
+              key: secret_key
         AUTHENTIK_POSTGRESQL__HOST:
           valueFrom:
             secretKeyRef:
