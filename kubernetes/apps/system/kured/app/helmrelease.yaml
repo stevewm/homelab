@@ -19,3 +19,9 @@ spec:
     metrics:
       create: true
       namespace: monitoring
+    resources:
+      requests:
+        cpu: 5m
+        memory: 32Mi
+      limits:
+        memory: 100Mi

@@ -15,3 +15,21 @@ spec:
         kind: HelmRepository
         name: metallb
         namespace: flux-system
+  values:
+    prometheus:
+      serviceMonitor:
+        enabled: true
+    controller:
+      resources:
+        requests:
+          cpu: 5m
+          memory: 32Mi
+        limits:
+          memory: 92Mi
+    speaker:
+      resources:
+        requests:
+          cpu: 30m
+          memory: 75Mi
+        limits:
+          memory: 200Mi

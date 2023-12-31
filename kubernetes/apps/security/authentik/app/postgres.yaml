@@ -5,7 +5,14 @@ metadata:
   name: pg-db-authentik
 spec:
   instances: 2
+  failOverDelay: 30
   storage:
     size: 1Gi
+  resources:
+    requests:
+      cpu: 50m
+      memory: 200Mi
+    limits:
+      memory: 400Mi
   monitoring:
     enablePodMonitor: true
