@@ -5,8 +5,15 @@ metadata:
   name: pg-db-mealie
 spec:
   instances: 2
+  failOverDelay: 30
   storage:
     size: 2Gi
+  resources:
+    requests:
+      cpu: 40m
+      memory: 100Mi
+    limits:
+      memory: 150Mi
   monitoring:
     enablePodMonitor: true
   backup:

@@ -19,6 +19,12 @@ spec:
   values:
     prometheus:
       prometheusSpec:
+        resources:
+          requests:
+            cpu: 384m
+            memory: 2Gi
+          limits:
+            memory: 4Gi
         podMonitorSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
@@ -33,6 +39,13 @@ spec:
           gethomepage.dev/group: *namespace
           gethomepage.dev/icon: prometheus.png
     grafana:
+      grafanaSpec:
+        resources:
+          requests:
+            cpu: 20m
+            memory: 400Mi
+          limits:
+            memory: 700Mi
       ingress:
         enabled: true
         hosts:
@@ -43,6 +56,13 @@ spec:
           gethomepage.dev/group: *namespace
           gethomepage.dev/icon: grafana.png
     alertmanager:
+      alertmanagerSpec:
+        resources:
+          requests:
+            cpu: 10m
+            memory: 50Mi
+          limits:
+            memory: 100Mi
       ingress:
         enabled: true
         hosts:
