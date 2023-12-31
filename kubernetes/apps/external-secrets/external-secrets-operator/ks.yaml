@@ -5,6 +5,7 @@ metadata:
   name: app-external-secrets-operator
   namespace: flux-system
 spec:
+  targetNamespace: external-secrets
   interval: 10m
   path: ./kubernetes/apps/external-secrets/external-secrets-operator/app
   prune: true

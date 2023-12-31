@@ -5,6 +5,7 @@ metadata:
   name: app-cyberchef
   namespace: flux-system
 spec:
+  targetNamespace: selfhosted
   interval: 10m
   path: ./kubernetes/apps/selfhosted/cyberchef/app
   prune: true

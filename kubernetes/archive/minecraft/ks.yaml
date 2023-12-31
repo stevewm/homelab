@@ -5,6 +5,7 @@ metadata:
   name: app-minecraft
   namespace: flux-system
 spec:
+  targetNamespace: games
   interval: 10m
   path: ./kubernetes/apps/games/minecraft/app
   prune: true

@@ -5,6 +5,7 @@ metadata:
   name: app-descheduler
   namespace: flux-system
 spec:
+  targetNamespace: system
   interval: 10m
   path: ./kubernetes/apps/system/descheduler/app
   prune: true

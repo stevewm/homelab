@@ -5,6 +5,7 @@ metadata:
   name: app-snapshot-controller
   namespace: flux-system
 spec:
+  targetNamespace: kube-system
   interval: 10m
   path: ./kubernetes/apps/kube-system/snapshot-controller/app
   prune: true
