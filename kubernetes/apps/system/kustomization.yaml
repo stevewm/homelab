@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./descheduler/ks.yaml
+  - ./k8tz/ks.yaml
   - ./kured/ks.yaml
   - ./reloader/ks.yaml
   - ./secret-generator/ks.yaml
