@@ -3,7 +3,6 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
   name: kube-prometheus-stack
-  namespace: &namespace monitoring
 spec:
   releaseName: kube-prometheus-stack
   interval: 30m
@@ -36,7 +35,7 @@ spec:
         annotations:
           gethomepage.dev/name: prometheus
           gethomepage.dev/enabled: 'true'
-          gethomepage.dev/group: *namespace
+          gethomepage.dev/group: '${HOMEPAGE_CATEGORY}'
           gethomepage.dev/icon: prometheus.png
     grafana:
       grafanaSpec:
@@ -53,7 +52,7 @@ spec:
         annotations:
           gethomepage.dev/name: grafana
           gethomepage.dev/enabled: 'true'
-          gethomepage.dev/group: *namespace
+          gethomepage.dev/group: '${HOMEPAGE_CATEGORY}'
           gethomepage.dev/icon: grafana.png
     alertmanager:
       alertmanagerSpec:
@@ -70,5 +69,5 @@ spec:
         annotations:
           gethomepage.dev/name: alertmanager
           gethomepage.dev/enabled: 'true'
-          gethomepage.dev/group: *namespace
+          gethomepage.dev/group: '${HOMEPAGE_CATEGORY}'
           gethomepage.dev/icon: alertmanager.png

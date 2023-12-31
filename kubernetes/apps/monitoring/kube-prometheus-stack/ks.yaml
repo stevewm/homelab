@@ -5,6 +5,7 @@ metadata:
   name: app-kube-prometheus-stack
   namespace: flux-system
 spec:
+  targetNamespace: &namespace monitoring
   interval: 10m
   path: ./kubernetes/apps/monitoring/kube-prometheus-stack/app
   prune: true
@@ -12,3 +13,6 @@ spec:
     kind: GitRepository
     name: homelab
   wait: false
+  postBuild:
+    substitute:
+      HOMEPAGE_CATEGORY: *namespace

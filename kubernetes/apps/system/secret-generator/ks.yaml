@@ -5,6 +5,7 @@ metadata:
   name: app-secret-generator
   namespace: flux-system
 spec:
+  targetNamespace: system
   interval: 10m
   path: ./kubernetes/apps/system/secret-generator/app
   prune: true

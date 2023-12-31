@@ -5,6 +5,7 @@ metadata:
   name: app-external-dns
   namespace: flux-system
 spec:
+  targetNamespace: network
   interval: 10m
   path: ./kubernetes/apps/network/external-dns/app
   prune: true

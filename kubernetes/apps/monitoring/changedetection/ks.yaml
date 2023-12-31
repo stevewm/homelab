@@ -5,6 +5,7 @@ metadata:
   name: app-changedetection
   namespace: flux-system
 spec:
+  targetNamespace: monitoring
   interval: 10m
   path: ./kubernetes/apps/monitoring/changedetection
   prune: true

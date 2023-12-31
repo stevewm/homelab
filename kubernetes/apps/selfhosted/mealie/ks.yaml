@@ -5,6 +5,7 @@ metadata:
   name: app-mealie
   namespace: flux-system
 spec:
+  targetNamespace: selfhosted
   interval: 10m
   path: ./kubernetes/apps/selfhosted/mealie/app
   prune: true

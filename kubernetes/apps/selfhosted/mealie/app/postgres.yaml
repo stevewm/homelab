@@ -5,7 +5,6 @@ metadata:
   name: pg-db-mealie
 spec:
   instances: 2
-  failOverDelay: 30
   storage:
     size: 2Gi
   resources:

@@ -5,6 +5,7 @@ metadata:
   name: app-longhorn
   namespace: flux-system
 spec:
+  targetNamespace: longhorn-system
   interval: 10m
   path: ./kubernetes/apps/longhorn-system/longhorn/app
   prune: true
