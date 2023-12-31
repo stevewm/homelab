@@ -16,9 +16,6 @@ spec:
         name: metallb
         namespace: flux-system
   values:
-    prometheus:
-      serviceMonitor:
-        enabled: true
     controller:
       resources:
         requests:
