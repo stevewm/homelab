@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: &name jellyseer
+  name: &name jellyseerr
 spec:
   interval: 30m
   maxHistory: 3
@@ -56,7 +56,7 @@ spec:
           gethomepage.dev/description: media requests
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: media
-          gethomepage.dev/icon: jellyseer.png
+          gethomepage.dev/icon: jellyseerr.png
           nginx.ingress.kubernetes.io/configuration-snippet: |
             proxy_set_header Accept-Encoding "";
             sub_filter
