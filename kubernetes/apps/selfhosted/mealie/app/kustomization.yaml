@@ -5,4 +5,4 @@ resources:
   - ./helmrelease.yaml
   - ./postgres.yaml
   - ./scheduledbackup.yaml
-  - ./externalsecret.yaml
+  - ./pg-backup-externalsecret.yaml
