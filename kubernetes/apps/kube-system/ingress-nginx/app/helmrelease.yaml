@@ -24,7 +24,7 @@ spec:
       ingressclassResource:
         default: true
       extraArgs:
-        default-ssl-certificate: 'cert-manager/cfg-sh'
+        default-ssl-certificate: 'cert-manager/cfg-sh-tls'
     defaultBackend:
       enabled: true
       name: error-pages
