@@ -43,7 +43,7 @@ spec:
         enabled: true
         ingressClassName: nginx
         hosts:
-          - host: &host radarr.cfg.sh
+          - host: &host rdr.cfg.sh
             paths:
               - path: *path
                 pathType: Prefix

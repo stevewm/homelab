@@ -43,7 +43,7 @@ spec:
         enabled: true
         ingressClassName: nginx
         hosts:
-          - host: &host sonarr.cfg.sh
+          - host: &host snr.cfg.sh
             paths:
               - path: *path
                 pathType: Prefix

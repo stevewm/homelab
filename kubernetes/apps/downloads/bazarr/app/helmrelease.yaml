@@ -35,7 +35,7 @@ spec:
         enabled: true
         ingressClassName: nginx
         hosts:
-          - host: &host bazarr.cfg.sh
+          - host: &host bzr.cfg.sh
             paths:
               - path: /
                 pathType: Prefix
