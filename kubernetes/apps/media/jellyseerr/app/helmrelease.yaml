@@ -45,12 +45,15 @@ spec:
         enabled: true
         className: nginx
         hosts:
-          - host: js.cloud.home
+          - host: &host js.cfg.sh
             paths:
               - path: /
                 service:
                   name: main
                   port: http
+        tls:
+          - hosts:
+              - *host
         annotations:
           gethomepage.dev/name: *name
           gethomepage.dev/description: media requests
@@ -61,7 +64,7 @@ spec:
             proxy_set_header Accept-Encoding "";
             sub_filter
             '</head>'
-            '<link rel="stylesheet" type="text/css" href="http://themes.cloud.home/css/base/overseer/plex.css">
+            '<link rel="stylesheet" type="text/css" href="https://themes.cfg.sh/css/base/overseer/plex.css">
             </head>';
             sub_filter_once on;
     persistence:

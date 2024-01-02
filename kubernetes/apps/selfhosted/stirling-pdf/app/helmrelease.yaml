@@ -41,12 +41,15 @@ spec:
         enabled: true
         className: nginx
         hosts:
-          - host: pdf.cloud.home
+          - host: &host pdf.cfg.sh
             paths:
               - path: /
                 service:
                   name: main
                   port: http
+        tls:
+          - hosts:
+              - *host
         annotations:
           gethomepage.dev/name: *name
           gethomepage.dev/description: selfhosted

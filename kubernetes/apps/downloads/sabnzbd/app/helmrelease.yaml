@@ -38,7 +38,7 @@ spec:
             name: sabnzbd
             key: nzb_key
       SABNZBD__HOST_WHITELIST_ENTRIES: >-
-        sabnzbd, sabnzbd.downloads, sabnzbd.downloads.svc, sabnzbd.downloads.svc.cluster, sabnzbd.downloads.svc.cluster.local, sabnzbd.cloud.home
+        sabnzbd, sabnzbd.downloads, sabnzbd.downloads.svc, sabnzbd.downloads.svc.cluster, sabnzbd.downloads.svc.cluster.local, sabnzbd.cfg.sh
     service:
       main:
         ports:
@@ -49,10 +49,13 @@ spec:
         enabled: true
         ingressClassName: nginx
         hosts:
-          - host: sabnzbd.cloud.home
+          - host: &host sabnzbd.cfg.sh
             paths:
               - path: /
                 pathType: Prefix
+        tls:
+          - hosts:
+              - *host
         annotations:
           gethomepage.dev/name: *name
           gethomepage.dev/description: downloads
@@ -62,7 +65,7 @@ spec:
           nginx.ingress.kubernetes.io/auth-url: |-
             http://ak-outpost-authentik-embedded-outpost.security.svc.cluster.local:9000/outpost.goauthentik.io/auth/nginx
           nginx.ingress.kubernetes.io/auth-signin: |-
-            http://sabnzbd.cloud.home/outpost.goauthentik.io/start?rd=$escaped_request_uri
+            https://sabnzbd.cfg.sh/outpost.goauthentik.io/start?rd=$escaped_request_uri
           nginx.ingress.kubernetes.io/auth-response-headers: |-
             Set-Cookie,X-authentik-username,X-authentik-groups,X-authentik-email,X-authentik-name,X-authentik-uid
           nginx.ingress.kubernetes.io/auth-snippet: |
@@ -71,7 +74,7 @@ spec:
             proxy_set_header Accept-Encoding "";
             sub_filter
             '</head>'
-            '<link rel="stylesheet" type="text/css" href="http://themes.cloud.home/css/base/sabnzbd/plex.css">
+            '<link rel="stylesheet" type="text/css" href="https://themes.cfg.sh/css/base/sabnzbd/plex.css">
             </head>';
             sub_filter_once on;
     persistence:

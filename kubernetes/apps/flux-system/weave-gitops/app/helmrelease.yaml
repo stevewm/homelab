@@ -24,13 +24,16 @@ spec:
       className: nginx
       enabled: true
       hosts:
-        - host: weave.cloud.home
+        - host: &host weave.cfg.sh
           paths:
             - path: /
               pathType: Prefix
               service:
                 name: weave
                 port: http
+      tls:
+        - hosts:
+            - *host
       annotations:
         gethomepage.dev/name: *name
         gethomepage.dev/description: gitops ui
