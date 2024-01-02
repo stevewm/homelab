@@ -39,7 +39,7 @@ spec:
         enabled: true
         className: nginx
         hosts:
-          - host: &host cc.cfg
+          - host: &host cc.cfg.sh
             paths:
               - path: /
                 service:
