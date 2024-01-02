@@ -1,0 +1,14 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cfg-sh
+spec:
+  secretName: cfg-sh-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: cfg.sh
+  dnsNames:
+    - cfg.sh
+    - "*.cfg.sh"
