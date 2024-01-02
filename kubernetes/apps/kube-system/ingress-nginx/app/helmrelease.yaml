@@ -23,6 +23,8 @@ spec:
           401,403,404,500,501,502,503
       ingressclassResource:
         default: true
+    extraArgs:
+      default-ssl-certificate: 'cert-manager/cfg-sh'
     defaultBackend:
       enabled: true
       name: error-pages
