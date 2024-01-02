@@ -1,0 +1,18 @@
+---
+apiVersion: descheduler/v1alpha2
+kind: "DeschedulerPolicy"
+profiles:
+  - name: BalanceNodes
+    pluginConfig:
+      - name: LowNodeUtilisation
+        args:
+          thresholds:
+            cpu: 30
+            memory: 30
+          targetThresholds:
+            cpu: 60
+            memory: 60
+    plugins:
+      balance:
+        enabled:
+          - "LowNodeUtilisation"
