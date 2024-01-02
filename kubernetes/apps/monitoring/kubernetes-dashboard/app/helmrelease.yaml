@@ -29,7 +29,7 @@ spec:
       ingress:
         enabled: true
         hosts:
-          - &host
+          - &host k8s.cfg.sh
         ingressClassName: nginx
         PathType: Prefix
         tls:
