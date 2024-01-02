@@ -13,6 +13,6 @@ spec:
       - dns01:
           cloudflare:
             email: steve@cfg.sh
-            apiKeySecretRef:
+            apiTokenSecretRef:
               name: cloudflare-api-token
               key: CLOUDFLARE_API_TOKEN
