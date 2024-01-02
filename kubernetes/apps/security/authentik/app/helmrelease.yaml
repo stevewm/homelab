@@ -16,6 +16,8 @@ spec:
         name: authentik
         namespace: flux-system
   values:
+    annotations:
+      reloader.stakater.com/auto: "true"
     env:
       AUTHENTIK_DISABLE_UPDATE_CHECK: 'true'
       AUTHENTIK_REDIS__HOST: authentik-redis.security.svc.cluster.local
@@ -53,10 +55,13 @@ spec:
       enabled: true
       ingressClassName: nginx
       hosts:
-        - host: sec.cloud.home
+        - host: &host auth.cfg.sh
           paths:
             - path: /
               pathType: Prefix
+      tls:
+        - hosts:
+            - *host
       annotations:
         gethomepage.dev/name: *name
         gethomepage.dev/description: auth

@@ -17,6 +17,8 @@ spec:
   values:
     controllers:
       main:
+        annotations:
+          reloader.stakater.com/auto: "true"
         strategy: Recreate
         pod:
           securityContext:
@@ -53,12 +55,15 @@ spec:
         enabled: true
         className: nginx
         hosts:
-          - host: readarr.cloud.home
+          - host: &host readarr.cfg.sh
             paths:
               - path: *path
                 service:
                   name: main
                   port: http
+        tls:
+          - hosts:
+              - *host
         annotations:
           gethomepage.dev/name: *name
           gethomepage.dev/description: ebooks
@@ -68,7 +73,7 @@ spec:
           nginx.ingress.kubernetes.io/auth-url: |-
             http://ak-outpost-authentik-embedded-outpost.security.svc.cluster.local:9000/outpost.goauthentik.io/auth/nginx
           nginx.ingress.kubernetes.io/auth-signin: |-
-            http://readarr.cloud.home/outpost.goauthentik.io/start?rd=$escaped_request_uri
+            https://readarr.cfg.sh/outpost.goauthentik.io/start?rd=$escaped_request_uri
           nginx.ingress.kubernetes.io/auth-response-headers: |-
             Set-Cookie,X-authentik-username,X-authentik-groups,X-authentik-email,X-authentik-name,X-authentik-uid
           nginx.ingress.kubernetes.io/auth-snippet: |
@@ -77,7 +82,7 @@ spec:
             proxy_set_header Accept-Encoding "";
             sub_filter
             '</head>'
-            '<link rel="stylesheet" type="text/css" href="http://themes.cloud.home/css/base/readarr/plex.css">
+            '<link rel="stylesheet" type="text/css" href="https://themes.cfg.sh/css/base/readarr/plex.css">
             </head>';
             sub_filter_once on;
     persistence:

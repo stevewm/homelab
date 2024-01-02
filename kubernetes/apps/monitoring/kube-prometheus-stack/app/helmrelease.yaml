@@ -31,7 +31,10 @@ spec:
       ingress:
         enabled: true
         hosts:
-          - prometheus.cloud.home
+          - &prom-host prometheus.cfg.sh
+        tls:
+          - hosts:
+              - *prom-host
         annotations:
           gethomepage.dev/name: prometheus
           gethomepage.dev/enabled: 'true'
@@ -48,7 +51,10 @@ spec:
       ingress:
         enabled: true
         hosts:
-          - grafana.cloud.home
+          - &graf-host grafana.cfg.sh
+        tls:
+          - hosts:
+              - *graf-host
         annotations:
           gethomepage.dev/name: grafana
           gethomepage.dev/enabled: 'true'
@@ -65,7 +71,10 @@ spec:
       ingress:
         enabled: true
         hosts:
-          - alertmanager.cloud.home
+          - &al-host alertmanager.cfg.sh
+        tls:
+          - hosts:
+              - *al-host
         annotations:
           gethomepage.dev/name: alertmanager
           gethomepage.dev/enabled: 'true'

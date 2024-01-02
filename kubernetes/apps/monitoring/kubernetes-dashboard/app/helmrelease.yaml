@@ -29,9 +29,12 @@ spec:
       ingress:
         enabled: true
         hosts:
-          - 'dashboard.cloud.home'
+          - &host
         ingressClassName: nginx
         PathType: Prefix
+        tls:
+          - hosts:
+              - *host
         annotations:
           gethomepage.dev/name: *name
           gethomepage.dev/description: cluster mgmt

@@ -25,7 +25,9 @@ spec:
     ingress:
       enabled: true
       ingressClassName: nginx
-      host: longhorn.cloud.home
+      host: longhorn.cfg.sh
+      tls: true
+      tlsSecret: ""
       annotations:
         gethomepage.dev/name: longhorn
         gethomepage.dev/description: storage

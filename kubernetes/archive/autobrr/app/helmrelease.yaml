@@ -57,12 +57,15 @@ spec:
         enabled: true
         className: nginx
         hosts:
-          - host: autobrr.cloud.home
+          - host: &host autobrr.cfg.sh
             paths:
               - path: /
                 service:
                   name: main
                   port: http
+        tls:
+          - hosts:
+              - *host
         annotations:
           gethomepage.dev/name: *name
           gethomepage.dev/description: download filtering

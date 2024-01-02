@@ -20,15 +20,18 @@ spec:
       repository: ghcr.io/dgtlmoon/changedetection.io
       tag: 0.45.8.1
     env:
-      BASE_URL: http://changedetection.cloud.home/
+      BASE_URL: https://changedetection.cfg.sh/
     ingress:
       main:
         enabled: true
         hosts:
-          - host: changedetection.cloud.home
+          - host: &host changedetection.cfg.sh
             paths:
               - path: /
                 pathType: Prefix
+        tls:
+          - hosts:
+              - *host
         ingressClassName: nginx
         annotations:
           gethomepage.dev/name: change-detection
