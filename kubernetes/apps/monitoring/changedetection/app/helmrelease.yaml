@@ -20,12 +20,12 @@ spec:
       repository: ghcr.io/dgtlmoon/changedetection.io
       tag: 0.45.8.1
     env:
-      BASE_URL: https://changedetection.cfg.sh/
+      BASE_URL: https://change.cfg.sh/
     ingress:
       main:
         enabled: true
         hosts:
-          - host: &host changedetection.cfg.sh
+          - host: &host change.cfg.sh
             paths:
               - path: /
                 pathType: Prefix

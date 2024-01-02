@@ -49,7 +49,7 @@ spec:
         enabled: true
         ingressClassName: nginx
         hosts:
-          - host: &host sabnzbd.cfg.sh
+          - host: &host nzb.cfg.sh
             paths:
               - path: /
                 pathType: Prefix

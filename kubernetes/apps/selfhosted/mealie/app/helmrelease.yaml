@@ -26,7 +26,7 @@ spec:
               repository: ghcr.io/mealie-recipes/mealie
               tag: v1.0.0-RC1.1@sha256:6df1e795f17af43f082146e471113315487b5f0882f2ee7553d469034d929af1
             env:
-              BASE_URL: &url mealie.cfg.sh
+              BASE_URL: &host eat.cfg.sh
               ALLOW_SIGNUP: 'false'
               DB_ENGINE: postgres
               POSTGRES_USER:
@@ -70,7 +70,7 @@ spec:
         enabled: true
         className: nginx
         hosts:
-          - host: *url
+          - host: *host
             paths:
               - path: /
                 service:
@@ -78,7 +78,7 @@ spec:
                   port: http
         tls:
           - hosts:
-              - *url
+              - *host
         annotations:
           gethomepage.dev/name: *name
           gethomepage.dev/description: food

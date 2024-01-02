@@ -31,7 +31,7 @@ spec:
       ingress:
         enabled: true
         hosts:
-          - &prom-host prometheus.cfg.sh
+          - &prom-host prom.cfg.sh
         tls:
           - hosts:
               - *prom-host
@@ -51,7 +51,7 @@ spec:
       ingress:
         enabled: true
         hosts:
-          - &graf-host grafana.cfg.sh
+          - &graf-host graf.cfg.sh
         tls:
           - hosts:
               - *graf-host
@@ -71,7 +71,7 @@ spec:
       ingress:
         enabled: true
         hosts:
-          - &al-host alertmanager.cfg.sh
+          - &al-host am.cfg.sh
         tls:
           - hosts:
               - *al-host

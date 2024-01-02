@@ -25,7 +25,7 @@ spec:
     ingress:
       enabled: true
       ingressClassName: nginx
-      host: longhorn.cfg.sh
+      host: lh.cfg.sh
       tls: true
       tlsSecret: ""
       annotations:
