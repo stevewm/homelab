@@ -5,4 +5,5 @@ resources:
   - ./externalsecret.yaml
   - ./le-staging-issuer.yaml
   - ./le-prod-issuer.yaml
+  - ./certificate.yaml
   - ./helmrelease.yaml
