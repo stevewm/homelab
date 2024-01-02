@@ -35,4 +35,4 @@ spec:
         - name: TEMPLATE_NAME
           value: hacker-terminal
         - name: SHOW_DETAILS
-          value: 'true'
+          value: 'false'
