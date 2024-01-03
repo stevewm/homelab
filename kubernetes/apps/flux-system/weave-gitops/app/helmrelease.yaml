@@ -24,7 +24,7 @@ spec:
       className: nginx
       enabled: true
       hosts:
-        - host: &host weave.cfg.sh
+        - host: &host gitops.cfg.sh
           paths:
             - path: /
               pathType: Prefix
