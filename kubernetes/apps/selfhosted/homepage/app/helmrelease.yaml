@@ -77,6 +77,13 @@ spec:
                 description: streaming
                 href: http://lilnas:8096
                 icon: jellyfin.png
+        - downloads:
+            - sonarr:
+                widget:
+                  type: sonarr
+                  url: http://sonarr.downloads.svc.cluster.local:8989
+                  key: '{{HOMEPAGE_VAR_SONARR_API_KEY}}'
+
       widgets:
         - resources:
             backend: kubernetes
