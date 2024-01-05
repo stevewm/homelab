@@ -34,6 +34,12 @@ spec:
         tls:
           - hosts:
               - *host
+    env:
+      HOMEPAGE_VAR_SONARR_API_KEY:
+        valueFrom:
+          secretKeyRef:
+            name: sonarr
+            key: api_key
     resources:
       requests:
         cpu: 10m
