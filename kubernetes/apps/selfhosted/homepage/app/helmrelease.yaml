@@ -100,20 +100,3 @@ spec:
               memory: true
             nodes:
               show: false
-  postRenderers:
-    - kustomize:
-        patches:
-          - target:
-              version: v1
-              kind: Deployment
-              name: homepage
-            patch: |-
-              - op: add
-                path: /spec/template/spec/containers/0/env/-
-                value:
-                  name: HOMEPAGE_VAR_SONARR_API_KEY
-                  valueFrom:
-                    secretKeyRef:
-                      name: sonarr
-                      namespace: downloads
-                      key: api_key
