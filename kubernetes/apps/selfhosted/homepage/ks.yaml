@@ -13,23 +13,3 @@ spec:
     kind: GitRepository
     name: homelab
   wait: false
-  patches:
-    - patch: |-
-        apiVersion: apps/v1
-        kind: Deployment
-        metadata:
-          name: not-used
-        spec:
-          template:
-            spec:
-              containers:
-              - name: homepage
-                env:
-                  - name: HOMEPAGE_VAR_SONARR_API_KEY
-                    valueFrom:
-                      secretKeyRef:
-                        name: sonarr
-                        key: api_key
-      target:
-        kind: Deployment
-        name: homepage
