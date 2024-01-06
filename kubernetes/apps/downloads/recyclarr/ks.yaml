@@ -14,7 +14,6 @@ spec:
     name: homelab
   wait: false
   dependsOn:
-    - name: app-longhorn
     - name: app-external-secrets-operator
     - name: app-sabnzbd
     - name: app-sonarr
