@@ -32,4 +32,4 @@ spec:
         valueFrom:
           secretKeyRef:
             name: pihole
-            key: PIHOLE_PASSWORD
+            key: password
