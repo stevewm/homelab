@@ -38,8 +38,24 @@ spec:
       HOMEPAGE_VAR_SONARR_API_KEY:
         valueFrom:
           secretKeyRef:
-            name: sonarr
+            name: homepage-sonarr
             key: api_key
+      HOMEPAGE_VAR_RADARR_API_KEY:
+        valueFrom:
+          secretKeyRef:
+            name: homepage-radarr
+            key: api_key
+      HOMEPAGE_VAR_READARR_API_KEY:
+        valueFrom:
+          secretKeyRef:
+            name: homepage-readarr
+            key: api_key
+      HOMEPAGE_VAR_PROWLARR_API_KEY:
+        valueFrom:
+          secretKeyRef:
+            name: homepage-prowlarr
+            key: api_key
+
     resources:
       requests:
         cpu: 10m
@@ -83,12 +99,6 @@ spec:
                 description: streaming
                 href: http://lilnas:8096
                 icon: jellyfin.png
-        - downloads:
-            - sonarr:
-                widget:
-                  type: sonarr
-                  url: http://sonarr.downloads.svc.cluster.local:8989
-                  key: '{{HOMEPAGE_VAR_SONARR_API_KEY}}'
 
       widgets:
         - resources:
