@@ -17,3 +17,5 @@ spec:
     provider: sops
     secretRef:
       name: sops-age
+  dependsOn:
+    - name: app-external-secrets-operator
