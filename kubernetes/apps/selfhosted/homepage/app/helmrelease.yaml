@@ -60,7 +60,11 @@ spec:
           secretKeyRef:
             name: homepage-sabnzbd
             key: api_key
-
+      HOMEPAGE_VAR_PIHOLE_API_KEY:
+        valueFrom:
+          secretKeyRef:
+            name: homepage-pihole
+            key: api_key
     resources:
       requests:
         cpu: 10m
@@ -95,6 +99,10 @@ spec:
                 description: dns
                 href: http://lilnas:3001/admin/
                 icon: pi-hole.png
+                widget:
+                  type: pihole
+                  url: "http://192.168.1.234:3001"
+                  key: "{{HOMEPAGE_VAR_PIHOLE_API_KEY}}"
             - portainer:
                 description: containers
                 href: https://lilnas:19943
