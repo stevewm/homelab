@@ -55,6 +55,11 @@ spec:
           secretKeyRef:
             name: homepage-prowlarr
             key: api_key
+      HOMEPAGE_VAR_SABNZBD_API_KEY:
+        valueFrom:
+          secretKeyRef:
+            name: homepage-sabnzbd
+            key: api_key
 
     resources:
       requests:
