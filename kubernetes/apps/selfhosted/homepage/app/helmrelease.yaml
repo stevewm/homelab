@@ -130,6 +130,6 @@ spec:
             nodes:
               show: false
         - openmeteo:
-          timezone: America/Vanciuver # optional
-          units: metric # or imperial
-          cache: 5 # Time in minutes to cache API responses, to stay within limits
+          timezone: America/Vancouver
+          units: metric
+          cache: 5
