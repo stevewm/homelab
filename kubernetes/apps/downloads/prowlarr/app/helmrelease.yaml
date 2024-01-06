@@ -83,6 +83,7 @@ spec:
           # https://github.com/gethomepage/homepage/issues/1553
           gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_PROWLARR_API_KEY}}'
           gethomepage.dev/widget.type: prowlarr
+          gethomepage.dev/widget.url: 'http://prowlarr.downloads.svc.cluster.local:9696'
           nginx.ingress.kubernetes.io/configuration-snippet: |
             proxy_set_header Accept-Encoding "";
             sub_filter
