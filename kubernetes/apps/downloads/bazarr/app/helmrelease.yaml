@@ -48,7 +48,6 @@ spec:
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: downloads
           gethomepage.dev/icon: bazarr.png
-            proxy_set_header X-Forwarded-Host $http_host;
           nginx.ingress.kubernetes.io/configuration-snippet: |
             proxy_set_header Accept-Encoding "";
             sub_filter
