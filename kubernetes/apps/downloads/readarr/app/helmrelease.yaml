@@ -73,6 +73,7 @@ spec:
           # https://github.com/gethomepage/homepage/issues/1553
           gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_READARR_API_KEY}}'
           gethomepage.dev/widget.type: readarr
+          gethomepage.dev/widget.url: 'http://readarr.downloads.svc.cluster.local:8787'
           nginx.ingress.kubernetes.io/configuration-snippet: |
             proxy_set_header Accept-Encoding "";
             sub_filter
