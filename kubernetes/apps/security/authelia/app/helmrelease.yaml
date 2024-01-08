@@ -91,7 +91,7 @@ spec:
         standard:
           enabled: true
           min_length: 12
-      access_control: []
+      #access_control:
       session:
         redis:
           enabled: true
@@ -126,4 +126,4 @@ spec:
       identity_providers:
         oidc:
           enabled: true
-          clients: []
+          #clients:
