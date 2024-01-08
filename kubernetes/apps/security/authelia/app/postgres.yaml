@@ -1,0 +1,17 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: pg-db-authelia
+spec:
+  instances: 2
+  storage:
+    size: 1Gi
+  resources:
+    requests:
+      cpu: 40m
+      memory: 100Mi
+    limits:
+      memory: 150Mi
+  monitoring:
+    enablePodMonitor: true
