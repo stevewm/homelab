@@ -83,3 +83,4 @@ spec:
       data:
         enabled: true
         type: persistentVolumeClaim
+        accessMode: ReadWriteOnce
