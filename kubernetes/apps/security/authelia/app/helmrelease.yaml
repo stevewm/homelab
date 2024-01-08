@@ -32,20 +32,48 @@ spec:
       type: Deployment
       replicas: 2
     env:
+      # LDAP
       - name: AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD
         valueFrom:
           secretKeyRef:
             name: lldap
             key: ADMIN_PSW
+      - name: AUTHELIA_AUTHENTICATION_BACKEND_LDAP_BASE_DN
+        valueFrom:
+          secretKeyRef:
+            name: lldap
+            key: BASE_DN
+      # Redis
       - name: AUTHELIA_SESSION_REDIS_PASSWORD
         valueFrom:
           secretKeyRef:
             name: authelia-redis
             key: AUTHELIA_REDIS_PASSWORD
-      - name: AUTHELIA_STORAGE_POSTGRES_PASSWORD
+      # PGSQL
+      - name: AUTHELIA_STORAGE_POSTGRES_HOST
         valueFrom:
           secretKeyRef:
             name: &db-secret pg-db-authelia-app
+            key: host
+      - name: AUTHELIA_STORAGE_POSTGRES_PORT
+        valueFrom:
+          secretKeyRef:
+            name: *db-secret
+            key: port
+      - name: AUTHELIA_STORAGE_POSTGRES_DATABASE
+        valueFrom:
+          secretKeyRef:
+            name: *db-secret
+            key: dbname
+      - name: AUTHELIA_STORAGE_POSTGRES_USERNAME
+        valueFrom:
+          secretKeyRef:
+            name: *db-secret
+            key: username
+      - name: AUTHELIA_STORAGE_POSTGRES_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: *db-secret
             key: password
     resources:
       requests:
@@ -73,11 +101,6 @@ spec:
           url: ldap://lldap.security.svc.cluster.local:3890
           timeout: 5s
           start_tls: false
-          base_dn:
-            valueFrom:
-              secretKeyRef:
-                name: lldap
-                key: BASE_DN
           username_attribute: uid
           additional_users_dn: ou=people
           users_filter: "(&({username_attribute}={input})(objectClass=person))"
@@ -97,33 +120,12 @@ spec:
           enabled: true
           host: authelia-redis.security.svc.cluster.local
           port: 6379
-      storage:
-        postgres:
-          enabled: true
-          host:
-            valueFrom:
-              secretKeyRef:
-                name: *db-secret
-                key: host
-          port:
-            valueFrom:
-              secretKeyRef:
-                name: *db-secret
-                key: port
-          database:
-            valueFrom:
-              secretKeyRef:
-                name: *db-secret
-                key: dbname
-          username:
-            valueFrom:
-              secretKeyRef:
-                name: *db-secret
-                key: username
       notifier:
         smtp:
           enabled: false
-      identity_providers:
-        oidc:
+        filesystem:
           enabled: true
-          #clients:
+      identity_providers:
+        # oidc:
+        #   enabled: true
+        #   clients:
