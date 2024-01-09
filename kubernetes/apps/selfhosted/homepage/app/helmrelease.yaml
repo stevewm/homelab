@@ -34,37 +34,9 @@ spec:
         tls:
           - hosts:
               - *host
-    env:
-      HOMEPAGE_VAR_SONARR_API_KEY:
-        valueFrom:
-          secretKeyRef:
-            name: homepage-sonarr
-            key: api_key
-      HOMEPAGE_VAR_RADARR_API_KEY:
-        valueFrom:
-          secretKeyRef:
-            name: homepage-radarr
-            key: api_key
-      HOMEPAGE_VAR_READARR_API_KEY:
-        valueFrom:
-          secretKeyRef:
-            name: homepage-readarr
-            key: api_key
-      HOMEPAGE_VAR_PROWLARR_API_KEY:
-        valueFrom:
-          secretKeyRef:
-            name: homepage-prowlarr
-            key: api_key
-      HOMEPAGE_VAR_SABNZBD_API_KEY:
-        valueFrom:
-          secretKeyRef:
-            name: homepage-sabnzbd
-            key: api_key
-      HOMEPAGE_VAR_PIHOLE_API_KEY:
-        valueFrom:
-          secretKeyRef:
-            name: homepage-pihole
-            key: api_key
+    envFrom:
+      - secretRef:
+        name: homepage-app-secrets
     resources:
       requests:
         cpu: 10m
