@@ -35,7 +35,7 @@ spec:
           - hosts:
               - *host
     envFrom:
-      - secretRef:
+    - secretRef:  # yamllint disable-line
         name: homepage-app-secrets
     resources:
       requests:
