@@ -4,3 +4,7 @@ kind: Kustomization
 resources:
   - ./postgres.yaml
   - ./helmrelease.yaml
+configMapGenerator:
+  - name: authelia-config
+    files:
+      - configuration.yaml=./config/configuration.yaml
