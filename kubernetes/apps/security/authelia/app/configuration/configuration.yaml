@@ -1,0 +1,42 @@
+---
+telemetry:
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+default_redirection_url: 'https://home.cfg.sh'
+theme: dark
+# LLDAP Configuration
+authentication_backend:
+  password_reset:
+    disable: false
+  refresh_interval: 1m
+  ldap:
+    enabled: true
+    implementation: custom
+    url: ldap://lldap.security.svc.cluster.local:3890
+    timeout: 5s
+    start_tls: false
+    username_attribute: uid
+    additional_users_dn: ou=people
+    users_filter: "(&({username_attribute}={input})(objectClass=person))"
+    additional_groups_dn: ou=groups
+    groups_filter: "(member={dn})"
+    group_name_attribute: cn
+    mail_attribute: mail
+    display_name_attribute: displayName
+    user: uid=admin,ou=people,dc=cfg,dc=sh
+password_policy:
+  standard:
+    enabled: true
+    min_length: 12
+session:
+  redis:
+    enabled: true
+    host: authelia-redis.security.svc.cluster.local
+    port: 6379
+notifier:
+  smtp:
+    enabled: false
+  filesystem:
+    enabled: true

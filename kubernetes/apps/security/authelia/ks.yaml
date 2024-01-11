@@ -16,6 +16,7 @@ spec:
   dependsOn:
     - name: app-authelia-redis
     - name: app-lldap
+    - name: app-lldap-bootstrap
     - name: app-cloudnative-pg
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
