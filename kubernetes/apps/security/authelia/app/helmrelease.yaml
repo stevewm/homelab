@@ -65,6 +65,11 @@ spec:
                 memory: 50Mi
               limits:
                 memory: 125Mi
+    service:
+      main:
+        ports:
+          http:
+            port: 9091
     persistence:
       authelia-secrets:
         enabled: true
