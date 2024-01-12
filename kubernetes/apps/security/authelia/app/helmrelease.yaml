@@ -79,9 +79,10 @@ spec:
       authelia-db-secrets:
         enabled: true
         type: secret
-        name: authelia-db-secrets
+        name: pg-db-authelia-app
         items:
           - key: password
+            path: password
 
       config:
         enabled: true
