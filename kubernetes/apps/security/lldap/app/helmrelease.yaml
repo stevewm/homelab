@@ -35,12 +35,8 @@ spec:
                 valueFrom:
                   secretKeyRef:
                     name: lldap
-                    key: ADMIN_PSW
-              LLDAP_LDAP_BASE_DN:
-                valueFrom:
-                  secretKeyRef:
-                    name: lldap
-                    key: BASE_DN
+                    key: password
+              LLDAP_LDAP_BASE_DN: dc=cfg,dc=sh
               LLDAP_DATABASE_URL:
                 valueFrom:
                   secretKeyRef:
