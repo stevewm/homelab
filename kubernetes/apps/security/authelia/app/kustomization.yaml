@@ -5,6 +5,7 @@ resources:
   - ./postgres.yaml
   - ./helmrelease.yaml
   - ./externalsecret.yaml
+  - ./certificate.yaml
 configMapGenerator:
   - name: authelia-config
     files:

@@ -33,9 +33,10 @@ spec:
             env:
               AUTHELIA_JWT_SECRET_FILE: /authelia-secrets/jwt_token
               AUTHELIA_IDENTITY_PROVIDERS_OIDC_HMAC_SECRET_FILE: /authelia-secrets/oidc_hmac_secret
+              AUTHELIA_OIDC_PRIVATE_KEY: /authelia-oidc-private-key/der.key
               AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD_FILE: /authelia-secrets/ldap_password
               AUTHELIA_SESSION_SECRET_FILE: /authelia-secrets/session_secret
-              AUTHELIA_SESSION_REDIS_PASSWORD_FILE: /authelia-secrets/redis_password
+              AUTHELIA_SESSION_REDIS_PASSWORD_FILE: /authelia-redis/password
               AUTHELIA_AUTHENTICATION_BACKEND_LDAP_BASE_DN: dc=cfg,dc=sh
               # PGSQL
               AUTHELIA_STORAGE_POSTGRES_HOST:
@@ -76,6 +77,11 @@ spec:
         type: secret
         name: authelia
 
+      authelia-redis:
+        enabled: true
+        type: secret
+        name: authelia-redis
+
       authelia-db-secrets:
         enabled: true
         type: secret
@@ -83,6 +89,14 @@ spec:
         items:
           - key: password
             path: password
+
+      authelia-oidc-private-key:
+        enabled: true
+        type: secret
+        name: authelia-oidc-private-key
+        items:
+          - key: key.der
+            path:
 
       config:
         enabled: true
