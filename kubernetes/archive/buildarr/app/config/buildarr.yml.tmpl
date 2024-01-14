@@ -121,7 +121,7 @@ prowlarr:
       show_relative_dates: true
       ui_language: en
 radarr:
-  hostname: radarr.cfg.sh
+  hostname: radarr.cfg.sh # THIS SHOULD BE CLUSTER SVC URL!! THS RUNS IN A POD DUMMY
   port: 80
   protocol: http
   api_key: ${RADARR__API_KEY}
