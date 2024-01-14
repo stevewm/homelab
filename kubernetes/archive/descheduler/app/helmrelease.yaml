@@ -17,3 +17,6 @@ spec:
         namespace: flux-system
   values:
     deschedulerPolicy: {}
+    serviceMonitor:
+      enabled: true
+      namespace: monitoring
