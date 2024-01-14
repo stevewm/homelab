@@ -100,5 +100,5 @@ spec:
 
       config:
         enabled: true
-        type: secret
+        type: configMap
         name: authelia-config
