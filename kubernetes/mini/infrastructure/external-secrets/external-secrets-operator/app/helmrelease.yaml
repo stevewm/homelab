@@ -16,4 +16,4 @@ spec:
         name: external-secrets
         namespace: flux-system
   values:
-    installCRDs: false
+    installCRDs: false # managed in ../ks.yaml

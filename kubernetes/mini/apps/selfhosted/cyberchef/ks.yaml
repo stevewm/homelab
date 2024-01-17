@@ -7,7 +7,7 @@ metadata:
 spec:
   targetNamespace: selfhosted
   interval: 10m
-  path: ./kubernetes/apps/selfhosted/cyberchef/app
+  path: ./kubernetes/mini/apps/selfhosted/cyberchef/app
   prune: true
   sourceRef:
     kind: GitRepository
