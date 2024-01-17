@@ -18,4 +18,4 @@ spec:
     secretRef:
       name: sops-age
   dependsOn:
-    - name: app-external-secrets-operator
+    - name: external-secrets-operator
