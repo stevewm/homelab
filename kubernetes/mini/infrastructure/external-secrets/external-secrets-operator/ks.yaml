@@ -20,6 +20,7 @@ spec:
   dependsOn:
     - name: infra-external-secrets-operator-crds
 ---
+# CRD deployment from ES repo
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
@@ -28,11 +29,11 @@ metadata:
 spec:
   targetNamespace: external-secrets
   interval: 10m
-  path: ./kubernetes/mini/infrastructure/external-secrets/external-secrets-operator/crds
+  path: ./deploy/crds
   prune: true
   sourceRef:
     kind: GitRepository
-    name: homelab
+    name: external-secrets
   wait: false
   decryption:
     provider: sops
