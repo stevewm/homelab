@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: app-secret-generator
+  name: infra-secret-generator
   namespace: flux-system
 spec:
   targetNamespace: system
