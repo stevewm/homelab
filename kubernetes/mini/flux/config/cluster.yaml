@@ -13,7 +13,7 @@ spec:
     # exclude all
     /*
     # include kubernetes dir
-    !/kubernetes
+    !/kubernetes/mini
     # exclude specific extensions
     /kubernetes/**/.md
 ---
