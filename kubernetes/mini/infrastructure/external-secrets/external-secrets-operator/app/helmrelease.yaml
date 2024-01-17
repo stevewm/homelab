@@ -16,4 +16,4 @@ spec:
         name: external-secrets
         namespace: flux-system
   values:
-    installCRDs: true
+    installCRDs: false
