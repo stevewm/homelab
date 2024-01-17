@@ -1,6 +1,0 @@
-# This file doesn't matter, it's just needed because
-# https://github.com/autobrr/autobrr/issues/969
-host = "overwritten-by-env"
-port = 7474
-logLevel = "overwritten-by-env"
-checkForUpdates = false

@@ -2,11 +2,11 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: pg-db-lldap
+  name: pg-db-speedtest
 spec:
-  instances: 2
+  instances: 3
   storage:
-    size: 1Gi
+    size: 2Gi
   resources:
     requests:
       cpu: 40m
