@@ -2,7 +2,7 @@
 
 # bootstrap cluster
 
-# flux install
+# # flux install
 kubectl apply -f https://github.com/fluxcd/flux2/manifests/install?ref=v2.2.2
 
 # # secrets
