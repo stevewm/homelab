@@ -1,11 +1,19 @@
 # 'mini' cluster
 
+This cluster consists of four miniPCs from Dell and HP. Each PC has the same specification:
+
+- **CPU**: Intel i5 7500T
+- **RAM**: 32GB DDR4
+- **SSD**: 240GB M.2 (talos)
+- **SSD**: 1TB SATA (data)
+
+## folders
+
 - `/apps`: applications deployed the cluster
-- `/bootstrap`: cluster bootstrapping (flux, secrets)
 - `/flux`: flux configuration
-- `/system`: system controllers/operators that apps depend upon
+- `/infrastructure`: cluster infrastructure that apps depend upon (controllers, etc)
 - `/talos`: talos configuration and bootstrapping
 
 ## bootstrapping
 
-run `bootstrap.sh` in the cluster's root directory
+run `bootstrap.sh` in the cluster's root directory to bootstrap the cluster with flux
