@@ -7,7 +7,7 @@ metadata:
 spec:
   targetNamespace: kube-system
   interval: 10m
-  path: ./kubernetes/mini/infrastructure/kube-system/ingress-nginx/app
+  path: ./kubernetes/mini/infrastructure/network/ingress-nginx/app
   prune: true
   sourceRef:
     kind: GitRepository
