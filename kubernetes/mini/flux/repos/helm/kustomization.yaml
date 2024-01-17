@@ -2,8 +2,25 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
+  - ./authelia.yaml
+  - ./backube.yaml
+  - ./bjw-s.yaml
   - ./cilium.yaml
   - ./cloudnative-pg.yaml
+  - ./descheduler.yaml
   - ./external-dns.yaml
   - ./external-secrets.yaml
+  - ./gabe565.yaml
+  - ./ingress-nginx.yaml
+  - ./jameswynn.yaml
+  - ./jetstack.yaml
+  - ./k8s-dashboard.yaml
+  - ./k8tz.yaml
+  - ./longhorn.yaml
+  - ./metrics-server.yaml
+  - ./mittwald.yaml
+  - ./piraeus.yaml
+  - ./prometheus-community.yaml
   - ./rook-ceph.yaml
+  - ./stakater.yaml
+  - ./weave-gitops.yaml
