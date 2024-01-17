@@ -13,3 +13,5 @@ spec:
     kind: GitRepository
     name: homelab
   wait: false
+  dependsOn:
+    - name: infra-cert-manager
