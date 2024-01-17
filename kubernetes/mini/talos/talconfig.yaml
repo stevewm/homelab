@@ -1,0 +1,95 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/budimanjojo/talhelper/master/pkg/config/schemas/talconfig.json
+clusterName: mini
+talosVersion: v1.6.1
+kubernetesVersion: v1.29.0
+endpoint: https://192.168.1.51:6443
+allowSchedulingOnMasters: true
+allowSchedulingOnControlPlanes: true
+cniConfig:
+  name: none
+
+additionalApiServerCertSans: &san
+  - "127.0.0.1" # KubePrism
+additionalMachineCertSans: *san
+
+nodes:
+  - hostname: control01
+    ipAddress: 192.168.1.51
+    controlPlane: true
+    installDiskSelector:
+      size: "<=256GB"
+    machineDisks:
+      - device: /dev/disk/by-id/ata-Samsung_SSD_870_QVO_1TB_S6R8NJ0W402228N
+        partitions:
+          - mountpoint: /var/mnt/sata
+    networkInterfaces:
+      - deviceSelector:
+          busPath: "0*"
+        dhcp: true
+  # - hostname: control02
+  #   ipAddress: 192.168.1.52
+  #   controlPlane: true
+  #   installDiskSelector:
+  #     size: "<=256GB"
+  #   networkInterfaces:
+  #     - interface: enp2s0
+  #       dhcp: true
+  # - hostname: control03
+  #   ipAddress: 192.168.1.53
+  #   controlPlane: true
+  #   installDiskSelector:
+  #     size: "<=256GB"
+  #   networkInterfaces:
+  #     - interface: enp2s0
+  #       dhcp: true
+  # - hostname: worker01
+  #   ipAddress: 192.168.1.54
+  #   controlPlane: false
+  #   installDiskSelector:
+  #     size: "<=256GB"
+  #   networkInterfaces:
+  #     - interface: enp2s0
+  #       dhcp: true
+
+controlPlane:
+  patches:
+    # Enable TPM-based disk encryption
+    - &tpm |-
+      machine:
+        systemDiskEncryption:
+          ephemeral:
+            provider: luks2
+            keys:
+              - slot: 0
+                tpm: {}
+          state:
+            provider: luks2
+            keys:
+              - slot: 0
+                tpm: {}
+    # Generated from factory.talos.dev with:
+    # customization:
+    #     extraKernelArgs:
+    #         - net.ifnames=0
+    #     systemExtensions:
+    #         officialExtensions:
+    #             - siderolabs/i915-ucode
+    #             - siderolabs/intel-ice-firmware
+    #             - siderolabs/intel-ucode
+    - &secureboot-img |-
+      machine:
+        install:
+          image: factory.talos.dev/installer-secureboot/603f0a5756ca49b5b6260030b001c7d5be3e434a000fba5295a091d88b41b18b:v1.6.1
+          wipe: true
+    # Replace kubeproxy with cilium
+    - &kubeproxy |-
+      cluster:
+        proxy:
+          disabled: true
+
+worker:
+  patches:
+    - *tpm
+    - *secureboot-img
+    - *kubeproxy

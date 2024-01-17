@@ -1,0 +1,77 @@
+---
+rollOutCiliumPods: true
+operator:
+  rollOutPods: true
+bandwidthManager:
+  enabled: true
+  bbr: true
+localRedirectPolicy: true
+bpf:
+  masquerade: true
+  tproxy: true
+  autoMount:
+    enabled: false
+  root: /sys/fs/bpf
+bgp:
+  enabled: false
+  announce:
+    loadbalancerIP: true
+    podCIDR: false
+bgpControlPlane:
+  enabled: true
+
+# -- from talos docs --
+ipam:
+  mode: kubernetes
+kubeProxyReplacement: true
+k8sServiceHost: localhost
+k8sServicePort: 7445
+securityContext:
+  capabilities:
+    ciliumAgent:
+      - CHOWN
+      - KILL
+      - NET_ADMIN
+      - NET_RAW
+      - IPC_LOCK
+      - SYS_ADMIN
+      - SYS_RESOURCE
+      - DAC_OVERRIDE
+      - FOWNER
+      - SETGID
+      - SETUI
+    cleanCiliumState:
+      - NET_ADMIN
+      - SYS_ADMIN
+      - SYS_RESOURCE
+cgroup:
+  autoMount:
+    enabled: false
+  hostRoot: /sys/fs/cgroup
+# -- end of talos settings --
+hubble:
+  enabled: true
+  relay:
+    enabled: true
+  ui:
+    enabled: true
+    rollOutPods: true
+    resources:
+      requests:
+        cpu: 1000m
+        memory: 1Gi
+      limits:
+        cpu: 1500m
+    ingress:
+      enabled: true
+      hosts:
+        - &host cni.cfg.sh
+      tls:
+        - hosts:
+            - *host
+      annotations:
+        gethomepage.dev/name: hubble
+        gethomepage.dev/description: cni
+        gethomepage.dev/enabled: 'true'
+        gethomepage.dev/group: network
+        gethomepage.dev/icon: hubble.png
