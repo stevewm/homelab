@@ -16,7 +16,6 @@ resources:
   - ./jetstack.yaml
   - ./k8s-dashboard.yaml
   - ./k8tz.yaml
-  - ./longhorn.yaml
   - ./metrics-server.yaml
   - ./mittwald.yaml
   - ./piraeus.yaml
