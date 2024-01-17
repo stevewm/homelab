@@ -23,5 +23,4 @@ tasks:
       - find $(git rev-parse --show-toplevel) -type f \( -name "*.yaml" \) -exec sh -c 'yamlfmt -conf $(git rev-parse --show-toplevel)/.yamlfmt "$1"' _ {} \;
 
 includes:
-  cluster: ./.taskfiles/cluster/Taskfile.yaml
   nas: ./.taskfiles/nas/Taskfile.yaml

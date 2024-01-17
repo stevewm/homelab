@@ -1,8 +1,0 @@
----
-# Sets up a cluster
-- hosts:
-    - controller
-    - worker
-  become: true
-  roles:
-    - k3s
