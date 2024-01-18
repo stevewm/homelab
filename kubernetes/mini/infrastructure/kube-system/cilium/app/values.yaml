@@ -2,6 +2,7 @@
 rollOutCiliumPods: true
 operator:
   rollOutPods: true
+  replicas: 1
 bandwidthManager:
   enabled: true
   bbr: true
@@ -19,7 +20,6 @@ bgp:
     podCIDR: false
 bgpControlPlane:
   enabled: true
-
 # -- from talos docs --
 ipam:
   mode: kubernetes
