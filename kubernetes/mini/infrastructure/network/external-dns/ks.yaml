@@ -19,3 +19,4 @@ spec:
       name: sops-age
   dependsOn:
     - name: infra-external-secrets-operator
+    - name: infra-kube-prometheus-stack

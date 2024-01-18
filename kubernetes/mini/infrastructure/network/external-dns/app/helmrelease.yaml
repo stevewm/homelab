@@ -10,16 +10,17 @@ spec:
   chart:
     spec:
       chart: external-dns
-      version: 1.14.0
+      version: 1.14.1
       sourceRef:
         kind: HelmRepository
         name: external-dns
         namespace: flux-system
   values:
     serviceMonitor:
-      enabled: false
+      enabled: true
       namespace: monitoring
     logLevel: debug
+    triggerLoopOnEvent: true
     policy: upsert-only
     registry: noop
     provider: pihole
