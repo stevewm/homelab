@@ -4,7 +4,6 @@ kind: CiliumLoadBalancerIPPool
 metadata:
   name: cluster-pool
 spec:
-  loadBalancerClass: io.cilium/bgp-control-plane
   cidrs:
     - cidr: 192.168.1.192/26  # 192.168.1.192 to 192.168.1.255
 ---
