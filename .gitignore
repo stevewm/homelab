@@ -31,3 +31,6 @@ override.tf*
  *tfplan*
 .terraformrc
 terraform.rc
+
+# Doppler secrets file
+doppler.json
