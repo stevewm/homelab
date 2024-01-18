@@ -5,7 +5,7 @@ metadata:
   name: infra-ingress-nginx
   namespace: flux-system
 spec:
-  targetNamespace: kube-system
+  targetNamespace: network
   interval: 10m
   path: ./kubernetes/mini/infrastructure/network/ingress-nginx/app
   prune: true
