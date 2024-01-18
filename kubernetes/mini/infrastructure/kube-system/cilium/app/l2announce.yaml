@@ -16,6 +16,6 @@ spec:
     matchExpressions:
       - {key: somekey, operator: NotIn, values: ['never-used-value']}
   interfaces:
-    - ^eth[0-9]+
+    - eth0
   externalIPs: true
   loadBalancerIPs: true
