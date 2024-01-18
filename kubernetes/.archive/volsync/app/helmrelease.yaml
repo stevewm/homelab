@@ -18,4 +18,4 @@ spec:
   values:
     image:
       repository: ghcr.io/onedr0p/volsync
-      tag: 0.8.0@sha256:34d257b059f2fb9a4975a1e6fcc1629e41a9f2f0d2a0e3a7c9ebab17bd05cc81
+      tag: 0.8.0@sha256:8631c4838cf71c3432ea6503c6d3c5969838ae96c13805012bedf7f405506fe8
