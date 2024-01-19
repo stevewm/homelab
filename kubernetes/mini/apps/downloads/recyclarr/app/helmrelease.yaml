@@ -20,26 +20,26 @@ spec:
         annotations:
           reloader.stakater.com/auto: 'true'
         strategy: Recreate
-      containers:
-        main:
-          image:
-            repository: ghcr.io/recyclarr/recyclarr
-            tag: 6.0.2
-          env:
-            RADARR_API_KEY:
-              secretKeyRef:
-                name: radarr
-                key: api_key
-            SONARR_API_KEY:
-              secretKeyRef:
-                name: sonarr
-                key: api_key
-          resources:
-            requests:
-              cpu: 10m
-              memory: 50Mi
-            limits:
-              memory: 200Mi
+        containers:
+          main:
+            image:
+              repository: ghcr.io/recyclarr/recyclarr
+              tag: 6.0.2
+            env:
+              RADARR_API_KEY:
+                secretKeyRef:
+                  name: radarr
+                  key: api_key
+              SONARR_API_KEY:
+                secretKeyRef:
+                  name: sonarr
+                  key: api_key
+            resources:
+              requests:
+                cpu: 10m
+                memory: 50Mi
+              limits:
+                memory: 200Mi
     service:
       main:
         enabled: false

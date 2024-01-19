@@ -49,7 +49,9 @@ spec:
           - host: &host bzr.cfg.sh
             paths:
               - path: /
-                pathType: Prefix
+                service:
+                  name: main
+                  port: http
         tls:
           - hosts:
               - *host
