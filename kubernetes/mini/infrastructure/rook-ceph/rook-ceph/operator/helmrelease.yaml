@@ -16,6 +16,10 @@ spec:
         name: rook-ceph
         namespace: flux-system
   values:
+    mgr:
+      allowMultiplePerNode: true  # temporary, set only while we're single node
+    mon:
+      allowMultiplePerNode: true
     crds:
       enabled: true  # don't change
     pspEnable: false
