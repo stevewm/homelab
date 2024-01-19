@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: rook-ceph
+  name: rook-ceph-operator
 spec:
   interval: 30m
   maxHistory: 3
@@ -18,6 +18,12 @@ spec:
   values:
     crds:
       enabled: true  # don't change
-    csi:
-      nfs:
-        enabled: true
+    ingress:
+      dashboard:
+        ingressClassName: nginx
+        host:
+          name: &host rook.cfg.sh
+          path: /
+        tls:
+          - hosts:
+              - *host
