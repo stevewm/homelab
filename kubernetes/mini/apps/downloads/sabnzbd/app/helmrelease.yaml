@@ -50,9 +50,9 @@ spec:
             resources:
               requests:
                 cpu: 1000m
-                memory: 3G
+                memory: 2Gi
               limits:
-                memory: 4G
+                memory: 4Gi
     service:
       main:
         ports:
