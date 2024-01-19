@@ -1,0 +1,79 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: &name bazarr
+spec:
+  interval: 30m
+  maxHistory: 3
+  chart:
+    spec:
+      chart: app-template
+      version: 2.5.0
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  values:
+    controllers:
+      main:
+        enabled: true
+        containers:
+          main:
+            image:
+              repository: ghcr.io/onedr0p/bazarr
+              tag: 1.4.0@sha256:c81c4d9cbec093d5a999cfa3cd1af01d3f00d6292d6f5c33608510cef0ed83c7
+              securityContext:
+              runAsUser: 568
+              runAsGroup: 568
+              fsGroup: 568
+              fsGroupChangePolicy: OnRootMismatch
+              supplementalGroups: [1001]
+            resources:
+              requests:
+                cpu: 20m
+                memory: 256M
+              limits:
+                memory: 512M
+    service:
+      main:
+        ports:
+          http:
+            port: &port 6767
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: nginx
+        hosts:
+          - host: &host bzr.cfg.sh
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - *host
+        annotations:
+          gethomepage.dev/name: *name
+          gethomepage.dev/description: subtitles
+          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/group: downloads
+          gethomepage.dev/icon: bazarr.png
+          nginx.ingress.kubernetes.io/configuration-snippet: |
+            proxy_set_header Accept-Encoding "";
+            sub_filter
+            '</head>'
+            '<link rel="stylesheet" type="text/css" href="https://themes.cfg.sh/css/base/bazarr/plex.css">
+            </head>';
+            sub_filter_once on;
+    persistence:
+      media:
+        enabled: true
+        type: nfs
+        server: 192.168.1.234
+        path: /volume1/Media
+        globalMounts:
+          - path: /data/media
+      config:
+        enabled: true
+        type: persistentVolumeClaim
