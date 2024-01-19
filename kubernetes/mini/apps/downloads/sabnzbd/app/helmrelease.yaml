@@ -29,29 +29,30 @@ spec:
             fsGroup: 568
             fsGroupChangePolicy: OnRootMismatch
         containers:
-          image:
-            repository: ghcr.io/onedr0p/sabnzbd
-            tag: 4.2.1@sha256:c9f2577a9483ed1a53295ed6315f4ebfcf9e99507c1095f49b5bc2f0cf080179
-          env:
-            SABNZBD__PORT: &port 8080
-            SABNZBD__API_KEY:
-              valueFrom:
-                secretKeyRef:
-                  name: sabnzbd
-                  key: api_key
-            SABNZBD__NZB_KEY:
-              valueFrom:
-                secretKeyRef:
-                  name: sabnzbd
-                  key: nzb_key
-            SABNZBD__HOST_WHITELIST_ENTRIES: >-
-              sabnzbd, sabnzbd.downloads, sabnzbd.downloads.svc, sabnzbd.downloads.svc.cluster, sabnzbd.downloads.svc.cluster.local, nzb.cfg.sh
-          resources:
-            requests:
-              cpu: 1000m
-              memory: 3G
-            limits:
-              memory: 4G
+          main:
+            image:
+              repository: ghcr.io/onedr0p/sabnzbd
+              tag: 4.2.1@sha256:c9f2577a9483ed1a53295ed6315f4ebfcf9e99507c1095f49b5bc2f0cf080179
+            env:
+              SABNZBD__PORT: &port 8080
+              SABNZBD__API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: sabnzbd
+                    key: api_key
+              SABNZBD__NZB_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: sabnzbd
+                    key: nzb_key
+              SABNZBD__HOST_WHITELIST_ENTRIES: >-
+                sabnzbd, sabnzbd.downloads, sabnzbd.downloads.svc, sabnzbd.downloads.svc.cluster, sabnzbd.downloads.svc.cluster.local, nzb.cfg.sh
+            resources:
+              requests:
+                cpu: 1000m
+                memory: 3G
+              limits:
+                memory: 4G
     service:
       main:
         ports:
@@ -65,7 +66,9 @@ spec:
           - host: &host nzb.cfg.sh
             paths:
               - path: /
-                pathType: Prefix
+                service:
+                  name: main
+                  port: http
         tls:
           - hosts:
               - *host
