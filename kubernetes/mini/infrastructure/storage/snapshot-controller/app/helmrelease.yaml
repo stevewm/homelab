@@ -2,19 +2,17 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: rook-ceph-operator
+  name: snapshot-controller
 spec:
+  releaseName: snapshot-controller
   interval: 30m
   maxHistory: 3
   chart:
     spec:
-      chart: rook-ceph
-      version: v1.13.2
-      interval: 30m
+      chart: snapshot-controller
+      version: 2.0.4
       sourceRef:
         kind: HelmRepository
-        name: rook-ceph
+        name: piraeus
         namespace: flux-system
   values:
-    crds:
-      enabled: true  # don't change

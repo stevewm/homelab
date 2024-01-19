@@ -32,3 +32,4 @@ spec:
   wait: false
   dependsOn:
     - name: infra-rook-ceph-operator
+    - name: infra-snapshot-controller
