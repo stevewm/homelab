@@ -1,0 +1,89 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: &name speedtest-tracker
+spec:
+  interval: 30m
+  maxHistory: 3
+  chart:
+    spec:
+      chart: app-template
+      version: 2.5.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  values:
+    controllers:
+      main:
+        annotations:
+          reloader.stakater.com/auto: 'true'
+        strategy: Recreate
+        containers:
+          main:
+            image:
+              repository: ajustesen/speedtest-tracker
+              tag: v0.14.2-beta1
+            env:
+              DB_CONNECTION: pgsql
+              DB_HOST:
+                valueFrom:
+                  secretKeyRef:
+                    name: pg-db-speedtest-app
+                    key: host
+              DB_PORT:
+                valueFrom:
+                  secretKeyRef:
+                    name: pg-db-speedtest-app
+                    key: port
+              DB_DATABASE:
+                valueFrom:
+                  secretKeyRef:
+                    name: pg-db-speedtest-app
+                    key: dbname
+              DB_USERNAME:
+                valueFrom:
+                  secretKeyRef:
+                    name: pg-db-speedtest-app
+                    key: username
+              DB_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: pg-db-speedtest-app
+                    key: password
+            resources:
+              requests:
+                cpu: 300m
+                memory: 128Mi
+              limits:
+                memory: 256Mi
+    service:
+      main:
+        ports:
+          http:
+            port: 80
+    ingress:
+      main:
+        enabled: true
+        className: nginx
+        hosts:
+          - host: &host speed.cfg.sh
+            paths:
+              - path: /
+                service:
+                  name: main
+                  port: http
+        tls:
+          - hosts:
+              - *host
+        annotations:
+          gethomepage.dev/name: *name
+          gethomepage.dev/description: speedtest
+          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/group: downloads
+          gethomepage.dev/icon: speedtest-tracker.png
+    persistence:
+      config:
+        enabled: true
+        type: persistentVolumeClaim

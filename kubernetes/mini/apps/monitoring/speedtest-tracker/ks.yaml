@@ -1,0 +1,15 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: app-speedtest-tracker
+  namespace: flux-system
+spec:
+  targetNamespace: monitoring
+  interval: 10m
+  path: ./kubernetes/mini/apps/monitoring/speedtest-tracker
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+  wait: false
