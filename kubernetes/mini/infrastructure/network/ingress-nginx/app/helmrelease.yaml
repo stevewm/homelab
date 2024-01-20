@@ -36,3 +36,9 @@ spec:
           value: hacker-terminal
         - name: SHOW_DETAILS
           value: 'false'
+    resources:
+      requests:
+        cpu: 50m
+        memory: 92Mi
+      limits:
+        memory: 256Mi
