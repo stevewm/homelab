@@ -139,10 +139,10 @@ spec:
             activeStandby: true
             resources:
               requests:
-                cpu: 1000m
-                memory: 4Gi
-              limits:
+                cpu: 300m
                 memory: 1Gi
+              limits:
+                memory: 4Gi
             priorityClassName: system-cluster-critical
         storageClass:
           enabled: true
