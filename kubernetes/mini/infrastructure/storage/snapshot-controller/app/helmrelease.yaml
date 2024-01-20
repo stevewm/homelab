@@ -16,3 +16,9 @@ spec:
         name: piraeus
         namespace: flux-system
   values:
+    resources:
+      requests:
+        cpu: 150m
+        memory: 256Mi
+      limits:
+        memory: 1Gi

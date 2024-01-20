@@ -19,3 +19,9 @@ spec:
     namespace: null
     timezone: America/Vancouver
     cronJobTimeZone: true
+    resources:
+      requests:
+        cpu: 25m
+        memory: 64Mi
+      limits:
+        memory: 100Mi
