@@ -78,7 +78,7 @@ spec:
         useAllNodes: false
         useAllDevices: false
         config:
-          osdsPerDevice: 1
+          osdsPerDevice: '1'
         nodes:
           - name: control01
             devices:  # see talconfig.yaml for disk IDs
