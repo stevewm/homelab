@@ -49,7 +49,7 @@ spec:
                 sabnzbd, sabnzbd.downloads, sabnzbd.downloads.svc, sabnzbd.downloads.svc.cluster, sabnzbd.downloads.svc.cluster.local, nzb.cfg.sh
             resources:
               requests:
-                cpu: 1000m
+                cpu: 500m
                 memory: 2Gi
               limits:
                 memory: 4Gi

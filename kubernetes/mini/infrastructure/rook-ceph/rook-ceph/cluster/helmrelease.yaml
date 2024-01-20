@@ -17,6 +17,49 @@ spec:
         namespace: flux-system
   values:
     cephClusterSpec:
+      resources:
+        mgr:
+          requests:
+            cpu: 125m
+            memory: 512Mi
+          limits:
+            memory: 2Gi
+        mon:
+          requests:
+            cpu: 49m
+            memory: 512Mi
+          limits:
+            memory: 1Gi
+        osd:
+          requests:
+            cpu: 442m
+            memory: 2Gi
+          limits:
+            memory: 6Gi
+        mgr-sidecar:
+          requests:
+            cpu: 49m
+            memory: 128Mi
+          limits:
+            memory: 256Mi
+        crashcollector:
+          requests:
+            cpu: 15m
+            memory: 64Mi
+          limits:
+            memory: 64Mi
+        logcollector:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            memory: 1Gi
+        cleanup:
+          requests:
+            cpu: 250m
+            memory: 100Mi
+          limits:
+            memory: 1Gi
       network:
         provider: host
         connections:
@@ -31,19 +74,19 @@ spec:
         useAllNodes: false
         useAllDevices: false
         config:
-          osdsPerDevice: "1"
+          osdsPerDevice: 1
         nodes:
-          - name: "control01"
+          - name: control01
             devices:  # see talconfig.yaml for disk IDs
-              - name: "/dev/disk/by-id/ata-Samsung_SSD_870_QVO_1TB_S6R8NJ0W402228N"
+              - name: /dev/disk/by-id/ata-Samsung_SSD_870_QVO_1TB_S6R8NJ0W402228N
     ingress:
       dashboard:
-        ingressClassName: "nginx"
+        ingressClassName: nginx
         annotations:
-          nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+          nginx.ingress.kubernetes.io/backend-protocol: HTTPS
         host:
           name: &host rook.cfg.sh
-          path: "/"
+          path: /
         tls:
           - hosts:
               - *host
@@ -61,7 +104,7 @@ spec:
           reclaimPolicy: Delete
           allowVolumeExpansion: true
           parameters:
-            imageFormat: "2"
+            imageFormat: 2
             imageFeatures: layering
             csi.storage.k8s.io/provisioner-secret-name: rook-csi-rbd-provisioner
             csi.storage.k8s.io/provisioner-secret-namespace: rook-ceph
@@ -76,7 +119,6 @@ spec:
       name: ceph-block
       isDefault: false
       deletionPolicy: Delete
-
 
     cephFileSystems:
       - name: ceph-filesystem
@@ -93,10 +135,10 @@ spec:
             activeStandby: true
             resources:
               requests:
-                cpu: "1000m"
-                memory: "4Gi"
+                cpu: 1000m
+                memory: 4Gi
               limits:
-                memory: "1Gi"
+                memory: 1Gi
             priorityClassName: system-cluster-critical
         storageClass:
           enabled: true
@@ -105,15 +147,15 @@ spec:
           pool: data0
           reclaimPolicy: Delete
           allowVolumeExpansion: true
-          volumeBindingMode: "Immediate"
+          volumeBindingMode: Immediate
           mountOptions: []
           parameters:
             csi.storage.k8s.io/provisioner-secret-name: rook-csi-cephfs-provisioner
-            csi.storage.k8s.io/provisioner-secret-namespace: "{{ .Release.Namespace }}"
+            csi.storage.k8s.io/provisioner-secret-namespace: rook-ceph
             csi.storage.k8s.io/controller-expand-secret-name: rook-csi-cephfs-provisioner
-            csi.storage.k8s.io/controller-expand-secret-namespace: "{{ .Release.Namespace }}"
+            csi.storage.k8s.io/controller-expand-secret-namespace: rook-ceph
             csi.storage.k8s.io/node-stage-secret-name: rook-csi-cephfs-node
-            csi.storage.k8s.io/node-stage-secret-namespace: "{{ .Release.Namespace }}"
+            csi.storage.k8s.io/node-stage-secret-namespace: rook-ceph
             csi.storage.k8s.io/fstype: ext4
 
     cephFileSystemVolumeSnapshotClass:
@@ -149,6 +191,6 @@ spec:
           enabled: true
           name: ceph-bucket
           reclaimPolicy: Delete
-          volumeBindingMode: "Immediate"
+          volumeBindingMode: Immediate
           parameters:
             region: us-east-1
