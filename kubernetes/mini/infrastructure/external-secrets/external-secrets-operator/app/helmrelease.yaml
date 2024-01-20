@@ -17,3 +17,6 @@ spec:
         namespace: flux-system
   values:
     installCRDs: false # managed in ../ks.yaml
+    requests:
+      cpu: 10m
+      memory: 32Mi
