@@ -65,7 +65,7 @@ spec:
           limits:
             memory: 1Gi
       network:
-        provider: host
+        #provider: host
         connections:
           encryption:
             enabled: true
