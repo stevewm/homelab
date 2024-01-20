@@ -17,6 +17,10 @@ spec:
         namespace: flux-system
   values:
     cephClusterSpec:
+      mgr:
+        allowMultiplePerNode: true  # temporary, set only while we're single node
+      mon:
+      allowMultiplePerNode: true
       resources:
         mgr:
           requests:
