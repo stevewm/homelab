@@ -15,10 +15,10 @@ spec:
         kind: HelmRepository
         name: cloudnative-pg
         namespace: flux-system
-    values:
-      resources:
-        requests:
-          cpu: 50m
-          memory: 100Mi
-        limits:
-          memory: 200Mi
+  values:
+    resources:
+      requests:
+        cpu: 50m
+        memory: 100Mi
+      limits:
+        memory: 200Mi
