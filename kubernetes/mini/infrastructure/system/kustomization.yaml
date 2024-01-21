@@ -4,5 +4,6 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./k8tz/ks.yaml
+  - ./kubelet-csr-approver/ks.yaml
   - ./reloader/ks.yaml
   - ./secret-generator/ks.yaml

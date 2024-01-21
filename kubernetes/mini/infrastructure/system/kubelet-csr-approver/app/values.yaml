@@ -1,0 +1,5 @@
+---
+providerRegex: |
+  ^(control\d+|worker\d+)$
+
+bypassDnsResolution: true
