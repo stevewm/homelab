@@ -17,10 +17,6 @@ spec:
         namespace: flux-system
   values:
     cephClusterSpec:
-      mgr:
-        allowMultiplePerNode: true  # temporary, set only while we're single node
-      mon:
-        allowMultiplePerNode: true
       resources:
         mgr:
           requests:
@@ -82,10 +78,10 @@ spec:
         nodes:
           - name: control01
             devices:
-              - name: ^sd.
+              - name: /dev/disk/by-id/ata-Samsung_SSD_870_QVO_1TB_S6R8NJ0W402228N
           - name: control02
             devices:
-              - name: ^sd.
+              - name: /dev/disk/by-id/ata-Samsung_SSD_870_QVO_1TB_S6R8NJ0W403006V
     ingress:
       dashboard:
         ingressClassName: nginx
