@@ -20,37 +20,52 @@ nodes:
     installDiskSelector:
       size: "<=256GB"
     machineDisks:
-      - device: /dev/disk/by-id/ata-Samsung_SSD_870_QVO_1TB_S6R8NJ0W402228N
+      - device: /dev/sda
         partitions:
           - mountpoint: /var/mnt/sata
     networkInterfaces:
       - deviceSelector:
           busPath: "0*"
         dhcp: true
-  # - hostname: control02
-  #   ipAddress: 192.168.1.52
-  #   controlPlane: true
-  #   installDiskSelector:
-  #     size: "<=256GB"
-  #   networkInterfaces:
-  #     - interface: enp2s0
-  #       dhcp: true
-  # - hostname: control03
-  #   ipAddress: 192.168.1.53
-  #   controlPlane: true
-  #   installDiskSelector:
-  #     size: "<=256GB"
-  #   networkInterfaces:
-  #     - interface: enp2s0
-  #       dhcp: true
-  # - hostname: worker01
-  #   ipAddress: 192.168.1.54
-  #   controlPlane: false
-  #   installDiskSelector:
-  #     size: "<=256GB"
-  #   networkInterfaces:
-  #     - interface: enp2s0
-  #       dhcp: true
+  - hostname: control02
+    ipAddress: 192.168.1.52
+    controlPlane: true
+    installDiskSelector:
+      size: "<=256GB"
+    machineDisks:
+      - device: /dev/sda
+        partitions:
+          - mountpoint: /var/mnt/sata
+    networkInterfaces:
+      - deviceSelector:
+          busPath: "0*"
+        dhcp: true
+  - hostname: control03
+    ipAddress: 192.168.1.53
+    controlPlane: true
+    installDiskSelector:
+      size: "<=256GB"
+    machineDisks:
+      - device: /dev/sda
+        partitions:
+          - mountpoint: /var/mnt/sata
+    networkInterfaces:
+      - deviceSelector:
+          busPath: "0*"
+        dhcp: true
+  - hostname: worker01
+    ipAddress: 192.168.1.54
+    controlPlane: false
+    installDiskSelector:
+      size: "<=256GB"
+    machineDisks:
+      - device: /dev/sda
+        partitions:
+          - mountpoint: /var/mnt/sata
+    networkInterfaces:
+      - deviceSelector:
+          busPath: "0*"
+        dhcp: true
 
 controlPlane:
   patches:
