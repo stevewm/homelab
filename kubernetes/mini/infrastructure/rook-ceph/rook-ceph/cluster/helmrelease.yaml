@@ -82,7 +82,10 @@ spec:
         nodes:
           - name: control01
             devices:  # see talconfig.yaml for disk IDs
-              - name: /dev/disk/by-id/ata-Samsung_SSD_870_QVO_1TB_S6R8NJ0W402228N
+              - name: /dev/sda
+          - name: control02
+            devices:
+              - name: /dev/sda
     ingress:
       dashboard:
         ingressClassName: nginx
