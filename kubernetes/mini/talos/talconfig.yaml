@@ -109,6 +109,17 @@ controlPlane:
             rotate-server-certificates: "true"
           extraConfig:
             maxPods: 150
+    - &sata |-
+      machine:
+        kubelet:
+          extraMounts:
+            - destination: /var/mnt/sata
+              type: bind
+              source: /var/mnt/sata
+              options:
+                - rbind
+                - rshared
+                - rw
 
 worker:
   patches:
@@ -116,3 +127,4 @@ worker:
     - *secureboot-img
     - *kubeproxy
     - *cert
+    - *sata
