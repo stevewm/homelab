@@ -81,11 +81,11 @@ spec:
           osdsPerDevice: '1'
         nodes:
           - name: control01
-            devices:  # see talconfig.yaml for disk IDs
-              - name: /dev/sda
+            devices:
+              - name: ^sd.
           - name: control02
             devices:
-              - name: /dev/sda
+              - name: ^sd.
     ingress:
       dashboard:
         ingressClassName: nginx
