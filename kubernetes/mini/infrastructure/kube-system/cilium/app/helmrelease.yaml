@@ -21,5 +21,7 @@ spec:
   values:
     prometheus:
       enabled: true
+      externalIPs:
+        enabled: true
     serviceMonitor:
       enabled: true
