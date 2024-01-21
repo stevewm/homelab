@@ -21,12 +21,5 @@ spec:
   values:
     prometheus:
       enabled: true
-    externalIPs:
-      enabled: true
     serviceMonitor:
       enabled: true
-    l2announcements:
-      enabled: true
-    k8sClientRateLimit:
-      qps: 35  # hope this is enough
-      burst: 45
