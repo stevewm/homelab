@@ -102,9 +102,17 @@ controlPlane:
       cluster:
         proxy:
           disabled: true
+    - &cert |- # Kubelet configuration
+      machine:
+        kubelet:
+          extraArgs:
+            rotate-server-certificates: "true"
+          extraConfig:
+            maxPods: 150
 
 worker:
   patches:
     - *tpm
     - *secureboot-img
     - *kubeproxy
+    - *cert
