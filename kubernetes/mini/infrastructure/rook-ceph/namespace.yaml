@@ -5,6 +5,6 @@ metadata:
   name: rook-ceph
   labels:
     pod-security.kubernetes.io/enforce: privileged
-    goldilocks.fairwinds.com/enabled: 'true'
+    goldilocks.fairwinds.com/enabled: 'false'
 annotations:
   kustomize.toolkit.fluxcd.io/prune: disabled
