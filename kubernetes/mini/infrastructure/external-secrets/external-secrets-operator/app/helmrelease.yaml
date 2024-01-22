@@ -17,6 +17,8 @@ spec:
         namespace: flux-system
   values:
     installCRDs: false # managed in ../ks.yaml
+    deploymentAnnotations:
+      reloader.stakater.com/auto: 'true'
     requests:
       cpu: 10m
       memory: 32Mi
