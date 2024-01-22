@@ -2,7 +2,7 @@
 #
 base-url: https://ntfy.cfg.sh
 
-listen-http: ":80"
+listen-http: ":8080"
 behind-proxy: true
 
 attachment-cache-dir: "/var/cache/ntfy/attachments"
