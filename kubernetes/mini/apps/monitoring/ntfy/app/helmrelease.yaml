@@ -30,7 +30,7 @@ spec:
           main:
             image:
               repository: binwiederhier/ntfy
-              tag: v2.8.0@sha256:f8a6199159d2330f88e53f887436a4a6a80451fbe2503f1d669748d2e94eb899
+              tag: v2.8.0@sha256:b8f8fb9ee044524d2baa303e5cfab4b3275378acf0b746bd9ace370a3b631a07
             env:
             resources:
               requests:
