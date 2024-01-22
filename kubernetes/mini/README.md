@@ -16,4 +16,4 @@ This cluster consists of four miniPCs from Dell and HP. Each PC has the same spe
 
 ## bootstrapping
 
-run `bootstrap.sh` in the cluster's root directory to bootstrap the cluster with flux
+Once nodes are up and running with Talos, run `bootstrap.sh` in the cluster's root directory to bootstrap the cluster with flux.
