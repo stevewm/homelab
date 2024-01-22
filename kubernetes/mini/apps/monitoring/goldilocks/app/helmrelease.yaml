@@ -32,7 +32,7 @@ spec:
           - host: &host goldilocks.cfg.sh
             paths:
               - path: /
-                pathType: Prefix
+                type: Prefix
         tls:
           - hosts:
               - *host
