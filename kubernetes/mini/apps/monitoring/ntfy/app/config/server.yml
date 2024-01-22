@@ -3,8 +3,6 @@
 base-url: ntfy.cfg.sh
 
 listen-http: ":80"
-listen-https: "-"
-
 behind-proxy: true
 
 attachment-cache-dir: "/var/cache/ntfy/attachments"
