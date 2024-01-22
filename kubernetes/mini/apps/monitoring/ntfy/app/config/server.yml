@@ -1,6 +1,6 @@
 # ntfy server config file
 #
-base-url: ntfy.cfg.sh
+base-url: https://ntfy.cfg.sh
 
 listen-http: ":80"
 behind-proxy: true
