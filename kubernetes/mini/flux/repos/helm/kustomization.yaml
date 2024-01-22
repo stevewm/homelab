@@ -10,6 +10,7 @@ resources:
   - ./descheduler.yaml
   - ./external-dns.yaml
   - ./external-secrets.yaml
+  - ./fairwinds-stable.yaml
   - ./gabe565.yaml
   - ./ingress-nginx.yaml
   - ./jameswynn.yaml

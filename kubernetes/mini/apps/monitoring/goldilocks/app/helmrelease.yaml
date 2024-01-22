@@ -1,0 +1,37 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: &name goldilocks
+spec:
+  releaseName: *name
+  interval: 30m
+  maxHistory: 3
+  chart:
+    spec:
+      chart: goldilocks
+      version: 0.11.12
+      sourceRef:
+        kind: HelmRepository
+        name: goldilocks
+        namespace: flux-system
+  values:
+    vpa:
+      enabled: true
+    dashboard:
+      ingress:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          gethomepage.dev/name: *name
+          gethomepage.dev/description: resources
+          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/group: monitoring
+          gethomepage.dev/icon: kubernetes.png
+        hosts:
+          - host: &host speed.cfg.sh
+            paths:
+              - path: /
+        tls:
+          - hosts:
+              - *host
