@@ -84,7 +84,6 @@ spec:
                 description: streaming
                 href: http://lilnas:8096
                 icon: jellyfin.png
-
       widgets:
         - resources:
             backend: kubernetes
@@ -101,7 +100,3 @@ spec:
               memory: true
             nodes:
               show: false
-        - openmeteo:
-          timezone: America/Vancouver
-          units: metric
-          cache: 5
