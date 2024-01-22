@@ -43,7 +43,7 @@ spec:
       main:
         ports:
           http:
-            port: 80
+            port: 8080
     ingress:
       main:
         enabled: true
@@ -64,11 +64,11 @@ spec:
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: monitoring
           gethomepage.dev/icon: ntfy.png
-          #gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_NTFY_CLIENT_TOKEN}}'
+          # gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_NTFY_CLIENT_TOKEN}}'
           # https://github.com/gethomepage/homepage/discussions/1822
           # https://github.com/gethomepage/homepage/issues/2603
           # gethomepage.dev/widget.type: customapi
-          # gethomepage.dev/widget.url: 'http://ntfy.monitoring.svc.cluster.local:80/v1/stats'
+          # gethomepage.dev/widget.url: 'http://ntfy.monitoring.svc.cluster.local:8080/v1/stats'
           # gethomepage.dev/widget.mappings[0].label: Messages
           # gethomepage.dev/widget.mappings[0].format: number
           # gethomepage.dev/widget.mappings[0].field: messages
