@@ -17,6 +17,7 @@ resources:
   - ./jetstack.yaml
   - ./k8s-dashboard.yaml
   - ./k8tz.yaml
+  - ./kubelet-csr-approver.yaml
   - ./metallb.yaml
   - ./metrics-server.yaml
   - ./mittwald.yaml
