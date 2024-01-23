@@ -22,7 +22,7 @@ spec:
       tag: 0.0.4
     resources:
       requests:
-        cpu: 100m
+        cpu: 20m
         memory: 128Mi
       limits:
         memory: 192Mi
