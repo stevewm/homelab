@@ -3,6 +3,7 @@ TODO.md
 kubeconfig
 Brewfile.lock.json
 *.log
+.vscode/
 
 # macOS
 .DS_Store
@@ -32,5 +33,5 @@ override.tf*
 .terraformrc
 terraform.rc
 
-# Doppler secrets file
+# secrets
 doppler.json

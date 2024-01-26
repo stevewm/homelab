@@ -8,6 +8,7 @@ tasks:
       - ./${CLUSTER_NAME}/bootstrap.sh
     requires:
       vars: [CLUSTER_NAME]
+
   shutdown:
     desc: Shuts down all Talos nodes
     cmds:
