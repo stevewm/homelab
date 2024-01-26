@@ -3,7 +3,9 @@
 # bootstrap cluster
 
 ## bootstrap flux
-echo "Bootstrapping flux, takes a little while to download the manifests..."
+jp2a $(git rev-parse --show-toplevel)/docs/logo.png --colors --term-fit --fill --clear
+
+echo "Bootstrapping flux, this takes a little while to download the manifests..."
 mkdir -p bootstrap/
 VERSION=$(yq e 'select(documentIndex == 0) | .spec.ref.tag' flux/config/flux.yaml)
 cat <<EOF > bootstrap/kustomization.yaml
