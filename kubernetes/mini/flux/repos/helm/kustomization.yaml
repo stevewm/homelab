@@ -13,6 +13,7 @@ resources:
   - ./fairwinds-stable.yaml
   - ./gabe565.yaml
   - ./ingress-nginx.yaml
+  - ./intel.yaml
   - ./jameswynn.yaml
   - ./jetstack.yaml
   - ./k8s-dashboard.yaml
@@ -21,6 +22,7 @@ resources:
   - ./metallb.yaml
   - ./metrics-server.yaml
   - ./mittwald.yaml
+  - ./node-feature-discovery.yaml
   - ./piraeus.yaml
   - ./prometheus-community.yaml
   - ./rook-ceph.yaml
