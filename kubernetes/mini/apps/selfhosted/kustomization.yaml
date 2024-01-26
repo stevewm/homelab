@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./cyberchef/ks.yaml
+  - ./flyimg/ks.yaml
   - ./homepage/ks.yaml
   - ./stirling-pdf/ks.yaml
   - ./themepark/ks.yaml

@@ -25,10 +25,10 @@ spec:
               tag: 1.3.0
             resources:
               requests:
-                cpu: 25m
-                memory: 128Mi
+                cpu: 10m
+                memory: 64Mi
               limits:
-                memory: 256Mi
+                memory: 128Mi
     service:
       main:
         ports:
