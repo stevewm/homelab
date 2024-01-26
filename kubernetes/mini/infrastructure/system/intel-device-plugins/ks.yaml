@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: system
-  path: "./kubernetes/main/infrastructure/system/intel-device-plugins/operator"
+  path: "./kubernetes/mini/infrastructure/system/intel-device-plugins/operator"
   sourceRef:
     kind: GitRepository
     name: homelab
@@ -24,7 +24,7 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: system
-  path: "./kubernetes/main/infrastructure/system/intel-device-plugins/gpu"
+  path: "./kubernetes/mini/infrastructure/system/intel-device-plugins/gpu"
   sourceRef:
     kind: GitRepository
     name: homelab
