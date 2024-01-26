@@ -14,6 +14,6 @@ tasks:
       - talosctl shutdown --nodes {{.NODE_IPS}}
     vars:
       NODE_IPS:
-        sh: cat ${TALOSCONFIG} | yq -r '.contexts.mini.endpoints[]' | paste -sd, -
+        sh: cat ${TALOSCONFIG} | yq -r '.contexts.{{.CLUSTER_NAME}}.endpoints[]' | paste -sd, -
     requires:
-      vars: [TALOSCONFIG]
+      vars: [TALOSCONFIG, CLUSTER_NAME]
