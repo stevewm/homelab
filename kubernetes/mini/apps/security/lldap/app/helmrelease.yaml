@@ -74,7 +74,7 @@ spec:
           gethomepage.dev/description: ldap
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: security
-          gethomepage.dev/icon: light-lldap.png
+          gethomepage.dev/icon: mdi-account-group
     persistence:
       data:
         enabled: true

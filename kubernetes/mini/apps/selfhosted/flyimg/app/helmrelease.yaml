@@ -53,4 +53,5 @@ spec:
           gethomepage.dev/description: utilities
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: selfhosted
+          gethomepage.dev/icon: mdi-image-size-select-large
           nginx.org/client-max-body-size: '100m'
