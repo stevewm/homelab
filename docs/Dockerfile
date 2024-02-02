@@ -1,7 +1,7 @@
 #
 # Doc(k)erfile
 #
-FROM python:3.9-bullseye AS mkdocs-build
+FROM python:3.12-bullseye AS mkdocs-build
 RUN pip install mkdocs-material mkdocs-material[imaging]
 WORKDIR /src
 COPY mkdocs.yml mkdocs.yml
