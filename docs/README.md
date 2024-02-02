@@ -4,6 +4,8 @@ This repo contains the configuration and documentation for my home infrastructur
 
 ## Stack
 
+| Name                                                            | Description                                           |
+|-----------------------------------------------------------------|-------------------------------------------------------|
 | [Talos](https://www.talos.dev/)                                 | Kubernetes distribution                               |
 | [FluxCD](https://fluxcd.io/)                                    | GitOps tool                                           |
 | [Renovate](https://github.com/renovatebot/renovate)             | Version upgrade Pull Requests                         |
