@@ -1,0 +1,15 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: app-homelab-docs
+  namespace: flux-system
+spec:
+  targetNamespace: dev
+  interval: 10m
+  path: ./kubernetes/mini/apps/dev/homelab-docs/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+  wait: false
