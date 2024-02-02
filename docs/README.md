@@ -4,15 +4,15 @@ This repo contains the configuration and documentation for my home infrastructur
 
 ## Stack
 
-This repo uses:
-
-- Kubernetes (Talos)
-- FluxCD
-- Renovate
-- GitHub Actions
-- mkdocs-material
-- DirEnv
-- SOPS
+| [Talos](https://www.talos.dev/)                                 | Kubernetes distribution                               |
+| [FluxCD](https://fluxcd.io/)                                    | GitOps tool                                           |
+| [Renovate](https://github.com/renovatebot/renovate)             | Version upgrade Pull Requests                         |
+| [GitHub Actions](https://docs.github.com/en/actions)            | Automation                                            |
+| [mkdocs-material](https://squidfunk.github.io/mkdocs-material/) | Documentation                                         |
+| [direnv](https://direnv.net/)                                   | Directory-specific environment variables              |
+| [SOPS](https://github.com/getsops/sops)                         | Encrypted secrets stored in the repo                  |
+| [Doppler](https://www.doppler.com/)                             | Secret management                                     |
+| [Taskfile](https://taskfile.dev/)                               | Common commands that are needed when using the repo   |
 
 ## Inspiration
 
