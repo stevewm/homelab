@@ -9,4 +9,5 @@ COPY docs/ docs/
 RUN mkdocs build --site-dir /src/site
 
 FROM nginx:stable-alpine
+LABEL org.opencontainers.image.source="https://github.com/duhio/homelab"
 COPY --from=mkdocs-build /src/site /usr/share/nginx/html
