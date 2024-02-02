@@ -13,6 +13,7 @@ This repo contains the configuration and documentation for my home infrastructur
 | [SOPS](https://github.com/getsops/sops)                         | Encrypted secrets stored in the repo                  |
 | [Doppler](https://www.doppler.com/)                             | Secret management                                     |
 | [Taskfile](https://taskfile.dev/)                               | Common commands that are needed when using the repo   |
+| [pre-commit](https://pre-commit.com/)                           | Linting and validation                                |
 
 ## Inspiration
 
