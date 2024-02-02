@@ -1,0 +1,20 @@
+site_name: Home Lab Docs
+theme:
+  name: material
+  logo: logo.png
+  palette:
+    scheme: slate
+    primary: deep orange
+    accent: orange
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.path
+plugins:
+  - social:
+      cards: true
+      cards_layout_options:
+        background_color: '#fc7005'
+        color: "#ffffff"

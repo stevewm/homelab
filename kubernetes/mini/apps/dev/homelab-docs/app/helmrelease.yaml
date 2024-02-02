@@ -1,0 +1,65 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: &name homelab-docs
+spec:
+  interval: 30m
+  maxHistory: 3
+  chart:
+    spec:
+      chart: app-template
+      version: 2.5.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  values:
+    controllers:
+      main:
+        strategy: Recreate
+        pod:
+          securityContext:
+            runAsUser: 568
+            runAsGroup: 568
+            fsGroup: 568
+            fsGroupChangePolicy: OnRootMismatch
+        containers:
+          main:
+            image:
+              repository: duhio/homelab-docs
+              tag: 1.0.0
+            resources:
+              requests:
+                cpu: 5m
+                memory: 32Mi
+              limits:
+                memory: 100Mi
+            env:
+              NGINX_PORT: 8080
+              NGINX_HOST: &host docs.cfg.sh
+    service:
+      main:
+        ports:
+          http:
+            port: 8080
+    ingress:
+      main:
+        enabled: true
+        className: nginx
+        hosts:
+          - host: *host
+            paths:
+              - path: /
+                service:
+                  name: main
+                  port: http
+        tls:
+          - hosts:
+              - *host
+        annotations:
+          gethomepage.dev/name: *name
+          gethomepage.dev/description: homelab docs
+          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/group: dev
+          gethomepage.dev/icon: mdi-text-box-outline
