@@ -1,6 +1,18 @@
 # Home Lab Repo
 
-This repo contains the configuration and documentation for my home infrastructure.
+This repo contains the configuration and documentation for my home infrastructure. I try to adhere to GitOps principles and automate as much as possible.
+
+## Stack
+
+This repo uses:
+
+- Kubernetes (Talos)
+- FluxCD
+- Renovate
+- GitHub Actions
+- mkdocs-material
+- DirEnv
+- SOPS
 
 ## Inspiration
 
