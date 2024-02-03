@@ -27,7 +27,7 @@ spec:
         containers:
           main:
             image:
-              repository: duhio/homelab-docs
+              repository: duhio/docs
               tag: 1.0.0
             resources:
               requests:
