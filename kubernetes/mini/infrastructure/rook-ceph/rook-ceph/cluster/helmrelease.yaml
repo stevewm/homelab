@@ -26,19 +26,19 @@ spec:
             memory: 2Gi
         mon:
           requests:
-            cpu: 49m
+            cpu: 50m
             memory: 512Mi
           limits:
             memory: 1Gi
         osd:
           requests:
-            cpu: 442m
+            cpu: 440m
             memory: 2Gi
           limits:
             memory: 6Gi
         mgr-sidecar:
           requests:
-            cpu: 49m
+            cpu: 50m
             memory: 128Mi
           limits:
             memory: 256Mi
@@ -77,11 +77,17 @@ spec:
           osdsPerDevice: '1'
         nodes:
           - name: control01
-            devices:
+            devices:  # talosctl list /dev/disk/by-id
               - name: /dev/disk/by-id/ata-Samsung_SSD_870_QVO_1TB_S6R8NJ0W402228N
           - name: control02
             devices:
               - name: /dev/disk/by-id/ata-Samsung_SSD_870_QVO_1TB_S6R8NJ0W403006V
+          - name: control03
+            devices:
+              - name: /dev/disk/by-id/ata-Samsung_SSD_870_QVO_1TB_
+          - name: worker01
+            devices:
+              - name: /dev/disk/by-id/ata-Samsung_SSD_870_QVO_1TB_
     ingress:
       dashboard:
         ingressClassName: nginx
