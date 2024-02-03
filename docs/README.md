@@ -1,4 +1,4 @@
-# Home Lab Repo
+# Home Lab
 
 This repo contains the configuration and documentation for my home infrastructure. I try to adhere to GitOps principles and automate as much as possible.
 
