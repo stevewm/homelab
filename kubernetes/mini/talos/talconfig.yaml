@@ -1,9 +1,9 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/budimanjojo/talhelper/master/pkg/config/schemas/talconfig.json
 clusterName: mini
-talosVersion: v1.6.1
-kubernetesVersion: v1.29.0
-endpoint: https://192.168.1.51:6443
+talosVersion: v1.6.4
+kubernetesVersion: v1.29.1
+endpoint: https://192.168.1.55:6443
 allowSchedulingOnMasters: true
 allowSchedulingOnControlPlanes: true
 cniConfig:
@@ -17,8 +17,13 @@ nodes:
   - hostname: control01
     ipAddress: 192.168.1.51
     controlPlane: true
+    machineSpec:
+      mode: metal
+      arch: amd64
+      secureboot: true
+      useUKI: true
     installDiskSelector:
-      size: "<=256GB"
+      size: "<=260GB"
     machineDisks:
       - device: /dev/sda
         partitions:
@@ -27,11 +32,17 @@ nodes:
       - deviceSelector:
           busPath: "0*"
         dhcp: true
+
   - hostname: control02
     ipAddress: 192.168.1.52
     controlPlane: true
+    machineSpec:
+      mode: metal
+      arch: amd64
+      secureboot: true
+      useUKI: true
     installDiskSelector:
-      size: "<=256GB"
+      size: "<=260GB"
     machineDisks:
       - device: /dev/sda
         partitions:
@@ -40,11 +51,17 @@ nodes:
       - deviceSelector:
           busPath: "0*"
         dhcp: true
+
   - hostname: control03
     ipAddress: 192.168.1.53
     controlPlane: true
+    machineSpec:
+      mode: metal
+      arch: amd64
+      secureboot: true
+      useUKI: true
     installDiskSelector:
-      size: "<=256GB"
+      size: "<=260GB"
     machineDisks:
       - device: /dev/sda
         partitions:
@@ -53,11 +70,17 @@ nodes:
       - deviceSelector:
           busPath: "0*"
         dhcp: true
+
   - hostname: worker01
     ipAddress: 192.168.1.54
     controlPlane: false
+    machineSpec:
+      mode: metal
+      arch: amd64
+      secureboot: true
+      useUKI: true
     installDiskSelector:
-      size: "<=256GB"
+      size: "<=260GB"
     machineDisks:
       - device: /dev/sda
         partitions:
@@ -68,34 +91,30 @@ nodes:
         dhcp: true
 
 controlPlane:
+  schematic:
+    customization:
+      systemExtensions:
+        officialExtensions:
+          - siderolabs/intel-ucode
+          - siderolabs/i915-ucode
   patches:
-    # Enable TPM-based disk encryption
-    - &tpm |-
+    # Enable disk encryption
+    - &encrypt |-
       machine:
         systemDiskEncryption:
           ephemeral:
             provider: luks2
             keys:
               - slot: 0
-                tpm: {}
+                nodeID: {}
           state:
             provider: luks2
             keys:
               - slot: 0
-                tpm: {}
-    # Generated from factory.talos.dev with:
-    # customization:
-    #     extraKernelArgs:
-    #         - net.ifnames=0
-    #     systemExtensions:
-    #         officialExtensions:
-    #             - siderolabs/i915-ucode
-    #             - siderolabs/intel-ice-firmware
-    #             - siderolabs/intel-ucode
-    - &secureboot-img |-
+                nodeID: {}
+    - &wipe |-
       machine:
         install:
-          image: factory.talos.dev/installer-secureboot/603f0a5756ca49b5b6260030b001c7d5be3e434a000fba5295a091d88b41b18b:v1.6.1
           wipe: true
     # Replace kubeproxy with cilium
     - &kubeproxy |-
@@ -106,6 +125,7 @@ controlPlane:
       machine:
         kubelet:
           extraArgs:
+            feature-gates: NewVolumeManagerReconstruction=false
             rotate-server-certificates: "true"
           extraConfig:
             maxPods: 150
@@ -120,11 +140,27 @@ controlPlane:
                 - rbind
                 - rshared
                 - rw
+    - |-
+      machine:
+        network:
+          interfaces:
+          - interface: eth0
+            dhcp: true
+            vip:
+              ip: 192.168.1.55
 
 worker:
+  schematic:
+    customization:
+      extraKernelArgs:
+        - net.ifnames=0
+      systemExtensions:
+        officialExtensions:
+          - siderolabs/intel-ucode
+          - siderolabs/i915-ucode
   patches:
-    - *tpm
-    - *secureboot-img
+    - *encrypt
+    - *wipe
     - *kubeproxy
     - *cert
     - *sata
