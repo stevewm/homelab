@@ -26,6 +26,7 @@ spec:
               repository: ghcr.io/recyclarr/recyclarr
               tag: 6.0.2
             env:
+              CRON_SCHEDULE: '0 * * * *'
               RADARR_API_KEY:
                 secretKeyRef:
                   name: radarr
