@@ -9,7 +9,7 @@ COPY mkdocs.yml mkdocs.yml
 COPY docs/ docs/
 RUN mkdocs build --site-dir /src/site
 
-FROM nginx:stable-alpine
+FROM nginxinc/nginx-unprivileged:mainline-alpine3.18
 LABEL org.opencontainers.image.source="https://github.com/duhio/homelab"
 LABEL org.opencontainers.image.description="Homelab documentation container"
 COPY --from=mkdocs-build /src/site /usr/share/nginx/html
