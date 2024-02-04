@@ -35,7 +35,7 @@ prowlarr:
               apiKey: ${DS__API_KEY}
     apps:
       applications:
-        delete_unmanaged: false
+        delete_unmanaged: true
         definitions:
           Radarr:
             type: radarr
@@ -150,7 +150,7 @@ radarr:
       set_permissions: false
       chmod_folder: drwxr-xr-x
     download_clients:
-      delete_unmanaged: false
+      delete_unmanaged: true
       definitions:
         SABnzbd:
           enable: true
