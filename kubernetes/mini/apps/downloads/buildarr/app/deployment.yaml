@@ -1,0 +1,86 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    reloader.stakater.com/auto: 'true'
+  labels:
+    app: buildarr
+  name: buildarr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: buildarr
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: buildarr
+    spec:
+      initContainers:
+        - image: alpine:3.19.1
+          name: init-config
+          # Ideally the Buildarr container would support substitution, but this will do for now
+          command: ['sh', '-c', 'apk add --no-cache gettext && envsubst < /config-template/buildarr.yml.tmpl > /config/buildarr.yml']
+          volumeMounts:
+            - name: config-template
+              mountPath: /config-template
+            - name: config
+              mountPath: /config
+          env:
+            - name: DS__API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: buildarr
+                  key: ds_api_key
+
+            - name: PROWLARR__API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: buildarr
+                  key: prowlarr_api_key
+
+            - name: RADARR__API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: buildarr
+                  key: radarr_api_key
+
+            - name: RADARR__PASSWORD # UI Password
+              valueFrom:
+                secretKeyRef:
+                  name: buildarr
+                  key: radarr_password
+
+            - name: SONARR__API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: buildarr
+                  key: sonarr_api_key
+
+            - name: SABNZBD__API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: buildarr
+                  key: sabnzbd_api_key
+
+      containers:
+        - name: buildarr
+          image: callum027/buildarr:0.7
+          volumeMounts:
+            - name: config
+              mountPath: /config
+          resources:
+            requests:
+              cpu: 10m
+              memory: 128M
+            limits:
+              memory: 256M
+      volumes:
+        - name: config-template
+          configMap:
+            name: buildarr-configmap
+        - name: config
+          emptyDir: {}

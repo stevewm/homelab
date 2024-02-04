@@ -1,0 +1,21 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: app-buildarr
+  namespace: flux-system
+spec:
+  targetNamespace: downloads
+  interval: 10m
+  path: ./kubernetes/mini/apps/downloads/buildarr/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+  wait: false
+  dependsOn:
+    - name: app-sonarr
+    - name: app-radarr
+    - name: app-prowlarr
+    - name: app-readarr
+    - name: app-sabnzbd
