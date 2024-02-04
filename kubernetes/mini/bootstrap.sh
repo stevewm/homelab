@@ -22,10 +22,10 @@ rm -rf bootstrap/
 
 ## secrets
 doppler run -p homelab -c prd --only-secrets SOPS_AGE_KEY --command 'kubectl create secret generic sops-age \
-                                                                         --from-literal=age.agekey=$SOPS_AGE_KEY'
+                                               --from-literal=age.agekey=$SOPS_AGE_KEY --namespace=flux-system'
 
 doppler run -p homelab -c prd --only-secrets HOMELAB_REPO_GITHUB_TOKEN --command 'kubectl create secret generic github \
-                                                                                    --from-literal=token=$HOMELAB_REPO_GITHUB_TOKEN'
+                                                  --from-literal=token=$HOMELAB_REPO_GITHUB_TOKEN --namespace=flux-system'
 
 ## flux
 kubectl apply --kustomize flux/config
