@@ -1,0 +1,180 @@
+---
+buildarr:
+  watch_config: false
+  update_times:
+    - "03:00"
+    - "06:00"
+    - "09:00"
+    - "12:00"
+    - "15:00"
+    - "18:00"
+    - "21:00"
+    - "00:00"
+prowlarr:
+  port: 9696
+  hostname: "prowlarr"
+  api_key: ${PROWLARR__API_KEY}
+  settings:
+    indexers:
+      indexers:
+        delete_unmanaged: true
+        definitions:
+          DrunkenSlug:
+            type: newznab
+            enable: true
+            sync_profile: Standard
+            redirect: false
+            priority: 25
+            fields:
+              baseUrl: https://drunkenslug.com
+              apiPath: /api
+              additionalParameters: null
+              vipExpiration: ''
+              baseSettings.limitsUnit: Day
+            secret_fields:
+              apiKey: ${DS__API_KEY}
+    apps:
+      applications:
+        delete_unmanaged: false
+        definitions:
+          Radarr:
+            type: radarr
+            prowlarr_url: http://prowlarr:9696
+            base_url: http://radarr:7878
+            sync_level: full-sync
+            sync_categories:
+            - movies/web-dl
+            - movies/dvd
+            - movies/x265
+            - movies/hd
+            - movies/foreign
+            - movies/sd
+            - movies
+            - movies/uhd
+            - movies/3d
+            - movies/bluray
+            - movies/other
+            api_key: ${RADARR__API_KEY}
+          Sonarr:
+            type: sonarr
+            prowlarr_url: http://prowlarr:9696
+            base_url: http://sonarr:8989
+            sync_level: full-sync
+            sync_categories:
+            - tv/uhd
+            - tv/sd
+            - tv/web-dl
+            - tv/foreign
+            - tv/other
+            - tv
+            - tv/x265
+            - tv/hd
+            api_key: ${SONARR__API_KEY}
+            anime_sync_categories:
+            - tv/anime
+            sync_anime_standard_format_search: false
+          Readarr:
+            type: readarr
+            prowlarr_url: http://prowlarr:9696
+            base_url: http://readarr:8787
+            sync_level: full-sync
+            sync_categories:
+            - books/ebook
+            - books/foreign
+            - books/other
+            - audio/audiobook
+            - books/comics
+            - books/mags
+            - books/technical
+            - books
+            tags: []
+            api_key: ${READARR__API_KEY}
+    download_clients:
+      delete_unmanaged: true
+      definitions:
+        SABnzbd:
+          enable: true
+          priority: 1
+          tags: []
+          type: sabnzbd
+          host: sabnzbd
+          port: 8080
+          api_key: ${SABNZBD__API_KEY}
+          category: prowlarr
+          client_priority: default
+    tags:
+      definitions: []
+      security:
+        authentication: external
+        authentication_required: disabled
+        username: null
+        password: null
+        certificate_validation: enabled
+      analytics:
+        send_anonymous_usage_data: false
+    ui:
+      first_day_of_week: sunday
+      week_column_header: month-first
+      short_date_format: word-month-first
+      long_date_format: month-first
+      time_format: twentyfour-hour
+      show_relative_dates: true
+      ui_language: en
+radarr:
+  hostname: radarr.cfg.sh # THIS SHOULD BE CLUSTER SVC URL!! THS RUNS IN A POD DUMMY
+  port: 80
+  protocol: http
+  api_key: ${RADARR__API_KEY}
+  settings:
+    media_management:
+      rename_movies: true
+      replace_illegal_characters: true
+      colon_replacement: delete
+      standard_movie_format: '{Movie CleanTitle} {(Release Year)} [imdbid-{ImdbId}]
+        - {Edition Tags }{[Custom Formats]}{[Quality Full]}{[MediaInfo 3D]}{[MediaInfo
+        VideoDynamicRangeType]}{[Mediainfo AudioCodec}{ Mediainfo AudioChannels}]{MediaInfo
+        AudioLanguages}[{MediaInfo VideoBitDepth}bit][{Mediainfo VideoCodec}]{-Release
+        Group}'
+      movie_folder_format: '{Movie Title} ({Release Year})'
+      create_missing_movie_folders: false
+      delete_empty_folders: true
+      skip_free_space_check: false
+      minimum_free_space: 100
+      use_hardlinks: true
+      unmonitor_deleted_movies: true
+      propers_and_repacks: prefer-and-upgrade
+      analyze_video_files: true
+      rescan_folder_after_refresh: always
+      change_file_date: none
+      recycling_bin_cleanup: 7
+      set_permissions: false
+      chmod_folder: drwxr-xr-x
+    download_clients:
+      delete_unmanaged: false
+      definitions:
+        SABnzbd:
+          enable: true
+          priority: 1
+          tags: []
+          type: sabnzbd
+          host: sabnzbd
+          port: 8080
+          api_key: ${SABNZBD__API_KEY}
+          category: prowlarr
+          client_priority: default
+      security:
+        authentication: form
+        authentication_required: local-disabled
+        username: admin
+        password: ${RADARR__PASSWORD}
+        certificate_validation: enabled
+    ui:
+      first_day_of_week: sunday
+      week_column_header: month-first
+      runtime_format: hours-minutes
+      short_date_format: word-month-first
+      long_date_format: month-first
+      time_format: twelve-hour
+      show_relative_dates: true
+      movie_info_language: english
+      ui_language: english
