@@ -28,7 +28,7 @@ spec:
           main:
             image:
               repository: ghcr.io/duhio/docs
-              tag: 1.0.0@sha256:c6429c00a4d72029787fbbb82a3fc53c120f536650fb7e65069df1dfc08528ec
+              tag: 1.0.0@sha256:3e98902fbfcc81460e99ff3b26cf6c9f62db257ddd29ee4719fef14eebcfb1d1
             resources:
               requests:
                 cpu: 5m
