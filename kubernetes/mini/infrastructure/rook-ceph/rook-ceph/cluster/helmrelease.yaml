@@ -84,10 +84,10 @@ spec:
               - name: /dev/disk/by-id/ata-Samsung_SSD_870_QVO_1TB_S6R8NJ0W403006V
           - name: control03
             devices:
-              - name: /dev/disk/by-id/ata-Samsung_SSD_870_QVO_1TB_
-          - name: worker01
-            devices:
-              - name: /dev/disk/by-id/ata-Samsung_SSD_870_QVO_1TB_
+              - name: /dev/disk/by-id/ata-Samsung_SSD_870_QVO_1TB_S6R8NJ0W402497M
+          # - name: worker01
+          #   devices:
+          #     - name: /dev/disk/by-id/ata-Samsung_SSD_870_QVO_1TB_
     ingress:
       dashboard:
         ingressClassName: nginx
