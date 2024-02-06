@@ -11,6 +11,7 @@ cniConfig:
 
 additionalApiServerCertSans: &san
   - "127.0.0.1" # KubePrism
+  - "192.168.1.55" # VIP
 additionalMachineCertSans: *san
 
 nodes:
@@ -24,10 +25,6 @@ nodes:
       useUKI: true
     installDiskSelector:
       size: "<=260GB"
-    machineDisks:
-      - device: /dev/sda
-        partitions:
-          - mountpoint: /var/mnt/sata
     networkInterfaces:
       - deviceSelector:
           busPath: "0*"
@@ -43,10 +40,6 @@ nodes:
       useUKI: true
     installDiskSelector:
       size: "<=260GB"
-    machineDisks:
-      - device: /dev/sda
-        partitions:
-          - mountpoint: /var/mnt/sata
     networkInterfaces:
       - deviceSelector:
           busPath: "0*"
@@ -62,10 +55,6 @@ nodes:
       useUKI: true
     installDiskSelector:
       size: "<=260GB"
-    machineDisks:
-      - device: /dev/sda
-        partitions:
-          - mountpoint: /var/mnt/sata
     networkInterfaces:
       - deviceSelector:
           busPath: "0*"
@@ -81,10 +70,6 @@ nodes:
       useUKI: true
     installDiskSelector:
       size: "<=260GB"
-    machineDisks:
-      - device: /dev/sda
-        partitions:
-          - mountpoint: /var/mnt/sata
     networkInterfaces:
       - deviceSelector:
           busPath: "0*"
@@ -129,17 +114,6 @@ controlPlane:
             rotate-server-certificates: "true"
           extraConfig:
             maxPods: 150
-    - &sata |-
-      machine:
-        kubelet:
-          extraMounts:
-            - destination: /var/mnt/sata
-              type: bind
-              source: /var/mnt/sata
-              options:
-                - rbind
-                - rshared
-                - rw
     - |-
       machine:
         network:
@@ -163,4 +137,3 @@ worker:
     - *wipe
     - *kubeproxy
     - *cert
-    - *sata

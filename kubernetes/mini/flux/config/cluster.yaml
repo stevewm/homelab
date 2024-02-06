@@ -30,35 +30,3 @@ spec:
   sourceRef:
     kind: GitRepository
     name: homelab
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
----
-apiVersion: notification.toolkit.fluxcd.io/v1beta3
-kind: Provider
-metadata:
-  name: flux-system
-  namespace: flux-system
-spec:
-  type: github
-  address: https://github.com/stevewm/homelab
-  secretRef:
-    name: github
----
-apiVersion: notification.toolkit.fluxcd.io/v1beta3
-kind: Alert
-metadata:
-  name: github
-  namespace: flux-system
-spec:
-  providerRef:
-    name: flux-system
-  eventSeverity: info
-  eventSources:
-    - kind: Kustomization
-      name: cluster
-    - kind: Kustomization
-      name: apps
-  exclusionList:
-    - waiting.*socket
