@@ -19,6 +19,10 @@ spec:
       name: sops-age
   dependsOn:
     - name: infra-external-secrets-operator-crds
+  postBuild:
+    substituteFrom:
+      - kind: Secret
+        name: doppler
 ---
 # CRD deployment from ES repo
 apiVersion: kustomize.toolkit.fluxcd.io/v1
