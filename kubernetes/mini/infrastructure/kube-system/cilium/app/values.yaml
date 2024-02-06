@@ -64,6 +64,7 @@ hubble:
         memory: 2Gi
     ingress:
       enabled: true
+      className: nginx
       hosts:
         - &host cni.cfg.sh
       tls:
