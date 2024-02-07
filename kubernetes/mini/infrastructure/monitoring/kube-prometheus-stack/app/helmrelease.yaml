@@ -30,6 +30,7 @@ spec:
         ruleSelectorNilUsesHelmValues: false
       ingress:
         enabled: true
+        ingressClassName: nginx
         hosts:
           - &prom-host prom.cfg.sh
         tls:
@@ -50,6 +51,7 @@ spec:
             memory: 700Mi
       ingress:
         enabled: true
+        ingressClassName: nginx
         hosts:
           - &graf-host graf.cfg.sh
         tls:
@@ -70,6 +72,7 @@ spec:
             memory: 100Mi
       ingress:
         enabled: true
+        ingressClassName: nginx
         hosts:
           - &am-host am.cfg.sh
         tls:
