@@ -46,6 +46,34 @@ spec:
       limits:
         memory: 200Mi
     config:
+      settings:
+        title: Cluster Home
+        background: |
+          https://images.unsplash.com/photo-1705875999426-b2899c13a70c?auto=format&fit=crop&w=2560
+        favicon: https://docs.cfg.sh/logo.png
+        cardBlur: sm
+        theme: dark
+        statusStyle: dot
+        headerStyle: boxedWidgets
+        iconStyle: theme
+        disableCollapse: true
+        # Group Layout
+        layout:
+          media:
+            style: row
+            size: 3
+            header: false
+          selfhosted:
+            style: row
+            size: 4
+            header: false
+          downloads: # Order the auto-discovered groups
+            style: row
+            size: 3
+          nas:
+          monitoring:
+          network:
+          security:
       kubernetes:
         mode: cluster
       bookmarks:
@@ -64,6 +92,11 @@ spec:
                 - abbr: rdt
                   href: https://reddit.com/
       services:
+        - media:
+            - "jellyfin [nas]":
+                description: streaming
+                href: http://lilnas:8096
+                icon: jellyfin.png
         - nas:
             - portal:
                 description: management
@@ -81,11 +114,6 @@ spec:
                 description: containers
                 href: https://lilnas:19943
                 icon: portainer.png
-        - media:
-            - "jellyfin [nas]":
-                description: streaming
-                href: http://lilnas:8096
-                icon: jellyfin.png
       widgets:
         - resources:
             backend: kubernetes
