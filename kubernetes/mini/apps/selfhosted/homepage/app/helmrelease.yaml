@@ -20,6 +20,8 @@ spec:
       repository: ghcr.io/gethomepage/homepage
       tag: v0.8.7
     enableRbac: true
+    podAnnotations:
+      reloader.stakater.com/auto: 'true'
     serviceAccount:
       create: true
     ingress:
