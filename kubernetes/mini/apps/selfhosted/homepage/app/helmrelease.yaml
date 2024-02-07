@@ -80,7 +80,7 @@ spec:
                 href: https://lilnas:19943
                 icon: portainer.png
         - media:
-            - jellyfin:
+            - "jellyfin [nas]":
                 description: streaming
                 href: http://lilnas:8096
                 icon: jellyfin.png
