@@ -48,45 +48,45 @@ spec:
     config:
       settings:
         title: Cluster Home
-        # Credit: https://unsplash.com/photos/a-lone-tree-sitting-on-top-of-a-snow-covered-hill-DmFb0KOJkwM
+        theme: dark
         background: https://images.unsplash.com/photo-1705875999426-b2899c13a70c?auto=format&fit=crop&w=2560&q=80
         favicon: https://docs.cfg.sh/logo.png
+
         cardBlur: sm
-        theme: dark
-        statusStyle: dot
-        headerStyle: boxedWidgets
-        iconStyle: theme
         disableCollapse: true
-        # Group Layout
+        statusStyle: dot
+        headerStyle: clean
+        iconStyle: theme
+
         layout:
           media:
-            style: row
-            size: 3
             header: false
+            columns: 3
+            style: row
             useEqualHeights: true
           selfhosted:
-            style: row
-            size: 4
             header: false
-          downloads: # Order the auto-discovered groups
+            columns: 4
             style: row
-            size: 3
+          downloads:
+            header: false
+            columns: 4
+            style: row
             useEqualHeights: true
-            header: false
-          nas:
-          monitoring:
-          network:
-          security:
+          monitoring: null
+          nas: null
+          network: null
+          security: null
       kubernetes:
         mode: cluster
       bookmarks:
         - homelab:
             - doppler:
-              abbr: dplr
-              href: https://dashboard.doppler.com/
+                - abbr: dplr
+                  href: https://dashboard.doppler.com/
             - cloudflare:
-              abbr: cf
-              href: https://dash.cloudflare.com
+                - abbr: cf
+                  href: https://dash.cloudflare.com
         - dev:
             - github:
                 - abbr: gh
