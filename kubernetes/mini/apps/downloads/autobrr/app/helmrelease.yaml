@@ -72,6 +72,9 @@ spec:
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: downloads
           gethomepage.dev/icon: autobrr.png
+          gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_AUTOBRR_API_KEY}}'
+          gethomepage.dev/widget.type: autobrr
+          gethomepage.dev/widget.url: 'http://autobrr.downloads.svc.cluster.local:7474'
     persistence:
       config:
         enabled: true
