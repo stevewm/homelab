@@ -20,9 +20,9 @@ spec:
         strategy: Recreate
         pod:
           securityContext:
-            runAsUser: 568
-            runAsGroup: 568
-            fsGroup: 568
+            runAsUser: 1001
+            runAsGroup: 1001
+            fsGroup: 1001
             fsGroupChangePolicy: OnRootMismatch
           nodeSelector:
             intel.feature.node.kubernetes.io/gpu: "true"
@@ -63,6 +63,9 @@ spec:
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: media
           gethomepage.dev/icon: jellyfin.png
+          gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_JELLYFIN_API_KEY}}'
+          gethomepage.dev/widget.type: jellyfin
+          gethomepage.dev/widget.url: 'http://jellyfin.media.svc.cluster.local:8096'
           nginx.ingress.kubernetes.io/configuration-snippet: |
             proxy_set_header Accept-Encoding "";
             sub_filter
