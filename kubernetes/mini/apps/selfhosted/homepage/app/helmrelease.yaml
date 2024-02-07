@@ -46,6 +46,8 @@ spec:
       limits:
         memory: 200Mi
     config:
+      kubernetes:
+        mode: cluster
       settings:
         title: Cluster Home
         theme: dark
@@ -78,30 +80,6 @@ spec:
           nas:
           network:
           security:
-      kubernetes:
-        mode: cluster
-      bookmarks:
-        - homelab:
-            - doppler:
-                - abbr: dplr
-                  href: https://dashboard.doppler.com/
-            - cloudflare:
-                - abbr: cf
-                  href: https://dash.cloudflare.com
-        - dev:
-            - github:
-                - abbr: gh
-                  href: https://github.com/
-            - hacker news:
-                - abbr: hn
-                  href: https://news.ycombinator.com/
-        - social:
-            - twitter:
-                - abbr: twtr
-                  href: https://twitter.com/
-            - reddit:
-                - abbr: rdt
-                  href: https://reddit.com/
       services:
         - network:
             - pi-hole:
@@ -131,3 +109,25 @@ spec:
               cpu: true
               memory: true
               showLabel: true
+      bookmarks:
+        - homelab:
+            - doppler:
+                - abbr: dplr
+                  href: https://dashboard.doppler.com/
+            - cloudflare:
+                - abbr: cf
+                  href: https://dash.cloudflare.com
+        - dev:
+            - github:
+                - abbr: gh
+                  href: https://github.com/
+            - hacker news:
+                - abbr: hn
+                  href: https://news.ycombinator.com/
+        - social:
+            - twitter:
+                - abbr: twtr
+                  href: https://twitter.com/
+            - reddit:
+                - abbr: rdt
+                  href: https://reddit.com/
