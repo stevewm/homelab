@@ -48,8 +48,8 @@ spec:
     config:
       settings:
         title: Cluster Home
-        background: |
-          https://images.unsplash.com/photo-1705875999426-b2899c13a70c?auto=format&fit=crop&w=2560
+        # Credit: https://unsplash.com/photos/a-lone-tree-sitting-on-top-of-a-snow-covered-hill-DmFb0KOJkwM
+        background: https://images.unsplash.com/photo-1705875999426-b2899c13a70c?auto=format&fit=crop&w=2560
         favicon: https://docs.cfg.sh/logo.png
         cardBlur: sm
         theme: dark
@@ -115,18 +115,6 @@ spec:
                 href: https://lilnas:19943
                 icon: portainer.png
       widgets:
-        - resources:
-            backend: kubernetes
-            expanded: true
-            cpu: true
-            memory: true
         - search:
             provider: duckduckgo
             target: _blank
-        - kubernetes:
-            cluster:
-              show: true
-              cpu: true
-              memory: true
-            nodes:
-              show: false
