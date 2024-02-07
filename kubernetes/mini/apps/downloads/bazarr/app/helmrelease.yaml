@@ -59,7 +59,6 @@ spec:
               - *host
         annotations:
           gethomepage.dev/name: *name
-          gethomepage.dev/description: subtitles
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: downloads
           gethomepage.dev/icon: bazarr.png

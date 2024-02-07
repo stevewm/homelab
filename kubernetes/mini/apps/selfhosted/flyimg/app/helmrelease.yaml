@@ -50,7 +50,6 @@ spec:
               - *host
         annotations:
           gethomepage.dev/name: *name
-          gethomepage.dev/description: utilities
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: selfhosted
           gethomepage.dev/icon: mdi-image-size-select-large

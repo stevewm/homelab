@@ -52,7 +52,6 @@ spec:
               - *host
         annotations:
           gethomepage.dev/name: *name
-          gethomepage.dev/description: pdf ops
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: selfhosted
           gethomepage.dev/icon: stirling-pdf.png

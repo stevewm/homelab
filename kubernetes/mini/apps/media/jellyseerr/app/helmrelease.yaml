@@ -56,7 +56,6 @@ spec:
               - *host
         annotations:
           gethomepage.dev/name: *name
-          gethomepage.dev/description: media requests
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: media
           gethomepage.dev/icon: jellyseerr.png

@@ -71,7 +71,6 @@ spec:
               - *host
         annotations:
           gethomepage.dev/name: *name
-          gethomepage.dev/description: ldap
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: security
           gethomepage.dev/icon: mdi-account-group
