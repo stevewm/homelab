@@ -49,7 +49,7 @@ spec:
       settings:
         title: Cluster Home
         # Credit: https://unsplash.com/photos/a-lone-tree-sitting-on-top-of-a-snow-covered-hill-DmFb0KOJkwM
-        background: https://images.unsplash.com/photo-1705875999426-b2899c13a70c?auto=format&fit=crop&w=2560
+        background: https://images.unsplash.com/photo-1705875999426-b2899c13a70c?auto=format&fit=crop&w=2560&q=80
         favicon: https://docs.cfg.sh/logo.png
         cardBlur: sm
         theme: dark
@@ -63,6 +63,7 @@ spec:
             style: row
             size: 3
             header: false
+            useEqualHeights: true
           selfhosted:
             style: row
             size: 4
@@ -70,6 +71,8 @@ spec:
           downloads: # Order the auto-discovered groups
             style: row
             size: 3
+            useEqualHeights: true
+            header: false
           nas:
           monitoring:
           network:
@@ -77,6 +80,13 @@ spec:
       kubernetes:
         mode: cluster
       bookmarks:
+        - homelab:
+            - doppler:
+              abbr: dplr
+              href: https://dashboard.doppler.com/
+            - cloudflare:
+              abbr: cf
+              href: https://dash.cloudflare.com
         - dev:
             - github:
                 - abbr: gh
@@ -92,16 +102,7 @@ spec:
                 - abbr: rdt
                   href: https://reddit.com/
       services:
-        - media:
-            - "jellyfin [nas]":
-                description: streaming
-                href: http://lilnas:8096
-                icon: jellyfin.png
-        - nas:
-            - portal:
-                description: management
-                href: http://lilnas:8000
-                icon: asustor.png
+        - network:
             - pi-hole:
                 description: dns
                 href: http://lilnas:3001/admin/
@@ -110,11 +111,25 @@ spec:
                   type: pihole
                   url: "http://192.168.1.234:3001"
                   key: "{{HOMEPAGE_VAR_PIHOLE_API_KEY}}"
+        - nas:
+            - portal:
+                description: management
+                href: http://lilnas:8000
+                icon: asustor.png
+
             - portainer:
                 description: containers
                 href: https://lilnas:19943
                 icon: portainer.png
       widgets:
-        - search:
-            provider: duckduckgo
-            target: _blank
+        - kubernetes:
+            cluster:
+              show: false
+              cpu: false
+              memory: false
+              showLabel: false
+            nodes:
+              show: true
+              cpu: true
+              memory: true
+              showLabel: true
