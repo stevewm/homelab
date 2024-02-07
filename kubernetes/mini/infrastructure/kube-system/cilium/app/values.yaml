@@ -75,4 +75,4 @@ hubble:
         gethomepage.dev/description: cni
         gethomepage.dev/enabled: 'true'
         gethomepage.dev/group: network
-        gethomepage.dev/icon: hubble.png
+        gethomepage.dev/icon: cilium.png
