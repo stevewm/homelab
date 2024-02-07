@@ -10,6 +10,76 @@ buildarr:
     - "18:00"
     - "21:00"
     - "00:00"
+jellyseerr:
+  hostname: js.cfg.sh
+  port: 443
+  protocol: https
+  api_key: ${JELLYSEERR__API_KEY}
+  settings:
+    general:
+      application_title: Jellyseerr
+      display_language: en
+      hide_available_media: false
+      allow_partial_series_requests: true
+    jellyfin:
+      external_url: https://jf.cfg.sh/
+      libraries:
+      - Anime
+      - Movies
+      - TV
+    users:
+      enable_local_signin: true
+      enable_new_jellyfin_signin: true
+      global_movie_request_limit: 2
+      global_movie_request_days: 7
+      global_series_request_limit: 3
+      global_series_request_days: 7
+      default_permissions:
+      - create-issues
+      - request-4k
+      - auto-approve
+      - request
+    services:
+      radarr:
+        delete_unmanaged: true
+        definitions:
+          Radarr:
+            is_default_server: true
+            is_4k_server: false
+            hostname: radarr.downloads.svc.cluster.local
+            port: 7878
+            use_ssl: false
+            external_url: https://rdr.cfg.sh
+            enable_scan: true
+            enable_automatic_search: true
+            api_key: ${RADARR__API_KEY}
+            root_folder: /data/media/movies
+            quality_profile: 1080p to 4K
+            minimum_availability: released
+            tags: []
+      sonarr:
+        delete_unmanaged: true
+        definitions:
+          Sonarr:
+            is_default_server: true
+            is_4k_server: false
+            hostname: sonarr.downloads.svc.cluster.local
+            port: 8989
+            use_ssl: false
+            external_url: https://snr.cfg.sh/
+            enable_scan: true
+            enable_automatic_search: true
+            api_key: ${SONARR__API_KEY}
+            root_folder: /data/media/tv
+            quality_profile: 1080p to 4K
+            language_profile: Deprecated
+            tags: []
+            anime_root_folder: /data/media/anime
+            anime_quality_profile: HD-1080p
+            anime_language_profile: Deprecated
+            anime_tags: []
+            enable_season_folders: true
+
 prowlarr:
   port: 9696
   hostname: "prowlarr"

@@ -55,6 +55,11 @@ spec:
                 secretKeyRef:
                   name: prowlarr
                   key: api_key
+            - name: JELLYSEERR__API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: buildarr
+                  key: jellyseerr_api_key
             - name: SABNZBD__API_KEY
               valueFrom:
                 secretKeyRef:
@@ -63,8 +68,8 @@ spec:
             - name: DS__API_KEY
               valueFrom:
                 secretKeyRef:
-                  name: ds
-                  key: api_key
+                  name: buildarr
+                  key: ds_api_key
       containers:
         - name: buildarr
           image: callum027/buildarr:0.7
