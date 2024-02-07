@@ -66,7 +66,6 @@ spec:
               - *host
         annotations:
           gethomepage.dev/name: *name
-          gethomepage.dev/description: ebooks
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: downloads
           gethomepage.dev/icon: readarr.png

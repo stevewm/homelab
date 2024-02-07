@@ -67,7 +67,6 @@ spec:
               - *host
         annotations:
           gethomepage.dev/name: *name
-          gethomepage.dev/description: television
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: downloads
           gethomepage.dev/icon: sonarr.png
