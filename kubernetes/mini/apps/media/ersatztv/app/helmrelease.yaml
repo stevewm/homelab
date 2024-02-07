@@ -1,0 +1,76 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: &name ersatztv
+spec:
+  interval: 30m
+  maxHistory: 3
+  chart:
+    spec:
+      chart: app-template
+      version: 2.5.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  values:
+    controllers:
+      main:
+        strategy: Recreate
+        pod:
+          nodeSelector:
+            intel.feature.node.kubernetes.io/gpu: "true"
+        containers:
+          main:
+            image:
+              repository: jasongdove/ersatztv-vaapi
+              tag: v0.8.5
+            resources:
+              requests:
+                cpu: 50m
+                memory: 1Gi
+              limits:
+                memory: 2Gi
+                gpu.intel.com/i915: 1
+    service:
+      main:
+        ports:
+          http:
+            port: 8409
+    ingress:
+      main:
+        enabled: true
+        className: nginx
+        hosts:
+          - host: &host tv.cfg.sh
+            paths:
+              - path: /
+                service:
+                  name: main
+                  port: http
+        tls:
+          - hosts:
+              - *host
+        annotations:
+          gethomepage.dev/name: *name
+          gethomepage.dev/description: custom tv channels
+          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/group: media
+          gethomepage.dev/icon: ersatztv.png
+    persistence:
+      config:
+        enabled: true
+        type: persistentVolumeClaim
+        globalMounts:
+          - path: /root/.local/share/ersatztv
+      cache:
+        enabled: true
+        type: emptyDir
+      media:
+        enabled: true
+        type: nfs
+        server: 192.168.1.234
+        path: /volume1/Media
+        globalMounts:
+          - path: /data/media
