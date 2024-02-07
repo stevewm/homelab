@@ -24,8 +24,8 @@ spec:
         containers:
           main:
             image:
-              repository: jasongdove/ersatztv-vaapi
-              tag: v0.8.5
+              repository: jasongdove/ersatztv
+              tag: v0.8.5-vaapi
             resources:
               requests:
                 cpu: 50m
