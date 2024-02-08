@@ -30,8 +30,8 @@ spec:
           secretAccessKey:
             name: backblaze-b2
             key: application_key
-          wal:
-            maxParallel: 8
+        wal:
+          maxParallel: 8
   backup:
     retentionPolicy: 30d
     barmanObjectStore:
