@@ -1,0 +1,51 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: pg-db-mealie
+spec:
+  instances: 3
+  storage:
+    size: 2Gi
+  resources:
+    requests:
+      cpu: 40m
+      memory: 100Mi
+    limits:
+      memory: 250Mi
+  monitoring:
+    enablePodMonitor: true
+  bootstrap:
+    recovery:
+      source: pg-db-mealie-backup
+  externalClusters:
+    - name: pg-db-mealie-backup
+      barmanObjectStore:
+        destinationPath: s3://pi-cluster-backup/mealie
+        endpointURL: https://s3.us-east-005.backblazeb2.com
+        s3Credentials:
+          accessKeyId:
+            name: backblaze-b2
+            key: application_key_id
+          secretAccessKey:
+            name: backblaze-b2
+            key: application_key
+          wal:
+            maxParallel: 8
+  backup:
+    retentionPolicy: 30d
+    barmanObjectStore:
+      data:
+        compression: bzip2
+      wal:
+        compression: bzip2
+        maxParallel: 8
+      destinationPath: s3://pi-cluster-backup/mealie
+      endpointURL: https://s3.us-east-005.backblazeb2.com
+      s3Credentials:
+        accessKeyId:
+          name: mealie
+          key: b2_application_key_id
+        secretAccessKey:
+          name: mealie
+          key: b2_application_key
