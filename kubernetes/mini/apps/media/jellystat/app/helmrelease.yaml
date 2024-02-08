@@ -34,22 +34,22 @@ spec:
               POSTGRES_IP:
                 valueFrom:
                   secretKeyRef:
-                    name: pg-db-speedtest-app
+                    name: pg-db-jellystat-app
                     key: host
               POSTGRES_PORT:
                 valueFrom:
                   secretKeyRef:
-                    name: pg-db-speedtest-app
+                    name: pg-db-jellystat-app
                     key: port
               POSTGRES_USER:
                 valueFrom:
                   secretKeyRef:
-                    name: pg-db-speedtest-app
+                    name: pg-db-jellystat-app
                     key: username
               POSTGRES_PASSWORD:
                 valueFrom:
                   secretKeyRef:
-                    name: pg-db-speedtest-app
+                    name: pg-db-jellystat-app
                     key: password
               JWT_SECRET:
                 valueFrom:
