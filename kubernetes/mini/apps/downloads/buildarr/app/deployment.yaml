@@ -35,11 +35,11 @@ spec:
                 secretKeyRef:
                   name: radarr
                   key: password
-            - name: READARR__API_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: readarr
-                  key: api_key
+            # - name: READARR__API_KEY
+            #   valueFrom:
+            #     secretKeyRef:
+            #       name: readarr
+            #       key: api_key
             - name: RADARR__API_KEY
               valueFrom:
                 secretKeyRef:
