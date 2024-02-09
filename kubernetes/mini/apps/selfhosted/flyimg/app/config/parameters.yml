@@ -1,7 +1,0 @@
----
-storage_system: s3
-aws_s3:
-  access_id: ''
-  secret_key: ''
-  region: ${REGION}
-  bucket_name: ''
