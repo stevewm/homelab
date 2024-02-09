@@ -41,12 +41,12 @@ spec:
                   secretKeyRef:
                     name: radarr
                     key: api_key
-                resources:
-            requests:
-              cpu: 20m
-              memory: 256M
-            limits:
-              memory: 1Gi
+            resources:
+              requests:
+                cpu: 20m
+                memory: 256M
+              limits:
+                memory: 1Gi
     service:
       main:
         ports:
