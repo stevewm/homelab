@@ -20,6 +20,9 @@ spec:
     installCRDs: false # managed in ../ks.yaml
     deploymentAnnotations:
       reloader.stakater.com/auto: 'true'
-    requests:
-      cpu: 10m
-      memory: 32Mi
+    resources:
+      requests:
+        cpu: 10m
+        memory: 80M
+      limits:
+        memory:

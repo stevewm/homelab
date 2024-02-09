@@ -26,10 +26,10 @@ spec:
               tag: v10.6.0
             resources:
               requests:
-                cpu: 25m
-                memory: 128Mi
+                cpu: 10m
+                memory: 32M
               limits:
-                memory: 256Mi
+                memory: 64M
     service:
       main:
         ports:

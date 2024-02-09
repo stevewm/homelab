@@ -43,10 +43,10 @@ spec:
                     key: api_key
             resources:
               requests:
-                cpu: 20m
-                memory: 256M
+                cpu: 10m
+                memory: 226M
               limits:
-                memory: 1Gi
+                memory: 327M
     service:
       main:
         ports:

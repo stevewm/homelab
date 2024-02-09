@@ -35,10 +35,10 @@ spec:
               supplementalGroups: [1001]
             resources:
               requests:
-                cpu: 20m
-                memory: 256M
+                cpu: 10m
+                memory: 127M
               limits:
-                memory: 512M
+                memory: 318M
     service:
       main:
         ports:
