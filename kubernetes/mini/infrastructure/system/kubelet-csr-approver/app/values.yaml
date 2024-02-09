@@ -1,5 +1,10 @@
 ---
 providerRegex: |
   ^(control\d+|worker\d+)$
-
 bypassDnsResolution: true
+resources:
+  requests:
+    cpu: 50m
+    memory: 64M
+  limits:
+    memory: 128M

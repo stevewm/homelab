@@ -29,10 +29,10 @@ spec:
               tag: v0.8.5-vaapi
             resources:
               requests:
-                cpu: 50m
-                memory: 1Gi
+                cpu: 11m
+                memory: 1200M
               limits:
-                memory: 2Gi
+                memory: 1200M
                 gpu.intel.com/i915: 1
     service:
       main:

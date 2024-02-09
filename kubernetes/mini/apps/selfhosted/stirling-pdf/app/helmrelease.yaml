@@ -28,10 +28,10 @@ spec:
               DOCKER_ENABLE_SECURITY: 'false'
             resources:
               requests:
-                cpu: 25m
-                memory: 128Mi
+                cpu: 10m
+                memory: 250M
               limits:
-                memory: 256Mi
+                memory: 300M
     service:
       main:
         ports:

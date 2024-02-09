@@ -43,9 +43,9 @@ spec:
     resources:
       requests:
         cpu: 10m
-        memory: 100Mi
+        memory: 164M
       limits:
-        memory: 200Mi
+        memory: 244M
     config:
       kubernetes:
         mode: cluster

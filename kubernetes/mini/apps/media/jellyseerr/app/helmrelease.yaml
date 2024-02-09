@@ -32,10 +32,10 @@ spec:
               tag: 1.7.0
             resources:
               requests:
-                cpu: 50m
-                memory: 250Mi
+                cpu: 10m
+                memory: 272M
               limits:
-                memory: 350Mi
+                memory: 356M
     service:
       main:
         ports:

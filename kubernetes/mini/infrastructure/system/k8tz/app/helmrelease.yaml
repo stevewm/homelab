@@ -22,7 +22,7 @@ spec:
     cronJobTimeZone: true
     resources:
       requests:
-        cpu: 25m
-        memory: 64Mi
+        cpu: 10m
+        memory: 32M
       limits:
-        memory: 100Mi
+        memory: 48M
