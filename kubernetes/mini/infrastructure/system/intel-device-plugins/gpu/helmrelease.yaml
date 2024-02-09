@@ -16,5 +16,4 @@ spec:
         name: intel
         namespace: flux-system
   values:
-    name: intel-gpu-plugin
     nodeFeatureRule: false
