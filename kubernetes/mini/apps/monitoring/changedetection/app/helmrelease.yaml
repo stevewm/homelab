@@ -17,6 +17,8 @@ spec:
         name: gabe565
         namespace: flux-system
   values:
+    defaultPodOptions:
+      automountServiceAccountToken: false
     image:
       repository: ghcr.io/dgtlmoon/changedetection.io
       tag: 0.45.8.1
