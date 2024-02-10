@@ -57,21 +57,21 @@ spec:
                   secretKeyRef:
                     name: pg-db-mealie-app
                     key: dbname
-              LDAP_AUTH_ENABLED: true
-              LDAP_SERVER_URL: ldap://lldap.security.svc.cluster.local:3890
-              LDAP_TLS_INSECURE: true
-              LDAP_BASE_DN: ou=people,dc=cfg,dc=sh
-              LDAP_USER_FILTER: (memberof=cn=mealie_users,ou=groups,dc=cfg,dc=sh)
-              LDAP_ADMIN_FILTER: (memberof=cn=app_admins,ou=groups,dc=cfg,dc=sh)
-              LDAP_QUERY_BIND: cn=readonly_user,ou=people,dc=cfg,dc=sh
-              LDAP_QUERY_PASSWORD:
-                valueFrom:
-                  secretKeyRef:
-                    name: mealie
-                    key: LLDAP_USER_PASS
-              LDAP_ID_ATTRIBUTE: uid
-              LDAP_NAME_ATTRIBUTE: displayName
-              LDAP_MAIL_ATTRIBUTE: mail
+              # LDAP_AUTH_ENABLED: true
+              # LDAP_SERVER_URL: ldap://lldap.security.svc.cluster.local:3890
+              # LDAP_TLS_INSECURE: true
+              # LDAP_BASE_DN: ou=people,dc=cfg,dc=sh
+              # LDAP_USER_FILTER: (memberof=cn=mealie_users,ou=groups,dc=cfg,dc=sh)
+              # LDAP_ADMIN_FILTER: (memberof=cn=app_admins,ou=groups,dc=cfg,dc=sh)
+              # LDAP_QUERY_BIND: cn=readonly_user,ou=people,dc=cfg,dc=sh
+              # LDAP_QUERY_PASSWORD:
+              #   valueFrom:
+              #     secretKeyRef:
+              #       name: mealie
+              #       key: LLDAP_USER_PASS
+              # LDAP_ID_ATTRIBUTE: uid
+              # LDAP_NAME_ATTRIBUTE: displayName
+              # LDAP_MAIL_ATTRIBUTE: mail
             resources:
               requests:
                 cpu: 10m
