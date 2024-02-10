@@ -24,6 +24,7 @@ spec:
     - name: pg-db-mealie-backup
       barmanObjectStore:
         destinationPath: s3://pi-cluster-backup/mealie
+        serverName: pg-db-mealie
         endpointURL: https://s3.us-east-005.backblazeb2.com
         s3Credentials:
           accessKeyId:
