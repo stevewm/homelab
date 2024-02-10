@@ -3,6 +3,8 @@ apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
   name: pg-db-mealie
+  annotations:
+    cnpg.io/skipEmptyWalArchiveCheck: enabled
 spec:
   instances: 3
   storage:
@@ -42,6 +44,7 @@ spec:
         maxParallel: 8
       destinationPath: s3://pi-cluster-backup/mealie
       endpointURL: https://s3.us-east-005.backblazeb2.com
+      serverName: "recoveredCluster"
       s3Credentials:
         accessKeyId:
           name: mealie
