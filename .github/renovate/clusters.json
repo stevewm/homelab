@@ -7,29 +7,20 @@
         "**/kubernetes/mini/**"
       ],
       "additionalBranchPrefix": "main-",
-      "labels": [
-        "cluster/main"
-      ]
     },
     {
       "description": "Pi cluster",
       "matchFileNames": [
         "**/kubernetes/pi/**"
       ],
-      "additionalBranchPrefix": "pi-",
-      "labels": [
-        "cluster/pi"
-      ]
+      "additionalBranchPrefix": "pi-"
     },
     {
       "description": "Docs",
       "matchFileNames": [
         "**/docs/**"
       ],
-      "additionalBranchPrefix": "docs-",
-      "labels": [
-        "docs"
-      ]
+      "additionalBranchPrefix": "docs-"
     }
   ]
 }

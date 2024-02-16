@@ -1,0 +1,10 @@
+---
+docs:
+  - changed-files:
+      - any-glob-to-any-file: docs/**
+cluster/main:
+  - changed-files:
+      - any-glob-to-any-file: kubernetes/mini/**/*
+cluster/nas:
+  - changed-files:
+      - any-glob-to-any-file: kubernetes/pi/**/*
