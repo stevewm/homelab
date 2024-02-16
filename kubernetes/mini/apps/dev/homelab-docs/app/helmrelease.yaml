@@ -30,7 +30,7 @@ spec:
         containers:
           main:
             image:
-              repository: ghcr.io/duhio/docs
+              repository: ghcr.io/stevewm/docs
               tag: 1.0.0@sha256:3e98902fbfcc81460e99ff3b26cf6c9f62db257ddd29ee4719fef14eebcfb1d1
             resources:
               requests:
