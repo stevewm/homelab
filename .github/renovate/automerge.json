@@ -5,8 +5,7 @@
     {
       "description": "Automerge digest updates",
       "matchPackagePatterns": [
-        "ghcr.io/onedr0p",
-        "ghr.io/stevewm"
+        "ghcr.io/onedr0p"
       ],
       "matchUpdateTypes": [
         "digest"
