@@ -4,11 +4,17 @@
     "config:recommended",
     "docker:enableMajor",
     ":semanticCommits",
-    ":disableRateLimiting"
+    ":disableRateLimiting",
+    "github>stevewm/homelab//.github/renovate/clusters.json",
+    "github>stevewm/homelab//.github/renovate/automerge.json"
   ],
-  "ignorePaths": ["**kubernetes/archive/**"],
-    "flux": {
-      "fileMatch": ["kubernetes/.+\\.yaml$"]
+  "ignorePaths": [
+    "**kubernetes/.archive/**"
+  ],
+  "flux": {
+    "fileMatch": [
+      "kubernetes/.+\\.yaml$"
+    ]
   },
   "helm-values": {
     "fileMatch": [
@@ -18,14 +24,6 @@
   "kubernetes": {
     "fileMatch": [
       "(^|/)kubernetes/.+\\.ya?ml(\\.j2)?$"
-    ],
-  "packageRules": [
-    {
-      "matchPackagePatterns": ["ghcr.io/onedr0p/*"],
-      "matchUpdateTypes": ["minor", "patch", "digest"],
-      "automerge": true
-    }
-  ],
-  "platformAutomerge": true
-}
+    ]
+  }
 }

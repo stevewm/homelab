@@ -1,0 +1,31 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "platformAutomerge": true,
+  "packageRules": [
+    {
+      "description": "Automerge digest updates",
+      "matchPackagePatterns": [
+        "ghcr.io/onedr0p",
+        "ghr.io/stevewm"
+      ],
+      "matchUpdateTypes": [
+        "digest"
+      ],
+      "automerge": true,
+      "autoMergeType": "branch"
+    },
+    {
+      "description": "Automerge trusted sources",
+      "matchPackagePatterns": [
+        "ghr.io/stevewm"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "digest"
+      ],
+      "automerge": true,
+      "autoMergeType": "branch"
+    }
+  ]
+}
