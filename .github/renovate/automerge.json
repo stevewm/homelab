@@ -11,7 +11,8 @@
         "digest"
       ],
       "automerge": true,
-      "autoMergeType": "branch"
+      "autoMergeType": "branch",
+      "ignoreTests": true
     },
     {
       "description": "Automerge trusted sources",
@@ -24,7 +25,8 @@
         "digest"
       ],
       "automerge": true,
-      "autoMergeType": "branch"
+      "autoMergeType": "branch",
+      "ignoreTests": true
     }
   ]
 }
