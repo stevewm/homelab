@@ -1,4 +1,5 @@
-name: ci-docs-container
+---
+name: "Build Homelab Docs Image"
 
 on:
   push:
