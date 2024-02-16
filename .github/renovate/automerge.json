@@ -16,7 +16,7 @@
     {
       "description": "Automerge trusted sources",
       "matchPackagePatterns": [
-        "gchr.io/stevewm"
+        "ghcr.io/stevewm"
       ],
       "matchUpdateTypes": [
         "minor",
