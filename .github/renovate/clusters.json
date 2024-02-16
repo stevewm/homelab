@@ -3,21 +3,33 @@
   "packageRules": [
     {
       "description": "Main cluster",
-      "matchFileNames": ["**/kubernetes/main/**"],
+      "matchFileNames": [
+        "**/kubernetes/mini/**"
+      ],
       "additionalBranchPrefix": "main-",
-      "labels": ["cluster/main"]
+      "labels": [
+        "cluster/main"
+      ]
     },
     {
       "description": "Pi cluster",
-      "matchFileNames": ["**/kubernetes/pi/**"],
+      "matchFileNames": [
+        "**/kubernetes/pi/**"
+      ],
       "additionalBranchPrefix": "pi-",
-      "labels": ["cluster/pi"]
+      "labels": [
+        "cluster/pi"
+      ]
     },
     {
       "description": "Docs",
-      "matchFileNames": ["**/docs/**"],
+      "matchFileNames": [
+        "**/docs/**"
+      ],
       "additionalBranchPrefix": "docs-",
-      "labels": ["docs"]
+      "labels": [
+        "docs"
+      ]
     }
   ]
 }
