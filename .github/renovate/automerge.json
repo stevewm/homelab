@@ -1,6 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "platformAutomerge": true,
+  "platformAutomerge": false,
+  "autoMergeType": "branch",
   "packageRules": [
     {
       "description": "Automerge digest updates",
@@ -11,7 +12,6 @@
         "digest"
       ],
       "automerge": true,
-      "autoMergeType": "branch",
       "ignoreTests": true
     },
     {
@@ -25,7 +25,6 @@
         "digest"
       ],
       "automerge": true,
-      "autoMergeType": "branch",
       "ignoreTests": true
     }
   ]
