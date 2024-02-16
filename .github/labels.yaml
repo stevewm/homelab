@@ -1,0 +1,7 @@
+---
+- name: cluster/mini
+  color: 007cba
+- name: cluster/pi
+  color: c51a4a
+- name: docs
+  color: a8a8a8
