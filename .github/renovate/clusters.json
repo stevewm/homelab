@@ -1,0 +1,23 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "packageRules": [
+    {
+      "description": "Main cluster",
+      "matchFileNames": ["**/kubernetes/main/**"],
+      "additionalBranchPrefix": "main-",
+      "labels": ["cluster/main"]
+    },
+    {
+      "description": "Pi cluster",
+      "matchFileNames": ["**/kubernetes/pi/**"],
+      "additionalBranchPrefix": "pi-",
+      "labels": ["cluster/pi"]
+    },
+    {
+      "description": "Docs",
+      "matchFileNames": ["**/docs/**"],
+      "additionalBranchPrefix": "docs-",
+      "labels": ["docs"]
+    }
+  ]
+}
