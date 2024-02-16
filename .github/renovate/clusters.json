@@ -6,7 +6,7 @@
       "matchFileNames": [
         "**/kubernetes/mini/**"
       ],
-      "additionalBranchPrefix": "main-",
+      "additionalBranchPrefix": "main-"
     },
     {
       "description": "Pi cluster",
