@@ -3,11 +3,17 @@
 #
 # unknown/unknown arch: https://github.com/orgs/community/discussions/45969
 #
+
 FROM ghcr.io/squidfunk/mkdocs-material:9.5.9 AS mkdocs-build
 WORKDIR /src
-COPY mkdocs.yml mkdocs.yml
-COPY docs/ docs/
+
+#COPY mkdocs.yml mkdocs.yml
+#COPY docs/ docs/
+COPY . .
+
+RUN pip install -r docs/requirements.txt
 RUN mkdocs build --site-dir /src/site
+
 
 FROM nginxinc/nginx-unprivileged:mainline-alpine3.18
 LABEL org.opencontainers.image.source="https://github.com/stevewm/homelab"
