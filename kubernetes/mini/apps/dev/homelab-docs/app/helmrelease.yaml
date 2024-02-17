@@ -31,7 +31,7 @@ spec:
           main:
             image:
               repository: ghcr.io/stevewm/docs
-              tag: 1.0.0@sha256:05cfaa4921832408fa43284a22f06d99bfda4617ce8293021e0428cf1daf8567
+              tag: 1.0.0@sha256:b919e91e35b38f65f3355d938b104027ed6d9429a39c5e2e71a990181d54169a
             resources:
               requests:
                 cpu: 5m
