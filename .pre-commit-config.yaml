@@ -11,6 +11,7 @@ repos:
     rev: v1.33.0
     hooks:
       - id: yamllint
+        args: [-c=.github/linters/yamllint.yaml]
 
   - repo: https://github.com/Lucas-C/pre-commit-hooks
     rev: v1.5.4
