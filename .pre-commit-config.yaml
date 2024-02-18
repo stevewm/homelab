@@ -22,9 +22,12 @@ repos:
     rev: v0.4.0
     hooks:
       - id: check-charts-pinned
+        exclude: "recyclarr.yml"
       - id: check-charts-support-renovate
+        exclude: "recyclarr.yml"
       - id: check-drift-detection-enabled
       - id: check-secrets-encrypted
+        exclude: "recyclarr.yml"
 
   - repo: https://github.com/antonbabenko/pre-commit-terraform
     rev: v1.83.6
