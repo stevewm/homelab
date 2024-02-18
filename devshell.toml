@@ -12,9 +12,10 @@ packages = [
   "kubectl",
   "kustomize",
   "kubectx",
+  "pre-commit",
   "sops",
+  "yamlfmt",
   "yq",
-
 ]
 
 # Env vars
@@ -26,11 +27,5 @@ eval = "$PRJ_ROOT/kubeconfig"
 [[commands]]
 name = "bootstrap"
 help = "run bootstrap.sh in the current cluster dir"
-command = "./${CLUSTER_NAME}/bootstrap.sh"
-category = "k8s"
-
-[[commands]]
-name = "shutdown"
-help = "shuts down all Talos nodes in the current cluster dir"
-command = "talosctl shutdown --nodes $NODE_IPS"
+command = "$PRJ_ROOT/kubernetes/$CLUSTER_NAME/bootstrap.sh"
 category = "k8s"
