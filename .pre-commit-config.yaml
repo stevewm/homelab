@@ -25,8 +25,6 @@ repos:
         exclude: "recyclarr.yml"
       - id: check-charts-support-renovate
         exclude: "recyclarr.yml"
-      - id: check-secrets-encrypted
-        exclude: "recyclarr.yml"
 
   - repo: https://github.com/antonbabenko/pre-commit-terraform
     rev: v1.83.6
