@@ -7,8 +7,6 @@
 FROM ghcr.io/squidfunk/mkdocs-material:9.5.9 AS mkdocs-build
 WORKDIR /src
 
-#COPY mkdocs.yml mkdocs.yml
-#COPY docs/ docs/
 COPY . .
 
 RUN pip install -r docs/requirements.txt
