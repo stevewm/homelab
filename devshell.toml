@@ -1,0 +1,36 @@
+[devshell]
+name = "homelab"
+motd = "homelab development environment"
+
+packages = [
+  "age",
+  "doppler",
+  "direnv",
+  "go-task",
+  # broken - leave it installed locally for now
+  #  "jp2a",
+  "kubectl",
+  "kustomize",
+  "kubectx",
+  "sops",
+  "yq",
+
+]
+
+# Env vars
+[[env]]
+name = "KUBECONFIG"
+eval = "$PRJ_ROOT/kubeconfig"
+
+# Commands
+[[commands]]
+name = "bootstrap"
+help = "run bootstrap.sh in the current cluster dir"
+command = "./${CLUSTER_NAME}/bootstrap.sh"
+category = "k8s"
+
+[[commands]]
+name = "shutdown"
+help = "shuts down all Talos nodes in the current cluster dir"
+command = "talosctl shutdown --nodes $NODE_IPS"
+category = "k8s"

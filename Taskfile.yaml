@@ -1,6 +1,6 @@
 ---
 # https://taskfile.dev
-version: '3'
+version: "3"
 
 vars:
   REPO_ROOT:
@@ -13,13 +13,6 @@ tasks:
     cmds:
       - task -l
 
-  brew:
-    desc: Install local dependencies with brew
-    preconditions:
-      - which brew
-    cmds:
-      - brew bundle --file Brewfile --no-lock
-
   yamlfmt:
     desc: Format YAML files
     silent: true
@@ -30,6 +23,3 @@ tasks:
 
 includes:
   nas: ./.taskfiles/nas/Taskfile.yaml
-  k8s:
-    taskfile: ./.taskfiles/k8s/Taskfile.yaml
-    dir: "{{.K8S_ROOT}}"
