@@ -5,9 +5,9 @@ metadata:
   name: infra-rook-ceph-operator
   namespace: flux-system
 spec:
-  targetNamespace: rook-ceph
+  targetNamespace: rook-ceph-system
   interval: 10m
-  path: ./kubernetes/mini/core/rook-ceph/rook-ceph/operator
+  path: ./kubernetes/mini/core/rook-ceph-system/rook-ceph/operator
   prune: false # absolutely do not
   sourceRef:
     kind: GitRepository
@@ -24,7 +24,7 @@ metadata:
 spec:
   targetNamespace: rook-ceph
   interval: 10m
-  path: ./kubernetes/mini/core/rook-ceph/rook-ceph/cluster
+  path: ./kubernetes/mini/core/rook-ceph-system/rook-ceph/cluster
   prune: false # absolutely do not
   sourceRef:
     kind: GitRepository

@@ -17,6 +17,8 @@ spec:
         name: rook-ceph
         namespace: flux-system
   values:
+    operatorNamespace: rook-ceph-system
+    clusterName: rook-ceph-cluster
     cephClusterSpec:
       resources:
         mgr:
@@ -75,10 +77,10 @@ spec:
         useAllNodes: false
         useAllDevices: false
         config:
-          osdsPerDevice: '1'
+          osdsPerDevice: "1"
         nodes:
           - name: control01
-            devices:  # talosctl list /dev/disk/by-id
+            devices: # talosctl list /dev/disk/by-id
               - name: /dev/disk/by-id/ata-Samsung_SSD_870_QVO_1TB_S6R8NJ0W402228N
           - name: control02
             devices:
@@ -114,7 +116,7 @@ spec:
           reclaimPolicy: Delete
           allowVolumeExpansion: true
           parameters:
-            imageFormat: '2'
+            imageFormat: "2"
             imageFeatures: layering
             csi.storage.k8s.io/provisioner-secret-name: rook-csi-rbd-provisioner
             csi.storage.k8s.io/provisioner-secret-namespace: rook-ceph
