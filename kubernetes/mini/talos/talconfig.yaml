@@ -118,10 +118,10 @@ controlPlane:
       machine:
         network:
           interfaces:
-          - interface: eth0
-            dhcp: true
-            vip:
-              ip: 192.168.1.55
+            - deviceSelector:
+                busPath: "0*"
+              vip:
+                ip: 192.168.1.55
 
 worker:
   schematic:
