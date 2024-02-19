@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: infra-cert-manager
+  name: core-cert-manager
   namespace: flux-system
 spec:
   targetNamespace: cert-manager
@@ -14,12 +14,12 @@ spec:
     name: homelab
   wait: false
   dependsOn:
-    - name: infra-external-secrets-operator
+    - name: core-external-secrets-operator
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: infra-cert-manager-crs
+  name: core-cert-manager-crs
   namespace: flux-system
 spec:
   targetNamespace: cert-manager
@@ -31,4 +31,4 @@ spec:
     name: homelab
   wait: false
   dependsOn:
-    - name: infra-cert-manager
+    - name: core-cert-manager
