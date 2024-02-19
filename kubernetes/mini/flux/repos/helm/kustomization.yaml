@@ -21,6 +21,7 @@ resources:
   - ./kubelet-csr-approver.yaml
   - ./metallb.yaml
   - ./metrics-server.yaml
+  - ./minicloudlabs.yaml
   - ./mittwald.yaml
   - ./node-feature-discovery.yaml
   - ./piraeus.yaml

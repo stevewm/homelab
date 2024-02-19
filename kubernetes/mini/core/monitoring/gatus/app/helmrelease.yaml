@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/helm.toolkit.fluxcd.io/helmrelease_v2beta2.json
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: &name gatus
+spec:
+  interval: 30m
+  maxHistory: 3
+  chart:
+    spec:
+      chart: gatus
+      version: 3.4.1
+      sourceRef:
+        kind: HelmRepository
+        name: minicloudlabs
+        namespace: flux-system
+  values:
+    persistence:
+      enabled: true
+    config:
+      storage:
+        type: sqlite # disposable data
+        path: /data/data.db
+      metrics: true
+      ui:
+        title: Health Dashboard
+        description: what's up?
+        logo: homelab-docs.dev.svc.cluster.local:8080/logo.png

@@ -12,7 +12,7 @@ This cluster consists of four miniPCs from Dell and HP. Each PC has the same spe
 
 - `/apps`: applications deployed the cluster
 - `/flux`: flux configuration
-- `/infrastructure`: cluster infrastructure that apps depend upon (controllers, etc)
+- `/core`: core cluster components that `apps` depend upon (controllers, etc)
 - `/talos`: talos configuration and bootstrapping
 
 ## bootstrapping

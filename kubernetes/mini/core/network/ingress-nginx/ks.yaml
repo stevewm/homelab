@@ -2,18 +2,17 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: apps
+  name: infra-ingress-nginx
   namespace: flux-system
 spec:
+  targetNamespace: network
   interval: 10m
-  path: ./kubernetes/mini/apps
+  path: ./kubernetes/mini/core/network/ingress-nginx/app
   prune: true
   sourceRef:
     kind: GitRepository
     name: homelab
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
+  wait: false
   dependsOn:
-    - name: core
+    - name: infra-cert-manager
+    - name: infra-metallb
