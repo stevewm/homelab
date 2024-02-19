@@ -2,18 +2,16 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: apps
+  name: infra-fluxcd-alerting
   namespace: flux-system
 spec:
+  targetNamespace: flux-system
   interval: 10m
-  path: ./kubernetes/mini/apps
+  path: ./kubernetes/mini/core/flux-system/fluxcd/alerting
   prune: true
   sourceRef:
     kind: GitRepository
     name: homelab
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
+  wait: false
   dependsOn:
-    - name: core
+    - name: infra-external-secrets-operator

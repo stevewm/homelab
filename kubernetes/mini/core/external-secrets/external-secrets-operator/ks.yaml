@@ -1,0 +1,41 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: infra-external-secrets-operator
+  namespace: flux-system
+spec:
+  targetNamespace: external-secrets
+  interval: 10m
+  path: ./kubernetes/mini/core/external-secrets/external-secrets-operator/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+  wait: false
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
+  dependsOn:
+    - name: infra-external-secrets-operator-crds
+  postBuild:
+    substituteFrom:
+      - kind: Secret
+        name: doppler
+---
+# CRD deployment from ES repo
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: infra-external-secrets-operator-crds
+  namespace: flux-system
+spec:
+  targetNamespace: external-secrets
+  interval: 10m
+  path: ./deploy/crds
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: external-secrets
+  wait: false

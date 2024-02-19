@@ -1,0 +1,35 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: infra-intel-device-plugins-operator
+  namespace: flux-system
+spec:
+  targetNamespace: system
+  path: ./kubernetes/mini/core/system/intel-device-plugins/operator
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+  interval: 10m
+  prune: true
+  wait: true
+  dependsOn:
+    - name: infra-cert-manager
+    - name: infra-node-feature-discovery
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: infra-intel-device-plugins-gpu
+  namespace: flux-system
+spec:
+  targetNamespace: system
+  path: ./kubernetes/mini/core/system/intel-device-plugins/gpu
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+  interval: 30m
+  prune: true
+  wait: true
+  dependsOn:
+    - name: infra-intel-device-plugins-operator
