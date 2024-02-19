@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: infra-rook-ceph-operator
+  name: core-rook-ceph-operator
   namespace: flux-system
 spec:
   targetNamespace: rook-ceph-system
@@ -14,12 +14,12 @@ spec:
     name: homelab
   wait: true
   dependsOn:
-    - name: infra-cert-manager
+    - name: core-cert-manager
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: infra-rook-ceph-cluster
+  name: core-rook-ceph-cluster
   namespace: flux-system
 spec:
   targetNamespace: rook-ceph
@@ -31,5 +31,5 @@ spec:
     name: homelab
   wait: false
   dependsOn:
-    - name: infra-rook-ceph-operator
-    - name: infra-snapshot-controller
+    - name: core-rook-ceph-operator
+    - name: core-snapshot-controller

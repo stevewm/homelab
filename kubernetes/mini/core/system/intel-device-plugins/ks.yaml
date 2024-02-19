@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: infra-intel-device-plugins-operator
+  name: core-intel-device-plugins-operator
   namespace: flux-system
 spec:
   targetNamespace: system
@@ -14,13 +14,13 @@ spec:
   prune: true
   wait: true
   dependsOn:
-    - name: infra-cert-manager
-    - name: infra-node-feature-discovery
+    - name: core-cert-manager
+    - name: core-node-feature-discovery
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: infra-intel-device-plugins-gpu
+  name: core-intel-device-plugins-gpu
   namespace: flux-system
 spec:
   targetNamespace: system
@@ -32,4 +32,4 @@ spec:
   prune: true
   wait: true
   dependsOn:
-    - name: infra-intel-device-plugins-operator
+    - name: core-intel-device-plugins-operator

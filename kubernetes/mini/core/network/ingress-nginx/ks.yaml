@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: infra-ingress-nginx
+  name: core-ingress-nginx
   namespace: flux-system
 spec:
   targetNamespace: network
@@ -14,5 +14,5 @@ spec:
     name: homelab
   wait: false
   dependsOn:
-    - name: infra-cert-manager
-    - name: infra-metallb
+    - name: core-cert-manager
+    - name: core-metallb
