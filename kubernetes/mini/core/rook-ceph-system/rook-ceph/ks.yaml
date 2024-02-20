@@ -22,7 +22,7 @@ metadata:
   name: core-rook-ceph-cluster
   namespace: flux-system
 spec:
-  targetNamespace: rook-ceph
+  targetNamespace: rook-ceph-system
   interval: 10m
   path: ./kubernetes/mini/core/rook-ceph-system/rook-ceph/cluster
   prune: false # absolutely do not
