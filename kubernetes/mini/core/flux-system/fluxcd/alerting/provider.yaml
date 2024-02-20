@@ -2,7 +2,7 @@
 apiVersion: notification.toolkit.fluxcd.io/v1beta3
 kind: Provider
 metadata:
-  name: flux-system
+  name: github-homelab
   namespace: flux-system
 spec:
   type: github
