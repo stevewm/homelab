@@ -1,0 +1,10 @@
+---
+version: "3"
+
+services:
+  test:
+    container_name: pihole
+    image: hashicorp/http-echo:1.0
+    ports:
+      - 5678:5678
+    restart: unless-stopped
