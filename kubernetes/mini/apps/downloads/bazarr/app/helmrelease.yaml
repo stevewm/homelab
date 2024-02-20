@@ -22,7 +22,7 @@ spec:
     controllers:
       main:
         annotations:
-          reloader.stakater.com/auto: 'true'
+          reloader.stakater.com/auto: "true"
         enabled: true
         containers:
           main:
@@ -30,11 +30,11 @@ spec:
               repository: ghcr.io/onedr0p/bazarr
               tag: 1.4.2@sha256:8d4a560d7307d6554bac85c566a49a23f6b47239a031772823cd294acecca72d
               securityContext:
-              runAsUser: 568
-              runAsGroup: 568
-              fsGroup: 568
-              fsGroupChangePolicy: OnRootMismatch
-              supplementalGroups: [1001]
+                runAsUser: 568
+                runAsGroup: 568
+                fsGroup: 568
+                fsGroupChangePolicy: OnRootMismatch
+                supplementalGroups: [1001]
             resources:
               requests:
                 cpu: 10m
@@ -62,7 +62,7 @@ spec:
               - *host
         annotations:
           gethomepage.dev/name: *name
-          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/enabled: "true"
           gethomepage.dev/group: downloads
           gethomepage.dev/icon: bazarr.png
           nginx.ingress.kubernetes.io/configuration-snippet: |
