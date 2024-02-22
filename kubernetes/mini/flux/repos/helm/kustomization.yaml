@@ -25,6 +25,7 @@ resources:
   - ./mittwald.yaml
   - ./node-feature-discovery.yaml
   - ./piraeus.yaml
+  - ./pod-arcade.yaml
   - ./prometheus-community.yaml
   - ./rook-ceph.yaml
   - ./spegel.yaml
