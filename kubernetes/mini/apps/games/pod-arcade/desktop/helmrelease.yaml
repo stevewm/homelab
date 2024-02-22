@@ -20,8 +20,9 @@ spec:
     nodeSelector:
       intel.feature.node.kubernetes.io/gpu: "true"
     resources:
-      requests:
+      limits:
         gpu.intel.com/i915: 1
+
     env:
       MQTT_HOST: ws://pa-server-server/mqtt
       DESKTOP_ID: pa-retroarch
