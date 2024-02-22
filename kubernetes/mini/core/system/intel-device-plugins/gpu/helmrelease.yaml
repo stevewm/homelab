@@ -17,3 +17,5 @@ spec:
         namespace: flux-system
   values:
     nodeFeatureRule: false
+    sharedDevNum: 8 # Nodes*2
+    resourceManager: true
