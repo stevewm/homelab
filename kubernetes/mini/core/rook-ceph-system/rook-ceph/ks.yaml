@@ -29,7 +29,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: homelab
-  wait: false
+  wait: true
   dependsOn:
     - name: core-rook-ceph-operator
     - name: core-snapshot-controller
