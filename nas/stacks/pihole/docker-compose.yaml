@@ -18,7 +18,7 @@ services:
       DNSMASQ_LISTENING: all
       WEBTHEME: default-dark
       WEB_PORT: 3001
-      # Set 'ServerIP' and 'WEBPASSWORD' in Portainer
+      WEBPASSWORD: $WEBPASSWORD
     volumes:
       - /share/Docker/pihole-docker/etc-pihole/:/etc/pihole/
       - /share/Docker/pihole-docker/etc-dnsmasq.d/:/etc/dnsmasq.d/
