@@ -22,7 +22,7 @@ spec:
     controllers:
       main:
         annotations:
-          reloader.stakater.com/auto: 'true'
+          reloader.stakater.com/auto: "true"
         strategy: Recreate
         pod:
           securityContext:
@@ -70,13 +70,13 @@ spec:
               - *host
         annotations:
           gethomepage.dev/name: *name
-          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/enabled: "true"
           gethomepage.dev/group: downloads
           gethomepage.dev/icon: radarr.png
           # https://github.com/gethomepage/homepage/issues/1553
-          gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_RADARR_API_KEY}}'
+          gethomepage.dev/widget.key: "{{HOMEPAGE_VAR_RADARR_API_KEY}}"
           gethomepage.dev/widget.type: radarr
-          gethomepage.dev/widget.url: 'http://radarr.downloads.svc.cluster.local:7878'
+          gethomepage.dev/widget.url: "http://radarr.downloads.svc.cluster.local:7878"
           nginx.ingress.kubernetes.io/configuration-snippet: |
             proxy_set_header Accept-Encoding "";
             sub_filter

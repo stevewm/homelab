@@ -21,7 +21,7 @@ spec:
     controllers:
       main:
         annotations:
-          reloader.stakater.com/auto: 'true'
+          reloader.stakater.com/auto: "true"
         strategy: Recreate
         pod:
           securityContext:
@@ -37,7 +37,7 @@ spec:
             env:
               AUTOBRR__HOST: 0.0.0.0
               AUTOBRR__PORT: &port 7474
-              AUTOBRR__CHECKFORUPDATES: 'false'
+              AUTOBRR__CHECKFORUPDATES: "false"
               AUTOBRR__LOGLEVEL: DEBUG
               AUTOBRR__SESSION_SECRET:
                 valueFrom:
@@ -71,12 +71,12 @@ spec:
               - *host
         annotations:
           gethomepage.dev/name: *name
-          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/enabled: "true"
           gethomepage.dev/group: downloads
           gethomepage.dev/icon: autobrr.png
-          gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_AUTOBRR_API_KEY}}'
+          gethomepage.dev/widget.key: "{{HOMEPAGE_VAR_AUTOBRR_API_KEY}}"
           gethomepage.dev/widget.type: autobrr
-          gethomepage.dev/widget.url: 'http://autobrr.downloads.svc.cluster.local:7474'
+          gethomepage.dev/widget.url: "http://autobrr.downloads.svc.cluster.local:7474"
     persistence:
       config:
         enabled: true

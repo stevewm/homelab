@@ -29,4 +29,4 @@ spec:
   sourceRef:
     kind: GitRepository
     name: homelab
-  wait: false
+  wait: true
