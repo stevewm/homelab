@@ -62,12 +62,12 @@ spec:
               - *host
         annotations:
           gethomepage.dev/name: *name
-          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/enabled: "true"
           gethomepage.dev/group: media
           gethomepage.dev/icon: jellyfin.png
-          gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_JELLYFIN_API_KEY}}'
+          gethomepage.dev/widget.key: "{{HOMEPAGE_VAR_JELLYFIN_API_KEY}}"
           gethomepage.dev/widget.type: jellyfin
-          gethomepage.dev/widget.url: 'http://jellyfin.media.svc.cluster.local:8096'
+          gethomepage.dev/widget.url: "http://jellyfin.media.svc.cluster.local:8096"
           nginx.ingress.kubernetes.io/configuration-snippet: |
             proxy_set_header Accept-Encoding "";
             sub_filter

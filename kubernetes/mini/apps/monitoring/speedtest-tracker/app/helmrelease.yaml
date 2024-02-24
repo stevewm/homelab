@@ -21,7 +21,7 @@ spec:
     controllers:
       main:
         annotations:
-          reloader.stakater.com/auto: 'true'
+          reloader.stakater.com/auto: "true"
         strategy: Recreate
         containers:
           main:
@@ -82,11 +82,11 @@ spec:
               - *host
         annotations:
           gethomepage.dev/name: *name
-          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/enabled: "true"
           gethomepage.dev/group: monitoring
           gethomepage.dev/icon: speedtest-tracker.png
           gethomepage.dev/widget.type: speedtest
-          gethomepage.dev/widget.url: 'http://speedtest-tracker.monitoring.svc.cluster.local:80'
+          gethomepage.dev/widget.url: "http://speedtest-tracker.monitoring.svc.cluster.local:80"
     persistence:
       config:
         enabled: true

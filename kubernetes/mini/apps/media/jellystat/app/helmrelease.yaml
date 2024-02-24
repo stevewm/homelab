@@ -85,7 +85,7 @@ spec:
               - *host
         annotations:
           gethomepage.dev/name: *name
-          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/enabled: "true"
           gethomepage.dev/group: media
           gethomepage.dev/icon: jellystat.png
     persistence:

@@ -59,12 +59,12 @@ spec:
               - *host
         annotations:
           gethomepage.dev/name: *name
-          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/enabled: "true"
           gethomepage.dev/group: media
           gethomepage.dev/icon: jellyseerr.png
-          gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_JELLYSEERR_API_KEY}}'
+          gethomepage.dev/widget.key: "{{HOMEPAGE_VAR_JELLYSEERR_API_KEY}}"
           gethomepage.dev/widget.type: jellyseerr
-          gethomepage.dev/widget.url: 'http://jellyseerr.media.svc.cluster.local:5055'
+          gethomepage.dev/widget.url: "http://jellyseerr.media.svc.cluster.local:5055"
           nginx.ingress.kubernetes.io/configuration-snippet: |
             proxy_set_header Accept-Encoding "";
             sub_filter
