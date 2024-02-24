@@ -1,0 +1,25 @@
+---
+version: "3"
+
+services:
+  pihole:
+    container_name: pihole
+    image: ghcr.io/pi-hole/pihole:2024.02.0
+    network_mode: host
+    ports:
+      - 53:53/tcp
+      - 53:53/udp
+      - 80:3001/tcp
+    dns:
+      - 127.0.0.1
+      - 1.1.1.1
+    environment:
+      TZ: America/Vancouver
+      DNSMASQ_LISTENING: all
+      WEBTHEME: default-dark
+      WEB_PORT: 3001
+      # Set 'ServerIP' and 'WEBPASSWORD' in Portainer
+    volumes:
+      - /share/Docker/pihole-docker/etc-pihole/:/etc/pihole/
+      - /share/Docker/pihole-docker/etc-dnsmasq.d/:/etc/dnsmasq.d/
+    restart: unless-stopped
