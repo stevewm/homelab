@@ -15,7 +15,7 @@ packages = [
   "pre-commit",
   "sops",
   "yamlfmt",
-  "yq",
+  "yq-go",
 ]
 
 # Env vars
