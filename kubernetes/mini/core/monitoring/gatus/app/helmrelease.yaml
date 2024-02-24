@@ -16,8 +16,6 @@ spec:
         name: minicloudlabs
         namespace: flux-system
   values:
-    persistence:
-      enabled: true
     config:
       storage:
         type: sqlite # disposable data
@@ -27,3 +25,44 @@ spec:
         title: Health Dashboard
         description: what's up?
         logo: homelab-docs.dev.svc.cluster.local:8080/logo.png
+    env:
+      GATUS_CONFIG_PATH: /config
+    serviceMonitor:
+      enabled: true
+    serviceAccount:
+      name: gatus
+      autoMount: true
+    sidecarContainers:
+      config-sync:
+        image: ghcr.io/kiwigrid/k8s-sidecar:1.25.3
+        imagePullPolicy: IfNotPresent
+        env:
+          FOLDER: /config
+          LABEL: gatus.io/enabled
+          NAMESPACE: ALL
+          RESOURCE: both
+        volumeMounts:
+          - name: config
+            mountPath: /config
+    extraVolumeMounts:
+      - name: config
+        mountPath: /config
+        readonly: false
+    extraLabels:
+      "gatus.io/enabled": "true"
+    persistence:
+      enabled: true
+    ingress:
+      enabled: true
+      name: gatus
+      ingressclassName: nginx
+      annotations:
+        gethomepage.dev/name: *name
+        gethomepage.dev/description: auth
+        gethomepage.dev/enabled: "true"
+        gethomepage.dev/group: monitoring
+        gethomepage.dev/icon: gatus.png
+      hosts:
+        - &host gatus.cfg.sh
+      tls:
+        - *host
