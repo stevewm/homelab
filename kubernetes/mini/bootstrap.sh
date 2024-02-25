@@ -4,7 +4,6 @@
 
 ## bootstrap flux
 jp2a $(git rev-parse --show-toplevel)/docs/logo.png --colors --term-fit --fill --clear
-echo "Bootstrapping flux, this takes a little while to download the manifests..."
 
 mkdir -p bootstrap/
 VERSION=$(yq e 'select(documentIndex == 0) | .spec.ref.tag' flux/config/flux.yaml)
@@ -16,7 +15,7 @@ resources:
   - github.com/fluxcd/flux2/manifests/install?ref=$VERSION
 EOF
 
-kubectl apply --kustomize ./bootstrap/
+gum spin --spinner line --title "Bootstrapping Flux... this may take a while" -- kubectl apply --kustomize ./bootstrap/
 rm -rf bootstrap/
 
 
