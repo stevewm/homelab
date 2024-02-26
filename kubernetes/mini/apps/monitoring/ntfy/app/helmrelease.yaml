@@ -21,7 +21,7 @@ spec:
     controllers:
       main:
         annotations:
-          reloader.stakater.com/auto: 'true'
+          reloader.stakater.com/auto: "true"
         strategy: Recreate
         pod:
           securityContext:
@@ -63,7 +63,7 @@ spec:
               - *host
         annotations:
           gethomepage.dev/name: *name
-          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/enabled: "true"
           gethomepage.dev/group: monitoring
           gethomepage.dev/icon: ntfy.png
           # gethomepage.dev/widget.key: '{{HOMEPAGE_VAR_NTFY_CLIENT_TOKEN}}'
