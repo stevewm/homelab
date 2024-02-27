@@ -11,7 +11,6 @@ cniConfig:
 
 additionalApiServerCertSans: &san
   - "127.0.0.1" # KubePrism
-  - "192.168.1.55" # VIP
 additionalMachineCertSans: *san
 
 nodes:
