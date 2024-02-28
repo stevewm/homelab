@@ -34,7 +34,7 @@ spec:
       autoMount: true
     sidecarContainers:
       config-sync:
-        image: ghcr.io/kiwigrid/k8s-sidecar:1.25.4
+        image: ghcr.io/kiwigrid/k8s-sidecar:1.26.0
         imagePullPolicy: IfNotPresent
         env:
           FOLDER: /config
