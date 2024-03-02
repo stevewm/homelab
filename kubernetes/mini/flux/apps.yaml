@@ -8,6 +8,7 @@ spec:
   interval: 10m
   path: ./kubernetes/mini/apps
   prune: true
+  wait: true
   sourceRef:
     kind: GitRepository
     name: homelab
