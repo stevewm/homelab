@@ -19,7 +19,7 @@ spec:
   values:
     controller:
       replicaCount: 2
-      allowSnippetAnnotations: true
+      allowSnippetAnnotations: true # required for themepark.dev
       config:
         custom-http-errors: >-
           401,403,404,500,501,502,503
