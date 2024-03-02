@@ -36,7 +36,7 @@ spec:
       storage:
         enabled: true
         create: true
-        storageClass: ceph-block
+        storageClass: ceph-filesystem
         size: 25Gi
         mounts:
           "/": "/home/ubuntu/.config/retroarch"
