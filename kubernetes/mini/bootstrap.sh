@@ -21,7 +21,8 @@ rm -rf bootstrap/
 
 ## secrets
 ### SOPS Key
-sops --decrypt age-key.sops.yaml | kubectl apply -f -
+doppler run -p homelab -c prd --only-secrets SOPS_AGE_KEY --command 'kubectl create secret generic sops-age \
+                                              --from-literal=age.agekey=$SOPS_AGE_KEY --namespace=flux-system'
 
 ### Doppler API Token
 doppler run -p homelab -c prd --only-secrets DOPPLER_API_TOKEN --command 'kubectl create secret generic doppler \
