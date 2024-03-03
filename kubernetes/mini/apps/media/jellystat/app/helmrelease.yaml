@@ -21,12 +21,6 @@ spec:
     controllers:
       main:
         strategy: Recreate
-        pod:
-          securityContext:
-            runAsUser: 1001
-            runAsGroup: 1001
-            fsGroup: 1001
-            fsGroupChangePolicy: OnRootMismatch
         containers:
           main:
             image:
