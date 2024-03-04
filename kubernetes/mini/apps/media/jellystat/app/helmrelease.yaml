@@ -26,6 +26,11 @@ spec:
             image:
               repository: cyfershepard/jellystat
               tag: 1.0.9
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop: ["ALL"]
             env:
               POSTGRES_IP:
                 valueFrom:
@@ -88,3 +93,11 @@ spec:
         type: emptyDir
         globalMounts:
           - path: /app/backend/backup-data
+      npm:
+        enabled: true
+        type: emptyDir
+        globalMounts:
+          - path: /.npm
+      migrations:
+        enabled: true
+        type: emptyDir
