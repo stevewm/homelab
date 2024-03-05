@@ -6,6 +6,9 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: monitoring
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app goldilocks
   interval: 10m
   path: ./kubernetes/mini/apps/monitoring/goldilocks/app
   prune: true
@@ -23,6 +26,10 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: monitoring
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app vertical-pod-autoscaler
+      app.kubernetes.io/part-of: goldilocks
   interval: 10m
   path: ./kubernetes/mini/apps/monitoring/goldilocks/vpa
   prune: true

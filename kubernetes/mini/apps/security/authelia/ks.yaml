@@ -1,0 +1,35 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: app-authelia
+  namespace: flux-system
+spec:
+  targetNamespace: security
+  interval: 10m
+  path: ./kubernetes/${CLUSTER_NAME}/apps/security/authelia/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+  wait: false
+  dependsOn:
+    - name: app-authelia-redis
+    - name: app-lldap
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: app-authelia-redis
+  namespace: flux-system
+spec:
+  targetNamespace: security
+  interval: 10m
+  path: ./kubernetes/${CLUSTER_NAME}/apps/security/authelia/redis
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+  wait: true
+  dependsOn:
+    - name: app-secret-generator

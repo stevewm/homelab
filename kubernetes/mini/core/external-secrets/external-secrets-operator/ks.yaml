@@ -6,6 +6,9 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: external-secrets
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app external-secrets-operator
   interval: 10m
   path: ./kubernetes/mini/core/external-secrets/external-secrets-operator/app
   prune: true
@@ -32,6 +35,9 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: external-secrets
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app external-secrets-operator
   interval: 10m
   path: ./deploy/crds
   prune: true

@@ -6,6 +6,9 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: &namespace monitoring
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app kube-prometheus-stack
   interval: 10m
   path: ./kubernetes/mini/core/monitoring/kube-prometheus-stack/app
   prune: true

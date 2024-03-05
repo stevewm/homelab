@@ -6,6 +6,9 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: monitoring
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app ntfy
   interval: 10m
   path: ./kubernetes/mini/apps/monitoring/ntfy/app
   prune: true

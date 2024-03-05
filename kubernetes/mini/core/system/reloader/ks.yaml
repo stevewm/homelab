@@ -6,6 +6,9 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: system
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app reloader
   interval: 10m
   path: ./kubernetes/mini/core/system/reloader/app
   prune: true

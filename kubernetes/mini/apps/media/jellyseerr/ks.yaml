@@ -6,6 +6,9 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: media
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app jellyseerr
   interval: 10m
   path: ./kubernetes/mini/apps/media/jellyseerr/app
   prune: true

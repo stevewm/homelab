@@ -6,6 +6,9 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: selfhosted
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app stirling-pdf
   interval: 10m
   path: ./kubernetes/mini/apps/selfhosted/stirling-pdf/app
   prune: true

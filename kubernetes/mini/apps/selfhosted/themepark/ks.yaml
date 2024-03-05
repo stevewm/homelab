@@ -6,6 +6,9 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: selfhosted
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app themepark
   interval: 10m
   path: ./kubernetes/mini/apps/selfhosted/themepark/app
   prune: true

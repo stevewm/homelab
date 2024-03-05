@@ -6,6 +6,9 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: system
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app node-feature-discovery
   interval: 10m
   path: ./kubernetes/mini/core/system/node-feature-discovery/app
   prune: true

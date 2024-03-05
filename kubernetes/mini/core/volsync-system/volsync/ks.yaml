@@ -6,6 +6,9 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: volsync-system
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app volsync
   interval: 10m
   path: ./kubernetes/mini/core/volsync-system/volsync/app
   prune: true
