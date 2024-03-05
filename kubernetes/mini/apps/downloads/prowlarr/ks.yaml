@@ -7,7 +7,8 @@ metadata:
 spec:
   targetNamespace: downloads
   commonMetadata:
-    app.kubernetes.io/name: &app prowlarr
+    labels:
+      app.kubernetes.io/name: &app prowlarr
   interval: 10m
   path: ./kubernetes/mini/apps/downloads/prowlarr/app
   prune: true
