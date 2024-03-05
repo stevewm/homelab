@@ -6,6 +6,9 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: media
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app jellyfin
   interval: 10m
   path: ./kubernetes/mini/apps/media/jellyfin/app
   prune: true

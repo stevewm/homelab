@@ -6,6 +6,10 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: rook-ceph-system
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app rook-ceph-operator
+      app.kubernetes.io/part-of: rook-ceph
   interval: 10m
   path: ./kubernetes/mini/core/rook-ceph-system/rook-ceph/operator
   prune: false # absolutely do not
@@ -23,6 +27,10 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: rook-ceph-system
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app rook-ceph-cluster
+      app.kubernetes.io/part-of: rook-ceph
   interval: 10m
   path: ./kubernetes/mini/core/rook-ceph-system/rook-ceph/cluster
   prune: false # absolutely do not

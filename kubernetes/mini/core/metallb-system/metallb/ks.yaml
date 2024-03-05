@@ -6,6 +6,9 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: metallb-system
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app metallb
   interval: 10m
   path: ./kubernetes/mini/core/metallb-system/metallb/app
   prune: true
@@ -21,6 +24,9 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: metallb-system
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app metallb
   interval: 10m
   path: ./kubernetes/mini/core/metallb-system/metallb/pool
   prune: true

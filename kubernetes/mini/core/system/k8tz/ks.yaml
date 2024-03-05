@@ -6,6 +6,9 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: system
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app k8tz
   interval: 10m
   path: ./kubernetes/mini/core/system/k8tz/app
   prune: true

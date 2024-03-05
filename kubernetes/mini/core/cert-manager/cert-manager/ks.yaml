@@ -6,6 +6,9 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: cert-manager
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app cert-manager
   interval: 10m
   path: ./kubernetes/mini/core/cert-manager/cert-manager/app
   prune: true
@@ -23,6 +26,9 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: cert-manager
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app cert-manager
   interval: 10m
   path: ./kubernetes/mini/core/cert-manager/cert-manager/crs
   prune: true

@@ -6,6 +6,9 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: monitoring
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app speedtest-tracker
   interval: 10m
   path: ./kubernetes/mini/apps/monitoring/speedtest-tracker/app
   prune: true

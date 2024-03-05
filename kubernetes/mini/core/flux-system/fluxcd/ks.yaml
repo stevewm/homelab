@@ -6,6 +6,9 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: flux-system
+  commonMetadata:
+    labels:
+      app.kubernetes.io/part-of: &app fluxcd
   interval: 10m
   path: ./kubernetes/mini/core/flux-system/fluxcd/alerting
   prune: true

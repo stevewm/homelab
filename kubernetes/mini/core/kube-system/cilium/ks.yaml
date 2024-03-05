@@ -6,6 +6,9 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: kube-system
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app cilium
   interval: 10m
   path: ./kubernetes/mini/core/kube-system/cilium/app
   prune: true

@@ -6,6 +6,9 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: dev
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app homelab-docs
   interval: 10m
   path: ./kubernetes/mini/apps/dev/homelab-docs/app
   prune: true

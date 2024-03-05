@@ -6,6 +6,9 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: kube-system
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app snapshot-controller
   interval: 10m
   path: ./kubernetes/mini/core/storage/snapshot-controller/app
   prune: true

@@ -6,6 +6,9 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: system
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app intel-device-plugins-operator
   path: ./kubernetes/mini/core/system/intel-device-plugins/operator
   sourceRef:
     kind: GitRepository
@@ -24,6 +27,10 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: system
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app intel-device-plugins-gpu
+      app.kubernetes.io/part-of: intel-device-plugins-operator
   path: ./kubernetes/mini/core/system/intel-device-plugins/gpu
   sourceRef:
     kind: GitRepository
