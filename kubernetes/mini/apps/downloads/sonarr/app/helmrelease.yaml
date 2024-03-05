@@ -26,9 +26,10 @@ spec:
         strategy: Recreate
         pod:
           securityContext:
-            runAsUser: 568
-            runAsGroup: 568
-            fsGroup: 568
+            runAsUser: ${APP_UID}
+            runAsGroup: ${APP_GID}
+            runAsNonRoot: true
+            fsGroup: ${APP_GID}
             fsGroupChangePolicy: OnRootMismatch
         containers:
           main:
@@ -49,6 +50,11 @@ spec:
                 memory: 272M
               limits:
                 memory: 420M
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop: [ALL]
     service:
       main:
         ports:
@@ -95,4 +101,4 @@ spec:
           - path: /data/media
       config:
         enabled: true
-        type: persistentVolumeClaim
+        existingClaim: "${VOLSYNC_CLAIM}"

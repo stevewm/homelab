@@ -6,6 +6,8 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: downloads
+  commonMetadata:
+    app.kubernetes.io/name: &app autobrr
   interval: 10m
   path: ./kubernetes/mini/apps/downloads/autobrr/app
   prune: true
@@ -13,3 +15,9 @@ spec:
     kind: GitRepository
     name: homelab
   wait: false
+  postBuild:
+    substitute:
+      APP: *app
+      APP_UID: "568"
+      APP_GID: "568"
+      VOLSYNC_CLAIM: autobrr-config

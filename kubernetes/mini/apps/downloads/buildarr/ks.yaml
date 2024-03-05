@@ -6,6 +6,8 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: downloads
+  commonMetadata:
+    app.kubernetes.io/name: &app buildarr
   interval: 10m
   path: ./kubernetes/mini/apps/downloads/buildarr/app
   prune: true
