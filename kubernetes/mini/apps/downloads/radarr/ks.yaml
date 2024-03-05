@@ -6,6 +6,8 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: downloads
+  commonMetadata:
+    app.kubernetes.io/name: &app radarr
   interval: 10m
   path: ./kubernetes/mini/apps/downloads/radarr/app
   prune: true
@@ -16,3 +18,9 @@ spec:
   dependsOn:
     - name: app-sabnzbd
     - name: app-prowlarr
+  postBuild:
+    substitute:
+      APP: *app
+      APP_UID: "568"
+      APP_GID: "568"
+      VOLSYNC_CLAIM: radarr-config

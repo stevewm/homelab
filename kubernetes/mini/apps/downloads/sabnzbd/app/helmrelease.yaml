@@ -27,9 +27,10 @@ spec:
         pod:
           securityContext:
             podSecurityContext:
-            runAsUser: 568
-            runAsGroup: 568
-            fsGroup: 568
+            runAsUser: ${APP_UID}
+            runAsGroup: ${APP_GID}
+            runAsNonRoot: true
+            fsGroup: ${APP_GID}
             fsGroupChangePolicy: OnRootMismatch
         containers:
           main:
@@ -56,6 +57,11 @@ spec:
                 memory: 64M
               limits:
                 memory: 4G
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop: [ALL]
     service:
       main:
         ports:
@@ -101,7 +107,13 @@ spec:
           - path: /data/media
       config:
         enabled: true
-        type: persistentVolumeClaim
+        existingClaim: ${VOLSYNC_CLAIM}
       incomplete:
         enabled: true
         type: emptyDir
+      tmp:
+        type: emptyDir
+        advancedMounts:
+          main:
+            main:
+              - path: /tmp
