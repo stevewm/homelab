@@ -7,7 +7,8 @@ metadata:
 spec:
   targetNamespace: downloads
   commonMetadata:
-    app.kubernetes.io/name: &app bazarr
+    labels:
+      app.kubernetes.io/name: &app bazarr
   interval: 10m
   path: ./kubernetes/mini/apps/downloads/bazarr/app
   prune: true
