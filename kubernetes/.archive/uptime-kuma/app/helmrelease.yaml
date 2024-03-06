@@ -52,7 +52,7 @@ spec:
         annotations:
           gethomepage.dev/name: uptime kuma
           gethomepage.dev/description: uptime
-          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/enabled: "true"
           gethomepage.dev/group: monitoring
           gethomepage.dev/icon: uptime-kuma.png
           nginx.ingress.kubernetes.io/configuration-snippet: |

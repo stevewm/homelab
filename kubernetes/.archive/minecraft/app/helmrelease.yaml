@@ -22,7 +22,7 @@ spec:
         cpu: 2000m
     minecraftServer:
       memory: 5G
-      eula: 'TRUE'
+      eula: "TRUE"
       difficulty: hard
       maxPlayers: 4
       maxWorldSize: 1000
