@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ./deployment.yaml
   - ./externalsecret.yaml
+  - ../../../../templates/volsync/b2
 configMapGenerator:
   - name: buildarr-configmap
     files:

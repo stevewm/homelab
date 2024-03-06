@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ./helmrelease.yaml
   - ./session-secret.yaml
+  - ../../../../templates/volsync/b2
 configMapGenerator:
   - name: autobrr-configmap
     files:
