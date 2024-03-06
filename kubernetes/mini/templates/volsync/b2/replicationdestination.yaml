@@ -1,0 +1,21 @@
+---
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: ${APP}-bootstrap
+spec:
+  trigger:
+    schedule: "0 */3 * * *"
+  rclone:
+    rcloneConfigSection: b2
+    rcloneDestPath: ${VOLSYNC_BUCKET:-cluster-apps-pvc-backup}/${VOLSYNC_CLAIM:-${APP}}
+    rcloneConfig: ${APP}-rclone
+    copyMethod: ${VOLSYNC_COPY_METHOD:-Snapshot}
+    accessModes: ${VOLSYNC_ACCESSMODES:-ReadWriteOnce}
+    capacity: ${VOLSYNC_CAPACITY:-1G}
+    storageClassName: ${VOLSYNC_STORAGECLASS:-ceph-block}
+    volumeSnapshotClassName: ${VOLSYNC_STORAGECLASS:-ceph-block}
+  moverSecurityContext:
+    runAsUser: ${APP_UID:-568}
+    runAsGroup: ${APP_GID:-568}
+    fsGroup: ${APP_GID:-568}
