@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
-  - ../../../templates/volsync/b2
+  - ../../../../templates/volsync/b2
