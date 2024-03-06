@@ -10,7 +10,7 @@ spec:
     repository: ${APP}-volsync-b2
     copyMethod: ${VOLSYNC_COPY_METHOD:-Snapshot}
     storageClassName: ${VOLSYNC_STORAGECLASS:-ceph-block}
-    capacity: ${VOLSYNC_CAPACITY:-1G}
+    capacity: ${VOLSYNC_CAPACITY:-1Gi}
     accessModes: ["${VOLSYNC_ACCESSMODES:-ReadWriteOnce}"]
     volumeSnapshotClassName: ${VOLSYNC_STORAGECLASS:-ceph-block}
     moverSecurityContext:
