@@ -15,7 +15,7 @@ spec:
     capacity: ${VOLSYNC_CAPACITY:-1G}
     storageClassName: ${VOLSYNC_STORAGECLASS:-ceph-block}
     volumeSnapshotClassName: ${VOLSYNC_STORAGECLASS:-ceph-block}
-  moverSecurityContext:
-    runAsUser: ${APP_UID:-568}
-    runAsGroup: ${APP_GID:-568}
-    fsGroup: ${APP_GID:-568}
+    moverSecurityContext:
+      runAsUser: ${APP_UID:-568}
+      runAsGroup: ${APP_GID:-568}
+      fsGroup: ${APP_GID:-568}
