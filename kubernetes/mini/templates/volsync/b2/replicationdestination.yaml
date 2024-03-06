@@ -5,7 +5,7 @@ metadata:
   name: ${APP}-bootstrap
 spec:
   trigger:
-    schedule: "0 */3 * * *"
+    manual: restore-once
   rclone:
     rcloneConfigSection: b2
     rcloneDestPath: ${VOLSYNC_BUCKET:-cluster-apps-pvc-backup}/${VOLSYNC_CLAIM:-${APP}}
