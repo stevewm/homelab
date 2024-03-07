@@ -37,6 +37,7 @@ spec:
               repository: ghcr.io/onedr0p/radarr
               tag: 5.3.6.8612@sha256:8d299e59fce7f947643bc709dce6b4d0780d8eb092575274b396eebe7f9e1cfa
             env:
+              COMPlus_EnableDiagnostics: "0"
               RADARR__URL_BASE: &path /
               RADARR__PORT: &port 7878
               RADARR__API_KEY:
