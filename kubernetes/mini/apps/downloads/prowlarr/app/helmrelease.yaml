@@ -44,6 +44,7 @@ spec:
                     name: prowlarr
                     key: api_key
               PROWLARR_LOG_LEVEL: trace
+              COMPlus_EnableDiagnostics: "0"
             probes:
               readiness:
                 enabled: true
