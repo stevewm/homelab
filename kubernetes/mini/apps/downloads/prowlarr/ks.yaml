@@ -16,6 +16,7 @@ spec:
     kind: GitRepository
     name: homelab
   wait: true
+  force: true
   dependsOn:
     - name: app-sabnzbd
   postBuild:
