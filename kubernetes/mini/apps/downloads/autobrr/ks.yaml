@@ -16,7 +16,6 @@ spec:
     kind: GitRepository
     name: homelab
   wait: false
-  force: true
   postBuild:
     substitute:
       APP: *app
