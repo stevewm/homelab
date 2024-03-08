@@ -22,6 +22,11 @@ spec:
       main:
         strategy: Recreate
         pod:
+          securityContext:
+            runAsUser: ${APP_UID}
+            runAsGroup: ${APP_GID}
+            fsGroup: ${APP_GID}
+            fsGroupChangePolicy: OnRootMismatch
           nodeSelector:
             intel.feature.node.kubernetes.io/gpu: "true"
         containers:
@@ -32,10 +37,15 @@ spec:
             resources:
               requests:
                 cpu: 11m
-                memory: 1200M
+                memory: 300M
               limits:
-                memory: 1200M
-                gpu.intel.com/i915: 1
+                memory: 1.2G
+                gpu.intel.com/i915: 0.5
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop: [ALL]
     service:
       main:
         ports:
