@@ -18,3 +18,9 @@ spec:
   wait: false
   dependsOn:
     - name: app-jellyfin
+  postBuild:
+    substitute:
+      APP: *app
+      APP_UID: "568"
+      APP_GID: "568"
+      VOLSYNC_CLAIM: ersatztv-config
