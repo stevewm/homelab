@@ -63,7 +63,7 @@ spec:
     persistence:
       config:
         enabled: true
-        type: persistentVolumeClaim
+        existingClaim: ersatztv-config
         globalMounts:
           - path: /root/.local/share/ersatztv
       cache:
