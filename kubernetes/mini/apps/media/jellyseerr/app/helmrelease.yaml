@@ -23,9 +23,9 @@ spec:
         strategy: Recreate
         pod:
           securityContext:
-            runAsUser: 568
-            runAsGroup: 568
-            fsGroup: 568
+            runAsUser: ${APP_UID}
+            runAsGroup: ${APP_GID}
+            fsGroup: ${APP_GID}
             fsGroupChangePolicy: OnRootMismatch
         containers:
           main:
@@ -75,6 +75,6 @@ spec:
     persistence:
       config:
         enabled: true
-        type: persistentVolumeClaim
+        existingClaim: ${VOLSYNC_CLAIM}
         globalMounts:
           - path: /app/config
