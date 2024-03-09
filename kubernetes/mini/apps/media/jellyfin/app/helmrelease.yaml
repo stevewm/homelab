@@ -29,6 +29,7 @@ spec:
             fsGroupChangePolicy: OnRootMismatch
           nodeSelector:
             intel.feature.node.kubernetes.io/gpu: "true"
+            feature.node.kubernetes.io/cpu-model.family: "6"
         containers:
           main:
             image:
@@ -40,7 +41,7 @@ spec:
                 memory: 4Gi
               limits:
                 memory: 10Gi
-                gpu.intel.com/i915: 0.5
+                gpu.intel.com/i915: 1
     service:
       main:
         ports:
