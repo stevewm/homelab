@@ -35,6 +35,8 @@ spec:
             image:
               repository: jasongdove/ersatztv
               tag: v0.8.5-vaapi
+            env:
+              XDG_DATA_HOME: /config # https://github.com/ErsatzTV/ErsatzTV/issues/327
             resources:
               requests:
                 cpu: 11m
@@ -44,7 +46,7 @@ spec:
                 gpu.intel.com/i915: 1
             securityContext:
               allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
+              #readOnlyRootFilesystem: true
               capabilities:
                 drop: [ALL]
     service:
@@ -75,8 +77,6 @@ spec:
       config:
         enabled: true
         existingClaim: ersatztv-config
-        globalMounts:
-          - path: /root/.local/share/ersatztv
       cache:
         enabled: true
         type: emptyDir
