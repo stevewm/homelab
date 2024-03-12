@@ -20,6 +20,8 @@ spec:
     vpa:
       enabled: false
     dashboard:
+      flags:
+        enable-cost: "false"
       ingress:
         enabled: true
         ingressClassName: nginx
