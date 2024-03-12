@@ -6,6 +6,7 @@ metadata:
   name: recyclarr
 spec:
   interval: 30m
+  maxHistory: 3
   chart:
     spec:
       chart: app-template
@@ -23,6 +24,8 @@ spec:
       strategy: rollback
       retries: 3
   values:
+    defaultPodOptions:
+      automountServiceAccountToken: false
     controllers:
       recyclarr:
         type: cronjob
