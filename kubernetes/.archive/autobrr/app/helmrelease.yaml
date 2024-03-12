@@ -1,0 +1,90 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/helm.toolkit.fluxcd.io/helmrelease_v2beta2.json
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: &name autobrr
+spec:
+  interval: 30m
+  maxHistory: 3
+  chart:
+    spec:
+      chart: app-template
+      version: 2.6.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  values:
+    defaultPodOptions:
+      automountServiceAccountToken: false
+    controllers:
+      main:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        strategy: Recreate
+        pod:
+          securityContext:
+            runAsUser: 568
+            runAsGroup: 568
+            fsGroup: 568
+            fsGroupChangePolicy: OnRootMismatch
+        containers:
+          main:
+            image:
+              repository: ghcr.io/autobrr/autobrr
+              tag: v1.39.1
+            env:
+              AUTOBRR__HOST: 0.0.0.0
+              AUTOBRR__PORT: &port 7474
+              AUTOBRR__CHECKFORUPDATES: "false"
+              AUTOBRR__LOGLEVEL: DEBUG
+              AUTOBRR__SESSION_SECRET:
+                valueFrom:
+                  secretKeyRef:
+                    name: autobrr
+                    key: session-secret
+            resources:
+              requests:
+                cpu: 10m
+                memory: 37M
+              limits:
+                memory: 220M
+    service:
+      main:
+        ports:
+          http:
+            port: *port
+    ingress:
+      main:
+        enabled: true
+        className: nginx
+        hosts:
+          - host: &host abr.cfg.sh
+            paths:
+              - path: /
+                service:
+                  name: main
+                  port: http
+        tls:
+          - hosts:
+              - *host
+        annotations:
+          gethomepage.dev/name: *name
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: downloads
+          gethomepage.dev/icon: autobrr.png
+          gethomepage.dev/widget.key: "{{HOMEPAGE_VAR_AUTOBRR_API_KEY}}"
+          gethomepage.dev/widget.type: autobrr
+          gethomepage.dev/widget.url: "http://autobrr.downloads.svc.cluster.local:7474"
+    persistence:
+      config:
+        enabled: true
+        type: persistentVolumeClaim
+      config-file:
+        type: configMap
+        name: autobrr-configmap
+        globalMounts:
+          - path: /config/config.toml
+            subPath: config.toml
+            readOnly: true
