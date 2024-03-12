@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/helm.toolkit.fluxcd.io/helmrelease_v2beta2.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
@@ -10,17 +10,24 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
-      interval: 30m
+      version: 3.0.2
       sourceRef:
         kind: HelmRepository
         name: bjw-s
         namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
   values:
     defaultPodOptions:
       automountServiceAccountToken: false
     controllers:
-      main:
+      bazarr:
         annotations:
           reloader.stakater.com/auto: "true"
         pod:
@@ -31,10 +38,23 @@ spec:
             fsGroup: ${APP_GID}
             fsGroupChangePolicy: OnRootMismatch
         containers:
-          main:
+          app:
             image:
               repository: ghcr.io/onedr0p/bazarr
               tag: 1.4.2@sha256:2dd32471eac908ce0054d808adba1e41c99ca73f70b6c46a751b245f04e7e955
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /health
+                    port: &port 6767
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
             resources:
               requests:
                 cpu: 10m
@@ -47,20 +67,20 @@ spec:
               capabilities:
                 drop: [ALL]
     service:
-      main:
+      app:
+        controller: *name
         ports:
           http:
-            port: &port 6767
+            port: *port
     ingress:
-      main:
-        enabled: true
+      app:
         className: nginx
         hosts:
           - host: &host bzr.cfg.sh
             paths:
               - path: /
                 service:
-                  name: main
+                  identifier: app
                   port: http
         tls:
           - hosts:
@@ -78,6 +98,13 @@ spec:
             </head>';
             sub_filter_once on;
     persistence:
+      config:
+        enabled: true
+        existingClaim: ${VOLSYNC_CLAIM}
+      config-cache:
+        type: emptyDir
+        globalMounts:
+          - path: /config/cache
       media:
         enabled: true
         type: nfs
@@ -85,6 +112,5 @@ spec:
         path: /volume1/Media
         globalMounts:
           - path: /data/media
-      config:
-        enabled: true
-        existingClaim: ${VOLSYNC_CLAIM}
+      tmp:
+        type: emptyDir
