@@ -1,34 +1,42 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/helm.toolkit.fluxcd.io/helmrelease_v2beta2.json
 ---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
   name: recyclarr
 spec:
   interval: 30m
-  maxHistory: 3
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.0.2
       sourceRef:
         kind: HelmRepository
         name: bjw-s
         namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
   values:
-    defaultPodOptions:
-      automountServiceAccountToken: false
     controllers:
-      main:
+      recyclarr:
+        type: cronjob
         annotations:
           reloader.stakater.com/auto: "true"
-        strategy: Recreate
+        cronjob:
+          schedule: "@daily"
         containers:
-          main:
+          app:
             image:
               repository: ghcr.io/recyclarr/recyclarr
-              tag: 6.0.2
+              tag: 6.0.2@sha256:02add40feae0569401b5020528e06419b47046723d0bb4bef1e82325e9eefdad
             env:
+              COMPlus_EnableDiagnostics: "0"
               CRON_SCHEDULE: "0 * * * *"
               RADARR_API_KEY:
                 secretKeyRef:
@@ -38,23 +46,27 @@ spec:
                 secretKeyRef:
                   name: sonarr
                   key: api_key
+            args: ["sync"]
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop: ["ALL"]
             resources:
               requests:
                 cpu: 10m
                 memory: 37M
               limits:
                 memory: 220M
-    service:
-      main:
-        enabled: false
     persistence:
       config:
         enabled: true
         type: persistentVolumeClaim
+        accessMode: ReadWriteOnce
+        size: 1Gi
       config-file:
-        enabled: true
         type: configMap
-        name: recyclarr
+        name: recyclarr-configmap
         globalMounts:
           - path: /config/recyclarr.yml
             subPath: recyclarr.yml
