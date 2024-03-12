@@ -18,3 +18,10 @@ spec:
         namespace: flux-system
   values:
     manageCRDs: true
+    image: &image
+      repository: ghcr.io/onedr0p/volsync
+      tag: 0.8.1
+    restic:
+      <<: *image
+    metrics:
+      disableAuth: true
