@@ -19,6 +19,8 @@ spec:
   values:
     operatorNamespace: rook-ceph-system
     clusterName: rook-ceph-cluster
+    toolbox:
+      enabled: true
     cephClusterSpec:
       resources:
         mgr:
