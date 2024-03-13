@@ -22,6 +22,10 @@ spec:
     toolbox:
       enabled: true
     cephClusterSpec:
+      mgr:
+        modules:
+          - name: rook
+            enabled: true
       resources:
         mgr:
           requests:
