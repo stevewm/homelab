@@ -1,10 +1,18 @@
 ---
-docs:
-  - changed-files:
-      - any-glob-to-any-file: docs/**
+# Clusters
 cluster/mini:
   - changed-files:
       - any-glob-to-any-file: kubernetes/mini/**/*
-cluster/nas:
+cluster/pi:
   - changed-files:
       - any-glob-to-any-file: kubernetes/pi/**/*
+
+# NAS
+nas:
+  - changed-files:
+      - any-glob-to-any-file: nas/**/*
+
+# General
+docs:
+  - changed-files:
+      - any-glob-to-any-file: docs/**
