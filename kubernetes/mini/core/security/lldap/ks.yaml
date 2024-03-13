@@ -10,7 +10,7 @@ spec:
     labels:
       app.kubernetes.io/name: &app lldap
   interval: 10m
-  path: ./kubernetes/mini/apps/security/lldap/app
+  path: ./kubernetes/mini/core/security/lldap/app
   prune: true
   sourceRef:
     kind: GitRepository
