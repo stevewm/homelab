@@ -80,6 +80,9 @@ spec:
       cache:
         enabled: true
         type: emptyDir
+      tmp:
+        enabled: true
+        type: emptyDir
       media:
         enabled: true
         type: nfs
