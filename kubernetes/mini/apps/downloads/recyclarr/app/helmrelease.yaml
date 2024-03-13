@@ -40,7 +40,6 @@ spec:
               tag: 6.0.2@sha256:02add40feae0569401b5020528e06419b47046723d0bb4bef1e82325e9eefdad
             env:
               COMPlus_EnableDiagnostics: "0"
-              CRON_SCHEDULE: "0 * * * *"
               RADARR_API_KEY:
                 secretKeyRef:
                   name: radarr
@@ -64,9 +63,7 @@ spec:
     persistence:
       config:
         enabled: true
-        type: persistentVolumeClaim
-        accessMode: ReadWriteOnce
-        size: 1Gi
+        type: emptyDir
       config-file:
         type: configMap
         name: recyclarr
