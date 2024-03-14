@@ -16,10 +16,6 @@ spec:
     kind: GitRepository
     name: homelab
   wait: false
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
   dependsOn:
     - name: core-external-secrets
     - name: core-kube-prometheus-stack
