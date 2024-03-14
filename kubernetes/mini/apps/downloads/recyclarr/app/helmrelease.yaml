@@ -61,9 +61,11 @@ spec:
               limits:
                 memory: 220M
     persistence:
-      config:
+      config-cache:
         enabled: true
         type: emptyDir
+        globalMounts:
+          - path: /config/cache
       config-file:
         type: configMap
         name: recyclarr
