@@ -17,4 +17,4 @@ spec:
     name: homelab
   wait: false
   dependsOn:
-    - name: core-external-secrets-operator
+    - name: core-external-secrets
