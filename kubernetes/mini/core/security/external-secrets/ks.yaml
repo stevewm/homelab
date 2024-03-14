@@ -36,8 +36,8 @@ spec:
     name: homelab
   wait: true
   postBuild:
-  substituteFrom:
-    - kind: Secret
-      name: doppler
+    substituteFrom:
+      - kind: Secret
+        name: doppler
   dependsOn:
     - name: core-external-secrets
