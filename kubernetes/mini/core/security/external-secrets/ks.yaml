@@ -16,10 +16,6 @@ spec:
     kind: GitRepository
     name: homelab
   wait: true
-  postBuild:
-    substituteFrom:
-      - kind: Secret
-        name: doppler
 ---
 # Secret Store deployment
 apiVersion: kustomize.toolkit.fluxcd.io/v1
@@ -39,5 +35,9 @@ spec:
     kind: GitRepository
     name: homelab
   wait: true
+  postBuild:
+  substituteFrom:
+    - kind: Secret
+      name: doppler
   dependsOn:
     - name: core-external-secrets
