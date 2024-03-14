@@ -62,7 +62,6 @@ spec:
               - *host
         annotations:
           gethomepage.dev/name: *name
-          gethomepage.dev/description: homelab docs
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: dev
           gethomepage.dev/icon: mdi-text-box-outline
