@@ -38,4 +38,6 @@ spec:
   sourceRef:
     kind: GitRepository
     name: homelab
-  wait: false
+  wait: true
+  dependsOn:
+    - name: external-secrets-operator
