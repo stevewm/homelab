@@ -17,7 +17,8 @@ spec:
         name: external-secrets
         namespace: flux-system
   values:
-    installCRDs: false # managed in ../ks.yaml
+    installCRDs: true
+    replicaCount: 2
     deploymentAnnotations:
       reloader.stakater.com/auto: "true"
     resources:
