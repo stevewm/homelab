@@ -1,0 +1,14 @@
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: homelab-docs
+  namespace: dev
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: homelab-docs
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            io.kubernetes.pod.namespace: network
