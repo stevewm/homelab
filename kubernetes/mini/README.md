@@ -1,7 +1,7 @@
 # 'mini' cluster
 
 <!--include-start-->
-This cluster consists of four miniPCs from Dell and HP. Each PC has the same specification:
+This cluster consists of four miniPCs from Dell and HP. Each has the same specification:
 
 - **CPU**: Intel i5 7500T
 - **RAM**: 32GB DDR4
