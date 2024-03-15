@@ -11,4 +11,8 @@ spec:
   ingress:
     - fromEndpoints:
         - matchLabels:
+            app.kubernetes.io/name: ingress-nginx
             io.kubernetes.pod.namespace: network
+      toPorts:
+        - ports:
+            - port: "8080"
