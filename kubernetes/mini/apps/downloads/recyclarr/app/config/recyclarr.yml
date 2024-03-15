@@ -12,7 +12,8 @@ sonarr:
       # Minimum 1080p, upgrade to 4K if possible
       # I don't want to manage shows being different qualities
       - name: 1080p to 4K
-        reset_unmatched_scores: true
+        reset_unmatched_scores:
+          enabled: true
         upgrade:
           allowed: true
           until_quality: WEBDL-2160p
@@ -83,7 +84,8 @@ radarr:
       type: movie
     quality_profiles:
       - name: 1080p to 4K
-        reset_unmatched_scores: true
+        reset_unmatched_scores:
+          enabled: true
         upgrade:
           allowed: true
           until_quality: WEBDL-2160p
