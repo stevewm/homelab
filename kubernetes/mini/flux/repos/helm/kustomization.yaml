@@ -6,7 +6,7 @@ resources:
   - ./backube.yaml
   - ./bjw-s.yaml
   - ./cilium.yaml
-  - ./cloudnative-pg.yaml
+  - ./crunchydata.yaml
   - ./descheduler.yaml
   - ./external-dns.yaml
   - ./external-secrets.yaml
@@ -24,8 +24,8 @@ resources:
   - ./minicloudlabs.yaml
   - ./mittwald.yaml
   - ./node-feature-discovery.yaml
+  - ./openebs.yaml
   - ./piraeus.yaml
-  - ./pod-arcade.yaml
   - ./prometheus-community.yaml
   - ./rook-ceph.yaml
   - ./spegel.yaml
