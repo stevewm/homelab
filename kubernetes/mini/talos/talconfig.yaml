@@ -17,6 +17,7 @@ nodes:
   - hostname: control01
     ipAddress: 192.168.1.51
     controlPlane: true
+    disableSearchDomain: true
     machineSpec:
       mode: metal
       arch: amd64
@@ -32,6 +33,7 @@ nodes:
   - hostname: control02
     ipAddress: 192.168.1.52
     controlPlane: true
+    disableSearchDomain: true
     machineSpec:
       mode: metal
       arch: amd64
@@ -47,6 +49,7 @@ nodes:
   - hostname: control03
     ipAddress: 192.168.1.53
     controlPlane: true
+    disableSearchDomain: true
     machineSpec:
       mode: metal
       arch: amd64
@@ -62,6 +65,7 @@ nodes:
   - hostname: worker01
     ipAddress: 192.168.1.54
     controlPlane: false
+    disableSearchDomain: true
     machineSpec:
       mode: metal
       arch: amd64
