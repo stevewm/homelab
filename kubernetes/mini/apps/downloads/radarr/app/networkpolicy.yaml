@@ -14,11 +14,8 @@ spec:
             app.kubernetes.io/name: prowlarr
         - matchLabels:
             app.kubernetes.io/name: recyclarr
-      toPorts:
-        - ports:
-            - port: "7878"
-              protocol: TCP
-    - fromEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: bazarr
         - matchLabels:
             app.kubernetes.io/name: ingress-nginx
             io.kubernetes.pod.namespace: network
@@ -30,7 +27,7 @@ spec:
             io.kubernetes.pod.namespace: selfhosted
       toPorts:
         - ports:
-            - port: "8080"
+            - port: "7878"
               protocol: TCP
 
   egress:
