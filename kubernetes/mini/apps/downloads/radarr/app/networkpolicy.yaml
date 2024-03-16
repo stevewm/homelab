@@ -17,14 +17,14 @@ spec:
         - matchLabels:
             app.kubernetes.io/name: bazarr
         - matchLabels:
-            app.kubernetes.io/name: ingress-nginx
-            io.kubernetes.pod.namespace: network
-        - matchLabels:
             app.kubernetes.io/name: jellyseerr
             io.kubernetes.pod.namespace: media
         - matchLabels:
             app.kubernetes.io/name: homepage
             io.kubernetes.pod.namespace: selfhosted
+        - matchLabels:
+            app.kubernetes.io/name: ingress-nginx
+            io.kubernetes.pod.namespace: network
       toPorts:
         - ports:
             - port: "7878"

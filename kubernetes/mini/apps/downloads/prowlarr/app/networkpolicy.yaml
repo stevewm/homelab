@@ -38,6 +38,20 @@ spec:
         - ports:
             - port: "8080"
               protocol: TCP
+    - toEndpoints: # sonarr
+        - matchLabels:
+            app.kubernetes.io/name: sonarr
+      toPorts:
+        - ports:
+            - port: "8989"
+              protocol: TCP
+    - toEndpoints: # radarr
+        - matchLabels:
+            app.kubernetes.io/name: radarr
+      toPorts:
+        - ports:
+            - port: "7878"
+              protocol: TCP
     - toEndpoints:
         - matchLabels:
             io.kubernetes.pod.namespace: kube-system
@@ -49,8 +63,9 @@ spec:
           rules:
             dns:
               - matchPattern: "*"
-    - toFQDNs: # linux isos
-        - matchName: drunkenslug.com
+    - toFQDNs:
+        - matchName: drunkenslug.com      # linux isos
+        - matchName: prowlarr.servarr.com # update checking
       toPorts:
         - ports:
             - port: "443"
