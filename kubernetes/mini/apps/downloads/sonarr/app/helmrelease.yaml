@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/helm.toolkit.fluxcd.io/helmrelease_v2beta2.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.0.4
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -20,7 +20,7 @@ spec:
     defaultPodOptions:
       automountServiceAccountToken: false
     controllers:
-      main:
+      sonarr:
         annotations:
           reloader.stakater.com/auto: "true"
         strategy: Recreate
@@ -32,7 +32,7 @@ spec:
             fsGroup: ${APP_GID}
             fsGroupChangePolicy: OnRootMismatch
         containers:
-          main:
+          app:
             image:
               repository: ghcr.io/onedr0p/sonarr
               tag: 4.0.2.1183@sha256:bbfcda0754272515ce12972924652699934074b46b11d27bc515c8ea5fb870f5
@@ -57,20 +57,20 @@ spec:
               capabilities:
                 drop: [ALL]
     service:
-      main:
+      app:
+        controller: sonarr
         ports:
           http:
             port: *port
     ingress:
-      main:
-        enabled: true
+      app:
         className: nginx
         hosts:
           - host: &host snr.cfg.sh
             paths:
               - path: *path
                 service:
-                  name: main
+                  identifier: app
                   port: http
         tls:
           - hosts:
@@ -94,12 +94,10 @@ spec:
             sub_filter_once on;
     persistence:
       media:
-        enabled: true
         type: nfs
         server: 192.168.1.234
         path: /volume1/Media
         globalMounts:
           - path: /data/media
       config:
-        enabled: true
         existingClaim: "${VOLSYNC_CLAIM}"

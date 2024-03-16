@@ -68,7 +68,7 @@ spec:
           http:
             port: *port
     ingress:
-      main:
+      app:
         enabled: true
         className: nginx
         hosts:
