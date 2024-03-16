@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/helm.toolkit.fluxcd.io/helmrelease_v2beta2.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.0.4
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -19,15 +19,22 @@ spec:
     defaultPodOptions:
       automountServiceAccountToken: false
     controllers:
-      main:
+      flyimg:
         strategy: Recreate
         containers:
-          main:
+          app:
             image:
               repository: flyimg/flyimg-build
               tag: 1.3.4
             env:
-              PORT: 8080
+              PORT: &port 8080
+            probes:
+              liveness:
+                enabled: true
+              readiness:
+                enabled: true
+              startup:
+                enabled: true
             resources:
               requests:
                 cpu: 10m
@@ -35,20 +42,20 @@ spec:
               limits:
                 memory: 128Mi
     service:
-      main:
+      app:
+        controller: flyimg
         ports:
           http:
-            port: 8080
+            port: *port
     ingress:
-      main:
-        enabled: true
+      app:
         className: nginx
         hosts:
           - host: &host img.cfg.sh
             paths:
               - path: /
                 service:
-                  name: main
+                  identifier: main
                   port: http
         tls:
           - hosts:
