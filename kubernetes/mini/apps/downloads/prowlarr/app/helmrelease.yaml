@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/helm.toolkit.fluxcd.io/helmrelease_v2beta2.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.0.4
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -19,7 +19,7 @@ spec:
     defaultPodOptions:
       automountServiceAccountToken: false
     controllers:
-      main:
+      prowlarr:
         annotations:
           reloader.stakater.com/auto: "true"
         strategy: Recreate
@@ -31,7 +31,7 @@ spec:
             fsGroup: ${APP_GID}
             fsGroupChangePolicy: OnRootMismatch
         containers:
-          main:
+          app:
             image:
               repository: ghcr.io/onedr0p/prowlarr
               tag: 1.13@sha256:55a125d5935459c01c97a6946dc72481089ad0af62d89c936e40b620bda92689
@@ -48,12 +48,10 @@ spec:
             probes:
               readiness:
                 enabled: true
-                spec:
-                  initialDelaySeconds: 60
               startup:
                 enabled: true
                 spec:
-                  initialDelaySeconds: 60
+                  initialDelaySeconds: 30
             resources:
               requests:
                 cpu: 10m
@@ -66,7 +64,8 @@ spec:
               capabilities:
                 drop: [ALL]
     service:
-      main:
+      app:
+        controller: prowlarr
         ports:
           http:
             port: *port
@@ -79,7 +78,7 @@ spec:
             paths:
               - path: /
                 service:
-                  name: main
+                  identifier: app
                   port: http
         tls:
           - hosts:
@@ -104,9 +103,3 @@ spec:
       config:
         enabled: true
         existingClaim: ${VOLSYNC_CLAIM}
-    resources:
-      requests:
-        cpu: 20m
-        memory: 128M
-      limits:
-        memory: 256M
