@@ -47,7 +47,10 @@ spec:
           rules:
             dns:
               - matchPattern: "*"
-    - toFQDNs: # subtitle providers
+    - toFQDNs:
+        - matchName: api.github.com            # update check
+        - matchName: raw.githubusercontent.com # announcements
+        # subtitle providers
         - matchName: opensubtitles.com
       toPorts:
         - ports:
