@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/helm.toolkit.fluxcd.io/helmrelease_v2beta2.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.0.4
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -19,10 +19,10 @@ spec:
     defaultPodOptions:
       automountServiceAccountToken: false
     controllers:
-      main:
+      jellystat:
         strategy: Recreate
         containers:
-          main:
+          app:
             image:
               repository: cyfershepard/jellystat
               tag: 1.0.9
@@ -57,6 +57,13 @@ spec:
                   secretKeyRef:
                     name: jellystat-jwt
                     key: secret
+            probes:
+              liveness:
+                enabled: true
+              readiness:
+                enabled: true
+              startup:
+                enabled: true
             resources:
               requests:
                 cpu: 10m
@@ -64,20 +71,20 @@ spec:
               limits:
                 memory: 150Mi
     service:
-      main:
+      app:
+        controller: jellystat
         ports:
           http:
             port: 3000
     ingress:
-      main:
-        enabled: true
+      app:
         className: nginx
         hosts:
           - host: &host jstat.cfg.sh
             paths:
               - path: /
                 service:
-                  name: main
+                  identifier: app
                   port: http
         tls:
           - hosts:
@@ -89,15 +96,12 @@ spec:
           gethomepage.dev/icon: jellystat.png
     persistence:
       backup:
-        enabled: true
         type: emptyDir
         globalMounts:
           - path: /app/backend/backup-data
       npm:
-        enabled: true
         type: emptyDir
         globalMounts:
           - path: /.npm
       migrations:
-        enabled: true
         type: emptyDir
