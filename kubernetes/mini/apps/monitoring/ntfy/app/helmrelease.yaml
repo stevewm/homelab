@@ -89,9 +89,3 @@ spec:
           - path: /etc/ntfy/server.yml
             subPath: server.yml
             readOnly: true
-    resources:
-      requests:
-        cpu: 25m
-        memory: 128M
-      limits:
-        memory: 256M
