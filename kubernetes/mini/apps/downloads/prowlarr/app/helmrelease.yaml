@@ -46,6 +46,8 @@ spec:
               PROWLARR_LOG_LEVEL: trace
               COMPlus_EnableDiagnostics: "0"
             probes:
+              liveness:
+                enabled: true
               readiness:
                 enabled: true
               startup:
