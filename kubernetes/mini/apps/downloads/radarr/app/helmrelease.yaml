@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/helm.toolkit.fluxcd.io/helmrelease_v2beta2.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
@@ -20,7 +20,7 @@ spec:
     defaultPodOptions:
       automountServiceAccountToken: false
     controllers:
-      main:
+      radarr:
         annotations:
           reloader.stakater.com/auto: "true"
         strategy: Recreate
@@ -57,20 +57,20 @@ spec:
               capabilities:
                 drop: [ALL]
     service:
-      main:
+      app:
+        controller: radarr
         ports:
           http:
             port: *port
     ingress:
-      main:
-        enabled: true
+      radarr:
         className: nginx
         hosts:
           - host: &host rdr.cfg.sh
             paths:
               - path: *path
                 service:
-                  name: main
+                  identifier: app
                   port: http
         tls:
           - hosts:
