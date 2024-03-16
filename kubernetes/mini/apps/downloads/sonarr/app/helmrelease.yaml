@@ -45,6 +45,15 @@ spec:
                   secretKeyRef:
                     name: sonarr
                     key: api_key
+            probes:
+              liveness:
+                enabled: true
+              readiness:
+                enabled: true
+              startup:
+                enabled: true
+                spec:
+                  initialDelaySeconds: 30
             resources:
               requests:
                 cpu: 10m
