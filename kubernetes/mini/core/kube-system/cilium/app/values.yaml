@@ -20,6 +20,10 @@ bgp:
     podCIDR: false
 bgpControlPlane:
   enabled: true
+dnsProxy:
+  endpointMaxIpPerHostname: 100
+  maxDeferredConnectionDeletes: 15000
+  minTtl: 300
 # -- from talos docs --
 ipam:
   mode: kubernetes
