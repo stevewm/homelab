@@ -57,7 +57,8 @@ spec:
             dns:
               - matchPattern: "*"
     - toFQDNs:
-        - matchName: radarrapi.servarr.com
+        - matchName: api.radarr.video
+        - matchName: radarr.servarr.com
       toPorts:
         - ports:
             - port: "443"
