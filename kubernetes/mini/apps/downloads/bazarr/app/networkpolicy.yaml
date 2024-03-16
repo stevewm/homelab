@@ -47,7 +47,7 @@ spec:
           rules:
             dns:
               - matchPattern: "*"
-    - toFQDNs:
+    - toFQDNs: # TODO: L7 policy
         - matchName: api.github.com            # update check
         - matchName: raw.githubusercontent.com # announcements
         # subtitle providers
