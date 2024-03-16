@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.6.0
+      version: 3.0.4
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -20,7 +20,7 @@ spec:
     defaultPodOptions:
       automountServiceAccountToken: false
     controllers:
-      main:
+      sabnzbd:
         annotations:
           reloader.stakater.com/auto: "true"
         strategy: Recreate
@@ -32,7 +32,7 @@ spec:
             fsGroup: ${APP_GID}
             fsGroupChangePolicy: OnRootMismatch
         containers:
-          main:
+          app:
             image:
               repository: ghcr.io/onedr0p/sabnzbd
               tag: 4.2.3@sha256:fa8ddea45e56b0e36454c3c0eb30ff5521d90aeb5b35301656ae9236680be3a9
@@ -62,7 +62,8 @@ spec:
               capabilities:
                 drop: [ALL]
     service:
-      main:
+      app:
+        controller: sabnzbd
         ports:
           http:
             port: *port
@@ -75,7 +76,7 @@ spec:
             paths:
               - path: /
                 service:
-                  name: main
+                  identifier: app
                   port: http
         tls:
           - hosts:
@@ -98,21 +99,14 @@ spec:
             sub_filter_once on;
     persistence:
       media:
-        enabled: true
         type: nfs
         server: 192.168.1.234
         path: /volume1/Media
         globalMounts:
           - path: /data/media
       config:
-        enabled: true
         existingClaim: ${VOLSYNC_CLAIM}
-      incomplete:
-        enabled: true
-        type: emptyDir
       tmp:
         type: emptyDir
-        advancedMounts:
-          main:
-            main:
-              - path: /tmp
+        globalMounts:
+          - path: /tmp
