@@ -66,6 +66,7 @@ spec:
     - toFQDNs:
         - matchName: drunkenslug.com      # linux isos
         - matchName: prowlarr.servarr.com # update checking
+        - matchName: indexers.prowlarr.com
       toPorts:
         - ports:
             - port: "443"
