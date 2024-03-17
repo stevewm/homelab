@@ -18,7 +18,7 @@ spec:
     name: homelab
   wait: true
   dependsOn:
-    - name: core-external-secrets
+    - name: core-external-secrets-secretstore
 
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
 ---
