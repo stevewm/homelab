@@ -51,6 +51,7 @@ spec:
                 gpu.intel.com/i915: 1
     service:
       app:
+        controller: jellyfin
         ports:
           http:
             port: 8096
