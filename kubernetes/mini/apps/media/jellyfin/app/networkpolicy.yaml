@@ -1,0 +1,47 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/cilium.io/ciliumnetworkpolicy_v2.json
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: jellyfin
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: jellyfin
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: jellystat
+        - matchLabels:
+            app.kubernetes.io/name: jellyseerr
+        - matchLabels:
+            app.kubernetes.io/name: ingress-nginx
+            io.kubernetes.pod.namespace: network
+        - matchLabels:
+            app.kubernetes.io/name: homepage
+            io.kubernetes.pod.namespace: selfhosted
+      toPorts:
+        - ports:
+            - port: "8096"
+              protocol: TCP
+
+  egress:
+    - toEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: ersatztv
+      toPorts:
+        - ports:
+            - port: "8409"
+              protocol: TCP
+
+    - toEndpoints:
+        - matchLabels:
+            io.kubernetes.pod.namespace: kube-system
+            k8s-app: kube-dns
+      toPorts:
+        - ports:
+            - port: "53"
+              protocol: UDP
+          rules:
+            dns:
+              - matchPattern: "*"
