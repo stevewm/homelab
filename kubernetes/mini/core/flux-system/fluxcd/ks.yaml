@@ -18,4 +18,4 @@ spec:
     name: homelab
   wait: false
   dependsOn:
-    - name: core-external-secrets
+    - name: core-external-secrets-secretstore
