@@ -48,14 +48,14 @@ spec:
           http:
             port: 8080
     ingress:
-      main:
+      app:
         className: nginx
         hosts:
           - host: &host ntfy.cfg.sh
             paths:
               - path: /
                 service:
-                  identifier: main
+                  identifier: app
                   port: http
         tls:
           - hosts:
