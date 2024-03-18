@@ -60,6 +60,8 @@ spec:
         - matchName: skyhook.sonarr.tv
         - matchName: services.sonarr.tv
         - matchName: sentry.sonarr.tv
+        - matchName: artworks.thetvdb.com
+        - matchName: thexem.info
       toPorts:
         - ports:
             - port: "443"
