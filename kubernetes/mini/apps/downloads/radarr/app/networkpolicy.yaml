@@ -59,6 +59,7 @@ spec:
     - toFQDNs:
         - matchName: api.radarr.video   # api
         - matchName: radarr.servarr.com # update check
+        - matchName: image.tmdb.org     # info
       toPorts:
         - ports:
             - port: "443"
