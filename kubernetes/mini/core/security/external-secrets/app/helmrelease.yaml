@@ -17,6 +17,8 @@ spec:
         name: external-secrets
         namespace: flux-system
   values:
+    podLabels:
+      egress.home.arpa/apiserver: allow
     installCRDs: true
     replicaCount: 2
     deploymentAnnotations:
