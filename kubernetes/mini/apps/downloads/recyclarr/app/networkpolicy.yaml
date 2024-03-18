@@ -29,6 +29,8 @@ spec:
         - ports:
             - port: "443"
               protocol: TCP
+            - port: "22"
+              protocol: TCP
 # TODO: L7 egress policy for:
 # https://github.com/TRaSH-Guides/Guides.git
 # https://github.com/recyclarr/config-templates
