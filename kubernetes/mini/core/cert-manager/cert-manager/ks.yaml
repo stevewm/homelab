@@ -33,7 +33,7 @@ spec:
     labels:
       app.kubernetes.io/name: &app cert-manager
   interval: 10m
-  path: ./kubernetes/mini/core/cert-manager/cert-manager/crs
+  path: ./kubernetes/mini/core/cert-manager/cert-manager/certificates
   prune: true
   sourceRef:
     kind: GitRepository
