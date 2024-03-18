@@ -31,7 +31,7 @@ spec:
     labels:
       app.kubernetes.io/name: &app cilium
   interval: 10m
-  path: ./kubernetes/mini/core/kube-system/cilium/netpols
+  path: ./kubernetes/mini/core/kube-system/cilium/policies
   prune: true
   sourceRef:
     kind: GitRepository
