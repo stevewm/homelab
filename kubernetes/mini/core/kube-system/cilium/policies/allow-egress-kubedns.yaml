@@ -1,5 +1,8 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/cilium.io/ciliumclusterwidenetworkpolicy_v2.json
 ---
+# If a policy applies to kube-apiserver access
+# the policy wont work on the pod until you redeploy.
+# E.g. the ExternalSecrets webhook pod requiring ingress from kube-api
 apiVersion: cilium.io/v2
 kind: CiliumClusterwideNetworkPolicy
 metadata:
