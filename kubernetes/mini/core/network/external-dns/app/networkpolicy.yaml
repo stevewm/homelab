@@ -10,8 +10,8 @@ spec:
       app.kubernetes.io/name: external-dns
 
   egress:
-    - toCIDRSet:
-        - cidr: 192.168.1.234/32 # PiHole
+    - toCIDR:
+        - 192.168.1.234/32 # PiHole
       toPorts:
         - ports:
             - port: "3001"
