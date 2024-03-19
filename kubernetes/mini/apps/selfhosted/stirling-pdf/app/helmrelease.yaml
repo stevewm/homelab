@@ -49,7 +49,7 @@ spec:
             port: 8080
     ingress:
       app:
-        className: nginx
+        className: nginx-internal
         hosts:
           - host: &host pdf.cfg.sh
             paths:

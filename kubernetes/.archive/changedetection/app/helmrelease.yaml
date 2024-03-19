@@ -35,7 +35,7 @@ spec:
         tls:
           - hosts:
               - *host
-        ingressClassName: nginx
+        ingressClassName: nginx-internal
         annotations:
           gethomepage.dev/name: change-detection
           gethomepage.dev/enabled: 'true'

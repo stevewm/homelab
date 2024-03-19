@@ -4,5 +4,4 @@ kind: Kustomization
 resources:
   - ./helmrelease.yaml
   - ./networkpolicy.yaml
-  - ./postgres.yaml
   - ./secret.yaml

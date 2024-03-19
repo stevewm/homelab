@@ -27,7 +27,7 @@ spec:
       create: true
     ingress:
       main:
-        ingressClassName: nginx
+        ingressClassName: nginx-internal
         enabled: true
         hosts:
           - host: &host home.cfg.sh

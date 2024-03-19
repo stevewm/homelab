@@ -47,7 +47,7 @@ spec:
             port: 8000
     ingress:
       app:
-        className: nginx
+        className: nginx-internal
         hosts:
           - host: &host cc.cfg.sh
             paths:

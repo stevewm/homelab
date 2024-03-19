@@ -31,6 +31,8 @@ spec:
         annotations:
           reloader.stakater.com/auto: "true"
         pod:
+          labels:
+            ingress.home.arpa/nginx-internal: allow
           securityContext:
             runAsUser: ${APP_UID}
             runAsGroup: ${APP_GID}
@@ -74,7 +76,7 @@ spec:
             port: *port
     ingress:
       app:
-        className: nginx
+        className: nginx-internal
         hosts:
           - host: &host bzr.cfg.sh
             paths:

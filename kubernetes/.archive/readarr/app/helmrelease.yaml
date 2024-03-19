@@ -54,7 +54,7 @@ spec:
     ingress:
       main:
         enabled: true
-        className: nginx
+        className: nginx-internal
         hosts:
           - host: &host readarr.cfg.sh
             paths:

@@ -55,7 +55,7 @@ spec:
     ingress:
       enabled: true
       name: gatus
-      ingressclassName: nginx
+      ingressclassName: nginx-internal
       annotations:
         gethomepage.dev/name: *name
         gethomepage.dev/description: auth

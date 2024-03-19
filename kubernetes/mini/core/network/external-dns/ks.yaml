@@ -20,3 +20,4 @@ spec:
   dependsOn:
     - name: core-external-secrets-secretstore
     - name: core-kube-prometheus-stack
+# TODO: Internal/External ExternalDNS
