@@ -33,6 +33,7 @@ spec:
         pod:
           labels:
             ingress.home.arpa/nginx-internal: allow
+            ingress.home.arpa/homepage: allow
           securityContext:
             runAsUser: ${APP_UID}
             runAsGroup: ${APP_GID}

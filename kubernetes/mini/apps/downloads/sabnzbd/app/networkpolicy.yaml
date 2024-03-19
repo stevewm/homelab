@@ -18,14 +18,6 @@ spec:
         - ports:
             - port: "8080"
               protocol: TCP
-    - fromEndpoints:
-        - matchLabels:
-            app.kubernetes.io/name: homepage
-            io.kubernetes.pod.namespace: selfhosted
-      toPorts:
-        - ports:
-            - port: "8080"
-              protocol: TCP
 
   egress:
     - toEndpoints:
@@ -46,5 +38,3 @@ spec:
       toPorts:
         - ports:
             - port: "563"
-    - toCIDRSet: # nas
-        - cidr: 192.168.1.234/32

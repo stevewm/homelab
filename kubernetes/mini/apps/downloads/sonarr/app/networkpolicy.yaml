@@ -19,9 +19,6 @@ spec:
         - matchLabels:
             app.kubernetes.io/name: jellyseerr
             io.kubernetes.pod.namespace: media
-        - matchLabels:
-            app.kubernetes.io/name: homepage
-            io.kubernetes.pod.namespace: selfhosted
       toPorts:
         - ports:
             - port: "8989"
