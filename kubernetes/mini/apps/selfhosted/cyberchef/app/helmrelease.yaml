@@ -21,6 +21,9 @@ spec:
     controllers:
       cyberchef:
         strategy: Recreate
+        pod:
+          labels:
+            ingress.home.arpa/nginx-internal: allow
         containers:
           main:
             image:

@@ -21,6 +21,9 @@ spec:
     controllers:
       flyimg:
         strategy: Recreate
+        pod:
+          labels:
+            ingress.home.arpa/nginx-internal: allow
         containers:
           app:
             image:
