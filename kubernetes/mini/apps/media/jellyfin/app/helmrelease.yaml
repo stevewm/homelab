@@ -22,6 +22,8 @@ spec:
       jellyfin:
         strategy: Recreate
         pod:
+          labels:
+            ingress.home.arpa/nginx-internal: allow
           securityContext:
             runAsUser: ${APP_UID}
             runAsGroup: ${APP_GID}
@@ -57,7 +59,7 @@ spec:
             port: 8096
     ingress:
       app:
-        className: nginx
+        className: nginx-internal
         hosts:
           - host: &host jf.cfg.sh
             paths:

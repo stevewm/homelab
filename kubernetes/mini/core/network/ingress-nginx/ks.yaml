@@ -3,15 +3,15 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: core-ingress-nginx
+  name: core-ingress-nginx-internal
   namespace: flux-system
 spec:
   targetNamespace: network
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app ingress-nginx
+      app.kubernetes.io/name: &app ingress-nginx-internal
   interval: 10m
-  path: ./kubernetes/mini/core/network/ingress-nginx/app
+  path: ./kubernetes/mini/core/network/ingress-nginx/internal
   prune: true
   sourceRef:
     kind: GitRepository

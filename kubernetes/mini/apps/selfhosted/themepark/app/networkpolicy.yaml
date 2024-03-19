@@ -3,12 +3,11 @@
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: homelab-docs
-  namespace: dev
+  name: themepark
 spec:
   endpointSelector:
     matchLabels:
-      app.kubernetes.io/name: homelab-docs
+      app.kubernetes.io/name: themepark
   ingress:
     - fromEndpoints:
         - matchLabels:
@@ -17,3 +16,4 @@ spec:
       toPorts:
         - ports:
             - port: "8080"
+              protocol: TCP

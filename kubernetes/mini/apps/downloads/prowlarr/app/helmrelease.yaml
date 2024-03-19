@@ -24,6 +24,8 @@ spec:
           reloader.stakater.com/auto: "true"
         strategy: Recreate
         pod:
+          labels:
+            ingress.home.arpa/nginx-internal: allow
           securityContext:
             runAsUser: ${APP_UID}
             runAsGroup: ${APP_GID}
@@ -74,7 +76,7 @@ spec:
     ingress:
       main:
         enabled: true
-        className: nginx
+        className: nginx-internal
         hosts:
           - host: &host plr.cfg.sh
             paths:

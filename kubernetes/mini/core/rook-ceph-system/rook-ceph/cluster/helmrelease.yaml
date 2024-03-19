@@ -96,7 +96,7 @@ spec:
               - name: /dev/disk/by-id/ata-Samsung_SSD_870_QVO_1TB_S6R8NJ0W401511Z
     ingress:
       dashboard:
-        ingressClassName: nginx
+        ingressClassName: nginx-internal
         annotations:
           nginx.ingress.kubernetes.io/backend-protocol: HTTPS
         host:

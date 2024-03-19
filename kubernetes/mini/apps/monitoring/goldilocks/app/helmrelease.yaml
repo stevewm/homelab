@@ -24,7 +24,7 @@ spec:
         enable-cost: "false"
       ingress:
         enabled: true
-        ingressClassName: nginx
+        ingressClassName: nginx-internal
         annotations:
           gethomepage.dev/name: *name
           gethomepage.dev/enabled: 'true'

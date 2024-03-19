@@ -20,6 +20,9 @@ spec:
       automountServiceAccountToken: false
     controllers:
       lldap:
+        pod:
+          labels:
+            db.home.arpa/pg: 'postgres'
         annotations:
           reloader.stakater.com/auto: 'true'
         strategy: Recreate
@@ -68,7 +71,7 @@ spec:
             port: 17170
     ingress:
       app:
-        className: nginx
+        className: nginx-internal
         hosts:
           - host: &host ldap.cfg.sh
             paths:

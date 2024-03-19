@@ -20,6 +20,9 @@ spec:
       automountServiceAccountToken: false
     controllers:
       speedtest-tracker:
+        pod:
+          labels:
+            db.home.arpa/pg: 'postgres'
         annotations:
           reloader.stakater.com/auto: "true"
         strategy: Recreate
@@ -76,7 +79,7 @@ spec:
             port: 80
     ingress:
       app:
-        className: nginx
+        className: nginx-internal
         hosts:
           - host: &host speed.cfg.sh
             paths:

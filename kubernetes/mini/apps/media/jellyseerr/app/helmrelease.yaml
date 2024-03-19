@@ -22,6 +22,8 @@ spec:
       jellyseerr:
         strategy: Recreate
         pod:
+          labels:
+            ingress.home.arpa/nginx-internal: allow
           securityContext:
             runAsUser: ${APP_UID}
             runAsGroup: ${APP_GID}
@@ -53,7 +55,7 @@ spec:
             port: 5055
     ingress:
       app:
-        className: nginx
+        className: nginx-internal
         hosts:
           - host: &host js.cfg.sh
             paths:

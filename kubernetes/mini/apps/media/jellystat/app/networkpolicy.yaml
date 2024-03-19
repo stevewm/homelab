@@ -11,9 +11,6 @@ spec:
   ingress:
     - fromEndpoints:
         - matchLabels:
-            app.kubernetes.io/name: ingress-nginx
-            io.kubernetes.pod.namespace: network
-        - matchLabels:
             app.kubernetes.io/name: homepage
             io.kubernetes.pod.namespace: selfhosted
       toPorts:
@@ -40,7 +37,3 @@ spec:
           rules:
             dns:
               - matchPattern: "*"
-    - toPorts: # postgres
-        - ports:
-            - port: "5432"
-              protocol: TCP

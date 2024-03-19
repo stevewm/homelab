@@ -20,6 +20,10 @@ spec:
       automountServiceAccountToken: false
     controllers:
       jellystat:
+        pod:
+          labels:
+            db.home.arpa/pg: 'postgres'
+            ingress.home.arpa/nginx-internal: allow
         strategy: Recreate
         containers:
           app:
@@ -78,7 +82,7 @@ spec:
             port: 3000
     ingress:
       app:
-        className: nginx
+        className: nginx-internal
         hosts:
           - host: &host jstat.cfg.sh
             paths:
