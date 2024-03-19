@@ -23,6 +23,7 @@ spec:
         pod:
           labels:
             db.home.arpa/pg: 'postgres'
+            ingress.home.arpa/nginx-internal: allow
         annotations:
           reloader.stakater.com/auto: 'true'
         strategy: Recreate

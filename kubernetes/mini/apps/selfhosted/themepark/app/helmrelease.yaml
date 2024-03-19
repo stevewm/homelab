@@ -23,6 +23,9 @@ spec:
         annotations:
           reloader.stakater.com/auto: "true"
         strategy: Recreate
+        pod:
+          labels:
+            ingress.home.arpa/nginx-internal: allow
         containers:
           app:
             image:
