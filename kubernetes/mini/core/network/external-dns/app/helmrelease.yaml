@@ -17,6 +17,8 @@ spec:
         name: external-dns
         namespace: flux-system
   values:
+    podLabels:
+      egress.home.arpa/apiserver: allow
     deploymentAnnotations:
       reloader.stakater.com/auto: 'true'
     serviceMonitor:
