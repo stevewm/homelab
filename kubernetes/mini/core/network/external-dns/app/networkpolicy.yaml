@@ -15,8 +15,3 @@ spec:
       toPorts:
         - ports:
             - port: "3001"
-          rules:
-            http:
-              - path: "/admin/scripts/pi-hole/php/customdns.php"
-              - path: "/admin/scripts/pi-hole/php/customcname.php"
-              - path: "/admin/index.php" # Login
