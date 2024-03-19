@@ -97,6 +97,8 @@ spec:
           value: hacker-terminal
         - name: SHOW_DETAILS
           value: "false"
+      podLabels:
+        ingress.home.arpa/nginx-internal: allow
     resources:
       requests:
         cpu: 10m
