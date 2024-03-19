@@ -29,6 +29,9 @@ spec:
     controllers:
       recyclarr:
         type: cronjob
+        pod:
+          labels:
+            egress.home.arpa/kubedns: allow
         annotations:
           reloader.stakater.com/auto: "true"
         cronjob:
