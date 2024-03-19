@@ -2,6 +2,9 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
+  # Egress
   - ./allow-egress-apiserver.yaml
   - ./allow-egress-kubedns.yaml
+  # Ingress
+  - ./allow-ingress-apiserver.yaml
   #- ./default-allow-egress-kubedns.yaml # TODO: reinstate once other netpols are working

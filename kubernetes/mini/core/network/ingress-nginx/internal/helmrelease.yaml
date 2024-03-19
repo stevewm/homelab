@@ -59,7 +59,14 @@ spec:
         default: true
         controllerValue: k8s.io/ingress-nginx-internal
 
+      patch:
+        labels:
+          ingress.home.arpa/apiserver: allow
+
       admissionWebhooks:
+        labels:
+          egress.home.arpa/apiserver: allow
+          ingress.home.arpa/apiserver: allow
         objectSelector:
           matchExpressions:
             - key: ingress-class
@@ -96,5 +103,3 @@ spec:
         memory: 272M
       limits:
         memory: 326M
-    admissionWebhooks:
-      enabled: false # https://github.com/kubernetes/ingress-nginx/issues/5968
