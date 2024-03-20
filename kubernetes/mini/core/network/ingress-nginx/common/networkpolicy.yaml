@@ -28,8 +28,8 @@ spec:
       app.kubernetes.io/name: ingress-nginx
       io.kubernetes.pod.namespace: network
 
-  ingress:
-    - fromEndpoints:
+  egress:
+    - toEndpoints:
         - matchLabels:
             ingress.home.arpa/nginx-internal: allow
 
