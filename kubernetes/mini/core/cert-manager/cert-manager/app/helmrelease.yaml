@@ -17,6 +17,9 @@ spec:
         name: cert-manager
         namespace: flux-system
   values:
+    global:
+      commonLabels:
+        egress.home.arpa/apiserver: allow
     installCRDs: true
     enableCertificateOwnerRef: true
     deploymentAnnotations:

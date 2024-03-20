@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/cilium.io/ciliumclusterwidenetworkpolicy_v2.json
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: cert-manager
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: cert-manager
+      app.kubernetes.io/component: controller
+  egress:
+    - toFQDNs:
+        - matchName: acme-v02.api.letsencrypt.org
+      toPorts:
+        - ports:
+            - port: "443"
+              protocol: TCP
