@@ -22,6 +22,7 @@ spec:
     controller:
       labels:
         egress.home.arpa/apiserver: allow
+        ingress.home.arpa/lan: allow
       replicaCount: 2
       updateStrategy:
         type: RollingUpdate
