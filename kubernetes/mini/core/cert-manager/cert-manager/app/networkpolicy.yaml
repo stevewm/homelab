@@ -12,6 +12,7 @@ spec:
   egress:
     - toFQDNs:
         - matchName: acme-v02.api.letsencrypt.org
+        - matchName: api.cloudflare.com
       toPorts:
         - ports:
             - port: "443"
