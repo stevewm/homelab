@@ -60,6 +60,8 @@ hubble:
   ui:
     enabled: true
     rollOutPods: true
+    podLabels:
+      ingress.home.arpa/nginx-internal: allow
     resources:
       requests:
         cpu: 200m
