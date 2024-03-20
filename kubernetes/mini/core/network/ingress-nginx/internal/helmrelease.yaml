@@ -78,7 +78,7 @@ spec:
                 - nginx-internal
 
       extraArgs:
-        default-ssl-certificate: "cert-manager/cfg-sh-tls"
+        default-ssl-certificate: "network/cfg-sh-tls"
 
       topologySpreadConstraints:
         - maxSkew: 2
