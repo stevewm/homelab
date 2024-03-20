@@ -20,6 +20,8 @@ spec:
     fullnameOverride: nginx-internal
 
     controller:
+      labels:
+        egress.home.arpa/apiserver: allow
       replicaCount: 2
       updateStrategy:
         type: RollingUpdate
