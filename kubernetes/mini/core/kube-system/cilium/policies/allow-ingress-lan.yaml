@@ -9,5 +9,5 @@ spec:
     matchLabels:
       ingress.home.arpa/lan: allow
   ingress:
-    - fromCIDR:
-        - 192.168.1.0/24
+    - fromCIDRSet:
+        - cidr: 192.168.1.0/24
