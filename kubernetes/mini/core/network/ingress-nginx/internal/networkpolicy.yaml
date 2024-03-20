@@ -13,7 +13,7 @@ spec:
     - fromEndpoints:
         - matchLabels:
             app.kubernetes.io/name: ingress-nginx
-            app.kubernetes.io/instance: nginx-internal-internal
+            app.kubernetes.io/instance: nginx-internal
             io.kubernetes.pod.namespace: network
 
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/cilium.io/ciliumclusterwidenetworkpolicy_v2.json
