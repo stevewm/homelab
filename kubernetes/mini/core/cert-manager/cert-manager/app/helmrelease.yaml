@@ -20,6 +20,7 @@ spec:
     global:
       commonLabels:
         egress.home.arpa/apiserver: allow
+        egress.home.arpa/kubedns: allow
     installCRDs: true
     enableCertificateOwnerRef: true
     deploymentAnnotations:
