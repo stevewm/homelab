@@ -6,7 +6,7 @@ metadata:
   name: app-homelab-docs
   namespace: flux-system
 spec:
-  targetNamespace: dev
+  targetNamespace: sites
   commonMetadata:
     labels:
       app.kubernetes.io/name: &app homelab-docs
