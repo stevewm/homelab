@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: &app homelab-docs
   interval: 10m
-  path: ./kubernetes/mini/apps/dev/homelab-docs/app
+  path: ./kubernetes/mini/apps/sites/homelab-docs/app
   prune: true
   sourceRef:
     kind: GitRepository
