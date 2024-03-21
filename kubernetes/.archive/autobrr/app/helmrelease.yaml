@@ -24,6 +24,8 @@ spec:
           reloader.stakater.com/auto: "true"
         strategy: Recreate
         pod:
+          labels:
+            ingress.home.arpa/homepage: allow
           securityContext:
             runAsUser: 568
             runAsGroup: 568
