@@ -31,6 +31,13 @@ spec:
             - port: "8409"
               protocol: TCP
 
+    - toFQDNs:
+        - matchName: repo.jellyfin.org
+      toPorts:
+        - ports:
+            - port: "443"
+              protocol: TCP
+
     - toEndpoints:
         - matchLabels:
             io.kubernetes.pod.namespace: kube-system
