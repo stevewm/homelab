@@ -6,12 +6,12 @@ metadata:
   name: app-homelab-docs
   namespace: flux-system
 spec:
-  targetNamespace: sites
+  targetNamespace: web
   commonMetadata:
     labels:
       app.kubernetes.io/name: &app homelab-docs
   interval: 10m
-  path: ./kubernetes/mini/apps/sites/homelab-docs/app
+  path: ./kubernetes/mini/apps/web/homelab-docs/app
   prune: true
   sourceRef:
     kind: GitRepository
