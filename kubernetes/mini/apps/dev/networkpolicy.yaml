@@ -3,11 +3,13 @@
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: default-deny
+  name: default-allow # allow traffic within namespace for dev
   namespace: dev
 spec:
   endpointSelector: {}
   ingress:
-    - {}
+    - fromEndpoints:
+        - {}
   egress:
-    - {}
+    - toEndpoints:
+        - {}
