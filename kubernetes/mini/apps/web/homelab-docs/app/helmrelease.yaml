@@ -39,7 +39,7 @@ spec:
                 cpu: 5m
                 memory: 32Mi
               limits:
-                memory: 100Mi
+                memory: 64Mi
             env:
               NGINX_PORT: &port 8080
               NGINX_HOST: &host docs.cfg.sh
