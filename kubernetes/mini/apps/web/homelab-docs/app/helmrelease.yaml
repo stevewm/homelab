@@ -23,7 +23,7 @@ spec:
         strategy: Recreate
         pod:
           labels:
-            ingress.home.arpa/nginx-internal: allow
+            ingress.home.arpa/nginx-external: allow
           securityContext:
             runAsUser: 568
             runAsGroup: 568
