@@ -51,7 +51,7 @@ spec:
             port: *port
     ingress:
       app:
-        className: nginx-internal
+        className: nginx-external
         hosts:
           - host: *host
             paths:
