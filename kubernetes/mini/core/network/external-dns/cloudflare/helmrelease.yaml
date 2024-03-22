@@ -40,9 +40,9 @@ spec:
 
     sources:
       - ingress
-      - service
+      - crd
 
-    txtOwnerId: main
+    txtOwnerId: mini
     txtPrefix: "k8s."
 
     env:
