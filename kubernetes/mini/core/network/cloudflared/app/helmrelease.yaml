@@ -57,7 +57,7 @@ spec:
                 valueFrom:
                   secretKeyRef:
                     name: cloudflared
-                    key: CLOUDFLARE_TUNNEL_ID
+                    key: TunnelID
 
             probes:
               liveness:
