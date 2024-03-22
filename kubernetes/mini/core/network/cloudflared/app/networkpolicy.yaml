@@ -1,0 +1,2 @@
+# Permit egress to cloudflare
+# Permit egress to external-nginx
