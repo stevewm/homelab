@@ -7,4 +7,4 @@ spec:
   endpoints:
     - dnsName: ext.cfg.sh
       recordType: CNAME
-      targets: ["${CLOUDFLARE_TUNNEL_ID}.cfargotunnel.com"]
+      targets: ["${TunnelID}.cfargotunnel.com"]
