@@ -67,3 +67,4 @@ spec:
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: dev
           gethomepage.dev/icon: mdi-text-box-outline
+          external-dns.alpha.kubernetes.io/target: ext.cfg.sh
