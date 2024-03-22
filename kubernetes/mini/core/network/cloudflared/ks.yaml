@@ -3,6 +3,28 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
+  name: core-cloudflared-secret
+  namespace: flux-system
+spec:
+  targetNamespace: network
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app cloudflared
+  interval: 10m
+  path: ./kubernetes/mini/core/network/cloudflared/secret
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+  wait: true
+  dependsOn:
+    - name: core-external-secrets-secretstore
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
   name: core-cloudflared
   namespace: flux-system
 spec:
@@ -18,7 +40,7 @@ spec:
     name: homelab
   wait: false
   dependsOn:
-    - name: core-external-secrets-secretstore
+    - name: core-cloudflared-secret
     - name: core-external-dns-common
     - name: core-ingress-nginx-external
   postBuild:
