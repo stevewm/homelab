@@ -40,7 +40,7 @@ spec:
 
     sources:
       - ingress
-      - services
+      - service
 
     env:
       - name: EXTERNAL_DNS_PIHOLE_SERVER

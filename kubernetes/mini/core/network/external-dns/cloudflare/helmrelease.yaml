@@ -40,7 +40,7 @@ spec:
 
     sources:
       - ingress
-      - services
+      - service
 
     txtOwnerId: main
     txtPrefix: "k8s."
