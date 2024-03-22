@@ -20,7 +20,7 @@ spec:
   dependsOn:
     - name: core-external-secrets-secretstore
     - name: core-external-dns-common
-    - name: core-nginx-ingress-external
+    - name: core-ingress-nginx-external
   postBuild:
     substituteFrom:
       - kind: Secret
