@@ -3,12 +3,11 @@
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: external-dns-cloudflare
+  name: playit
 spec:
   endpointSelector:
     matchLabels:
-      app.kubernetes.io/name: external-dns
-      app.kubernetes.io/instance: external-dns-cloudflare
+      app.kubernetes.io/name: playit
 
   egress:
     - toEndpoints: # dns
@@ -22,6 +21,6 @@ spec:
           rules:
             dns:
               - matchPattern: '*'
-    - toFQDNs:
-        - matchName: playit.gg
-        - matchPattern: '*.playit.gg'
+    - toFQDNs: # https://github.com/playit-cloud/playit-agent/blob/master/packages/agent_core/src/utils/name_lookup.rs#L47
+        - matchName: control.playit.gg
+        - matchName: ping.playit.gg
