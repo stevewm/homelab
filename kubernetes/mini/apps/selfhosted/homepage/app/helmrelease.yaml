@@ -21,6 +21,9 @@ spec:
       repository: ghcr.io/gethomepage/homepage
       tag: v0.8.9
     enableRbac: true
+    controller:
+      podLabels:
+        ingress.home.arpa/nginx-internal: allow
     podAnnotations:
       reloader.stakater.com/auto: 'true'
     serviceAccount:
