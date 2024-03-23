@@ -24,3 +24,8 @@ spec:
     - toFQDNs: # https://github.com/playit-cloud/playit-agent/blob/master/packages/agent_core/src/utils/name_lookup.rs#L47
         - matchName: control.playit.gg
         - matchName: ping.playit.gg
+        - matchName: api.playit.gg
+      toPorts:
+        - ports:
+            - port: '443'
+              protocol: TCP
