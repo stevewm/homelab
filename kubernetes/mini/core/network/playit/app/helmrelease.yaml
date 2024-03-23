@@ -51,7 +51,7 @@ spec:
               capabilities:
                 drop: [ALL]
     persistence:
-      playit.toml:
+      playit-toml:
         type: secret
         name: playit
         globalMounts:
