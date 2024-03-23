@@ -84,7 +84,7 @@ spec:
         default-ssl-certificate: "network/cfg-sh-tls"
 
       topologySpreadConstraints:
-        - maxSkew: 2
+        - maxSkew: 1
           topologyKey: kubernetes.io/hostname
           whenUnsatisfiable: DoNotSchedule
           labelSelector:
@@ -102,7 +102,7 @@ spec:
         - name: TEMPLATE_NAME
           value: hacker-terminal
         - name: SHOW_DETAILS
-          value: "false"
+          value: 'false'
       podLabels:
         ingress.home.arpa/nginx-external: allow
     resources:
