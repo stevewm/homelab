@@ -51,9 +51,10 @@ spec:
               capabilities:
                 drop: [ALL]
     persistence:
-      config:
-        accessMode: ReadWriteOnce
-        size: 1Gi
-        storageClass: ceph-block
+      playit.toml:
+        type: secret
+        name: playit
         globalMounts:
-          - path: /etc/playit
+          - path: /etc/playit/playit.toml
+            subPath: playit.toml
+            readOnly: false

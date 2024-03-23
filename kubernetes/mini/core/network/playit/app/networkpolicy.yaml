@@ -21,10 +21,11 @@ spec:
           rules:
             dns:
               - matchPattern: '*'
-    - toFQDNs: # https://github.com/playit-cloud/playit-agent/blob/master/packages/agent_core/src/utils/name_lookup.rs#L47
+    - toFQDNs:
         - matchName: control.playit.gg
         - matchName: ping.playit.gg
         - matchName: api.playit.gg
+        - matchName: api.playit.cloud
       toPorts:
         - ports:
             - port: '443'
