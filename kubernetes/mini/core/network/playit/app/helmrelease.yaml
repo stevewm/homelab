@@ -50,6 +50,10 @@ spec:
               readOnlyRootFilesystem: false #FIXME: Change once I know where data is stored
               capabilities:
                 drop: [ALL]
-    # persistence:
-    #   gamedata:
-    #     existingClaim: vintagestory-gamedata
+    persistence:
+      config:
+        accessMode: ReadWriteOnce
+        size: 1Gi
+        storageClass: rook-ceph-block
+        globalMounts:
+          - path: /etc/playit
