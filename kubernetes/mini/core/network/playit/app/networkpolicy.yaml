@@ -22,14 +22,19 @@ spec:
             dns:
               - matchPattern: '*'
     - toFQDNs:
-        - matchName: control.playit.gg
-        - matchName: ping.playit.gg
         - matchName: api.playit.gg
         - matchName: api.playit.cloud
       toPorts:
         - ports:
             - port: '443'
               protocol: TCP
+    - toFQDNs:
+        - matchName: control.playit.gg
+        - matchName: ping.playit.gg
+      toPorts:
+        - ports:
+            - port: '5525'
+              protocol: UDP
     - toCIDRSet:
         - cidr: '0.0.0.0/0'
           except:
@@ -38,3 +43,19 @@ spec:
         - ports:
             - port: '5525'
               protocol: UDP
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/cilium.io/ciliumnetworkpolicy_v2.json
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: playit-to-app
+spec:
+  endpointSelector:
+    matchLabels:
+      ingress.home.arpa/playit: allow
+
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: playit

@@ -9,19 +9,16 @@ spec:
     matchLabels:
       app.kubernetes.io/name: minecraft
   ingress:
-    - fromEndpoints:
-        - matchLabels:
-            app.kubernetes.io/name: playit
-      toPorts:
-        - ports:
-            - port: "32420"
-              protocol: ANY
+    - fromEntities:
+        - world # TODO: figure out why some traffic from the local network shows its source as the internal cidr
   egress:
     - toFQDNs:
-        - matchName: meta.fabricmc.net
-        - matchName: modrinth.com
-        - matchName: cdn.modrinth.com
+        - matchPattern: '*.fabricmc.net'
+        - matchPattern: '*.modrinth.com'
+        - matchPattern: '*.mojang.com'
+        - matchPattern: '*.minecraftservices.com'
         - matchName: vanillatweaks.net
+        - matchName: playerdb.co
       toPorts:
         - ports:
             - port: "443"
