@@ -31,7 +31,7 @@ spec:
   values: # TODO: Switch from this abomination to the app-template
     deploymentAnnotations:
       secret.reloader.stakater.com/reload: *secret
-    deploymentLabels:
+    podLabels:
       ingress.home.arpa/nginx-external: allow
       egress.home.arpa/kubedns: allow
 
