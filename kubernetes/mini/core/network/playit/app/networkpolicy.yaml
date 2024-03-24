@@ -16,7 +16,7 @@ spec:
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/cilium.io/ciliumnetworkpolicy_v2.json
 ---
 apiVersion: cilium.io/v2
-kind: CiliumNetworkPolicy
+kind: CiliumClusterWideNetworkPolicy
 metadata:
   name: playit-to-app
 spec:
