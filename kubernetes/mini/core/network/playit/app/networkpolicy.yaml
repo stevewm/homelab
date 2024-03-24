@@ -10,39 +10,8 @@ spec:
       app.kubernetes.io/name: playit
 
   egress:
-    - toEndpoints: # dns
-        - matchLabels:
-            io.kubernetes.pod.namespace: kube-system
-            k8s-app: kube-dns
-      toPorts:
-        - ports:
-            - port: '53'
-              protocol: UDP
-          rules:
-            dns:
-              - matchPattern: '*'
-    - toFQDNs:
-        - matchName: api.playit.gg
-        - matchName: api.playit.cloud
-      toPorts:
-        - ports:
-            - port: '443'
-              protocol: TCP
-    - toFQDNs:
-        - matchName: control.playit.gg
-        - matchName: ping.playit.gg
-      toPorts:
-        - ports:
-            - port: '5525'
-              protocol: UDP
-    - toCIDRSet:
-        - cidr: '0.0.0.0/0'
-          except:
-            - '192.168.1.0/24'
-      toPorts:
-        - ports:
-            - port: '5525'
-              protocol: UDP
+    - toEntities:
+        - world # TODO: get concrete info on what ports are required
 
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/cilium.io/ciliumnetworkpolicy_v2.json
 ---
