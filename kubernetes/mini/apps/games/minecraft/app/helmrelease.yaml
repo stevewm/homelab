@@ -69,8 +69,6 @@ spec:
               SEED: '-2135836821937050197'
               FORCE_REDOWLOAD: 'true'
               ENABLE_WHITELIST: 'true'
-              WORLD: 'http://192.168.1.234/server-world.zip'
-              WHITELIST_FILE: 'https://192.168.1.234/whitelist.json'
               EXISTING_WHITELIST_FILE: SYNC_FILE_MERGE_LIST
               # Performance
               JVM_XX_OPTS: '-XX:MaxRAMPercentage=75'
@@ -82,7 +80,7 @@ spec:
               ## Mods
               REMOVE_OLD_MODS: 'true'
               MODRINTH_DEFAULT_VERSION_TYPE: release
-              MODRINTH_PROJECTS: 'fabric-api,spark,fabricexporter,dynmap,geyser'
+              MODRINTH_PROJECTS: 'fabric-api,spark,fabricexporter,dynmap'
               VANILLA_TWEAKS_SHARE_CODES: ozxXFS
               ## RCON
               RCON_PASSWORD:
@@ -90,6 +88,9 @@ spec:
                   secretKeyRef:
                     name: minecraft
                     key: rcon_password
+              ## External resources - remove after first boot
+              WORLD: 'http://192.168.1.234/server-world.zip'
+              WHITELIST_FILE: 'https://192.168.1.234/whitelist.json'
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: false
