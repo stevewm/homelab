@@ -60,6 +60,7 @@ spec:
         projects:
           - fabricexporter # prom
           - dynmap
+          - fabric
           - fabric-api
           - spark
 
