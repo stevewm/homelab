@@ -1,125 +1,144 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: &app minecraft
+  name: &name minecraft
 spec:
   interval: 30m
-  maxHistory: 2
+  maxHistory: 3
   chart:
     spec:
-      chart: minecraft
-      version: 4.15.0
+      chart: app-template
+      version: 3.0.4
       sourceRef:
         kind: HelmRepository
-        name: itzg-minecraft
+        name: bjw-s
         namespace: flux-system
-  install:
-    remediation:
-      retries: 3
-  upgrade:
-    cleanupOnFail: true
-    remediation:
-      strategy: rollback
-      retries: 3
-  valuesFrom:
-    - kind: Secret
-      name: &secret minecraft
-      valuesKey: rcon_password
-      targetPath: minecraftServer.rcon.password
+  values:
+    defaultPodOptions:
+      automountServiceAccountToken: false
+    controllers:
+      minecraft:
+        strategy: Recreate
+        annotations:
+          reloader.stakater.com/auto: 'true'
+        pod:
+          labels:
+            ingress.home.arpa/nginx-external: allow
+            ingress.home.arpa/playit: allow
 
-  values: # TODO: Switch from this abomination to the app-template
-    deploymentAnnotations:
-      secret.reloader.stakater.com/reload: *secret
-    podLabels:
-      ingress.home.arpa/nginx-external: allow
-      egress.home.arpa/kubedns: allow
-      ingress.home.arpa/playit: allow
-
-    securityContext:
-      runAsUser: ${APP_UID}
-      runAsGroup: ${APP_GID}
-      fsGroup: ${APP_GID}
-
-    image:
-      repository: ghcr.io/itzg/minecraft-server
-      tag: java17@sha256:eff50e31e26aa2a5f0c84ee83496f0a9f92743fafc7876760a6be7ea7a462c74
-    extraEnv:
-      ENABLE_AUTOPAUSE: FALSE # doesn't work in k8s
-
-    minecraftServer:
-      eula: true
-      type: FABRIC
-      version: 1.20.1
-      forceReDownload: true
-      removeOldMods: true
-      vanillaTweaksShareCodes: ['ozxXFS'] # Coord HUD
-      # FIXME: Remove after first boot
-      downloadWorldUrl: 'http://192.168.1.234/server-world.zip'
-      modrinth:
-        projects:
-          - fabric-api
-          - spark
-          - fabricexporter # prom
-          - dynmap
-
-      jvmXXOpts: "-XX:MaxRAMPercentage=75"
-      memory: 5120M
-
-      difficulty: hard
-      spawnProtection: 0
-      maxTickTime: -1
-      gameMode: survival
-      pvp: true
-
-      onlineMode: true
-      ops: "steveto"
-      motd: "be nice"
-      viewDistance: 14
-
-      rcon:
-        enabled: true
-        serviceType: ClusterIP
-
-      serviceType: LoadBalancer
-      extraPorts:
-        - name: metrics
-          containerPort: 9225
-          protocol: TCP
-          service:
-            enabled: true
-            embedded: false
-            type: ClusterIP
+            playit.gg/name: minecraft-survival
+            playit.gg/type: minecraft
+            playit.gg/port: '25565'
+          securityContext:
+            runAsUser: ${APP_UID}
+            runAsGroup: ${APP_GID}
+            fsGroup: ${APP_GID}
+            fsGroupChangePolicy: OnRootMismatch
+        containers:
+          app:
+            image:
+              repository: ghcr.io/itzg/minecraft-server
+              tag: java17@sha256:eff50e31e26aa2a5f0c84ee83496f0a9f92743fafc7876760a6be7ea7a462c74
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  periodSeconds: 60
+                  exec: &mc-health {command: ["mc-health"]}
+              readiness: *probes
+              startup:
+                <<: *probes
+                spec:
+                  initialDelaySeconds: 60
+                  periodSeconds: 1
+                  failureThreshold: 300
+                  exec: *mc-health
+            env:
+              # Server Configuration
+              ## General
+              EULA: 'true'
+              SERVER_NAME: 'MPOF'
+              TYPE: FABRIC
+              VERSION: 1.20.1
+              MOTD: 'be nice'
+              DIFFICULTY: hard
+              SPAWN_PROTECTION: 0
+              SEED: '-2135836821937050197'
+              FORCE_REDOWLOAD: 'true'
+              ENABLE_WHITELIST: 'true'
+              WORLD: 'http://192.168.1.234/server-world.zip'
+              # Performance
+              JVM_XX_OPTS: '-XX:MaxRAMPercentage=75'
+              MAX_MEMORY: 5G
+              USE_AIKAR_FLAGS: 'true'
+              SNOOPER_ENABLED: 'false'
+              SIMULATION_DISTANCE: 12
+              VIEW_DISTANCE: 14
+              ## Mods
+              REMOVE_OLD_MODS: 'true'
+              MODRINTH_DEFAULT_VERSION_TYPE: release
+              MODRINTH_PROJECTS: 'fabric-api,spark,fabricexporter,dynmap,geyser'
+              VANILLA_TWEAKS_SHARE_CODES: ozxXFS
+              ## RCON
+              RCON_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: minecraft
+                    key: rcon_password
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: false
+              capabilities:
+                drop: [ALL]
+            resources:
+              requests:
+                cpu: 500m
+                memory: 4Gi
+              limits:
+                cpu: 1
+                memory: 6Gi
+    service:
+      minecraft:
+        annotations: # Playit tunnel annotations
+          external-dns.alpha.kubernetes.io/hostname: mc.cfg.sh
+          external-dns.alpha.kubernetes.io/target: play.cfg.sh
+        controller: minecraft
+        type: ClusterIP       # https://kubernetes.io/blog/2022/05/23/service-ip-dynamic-and-static-allocation/
+        clusterIP: 10.96.0.30 # FIXME: Remove if/when playit supports hostname tunnel endpoints
+        ports:
+          game:
+            port: 25565
+            protocol: TCP
+      dynmap:
+        controller: minecraft
+        ports:
+          dynmap:
+            port: 8123
+      metrics:
+        controller: minecraft
+        ports:
+          metrics:
             port: 9225
-          ingress:
-            enabled: false
-        # - name: map
-        #   containerPort: 8123
-        #   protocol: TCP
-        #   service:
-        #     enabled: true
-        #     embedded: false
-        #     type: ClusterIP
-        #     port: 8123
-        #   ingress:
-        #     ingressClassName: nginx-external
-        #     enabled: true
-        #     annotations:
-        #       external-dns.alpha.kubernetes.io/target: ext.cfg.sh
-        #     hosts:
-        #       - name: &host "map.cfg.sh"
-        #         path: /
-        #     tls:
-        #       - hosts:
-        #           - *host
-    resources:
-      requests:
-        cpu: 500m
-        memory: 5Gi
-      limits:
-        memory: 8Gi
-
-    persistence:
-      dataDir:
+    ingress:
+      dynmap:
         enabled: true
-        #existingClaim: *app
+        className: nginx-external
+        hosts:
+          - host: &host map.cfg.sh
+            paths:
+              - path: /
+                service:
+                  identifier: minecraft
+                  port: game
+        tls:
+          - hosts:
+              - *host
+        annotations:
+          gethomepage.dev/name: minecraft-survival
+          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/group: games
+          gethomepage.dev/icon: mdi-minecraft
+          external-dns.alpha.kubernetes.io/target: ext.cfg.sh

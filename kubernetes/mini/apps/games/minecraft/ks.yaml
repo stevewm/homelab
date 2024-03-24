@@ -20,7 +20,7 @@ spec:
   postBuild:
     substitute:
       APP: *app
-      APP_UID: "568"
-      APP_GID: "568"
+      APP_UID: '1000'
+      APP_GID: '2000'
       VOLSYNC_CLAIM: minecraft-server
-      VOLSYNC_CAPACITY: "12Gi"
+      VOLSYNC_CAPACITY: '12Gi'
