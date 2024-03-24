@@ -24,6 +24,8 @@ spec:
           reloader.stakater.com/auto: playit
         strategy: Recreate
         pod:
+          labels:
+            egress.home.arpa/kubedns: allow
           securityContext:
             runAsUser: ${APP_UID}
             runAsGroup: ${APP_GID}
