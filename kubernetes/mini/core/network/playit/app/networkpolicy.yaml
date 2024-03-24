@@ -12,6 +12,9 @@ spec:
   egress:
     - toEntities:
         - world # TODO: get concrete info on what ports are required
+    - toEndpoints:
+        - matchLabels:
+            ingress.home.arpa/playit: allow
 
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/cilium.io/ciliumnetworkpolicy_v2.json
 ---
