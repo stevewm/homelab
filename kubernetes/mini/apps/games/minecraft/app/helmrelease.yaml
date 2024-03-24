@@ -1,0 +1,122 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: &app minecraft
+spec:
+  interval: 30m
+  maxHistory: 2
+  chart:
+    spec:
+      chart: minecraft
+      version: 4.15.0
+      sourceRef:
+        kind: HelmRepository
+        name: itzg-minecraft
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  valuesFrom:
+    - kind: Secret
+      name: &secret minecraft
+      valuesKey: rcon_password
+      targetPath: minecraftServer.rcon.password
+
+  values: # TODO: Switch from this abomination to the app-template
+    deploymentAnnotations:
+      secret.reloader.stakater.com/reload: *secret
+    deploymentLabels:
+      ingress.home.arpa/nginx-external: allow
+
+    securityContext:
+      runAsUser: ${APP_UID}
+      runAsGroup: ${APP_GID}
+      fsGroup: ${APP_GID}
+
+    image:
+      repository: ghcr.io/itzg/minecraft-server
+      tag: java17@sha256:eff50e31e26aa2a5f0c84ee83496f0a9f92743fafc7876760a6be7ea7a462c74
+    extraEnv:
+      ENABLE_AUTOPAUSE: FALSE # doesn't work in k8s
+
+    minecraftServer:
+      eula: true
+      type: FABRIC
+      version: 1.20.1
+      forceReDownload: true
+      removeOldMods: true
+      vanillaTweaksShareCodes: ['ozxXFS'] # Coord HUD
+      # FIXME: Remove after first boot
+      #downloadWorldUrl: ""
+      modrinth:
+        projects:
+          - fabricexporter # prom
+          - dynmap
+        optionalDependencies: true
+
+      jvmXXOpts: "-XX:MaxRAMPercentage=75"
+      memory: 5120M
+
+      difficulty: hard
+      spawnProtection: 0
+      maxTickTime: -1
+      gameMode: survival
+      pvp: true
+
+      onlineMode: true
+      ops: "steveto"
+      motd: "be nice"
+      viewDistance: 14
+
+      rcon:
+        enabled: true
+        serviceType: ClusterIP
+
+      serviceType: LoadBalancer
+      extraPorts:
+        - name: metrics
+          containerPort: 9225
+          protocol: TCP
+          service:
+            enabled: true
+            embedded: false
+            type: ClusterIP
+            port: 9225
+          ingress:
+            enabled: false
+        # - name: map
+        #   containerPort: 8123
+        #   protocol: TCP
+        #   service:
+        #     enabled: true
+        #     embedded: false
+        #     type: ClusterIP
+        #     port: 8123
+        #   ingress:
+        #     ingressClassName: nginx-external
+        #     enabled: true
+        #     annotations:
+        #       external-dns.alpha.kubernetes.io/target: ext.cfg.sh
+        #     hosts:
+        #       - name: &host "map.cfg.sh"
+        #         path: /
+        #     tls:
+        #       - hosts:
+        #           - *host
+    resources:
+      requests:
+        cpu: 500m
+        memory: 5Gi
+      limits:
+        memory: 8Gi
+
+    persistence:
+      dataDir:
+        enabled: true
+        #existingClaim: *app
