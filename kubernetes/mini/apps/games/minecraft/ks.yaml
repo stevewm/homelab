@@ -24,3 +24,4 @@ spec:
       APP_GID: '2000'
       VOLSYNC_CLAIM: minecraft-server
       VOLSYNC_CAPACITY: '12Gi'
+      VOLSYNC_SCHEDULE: '0 */2 * * *' # Every 2hrs
