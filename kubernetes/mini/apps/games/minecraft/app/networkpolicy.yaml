@@ -21,7 +21,7 @@ spec:
         - matchName: meta.fabricmc.net
         - matchName: modrinth.com
         - matchName: cdn.modrinth.com
-        - matchName: vanillatweaks.com
+        - matchName: vanillatweaks.net
       toPorts:
         - ports:
             - port: "443"
