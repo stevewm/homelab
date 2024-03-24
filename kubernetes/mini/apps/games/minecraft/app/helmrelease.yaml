@@ -55,7 +55,7 @@ spec:
       removeOldMods: true
       vanillaTweaksShareCodes: ['ozxXFS'] # Coord HUD
       # FIXME: Remove after first boot
-      #downloadWorldUrl: ""
+      downloadWorldUrl: 'http://192.168.1.234/server-world.zip'
       modrinth:
         projects:
           - fabric-api
