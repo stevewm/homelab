@@ -27,8 +27,8 @@ spec:
           labels:
             ingress.home.arpa/nginx-external: allow
             ingress.home.arpa/playit: allow
-
-            playit.gg/name: minecraft-survival
+            egress.home/arpa/kubedns: allow
+            playit.gg/name: minecraft
             playit.gg/type: minecraft
             playit.gg/port: '25565'
           securityContext:
