@@ -34,6 +34,7 @@ spec:
     podLabels:
       ingress.home.arpa/nginx-external: allow
       egress.home.arpa/kubedns: allow
+      ingress.home.arpa/playit: allow
 
     securityContext:
       runAsUser: ${APP_UID}
@@ -59,7 +60,8 @@ spec:
         projects:
           - fabricexporter # prom
           - dynmap
-        optionalDependencies: true
+          - fabric-api
+          - spark
 
       jvmXXOpts: "-XX:MaxRAMPercentage=75"
       memory: 5120M
