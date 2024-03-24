@@ -90,7 +90,7 @@ spec:
                     key: rcon_password
               ## External resources - remove after first boot
               WORLD: 'http://192.168.1.234/server-world.zip'
-              WHITELIST_FILE: 'https://192.168.1.234/whitelist.json'
+              WHITELIST_FILE: 'http://192.168.1.234/whitelist.json'
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: false
