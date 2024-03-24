@@ -15,6 +15,7 @@ resources:
   - ./gabe565.yaml
   - ./ingress-nginx.yaml
   - ./intel.yaml
+  - ./itzg.yaml
   - ./jameswynn.yaml
   - ./jetstack.yaml
   - ./k8s-dashboard.yaml
