@@ -5,4 +5,4 @@ resources:
   - ./helmrelease.yaml
   - ./secret.yaml
   - ./networkpolicy.yaml
-  #- ../../../../templates/volsync/b2
+  - ../../../../templates/volsync/b2
