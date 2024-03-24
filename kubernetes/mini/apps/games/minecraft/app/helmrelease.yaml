@@ -58,11 +58,10 @@ spec:
       #downloadWorldUrl: ""
       modrinth:
         projects:
-          - fabricexporter # prom
-          - dynmap
-          - fabric
           - fabric-api
           - spark
+          - fabricexporter # prom
+          - dynmap
 
       jvmXXOpts: "-XX:MaxRAMPercentage=75"
       memory: 5120M
