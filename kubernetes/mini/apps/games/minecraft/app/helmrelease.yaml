@@ -33,6 +33,7 @@ spec:
       secret.reloader.stakater.com/reload: *secret
     deploymentLabels:
       ingress.home.arpa/nginx-external: allow
+      egress.home.arpa/kubedns: allow
 
     securityContext:
       runAsUser: ${APP_UID}
