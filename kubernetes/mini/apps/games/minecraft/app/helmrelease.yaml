@@ -75,7 +75,6 @@ spec:
               MAX_MEMORY: 5G
               USE_AIKAR_FLAGS: 'true'
               SNOOPER_ENABLED: 'false'
-              SIMULATION_DISTANCE: 12
               VIEW_DISTANCE: 14
               ## Mods
               REMOVE_OLD_MODS: 'true'
