@@ -114,19 +114,12 @@ spec:
           game:
             port: 25565
             protocol: TCP
-      dynmap:
-        controller: minecraft
-        ports:
           dynmap:
             port: 8123
-      metrics:
-        controller: minecraft
-        ports:
           metrics:
             port: 9225
     ingress:
       dynmap:
-        enabled: true
         className: nginx-external
         hosts:
           - host: &host map.cfg.sh
@@ -134,7 +127,7 @@ spec:
               - path: /
                 service:
                   identifier: minecraft
-                  port: game
+                  port: dynmap
         tls:
           - hosts:
               - *host
