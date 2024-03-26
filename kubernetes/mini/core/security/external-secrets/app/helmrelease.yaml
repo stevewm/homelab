@@ -19,10 +19,13 @@ spec:
   values:
     podLabels:
       egress.home.arpa/apiserver: allow
+    webhook:
+      podLabels:
+        ingress.home.arpa/apiserver: allow
     installCRDs: true
     replicaCount: 2
     deploymentAnnotations:
-      reloader.stakater.com/auto: "true"
+      reloader.stakater.com/auto: doppler-token
     resources:
       requests:
         cpu: 10m
