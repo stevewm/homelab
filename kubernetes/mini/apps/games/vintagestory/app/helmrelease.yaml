@@ -47,7 +47,7 @@ spec:
           app:
             image:
               repository: devidian/vintagestory # no semver tags available :(
-              tag: sha256:ab6fe02daeda94152f657078976032c3f391299a645af3be962911827d98bb49
+              tag: latest@sha256:ab6fe02daeda94152f657078976032c3f391299a645af3be962911827d98bb49
             env:
               VS_DATA_PATH: /gamedata
             probes:
