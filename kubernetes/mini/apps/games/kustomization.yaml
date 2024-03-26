@@ -5,3 +5,4 @@ resources:
   - ./namespace.yaml
   - ./networkpolicy.yaml
   - ./minecraft/ks.yaml
+  - ./vintagestory/ks.yaml
