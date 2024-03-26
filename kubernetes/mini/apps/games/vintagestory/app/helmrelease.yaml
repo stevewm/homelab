@@ -50,6 +50,7 @@ spec:
               tag: latest@sha256:ab6fe02daeda94152f657078976032c3f391299a645af3be962911827d98bb49
             env:
               VS_DATA_PATH: /gamedata
+              COMPlus_EnableDiagnostics: "0" # Failed to create CoreCLR fix
             probes:
               liveness:
                 enabled: true
