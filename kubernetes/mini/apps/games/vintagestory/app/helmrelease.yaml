@@ -1,0 +1,89 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: &name vintagestory
+spec:
+  interval: 30m
+  maxHistory: 3
+  chart:
+    spec:
+      chart: app-template
+      version: 3.0.4
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  values:
+    defaultPodOptions:
+      automountServiceAccountToken: false
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 80
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values:
+                        - minecraft
+                topologyKey: "kubernetes.io/hostname"
+    controllers:
+      vintagestory:
+        strategy: Recreate
+        annotations:
+          reloader.stakater.com/auto: 'true'
+        pod:
+          labels:
+            ingress.home.arpa/playit: allow
+          securityContext:
+            runAsUser: ${APP_UID}
+            runAsGroup: ${APP_GID}
+            fsGroup: ${APP_GID}
+            fsGroupChangePolicy: OnRootMismatch
+        containers:
+          app:
+            image:
+              repository: devidian/vintagestory # no semver tags available :(
+              tag: sha256:ab6fe02daeda94152f657078976032c3f391299a645af3be962911827d98bb49
+            env:
+              VS_DATA_PATH: /gamedata
+            probes:
+              liveness:
+                enabled: true
+              readiness:
+                enabled: true
+              startup:
+                enabled: true
+            resources:
+              requests:
+                cpu: 250m
+                memory: 3Gi
+              limits:
+                memory: 6Gi
+                cpu: 2
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop: [ALL]
+    service:
+      game:
+        type: LoadBalancer
+        controller: vintagestory
+        ports:
+          game:
+            port: 32420
+            targetPort: 42420
+    persistence:
+      gamedata:
+        existingClaim: vintagestory-gamedata
+      config:
+        type: configMap
+        name: vintagestory
+        globalMounts:
+          - path: /gamedata/serverconfig.json
+            subPath: serverconfig.json
+            readOnly: true

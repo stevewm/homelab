@@ -1,0 +1,15 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ./helmrelease.yaml
+  - ./networkpolicy.yaml
+  - ../../../../templates/volsync/b2
+configMapGenerator:
+  - name: vintagestory
+    files:
+      - serverconfig.json=./config/serverconfig.json
+generatorOptions:
+  disableNameSuffixHash: true
+  annotations:
+    kustomize.toolkit.fluxcd.io/substitute: disabled
