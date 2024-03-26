@@ -18,6 +18,18 @@ spec:
   values:
     defaultPodOptions:
       automountServiceAccountToken: false
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 80
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values:
+                        - vintagestory
+                topologyKey: "kubernetes.io/hostname"
     controllers:
       minecraft:
         strategy: Recreate
