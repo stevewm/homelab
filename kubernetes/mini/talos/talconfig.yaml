@@ -25,6 +25,7 @@ nodes:
       useUKI: true
     installDiskSelector:
       size: "<=260GB"
+      type: nvme
     networkInterfaces:
       - deviceSelector:
           busPath: "0*"
@@ -41,6 +42,7 @@ nodes:
       useUKI: true
     installDiskSelector:
       size: "<=260GB"
+      type: nvme
     networkInterfaces:
       - deviceSelector:
           busPath: "0*"
@@ -57,6 +59,7 @@ nodes:
       useUKI: true
     installDiskSelector:
       size: "<=260GB"
+      type: nvme
     networkInterfaces:
       - deviceSelector:
           busPath: "0*"
@@ -73,6 +76,7 @@ nodes:
       useUKI: true
     installDiskSelector:
       size: "<=260GB"
+      type: nvme
     networkInterfaces:
       - deviceSelector:
           busPath: "0*"
