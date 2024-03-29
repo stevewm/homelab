@@ -21,6 +21,7 @@ spec:
       egress.home.arpa/apiserver: allow
     webhook:
       podLabels:
+        egress.home.arpa/apiserver: allow
         ingress.home.arpa/apiserver: allow
     installCRDs: true
     replicaCount: 2
