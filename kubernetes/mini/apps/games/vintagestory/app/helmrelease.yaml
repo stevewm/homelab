@@ -74,10 +74,11 @@ spec:
       game:
         type: LoadBalancer
         controller: vintagestory
+        clusterIP: 10.96.0.35 # FIXME: Remove if/when playit.gg support hostname endpoints
         ports:
           game:
-            port: 32420
-            targetPort: 42420
+            port: 2420
+            targetPort: 2420
     persistence:
       gamedata:
         existingClaim: vintagestory-gamedata
