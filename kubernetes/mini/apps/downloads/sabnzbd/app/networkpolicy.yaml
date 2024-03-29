@@ -35,6 +35,7 @@ spec:
         - matchPattern: "*.blocknews.net"
         - matchPattern: "*.frugalusenet.com"
         - matchName: "sabnzbd.org"
+        - matchName: "drunkenslug.com"
       toPorts:
         - ports:
             - port: "563"
