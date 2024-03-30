@@ -6,6 +6,7 @@ resources:
   - ./allow-egress-apiserver.yaml
   - ./allow-egress-kubedns.yaml
   - ./allow-egress-internet.yaml
+  - ./allow-egress-nas.yaml
   # Ingress
   - ./allow-ingress-apiserver.yaml
   - ./allow-ingress-lan.yaml
