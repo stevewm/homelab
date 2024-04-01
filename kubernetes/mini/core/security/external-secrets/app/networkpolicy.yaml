@@ -92,12 +92,3 @@ spec:
       toPorts:
         - ports:
             - port: "8080"
-
-  egress:
-    - toEntities:
-        - kube-apiserver
-    - toEntities:
-        - host
-      toPorts:
-        - ports:
-            - port: "6443"
