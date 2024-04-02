@@ -34,3 +34,6 @@ terraform.rc
 
 # secrets
 doppler.json
+
+# python
+.virtualenv/
