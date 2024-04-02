@@ -10,6 +10,7 @@ spec:
   ingress:
     - fromEntities:
         - cluster
+        - host
     - fromEndpoints:
         - {}
   egress:
@@ -17,3 +18,4 @@ spec:
         - {}
     - toEntities:
         - cluster
+        - host
