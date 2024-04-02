@@ -22,10 +22,3 @@ packages = [
 [[env]]
 name = "KUBECONFIG"
 eval = "$PRJ_ROOT/kubeconfig"
-
-# Commands
-[[commands]]
-name = "bootstrap"
-help = "run bootstrap.sh in the current cluster dir"
-command = "$PRJ_ROOT/kubernetes/$CLUSTER_NAME/bootstrap.sh"
-category = "k8s"
