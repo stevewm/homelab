@@ -21,7 +21,7 @@ This repo contains the configuration and documentation for my home infrastructur
 | [Doppler](https://www.doppler.com/)                             | Secret management                                   |
 | [pre-commit](https://pre-commit.com/)                           | Linting and validation                              |
 
-[back to top](#readme-top)
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Acknowledgements
 
