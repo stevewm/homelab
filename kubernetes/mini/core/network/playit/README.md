@@ -1,11 +1,11 @@
 # Playit.gg agent
 
-There are two ways of deploying this. If you want to pre-generate the secret key:
+## Setup
 
-1. Register an account on playit.gg
+Some ClickOps required.
+
+1. Register an account on <https://playit.gg>
 2. Download the playit.gg client for your OS and run it
 3. Copy the value for `secret_key` from the file `$XDG_CONFIG_HOME/playit/playit.toml`
-
-Alternatively if you don't want to do the above, simply run the pod without mounting `playit.toml`. Unfortunately from here it's ClickOps. The logs will then prompt you to click a URL to set the tunnel up and register an account.
-
-It appears that playit doesn't support hostnames for the local tunnel endpoints.
+4. If you have a private IPv4 address from playit, add it to `dns-endpoint.yaml`.
+5. From here on out it's ClickOps to create tunnels on the <https://playit.gg> website.
