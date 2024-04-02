@@ -17,12 +17,12 @@ spec:
         name: external-secrets
         namespace: flux-system
   values:
-    podLabels:
-      egress.home.arpa/apiserver: allow
-    webhook:
-      podLabels:
-        egress.home.arpa/apiserver: allow
-        ingress.home.arpa/apiserver: allow
+    # podLabels: # FIXME: Revisit this nightmare another time
+    #   egress.home.arpa/apiserver: allow
+    # webhook:
+    #   podLabels:
+    #     egress.home.arpa/apiserver: allow
+    #     ingress.home.arpa/apiserver: allow
     installCRDs: true
     replicaCount: 2
     deploymentAnnotations:
