@@ -9,8 +9,19 @@ spec:
     matchLabels:
       app.kubernetes.io/name: minecraft
   ingress:
+    - fromEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: playit
+      toPorts:
+        - ports:
+            - port: "25565"
+              protocol: TCP
     - fromEntities:
         - world # TODO: figure out why some traffic from the local network shows its source as the internal cidr
+      toPorts:
+        - ports:
+            - port: "25565"
+              protocol: TCP
   egress:
     - toFQDNs:
         - matchPattern: '*.fabricmc.net'
@@ -23,9 +34,3 @@ spec:
         - ports:
             - port: "443"
               protocol: TCP
-    # - toCIDRSet: # Remove when not downloading world
-    #     - cidr: '192.168.1.234/32'
-    #   toPorts:
-    #     - ports:
-    #         - port: "80"
-    #           protocol: TCP
