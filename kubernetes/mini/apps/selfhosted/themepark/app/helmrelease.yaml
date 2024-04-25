@@ -30,7 +30,7 @@ spec:
           app:
             image:
               repository: ghcr.io/onedr0p/theme-park
-              tag: 1.16.1@sha256:4d02fb6033c1d186a5881d321337832ca40dfd55f126c438c4a3d50485c92c1e
+              tag: 1.16.2@sha256:a4002978507fd25bde6505e545390ae9b23f076e9c35e7964cc180110f26b446
             env:
               TP_DOMAIN: &host themes.cfg.sh
               TP_THEME: plex
