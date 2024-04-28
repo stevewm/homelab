@@ -4,3 +4,9 @@ kind: Kustomization
 resources:
   - ./helmrelease.yaml
   - ./serviceaccount.yaml
+configMapGenerator:
+  - name: gatus-configmap
+    files:
+      - config.yaml=./config/config.yaml
+generatorOptions:
+  disableNameSuffixHash: true

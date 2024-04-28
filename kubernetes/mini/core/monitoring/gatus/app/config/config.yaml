@@ -1,0 +1,18 @@
+---
+# Note: Gatus vars should be escaped with $${VAR_NAME} to avoid interpolation by Flux
+storage:
+  storage:
+    type: sqlite
+    path: /data/data.db
+metrics: true
+debug: false
+ui:
+  name: Health Dashboard
+  header: "what's up?"
+  logo: homelab-docs.dev.svc.cluster.local:8080/logo.png
+alerting: []
+connectivity:
+  checker:
+    target: 1.1.1.1:53
+    interval: 1m
+endpoints: []
