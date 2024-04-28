@@ -23,7 +23,7 @@ spec:
       metrics: true
       ui:
         title: Health Dashboard
-        description: what's up?
+        description: "what's up?"
         logo: homelab-docs.dev.svc.cluster.local:8080/logo.png
     env:
       GATUS_CONFIG_PATH: /config

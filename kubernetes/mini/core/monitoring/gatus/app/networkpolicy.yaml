@@ -1,2 +1,0 @@
-# Allow egress to any pod with the gatus.enabled label on any port?
-# Move Gatus netpols to templates/gatus? then use $APP to populate with substitution? too complex/fragile?
