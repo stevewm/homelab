@@ -9,6 +9,12 @@ spec:
     matchLabels:
       app.kubernetes.io/name: cert-manager
       app.kubernetes.io/component: controller
+  ingress:
+    - fromEntities:
+        - kube-apiserver
+      toPorts:
+        - ports:
+            - port: "10250"
   egress:
     - toFQDNs:
         - matchName: acme-v02.api.letsencrypt.org
