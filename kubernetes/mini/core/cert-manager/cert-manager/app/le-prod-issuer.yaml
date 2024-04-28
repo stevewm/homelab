@@ -16,3 +16,6 @@ spec:
             apiTokenSecretRef:
               name: cloudflare-api-token
               key: CLOUDFLARE_API_TOKEN
+        selector:
+          dnsZones:
+            - cfg.sh
