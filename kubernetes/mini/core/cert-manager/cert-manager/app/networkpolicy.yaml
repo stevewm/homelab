@@ -40,9 +40,9 @@ spec:
     matchLabels:
       app.kubernetes.io/instance: cert-manager
       app.kubernetes.io/component: webhook
-    ingress:
-      - fromEntities:
-          - kube-apiserver
-        toPorts:
-          - ports:
-              - port: "10250"
+  ingress:
+    - fromEntities:
+        - kube-apiserver
+      toPorts:
+        - ports:
+            - port: "10250"
