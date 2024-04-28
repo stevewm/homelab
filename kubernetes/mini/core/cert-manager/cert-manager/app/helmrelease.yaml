@@ -17,18 +17,18 @@ spec:
         name: cert-manager
         namespace: flux-system
   values:
-    podLabels:
-      egress.home.arpa/apiserver: allow
-    webhook:
-      podLabels:
-        ingress.home.arpa/apiserver: allow
-        egress.home.arpa/apiserver: allow
-    cainjector:
-      podLabels:
-        egress.home.arpa/apiserver: allow
-    startupapicheck:
-      podLabels:
-        egress.home.arpa/apiserver: allow
+    # podLabels:
+    #   egress.home.arpa/apiserver: allow
+    # webhook:
+    #   podLabels:
+    #     ingress.home.arpa/apiserver: allow
+    #     egress.home.arpa/apiserver: allow
+    # cainjector:
+    #   podLabels:
+    #     egress.home.arpa/apiserver: allow
+    # startupapicheck:
+    #   podLabels:
+    #     egress.home.arpa/apiserver: allow
 
     installCRDs: true
     enableCertificateOwnerRef: true

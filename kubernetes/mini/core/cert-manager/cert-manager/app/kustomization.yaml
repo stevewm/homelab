@@ -4,6 +4,6 @@ kind: Kustomization
 resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
-  - ./networkpolicy.yaml
+  #- ./networkpolicy.yaml
   - ./le-prod-issuer.yaml
   #- ./le-staging-issuer.yaml
