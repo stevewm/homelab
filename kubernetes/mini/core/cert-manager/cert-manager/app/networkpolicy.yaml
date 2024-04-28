@@ -3,18 +3,12 @@
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: cert-manager
+  name: cert-manager-controller
 spec:
   endpointSelector:
     matchLabels:
       app.kubernetes.io/name: cert-manager
       app.kubernetes.io/component: controller
-  ingress:
-    - fromEntities:
-        - kube-apiserver
-      toPorts:
-        - ports:
-            - port: "10250"
   egress:
     - toFQDNs:
         - matchName: acme-v02.api.letsencrypt.org
@@ -34,3 +28,21 @@ spec:
           rules:
             dns:
               - matchPattern: "*"
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/cilium.io/ciliumclusterwidenetworkpolicy_v2.json
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: cert-manager-webhook
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/instance: cert-manager
+      app.kubernetes.io/component: webhook
+    ingress:
+      - fromEntities:
+          - kube-apiserver
+        toPorts:
+          - ports:
+              - port: "10250"
