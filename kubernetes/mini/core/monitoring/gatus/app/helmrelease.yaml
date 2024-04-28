@@ -81,6 +81,9 @@ spec:
             runAsUser: 65534
             runAsGroup: 65534
             fsGroupChangePolicy: OnRootMismatch
+          labels:
+            app.kubernetes.io/name: gatus
+            ingress.home.arpa/nginx-internal: allow
     service:
       app:
         controller: gatus
