@@ -10,9 +10,15 @@ ui:
   name: Health Dashboard
   header: "what's up?"
   logo: homelab-docs.dev.svc.cluster.local:8080/logo.png
-alerting: []
+#alerting: []
 connectivity:
   checker:
     target: 1.1.1.1:53
     interval: 1m
-endpoints: []
+endpoints:
+  - name: Google
+    group: external
+    url: "https://google.com/"
+    interval: 15m
+    conditions:
+      - "[STATUS] == 200"
