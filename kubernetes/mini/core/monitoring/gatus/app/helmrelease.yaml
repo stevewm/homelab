@@ -1,68 +1,121 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/helm.toolkit.fluxcd.io/helmrelease_v2beta2.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: &name gatus
+  name: gatus
 spec:
   interval: 30m
-  maxHistory: 3
   chart:
     spec:
-      chart: gatus
-      version: 3.4.4
+      chart: app-template
+      version: 3.1.0
       sourceRef:
         kind: HelmRepository
-        name: minicloudlabs
+        name: bjw-s-charts
         namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
   values:
-    config:
-      storage:
-        type: sqlite # disposable data
-        path: /data/data.db
-      metrics: true
-      ui:
-        title: Health Dashboard
-        description: "what's up?"
-        logo: homelab-docs.dev.svc.cluster.local:8080/logo.png
-    env:
-      GATUS_CONFIG_PATH: /config
+    controllers:
+      gatus:
+        annotations:
+          reloader.stakater.com/auto: 'true'
+        initContainers:
+          init-config:
+            image:
+              repository: ghcr.io/kiwigrid/k8s-sidecar
+              tag: 1.26.1@sha256:b8d5067137fec093cf48670dc3a1dbb38f9e734f3a6683015c2e89a45db5fd16
+            env:
+              FOLDER: /config
+              LABEL: gatus.io/enabled
+              NAMESPACE: ALL
+              RESOURCE: both
+              UNIQUE_FILENAMES: true
+              METHOD: WATCH
+            restartPolicy: Always
+            resources: &resources
+              requests:
+                cpu: 10m
+              limits:
+                memory: 256Mi
+        containers:
+          app:
+            image:
+              repository: ghcr.io/twin/gatus
+              tag: v5.10.0@sha256:658a9cb993ff0b16832947dab8de885b2e2a66037330b839310fa3f39d5c00f4
+            env:
+              GATUS_CONFIG_PATH: /config
+              GATUS_DELAY_START_SECONDS: 5
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /health
+                    port: &port 8080
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+              drop: ["ALL"]
+            resources: *resources
+        pod:
+          dnsConfig:
+            options:
+              - {name: ndots, value: "1"}
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
+            fsGroupChangePolicy: OnRootMismatch
+    service:
+      app:
+        controller: gatus
+        ports:
+          http:
+            port: *port
     serviceMonitor:
-      enabled: true
-    serviceAccount:
-      name: gatus
-      autoMount: true
-    sidecarContainers:
-      config-sync:
-        image: ghcr.io/kiwigrid/k8s-sidecar:1.26.1
-        imagePullPolicy: IfNotPresent
-        env:
-          FOLDER: /config
-          LABEL: gatus.io/enabled
-          NAMESPACE: ALL
-          RESOURCE: both
-        volumeMounts:
-          - name: config
-            mountPath: /config
-    extraVolumeMounts:
-      - name: config
-        mountPath: /config
-        readonly: false
-    extraLabels:
-      "gatus.io/enabled": "true"
-    persistence:
-      enabled: true
+      app:
+        serviceName: gatus
+        endpoints:
+          - port: http
+            scheme: http
+            path: /metrics
+            interval: 1m
+            scrapeTimeout: 10s
     ingress:
-      enabled: true
+      app:
+        className: nginx-internal
+        hosts:
+          - host: status.cfg.sh
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+    serviceAccount:
+      create: true
       name: gatus
-      ingressclassName: nginx-internal
-      annotations:
-        gethomepage.dev/name: *name
-        gethomepage.dev/description: auth
-        gethomepage.dev/enabled: "true"
-        gethomepage.dev/group: monitoring
-        gethomepage.dev/icon: gatus.png
-      hosts:
-        - &host gatus.cfg.sh
-      tls:
-        - *host
+    persistence:
+      config:
+        type: emptyDir
+      config-file:
+        type: configMap
+        name: gatus-configmap
+        globalMounts:
+          - path: /config/config.yaml
+            subPath: config.yaml
+            readOnly: true
