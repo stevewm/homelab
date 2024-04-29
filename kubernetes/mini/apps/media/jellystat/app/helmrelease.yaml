@@ -24,6 +24,7 @@ spec:
           labels:
             db.home.arpa/pg: 'postgres'
             ingress.home.arpa/nginx-internal: allow
+            ingress.home.arpa/homepage: allow
         strategy: Recreate
         containers:
           app:
