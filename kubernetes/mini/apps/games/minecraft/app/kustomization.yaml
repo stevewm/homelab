@@ -4,5 +4,14 @@ kind: Kustomization
 resources:
   - ./helmrelease.yaml
   - ./secret.yaml
+  - ./externalsecret.yaml
   - ./networkpolicy.yaml
   - ../../../../templates/volsync/b2
+configMapGenerator:
+  - name: minecraft-dynmap
+    files:
+      - configuration.txt=./config/dynmap/configuration.txt
+      - custom-perspectives.txt=./config/dynmap/custom-perspectives.txt
+      - markers.yml=./config/dynmap/markers.yml
+generatorOptions:
+  disableNameSuffixHash: true
