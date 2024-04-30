@@ -160,6 +160,11 @@ spec:
     persistence:
       data:
         existingClaim: ${VOLSYNC_CLAIM}
+      dynmap-data:
+        type: persistentVolumeClaim
+        accessMode: ReadWriteOnce
+        storageClass: openebs-hostpath
+        size: 30Gi # idk how big this should be
       secrets:
         type: secret
         name: minecraft-secret
