@@ -1,0 +1,10 @@
+# The user is free to add new and custom perspectives here, including replacements for standard ones
+# Dynmap's install will not overwrite it
+perspectives:
+  - class: org.dynmap.hdmap.IsoHDPerspective
+    name: nether_top_map_hires
+    maximumheight: 256
+    minimumheight: 128
+    inclination: 30
+    scale: 16
+    azimuth: 135
