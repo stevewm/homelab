@@ -105,7 +105,7 @@ spec:
               OPS:
                 valueFrom:
                   secretKeyRef:
-                    name: minecraft
+                    name: minecraft-secret
                     key: ops
               EXISTING_OPS_FILE: SYNCHRONIZE
               ## External resources - remove after first boot
