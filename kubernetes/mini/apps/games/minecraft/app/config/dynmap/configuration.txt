@@ -30,7 +30,7 @@ storage:
   #type: filetree
   # SQLite db for map storage (uses dbfile as storage location)
   type: sqlite
-  dbfile: /dynmap/dynmap.db
+  dbfile: /dynmap-data/dynmap.db
   # MySQL DB for map storage (at 'hostname':'port' in database 'database' using user 'userid' password 'password' and table prefix 'prefix'
   #type: postgres
   #hostname: ${DB_HOSTNAME}
