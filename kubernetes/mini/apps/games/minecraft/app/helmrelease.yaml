@@ -135,7 +135,7 @@ spec:
             port: 25565
             protocol: TCP
           dynmap:
-            port: 8123
+            port: 8104
           metrics:
             port: 9225
     ingress:
