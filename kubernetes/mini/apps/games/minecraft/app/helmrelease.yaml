@@ -162,7 +162,7 @@ spec:
         existingClaim: ${VOLSYNC_CLAIM}
       secrets:
         type: secret
-        name: minecraft
+        name: minecraft-secrets
         items:
           - key: whitelist.json
             path: whitelist.json
