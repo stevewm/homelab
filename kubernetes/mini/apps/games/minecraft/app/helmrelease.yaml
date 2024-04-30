@@ -161,9 +161,8 @@ spec:
       data:
         existingClaim: ${VOLSYNC_CLAIM}
       dynmap-data:
-        type: persistentVolumeClaim
+        type: persistentVolumeClaim # TODO: Remove once DB for dynmap is in place
         accessMode: ReadWriteOnce
-        storageClass: openebs-hostpath
         size: 30Gi # idk how big this should be
       secrets:
         type: secret
