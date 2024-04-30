@@ -34,8 +34,12 @@ spec:
     - toFQDNs: # linux isos
         - matchPattern: "*.blocknews.net"
         - matchPattern: "*.frugalusenet.com"
+      toPorts:
+        - ports:
+            - port: "563"
+    - toFQDNs:
         - matchName: "sabnzbd.org"
         - matchName: "drunkenslug.com"
       toPorts:
         - ports:
-            - port: "563"
+            - port: "443"
