@@ -15,6 +15,9 @@ spec:
     - toEndpoints:
         - matchLabels:
             ingress.home.arpa/playit: allow
+          matchExpressions:
+            - key: io.kubernetes.pod.namespace
+              operator: Exists # any namespace
 
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/cilium.io/ciliumnetworkpolicy_v2.json
 ---
