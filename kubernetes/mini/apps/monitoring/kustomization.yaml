@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   - ./goldilocks/ks.yaml
   - ./ntfy/ks.yaml
-  #- ./speedtest-tracker/ks.yaml
+  - ./speedtest-tracker/ks.yaml
