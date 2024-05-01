@@ -20,9 +20,6 @@ spec:
       automountServiceAccountToken: false
     controllers:
       speedtest-tracker:
-        pod:
-          labels:
-            db.home.arpa/pg: 'postgres'
         annotations:
           reloader.stakater.com/auto: "true"
         strategy: Recreate
@@ -32,32 +29,7 @@ spec:
               repository: ajustesen/speedtest-tracker
               tag: v0.14.2-beta1
             env:
-              DB_CONNECTION: pgsql
-              DB_HOST:
-                valueFrom:
-                  secretKeyRef:
-                    name: pg-db-speedtest-app
-                    key: host
-              DB_PORT:
-                valueFrom:
-                  secretKeyRef:
-                    name: pg-db-speedtest-app
-                    key: port
-              DB_DATABASE:
-                valueFrom:
-                  secretKeyRef:
-                    name: pg-db-speedtest-app
-                    key: dbname
-              DB_USERNAME:
-                valueFrom:
-                  secretKeyRef:
-                    name: pg-db-speedtest-app
-                    key: username
-              DB_PASSWORD:
-                valueFrom:
-                  secretKeyRef:
-                    name: pg-db-speedtest-app
-                    key: password
+              DB_CONNECTION: sqlite
             probes:
               liveness:
                 enabled: true
