@@ -23,7 +23,7 @@ spec:
         pod:
           labels:
             ingress.home.arpa/homepage: allow
-            ingress.home/arpa/nginx-internal: allow
+            ingress.home.arpa/nginx-internal: allow
         annotations:
           reloader.stakater.com/auto: "true"
         strategy: Recreate
