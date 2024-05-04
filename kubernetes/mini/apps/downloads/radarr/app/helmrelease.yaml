@@ -97,6 +97,7 @@ spec:
     service:
       app:
         controller: *name
+        nameOverride: radarr
         ports:
           http:
             port: *port

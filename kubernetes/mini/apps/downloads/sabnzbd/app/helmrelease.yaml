@@ -102,6 +102,7 @@ spec:
     service:
       app:
         controller: *name
+        nameOverride: sabnzbd
         ports:
           http:
             port: *port

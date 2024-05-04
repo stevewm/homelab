@@ -97,6 +97,7 @@ spec:
     service:
       app:
         controller: prowlarr
+        nameOverride: prowlarr
         ports:
           http:
             port: *port
