@@ -41,13 +41,22 @@ spec:
               tag: 4.0.4.1491@sha256:9c78b3a37af6e814062e4a631c25ad181c800ae11d21acdfd26c843da9e4a42e
             env:
               COMPlus_EnableDiagnostics: "0"
-              SONARR__URL_BASE: &path /
               SONARR__PORT: &port 8989
               SONARR__API_KEY:
                 valueFrom:
                   secretKeyRef:
                     name: sonarr
                     key: api_key
+              # Official env vars
+              # SONARR__AUTH_API_KEY:
+              #   valueFrom:
+              #     secretKeyRef:
+              #       name: sonarr
+              #       key: api_key
+              # SONARR__AUTH__METHOD: External
+              # SONARR__AUTH__REQUIRED: DisabledForLocalAddresses
+              # SONARR__LOG__LEVEL: info
+              # SONARR__SERVER__PORT: &port 8989
             probes:
               liveness:
                 enabled: true
@@ -68,19 +77,47 @@ spec:
               readOnlyRootFilesystem: true
               capabilities:
                 drop: [ALL]
+          exporter:
+            dependsOn: main
+            image:
+              repository: ghcr.io/onedr0p/exportarr
+              tag: v2.0.1@sha256:727e7bc8f2f0934a2117978c59f4476b954018b849a010ea6cfb380bd6539644
+            env:
+              PORT: &metrics 9707
+              URL: http://sonarr:8989
+              API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: sonarr
+                    key: api_key
+    serviceMonitor:
+      metrics:
+        enabled: true
+        serviceName: sonarr-metrics
+        endpoints:
+          - port: metrics
+            scheme: http
+            path: /metrics
+            interval: 15m
+            scrapeTimeout: 2m
     service:
       app:
-        controller: sonarr
+        controller: *name
         ports:
           http:
             port: *port
+      metrics:
+        controller: *name
+        ports:
+          metrics:
+            port: *metrics
     ingress:
       app:
         className: nginx-internal
         hosts:
           - host: &host snr.cfg.sh
             paths:
-              - path: *path
+              - path: /
                 service:
                   identifier: app
                   port: http
