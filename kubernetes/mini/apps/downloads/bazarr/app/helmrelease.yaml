@@ -69,12 +69,41 @@ spec:
               readOnlyRootFilesystem: true
               capabilities:
                 drop: [ALL]
+          exporter:
+            dependsOn: app
+            args: ['bazarr']
+            image:
+              repository: ghcr.io/onedr0p/exportarr
+              tag: v2.0.1@sha256:727e7bc8f2f0934a2117978c59f4476b954018b849a010ea6cfb380bd6539644
+            env:
+              PORT: &metrics 9707
+              URL: http://bazarr:6767
+              API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: bazarr
+                    key: api_key
+    serviceMonitor:
+      metrics:
+        enabled: true
+        serviceName: bazarr-metrics
+        endpoints:
+          - port: metrics
+            scheme: http
+            path: /metrics
+            interval: 15m
+            scrapeTimeout: 2m
     service:
       app:
         controller: *name
         ports:
           http:
             port: *port
+      metrics:
+        controller: *name
+        ports:
+          metrics:
+            port: *metrics
     ingress:
       app:
         className: nginx-internal
