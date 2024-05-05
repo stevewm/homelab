@@ -25,7 +25,7 @@ spec:
       retries: 3
   valuesFrom:
     - kind: Secret
-      name: actions-runner-controller-auth-secret
+      name: actions-runner-controller
       valuesKey: github_token
       targetPath: githubConfigSecret.github_token
   values:
