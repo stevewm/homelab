@@ -1,0 +1,47 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/helm.toolkit.fluxcd.io/helmrelease_v2beta2.json
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: arc-runners
+spec:
+  interval: 30m
+  maxHistory: 3
+  chart:
+    spec:
+      chart: gha-runner-scale-set
+      version: 0.9.1
+      sourceRef:
+        kind: HelmRepository
+        name: actions-runner-controller
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  valuesFrom:
+    - kind: Secret
+      name: actions-runner-controller-auth-secret
+      valuesKey: github_token
+      targetPath: githubConfigSecret.github_token
+  values:
+    nameOverride: arc-runners
+    runnerScaleSetName: arc-runners
+    githubConfigUrl: https://github.com/stevewm/homelab
+    minRunners: 1
+    maxRunners: 6
+    containerMode:
+      type: dind
+    template:
+      spec:
+        containers:
+          - name: runner
+            image: ghcr.io/onedr0p/actions-runner:2.316.1@sha256:32f392f2db95247bccb45782528b29d028f9b7c617729fff309e4c5de83b9b7d
+            command: ["/home/runner/run.sh"]
+    controllerServiceAccount:
+      name: arc-operator
+      namespace: dev
