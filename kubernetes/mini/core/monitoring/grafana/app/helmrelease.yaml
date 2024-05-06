@@ -20,7 +20,7 @@ spec:
     annotations:
       configmap.reloader.stakater.com/reload: grafana
     podLabels:
-      ingress.home.arpa/ingress.home.arpa/nginx-internal: allow
+      ingress.home.arpa/nginx-internal: allow
 
     replicas: 1
 
