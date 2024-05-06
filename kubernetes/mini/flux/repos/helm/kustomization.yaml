@@ -14,6 +14,7 @@ resources:
   - ./external-secrets.yaml
   - ./fairwinds-stable.yaml
   - ./gabe565.yaml
+  - ./grafana.yaml
   - ./ingress-nginx.yaml
   - ./intel.yaml
   - ./itzg.yaml
