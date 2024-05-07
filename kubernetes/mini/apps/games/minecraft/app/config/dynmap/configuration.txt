@@ -29,15 +29,15 @@ storage:
   # Filetree storage (standard tree of image files for maps)
   #type: filetree
   # SQLite db for map storage (uses dbfile as storage location)
-  type: sqlite
-  dbfile: /dynmap-data/dynmap.db
+  #type: sqlite
+  #dbfile: dynmap.db
   # MySQL DB for map storage (at 'hostname':'port' in database 'database' using user 'userid' password 'password' and table prefix 'prefix'
-  #type: postgres
-  #hostname: ${DB_HOSTNAME}
-  #port: ${DB_PORT}
-  #database: ${DB_USERNAME}
-  #userid: ${DB_USER}
-  #password: ${DB_PASSWORD}
+  type: postgres
+  hostname: {{ db_hostname }}
+  port: {{ db_port }}
+  database: {{ db_database}}
+  userid: {{ db_user }}
+  password: {{ db_user_password }}
   #prefix: ""
   #
   # AWS S3 backet web site
@@ -372,7 +372,7 @@ progressloginterval: 100
 updaterate: 2000
 
 # If nonzero, server will pause fullrender/radiusrender processing when 'fullrenderplayerlimit' or more users are logged in
-fullrenderplayerlimit: 0
+fullrenderplayerlimit: 1
 # If nonzero, server will pause update render processing when 'updateplayerlimit' or more users are logged in
 updateplayerlimit: 0
 # Target limit on server thread use - msec per tick
@@ -476,7 +476,7 @@ soft-ref-cache: true
 
 # Published public URL for Dynmap server (allows users to use 'dynmap url' command to get public URL usable to access server
 # If not set, 'dynmap url' will not return anything.  URL should be fully qualified (e.g. https://mc.westeroscraft.com/)
-#publicURL: http://my.greatserver.com/dynmap
+publicURL: https://map.cfg.sh/
 
 # Set to true to enable verbose startup messages - can help with debugging map configuration problems
 # Set to false for a much quieter startup log

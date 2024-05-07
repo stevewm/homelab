@@ -17,8 +17,14 @@ spec:
         namespace: flux-system
   install:
     crds: CreateReplace
+    remediation:
+      retries: 3
   upgrade:
     crds: CreateReplace
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
   values:
     master:
       extraLabelNs: [gpu.intel.com, sgx.intel.com]

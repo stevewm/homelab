@@ -16,6 +16,14 @@ spec:
       version: 7.3.9
   interval: 30m
   timeout: 20m
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
   values:
     annotations:
       configmap.reloader.stakater.com/reload: grafana
