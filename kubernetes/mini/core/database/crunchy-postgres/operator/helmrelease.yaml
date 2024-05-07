@@ -20,6 +20,9 @@ spec:
   upgrade:
     crds: CreateReplace
   values:
+    customPodLabels:
+      egress.home.arpa/kubedns: allow
+      egress.home.arpa/apiserver: allow
     install:
       clusterLabels:
         app.kubernetes.io/name: pgo
