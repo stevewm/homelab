@@ -5,17 +5,18 @@ kind: HelmRelease
 metadata:
   name: grafana
 spec:
+  interval: 30m
+  timeout: 20m
+  maxHistory: 3
   chart:
     spec:
       chart: grafana
-      interval: 30m
+      version: 7.3.9
       sourceRef:
         kind: HelmRepository
         name: grafana
         namespace: flux-system
-      version: 7.3.9
-  interval: 30m
-  timeout: 20m
+
   install:
     remediation:
       retries: 3

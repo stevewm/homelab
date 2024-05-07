@@ -6,6 +6,7 @@ metadata:
   name: intel-device-plugins-gpu
 spec:
   interval: 30m
+  maxHistory: 3
   chart:
     spec:
       chart: intel-device-plugins-gpu
