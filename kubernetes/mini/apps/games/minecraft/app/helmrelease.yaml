@@ -15,6 +15,14 @@ spec:
         kind: HelmRepository
         name: bjw-s
         namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
   values:
     defaultPodOptions:
       automountServiceAccountToken: false
@@ -161,7 +169,7 @@ spec:
           - hosts:
               - *host
         annotations:
-          gethomepage.dev/name: minecraft-survival
+          gethomepage.dev/name: minecraft dynmap (survival)
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: games
           gethomepage.dev/icon: mdi-minecraft
