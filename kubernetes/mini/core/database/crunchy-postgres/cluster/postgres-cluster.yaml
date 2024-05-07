@@ -25,6 +25,7 @@ spec:
         labels:
           app.kubernetes.io/name: crunchy-postgres
           egress.home.arpa/apiserver: allow
+          egress.home.arpa/kubedns: allow
       replicas: &replica 3
       dataVolumeClaimSpec:
         storageClassName: openebs-hostpath
