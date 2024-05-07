@@ -1,0 +1,156 @@
+---
+apiVersion: postgres-operator.crunchydata.com/v1beta1
+kind: PostgresCluster
+metadata:
+  name: &name postgres
+spec:
+  postgresVersion: 16
+
+  metadata:
+    labels:
+      crunchy-userinit.ramblurr.github.com/enabled: "true"
+      crunchy-userinit.ramblurr.github.com/superuser: "postgres"
+
+  patroni: # turn on sync writes to at least 1 other replica
+    dynamicConfiguration:
+      synchronous_mode: true
+      postgresql:
+        synchronous_commit: "on"
+        pg_hba:
+          - hostssl all all all md5
+
+  instances:
+    - name: postgres
+      metadata:
+        labels:
+          app.kubernetes.io/name: crunchy-postgres
+          egress.home.arpa/apiserver: allow
+      replicas: &replica 3
+      dataVolumeClaimSpec:
+        storageClassName: openebs-hostpath
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 20Gi
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: "kubernetes.io/hostname"
+          whenUnsatisfiable: "DoNotSchedule"
+          labelSelector:
+            matchLabels:
+              postgres-operator.crunchydata.com/cluster: *name
+              postgres-operator.crunchydata.com/data: postgres
+
+  users:
+    # Superuser
+    - name: postgres
+      databases:
+        - postgres
+      options: "SUPERUSER"
+      password:
+        type: AlphaNumeric
+    # Applications
+    - name: authelia
+      databases:
+        - authelia
+      password:
+        type: AlphaNumeric
+    - name: jellystat
+      databases:
+        - jellystat
+      password:
+        type: AlphaNumeric
+    - name: lldap
+      databases:
+        - lldap
+      password:
+        type: AlphaNumeric
+    - name: mc-survival-dynmap
+      databases:
+        - mc-survival-dynmap
+      password:
+        type: AlphaNumeric
+    - name: prowlarr
+      databases:
+        - prowlarr
+      password:
+        type: AlphaNumeric
+    - name: radarr
+      databases:
+        - radarr
+      password:
+        type: AlphaNumeric
+    - name: sonarr
+      databases:
+        - sonarr
+      password:
+        type: AlphaNumeric
+    - name: speedtest-tracker
+      databases:
+        - speedtest-tracker
+      password:
+        type: AlphaNumeric
+
+  backups:
+    pgbackrest:
+      configuration: &backupConfig
+        - secret:
+            name: b2-db-backup
+      global: &backupFlag
+        archive-timeout: "60"
+        compress-type: "bz2"
+        compress-level: "9"
+        delta: "y"
+        backblaze-retention-full-type: "time"
+        backblaze-retention-full: "14"
+        backblaze-retention-diff: "30"
+        backblaze-path: "/crunchy-pgo"
+        backblaze-s3-uri-style: path
+        archive-push-queue-max: 4GiB
+      manual:
+        repoName: backblaze
+        options:
+          - --type=full
+      metadata:
+        labels:
+          app.kubernetes.io/name: crunchy-postgres-backup
+          egress.home.arpa/apiserver: allow
+      repos:
+        - name: backblaze
+          s3: &b2
+            bucket: 'cluster-apps-db-backup'
+            endpoint: 's3.us-east-005.backblazeb2.com'
+            region: "us-east-1"
+          schedules:
+            full: "0 1 * * 0" # Sunday at 01:00
+            differential: "0 1 * * 1-6" # Mon-Sat at 01:00
+            incremental: "0 2-23 * * *" # Every hour except 01:00
+
+  dataSource:
+    pgbackrest:
+      stanza: "db"
+      configuration: *backupConfig
+      global: *backupFlag
+      repo:
+        name: 'backblaze'
+        s3: *b2
+
+  proxy:
+    pgBouncer:
+      port: 5432
+      replicas: *replica
+      metadata:
+        labels:
+          app.kubernetes.io/name: crunchy-postgres-pgbouncer
+      config:
+        global:
+          client_tls_sslmode: prefer
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: "kubernetes.io/hostname"
+          whenUnsatisfiable: "DoNotSchedule"
+          labelSelector:
+            matchLabels:
+              postgres-operator.crunchydata.com/cluster: *name
+              postgres-operator.crunchydata.com/role: "pgbouncer"
