@@ -2,8 +2,6 @@
 
 ## Setup
 
-Some ClickOps required.
-
 1. Register an account on <https://playit.gg>
 2. Download the playit.gg client for your OS and run it
 3. Copy the value for `secret_key` from the file `$XDG_CONFIG_HOME/playit/playit.toml`
