@@ -1,6 +1,24 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/cilium.io/ciliumclusterwidenetworkpolicy_v2.json
 ---
 apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: pg-backup
+spec:
+  endpointSelector:
+    matchLabels:
+      postgres-operator.crunchydata.com/cluster: postgres
+  egress:
+    - toFQDNs: # backblaze b2
+        - matchName: "s3.us-east-005.backblazeb2.com"
+      toPorts:
+        - ports:
+            - port: "443"
+              protocol: TCP
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/cilium.io/ciliumclusterwidenetworkpolicy_v2.json
+---
+apiVersion: cilium.io/v2
 kind: CiliumClusterwideNetworkPolicy
 metadata:
   name: apps-to-pg-postgres
