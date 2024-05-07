@@ -90,6 +90,19 @@ controlPlane:
           - siderolabs/intel-ucode
           - siderolabs/i915-ucode
   patches:
+    # Extra kubelet mounts (required for OpenEBS)
+    - &kubelet_mounts |-
+      machine:
+        kubelet:
+          extraMounts:
+            - destination: /var/openebs/local
+              type: bind
+              source: /var/openebs/local
+              options:
+                - bind
+                - rshared
+                - rw
+
     # Enable disk encryption
     - &encrypt |-
       machine:
