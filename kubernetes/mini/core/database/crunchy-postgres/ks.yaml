@@ -42,7 +42,7 @@ spec:
   dependsOn:
     - name: core-crunchy-postgres-operator
     - name: core-crunchy-postgres-userinit-controller
-    - name: core core-crunchy-postgres-cluster-secretstore
+    - name: core-crunchy-postgres-cluster-secretstore
 
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
 ---
