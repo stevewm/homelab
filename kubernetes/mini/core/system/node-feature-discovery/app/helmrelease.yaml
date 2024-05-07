@@ -6,6 +6,7 @@ metadata:
   name: node-feature-discovery
 spec:
   interval: 30m
+  maxHistory: 3
   chart:
     spec:
       chart: node-feature-discovery

@@ -6,6 +6,7 @@ metadata:
   name: &name kubelet-csr-approver
 spec:
   interval: 30m
+  maxHistory: 3
   chart:
     spec:
       chart: *name
