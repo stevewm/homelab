@@ -11,7 +11,7 @@ spec:
   chart:
     spec:
       chart: volsync
-      version: 0.9.1 # FIXME: Only upgrade to 0.8.1 when https://github.com/backube/volsync/issues/1172 is resolved
+      version: 0.9.1
       sourceRef:
         kind: HelmRepository
         name: backube
@@ -20,7 +20,7 @@ spec:
     manageCRDs: true
     image: &image
       repository: ghcr.io/onedr0p/volsync
-      tag: 0.9.1 # FIXME: Only upgrade to 0.8.1 when https://github.com/backube/volsync/issues/1172 is resolved
+      tag: 0.9.1
     restic:
       <<: *image
     metrics:
