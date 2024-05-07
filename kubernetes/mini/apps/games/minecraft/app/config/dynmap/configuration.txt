@@ -29,15 +29,15 @@ storage:
   # Filetree storage (standard tree of image files for maps)
   #type: filetree
   # SQLite db for map storage (uses dbfile as storage location)
-  #type: sqlite
-  #dbfile: dynmap.db
+  type: sqlite
+  dbfile: dynmap.db
   # MySQL DB for map storage (at 'hostname':'port' in database 'database' using user 'userid' password 'password' and table prefix 'prefix'
-  type: postgres
-  hostname: {{ db_hostname }}
-  port: {{ db_port }}
-  database: {{ db_database}}
-  userid: {{ db_user }}
-  password: {{ db_user_password }}
+  #type: postgres
+  #hostname: {{ db_hostname }}
+  #port: {{ db_port }}
+  #database: {{ db_database}}
+  #userid: {{ db_user }}
+  #password: {{ db_user_password }}
   #prefix: ""
   #
   # AWS S3 backet web site
