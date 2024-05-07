@@ -7,4 +7,4 @@ spec:
   endpoints:
     - dnsName: play.cfg.sh
       recordType: A
-      targets: [''] # TOOD: Replace with private IP from playit when in stock
+      targets: ['209.25.140.84']

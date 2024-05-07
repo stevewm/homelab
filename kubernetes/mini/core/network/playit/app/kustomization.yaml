@@ -5,4 +5,4 @@ resources:
   - ./helmrelease.yaml
   - ./networkpolicy.yaml
   - ./externalsecret.yaml
-  #- ./dns-endpoint.yaml
+  - ./dns-endpoint.yaml
