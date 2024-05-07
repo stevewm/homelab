@@ -23,3 +23,8 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
+  values:
+    fullNameOverride: crunchy-userinit-controller
+    podLabels:
+      egress.home.arpa/kubedns: allow
+      egress.home.arpa/apiserver: allow
