@@ -153,6 +153,7 @@ worker:
           - siderolabs/intel-ucode
           - siderolabs/i915-ucode
   patches:
+    - *kubelet_mounts
     - *encrypt
     - *wipe
     - *kubeproxy
