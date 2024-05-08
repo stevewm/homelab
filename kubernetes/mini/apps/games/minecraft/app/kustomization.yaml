@@ -10,7 +10,7 @@ resources:
 configMapGenerator:
   - name: minecraft-dynmap
     files:
-      - configuration.txt.tmpl=./config/dynmap/configuration.txt.tmpl
+      - configuration.txt=./config/dynmap/configuration.txt
       - custom-perspectives.txt=./config/dynmap/custom-perspectives.txt
       - markers.yml=./config/dynmap/markers.yml
       - worlds.txt=./config/dynmap/worlds.txt
