@@ -21,7 +21,7 @@ spec:
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: pg-bouncer
+  name: apps-pg-ingress
 spec:
   endpointSelector:
     matchLabels:
