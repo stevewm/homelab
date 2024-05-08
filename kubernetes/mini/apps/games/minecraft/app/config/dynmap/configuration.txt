@@ -33,11 +33,11 @@ storage:
   dbfile: dynmap.db
   # MySQL DB for map storage (at 'hostname':'port' in database 'database' using user 'userid' password 'password' and table prefix 'prefix'
   type: postgres
-  hostname: {{ .db_hostname }}
-  port: {{ .db_port }}
-  database: {{ .db_database}}
-  userid: {{ .db_username }}
-  password: {{ .db_user_password }}
+  hostname: {{ .pgbouncer-host }}
+  port: {{ .pgbouncer-port }}
+  database: {{ .dbname}}
+  userid: {{ .user }}
+  password: {{ .password }}
   prefix: ""
   #
   # AWS S3 backet web site
