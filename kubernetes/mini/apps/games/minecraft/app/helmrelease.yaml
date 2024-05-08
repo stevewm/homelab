@@ -102,7 +102,7 @@ spec:
               RCON_PASSWORD:
                 valueFrom:
                   secretKeyRef:
-                    name: minecraft
+                    name: minecraft-rcon
                     key: rcon_password
               RCON_CMDS_LAST_DISCONNECT: |-
                 dynmap fullrender
