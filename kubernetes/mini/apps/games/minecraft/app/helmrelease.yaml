@@ -96,7 +96,7 @@ spec:
               ## Mods
               REMOVE_OLD_MODS: 'true'
               MODRINTH_DEFAULT_VERSION_TYPE: release
-              MODRINTH_PROJECTS: 'fabric-api,spark,fabricexporter,dynmap'
+              MODRINTH_PROJECTS: 'fabric-api,spark,fabricexporter,dynmap,sqlite-jdbc'
               VANILLA_TWEAKS_SHARE_CODES: ozxXFS
               ## RCON
               RCON_PASSWORD:
@@ -108,12 +108,16 @@ spec:
                 dynmap fullrender
               ENABLE_QUERY: 'true'
               # Whitelist / Ops
-              WHITELIST_FILE: /secrets/whitelist.json
+              WHITELIST:
+                valueFrom:
+                  secretKeyRef:
+                    name: minecraft
+                    key: whitelist
               EXISTING_WHITELIST_FILE: SYNC_FILE_MERGE_LIST
               OPS:
                 valueFrom:
                   secretKeyRef:
-                    name: minecraft-secret
+                    name: minecraft
                     key: ops
               EXISTING_OPS_FILE: SYNCHRONIZE
               ## External resources - remove after first boot
@@ -132,9 +136,6 @@ spec:
                 memory: 6Gi
     service:
       minecraft:
-        annotations: # Playit tunnel annotations
-          external-dns.alpha.kubernetes.io/hostname: mc.cfg.sh
-          external-dns.alpha.kubernetes.io/target: play.cfg.sh
         controller: minecraft
         type: LoadBalancer    # https://kubernetes.io/blog/2022/05/23/service-ip-dynamic-and-static-allocation/
         clusterIP: 10.96.0.30 # FIXME: Remove if/when playit supports hostname tunnel endpoints
@@ -177,25 +178,21 @@ spec:
     persistence:
       data:
         existingClaim: ${VOLSYNC_CLAIM}
-      dynmap-data:
-        type: persistentVolumeClaim # TODO: Remove once DB for dynmap is in place
-        accessMode: ReadWriteOnce
-        size: 30Gi # idk how big this should be
-      secrets:
-        type: secret
-        name: minecraft-secret
-        items:
-          - key: whitelist.json
-            path: whitelist.json
       dynmap:
         type: configMap
         name: minecraft-dynmap
         globalMounts:
-          - path: /data/dynmap/configuration.txt
-            subPath: configuration.txt
-            readOnly: true
           - path: /data/dynmap/custom-perspectives.txt
             subPath: custom-perspectives.txt
             readOnly: true
           - path: /data/dynmap/markers.yml
             subPath: markers.yml
+          - path: /data/dynmap/worlds.txt
+            subPath: worlds.txt
+      dynmap-config:
+        type: secret
+        name: minecraft-dynmap-config
+        globalMounts:
+          - path: /data/dynmap/configuration.txt
+            subPath: configuration.txt
+            readOnly: true
