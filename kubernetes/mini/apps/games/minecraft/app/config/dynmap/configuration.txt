@@ -32,13 +32,13 @@ storage:
   type: sqlite
   dbfile: dynmap.db
   # MySQL DB for map storage (at 'hostname':'port' in database 'database' using user 'userid' password 'password' and table prefix 'prefix'
-  #type: postgres
-  #hostname: {{ db_hostname }}
-  #port: {{ db_port }}
-  #database: {{ db_database}}
-  #userid: {{ db_user }}
-  #password: {{ db_user_password }}
-  #prefix: ""
+  type: postgres
+  hostname: {{ .db_hostname }}
+  port: {{ .db_port }}
+  database: {{ .db_database}}
+  userid: {{ .db_username }}
+  password: {{ .db_user_password }}
+  prefix: ""
   #
   # AWS S3 backet web site
   #type: aws_s3
@@ -55,7 +55,7 @@ components:
   - class: org.dynmap.InternalClientUpdateComponent
     sendhealth: true
     sendposition: true
-    allowwebchat: true
+    allowwebchat: false
     webchat-interval: 5
     hidewebchatip: false
     trustclientname: false
@@ -296,10 +296,10 @@ ctm-support: true
 custom-colors-support: true
 
 # Control loading of player faces (if set to false, skins are never fetched)
-#fetchskins: false
+fetchskins: true
 
 # Control updating of player faces, once loaded (if faces are being managed by other apps or manually)
-#refreshskins: false
+refreshskins: true
 
 # Customize URL used for fetching player skins (%player% is macro for name, %uuid% for UUID)
 skin-url: "http://skins.minecraft.net/MinecraftSkins/%player%.png"
