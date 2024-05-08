@@ -182,13 +182,14 @@ spec:
         type: configMap
         name: minecraft-dynmap
         globalMounts:
+          - path: /data/dynmap/worlds.txt
+            subPath: worlds.txt
+            readOnly: true
           - path: /data/dynmap/custom-perspectives.txt
             subPath: custom-perspectives.txt
             readOnly: true
           - path: /data/dynmap/markers.yml
             subPath: markers.yml
-          - path: /data/dynmap/worlds.txt
-            subPath: worlds.txt
       dynmap-config:
         type: secret
         name: minecraft-dynmap-config
