@@ -73,7 +73,7 @@ spec:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
               capabilities:
-              drop: ["ALL"]
+                drop: ["ALL"]
             resources: *resources
         pod:
           dnsConfig:
@@ -85,8 +85,7 @@ spec:
             runAsGroup: 65534
             fsGroupChangePolicy: OnRootMismatch
           labels:
-            app.kubernetes.io/name: gatus
-            ingress.home.arpa/nginx-internal: allow
+            ingress.home.arpa/nginx-external: allow
     service:
       app:
         controller: gatus
@@ -104,7 +103,7 @@ spec:
             scrapeTimeout: 10s
     ingress:
       app:
-        className: nginx-internal
+        className: nginx-external
         hosts:
           - host: status.cfg.sh
             paths:
