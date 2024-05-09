@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: gatus
+  name: &app gatus
 spec:
   interval: 30m
   maxHistory: 3
@@ -86,6 +86,7 @@ spec:
             fsGroupChangePolicy: OnRootMismatch
           labels:
             ingress.home.arpa/nginx-external: allow
+            ingress.home.arpa/homepage: allow
     service:
       app:
         controller: gatus
@@ -103,6 +104,14 @@ spec:
             scrapeTimeout: 10s
     ingress:
       app:
+        annotations:
+          gethomepage.dev/name: *app
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: monitoring
+          gethomepage.dev/icon: gatus.png
+          gethomepage.dev/widget.type: gatus
+          gethomepage.dev/widget.url: "http://gatus.monitoring.svc.cluster.local:8080"
+          external-dns.alpha.kubernetes.io/target: ext.cfg.sh
         className: nginx-external
         hosts:
           - host: status.cfg.sh
