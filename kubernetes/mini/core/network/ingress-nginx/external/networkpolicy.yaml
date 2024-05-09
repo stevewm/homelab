@@ -23,7 +23,7 @@ kind: CiliumClusterwideNetworkPolicy
 metadata:
   name: nginx-external-to-app
 spec:
-  description: "Allow ingress-nginx egress to pods that require ingress, no port restrictions"
+  description: "Allow ingress-nginx ingress/egress from/to pods that require ingress, no port restrictions"
   endpointSelector:
     matchLabels:
       app.kubernetes.io/name: ingress-nginx
@@ -32,5 +32,9 @@ spec:
 
   egress:
     - toEndpoints:
+        - matchLabels:
+            ingress.home.arpa/nginx-external: allow
+  ingress:
+    - fromEndpoints:
         - matchLabels:
             ingress.home.arpa/nginx-external: allow
