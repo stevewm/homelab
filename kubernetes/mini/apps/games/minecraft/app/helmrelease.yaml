@@ -99,7 +99,7 @@ spec:
               REMOVE_OLD_MODS: 'true'
               MODRINTH_DEFAULT_VERSION_TYPE: release
               MODRINTH_PROJECTS: 'fabric-api,spark,fabricexporter,bluemap,bluemap-sign-markers'
-              VANILLA_TWEAKS_SHARE_CODES: ozxXFS
+              VANILLA_TWEAKS_SHARE_CODES: ozxXFS # Coord HUD, Anti-Endermen Griefing
               ## RCON
               RCON_PASSWORD:
                 valueFrom:
@@ -145,8 +145,8 @@ spec:
           game:
             port: 25565
             protocol: TCP
-          # dynmap:
-          #   port: 8104
+          bluemap:
+            port: 8100
           metrics:
             port: 25585
     serviceMonitor:
@@ -158,25 +158,25 @@ spec:
             scheme: http
             path: /
             interval: 1m
-    # ingress:
-    #   dynmap:
-    #     className: nginx-external
-    #     hosts:
-    #       - host: &host map.cfg.sh
-    #         paths:
-    #           - path: /
-    #             service:
-    #               identifier: minecraft
-    #               port: dynmap
-    #     tls:
-    #       - hosts:
-    #           - *host
-    #     annotations:
-    #       gethomepage.dev/name: minecraft dynmap (survival)
-    #       gethomepage.dev/enabled: 'true'
-    #       gethomepage.dev/group: games
-    #       gethomepage.dev/icon: mdi-minecraft
-    #       external-dns.alpha.kubernetes.io/target: ext.cfg.sh
+    ingress:
+      bluemap:
+        className: nginx-external
+        hosts:
+          - host: &host map.cfg.sh
+            paths:
+              - path: /
+                service:
+                  identifier: minecraft
+                  port: bluemap
+        tls:
+          - hosts:
+              - *host
+        annotations:
+          gethomepage.dev/name: minecraft map (survival)
+          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/group: games
+          gethomepage.dev/icon: mdi-minecraft
+          external-dns.alpha.kubernetes.io/target: ext.cfg.sh
     persistence:
       data:
         existingClaim: ${VOLSYNC_CLAIM}
