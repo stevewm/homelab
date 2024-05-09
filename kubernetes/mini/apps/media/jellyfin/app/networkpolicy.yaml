@@ -33,6 +33,7 @@ spec:
 
     - toFQDNs:
         - matchName: repo.jellyfin.org
+        - matchName: api.themoviedb.org
       toPorts:
         - ports:
             - port: "443"
