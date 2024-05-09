@@ -98,7 +98,7 @@ spec:
               ## Mods
               REMOVE_OLD_MODS: 'true'
               MODRINTH_DEFAULT_VERSION_TYPE: release
-              MODRINTH_PROJECTS: 'fabric-api,spark,fabricexporter'
+              MODRINTH_PROJECTS: 'fabric-api,spark,fabricexporter,bluemap'
               VANILLA_TWEAKS_SHARE_CODES: ozxXFS
               ## RCON
               RCON_PASSWORD:
