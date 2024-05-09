@@ -148,7 +148,7 @@ spec:
           # dynmap:
           #   port: 8104
           metrics:
-            port: 9225
+            port: 25585
     serviceMonitor:
       metrics:
         enabled: true
