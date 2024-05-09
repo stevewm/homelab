@@ -35,6 +35,7 @@ spec:
             db.home.arpa/pg: 'postgres'
             ingress.home.arpa/nginx-internal: allow
             ingress.home.arpa/homepage: allow
+            egress.home.arpa/kubedns: allow
         strategy: Recreate
         containers:
           app:
