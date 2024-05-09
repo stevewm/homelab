@@ -24,6 +24,8 @@ spec:
     remediation:
       strategy: rollback
       retries: 3
+  uninstall:
+    keepHistory: false
   values:
     image:
       repository: ghcr.io/gethomepage/homepage
