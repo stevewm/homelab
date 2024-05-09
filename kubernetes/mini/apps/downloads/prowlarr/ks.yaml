@@ -25,3 +25,4 @@ spec:
       APP_UID: "568"
       APP_GID: "568"
       VOLSYNC_CLAIM: prowlarr-config
+      GATUS_SUBDOMAIN: plr
