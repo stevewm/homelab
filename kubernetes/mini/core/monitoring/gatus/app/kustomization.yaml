@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - ./helmrelease.yaml
   - ./rbac.yaml
-  - ../../../../templates/gatus/external/kustomization.yaml
+  - ../../../../templates/gatus/external
 configMapGenerator:
   - name: gatus-configmap
     files:
