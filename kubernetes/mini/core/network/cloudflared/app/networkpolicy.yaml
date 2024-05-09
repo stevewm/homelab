@@ -27,6 +27,8 @@ spec:
         - ports:
             - port: '443'
               protocol: 'TCP'
+            - port: '80'
+              protocol: 'TCP'
 # https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/deploy-tunnels/tunnel-with-firewall/
     - toFQDNs:
         - matchName: region1.v2.argotunnel.com
