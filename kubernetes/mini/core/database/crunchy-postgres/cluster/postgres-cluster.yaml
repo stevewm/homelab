@@ -68,11 +68,6 @@ spec:
         - lldap
       password:
         type: AlphaNumeric
-    - name: mc-survival-dynmap
-      databases:
-        - mc-survival-dynmap
-      password:
-        type: AlphaNumeric
     - name: prowlarr
       databases:
         - prowlarr
