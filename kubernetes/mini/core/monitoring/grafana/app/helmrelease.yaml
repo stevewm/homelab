@@ -16,7 +16,6 @@ spec:
         kind: HelmRepository
         name: grafana
         namespace: flux-system
-
   install:
     remediation:
       retries: 3
@@ -25,6 +24,8 @@ spec:
     remediation:
       strategy: rollback
       retries: 3
+  uninstall:
+    keepHistory: false
   values:
     annotations:
       configmap.reloader.stakater.com/reload: grafana
