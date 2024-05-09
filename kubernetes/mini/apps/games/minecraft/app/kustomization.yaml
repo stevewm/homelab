@@ -7,3 +7,12 @@ resources:
   - ./externalsecret.yaml
   - ./networkpolicy.yaml
   - ../../../../templates/volsync/b2
+configMapGenerator:
+  - name: minecraft-bluemap
+    files:
+      - core.conf=./config/bluemap/core.conf
+      - file.conf=./config/bluemap/storages/file.conf
+generatorOptions:
+  disableNameSuffixHash: true
+  annotations:
+    kustomize.toolkit.fluxcd.io/substitute: disabled

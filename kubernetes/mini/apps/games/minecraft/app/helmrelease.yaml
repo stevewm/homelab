@@ -180,3 +180,17 @@ spec:
     persistence:
       data:
         existingClaim: ${VOLSYNC_CLAIM}
+    bluemap:
+      type: persistentVolumeClaim
+      size: 20Gi # FIXME: resize once we know how much space gets used
+      accessMode: ReadWriteOnce
+    bluemap-config:
+      type: configMap
+      name: minecraft-bluemap
+      globalMounts:
+        - path: /data/config/bluemap/core.conf
+          subPath: core.conf
+          readOnly: true
+        - path: /data/config/bluemap/storages/file.conf
+          subPath: file.conf
+          readOnly: true
