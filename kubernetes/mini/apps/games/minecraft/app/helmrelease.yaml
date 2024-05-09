@@ -106,8 +106,6 @@ spec:
                   secretKeyRef:
                     name: minecraft-rcon
                     key: rcon_password
-              RCON_CMDS_LAST_DISCONNECT: |-
-                dynmap fullrender
               ENABLE_QUERY: 'true'
               # Whitelist / Ops
               WHITELIST:
