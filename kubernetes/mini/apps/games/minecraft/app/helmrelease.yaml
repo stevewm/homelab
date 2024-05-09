@@ -194,3 +194,7 @@ spec:
           - path: /data/config/bluemap/storages/file.conf
             subPath: file.conf
             readOnly: true
+          # Maps configuration
+          - path: /data/config/bluemap/maps/nether.conf
+            subPath: nether.conf
+            readOnly: true
