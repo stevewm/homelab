@@ -21,15 +21,16 @@ spec:
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: apps-pg-ingress
+  name: apps-pgbouncer-ingress
 spec:
   endpointSelector:
     matchLabels:
       postgres-operator.crunchydata.com/cluster: postgres
+      postgres-operator.crunchydata.com/role: pgbouncer
   ingress:
     - fromEndpoints:
         - matchLabels:
-            db.home.arpa/pg: 'postgres'
+            db.home.arpa/pg: postgres
 
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/cilium.io/ciliumclusterwidenetworkpolicy_v2.json
 ---
@@ -40,7 +41,7 @@ metadata:
 spec:
   endpointSelector:
     matchLabels:
-      db.home.arpa/pg: "postgres"
+      db.home.arpa/pg: postgres
   egress:
     # Connections to master
     - toEndpoints:
