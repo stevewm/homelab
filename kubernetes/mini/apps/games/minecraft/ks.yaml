@@ -10,6 +10,7 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: &app minecraft
+      app.kubernetes.io/instance: survival
   interval: 10m
   path: ./kubernetes/mini/apps/games/minecraft/app
   prune: true
