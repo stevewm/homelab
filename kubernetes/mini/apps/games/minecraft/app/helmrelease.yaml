@@ -98,7 +98,7 @@ spec:
               ## Mods
               REMOVE_OLD_MODS: 'true'
               MODRINTH_DEFAULT_VERSION_TYPE: release
-              MODRINTH_PROJECTS: 'fabric-api,spark,fabricexporter,dynmap,sqlite-jdbc'
+              MODRINTH_PROJECTS: 'fabric-api,spark,fabricexporter'
               VANILLA_TWEAKS_SHARE_CODES: ozxXFS
               ## RCON
               RCON_PASSWORD:
@@ -145,8 +145,8 @@ spec:
           game:
             port: 25565
             protocol: TCP
-          dynmap:
-            port: 8104
+          # dynmap:
+          #   port: 8104
           metrics:
             port: 9225
     serviceMonitor:
@@ -158,44 +158,25 @@ spec:
             scheme: http
             path: /
             interval: 1m
-    ingress:
-      dynmap:
-        className: nginx-external
-        hosts:
-          - host: &host map.cfg.sh
-            paths:
-              - path: /
-                service:
-                  identifier: minecraft
-                  port: dynmap
-        tls:
-          - hosts:
-              - *host
-        annotations:
-          gethomepage.dev/name: minecraft dynmap (survival)
-          gethomepage.dev/enabled: 'true'
-          gethomepage.dev/group: games
-          gethomepage.dev/icon: mdi-minecraft
-          external-dns.alpha.kubernetes.io/target: ext.cfg.sh
+    # ingress:
+    #   dynmap:
+    #     className: nginx-external
+    #     hosts:
+    #       - host: &host map.cfg.sh
+    #         paths:
+    #           - path: /
+    #             service:
+    #               identifier: minecraft
+    #               port: dynmap
+    #     tls:
+    #       - hosts:
+    #           - *host
+    #     annotations:
+    #       gethomepage.dev/name: minecraft dynmap (survival)
+    #       gethomepage.dev/enabled: 'true'
+    #       gethomepage.dev/group: games
+    #       gethomepage.dev/icon: mdi-minecraft
+    #       external-dns.alpha.kubernetes.io/target: ext.cfg.sh
     persistence:
       data:
         existingClaim: ${VOLSYNC_CLAIM}
-      dynmap:
-        type: configMap
-        name: minecraft-dynmap
-        globalMounts:
-          - path: /data/dynmap/worlds.txt
-            subPath: worlds.txt
-            readOnly: true
-          - path: /data/dynmap/custom-perspectives.txt
-            subPath: custom-perspectives.txt
-            readOnly: true
-          - path: /data/dynmap/markers.yml
-            subPath: markers.yml
-      dynmap-config:
-        type: secret
-        name: minecraft-dynmap-config
-        globalMounts:
-          - path: /data/dynmap/configuration.txt
-            subPath: configuration.txt
-            readOnly: true
