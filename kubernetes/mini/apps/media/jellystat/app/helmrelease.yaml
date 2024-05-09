@@ -50,22 +50,22 @@ spec:
               POSTGRES_IP:
                 valueFrom:
                   secretKeyRef:
-                    name: pg-db-jellystat-app
-                    key: host
+                    name: jellystat-pg-db
+                    key: pgbouncer-host
               POSTGRES_PORT:
                 valueFrom:
                   secretKeyRef:
-                    name: pg-db-jellystat-app
-                    key: port
+                    name: jellystat-pg-db
+                    key: pgbouncer-port
               POSTGRES_USER:
                 valueFrom:
                   secretKeyRef:
-                    name: pg-db-jellystat-app
-                    key: username
+                    name: jellystat-pg-db
+                    key: user
               POSTGRES_PASSWORD:
                 valueFrom:
                   secretKeyRef:
-                    name: pg-db-jellystat-app
+                    name: jellystat-pg-db
                     key: password
               JWT_SECRET:
                 valueFrom:
