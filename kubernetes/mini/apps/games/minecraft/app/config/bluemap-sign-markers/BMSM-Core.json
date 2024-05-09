@@ -1,0 +1,13 @@
+{
+  "markerGroups": [
+    {
+      "prefix": "[poi]",
+      "name": "Points of Interest"
+    },
+    {
+      "prefix": "[store]",
+      "name": "Stores",
+      "icon": "assets/store.png"
+    }
+  ]
+}
