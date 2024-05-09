@@ -24,6 +24,8 @@ spec:
     remediation:
       strategy: rollback
       retries: 3
+  uninstall:
+    keepHistory: false
   values:
     namespace: null
     timezone: America/Vancouver
