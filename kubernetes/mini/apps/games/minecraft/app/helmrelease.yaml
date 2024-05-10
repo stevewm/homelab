@@ -199,3 +199,6 @@ spec:
           - path: /data/config/bluemap/maps/nether.conf
             subPath: nether.conf
             readOnly: true
+          - path: /data/config/bluemap/maps/end.conf
+            subPath: end.conf
+            readOnly: true
