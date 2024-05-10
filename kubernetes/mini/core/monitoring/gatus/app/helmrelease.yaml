@@ -87,6 +87,7 @@ spec:
           labels:
             ingress.home.arpa/nginx-external: allow
             ingress.home.arpa/homepage: allow
+            monitoring.home.arpa/prometheus: allow
     service:
       app:
         controller: gatus
