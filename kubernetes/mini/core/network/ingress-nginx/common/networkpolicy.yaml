@@ -17,4 +17,3 @@ spec:
       toPorts:
         - ports:
             - port: "6443"
-# TODO: Label the webhook via a patch instead
