@@ -20,6 +20,7 @@ spec:
   postBuild:
     substitute:
       APP: *app
+      GATUS_SUBDOMAIN: jf
       APP_UID: "568"
       APP_GID: "568"
       VOLSYNC_CLAIM: jellyfin-config

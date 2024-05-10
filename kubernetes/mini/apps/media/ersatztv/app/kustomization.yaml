@@ -5,3 +5,4 @@ resources:
   - ./helmrelease.yaml
   - ./networkpolicy.yaml
   - ../../../../templates/volsync/b2
+  - ../../../../templates/gatus/guarded
