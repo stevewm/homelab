@@ -35,6 +35,7 @@ spec:
     podLabels:
       egress.home.arpa/apiserver: allow
       egress.home.arpa/kubedns: allow
+      monitoring.home.arpa/prometheus: allow
     podAnnotations:
       reloader.stakater.com/auto: 'true'
 
