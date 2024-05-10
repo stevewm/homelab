@@ -17,3 +17,7 @@ spec:
     kind: GitRepository
     name: homelab
   wait: true
+  postBuild:
+    substitute:
+      APP: *app
+      GATUS_SUBDOMAIN: gitops
