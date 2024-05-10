@@ -21,6 +21,7 @@ spec:
   postBuild:
     substitute:
       APP: *app
+      GATUS_NAME: 'minecraft map'
       GATUS_SUBDOMAIN: map
       APP_UID: '1000'
       APP_GID: '2000'
