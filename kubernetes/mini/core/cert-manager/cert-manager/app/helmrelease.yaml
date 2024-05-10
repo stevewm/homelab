@@ -11,7 +11,6 @@ spec:
     spec:
       chart: cert-manager
       version: v1.14.5
-      interval: 30m
       sourceRef:
         kind: HelmRepository
         name: cert-manager
