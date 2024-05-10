@@ -23,7 +23,7 @@ spec:
   postBuild:
     substitute:
       APP: *app
-      APP_UID: "568"
-      APP_GID: "568"
+      APP_UID: "1000"
+      APP_GID: "100"
       VOLSYNC_CLAIM: bazarr-config
       GATUS_SUBDOMAIN: bzr
