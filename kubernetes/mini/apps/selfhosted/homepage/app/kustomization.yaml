@@ -5,3 +5,4 @@ resources:
   - ./helmrelease.yaml
   - ./networkpolicy.yaml
   - ./app-secrets.yaml
+  - ../../../../templates/gatus/guarded
