@@ -2,13 +2,13 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: "${APP}-gatus-ep"
+  name: ${GATUS_NAME:-${APP}}-gatus-ep"
   labels:
     gatus.io/enabled: "true"
 data:
   config.yaml: |
     endpoints:
-      - name: "${APP}"
+      - name: "${GATUS_NAME:-${APP}}-gatus-ep""
         group: guarded
         url: 1.1.1.1
         interval: 1m
