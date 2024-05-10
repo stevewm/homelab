@@ -30,6 +30,7 @@ spec:
         - matchPattern: '*.minecraftservices.com'
         - matchName: vanillatweaks.net
         - matchName: playerdb.co
+        - matchName: github.com
       toPorts:
         - ports:
             - port: "443"
