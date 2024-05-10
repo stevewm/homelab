@@ -102,6 +102,8 @@ spec:
               REMOVE_OLD_MODS: 'true'
               MODRINTH_DEFAULT_VERSION_TYPE: release
               MODRINTH_PROJECTS: 'fabric-api,spark,fabricexporter,bluemap,bluemap-sign-markers'
+              PLUGINS: |-
+                https://github.com/pop4959/BlueBorder/releases/download/1.1.1/BlueBorder-1.1.1.jar
               VANILLA_TWEAKS_SHARE_CODES: ozxXFS # Coord HUD, Anti-Endermen Griefing
               ## RCON
               RCON_PASSWORD:
