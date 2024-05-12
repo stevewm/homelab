@@ -18,6 +18,7 @@ resources:
   - ./intel.yaml
   - ./itzg.yaml
   - ./jameswynn.yaml
+  - ./jetstack.yaml
   - ./k8tz.yaml
   - ./kubelet-csr-approver.yaml
   - ./metallb.yaml
