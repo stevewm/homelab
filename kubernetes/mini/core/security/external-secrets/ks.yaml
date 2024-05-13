@@ -26,11 +26,14 @@ kind: Kustomization
 metadata:
   name: core-external-secrets-secretstore
   namespace: flux-system
+  labels:
+    substitution.flux.home.arpa/disabled: 'true'
 spec:
   targetNamespace: security
   commonMetadata:
     labels:
       app.kubernetes.io/name: &app external-secrets
+      app.kubernetes.io/component: secretstore
   interval: 10m
   path: ./kubernetes/mini/core/security/external-secrets/secretstore
   prune: true
