@@ -81,7 +81,7 @@ spec:
               capabilities:
                 drop: [ALL]
     service:
-      game:
+      app:
         type: LoadBalancer
         controller: vintagestory
         clusterIP: 10.96.0.35 # FIXME: Remove if/when playit.gg support hostname endpoints
