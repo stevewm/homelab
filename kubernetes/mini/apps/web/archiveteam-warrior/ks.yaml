@@ -19,4 +19,5 @@ spec:
   wait: false
   postBuild:
     substitute:
+      APP: *app
       APP_SUBDOMAIN: aw
