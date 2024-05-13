@@ -24,7 +24,7 @@ spec:
         - ports:
             - port: "8989"
               protocol: TCP
-    - toFQDNs: # TODO: L7 policy
+    - toFQDNs:
         - matchName: api.github.com            # update check
         - matchName: raw.githubusercontent.com # announcements
         # subtitle providers
