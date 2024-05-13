@@ -6,7 +6,8 @@
     ":semanticCommits",
     ":disableRateLimiting",
     "github>stevewm/homelab//.github/renovate/clusters.json",
-    "github>stevewm/homelab//.github/renovate/automerge.json"
+    "github>stevewm/homelab//.github/renovate/automerge.json",
+    "github>stevewm/homelab//.github/renovate/grafanadashboards.json5"
   ],
   "ignorePaths": [
     "**kubernetes/.archive/**"
