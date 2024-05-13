@@ -5,3 +5,4 @@ resources:
   - ./namespace.yaml
   - ./networkpolicy.yaml
   - ./homelab-docs/ks.yaml
+  - ./archiveteam-warrior/ks.yaml
