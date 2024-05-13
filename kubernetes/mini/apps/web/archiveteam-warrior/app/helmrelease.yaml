@@ -64,7 +64,7 @@ spec:
               limits:
                 memory: 500Mi
             env:
-              DOWNLOADER: 'postmaster@${DOMAIN}'
+              DOWNLOADER: 'stevewm'
               SELECTED_PROJECT: auto
     service:
       app:
