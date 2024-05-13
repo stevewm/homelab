@@ -52,6 +52,9 @@ spec:
           labels:
             ingress.home.arpa/nginx-internal: allow
             egress.home.arpa/kubedns: allow
+          annotations:
+            kubernetes.io/egress-bandwidth: "10M"
+            kubernetes.io/ingress-bandwidth: "10M"
         containers:
           app:
             image:
