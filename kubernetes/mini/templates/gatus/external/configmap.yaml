@@ -10,9 +10,9 @@ data:
     endpoints:
       - name: "${GATUS_NAME:-${APP}}"
         group: external
-        url: "https://${GATUS_SUBDOMAIN:-${APP}}.cfg.sh${GATUS_PATH:-/}"
+        url: "https://${APP_SUBDOMAIN:-${APP}}.cfg.sh${GATUS_PATH:-/}"
         interval: 1m
         client:
           dns-resolver: tcp://1.1.1.1:53
         conditions:
-          - "[STATUS] == ${GATUS_STATUS:-200}"
+          - "[STATUS] == ${GATUS_STATUS:-200}" # Ensure that the service is not down for external users

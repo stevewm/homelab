@@ -16,7 +16,7 @@ data:
           hide-hostname: true
           hide-url: true
         dns:
-          query-name: "${GATUS_SUBDOMAIN:-${APP}}.cfg.sh"
+          query-name: "${APP_SUBDOMAIN:-${APP}}.cfg.sh"
           query-type: A
         conditions:
-          - "len([BODY]) == 0"
+          - "len([BODY]) == 0" # Ensures that the service is not exposed externally
