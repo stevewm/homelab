@@ -163,7 +163,7 @@ spec:
       bluemap:
         className: nginx-external
         hosts:
-          - host: &host map.cfg.sh
+          - host: &host ${APP_SUBDOMAIN}.${DOMAIN}
             paths:
               - path: /
                 service:

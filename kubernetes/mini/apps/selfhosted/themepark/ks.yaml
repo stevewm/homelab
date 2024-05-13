@@ -20,4 +20,4 @@ spec:
   postBuild:
     substitute:
       APP: *app
-      GATUS_SUBDOMAIN: themes
+      APP_SUBDOMAIN: themes

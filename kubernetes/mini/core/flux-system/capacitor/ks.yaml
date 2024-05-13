@@ -20,4 +20,4 @@ spec:
   postBuild:
     substitute:
       APP: *app
-      GATUS_SUBDOMAIN: gitops
+      APP_SUBDOMAIN: gitops

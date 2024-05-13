@@ -20,4 +20,4 @@ spec:
   postBuild:
     substitute:
       APP: *app
-      GATUS_SUBDOMAIN: cc
+      APP_SUBDOMAIN: cc

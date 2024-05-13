@@ -20,7 +20,7 @@ spec:
   postBuild:
     substitute:
       APP: *app
+      APP_SUBDOMAIN: nzb
       APP_UID: "1000"
       APP_GID: "100"
       VOLSYNC_CLAIM: sabnzbd-config
-      GATUS_SUBDOMAIN: nzb

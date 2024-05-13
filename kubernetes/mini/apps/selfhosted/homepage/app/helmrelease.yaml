@@ -45,7 +45,7 @@ spec:
         ingressClassName: nginx-internal
         enabled: true
         hosts:
-          - host: &host home.cfg.sh
+          - host: &host ${APP_SUBDOMAIN}.${DOMAIN}
             paths:
               - path: /
                 pathType: Prefix

@@ -50,7 +50,8 @@ spec:
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
-              capabilities: {drop: [ALL]}
+              capabilities:
+                drop: [ALL]
     serviceAccount:
       create: true
       name: "capacitor"
@@ -71,7 +72,7 @@ spec:
           gethomepage.dev/group: monitoring
           gethomepage.dev/icon: mdi-sync
         hosts:
-          - host: &host "gitops.cfg.sh"
+          - host: &host ${APP_SUBDOMAIN}.${DOMAIN}
             paths:
               - path: /
                 service:

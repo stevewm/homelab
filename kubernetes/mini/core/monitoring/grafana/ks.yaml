@@ -17,3 +17,6 @@ spec:
     kind: GitRepository
     name: homelab
   wait: true
+  postBuild:
+    substitute:
+      APP_SUBDOMAIN: graf

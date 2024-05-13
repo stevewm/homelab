@@ -42,7 +42,7 @@ spec:
               repository: ghcr.io/onedr0p/theme-park
               tag: 1.16.2@sha256:a4002978507fd25bde6505e545390ae9b23f076e9c35e7964cc180110f26b446
             env:
-              TP_DOMAIN: &host themes.cfg.sh
+              TP_DOMAIN: &host ${APP_SUBDOMAIN}.${DOMAIN}
               TP_THEME: plex
             probes:
               liveness:

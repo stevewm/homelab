@@ -22,7 +22,7 @@ spec:
   postBuild:
     substitute:
       APP: *app
-      GATUS_SUBDOMAIN: tv
+      APP_SUBDOMAIN: tv
       APP_UID: "1000"
       APP_GID: "100"
       VOLSYNC_CLAIM: ersatztv-config
