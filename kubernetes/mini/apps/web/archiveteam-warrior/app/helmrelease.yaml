@@ -42,8 +42,7 @@ spec:
                 topologyKey: "kubernetes.io/hostname"
     controllers:
       archiveteam-warrior:
-        replicas: 2
-        strategy: RollingUpdate
+        strategy: Recreate
         pod:
           securityContext:
             runAsUser: 1000
