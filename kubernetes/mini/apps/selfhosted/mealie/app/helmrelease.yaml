@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: &name mealie
+  name: &app mealie
 spec:
   interval: 30m
   maxHistory: 3
@@ -119,7 +119,7 @@ spec:
           - hosts:
               - *host
         annotations:
-          gethomepage.dev/name: *name
+          gethomepage.dev/name: *app
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: selfhosted
           gethomepage.dev/icon: mealie.png

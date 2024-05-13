@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: &name ersatztv
+  name: &app ersatztv
 spec:
   interval: 30m
   maxHistory: 3
@@ -89,7 +89,7 @@ spec:
           - hosts:
               - *host
         annotations:
-          gethomepage.dev/name: *name
+          gethomepage.dev/name: *app
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: media
           gethomepage.dev/icon: ersatztv.png
