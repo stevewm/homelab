@@ -35,7 +35,7 @@ spec:
           labels:
             ingress.home.arpa/nginx-internal: allow
         containers:
-          main:
+          app:
             image:
               repository: mpepping/cyberchef
               tag: v10.18.3
