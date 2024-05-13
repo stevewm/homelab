@@ -53,7 +53,7 @@ spec:
                 memory: 64Mi
             env:
               NGINX_PORT: &port 8080
-              NGINX_HOST: &host docs.cfg.sh
+              NGINX_HOST: &host ${APP_SUBDOMAIN}.${DOMAIN}
     service:
       app:
         controller: homelab-docs

@@ -120,7 +120,7 @@ spec:
       radarr:
         className: nginx-internal
         hosts:
-          - host: &host rdr.cfg.sh
+          - host: &host ${APP_SUBDOMAIN}.${DOMAIN}
             paths:
               - path: *path
                 service:

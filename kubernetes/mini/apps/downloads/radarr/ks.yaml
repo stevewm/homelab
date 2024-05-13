@@ -23,7 +23,7 @@ spec:
   postBuild:
     substitute:
       APP: *app
+      APP_SUBDOMAIN: rdr
       APP_UID: "1000"
       APP_GID: "100"
       VOLSYNC_CLAIM: radarr-config
-      GATUS_SUBDOMAIN: rdr

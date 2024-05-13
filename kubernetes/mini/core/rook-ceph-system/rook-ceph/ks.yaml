@@ -44,3 +44,7 @@ spec:
   dependsOn:
     - name: core-rook-ceph-operator
     - name: core-snapshot-controller
+  postBuild:
+    substitute:
+      APP: *app
+      APP_SUBDOMAIN: rook

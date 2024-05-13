@@ -20,4 +20,4 @@ spec:
   postBuild:
     substitute:
       APP: *app
-      GATUS_SUBDOMAIN: pdf
+      APP_SUBDOMAIN: pdf

@@ -62,7 +62,7 @@ spec:
       app:
         className: nginx-internal
         hosts:
-          - host: &host cc.cfg.sh
+          - host: &host ${APP_SUBDOMAIN}.${DOMAIN}
             paths:
               - path: /
                 service:

@@ -115,7 +115,7 @@ spec:
           external-dns.alpha.kubernetes.io/target: ext.cfg.sh
         className: nginx-external
         hosts:
-          - host: status.cfg.sh
+          - host: ${APP_SUBDOMAIN}.${DOMAIN}
             paths:
               - path: /
                 service:
