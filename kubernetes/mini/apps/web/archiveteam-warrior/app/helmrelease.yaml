@@ -1,0 +1,101 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: &app archiveteam-warrior
+spec:
+  interval: 30m
+  maxHistory: 3
+  chart:
+    spec:
+      chart: app-template
+      version: 3.1.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    defaultPodOptions:
+      automountServiceAccountToken: false
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 80
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values:
+                        - archiveteam-warrior
+                topologyKey: "kubernetes.io/hostname"
+    controllers:
+      archiveteam-warrior:
+        replicas: 2
+        strategy: RollingUpdate
+        pod:
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            fsGroup: 1000
+            fsGroupChangePolicy: OnRootMismatch
+          labels:
+            ingress.home.arpa/nginx-internal: allow
+            egress.home.arpa/kubedns: allow
+        containers:
+          app:
+            image:
+              repository: atdr.meo.ws/archiveteam/warrior-dockerfile
+              tag: latest@sha256:1df66b037c4a8c915b380bde4ffd59ced214d809779a8c3cac07685a618ab7b5 # >:(
+            resources:
+              requests:
+                cpu: 20m
+                memory: 300Mi
+              limits:
+                memory: 500Mi
+            env:
+              DOWNLOADER: 'postmaster@{DOMAIN}'
+              SELECTED_PROJECT: auto
+    service:
+      app:
+        controller: archiveteam-warrior
+        ports:
+          http:
+            port: &port 8001
+    ingress:
+      app:
+        className: nginx-internal
+        hosts:
+          - host: &host ${APP_SUBDOMAIN}.${DOMAIN}
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+        tls:
+          - hosts:
+              - *host
+        annotations:
+          gethomepage.dev/name: *app
+          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/group: web
+          gethomepage.dev/icon: mdi-archive-arrow-up
+    persistence:
+      config:
+        type: persistentVolumeClaim
+        storageClass: openebs-hostpath
+        size: 20Gi
+        accessMode: ReadWriteOnce
+        globalMounts:
+          - path: /projects
