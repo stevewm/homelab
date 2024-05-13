@@ -18,7 +18,7 @@ connectivity:
 endpoints:
   - name: "gatus"
     group: external
-    url: "https://status.cfg.sh/"
+    url: "${APP_SUBDOMAIN}.${DOMAIN}"
     interval: 1m
     client:
       dns-resolver: tcp://1.1.1.1:53
