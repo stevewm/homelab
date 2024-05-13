@@ -3,9 +3,9 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: &name vpa
+  name: &app vpa
 spec:
-  releaseName: *name
+  releaseName: *app
   interval: 30m
   maxHistory: 3
   chart:

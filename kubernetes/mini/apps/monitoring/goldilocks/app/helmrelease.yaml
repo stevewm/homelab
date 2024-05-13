@@ -3,9 +3,9 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: &name goldilocks
+  name: &app goldilocks
 spec:
-  releaseName: *name
+  releaseName: *app
   interval: 30m
   maxHistory: 3
   chart:
@@ -41,7 +41,7 @@ spec:
         enabled: true
         ingressClassName: nginx-internal
         annotations:
-          gethomepage.dev/name: *name
+          gethomepage.dev/name: *app
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: monitoring
           gethomepage.dev/icon: kubernetes.png

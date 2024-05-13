@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: &name sabnzbd
+  name: &app sabnzbd
 spec:
   interval: 30m
   maxHistory: 3
@@ -111,13 +111,13 @@ spec:
             scrapeTimeout: 2m
     service:
       app:
-        controller: *name
+        controller: *app
         nameOverride: sabnzbd
         ports:
           http:
             port: *port
       metrics:
-        controller: *name
+        controller: *app
         ports:
           metrics:
             port: *metrics
@@ -136,7 +136,7 @@ spec:
           - hosts:
               - *host
         annotations:
-          gethomepage.dev/name: *name
+          gethomepage.dev/name: *app
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: downloads
           gethomepage.dev/icon: sabnzbd-alt.png

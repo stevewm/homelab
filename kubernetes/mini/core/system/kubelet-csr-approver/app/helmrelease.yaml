@@ -3,17 +3,17 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: &name kubelet-csr-approver
+  name: &app kubelet-csr-approver
 spec:
   interval: 30m
   maxHistory: 3
   chart:
     spec:
-      chart: *name
+      chart: *app
       version: 1.2.0
       sourceRef:
         kind: HelmRepository
-        name: *name
+        name: *app
         namespace: flux-system
   install:
     remediation:
