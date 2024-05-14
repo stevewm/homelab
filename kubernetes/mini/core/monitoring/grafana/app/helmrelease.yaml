@@ -206,6 +206,24 @@ spec:
           revision: 14
           datasource: Prometheus
 
+    datasources:
+      datasources.yaml:
+        apiVersion: 1
+        datasources:
+          - access: proxy
+            name: Prometheus
+            type: prometheus
+            url: http://kps-prometheus.monitoring.svc.cluster.local:9090
+            isDefault: true
+            jsonData:
+              prometheusType: Prometheus
+          - name: Alertmanager
+            type: alertmanager
+            access: proxy
+            url: http://kps-alertmanager.monitoring.svc.cluster.local:9093
+            jsonData:
+              implementation: prometheus
+
       nginx:
         nginx:
           url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/grafana/dashboards/nginx.json
