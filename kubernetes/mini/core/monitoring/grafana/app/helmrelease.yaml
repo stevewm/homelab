@@ -31,6 +31,7 @@ spec:
       configmap.reloader.stakater.com/reload: grafana
     podLabels:
       ingress.home.arpa/nginx-internal: allow
+      monitoring.home.arpa/prometheus: allow
 
     replicas: 1
 
