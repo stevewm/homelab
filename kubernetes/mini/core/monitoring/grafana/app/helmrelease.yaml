@@ -224,6 +224,12 @@ spec:
             jsonData:
               implementation: prometheus
 
+        deleteDatasources:
+          - name: Prometheus
+            orgId: 1
+          - name: Alertmanager
+            orgId: 1
+
       nginx:
         nginx:
           url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/grafana/dashboards/nginx.json
