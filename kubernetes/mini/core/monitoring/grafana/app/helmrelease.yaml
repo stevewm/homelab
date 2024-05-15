@@ -231,7 +231,7 @@ spec:
         pihole:
           # renovate: dashboardName="Pi-hole Exporter"
           gnetId: 10176
-          revision: 1
+          revision: 3
           datasource: Prometheus
 
         speedtest-exporter:
