@@ -37,6 +37,8 @@ spec:
     replicaCount: 2
     deploymentAnnotations:
       reloader.stakater.com/auto: doppler-token
+    serviceMonitor:
+      enabled: true
     resources:
       requests:
         cpu: 10m
