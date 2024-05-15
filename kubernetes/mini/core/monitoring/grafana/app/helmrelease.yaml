@@ -220,6 +220,12 @@ spec:
           revision: 3
           datasource: Prometheus
 
+        pihole:
+          # renovate: dashboardName="Pi-hole Exporter"
+          gnetId: 10176
+          revision: 1
+          datasource: Prometheus
+
       system:
         node-feature-discovery:
           url: https://raw.githubusercontent.com/kubernetes-sigs/node-feature-discovery/master/examples/grafana-dashboard.json
@@ -229,6 +235,12 @@ spec:
           # renovate: dashboardName="Node Exporter Full"
           gnetId: 1860
           revision: 36
+          datasource: Prometheus
+
+        vpa-recommendations:
+          # renovate: dashboardName="VPA Recommendations"
+          gnetId: 14588
+          revision: 5
           datasource: Prometheus
 
     datasources:
