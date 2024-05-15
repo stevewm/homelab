@@ -55,6 +55,14 @@ spec:
             editable: true
             options:
               path: /var/lib/grafana/dashboards/ceph
+          - name: cilium
+            orgId: 1
+            folder: Cilium
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/cilium
           - name: flux
             orgId: 1
             folder: Flux
@@ -102,6 +110,11 @@ spec:
           url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/cert-manager/dashboards/cert-manager.json
           datasource: Prometheus
 
+        external-secrets:
+          url: https://raw.githubusercontent.com/external-secrets/external-secrets/main/docs/snippets/dashboard.json
+          datasource: Prometheus
+
+      network:
         cloudflared:
           # renovate: dashboardName="Cloudflare Tunnels (cloudflared)"
           gnetId: 17457
@@ -116,8 +129,9 @@ spec:
           revision: 3
           datasource: Prometheus
 
-        external-secrets:
-          url: https://raw.githubusercontent.com/external-secrets/external-secrets/main/docs/snippets/dashboard.json
+      system:
+        node-feature-discovery:
+          url: https://raw.githubusercontent.com/kubernetes-sigs/node-feature-discovery/master/examples/grafana-dashboard.json
           datasource: Prometheus
 
         node-exporter-full:
@@ -129,21 +143,17 @@ spec:
       games:
         minecraft:
           # renovate: dashboardName="Minecraft"
-          gnetId: 14492
-          revision: 2
+          gnetId: 16508
+          revision: 1
           datasource: Prometheus
 
       media:
-        sonarr:
-          # renovate: dashboardName="Sonarr"
-          gnetId: 12530
-          revision: 2
+        multi-arr:
+          url: https://github.com/onedr0p/exportarr/blob/master/examples/grafana/dashboard2.json
           datasource: Prometheus
 
         radarr:
-          # renovate: dashboardName="Radarr"
-          gnetId: 12896
-          revision: 1
+          url: https://github.com/onedr0p/exportarr/blob/master/examples/grafana/dashboard.json
           datasource: Prometheus
 
       ceph:
