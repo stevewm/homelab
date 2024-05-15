@@ -71,6 +71,14 @@ spec:
             editable: true
             options:
               path: /var/lib/grafana/dashboards/flux
+          - name: games
+            orgId: 1
+            folder: Games
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/games
           - name: kubernetes
             orgId: 1
             folder: Kubernetes
@@ -224,6 +232,12 @@ spec:
           # renovate: dashboardName="Pi-hole Exporter"
           gnetId: 10176
           revision: 1
+          datasource: Prometheus
+
+        speedtest-exporter:
+          # renovate: dashboardName="Speedtest-Exporter Dashboard"
+          gnetId: 3665
+          revision: 4
           datasource: Prometheus
 
       system:
