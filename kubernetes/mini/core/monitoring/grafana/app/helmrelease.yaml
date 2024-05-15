@@ -240,8 +240,8 @@ spec:
 
         speedtest-exporter:
           # renovate: dashboardName="Speedtest-Exporter Dashboard"
-          gnetId: 3665
-          revision: 4
+          gnetId: 16541
+          revision: 1
           datasource: Prometheus
 
       system:
