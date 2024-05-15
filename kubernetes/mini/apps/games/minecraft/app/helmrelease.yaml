@@ -103,11 +103,10 @@ spec:
               MODRINTH_DEFAULT_VERSION_TYPE: release
               MODRINTH_PROJECTS: >
                 'fabric-api,
-                spark,fabricexporter,
+                spark,
+                fabricexporter,
                 bluemap,
-                bluemap-sign-markers,
-                geyser,
-                floodgate'
+                bluemap-sign-markers
               VANILLA_TWEAKS_SHARE_CODES: ozxXFS # Coord HUD, Anti-Endermen Griefing
               ## RCON
               RCON_PASSWORD:
@@ -159,7 +158,7 @@ spec:
     serviceMonitor:
       metrics:
         enabled: true
-        serviceName: minecraft-metrics
+        serviceName: minecraft
         endpoints:
           - port: metrics
             scheme: http
