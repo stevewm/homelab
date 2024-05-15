@@ -241,19 +241,35 @@ spec:
         speedtest-exporter:
           # renovate: dashboardName="Speedtest-Exporter Dashboard"
           gnetId: 16541
-          revision: 1
+          revision: 4
+          datasource: Prometheus
+
+      nginx:
+        nginx:
+          url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/grafana/dashboards/nginx.json
+          datasource: Prometheus
+        nginx-request-handling-performance:
+          url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/grafana/dashboards/request-handling-performance.json
           datasource: Prometheus
 
       system:
-        node-feature-discovery:
-          url: https://raw.githubusercontent.com/kubernetes-sigs/node-feature-discovery/master/examples/grafana-dashboard.json
-          datasource: Prometheus
-
         node-exporter-full:
           # renovate: dashboardName="Node Exporter Full"
           gnetId: 1860
           revision: 36
           datasource: Prometheus
+
+        node-feature-discovery:
+          url: https://raw.githubusercontent.com/kubernetes-sigs/node-feature-discovery/master/examples/grafana-dashboard.json
+          datasource: Prometheus
+
+        smart:
+          # renovate: depName="Dashboard for smartctl_exporter"
+          gnetId: 20204
+          revision: 1
+          datasource:
+            - name: DS_PROMETHEUS
+              value: Prometheus
 
         vpa-recommendations:
           # renovate: dashboardName="VPA Recommendations"
@@ -268,6 +284,7 @@ spec:
           - access: proxy
             name: Prometheus
             type: prometheus
+            uid: prometheus
             url: http://kps-prometheus.monitoring.svc.cluster.local:9090
             isDefault: true
             jsonData:
