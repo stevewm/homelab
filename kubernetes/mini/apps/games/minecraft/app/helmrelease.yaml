@@ -94,14 +94,20 @@ spec:
               ENABLE_WHITELIST: 'true'
               # Performance
               JVM_XX_OPTS: '-XX:MaxRAMPercentage=75'
-              MAX_MEMORY: 5G
+              MAX_MEMORY: 8G
               USE_AIKAR_FLAGS: 'true'
               SNOOPER_ENABLED: 'false'
               VIEW_DISTANCE: 14
               ## Mods
               REMOVE_OLD_MODS: 'true'
               MODRINTH_DEFAULT_VERSION_TYPE: release
-              MODRINTH_PROJECTS: 'fabric-api,spark,fabricexporter,bluemap,bluemap-sign-markers'
+              MODRINTH_PROJECTS: >
+                'fabric-api,
+                spark,fabricexporter,
+                bluemap,
+                bluemap-sign-markers,
+                geyser,
+                floodgate'
               VANILLA_TWEAKS_SHARE_CODES: ozxXFS # Coord HUD, Anti-Endermen Griefing
               ## RCON
               RCON_PASSWORD:
@@ -132,11 +138,11 @@ spec:
                 drop: [ALL]
             resources:
               requests:
-                cpu: 500m
+                cpu: 250m
                 memory: 4Gi
               limits:
                 cpu: 2
-                memory: 6Gi
+                memory: 8Gi
     service:
       minecraft:
         controller: minecraft
