@@ -150,7 +150,7 @@ spec:
 
       cilium:
         cilium-policy-verdicts:
-          url: https://github.com/isovalent/grafana-dashboards/blob/main/dashboards/cilium-policy-verdicts/cilium-policy-verdicts-dashboard.json
+          url: https://raw.githubusercontent.com/isovalent/grafana-dashboards/main/dashboards/cilium-policy-verdicts/cilium-policy-verdicts-dashboard.json
           datasource: Prometheus
 
       flux:
@@ -206,12 +206,16 @@ spec:
 
       media:
         multi-arr:
-          url: https://github.com/onedr0p/exportarr/blob/master/examples/grafana/dashboard2.json
-          datasource: Prometheus
+          url: https://raw.githubusercontent.com/onedr0p/exportarr/master/examples/grafana/dashboard2.json
+          datasource:
+            - name: DS_PROMETHEUS
+              value: Prometheus
 
         radarr:
-          url: https://github.com/onedr0p/exportarr/blob/master/examples/grafana/dashboard.json
-          datasource: Prometheus
+          url: https://raw.githubusercontent.com/onedr0p/exportarr/master/examples/grafana/dashboard.json
+          datasource:
+            - name: DS_PROMETHEUS
+              value: Prometheus
 
       network:
         cloudflared:
