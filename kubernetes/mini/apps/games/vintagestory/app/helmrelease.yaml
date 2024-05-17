@@ -57,7 +57,7 @@ spec:
           app:
             image:
               repository: devidian/vintagestory # no semver tags available :(
-              tag: latest@sha256:259e708fa1d1035c4454ce0320cdd37ee325096d67e87ffa57e054139e735f9c
+              tag: latest@sha256:99f7a827930ff1b7c9ce95563199ef4356f465cd77de795e3d5f410ae15c9d18
             env:
               VS_DATA_PATH: /gamedata
               COMPlus_EnableDiagnostics: "0" # Failed to create CoreCLR fix
