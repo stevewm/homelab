@@ -140,7 +140,6 @@ spec:
                 cpu: 250m
                 memory: 4Gi
               limits:
-                cpu: 2
                 memory: 8Gi
     service:
       minecraft:
