@@ -5,3 +5,4 @@ metadata:
   name: cluster-vars
 data:
   DOMAIN: cfg.sh
+  NAS: '192.168.1.234'

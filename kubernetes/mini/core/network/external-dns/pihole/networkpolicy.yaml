@@ -11,7 +11,7 @@ spec:
 
   egress:
     - toCIDR:
-        - 192.168.1.234/32 # PiHole
+        - ${NAS}/32 # PiHole
       toPorts:
         - ports:
             - port: "3001"
