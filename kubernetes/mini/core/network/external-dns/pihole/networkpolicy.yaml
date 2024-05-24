@@ -3,11 +3,12 @@
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: external-dns
+  name: external-dns-pihole
 spec:
   endpointSelector:
     matchLabels:
       app.kubernetes.io/name: external-dns
+      app.kubernetes.io/instance: pihole
 
   egress:
     - toCIDR:
