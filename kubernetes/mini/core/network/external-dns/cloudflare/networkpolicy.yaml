@@ -8,20 +8,9 @@ spec:
   endpointSelector:
     matchLabels:
       app.kubernetes.io/name: external-dns
-      app.kubernetes.io/instance: external-dns-cloudflare
+      app.kubernetes.io/instance: cloudflare
 
   egress:
-    - toEndpoints: # dns
-        - matchLabels:
-            io.kubernetes.pod.namespace: kube-system
-            k8s-app: kube-dns
-      toPorts:
-        - ports:
-            - port: "53"
-              protocol: UDP
-          rules:
-            dns:
-              - matchPattern: "*"
     - toFQDNs:
         - matchName: api.cloudflare.com
       toPorts:
