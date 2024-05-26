@@ -73,14 +73,14 @@
       "separateMinorPatch": true
     },
     {
-      "description": "External",
-      "groupName": "Dragonfly Operator",
-      "matchPackagePatterns": ["dragonfly(?:db)?.operator"],
-      "matchDatasources": ["docker", "github-releases"],
-      "group": {
-        "commitMessageTopic": "{{{groupName}}} group"
+      description: "Intel device plugins",
+      groupName: "Intel Device Plugins",
+      matchPackagePatterns: ["intel-device-plugins-(operator|gpu)"],
+      matchDatasources: ["helm", "docker"],
+      group: {
+        commitMessageTopic: "{{{groupName}}} group",
       },
-      "separateMinorPatch": true
+      separateMinorPatch: false,
     },
   ],
 }
