@@ -26,6 +26,3 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    controller:
-      runOnMaster: true
-      runOnControlPlane: true
