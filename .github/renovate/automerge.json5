@@ -4,21 +4,29 @@
   packageRules: [
     {
       description: "Automerge digest updates",
-      matchPackagePatterns: ["ghcr.io/onedr0p"],
-      matchDataSources: ["docker"],
-      matchUpdateTypes: ["digest"],
+      matchDatasources: ["docker"],
       automerge: true,
-      autoMergeType: "branch",
-      ignoreTests: true
+      automergeType: "branch",
+      matchUpdateTypes: ["digest"],
+      matchPackagePrefixes: ["ghcr.io/onedr0p", "ghcr.io/bjw-s"],
+      ignoreTests: true,
     },
     {
       description: "Automerge trusted sources",
-      matchPackagePatterns: ["ghcr.io/stevewm"],
-      matchDataSources: ["docker"],
-      matchUpdateTypes: ["minor", "patch", "digest"],
+      matchDatasources: ["docker"],
       automerge: true,
-      autoMergeType: "branch",
-      ignoreTests: true
-    }
+      automergeType: "branch",
+      matchUpdateTypes: ["minor", "patch", "digest"],
+      matchPackagePrefixes: ["ghcr.io/stevewm"],
+      ignoreTests: true,
+    },
+    {
+      description: "Auto merge KPS minors and patches",
+      matchDatasources: ["helm"],
+      automerge: true,
+      matchUpdateTypes: ["minor", "patch"],
+      matchPackageNames: ["kube-prometheus-stack"],
+      ignoreTests: false,
+    },
   ]
 }

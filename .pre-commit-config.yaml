@@ -34,3 +34,8 @@ repos:
         exclude: "recyclarr.yml"
       - id: check-charts-support-renovate
         exclude: "recyclarr.yml"
+
+  - repo: https://github.com/renovatebot/pre-commit-hooks
+    rev: 37.377.5
+    hooks:
+      - id: renovate-config-validator
