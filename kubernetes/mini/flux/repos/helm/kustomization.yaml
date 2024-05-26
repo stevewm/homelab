@@ -9,6 +9,7 @@ resources:
   - ./cilium.yaml
   - ./crunchy-userinit-controller.yaml
   - ./crunchydata.yaml
+  - ./csi-driver-smb.yaml
   - ./descheduler.yaml
   - ./external-dns.yaml
   - ./external-secrets.yaml
