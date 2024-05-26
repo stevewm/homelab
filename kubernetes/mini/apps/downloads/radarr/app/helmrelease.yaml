@@ -142,7 +142,7 @@ spec:
           gethomepage.dev/group: downloads
           gethomepage.dev/icon: radarr.png
           # https://github.com/gethomepage/homepage/issues/1553
-          gethomepage.dev/widget.key: "{{HOMEPAGE_VAR_RADARR_API_KEY}}"
+          gethomepage.dev/widget.key: "{{ `{{ HOMEPAGE_VAR_RADARR_API_KEY }}` }}"
           gethomepage.dev/widget.type: radarr
           gethomepage.dev/widget.url: "http://radarr.downloads.svc.cluster.local:7878"
           nginx.ingress.kubernetes.io/configuration-snippet: |
