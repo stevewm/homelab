@@ -1,7 +1,7 @@
 {
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   customDatasources: {
-    "grafana-dashboards": {
+    grafana-dashboards: {
       defaultRegistryUrlTemplate: "https://grafana.com/api/dashboards/{{packageName}}",
       format: "json",
       transformTemplates: ['{"releases":[{"version": $string(revision)}]}'],
