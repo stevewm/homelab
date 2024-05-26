@@ -1,0 +1,24 @@
+{
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  platformAutomerge: false,
+  packageRules: [
+    {
+      description: "Automerge digest updates",
+      matchPackagePatterns: ["ghcr.io/onedr0p"],
+      matchDataSources: ["docker"],
+      matchUpdateTypes: ["digest"],
+      automerge: true,
+      autoMergeType: "branch",
+      ignoreTests: true
+    },
+    {
+      description: "Automerge trusted sources",
+      matchPackagePatterns: ["ghcr.io/stevewm"],
+      matchDataSources: ["docker"],
+      matchUpdateTypes: ["minor", "patch", "digest"],
+      automerge: true,
+      autoMergeType: "branch",
+      ignoreTests: true
+    }
+  ]
+}
