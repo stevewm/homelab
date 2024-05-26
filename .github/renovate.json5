@@ -3,6 +3,7 @@
   extends: [
     "config:recommended",
     "docker:enableMajor",
+    "schedule:weekends",
     ":semanticCommits",
     ":disableRateLimiting",
     "github>stevewm/homelab//.github/renovate/automerge.json5",
