@@ -40,8 +40,8 @@
       description: "Actions Runner Controller charts",
       groupName: "ARC",
       matchPackageNames: [
-        "actions-runner-controller-charts/gha-runner-scale-set-controller",
-        "actions-runner-controller-charts/gha-runner-scale-set",
+        "ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set-controller",
+        "ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set",
       ],
       matchDatasources: ["helm", "docker"],
       group: {
@@ -75,7 +75,10 @@
     {
       description: "Intel device plugins",
       groupName: "Intel Device Plugins",
-      matchPackagePatterns: ["intel-device-plugins-(operator|gpu)"],
+      matchPackageNames: [
+        "intel-device-plugins-operator",
+        "intel-device-plugins-gpu"
+      ],
       matchDatasources: ["helm", "docker"],
       group: {
         commitMessageTopic: "{{{groupName}}} group",
