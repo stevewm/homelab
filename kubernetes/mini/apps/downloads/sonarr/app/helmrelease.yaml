@@ -64,14 +64,18 @@ spec:
               SONARR__LOG__DBENABLED: "False"
               SONARR__LOG__LEVEL: info
             probes:
-              liveness:
+              liveness: &probes
                 enabled: true
-              readiness:
-                enabled: true
-              startup:
-                enabled: true
+                custom: true
                 spec:
-                  initialDelaySeconds: 30
+                  httpGet:
+                    path: /ping
+                    port: &port 8989
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
             resources:
               requests:
                 cpu: 10m
@@ -113,7 +117,7 @@ spec:
         nameOverride: sonarr
         ports:
           http:
-            port: 8989
+            port: *port
       metrics:
         controller: *app
         ports:
