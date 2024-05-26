@@ -7,8 +7,8 @@
     ":disableRateLimiting",
     "github>stevewm/homelab//.github/renovate/automerge.json5",
     "github>stevewm/homelab//.github/renovate/clusters.json5",
-    "github>stevewm/homelab//.github/renovate/commit-messages.json5",
-    "github>stevewm/homelab//.github/renovate/grafana-dashboards.json5",
+    "github>stevewm/homelab//.github/renovate/commitMessages.json5",
+    "github>stevewm/homelab//.github/renovate/grafanaDashboards.json5",
     "github>stevewm/homelab//.github/renovate/groups.json5"
   ],
   ignorePaths: [
@@ -19,7 +19,7 @@
       "kubernetes/.+\\.yaml$"
     ]
   },
-  helm-values: {
+  "helm-values": {
     fileMatch: [
       "(^|/)kubernetes/.+\\.ya?ml(\\.j2)?$"
     ]
