@@ -64,14 +64,18 @@ spec:
               RADARR__LOG__DBENABLED: "False"
               RADARR__LOG__LEVEL: info
             probes:
-              liveness:
+              liveness: &probes
                 enabled: true
-              readiness:
-                enabled: true
-              startup:
-                enabled: true
+                custom: true
                 spec:
-                  initialDelaySeconds: 30
+                  httpGet:
+                    path: /ping
+                    port: &port 7878
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
             resources:
               requests:
                 cpu: 10m
@@ -113,7 +117,7 @@ spec:
         nameOverride: radarr
         ports:
           http:
-            port: 7878
+            port: *port
       metrics:
         controller: *app
         ports:

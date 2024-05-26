@@ -62,23 +62,19 @@ spec:
               PROWLARR__AUTH__METHOD: External
               PROWLARR__LOG__DBENABLED: "False"
               PROWLARR__LOG__LEVEL: info
-              PROWLARR__URL_BASE: &path /
-              PROWLARR__PORT: &port 9696
-              PROWLARR__API_KEY:
-                valueFrom:
-                  secretKeyRef:
-                    name: prowlarr
-                    key: api_key
-              PROWLARR_LOG_LEVEL: trace
             probes:
-              liveness:
+              liveness: &probes
                 enabled: true
-              readiness:
-                enabled: true
-              startup:
-                enabled: true
+                custom: true
                 spec:
-                  initialDelaySeconds: 30
+                  httpGet:
+                    path: /ping
+                    port: &port 9696
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
             resources:
               requests:
                 cpu: 10m
