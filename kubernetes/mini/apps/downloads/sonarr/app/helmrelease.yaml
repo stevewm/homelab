@@ -53,23 +53,16 @@ spec:
               tag: 4.0.4.1491@sha256:b513d3836c5b86d3e5c2eb7cb4908e0002856d922b0a360f136781aaa89ef38a
             env:
               COMPlus_EnableDiagnostics: "0"
-              SONARR__PORT: &port 8989
-              SONARR__API_KEY:
+              SONARR__APP_INSTANCENAME: Sonarr
+              SONARR__AUTH__APIKEY:
                 valueFrom:
                   secretKeyRef:
                     name: sonarr
                     key: api_key
-              # Official env vars
-              # SONARR__AUTH_API_KEY:
-              #   valueFrom:
-              #     secretKeyRef:
-              #       name: sonarr
-              #       key: api_key
-              # SONARR__AUTH__METHOD: External
-              # SONARR__AUTH__REQUIRED: DisabledForLocalAddresses
-              # SONARR__LOG__LEVEL: info
-              # SONARR__LOG__DBENABLED: false
-              # SONARR__SERVER__PORT: &port 8989
+              SONARR__AUTH__METHOD: External
+              SONARR__AUTH_REQUIRED: DisabledForLocalAddresses
+              SONARR__LOG__DBENABLED: "False"
+              SONARR__LOG__LEVEL: info
             probes:
               liveness:
                 enabled: true
@@ -120,7 +113,7 @@ spec:
         nameOverride: sonarr
         ports:
           http:
-            port: *port
+            port: 8989
       metrics:
         controller: *app
         ports:
