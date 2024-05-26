@@ -118,10 +118,10 @@
       commitMessageExtra: "( {{currentVersion}} → {{newVersion}} )"
     },
     {
-      matchManagers": ["github-actions"],
-      matchUpdateTypes": ["minor"],
-      semanticCommitType": "feat",
-      semanticCommitScope": "github-action",
+      matchManagers: ["github-actions"],
+      matchUpdateTypes: ["minor"],
+      semanticCommitType: "feat",
+      semanticCommitScope: "github-action",
       commitMessagePrefix: "🤖",
       commitMessageTopic: "{{depName}}",
       commitMessageExtra: "( {{currentVersion}} → {{newVersion}} )"
