@@ -29,6 +29,8 @@ spec:
   values:
     operatorNamespace: rook-ceph-system
     clusterName: rook-ceph-cluster
+    monitoring:
+      enabled: true
     toolbox:
       enabled: true
     cephClusterSpec:
