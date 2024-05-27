@@ -23,3 +23,15 @@ services:
       - /share/Docker/pihole-docker/etc-pihole/:/etc/pihole/
       - /share/Docker/pihole-docker/etc-dnsmasq.d/:/etc/dnsmasq.d/
     restart: always
+  exporter:
+    container_name: exporter
+    image: ekofr/pihole-exporter:v0.4.0
+    network_mode: host
+    ports:
+      - 9617:9617/tcp
+    environment:
+      PIHOLE_PROTOCOL: http
+      PIHOLE_HOSTNAME: localhost
+      PIHOLE_PORT: 3001
+      PIHOLE_API_TOKEN: $WEBPASSWORD
+      TZ: America/Vancouver
