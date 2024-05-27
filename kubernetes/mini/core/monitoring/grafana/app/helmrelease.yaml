@@ -169,7 +169,9 @@ spec:
           # renovate: dashboardName="Minecraft"
           gnetId: 16508
           revision: 1
-          datasource: Prometheus
+          datasource:
+            - name: DS_PROMETHEUS
+              value: Prometheus
 
       kubernetes:
         k8s-system-api-server:
@@ -240,9 +242,11 @@ spec:
 
         speedtest-exporter:
           # renovate: dashboardName="Speedtest-Exporter Dashboard"
-          gnetId: 16541
+          gnetId: 13665
           revision: 4
-          datasource: Prometheus
+          datasource:
+            - name: DS_PROMETHEUS
+              value: Prometheus
 
       nginx:
         nginx:
