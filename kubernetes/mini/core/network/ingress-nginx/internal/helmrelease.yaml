@@ -42,6 +42,10 @@ spec:
         type: RollingUpdate
       allowSnippetAnnotations: true # required for themepark.dev
       enableAnnotationValidations: true
+      metrics:
+        enabled: true
+        serviceMonitor:
+          enabled: true
 
       config:
         custom-http-errors: >-
@@ -102,11 +106,6 @@ spec:
             matchLabels:
               app.kubernetes.io/instance: nginx-internal
               app.kubernetes.io/component: controller
-
-    metrics:
-      enabled: true
-      serviceMonitor:
-        enabled: true
 
     defaultBackend:
       enabled: true
