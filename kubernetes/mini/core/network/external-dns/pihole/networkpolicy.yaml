@@ -8,7 +8,7 @@ spec:
   endpointSelector:
     matchLabels:
       app.kubernetes.io/name: external-dns
-      app.kubernetes.io/instance: pihole
+      app.kubernetes.io/instance: external-dns-pihole
 
   egress:
     - toCIDR:
