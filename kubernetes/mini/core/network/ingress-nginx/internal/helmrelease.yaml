@@ -46,6 +46,8 @@ spec:
         enabled: true
         serviceMonitor:
           enabled: true
+          namespaceSelector:
+            any: true
 
       config:
         custom-http-errors: >-
