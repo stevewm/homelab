@@ -166,9 +166,9 @@ spec:
 
       games:
         minecraft:
-          # renovate: dashboardName="Minecraft"
-          gnetId: 16508
-          revision: 1
+          # renovate: dashboardName="Minecraft Fabric"
+          gnetId: 14492
+          revision: 2
           datasource:
             - name: DS_PROMETHEUS
               value: Prometheus
@@ -207,14 +207,8 @@ spec:
 
 
       media:
-        multi-arr:
+        media-dashboard:
           url: https://raw.githubusercontent.com/onedr0p/exportarr/master/examples/grafana/dashboard2.json
-          datasource:
-            - name: DS_PROMETHEUS
-              value: Prometheus
-
-        radarr:
-          url: https://raw.githubusercontent.com/onedr0p/exportarr/master/examples/grafana/dashboard.json
           datasource:
             - name: DS_PROMETHEUS
               value: Prometheus
@@ -251,14 +245,10 @@ spec:
       nginx:
         nginx:
           url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/grafana/dashboards/nginx.json
-          datasource:
-            - name: DS_PROMETHEUS
-              value: Prometheus
+          datasource: Prometheus
         nginx-request-handling-performance:
           url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/grafana/dashboards/request-handling-performance.json
-          datasource:
-            - name: DS_PROMETHEUS
-              value: Prometheus
+          datasource: Prometheus
 
       system:
         node-exporter-full:
