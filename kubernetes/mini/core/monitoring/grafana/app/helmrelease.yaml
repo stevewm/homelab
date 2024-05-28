@@ -149,9 +149,17 @@ spec:
           datasource: Prometheus
 
       cilium:
+        cilium:
+          gnetId: 6658
+          revision: 2
+          datasource:
+            - name: DS_PROMETHEUS
+              value: Prometheus
         cilium-policy-verdicts:
           url: https://raw.githubusercontent.com/isovalent/grafana-dashboards/main/dashboards/cilium-policy-verdicts/cilium-policy-verdicts-dashboard.json
-          datasource: Prometheus
+          datasource:
+            - name: DS_PROMETHEUS
+              value: Prometheus
 
       flux:
         flux-cluster:
@@ -204,7 +212,6 @@ spec:
           gnetId: 11454
           revision: 14
           datasource: Prometheus
-
 
       media:
         media-dashboard:
