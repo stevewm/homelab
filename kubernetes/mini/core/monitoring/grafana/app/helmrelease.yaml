@@ -147,6 +147,12 @@ spec:
           url: https://raw.githubusercontent.com/external-secrets/external-secrets/main/docs/snippets/dashboard.json
           datasource: Prometheus
 
+        dragonfly:
+          url: https://raw.githubusercontent.com/dragonflydb/dragonfly-operator/main/monitoring/grafana-dashboard.json
+          datasource:
+            - name: DS_PROMETHEUS
+              value: Prometheus
+
       ceph:
         ceph-cluster:
           # renovate: dashboardName="Ceph Cluster"

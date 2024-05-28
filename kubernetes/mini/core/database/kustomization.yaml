@@ -5,3 +5,4 @@ resources:
   - ./namespace.yaml
   - ./networkpolicy.yaml
   - ./crunchy-postgres/ks.yaml
+  - ./dragonfly/ks.yaml
