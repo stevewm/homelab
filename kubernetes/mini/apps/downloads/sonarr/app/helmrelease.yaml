@@ -104,7 +104,7 @@ spec:
     serviceMonitor:
       metrics:
         enabled: true
-        serviceName: sonarr-metrics
+        serviceName: sonarr
         endpoints:
           - port: metrics
             scheme: http
@@ -118,9 +118,6 @@ spec:
         ports:
           http:
             port: *port
-      metrics:
-        controller: *app
-        ports:
           metrics:
             port: *metrics
     ingress:

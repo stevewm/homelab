@@ -103,7 +103,7 @@ spec:
     serviceMonitor:
       metrics:
         enabled: true
-        serviceName: prowlarr-metrics
+        serviceName: prowlarr
         endpoints:
           - port: metrics
             scheme: http
@@ -113,13 +113,9 @@ spec:
     service:
       app:
         controller: prowlarr
-        nameOverride: prowlarr
         ports:
           http:
             port: *port
-      metrics:
-        controller: prowlarr
-        ports:
           metrics:
             port: 9707
     ingress:

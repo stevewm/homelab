@@ -104,7 +104,7 @@ spec:
     serviceMonitor:
       metrics:
         enabled: true
-        serviceName: radarr-metrics
+        serviceName: radarr
         endpoints:
           - port: metrics
             scheme: http
@@ -114,13 +114,9 @@ spec:
     service:
       app:
         controller: *app
-        nameOverride: radarr
         ports:
           http:
             port: *port
-      metrics:
-        controller: *app
-        ports:
           metrics:
             port: *metrics
     ingress:

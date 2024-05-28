@@ -90,7 +90,7 @@ spec:
     serviceMonitor:
       metrics:
         enabled: true
-        serviceName: bazarr-metrics
+        serviceName: bazarr
         endpoints:
           - port: metrics
             scheme: http
@@ -100,13 +100,9 @@ spec:
     service:
       app:
         controller: *app
-        nameOverride: bazarr
         ports:
           http:
             port: *port
-      metrics:
-        controller: *app
-        ports:
           metrics:
             port: *metrics
     ingress:
