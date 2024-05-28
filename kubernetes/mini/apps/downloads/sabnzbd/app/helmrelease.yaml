@@ -106,7 +106,7 @@ spec:
     serviceMonitor:
       metrics:
         enabled: true
-        serviceName: sabnzbd-metrics
+        serviceName: sabnzbd
         endpoints:
           - port: metrics
             scheme: http
@@ -120,9 +120,6 @@ spec:
         ports:
           http:
             port: *port
-      metrics:
-        controller: *app
-        ports:
           metrics:
             port: *metrics
     ingress:
