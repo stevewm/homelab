@@ -1,0 +1,47 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/external-secrets.io/externalsecret_v1beta1.json
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: github
+spec:
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: doppler
+  target:
+    name: github
+  data:
+    - secretKey: token
+      remoteRef:
+        key: GITHUB_HOMELAB_TOKEN
+
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Provider
+metadata:
+  name: github-homelab
+  namespace: flux-system
+spec:
+  type: github
+  address: https://github.com/stevewm/homelab
+  secretRef:
+    name: github
+
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: github
+spec:
+  providerRef:
+    name: github-homelab
+  eventSeverity: info
+  eventSources:
+    - kind: Kustomization
+      name: cluster
+    - kind: Kustomization
+      name: apps
+    - kind: Kustomization
+      name: core
+  exclusionList:
+    - waiting.*socket
