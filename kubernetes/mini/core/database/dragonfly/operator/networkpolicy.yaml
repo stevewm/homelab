@@ -15,7 +15,7 @@ spec:
             app.kubernetes.io/name: dragonfly
       toPorts:
         - ports:
-            - port: "999"
+            - port: "9999"
               protocol: TCP
     - toEndpoints: # sonarr
         - matchLabels:
