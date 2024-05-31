@@ -13,6 +13,8 @@ spec:
     - fromEndpoints:
         - matchLabels:
             app.kubernetes.io/name: dragonfly-operator
+        - matchLabels:
+            app.kubernetes.io/name: dragonfly
       toPorts:
         - ports:
             - port: "9999"
