@@ -6,3 +6,4 @@ resources:
   #- ./networkpolicy.yaml
   - ./external-secrets/ks.yaml
   - ./secret-generator/ks.yaml
+  - ./authentik/ks.yaml
