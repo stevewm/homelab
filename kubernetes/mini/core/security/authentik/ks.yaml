@@ -17,3 +17,6 @@ spec:
     kind: GitRepository
     name: homelab
   wait: true
+  dependsOn:
+    - name: core-crunchy-postgres-operator
+    - name: core-dragonfly-operator
