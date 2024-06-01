@@ -42,6 +42,11 @@ spec:
         - secretRef:
             name: authentik
     authentik:
+      secret_key:
+        valueFrom:
+          secretKeyRef:
+            name: authentik
+            key: secret_key
       redis:
         host: dragonfly.database.svc.cluster.local
     server:
