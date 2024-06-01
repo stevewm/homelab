@@ -54,9 +54,9 @@ spec:
       password:
         type: AlphaNumeric
     # Applications
-    - name: authelia
+    - name: authentik
       databases:
-        - authelia
+        - authentik
       password:
         type: AlphaNumeric
     - name: jellystat
@@ -157,5 +157,4 @@ spec:
   monitoring:
     pgmonitor:
       exporter:
-        # https://github.com/CrunchyData/postgres-operator-examples/blob/main/helm/install/values.yaml
         image: registry.developers.crunchydata.com/crunchydata/crunchy-postgres-exporter:ubi8-0.15.0-3
