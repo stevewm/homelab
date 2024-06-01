@@ -27,6 +27,7 @@ resources:
   - ./mittwald.yaml
   - ./node-feature-discovery.yaml
   - ./openebs.yaml
+  - ./opentofu.yaml
   - ./piraeus.yaml
   - ./prometheus-community.yaml
   - ./rook-ceph.yaml
