@@ -86,3 +86,7 @@ spec:
           matchExpressions:
             - key: io.kubernetes.pod.namespace
               operator: Exists # any namespace
+      toPorts:
+        - ports:
+            - port: "6379"
+              protocol: TCP
