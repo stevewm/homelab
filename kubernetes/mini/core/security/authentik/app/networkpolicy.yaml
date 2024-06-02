@@ -19,13 +19,7 @@ spec:
 
   egress:
     - toFQDNs:
-        - matchPattern: '*.fabricmc.net'
-        - matchPattern: '*.modrinth.com'
-        - matchPattern: '*.mojang.com'
-        - matchPattern: '*.minecraftservices.com'
-        - matchName: vanillatweaks.net
-        - matchName: playerdb.co
-        - matchName: github.com
+        - matchName: secure.gravatar.com
       toPorts:
         - ports:
             - port: "443"
