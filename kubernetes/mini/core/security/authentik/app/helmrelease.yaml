@@ -41,12 +41,6 @@ spec:
       envFrom:
         - secretRef:
             name: authentik
-      env:
-        AUTHENTIK_SECRET_KEY:
-          valueFrom:
-            secretKeyRef:
-              name: authentik
-              key: secret_key
     authentik:
       redis:
         host: dragonfly.database.svc.cluster.local
