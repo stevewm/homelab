@@ -37,7 +37,7 @@ spec:
 apiVersion: cilium.io/v2
 kind: CiliumClusterwideNetworkPolicy
 metadata:
-  name: apps-pgmaster-ingress
+  name: apps-to-pg-master
 spec:
   endpointSelector:
     matchLabels:
