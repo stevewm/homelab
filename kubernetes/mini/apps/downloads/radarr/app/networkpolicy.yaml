@@ -21,7 +21,7 @@ spec:
             io.kubernetes.pod.namespace: media
       toPorts:
         - ports:
-            - port: "7878"
+            - port: "80"
               protocol: TCP
 
   egress:
@@ -30,14 +30,14 @@ spec:
             app.kubernetes.io/name: prowlarr
       toPorts:
         - ports:
-            - port: "9696"
+            - port: "80"
               protocol: TCP
     - toEndpoints: # sabnzbd
         - matchLabels:
             app.kubernetes.io/name: sabnzbd
       toPorts:
         - ports:
-            - port: "8080"
+            - port: "80"
               protocol: TCP
     - toFQDNs:
         - matchName: api.radarr.video   # api

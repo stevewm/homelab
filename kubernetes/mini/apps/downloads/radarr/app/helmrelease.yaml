@@ -63,6 +63,7 @@ spec:
               RADARR__AUTH__REQUIRED: DisabledForLocalAddresses
               RADARR__LOG__DBENABLED: "False"
               RADARR__LOG__LEVEL: info
+              RADARR__SERVER__PORT: &port 80
             probes:
               liveness: &probes
                 enabled: true
@@ -70,7 +71,7 @@ spec:
                 spec:
                   httpGet:
                     path: /ping
-                    port: &port 7878
+                    port: *port
                   initialDelaySeconds: 0
                   periodSeconds: 10
                   timeoutSeconds: 1
@@ -95,7 +96,7 @@ spec:
               tag: v2.0.1@sha256:727e7bc8f2f0934a2117978c59f4476b954018b849a010ea6cfb380bd6539644
             env:
               PORT: &metrics 9707
-              URL: http://radarr:8989
+              URL: http://radarr
               API_KEY:
                 valueFrom:
                   secretKeyRef:
@@ -140,7 +141,7 @@ spec:
           # https://github.com/gethomepage/homepage/issues/1553
           gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_RADARR_API_KEY}}` }}"
           gethomepage.dev/widget.type: radarr
-          gethomepage.dev/widget.url: "http://radarr.downloads.svc.cluster.local:7878"
+          gethomepage.dev/widget.url: "http://radarr.downloads.svc.cluster.local"
           nginx.ingress.kubernetes.io/configuration-snippet: |
             proxy_set_header Accept-Encoding "";
             sub_filter

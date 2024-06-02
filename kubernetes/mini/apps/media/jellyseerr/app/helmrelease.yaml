@@ -35,6 +35,7 @@ spec:
           labels:
             ingress.home.arpa/nginx-internal: allow
             ingress.home.arpa/homepage: allow
+            egress.home.arpa/kubedns: allow
           securityContext:
             runAsUser: ${APP_UID}
             runAsGroup: ${APP_GID}

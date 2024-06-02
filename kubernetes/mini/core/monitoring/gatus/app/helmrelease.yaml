@@ -66,7 +66,7 @@ spec:
                 spec:
                   httpGet:
                     path: /health
-                    port: &port 8080
+                    port: &port 80
                   initialDelaySeconds: 0
                   periodSeconds: 10
                   timeoutSeconds: 1
@@ -114,7 +114,7 @@ spec:
           gethomepage.dev/group: monitoring
           gethomepage.dev/icon: gatus.png
           gethomepage.dev/widget.type: gatus
-          gethomepage.dev/widget.url: "http://gatus.monitoring.svc.cluster.local:8080"
+          gethomepage.dev/widget.url: "http://gatus.monitoring.svc.cluster.local:80"
           external-dns.alpha.kubernetes.io/target: ext.cfg.sh
         className: nginx-external
         hosts:

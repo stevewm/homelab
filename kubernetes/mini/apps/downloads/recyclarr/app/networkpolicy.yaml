@@ -14,14 +14,14 @@ spec:
             app.kubernetes.io/name: radarr
       toPorts:
         - ports:
-            - port: "7878"
+            - port: "80"
               protocol: TCP
     - toEndpoints:
         - matchLabels:
             app.kubernetes.io/name: sonarr
       toPorts:
         - ports:
-            - port: "8989"
+            - port: "80"
               protocol: TCP
     - toFQDNs:
         - matchName: github.com

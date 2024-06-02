@@ -52,7 +52,7 @@ spec:
               limits:
                 memory: 64Mi
             env:
-              NGINX_PORT: &port 8080
+              NGINX_PORT: &port 80
               NGINX_HOST: &host ${APP_SUBDOMAIN}.${DOMAIN}
     service:
       app:

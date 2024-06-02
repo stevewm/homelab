@@ -62,6 +62,7 @@ spec:
               PROWLARR__AUTH__METHOD: External
               PROWLARR__LOG__DBENABLED: "False"
               PROWLARR__LOG__LEVEL: info
+              PROWLARR__SERVER__PORT: &port 80
             probes:
               liveness: &probes
                 enabled: true
@@ -69,7 +70,7 @@ spec:
                 spec:
                   httpGet:
                     path: /ping
-                    port: &port 9696
+                    port: *port
                   initialDelaySeconds: 0
                   periodSeconds: 10
                   timeoutSeconds: 1
@@ -93,8 +94,8 @@ spec:
               repository: ghcr.io/onedr0p/exportarr
               tag: v2.0.1@sha256:727e7bc8f2f0934a2117978c59f4476b954018b849a010ea6cfb380bd6539644
             env:
-              PORT: 9606
-              URL: http://prowlarr:9696
+              PORT: &metrics 9707
+              URL: http://prowlarr
               API_KEY:
                 valueFrom:
                   secretKeyRef:
@@ -117,7 +118,7 @@ spec:
           http:
             port: *port
           metrics:
-            port: 9707
+            port: *metrics
     ingress:
       main:
         enabled: true
@@ -140,7 +141,7 @@ spec:
           # https://github.com/gethomepage/homepage/issues/1553
           gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_PROWLARR_API_KEY}}` }}"
           gethomepage.dev/widget.type: prowlarr
-          gethomepage.dev/widget.url: "http://prowlarr.downloads.svc.cluster.local:9696"
+          gethomepage.dev/widget.url: "http://prowlarr.downloads.svc.cluster.local"
           nginx.ingress.kubernetes.io/configuration-snippet: |
             proxy_set_header Accept-Encoding "";
             sub_filter

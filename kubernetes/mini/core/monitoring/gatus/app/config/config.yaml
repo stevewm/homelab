@@ -1,5 +1,7 @@
 ---
 # Note: Gatus vars should be escaped with $${VAR_NAME} to avoid interpolation by Flux
+web:
+  port: 80
 storage:
   storage:
     type: sqlite
