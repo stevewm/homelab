@@ -41,7 +41,7 @@ spec:
   egress:
     - toEndpoints:
         - matchLabels:
-            app.kubernetes.io/name: dragonfly-operator
+            app.kubernetes.io/name: dragonfly
       toPorts:
         - ports:
             - port: "6379"
