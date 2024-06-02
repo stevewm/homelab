@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/cilium.io/ciliumnetworkpolicy_v2.json
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: authentik
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: authentik
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: authentik
+      toPorts:
+        - ports:
+            - port: "443"
+              protocol: TCP
+
+  egress:
+    - toFQDNs:
+        - matchPattern: '*.fabricmc.net'
+        - matchPattern: '*.modrinth.com'
+        - matchPattern: '*.mojang.com'
+        - matchPattern: '*.minecraftservices.com'
+        - matchName: vanillatweaks.net
+        - matchName: playerdb.co
+        - matchName: github.com
+      toPorts:
+        - ports:
+            - port: "443"
+              protocol: TCP
