@@ -24,3 +24,12 @@ endpoints:
       dns-resolver: tcp://1.1.1.1:53
     conditions:
       - "[STATUS] == 200"
+alerting:
+  discord:
+    webhook-url: $${DISCORD_WEBHOOK_URL}
+    title: 'Gatus Alert'
+    default-alert:
+      description: health check failed
+      send-on-resolved: true
+      failure-threshold: 3
+      success-threshold: 3

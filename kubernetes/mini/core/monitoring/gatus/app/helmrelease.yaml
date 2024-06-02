@@ -42,6 +42,9 @@ spec:
               RESOURCE: both
               UNIQUE_FILENAMES: true
               METHOD: WATCH
+            envFrom:
+              - secretRef:
+                  name: gatus
             restartPolicy: Always
             resources: &resources
               requests:
