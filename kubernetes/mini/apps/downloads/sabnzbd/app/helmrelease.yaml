@@ -52,7 +52,7 @@ spec:
               repository: ghcr.io/onedr0p/sabnzbd
               tag: 4.3.2@sha256:8e70a877c77805dfe93ce30a8da3362fbddf221ef806951d4e4634bb80dc87b5
             env:
-              SABNZBD__PORT: &port 8080
+              SABNZBD__PORT: &port 80
               SABNZBD__API_KEY:
                 valueFrom:
                   secretKeyRef:
@@ -97,7 +97,7 @@ spec:
               tag: v2.0.1@sha256:727e7bc8f2f0934a2117978c59f4476b954018b849a010ea6cfb380bd6539644
             env:
               PORT: &metrics 9707
-              URL: http://sabnzbd:8080
+              URL: http://sabnzbd
               API_KEY:
                 valueFrom:
                   secretKeyRef:
@@ -144,7 +144,7 @@ spec:
           # https://github.com/gethomepage/homepage/issues/1553
           gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_SABNZBD_API_KEY}}` }}"
           gethomepage.dev/widget.type: sabnzbd
-          gethomepage.dev/widget.url: "http://sabnzbd.downloads.svc.cluster.local:8080"
+          gethomepage.dev/widget.url: "http://sabnzbd.downloads.svc.cluster.local"
           nginx.ingress.kubernetes.io/configuration-snippet: |
             proxy_set_header Accept-Encoding "";
             sub_filter

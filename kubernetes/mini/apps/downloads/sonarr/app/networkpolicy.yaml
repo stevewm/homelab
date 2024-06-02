@@ -21,7 +21,7 @@ spec:
             io.kubernetes.pod.namespace: media
       toPorts:
         - ports:
-            - port: "8989"
+            - port: "80"
               protocol: TCP
 
   egress:
@@ -30,26 +30,15 @@ spec:
             app.kubernetes.io/name: prowlarr
       toPorts:
         - ports:
-            - port: "9696"
+            - port: "80"
               protocol: TCP
     - toEndpoints: # sabnzbd
         - matchLabels:
             app.kubernetes.io/name: sabnzbd
       toPorts:
         - ports:
-            - port: "8080"
+            - port: "80"
               protocol: TCP
-    - toEndpoints:
-        - matchLabels:
-            io.kubernetes.pod.namespace: kube-system
-            k8s-app: kube-dns
-      toPorts:
-        - ports:
-            - port: "53"
-              protocol: UDP
-          rules:
-            dns:
-              - matchPattern: "*"
     - toFQDNs:
         - matchName: skyhook.sonarr.tv
         - matchName: services.sonarr.tv
