@@ -52,14 +52,13 @@ spec:
               limits:
                 memory: 64Mi
             env:
-              NGINX_PORT: &port 80
               NGINX_HOST: &host ${APP_SUBDOMAIN}.${DOMAIN}
     service:
       app:
         controller: homelab-docs
         ports:
           http:
-            port: *port
+            port: 8080
     ingress:
       app:
         className: nginx-external
