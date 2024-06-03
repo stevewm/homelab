@@ -51,6 +51,7 @@ spec:
         enabled: true
         minReplicas: 2
       metrics:
+        enabled: true
         prometheus:
           serviceMonitor:
             enabled: true
