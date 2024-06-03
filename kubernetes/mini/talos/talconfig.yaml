@@ -30,6 +30,13 @@ nodes:
       - deviceSelector:
           busPath: "0*"
         dhcp: true
+    machineFiles: &machineFiles
+      - path: /etc/cri/conf.d/20-customization.part
+        op: create
+        permissions: 0
+        content: |-
+          [plugins."io.containerd.grpc.v1.cri"]
+            enable_unprivileged_ports = true
 
   - hostname: control02
     ipAddress: 192.168.1.52
@@ -47,6 +54,7 @@ nodes:
       - deviceSelector:
           busPath: "0*"
         dhcp: true
+    machineFiles: *machineFiles
 
   - hostname: control03
     ipAddress: 192.168.1.53
@@ -64,6 +72,7 @@ nodes:
       - deviceSelector:
           busPath: "0*"
         dhcp: true
+    machineFiles: *machineFiles
 
   - hostname: worker01
     ipAddress: 192.168.1.54
@@ -81,6 +90,7 @@ nodes:
       - deviceSelector:
           busPath: "0*"
         dhcp: true
+    machineFiles: *machineFiles
 
 controlPlane:
   schematic:
