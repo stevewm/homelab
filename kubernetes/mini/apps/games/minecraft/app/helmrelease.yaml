@@ -85,6 +85,7 @@ spec:
               EULA: 'true'
               SERVER_NAME: 'MPOF'
               TYPE: FABRIC
+
               VERSION: 1.20.6
               MOTD: 'be nice'
               DIFFICULTY: hard
@@ -101,12 +102,11 @@ spec:
               ## Mods
               REMOVE_OLD_MODS: 'true'
               MODRINTH_DEFAULT_VERSION_TYPE: release
-              # fabricexporter mod isnt compatible with 1.20.6
+              # fabricexporter,bluemap-sign-markers aren't compatible with 1.20.6
               MODRINTH_PROJECTS: >
                 fabric-api,
                 spark,
-                bluemap,
-                bluemap-sign-markers
+                bluemap
               VANILLA_TWEAKS_SHARE_CODES: ozxXFS # Coord HUD, Anti-Endermen Griefing
               ## RCON
               RCON_PASSWORD:
