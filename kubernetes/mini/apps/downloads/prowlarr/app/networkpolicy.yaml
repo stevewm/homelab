@@ -16,7 +16,7 @@ spec:
             app.kubernetes.io/name: sonarr
       toPorts:
         - ports:
-            - port: "9696"
+            - port: "80"
               protocol: TCP
 
   egress:
