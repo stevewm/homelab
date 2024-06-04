@@ -85,7 +85,7 @@ spec:
               EULA: 'true'
               SERVER_NAME: 'MPOF'
               TYPE: FABRIC
-              VERSION: 1.20.1
+              VERSION: 1.20.6
               MOTD: 'be nice'
               DIFFICULTY: hard
               SPAWN_PROTECTION: 0
