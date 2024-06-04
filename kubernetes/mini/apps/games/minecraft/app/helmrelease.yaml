@@ -85,6 +85,7 @@ spec:
               EULA: 'true'
               SERVER_NAME: 'MPOF'
               TYPE: FABRIC
+              FORCE_REDOWNLOAD: 'true'
 
               VERSION: 1.20.6
               MOTD: 'be nice'
@@ -93,6 +94,9 @@ spec:
               SEED: '-2135836821937050197'
               FORCE_REDOWLOAD: 'true'
               ENABLE_WHITELIST: 'true'
+              # Logging
+              ENABLE_ROLLING_LOGS: 'true'
+              LOG_TIMESTAMP: 'true'
               # Performance
               JVM_XX_OPTS: '-XX:MaxRAMPercentage=75'
               MAX_MEMORY: 8G
