@@ -113,7 +113,7 @@ spec:
                 spark,
                 bluemap,
                 geyser,
-                floodgate
+                floodgate:beta
               VANILLA_TWEAKS_SHARE_CODES: ozxXFS # Coord HUD, Anti-Endermen Griefing
               ## RCON
               RCON_PASSWORD:
