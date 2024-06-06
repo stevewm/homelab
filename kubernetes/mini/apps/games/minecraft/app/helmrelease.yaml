@@ -87,6 +87,7 @@ spec:
               TYPE: FABRIC
               FORCE_REDOWNLOAD: 'true'
 
+              # renovate: depName=minecraft
               VERSION: 1.20.6
               MOTD: 'be nice'
               DIFFICULTY: hard
@@ -110,7 +111,9 @@ spec:
               MODRINTH_PROJECTS: >
                 fabric-api,
                 spark,
-                bluemap
+                bluemap,
+                geyser,
+                floodgate
               VANILLA_TWEAKS_SHARE_CODES: ozxXFS # Coord HUD, Anti-Endermen Griefing
               ## RCON
               RCON_PASSWORD:
@@ -151,10 +154,13 @@ spec:
         type: LoadBalancer    # https://kubernetes.io/blog/2022/05/23/service-ip-dynamic-and-static-allocation/
         clusterIP: 10.96.0.30 # FIXME: Remove if/when playit supports hostname tunnel endpoints
         ports:
-          game:
+          java:
             port: 25565
             protocol: TCP
-          bluemap:
+          bedrock:
+            port: 19132
+            protocol: UDP
+          map:
             port: 8100
           metrics:
             port: 25585
@@ -168,7 +174,7 @@ spec:
             path: /
             interval: 1m
     ingress:
-      bluemap:
+      map:
         className: nginx-external
         hosts:
           - host: &host ${APP_SUBDOMAIN}.${DOMAIN}
@@ -176,7 +182,7 @@ spec:
               - path: /
                 service:
                   identifier: minecraft
-                  port: bluemap
+                  port: map
         tls:
           - hosts:
               - *host
