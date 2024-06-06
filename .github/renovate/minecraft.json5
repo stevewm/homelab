@@ -1,27 +1,12 @@
 
 { // I hate Renovate config so much, my god
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
-  customManagers: [
-    {
-      customType: "regex",
-      fileMatch: ["^helmrelease/.*\\.yaml$"],
-      datasourceTemplate: "custom.minecraft",
-      matchStrings: [ // Note to self: escaping the backslash is required
-        '# renovate: depName=(?<depName>.*?)?\\s*.*?VERSION:\\s*(?<currentValue>.*)'
-      ]
-    }
-  ],
   customDatasources: {
     "minecraft": {
+      description: "Extract latest Minecraft version from the version manifest",
       defaultRegistryUrlTemplate: "https://piston-meta.mojang.com/mc/game/version_manifest_v2.json",
       format: "json",
       transformTemplates: ['{"releases": [ { "version": $.latest.release } ]}']
     }
-  },
-   packageRules: [
-    {
-      matchPackageNames: ["minecraft"],
-      ignoreUnstable: false
-    }
-  ]
+  }
 }

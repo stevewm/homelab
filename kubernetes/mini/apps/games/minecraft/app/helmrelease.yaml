@@ -87,7 +87,7 @@ spec:
               TYPE: FABRIC
               FORCE_REDOWNLOAD: 'true'
 
-              # renovate: depName=minecraft
+              # renovate: depName=minecraft datasource=custom.minecraft
               VERSION: 1.20.6
               MOTD: 'be nice'
               DIFFICULTY: hard
