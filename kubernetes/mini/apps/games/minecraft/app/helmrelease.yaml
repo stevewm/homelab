@@ -164,15 +164,15 @@ spec:
             port: 8100
           metrics:
             port: 25585
-    serviceMonitor:
-      metrics:
-        enabled: true
-        serviceName: minecraft
-        endpoints:
-          - port: metrics
-            scheme: http
-            path: /
-            interval: 1m
+    # serviceMonitor:
+    #   metrics:
+    #     enabled: true
+    #     serviceName: minecraft
+    #     endpoints:
+    #       - port: metrics
+    #         scheme: http
+    #         path: /
+    #         interval: 1m
     ingress:
       map:
         className: nginx-external
