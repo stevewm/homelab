@@ -22,6 +22,8 @@ spec:
         - ports:
             - port: "25565"
               protocol: TCP
+            - port: "19132"
+              protocol: UDP
   egress:
     - toFQDNs:
         # Mods
