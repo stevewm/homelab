@@ -6,6 +6,7 @@ metadata:
   name: &app minecraft
 spec:
   interval: 30m
+  timeout: 10m
   maxHistory: 3
   chart:
     spec:
@@ -112,7 +113,7 @@ spec:
                 fabric-api,
                 spark,
                 bluemap,
-                geyser,
+                geyser:beta,
                 floodgate:beta
               VANILLA_TWEAKS_SHARE_CODES: ozxXFS # Coord HUD, Anti-Endermen Griefing
               ## RCON
