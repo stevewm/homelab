@@ -29,6 +29,7 @@
         "quay.io/cilium/cilium",
         "quay.io/cilium/operator-generic",
         "cilium",
+        "cilium/cilium",
       ],
       matchDatasources: ["helm", "docker"],
       group: {
