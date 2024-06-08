@@ -86,5 +86,18 @@
       },
       separateMinorPatch: false,
     },
+    {
+      description: "Kubelet CSR Approver",
+      groupName: "Kubelet CSR Approver",
+      matchPackageNames: [
+        "kubelet-csr-approver",
+        "postfinance/kubelet-csr-approver"
+      ],
+      matchDatasources: ["helm", "docker", "github-releases"],
+      group: {
+        commitMessageTopic: "{{{groupName}}} group",
+      },
+      separateMinorPatch: false,
+    },
   ],
 }
