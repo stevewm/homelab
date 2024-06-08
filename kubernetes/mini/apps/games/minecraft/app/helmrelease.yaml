@@ -108,14 +108,15 @@ spec:
               ## Mods
               REMOVE_OLD_MODS: 'true'
               MODRINTH_DEFAULT_VERSION_TYPE: release
-              # fabricexporter,bluemap-sign-markers aren't compatible with 1.20.6
+              # FIXME: fabricexporter,bluemap-sign-markers aren't compatible with 1.20.6
               MODRINTH_PROJECTS: >
                 fabric-api,
                 spark,
                 bluemap,
                 geyser:beta,
                 floodgate:beta
-              VANILLA_TWEAKS_SHARE_CODES: ozxXFS # Coord HUD, Anti-Endermen Griefing
+              # FIXME: Disabled until compatible version available
+              #VANILLA_TWEAKS_SHARE_CODES: ozxXFS # Coord HUD, Anti-Endermen Griefing
               ## RCON
               RCON_PASSWORD:
                 valueFrom:
@@ -136,8 +137,6 @@ spec:
                     name: minecraft
                     key: ops
               EXISTING_OPS_FILE: SYNCHRONIZE
-              ## External resources - remove after first boot
-              #WORLD: 'http://192.168.1.234/server-world.zip'
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: false
@@ -216,4 +215,11 @@ spec:
             readOnly: true
           - path: /data/config/bluemap/maps/end.conf
             subPath: end.conf
+            readOnly: true
+      geyser:
+        type: configMap
+        name: geyser-config
+        globalMounts:
+          - path: /data/config/Geyser-Fabric/config.yml
+            subPath: config.yml
             readOnly: true
