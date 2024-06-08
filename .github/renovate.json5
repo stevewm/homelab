@@ -9,10 +9,10 @@
     "github>stevewm/homelab//.github/renovate/automerge.json5",
     "github>stevewm/homelab//.github/renovate/clusters.json5",
     "github>stevewm/homelab//.github/renovate/commitMessages.json5",
+    "github>stevewm/homelab//.github/renovate/customDataSources.json5",
     "github>stevewm/homelab//.github/renovate/customManagers.json5",
     "github>stevewm/homelab//.github/renovate/grafanaDashboards.json5",
-    "github>stevewm/homelab//.github/renovate/groups.json5",
-    "github>stevewm/homelab//.github/renovate/minecraft.json5"
+    "github>stevewm/homelab//.github/renovate/groups.json5"
   ],
   ignorePaths: [
     "**kubernetes/.archive/**"
