@@ -56,6 +56,7 @@
       matchPackageNames: [
         "ghcr.io/siderolabs/installer",
         "ghcr.io/siderolabs/talosctl",
+        "ghcr.io/siderolabs/kubelet",
       ],
       matchDatasources: ["docker"],
       group: {
