@@ -1,6 +1,7 @@
 {
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   packageRules: [
+    // Docker
     {
       matchDatasources: ["docker"],
       matchUpdateTypes: ["major"],
@@ -35,6 +36,7 @@
       commitMessageTopic: "{{depName}}",
       commitMessageExtra: "( {{currentDigestShort}} → {{newDigestShort}} )"
     },
+    // Helm charts
     {
       matchDatasources: ["helm"],
       matchUpdateTypes: ["major"],
@@ -60,6 +62,7 @@
       commitMessageTopic: "{{depName}}",
       commitMessageExtra: "( {{currentVersion}} → {{newVersion}} )"
     },
+    // Terraform
     {
       matchDatasources: ["terraform-provider"],
       matchUpdateTypes: ["major"],
@@ -85,6 +88,7 @@
       commitMessageTopic: "{{depName}}",
       commitMessageExtra: "( {{currentVersion}} → {{newVersion}} )"
     },
+    // GitHub Releases
     {
       matchDatasources: ["github-releases", "github-tags"],
       matchUpdateTypes: ["major"],
@@ -110,6 +114,7 @@
       commitMessageTopic: "{{depName}}",
       commitMessageExtra: "( {{currentVersion}} → {{newVersion}} )"
     },
+    // GitHub Actions
     {
       matchManagers: ["github-actions"],
       matchUpdateTypes: ["major"],
@@ -131,6 +136,32 @@
       matchUpdateTypes: ["patch"],
       semanticCommitType: "fix",
       semanticCommitScope: "github-action" ,
+      commitMessagePrefix: "🤖",
+      commitMessageTopic: "{{depName}}",
+      commitMessageExtra: "( {{currentVersion}} → {{newVersion}} )"
+    },
+    // Pre-commit
+    {
+      matchManagers: ["pre-commit"],
+      matchUpdateTypes: ["major"],
+      commitMessagePrefix: "🤖 feat(pre-commit)!: ",
+      commitMessageTopic: "{{depName}}",
+      commitMessageExtra: "( {{currentVersion}} → {{newVersion}} )"
+    },
+    {
+      matchManagers: ["pre-commit"],
+      matchUpdateTypes: ["minor"],
+      semanticCommitType: "feat",
+      semanticCommitScope: "pre-commit",
+      commitMessagePrefix: "🤖",
+      commitMessageTopic: "{{depName}}",
+      commitMessageExtra: "( {{currentVersion}} → {{newVersion}} )"
+    },
+    {
+      matchManagers: ["pre-commit"],
+      matchUpdateTypes: ["patch"],
+      semanticCommitType: "fix",
+      semanticCommitScope: "pre-commit",
       commitMessagePrefix: "🤖",
       commitMessageTopic: "{{depName}}",
       commitMessageExtra: "( {{currentVersion}} → {{newVersion}} )"

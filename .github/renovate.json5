@@ -6,6 +6,7 @@
     "schedule:weekends", // Reduce near-constant PR spam
     ":semanticCommits",
     ":disableRateLimiting",
+    ":enablePreCommit",
     "github>stevewm/homelab//.github/renovate/automerge.json5",
     "github>stevewm/homelab//.github/renovate/clusters.json5",
     "github>stevewm/homelab//.github/renovate/commitMessages.json5",
