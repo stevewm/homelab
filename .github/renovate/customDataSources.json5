@@ -3,7 +3,6 @@
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   customDatasources: {
     "minecraft": {
-      description: "Extract latest Minecraft version from the version manifest",
       defaultRegistryUrlTemplate: "https://piston-meta.mojang.com/mc/game/version_manifest_v2.json",
       format: "json",
       transformTemplates: ['{"releases": [ { "version": $.latest.release } ]}']
