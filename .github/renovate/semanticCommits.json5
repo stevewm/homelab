@@ -3,46 +3,42 @@
   "extends": [":semanticCommits"],
   "packageRules": [
     {
-      "matchUpdateTypes": ["major"],
-      "semanticCommitType": "feat",
-      "commitMessagePrefix": "🤖 {{semanticCommitType}}({{semanticCommitScope}})!:",
-      "commitMessageExtra": "( {{currentVersion}} → {{newVersion}} )"
+      matchUpdateTypes: ["major"],
+      semanticCommitType: "feat",
+      commitMessagePrefix: "🤖 {{semanticCommitType}}({{semanticCommitScope}})!:",
+      commitMessageExtra: "( {{currentVersion}} → {{newVersion}} )"
     },
     {
-      "matchUpdateTypes": ["minor"],
-      "semanticCommitType": "feat",
-      "commitMessageExtra": "( {{currentVersion}} → {{newVersion}} )"
+      matchUpdateTypes: ["minor"],
+      semanticCommitType: "feat",
+      commitMessageExtra: "( {{currentVersion}} → {{newVersion}} )"
     },
     {
-      "matchUpdateTypes": ["patch"],
-      "semanticCommitType": "fix",
-      "commitMessageExtra": "( {{currentVersion}} → {{newVersion}} )"
+      matchUpdateTypes: ["patch"],
+      semanticCommitType: "fix",
+      commitMessageExtra: "( {{currentVersion}} → {{newVersion}} )"
     },
     {
-      "matchUpdateTypes": ["digest"],
-      "semanticCommitType": "chore",
-      "commitMessageExtra": "( {{currentDigestShort}} → {{newDigestShort}} )"
+      matchUpdateTypes: ["digest"],
+      semanticCommitType: "chore",
+      commitMessageExtra: "( {{currentDigestShort}} → {{newDigestShort}} )"
     },
     {
-      "matchDatasources": ["docker"],
-      "semanticCommitScope": "container"
+      matchDatasources: ["docker"],
+      semanticCommitScope: "container"
     },
     {
-      "matchDatasources": ["helm"],
-      "semanticCommitScope": "helm"
+      matchDatasources: ["helm"],
+      semanticCommitScope: "helm"
     },
     {
-      "matchDatasources": ["terraform-provider"],
-      "semanticCommitScope": "terraform"
+      matchDatasources: ["terraform-provider"],
+      semanticCommitScope: "terraform"
     },
     {
-      "matchDatasources": ["galaxy", "galaxy-collection"],
-      "semanticCommitScope": "ansible"
-    },
-    {
-      "matchManagers": ["github-actions"],
-      "semanticCommitType": "ci",
-      "semanticCommitScope": "github-action"
+      matchManagers: ["github-actions"],
+      semanticCommitType: "ci",
+      semanticCommitScope: "github-action"
     }
   ]
 }
