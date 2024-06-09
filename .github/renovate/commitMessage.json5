@@ -3,7 +3,6 @@
   commitMessageTopic: "{{depName}}",
   commitMessageExtra: "to {{newVersion}}",
   commitMessageSuffix: "",
-  commitMessagePrefix: "🤖",
   packageRules: [
     {
       matchDatasources: ["helm"],
