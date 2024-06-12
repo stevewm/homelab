@@ -5,6 +5,11 @@
       description: "Mini cluster",
       matchFileNames: ["**/kubernetes/mini/**"],
       additionalBranchPrefix: "mini-"
+    },
+    {
+      description: "NAS",
+      matchFileNames: ["**/nas/**"],
+      additionalBranchPrefix: "nas-"
     }
   ]
 }
