@@ -3,9 +3,9 @@
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   customDatasources: {
     "minecraft": {
-      defaultRegistryUrlTemplate: "https://piston-meta.mojang.com/mc/game/version_manifest_v2.json",
+      defaultRegistryUrlTemplate: "https://launchermeta.mojang.com/mc/game/version_manifest_v2.json",
       format: "json",
-      transformTemplates: ['{"releases": [ { "version": $.latest.release } ]}']
+      transformTemplates: ['{ "releases": versions[type="release"].{"version": id, "releaseTimestamp": releaseTime} }']
     }
   }
 }
