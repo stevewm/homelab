@@ -6,7 +6,7 @@ metadata:
   name: core-secret-generator
   namespace: flux-system
 spec:
-  targetNamespace: system
+  targetNamespace: security
   commonMetadata:
     labels:
       app.kubernetes.io/name: &app secret-generator
