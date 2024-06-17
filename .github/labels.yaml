@@ -5,6 +5,12 @@
 - name: cluster/pi
   color: c51a4a
 
+# Area
+- name: apps
+  color: f9a602
+- name: core
+  color: ff8f6c
+
 # NAS
 - name: nas
   color: b3ccff
