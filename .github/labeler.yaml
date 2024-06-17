@@ -7,6 +7,14 @@ cluster/pi:
   - changed-files:
       - any-glob-to-any-file: kubernetes/pi/**/*
 
+# Area
+core:
+  - changed-files:
+      - any-glob-to-any-file: kubernetes/**/core/**
+apps:
+  - changed-files:
+      - any-glob-to-any-file: kubernetes/**/apps/**
+
 # NAS
 nas:
   - changed-files:
