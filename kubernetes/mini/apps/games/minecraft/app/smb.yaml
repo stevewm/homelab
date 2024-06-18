@@ -12,5 +12,5 @@ spec:
     name: minecraft-server
   resources:
     requests:
-      storage: ${VOLSYNC_CAPACITY:-1Gi}
-  storageClassName: ${VOLSYNC_STORAGECLASS:-ceph-block}
+      storage: 20Gi
+  storageClassName: hetzner
