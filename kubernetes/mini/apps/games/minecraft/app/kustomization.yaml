@@ -9,7 +9,6 @@ resources:
   - ./networkpolicy.yaml
   - ../../../../templates/volsync/b2
   - ../../../../templates/gatus/external
-  - ./smb.yaml
 configMapGenerator:
   - name: minecraft-bluemap
     files:
