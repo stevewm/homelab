@@ -20,7 +20,8 @@
   "timezone": "America/Vancouver",
   "suppressNotifications": ["prIgnoreNotification"],
   ignorePaths: [
-    "**kubernetes/.archive/**"
+    "**kubernetes/**/.archive/**",
+
   ],
   flux: {
     fileMatch: [
