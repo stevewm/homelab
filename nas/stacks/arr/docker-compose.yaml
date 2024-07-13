@@ -1,0 +1,54 @@
+---
+version: "3"
+
+services:
+  sabnzbd:
+    container_name: sabnzbd
+    user: 0:0
+    image: ghcr.io/onedr0p/sabnzbd:4.3.2@sha256:8e70a877c77805dfe93ce30a8da3362fbddf221ef806951d4e4634bb80dc87b5
+    ports:
+      - 8080:8080/tcp
+    environment:
+      TZ: America/Vancouver
+    volumes:
+      - /share/Docker/sabnzbd/config/:/config/
+      - /share/Docker/sabnzbd/media/:/data/media/
+    restart: always
+
+  sonarr:
+    container_name: sonarr
+    user: 0:0
+    image: ghcr.io/onedr0p/sonarr:4.0.5.1710@sha256:5d97c1e4d7d386e3d9a887d87d65da2b0115c73cd002d7d633df21baa5a4122c
+    ports:
+      - 8989:8989/tcp
+    environment:
+      TZ: America/Vancouver
+      COMPlus_EnableDiagnostics: "0"
+      SONARR__APP_INSTANCENAME: Sonarr
+      SONARR__AUTH__METHOD: External
+      SONARR__AUTH_REQUIRED: DisabledForLocalAddresses
+      SONARR__LOG__DBENABLED: "False"
+      SONARR__LOG__LEVEL: info
+    volumes:
+      - /share/Docker/sonarr/config/:/config/
+      - /share/Docker/sonarr/media/:/data/media/
+    restart: always
+
+  radarr:
+    container_name: radarr
+    user: 0:0
+    image: ghcr.io/onedr0p/radarr:5.7.0.8882@sha256:67cf7fa3b10fbb9771ef11c62a215d50956a238c1a27b4195f19bdc92b796cc7
+    ports:
+      - 7878:7878/tcp
+    environment:
+      TZ: America/Vancouver
+      COMPlus_EnableDiagnostics: "0"
+      RADARR__APP__INSTANCENAME: Radarr
+      RADARR__AUTH__METHOD: External
+      RADARR__AUTH__REQUIRED: DisabledForLocalAddresses
+      RADARR__LOG__DBENABLED: "False"
+      RADARR__LOG__LEVEL: info
+    volumes:
+      - /share/Docker/radarr/config/:/config/
+      - /share/Docker/radarr/media/:/data/media/
+    restart: always

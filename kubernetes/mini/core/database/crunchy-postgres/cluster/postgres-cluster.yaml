@@ -54,21 +54,6 @@ spec:
       password:
         type: AlphaNumeric
     # Applications
-    - name: authentik
-      databases:
-        - authentik
-      password:
-        type: AlphaNumeric
-    - name: jellystat
-      databases:
-        - jellystat
-      password:
-        type: AlphaNumeric
-    - name: lldap
-      databases:
-        - lldap
-      password:
-        type: AlphaNumeric
     - name: prowlarr
       databases:
         - prowlarr
@@ -82,11 +67,6 @@ spec:
     - name: sonarr
       databases:
         - sonarr
-      password:
-        type: AlphaNumeric
-    - name: speedtest-tracker
-      databases:
-        - speedtest-tracker
       password:
         type: AlphaNumeric
 
