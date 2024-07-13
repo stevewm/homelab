@@ -4,4 +4,3 @@ kind: Kustomization
 resources:
   - ./capacitor/ks.yaml
   - ./fluxcd/ks.yaml
-  - ./tofu-controller/ks.yaml
