@@ -1,0 +1,7 @@
+---
+name: radarr
+secrets:
+  - name: api_key
+    type: AlphaNumeric
+    parameters:
+      length: 32

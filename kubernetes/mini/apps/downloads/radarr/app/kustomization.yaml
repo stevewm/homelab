@@ -7,3 +7,9 @@ resources:
   - ../../../../templates/volsync/b2
   - ../../../../templates/gatus/guarded
   - ../../../../templates/secretgenerator
+configMapGenerator:
+  - name: radarr
+    files:
+      - radarr.yaml=./config/radarr.yaml
+generatorOptions:
+  disableNameSuffixHash: true
