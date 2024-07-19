@@ -1,20 +1,19 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/helm.toolkit.fluxcd.io/helmrelease_v2beta2.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: secret-generator
+  name: &app secret-generator
 spec:
-  releaseName: secret-generator
   interval: 30m
   maxHistory: 3
   chart:
     spec:
-      chart: kubernetes-secret-generator
-      version: 3.4.0
+      chart: app-template
+      version: 3.2.1
       sourceRef:
         kind: HelmRepository
-        name: kubernetes-secret-generator
+        name: bjw-s
         namespace: flux-system
   install:
     remediation:
@@ -27,13 +26,59 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    image:
-      registry: ghcr.io
-      repository: belodetek/kubernetes-secret-generator
-      tag: 0.0.4
-    resources:
-      requests:
-        cpu: 20m
-        memory: 128Mi
-      limits:
-        memory: 192Mi
+    defaultPodOptions:
+      automountServiceAccountToken: false
+    controllers:
+      secret-generator:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        strategy: Recreate
+        pod:
+          securityContext:
+            runAsUser: ${APP_UID}
+            runAsGroup: ${APP_GID}
+            fsGroup: ${APP_GID}
+            fsGroupChangePolicy: OnRootMismatch
+        initContainers:
+          init-config:
+            image:
+              repository: ghcr.io/kiwigrid/k8s-sidecar
+              tag: 1.27.4@sha256:f6ed71d0f9f1175df8c4b8c674b339a74785384d25fdad21b3c3dc0554109286
+            env:
+              FOLDER: /config
+              LABEL: secretgenerator/enabled
+              NAMESPACE: ALL
+              RESOURCE: both
+              UNIQUE_FILENAMES: true
+              METHOD: WATCH
+            restartPolicy: Always
+            resources: &resources
+              requests:
+                cpu: 10m
+              limits:
+                memory: 256Mi
+        containers:
+          app:
+            image:
+              repository: stevewm/secret-generator
+              tag: 0.0.1
+            env:
+              PORT: 80
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop: [ALL]
+            resources: *resources
+    service:
+      app:
+        controller: secret-generator
+        ports:
+          http:
+            port: 80
+    persistence:
+      config:
+        type: emptyDir
+    serviceAccount:
+      create: true
+      name: secretgenerator
