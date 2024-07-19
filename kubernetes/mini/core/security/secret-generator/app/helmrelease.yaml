@@ -77,7 +77,7 @@ spec:
         controller: secret-generator
         ports:
           http:
-            port: 80
+            port: 8000
     persistence:
       config:
         type: emptyDir
