@@ -4,7 +4,6 @@ kind: Kustomization
 resources:
   - ./namespace.yaml
   - ./networkpolicy.yaml
-  - ./webhook.yaml
   - ./bazarr/ks.yaml
   - ./prowlarr/ks.yaml
   - ./radarr/ks.yaml
