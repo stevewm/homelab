@@ -7,3 +7,9 @@ resources:
   - ../../../../templates/volsync/b2
   - ../../../../templates/gatus/guarded
   - ../../../../templates/secretgenerator
+configMapGenerator:
+  - name: bazarr
+    files:
+      - bazarr.yaml=./config/bazarr.yaml
+generatorOptions:
+  disableNameSuffixHash: true
