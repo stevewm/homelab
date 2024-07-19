@@ -2,10 +2,10 @@
 apiVersion: generators.external-secrets.io/v1alpha1
 kind: Webhook
 metadata:
-  name: sabnzbd
+  name: ${APP}
 spec:
   method: POST
-  url: "http://secret-generator.test.svc.cluster.local:80/sabnzbd"
+  url: "http://secret-generator.test.svc.cluster.local:8000/${APP}"
   result:
     jsonPath: "$"
   headers:
