@@ -7,3 +7,9 @@ resources:
   - ../../../../templates/volsync/b2
   - ../../../../templates/gatus/guarded
   - ../../../../templates/secretgenerator
+configMapGenerator:
+  - name: sabnzbd
+    files:
+      - sabnzbd.yaml=./config/sabnzbd.yaml
+generatorOptions:
+  disableNameSuffixHash: true
