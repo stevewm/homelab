@@ -8,7 +8,7 @@ resources:
   - ../../../../templates/gatus/guarded
   - ../../../../templates/secretgenerator
 configMapGenerator:
-  - name: radarr
+  - name: radarr-secretgenerator
     files:
       - radarr.yaml=./config/radarr.yaml
 generatorOptions:

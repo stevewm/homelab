@@ -8,7 +8,7 @@ resources:
   - ../../../../templates/gatus/guarded
   - ../../../../templates/secretgenerator
 configMapGenerator:
-  - name: sabnzbd
+  - name: sabnzbd-secretgenerator
     files:
       - sabnzbd.yaml=./config/sabnzbd.yaml
 generatorOptions:

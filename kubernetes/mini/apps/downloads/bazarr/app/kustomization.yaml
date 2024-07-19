@@ -8,7 +8,7 @@ resources:
   - ../../../../templates/gatus/guarded
   - ../../../../templates/secretgenerator
 configMapGenerator:
-  - name: bazarr
+  - name: bazarr-secretgenerator
     files:
       - bazarr.yaml=./config/bazarr.yaml
 generatorOptions:
