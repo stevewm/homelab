@@ -1,0 +1,7 @@
+---
+name: bazarr
+secrets:
+  - name: api_key
+    type: AlphaNumeric
+    parameters:
+      length: 32

@@ -1,8 +1,6 @@
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
-namespace: test
 kind: Kustomization
 resources:
   - ./externalsecret.yaml
-  - ./helmrelease.yaml
-  - ./rbac.yaml
+  - ./webhook.yaml
