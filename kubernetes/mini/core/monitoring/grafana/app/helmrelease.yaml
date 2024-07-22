@@ -11,7 +11,7 @@ spec:
   chart:
     spec:
       chart: grafana
-      version: 8.1.1
+      version: 8.3.6
       sourceRef:
         kind: HelmRepository
         name: grafana
@@ -252,7 +252,7 @@ spec:
         k8s-system-api-server:
           # renovate: dashboardName="Kubernetes / System / API Server"
           gnetId: 15761
-          revision: 16
+          revision: 17
           datasource: Prometheus
         k8s-views-global:
           # renovate: dashboardName="Kubernetes / Views / Global"

@@ -11,7 +11,7 @@ spec:
   chart:
     spec:
       chart: ingress-nginx
-      version: 4.10.1
+      version: 4.11.1
       sourceRef:
         kind: HelmRepository
         name: ingress-nginx
@@ -53,7 +53,8 @@ spec:
       config:
         custom-http-errors: >-
           401,403,404,500,501,502,503
-        block-user-agents: "AmazonBot,GPTBot,~*GPTBot*,ChatGPT-User,~*ChatGPT-User*,Google-Extended,~*Google-Extended*,CCBot,~*CCBot*,Omgilibot,~*Omgilibot*,FacebookBot,~*FacebookBot*" # taken from https://github.com/superseriousbusiness/gotosocial/blob/main/external/web/robots.go
+        # https://ethanmarcotte.com/wrote/blockin-bots/
+        block-user-agents: "AdsBot-Google,Amazonbot,anthropic-ai,Applebot,Applebot-Extended,AwarioRssBot,AwarioSmartBot,Bytespider,CCBot,ChatGPT,ChatGPT-User,Claude-Web,ClaudeBot,cohere-ai,DataForSeoBot,Diffbot,FacebookBot,Google-Extended,GPTBot,ImagesiftBot,magpie-crawler,omgili,Omgilibot,peer39_crawler,PerplexityBot,YouBot"
         client-header-timeout: 120
         client-body-buffer-size: "100M"
         client-body-timeout: 120
@@ -115,7 +116,7 @@ spec:
       name: error-pages
       image:
         repository: ghcr.io/tarampampam/error-pages
-        tag: 2.27
+        tag: 3.2
       extraEnvs:
         - name: TEMPLATE_NAME
           value: hacker-terminal

@@ -11,7 +11,7 @@ spec:
   chart:
     spec:
       chart: ingress-nginx
-      version: 4.10.1
+      version: 4.11.1
       sourceRef:
         kind: HelmRepository
         name: ingress-nginx
@@ -115,7 +115,7 @@ spec:
       name: error-pages
       image:
         repository: ghcr.io/tarampampam/error-pages
-        tag: 2.27
+        tag: 3.2
       extraEnvs:
         - name: TEMPLATE_NAME
           value: hacker-terminal

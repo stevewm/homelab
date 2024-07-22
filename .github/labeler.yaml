@@ -2,10 +2,7 @@
 # Clusters
 cluster/mini:
   - changed-files:
-      - any-glob-to-any-file: kubernetes/mini/**/*
-cluster/pi:
-  - changed-files:
-      - any-glob-to-any-file: kubernetes/pi/**/*
+      - any-glob-to-any-file: kubernetes/mini/**
 
 # Area
 core:
@@ -18,7 +15,7 @@ apps:
 # NAS
 nas:
   - changed-files:
-      - any-glob-to-any-file: nas/**/*
+      - any-glob-to-any-file: nas/**
 
 # General
 docs:
