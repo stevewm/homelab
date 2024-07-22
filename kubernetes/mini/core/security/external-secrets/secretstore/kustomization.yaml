@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - ./secret.yaml
   - ./doppler.yaml
+  - ./infisical.yaml

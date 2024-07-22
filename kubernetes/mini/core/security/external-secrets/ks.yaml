@@ -17,6 +17,8 @@ spec:
     kind: GitRepository
     name: homelab
   wait: true
+  dependsOn:
+    - name: core-secrets-generator
 
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
 ---

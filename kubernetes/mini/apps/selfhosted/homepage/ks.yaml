@@ -21,3 +21,5 @@ spec:
     substitute:
       APP: *app
       APP_SUBDOMAIN: home
+  dependsOn:
+    - name: app-homepage-downloads-secrets
