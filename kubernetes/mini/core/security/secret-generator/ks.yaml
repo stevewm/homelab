@@ -17,3 +17,7 @@ spec:
     kind: GitRepository
     name: homelab
   wait: true
+  postBuild:
+    substitute:
+      APP_UID: "1000"
+      APP_GID: "100"
