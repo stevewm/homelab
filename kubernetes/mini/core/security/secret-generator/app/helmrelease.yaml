@@ -34,8 +34,6 @@ spec:
           reloader.stakater.com/auto: "true"
         strategy: Recreate
         pod:
-          imagePullSecrets:
-            - name: ghcr
           securityContext:
             runAsUser: ${APP_UID}
             runAsGroup: ${APP_GID}
