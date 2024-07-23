@@ -6,7 +6,7 @@ resources:
   - ./externalsecret.yaml
   - ./gatus.yaml
   - ./networkpolicy.yaml
-  - ./config/secrets/kustomization.yaml
+  - ./config/secrets/
   - ../../../../templates/volsync/b2
   - ../../../../templates/gatus/external
 configMapGenerator:
