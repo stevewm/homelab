@@ -60,6 +60,8 @@ spec:
             image:
               repository: ghcr.io/stevewm/secretgenerator
               tag: 0.0.1@sha256:05a6d6775b7422a230a5c6638d911a1c043285b0ef83667dee33dcbbaa7b1215
+            env:
+              CONFIG_PATH: /config
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
