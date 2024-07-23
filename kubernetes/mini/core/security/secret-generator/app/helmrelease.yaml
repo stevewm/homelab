@@ -61,7 +61,7 @@ spec:
           app:
             image:
               repository: ghcr.io/stevewm/secret-generator
-              tag: 0.0.1@sha256:96295928cdc5f4dd696867210f5511c5994ea32b4634331c59d54d32adfde877
+              tag: 0.0.1@sha256:05a6d6775b7422a230a5c6638d911a1c043285b0ef83667dee33dcbbaa7b1215
             env:
               PORT: 80
             securityContext:
