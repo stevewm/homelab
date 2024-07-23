@@ -13,3 +13,5 @@ configMapGenerator:
       - sonarr.yaml=./config/sonarr.yaml
 generatorOptions:
   disableNameSuffixHash: true
+  labels:
+    secretgenerator/enabled: "true"
