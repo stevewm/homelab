@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: &app secret-generator
+  name: &app secretgenerator
 spec:
   interval: 30m
   maxHistory: 3
@@ -27,7 +27,7 @@ spec:
     keepHistory: false
   values:
     controllers:
-      secret-generator:
+      secretgenerator:
         annotations:
           reloader.stakater.com/auto: "true"
         strategy: Recreate
@@ -68,7 +68,7 @@ spec:
             resources: *resources
     service:
       app:
-        controller: secret-generator
+        controller: secretgenerator
         ports:
           http:
             port: 8000
