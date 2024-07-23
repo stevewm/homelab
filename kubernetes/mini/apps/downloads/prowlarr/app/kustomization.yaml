@@ -13,3 +13,5 @@ configMapGenerator:
       - prowlarr.yaml=./config/prowlarr.yaml
 generatorOptions:
   disableNameSuffixHash: true
+  labels:
+    secretgenerator/enabled: "true"

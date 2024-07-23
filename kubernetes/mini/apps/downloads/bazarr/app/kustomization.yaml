@@ -13,3 +13,5 @@ configMapGenerator:
       - bazarr.yaml=./config/bazarr.yaml
 generatorOptions:
   disableNameSuffixHash: true
+  labels:
+    secretgenerator/enabled: "true"

@@ -13,3 +13,5 @@ configMapGenerator:
       - radarr.yaml=./config/radarr.yaml
 generatorOptions:
   disableNameSuffixHash: true
+  labels:
+    secretgenerator/enabled: "true"
