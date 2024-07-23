@@ -10,7 +10,7 @@ resources:
 configMapGenerator:
   - name: prowlarr-secretgenerator
     files:
-      - prowlarr.yaml=./config/prowlarr.yaml
+      - prowlarr.yaml=./config/secrets/prowlarr.yaml
 generatorOptions:
   disableNameSuffixHash: true
   labels:
