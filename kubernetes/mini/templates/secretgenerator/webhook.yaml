@@ -5,6 +5,6 @@ metadata:
   name: ${APP}-secretgenerator-webhook
 spec:
   method: POST
-  url: "http://secretgenerator.test.svc.cluster.local:8000/${APP}"
+  url: "http://secretgenerator.security.svc.cluster.local:8000/${APP}"
   result:
     jsonPath: "$"
