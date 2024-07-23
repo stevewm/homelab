@@ -10,7 +10,7 @@ resources:
 configMapGenerator:
   - name: sabnzbd-secretgenerator
     files:
-      - sabnzbd.yaml=./config/sabnzbd.yaml
+      - sabnzbd.yaml=./config/secrets/sabnzbd.yaml
 generatorOptions:
   disableNameSuffixHash: true
   labels:
