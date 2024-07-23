@@ -60,7 +60,7 @@ spec:
         containers:
           app:
             image:
-              repository: stevewm/secret-generator
+              repository: ghcr.io/stevewm/secret-generator
               tag: 0.0.1@sha256:96295928cdc5f4dd696867210f5511c5994ea32b4634331c59d54d32adfde877
             env:
               PORT: 80
