@@ -48,7 +48,7 @@ spec:
               FOLDER: /config
               LABEL: secretgenerator/enabled
               NAMESPACE: ALL
-              RESOURCE: both
+              RESOURCE: configmap
               UNIQUE_FILENAMES: true
               METHOD: WATCH
             restartPolicy: Always
