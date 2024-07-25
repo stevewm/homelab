@@ -50,7 +50,6 @@ spec:
               repository: ghcr.io/onedr0p/bazarr
               tag: 1.4.3@sha256:d2b70813f7d636fb1ab3448e13ca4074630b63216c6c6d02d034cd5d9e938ea3
             env:
-              BAZARR__PORT: 80
               BAZARR__API_KEY:
                 valueFrom:
                   secretKeyRef:
@@ -63,7 +62,7 @@ spec:
                 spec:
                   httpGet:
                     path: /health
-                    port: &port 80
+                    port: &port 6767
                   initialDelaySeconds: 20
                   periodSeconds: 10
                   timeoutSeconds: 1
@@ -133,7 +132,7 @@ spec:
           # https://github.com/gethomepage/homepage/issues/1553
           gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_BAZARR_API_KEY}}` }}"
           gethomepage.dev/widget.type: bazarr
-          gethomepage.dev/widget.url: "http://bazarr.downloads.svc.cluster.local"
+          gethomepage.dev/widget.url: "http://bazarr.downloads.svc.cluster.local:6767"
           nginx.ingress.kubernetes.io/configuration-snippet: |
             proxy_set_header Accept-Encoding "";
             sub_filter
