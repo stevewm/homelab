@@ -10,7 +10,7 @@ resources:
 configMapGenerator:
   - name: radarr-secretgenerator
     files:
-      - radarr.yaml=./config/radarr.yaml
+      - radarr.yaml=./config/secrets/radarr.yaml
 generatorOptions:
   disableNameSuffixHash: true
   labels:

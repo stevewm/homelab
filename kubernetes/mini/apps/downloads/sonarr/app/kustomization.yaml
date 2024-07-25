@@ -10,7 +10,7 @@ resources:
 configMapGenerator:
   - name: sonarr-secretgenerator
     files:
-      - sonarr.yaml=./config/sonarr.yaml
+      - sonarr.yaml=./config/secrets/sonarr.yaml
 generatorOptions:
   disableNameSuffixHash: true
   labels:
