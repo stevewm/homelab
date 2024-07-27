@@ -108,11 +108,12 @@ spec:
               ## Mods
               REMOVE_OLD_MODS: 'true'
               MODRINTH_DEFAULT_VERSION_TYPE: release
-              # FIXME: fabricexporter,bluemap-sign-markers aren't compatible with 1.20.6
               MODRINTH_PROJECTS: >
                 fabric-api,
+                fabricexporter,
                 spark,
                 bluemap,
+                bluemap-sign-markers,
                 geyser:beta,
                 floodgate:beta
               # https://vanillatweaks.net/share#oNYxlz
