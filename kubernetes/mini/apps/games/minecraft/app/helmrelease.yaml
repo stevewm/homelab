@@ -115,8 +115,8 @@ spec:
                 bluemap,
                 geyser:beta,
                 floodgate:beta
-              # FIXME: Disabled until compatible version available
-              #VANILLA_TWEAKS_SHARE_CODES: ozxXFS # Coord HUD, Anti-Endermen Griefing
+              # https://vanillatweaks.net/share#oNYxlz
+              VANILLA_TWEAKS_SHARE_CODES: oNYxlz # Coord HUD, Anti-Endermen Griefing
               ## RCON
               RCON_PASSWORD:
                 valueFrom:
