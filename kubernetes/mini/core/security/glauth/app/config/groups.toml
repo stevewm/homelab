@@ -1,0 +1,11 @@
+[[groups]]
+    name = "service"
+    gidnumber = 6500
+
+[[groups]]
+    name = "admins"
+    gidnumber = 6501
+
+[[groups]]
+    name = "people"
+    gidnumber = 6502
