@@ -5,5 +5,5 @@ resources:
   - ./namespace.yaml
   #- ./networkpolicy.yaml
   - ./external-secrets/ks.yaml
+  - ./glauth/ks.yaml
   - ./secretgenerator/ks.yaml
-  #- ./authentik/ks.yaml
