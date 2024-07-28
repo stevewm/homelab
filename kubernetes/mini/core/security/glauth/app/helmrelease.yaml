@@ -99,6 +99,19 @@ spec:
             path: /metrics
             interval: 1m
             scrapeTimeout: 10s
+    ingress:
+      app:
+        className: nginx-internal
+        hosts:
+          - host: &host ldap.cfg.sh
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+        tls:
+          - hosts:
+              - *host
     persistence:
       config:
         type: secret
