@@ -10,7 +10,7 @@ resources:
 configMapGenerator:
   - name: bazarr-secretgenerator
     files:
-      - bazarr.yaml=./config/secrets/bazarr.yaml
+      - secrets.yaml=./config/secrets.yaml
 generatorOptions:
   disableNameSuffixHash: true
   labels:
