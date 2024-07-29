@@ -32,7 +32,6 @@ spec:
   values:
     hubble:
       metrics:
-        enabled: true
         serviceMonitor:
           enabled: true
     externalIPs:
