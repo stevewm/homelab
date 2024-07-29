@@ -16,8 +16,6 @@ This repo contains the configuration and documentation for my home infrastructur
 | [GitHub Actions](https://docs.github.com/en/actions)            | Automation                                          |
 | [mkdocs-material](https://squidfunk.github.io/mkdocs-material/) | Documentation                                       |
 | [direnv](https://direnv.net/)                                   | Directory-specific environment variables            |
-| [devshell](https://github.com/numtide/devshell)                 | Repo-specific dev environment                       |
-| [SOPS](https://github.com/getsops/sops)                         | Encrypted secrets stored in the repo                |
 | [Doppler](https://www.doppler.com/)                             | Secret management                                   |
 | [pre-commit](https://pre-commit.com/)                           | Linting and validation                              |
 
