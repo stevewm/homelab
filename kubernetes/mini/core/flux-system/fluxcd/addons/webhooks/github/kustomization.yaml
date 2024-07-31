@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ./externalsecret.yaml
   - ./ingress.yaml
+  - ./networkpolicy.yaml
   - ./receiver.yaml
 configMapGenerator:
   - name: fluxcd-secretgenerator
