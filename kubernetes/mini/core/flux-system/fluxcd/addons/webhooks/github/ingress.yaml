@@ -6,7 +6,7 @@ metadata:
   annotations:
     external-dns.alpha.kubernetes.io/target: external.${DOMAIN}
 spec:
-  ingressClassName: external
+  ingressClassName: nginx-external
   rules:
     - host: &host flux-webhook.${DOMAIN}
       http:
