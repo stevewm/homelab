@@ -39,6 +39,7 @@ spec:
           reloader.stakater.com/auto: "true"
         cronjob:
           schedule: "@daily"
+          ttlSecondsAfterFinished: 172800 # 48 hours
         containers:
           app:
             image:
