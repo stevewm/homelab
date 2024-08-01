@@ -21,7 +21,7 @@ spec:
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/cilium.io/ciliumnetworkpolicy_v2.json
 ---
 apiVersion: cilium.io/v2
-kind: CiliumNetworkPolicy
+kind: CiliumClusterwideNetworkPolicy
 metadata:
   name: flux-webhook-nginx-egress
 spec:
@@ -29,10 +29,12 @@ spec:
     matchLabels:
       app.kubernetes.io/name: ingress-nginx
       app.kubernetes.io/instance: nginx-external
+      io.kubernetes.pod.namespace: network
   egress:
     - toEndpoints:
         - matchLabels:
             app.kubernetes.io/name: notification-controller
+            io.kubernetes.pod.namespace: flux-system
       toPorts:
         - ports:
             - port: "9292"
