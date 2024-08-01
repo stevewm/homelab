@@ -1,6 +1,16 @@
 version: '3'
 
 tasks:
+  bootstrap:
+    desc: "Run a cluster bootstrap script"
+    vars:
+      cluster: '{{.cluster | default "mini"}}'
+    silent: true
+    prompt: Continue to bootstrap?
+    dir: ./kubernetes/{{.cluster}}/
+    cmds:
+      - ./bootstrap.sh
+
   webhook:
     desc: "Print the FluxCD webhook URL"
     silent: true
