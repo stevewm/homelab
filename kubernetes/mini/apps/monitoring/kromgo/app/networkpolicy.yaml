@@ -1,6 +1,6 @@
 ---
 apiVersion: cilium.io/v2
-kind: CiliumClusterWideNetworkPolicy
+kind: CiliumClusterwideNetworkPolicy
 metadata:
   name: kromgo-prometheus-ingress
 spec:
