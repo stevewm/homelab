@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/kashalls/kromgo/mini/config.schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/kashalls/kromgo/main/config.schema.json
 ---
 metrics:
   - name: mini_cluster_node_count
