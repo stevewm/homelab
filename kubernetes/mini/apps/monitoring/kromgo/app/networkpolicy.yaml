@@ -1,8 +1,8 @@
 ---
 apiVersion: cilium.io/v2
-kind: CiliumNetworkPolicy
+kind: CiliumClusterWideNetworkPolicy
 metadata:
-  name: prometheus-ingress
+  name: kromgo-prometheus-ingress
 spec:
   endpointSelector:
     matchLabels:
