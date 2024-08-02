@@ -85,4 +85,13 @@ spec:
           value: --oom-watch-interval=500ms
       target:
         kind: Deployment
-        name: helm-controller
+        # Enable the notification controller to expose the webhook receiver
+    - patch: |
+        spec:
+          template:
+              metadata:
+                labels:
+                  ingress.home.arpa/nginx-external: 'true'
+      target:
+        kind: Deployment
+        name: notification-controller
