@@ -1,3 +1,4 @@
+---
 version: '3'
 
 tasks:
@@ -21,3 +22,21 @@ tasks:
         sh: kubectl get ingress fluxcd-webhook-receiver -n flux-system -o jsonpath='{.spec.rules[0].host}'
       WEBHOOK_PATH:
         sh: kubectl get receiver homelab-github-receiver -n flux-system -o jsonpath='{.status.webhookPath}'
+
+  genconfig:
+    desc: "Generate Talos machineconfigs"
+    vars:
+      cluster: '{{.cluster | default "mini"}}'
+    silent: true
+    dir: ./kubernetes/{{.cluster}}/
+    cmds:
+      - talhelper genconfig
+
+  validatebuildarr:
+    desc: "Validate Buildarr Config"
+    silent: true
+    dir: ./kubernetes/mini/apps/downloads/buildarr/app/config
+    cmds:
+      - cat buildarr.yaml.tmpl | renvsubst -f -o buildarr.yml
+      - buildarr test-config
+      - rm buildarr.yml

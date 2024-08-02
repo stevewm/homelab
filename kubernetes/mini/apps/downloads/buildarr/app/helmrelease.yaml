@@ -1,0 +1,113 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app buildarr
+spec:
+  interval: 30m
+  maxHistory: 3
+  chart:
+    spec:
+      chart: app-template
+      version: 3.2.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    defaultPodOptions:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534
+        fsGroup: 65534
+    controllers:
+      buildarr:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        pod:
+          labels:
+            egress.home.arpa/kubedns: allow
+        initContainers:
+          config-envsubst:
+            image:
+              repository: ghcr.io/containeroo/renvsubst
+              tag: 0.10.0@sha256:650242c1638acf1a415863830de5b6a055294b107feb7d926f09739609261a48
+            args:
+              - --fail # Fail on missing env vars
+              - -i
+              - /config/template/buildarr.yaml.tmpl
+              - -o
+              - /config/buildarr.yml
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop: ["ALL"]
+            resources:
+              requests:
+                cpu: 10m
+                memory: 20M
+              limits:
+                memory: 100M
+
+            envFrom:
+              - secretRef:
+                  name: buildarr-secrets # DS_API_KEY
+            env:
+              PROWLARR_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: prowlarr
+                    key: api_key
+              RADARR_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: radarr
+                    key: api_key
+              SABNZBD_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: sabnzbd
+                    key: api_key
+              SONARR_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: sonarr
+                    key: api_key
+
+        containers:
+          app:
+            image:
+              repository: callum027/buildarr
+              tag: 0.7.8@sha256:724b7720212f559d52257c62a1b9189bc1d22ae830905bc27e15efb9c561578e
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop: ["ALL"]
+            resources:
+              requests:
+                cpu: 10m
+                memory: 37M
+              limits:
+                memory: 220M
+    persistence:
+      config:
+        type: emptyDir
+      config-template:
+        type: configMap
+        name: buildarr-config
+        globalMounts:
+          - path: /config/template
