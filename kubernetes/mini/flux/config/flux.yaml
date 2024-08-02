@@ -87,6 +87,10 @@ spec:
         kind: Deployment
         # Enable the notification controller to expose the webhook receiver
     - patch: |
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: not-used
         spec:
           template:
               metadata:
