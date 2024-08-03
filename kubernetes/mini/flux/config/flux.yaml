@@ -86,3 +86,17 @@ spec:
       target:
         kind: Deployment
         name: helm-controller
+      # Label pod  for ingress-nginx access
+    - patch: |
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: not-used
+        spec:
+          template:
+              metadata:
+                labels:
+                  ingress.home.arpa/nginx-external: 'true'
+      target:
+        kind: Deployment
+        name: notification-controller
