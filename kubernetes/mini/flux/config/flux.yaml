@@ -96,7 +96,7 @@ spec:
           template:
               metadata:
                 labels:
-                  ingress.home.arpa/nginx-external: 'true'
+                  ingress.home.arpa/nginx-external: allow
       target:
         kind: Deployment
         name: notification-controller
