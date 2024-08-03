@@ -148,10 +148,8 @@ spec:
           datasource: Prometheus
 
         dragonfly:
-          url: https://raw.githubusercontent.com/dragonflydb/dragonfly-operator/main/monitoring/grafana-dashboard.json
-          datasource:
-            - name: DS_PROMETHEUS
-              value: Prometheus
+          url: https://raw.githubusercontent.com/dragonflydb/dragonfly/main/tools/local/monitoring/grafana/provisioning/dashboards/dashboard.json
+          datasource: Prometheus
 
         volsync:
           # renovate: dashboardName="VolSync Dashboard"
