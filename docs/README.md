@@ -11,8 +11,7 @@
 ![CPU Usage](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.cfg.sh%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_cpu_usage&style=for-the-badge&logo=kubernetes&label=CPU)
 ![Memory Usage](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.cfg.sh%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_memory_usage&style=for-the-badge&logo=kubernetes&label=Memory)
 ![Cluster Age](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.cfg.sh%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_age_days&style=for-the-badge&logo=kubernetes&label=Age)
-
-
+![Uptime](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.cfg.sh%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_uptime_days&style=for-the-badge&logo=kubernetes&label=Uptime)
 
 This repo contains the configuration and documentation for my home infrastructure. I try to adhere to GitOps principles and automate as much as possible.
 
