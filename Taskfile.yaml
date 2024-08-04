@@ -40,3 +40,10 @@ tasks:
       - cat buildarr.yaml.tmpl | renvsubst -f -o buildarr.yml
       - buildarr test-config
       - rm buildarr.yml
+
+  schemas:
+    desc: "Show YAML files without a schema"
+    silent: true
+    dir: ./kubernetes/mini
+    cmds:
+      - find . -type f -name '*.yaml' -exec grep -L '^# schema:' {} \;
