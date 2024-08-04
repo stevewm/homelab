@@ -134,21 +134,3 @@ spec:
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: '${HOMEPAGE_CATEGORY}'
           gethomepage.dev/icon: alertmanager.png
-  postRenderers:
-    - kustomize:
-        patches:
-        # Label for ingress-nginx access
-          - patch: |-
-              apiVersion: apps/v1
-              kind: StatefulSet
-              metadata:
-                name: not-used
-              spec:
-                template:
-                  metadata:
-                    labels:
-                      ingress.home.arpa/nginx-internal: allow
-            target:
-              version: apps/v1
-              kind: StatefulSet
-              name: prometheus-kps-prometheus
