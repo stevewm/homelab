@@ -6,3 +6,4 @@ metadata:
 data:
   DOMAIN: cfg.sh
   NAS: "192.168.1.234"
+  CLUSTER: mini

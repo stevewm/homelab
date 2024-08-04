@@ -40,6 +40,13 @@ spec:
         serviceMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
         ruleSelectorNilUsesHelmValues: false
+        enableAdminAPI: true
+        enableFeatures:
+          - auto-gomaxprocs
+          - memory-snapshot-on-shutdown
+          - new-service-discovery-manager
+        externalLabels:
+          cluster: ${CLUSTER}
         podMetadata:
           labels:
             ingress.home.arpa/nginx-internal: allow
