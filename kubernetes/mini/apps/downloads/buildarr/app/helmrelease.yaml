@@ -91,7 +91,7 @@ spec:
           app:
             image:
               repository: callum027/buildarr
-              tag: 0.7.8@sha256:724b7720212f559d52257c62a1b9189bc1d22ae830905bc27e15efb9c561578e
+              tag: 0.7.8@sha256:57e2343fefe5d5701364b5e93b4985dbf08310d7b152f70556bdaba7e9475447
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
