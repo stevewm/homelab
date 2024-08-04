@@ -140,7 +140,7 @@ spec:
             proxy_set_header Accept-Encoding "";
             sub_filter
             '</head>'
-            '<link rel="stylesheet" type="text/css" href="https://themes.cfg.sh/css/base/bazarr/plex.css">
+            '<link rel="stylesheet" type="text/css" href="https://themes.${DOMAIN}/css/base/bazarr/plex.css">
             </head>';
             sub_filter_once on;
     persistence:

@@ -10,7 +10,7 @@ data:
     endpoints:
       - name: "minecraft-server"
         group: external
-        url: "tcp://play.cfg.sh:25565"
+        url: "tcp://play.${DOMAIN}:25565"
         interval: 1m
         client:
           dns-resolver: tcp://1.1.1.1:53

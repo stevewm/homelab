@@ -8,7 +8,7 @@ spec:
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
-  commonName: cfg.sh
+  commonName: ${DOMAIN}
   dnsNames:
-    - cfg.sh
-    - "*.cfg.sh"
+    - ${DOMAIN}
+    - "*.${DOMAIN}"

@@ -79,7 +79,7 @@ spec:
       app:
         className: nginx-internal
         hosts:
-          - host: &host tv.cfg.sh
+          - host: &host tv.$
             paths:
               - path: /
                 service:

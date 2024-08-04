@@ -1,11 +1,11 @@
 ---
 ingress:
-  - hostname: "cfg.sh"
+  - hostname: "${DOMAIN}"
     service: https://nginx-external-controller.network.svc.cluster.local:443
     originRequest:
-      originServerName: ext.cfg.sh
-  - hostname: "*.cfg.sh"
+      originServerName: ext.${DOMAIN}
+  - hostname: "*.${DOMAIN}"
     service: https://nginx-external-controller.network.svc.cluster.local:443
     originRequest:
-      originServerName: ext.cfg.sh
+      originServerName: ext.${DOMAIN}
   - service: http_status:404

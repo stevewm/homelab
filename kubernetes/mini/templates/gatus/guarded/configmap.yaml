@@ -16,7 +16,7 @@ data:
           hide-hostname: true
           hide-url: true
         dns:
-          query-name: "${APP_SUBDOMAIN:-${APP}}.cfg.sh"
+          query-name: "${APP_SUBDOMAIN:-${APP}}.${DOMAIN}"
           query-type: A
         conditions:
           - "len([BODY]) == 0" # Ensures that the service is not exposed externally

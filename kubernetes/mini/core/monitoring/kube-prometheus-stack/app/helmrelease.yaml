@@ -54,7 +54,7 @@ spec:
         enabled: true
         ingressClassName: nginx-internal
         hosts:
-          - &prom-host prom.cfg.sh
+          - &prom-host prom.${DOMAIN}
         tls:
           - hosts:
               - *prom-host
@@ -132,7 +132,7 @@ spec:
         enabled: true
         ingressClassName: nginx-internal
         hosts:
-          - &am-host am.cfg.sh
+          - &am-host am.${DOMAIN}
         tls:
           - hosts:
               - *am-host
