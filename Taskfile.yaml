@@ -46,4 +46,4 @@ tasks:
     silent: true
     dir: ./kubernetes/mini
     cmds:
-      - find . -type f -name '*.yaml' -exec grep -L '^# schema:' {} \;
+      - find . -type f -name '*.yaml' -exec grep -L '^# yaml-language-server:' {} \;
