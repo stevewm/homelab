@@ -5,7 +5,7 @@ metadata:
   name: playit-tunnel
 spec:
   endpoints:
-    - dnsName: play.cfg.sh
+    - dnsName: play.${DOMAIN}
       recordType: A
       targets: ['209.25.140.84']
       # https://github.com/kubernetes-sigs/external-dns/issues/2418#issuecomment-987587518

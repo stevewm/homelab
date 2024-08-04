@@ -147,8 +147,8 @@ spec:
             proxy_set_header Accept-Encoding "";
             sub_filter
             '</head>'
-            '<link rel="stylesheet" type="text/css" href="https://themes.cfg.sh/css/base/sonarr/plex.css">
-            <link ref="stylesheet" type="text/css" href="https://themes.cfg.sh/css/addons/sonarr/sonarr-text-logo/sonarr-text-logo.css">
+            '<link rel="stylesheet" type="text/css" href="https://themes.${DOMAIN/css/base/sonarr/plex.css">
+            <link ref="stylesheet" type="text/css" href="https://themes.${DOMAIN}/css/addons/sonarr/sonarr-text-logo/sonarr-text-logo.css">
             </head>';
             sub_filter_once on;
     persistence:

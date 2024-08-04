@@ -61,7 +61,7 @@ spec:
       app:
         className: nginx-internal
         hosts:
-          - host: &host ntfy.cfg.sh
+          - host: &host ntfy.${DOMAIN}
             paths:
               - path: /
                 service:

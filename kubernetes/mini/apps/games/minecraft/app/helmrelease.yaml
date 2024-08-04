@@ -192,7 +192,7 @@ spec:
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: games
           gethomepage.dev/icon: mdi-minecraft
-          external-dns.alpha.kubernetes.io/target: ext.cfg.sh
+          external-dns.alpha.kubernetes.io/target: ext.${DOMAIN}
     persistence:
       data:
         existingClaim: ${VOLSYNC_CLAIM}

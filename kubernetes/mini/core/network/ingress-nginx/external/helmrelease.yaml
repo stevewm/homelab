@@ -32,7 +32,7 @@ spec:
     controller:
       service:
         annotations:
-          external-dns.alpha.kubernetes.io/hostname: ext.cfg.sh
+          external-dns.alpha.kubernetes.io/hostname: ext.${DOMAIN}
       labels:
         egress.home.arpa/apiserver: allow
         egress.home.arpa/kubedns: allow
