@@ -40,9 +40,9 @@ spec:
         serviceMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
         ruleSelectorNilUsesHelmValues: false
-      service:
-        labels:
-          ingress.home.arpa/nginx-internal: "true"
+        podMetadata:
+          labels:
+            ingress.home.arpa/nginx-internal: allow
       ingress:
         enabled: true
         ingressClassName: nginx-internal
