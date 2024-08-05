@@ -77,24 +77,6 @@ nodes:
         dhcp: true
     machineFiles: *machineFiles
 
-  - hostname: worker01
-    ipAddress: 192.168.1.54
-    controlPlane: false
-    disableSearchDomain: true
-    machineSpec:
-      mode: metal
-      arch: amd64
-      secureboot: true
-      useUKI: true
-    installDiskSelector:
-      size: "<=260GB"
-      type: nvme
-    networkInterfaces:
-      - deviceSelector:
-          busPath: "0*"
-        dhcp: true
-    machineFiles: *machineFiles
-
 controlPlane:
   schematic:
     customization:
@@ -155,19 +137,3 @@ controlPlane:
                 busPath: "0*"
               vip:
                 ip: 192.168.1.55
-
-worker:
-  schematic:
-    customization:
-      extraKernelArgs:
-        - net.ifnames=0
-      systemExtensions:
-        officialExtensions:
-          - siderolabs/intel-ucode
-          - siderolabs/i915-ucode
-  patches:
-    - *kubelet_mounts
-    - *encrypt
-    - *wipe
-    - *kubeproxy
-    - *cert
