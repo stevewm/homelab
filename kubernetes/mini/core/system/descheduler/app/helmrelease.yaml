@@ -39,17 +39,6 @@ spec:
                 constraints:
                   - DoNotSchedule
                   - ScheduleAnyway
-            - name: "RemovedFailedPods"
-              args:
-                reasons:
-                  - NodeAffinity
-                exitCodes:
-                  - 0
-                  - 1
-                includingInitContainers: true
-                excludeOwnerKinds:
-                  - Job
-                minPodLifeTimeSeconds: 86400 # 1 day
           plugins:
             balance:
               enabled:
@@ -59,7 +48,6 @@ spec:
                 - RemovePodsViolatingInterPodAntiAffinity
                 - RemovePodsViolatingNodeAffinity
                 - RemovePodsViolatingNodeTaints
-                - RemovedFailedPods
     service:
       enabled: true
     serviceMonitor:
