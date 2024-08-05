@@ -12,7 +12,8 @@ cniConfig:
   name: none
 
 additionalApiServerCertSans: &san
-  - "127.0.0.1" # KubePrism
+  - 127.0.0.1 # KubePrism
+  - 192.168.1.55
 additionalMachineCertSans: *san
 
 nodes:
