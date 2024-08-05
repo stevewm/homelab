@@ -20,3 +20,4 @@ spec:
   postBuild:
     substitute:
       APP: *app
+      APP_SUBDOMAIN: kg
