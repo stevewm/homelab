@@ -94,7 +94,7 @@ spec:
               tag: 0.7.8@sha256:57e2343fefe5d5701364b5e93b4985dbf08310d7b152f70556bdaba7e9475447
             securityContext:
               allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
+              readOnlyRootFilesystem: false # The image downloads deps on start >:(
               capabilities:
                 drop: ["ALL"]
             resources:
