@@ -76,6 +76,21 @@ spec:
             sourceLabels: ["__name__"]
             regex: (rest_client_request_duration_seconds_bucket|rest_client_request_duration_seconds_sum|rest_client_request_duration_seconds_count)
 
+    kubeControllerManager:
+      enabled: true
+      endpoints: &cp
+        - 192.168.1.51
+        - 192.168.1.52
+        - 192.168.1.53
+
+    kubeEtcd:
+      enabled: true
+      endpoints: *cp
+
+    kubeScheduler:
+      enabled: true
+      endpoints: *cp
+
     kubeProxy:
       enabled: false
 
