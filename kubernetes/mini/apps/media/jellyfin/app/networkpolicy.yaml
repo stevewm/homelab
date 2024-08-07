@@ -10,10 +10,10 @@ spec:
       app.kubernetes.io/name: jellyfin
   ingress:
     - fromEndpoints:
-        - matchLabels:
-            app.kubernetes.io/name: jellystat
-        - matchLabels:
-            app.kubernetes.io/name: jellyseerr
+        # - matchLabels:
+        #     app.kubernetes.io/name: jellystat
+        # - matchLabels:
+        #     app.kubernetes.io/name: jellyseerr
         - matchLabels:
             app.kubernetes.io/name: homepage
             io.kubernetes.pod.namespace: selfhosted
@@ -23,13 +23,13 @@ spec:
               protocol: TCP
 
   egress:
-    - toEndpoints:
-        - matchLabels:
-            app.kubernetes.io/name: ersatztv
-      toPorts:
-        - ports:
-            - port: "8409"
-              protocol: TCP
+    # - toEndpoints:
+    #     - matchLabels:
+    #         app.kubernetes.io/name: ersatztv
+    #   toPorts:
+    #     - ports:
+    #         - port: "8409"
+    #           protocol: TCP
 
     - toFQDNs:
         - matchName: repo.jellyfin.org
@@ -41,15 +41,3 @@ spec:
         - ports:
             - port: "443"
               protocol: TCP
-
-    - toEndpoints:
-        - matchLabels:
-            io.kubernetes.pod.namespace: kube-system
-            k8s-app: kube-dns
-      toPorts:
-        - ports:
-            - port: "53"
-              protocol: UDP
-          rules:
-            dns:
-              - matchPattern: "*"
