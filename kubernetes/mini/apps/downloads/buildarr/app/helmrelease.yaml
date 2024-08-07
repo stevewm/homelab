@@ -35,7 +35,8 @@ spec:
     controllers:
       buildarr:
         annotations:
-          reloader.stakater.com/auto: "true"
+          configmap.reloader.stakater.com/reload: buildarr-config
+          secret.reloader.stakater.com/reload: buildarr,prowlarr,radarr,sabnzbd,sonarr
         pod:
           labels:
             egress.home.arpa/kubedns: allow
@@ -64,7 +65,7 @@ spec:
 
             envFrom:
               - secretRef:
-                  name: buildarr-secrets # DS_API_KEY
+                  name: buildarr # DS_API_KEY
             env:
               PROWLARR_API_KEY:
                 valueFrom:
