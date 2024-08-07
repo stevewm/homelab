@@ -33,7 +33,10 @@ spec:
         strategy: Recreate
         pod:
           labels:
+            monitoring.home.arpa/prometheus: allow
+            egress.home.arpa/kubedns: allow
             ingress.home.arpa/nginx-internal: allow
+            # ingress.home.arpa/nginx-external: allow
             ingress.home.arpa/homepage: allow
           securityContext:
             runAsUser: ${APP_UID}
@@ -42,12 +45,11 @@ spec:
             fsGroupChangePolicy: OnRootMismatch
           nodeSelector:
             intel.feature.node.kubernetes.io/gpu: "true"
-            feature.node.kubernetes.io/cpu-model.family: "6"
         containers:
           app:
             image:
               repository: jellyfin/jellyfin
-              tag: 10.9.8
+              tag: 10.9.9@sha256:d6f3d4aa59438ce951d85669f3c22426d20edb7a6b97604c509b5f4825bc8294
             probes:
               liveness:
                 enabled: true
@@ -57,17 +59,25 @@ spec:
                 enabled: true
             resources:
               requests:
-                cpu: 300m
+                cpu: 100m
                 memory: 4Gi
               limits:
                 memory: 10Gi
                 gpu.intel.com/i915: 1
+          exporter:
+            image:
+              repository: quay.io/prometheuscommunity/json-exporter
+              tag: v0.6.0@sha256:334af437e3459a28da3081e7a7686123b9d1372292b2ebf41815007e0419cd60
+            args:
+              - --config.file=/exporter/jellyfin.yaml
     service:
       app:
         controller: jellyfin
         ports:
           http:
             port: 8096
+          metrics:
+            port: 9115
     ingress:
       app:
         className: nginx-internal
@@ -107,3 +117,10 @@ spec:
         path: /volume1/Media
         globalMounts:
           - path: /data/media
+      exporter: # Config for json exporter
+        type: configMap
+        name: secret
+        globalMounts:
+          - path: /exporter/jellyfin.yaml
+            subPath: jellyfin.yaml
+            readOnly: true
