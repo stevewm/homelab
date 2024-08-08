@@ -118,8 +118,8 @@ spec:
         globalMounts:
           - path: /data/media
       exporter: # Config for json exporter
-        type: configMap
-        name: secret
+        type: secret
+        name: jellyfin-exporter
         globalMounts:
           - path: /exporter/jellyfin.yaml
             subPath: jellyfin.yaml
