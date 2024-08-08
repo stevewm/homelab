@@ -18,7 +18,7 @@ spec:
         module:
           - jellyfin
       interval: 30s
-      relabelConfigs:
+      relabelings:
         - sourceLabels: [__address__]
           targetLabel: __param_target
         - sourceLabels: [__param_target]
