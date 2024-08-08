@@ -17,6 +17,9 @@ spec:
         - matchLabels:
             app.kubernetes.io/name: homepage
             io.kubernetes.pod.namespace: selfhosted
+        - matchLabels:
+            app.kubernetes.io/name: buildarr
+            io.kubernetes.pod.namespace: downloads
       toPorts:
         - ports:
             - port: "5055"
