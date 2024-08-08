@@ -88,7 +88,7 @@ prowlarr:
           client_priority: default
 
 radarr:
-  hostname: http://radarr.downloads.svc.cluster.local
+  hostname: radarr.downloads.svc.cluster.local
   port: 80
   protocol: http
   api_key: ${RADARR_API_KEY:-thirtytwocharacterstringisneeded}
@@ -110,7 +110,7 @@ radarr:
           category: movies
 
 sonarr:
-  hostname: http://sonarr.downloads.svc.cluster.local
+  hostname: sonarr.downloads.svc.cluster.local
   port: 80
   protocol: http
   api_key: ${SONARR_API_KEY:-thirtytwocharacterstringisneeded}
