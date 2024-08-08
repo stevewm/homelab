@@ -44,7 +44,7 @@ spec:
         containers:
           app:
             image:
-              repository: stevewm/buildarr
+              repository: ghcr.io/stevewm/buildarr
               tag: 0.7.1@sha256:3ded803cb270101768b2a3bfe0f87285e52243bc63607b8fb4c029a0e40ccca1
             securityContext:
               allowPrivilegeEscalation: false
