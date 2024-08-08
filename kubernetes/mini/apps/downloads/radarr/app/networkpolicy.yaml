@@ -17,6 +17,8 @@ spec:
         - matchLabels:
             app.kubernetes.io/name: bazarr
         - matchLabels:
+            app.kubernetes.io/name: buildarr
+        - matchLabels:
             app.kubernetes.io/name: jellyseerr
             io.kubernetes.pod.namespace: media
       toPorts:
