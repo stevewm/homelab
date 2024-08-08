@@ -40,33 +40,23 @@ spec:
         pod:
           labels:
             egress.home.arpa/kubedns: allow
-        initContainers:
-          config-envsubst:
+
+        containers:
+          app:
             image:
-              repository: ghcr.io/containeroo/renvsubst
-              tag: 0.10.0@sha256:650242c1638acf1a415863830de5b6a055294b107feb7d926f09739609261a48
-            args:
-              - --fail # Fail on missing env vars
-              - -i
-              - /config/template/buildarr.yaml.tmpl
-              - -o
-              - /config/buildarr.yml
+              repository: stevewm/buildarr
+              tag: 0.7.1@sha256:3ded803cb270101768b2a3bfe0f87285e52243bc63607b8fb4c029a0e40ccca1
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
               capabilities:
                 drop: ["ALL"]
-            resources:
-              requests:
-                cpu: 10m
-                memory: 20M
-              limits:
-                memory: 100M
 
             envFrom:
               - secretRef:
                   name: buildarr # DS_API_KEY
             env:
+              BUILDARR_CONFIG_PATH: /config/buildarr.yaml
               PROWLARR_API_KEY:
                 valueFrom:
                   secretKeyRef:
@@ -88,27 +78,14 @@ spec:
                     name: sonarr
                     key: api_key
 
-        containers:
-          app:
-            image:
-              repository: callum027/buildarr
-              tag: 0.7.8@sha256:57e2343fefe5d5701364b5e93b4985dbf08310d7b152f70556bdaba7e9475447
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: false # The image downloads deps on start >:(
-              capabilities:
-                drop: ["ALL"]
             resources:
               requests:
                 cpu: 10m
                 memory: 37M
               limits:
                 memory: 220M
+
     persistence:
       config:
-        type: emptyDir
-      config-template:
         type: configMap
         name: buildarr-config
-        globalMounts:
-          - path: /config/template
