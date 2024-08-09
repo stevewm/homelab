@@ -24,3 +24,4 @@ spec:
       APP_UID: "1001"
       APP_GID: "100"
       VOLSYNC_CLAIM: jellyfin-config
+      VOLSYNC_CAPACITY: 20Gi
