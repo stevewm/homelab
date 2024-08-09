@@ -95,7 +95,7 @@ spec:
       app:
         className: nginx-external
         hosts:
-          - host: &host jf.${DOMAIN}
+          - host: &host ${APP_SUBDOMAIN}.${DOMAIN}
             paths:
               - path: /
                 service:
