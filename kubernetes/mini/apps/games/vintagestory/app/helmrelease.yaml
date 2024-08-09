@@ -58,13 +58,13 @@ spec:
             image:
               repository: ghcr.io/stevewm/vintagestory
               tag: 1.19.8@sha256:2b3e6eb684b8af322120f6fa7bd0183e66a10aa93d81c7e87fbdd8f3b682301e
-            probes:
-              liveness:
-                enabled: true
-              readiness:
-                enabled: true
-              startup:
-                enabled: true
+            # probes:
+            #   liveness:
+            #     enabled: true
+            #   readiness:
+            #     enabled: true
+            #   startup:
+            #     enabled: true
             resources:
               requests:
                 cpu: 250m
