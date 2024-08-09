@@ -24,6 +24,6 @@ spec:
     substitute:
       APP: *app
       APP_SUBDOMAIN: snr
-      APP_UID: "1000"
+      APP_UID: "1001"
       APP_GID: "100"
       VOLSYNC_CLAIM: sonarr-config
