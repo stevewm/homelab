@@ -49,8 +49,8 @@ spec:
         containers:
           app:
             image:
-              repository: ghcr.io/onedr0p/sabnzbd
-              tag: 4.3.2@sha256:8e70a877c77805dfe93ce30a8da3362fbddf221ef806951d4e4634bb80dc87b5
+              repository: ghcr.io/stevewm/sabnzbd
+              tag: 4.3.2@sha256:8c0f3f91207cbb7be2392b841d17beff68d1311a04a430a64e3b28496767c683
             env:
               SABNZBD__PORT: &port 80
               SABNZBD__API_KEY:

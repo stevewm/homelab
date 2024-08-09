@@ -48,8 +48,8 @@ spec:
         containers:
           app:
             image:
-              repository: ghcr.io/onedr0p/prowlarr
-              tag: 1.21@sha256:f04764d37c211cb0c7161cf417d9ca5f117f4cb22c19309e75fca7880309846d
+              repository: ghcr.io/stevewm/prowlarr
+              tag: 1.21.2.4649@sha256:88a539ea5d6d43c0dd897673b2ad6ed9900cb30928de2763d0c273c1926a49fc
             env:
               COMPlus_EnableDiagnostics: "0"
               PROWLARR__APP__INSTANCENAME: Prowlarr

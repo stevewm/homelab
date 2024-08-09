@@ -49,8 +49,8 @@ spec:
         containers:
           app:
             image:
-              repository: ghcr.io/onedr0p/radarr
-              tag: 5.8.3.8933@sha256:c8fa12f8efdbcb8ef736b019335c39f4962def9bee479b0fb8b0401824bcf26b
+              repository: ghcr.io/stevewm/radarr
+              tag: 5.8.3.8933@sha256:1daf83c9b8187ffc9928bf45af44624ce6f987a48d6a4e96df0c7cfe23c57793
             env:
               COMPlus_EnableDiagnostics: "0"
               RADARR__APP__INSTANCENAME: Radarr
