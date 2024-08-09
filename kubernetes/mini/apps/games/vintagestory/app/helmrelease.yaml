@@ -87,7 +87,7 @@ spec:
             port: 2420
             targetPort: 2420
     persistence:
-      data:
+      gamedata:
         existingClaim: vintagestory-gamedata
       config:
         type: configMap
