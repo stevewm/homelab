@@ -46,16 +46,19 @@ spec:
             image:
               repository: docker.io/fallenbagel/jellyseerr
               tag: 1.9.2@sha256:8f708df0ce3f202056bde5d7bff625eb59efe38f4ee47bdddc7560b6e4a5a214
+
             env:
               LOG_LEVEL: info
+              PORT: &port 80
+              HOME: /tmp
             probes:
               liveness: &probes
                 enabled: true
                 custom: true
                 spec:
                   httpGet:
-                    path: &path /api/v1/status
-                    port: &port 5055
+                    path: /status
+                    port: *port
                   initialDelaySeconds: 0
                   periodSeconds: 10
                   timeoutSeconds: 1
@@ -111,9 +114,7 @@ spec:
         globalMounts:
           - path: /app/config
       cache:
-        existingClaim: jellyseerr-cache
-        globalMounts:
-          - path: /app/config/cache
+        type: emptyDir
       logs:
         type: emptyDir
         globalMounts:
