@@ -44,8 +44,8 @@ spec:
         containers:
           app:
             image:
-              repository: pepaondrugs/playitgg-docker
-              tag: v0.15.13@sha256:c48ac110afced4f8abd54d3586e8322022a0b8e8668b7ef5746137533d0724b5
+              repository: ghcr.io/stevewm/playit
+              tag: 0.15.18@sha256:100fe6cd041dbf84388ab1a8f27e021a78e301788bef31319cda9260679c72d4
             probes:
               liveness:
                 enabled: false
@@ -69,6 +69,6 @@ spec:
         type: secret
         name: playit
         globalMounts:
-          - path: /etc/playit/playit.toml
+          - path: /config/playit.toml
             subPath: playit.toml
             readOnly: false
