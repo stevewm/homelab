@@ -92,7 +92,7 @@ spec:
           http:
             port: 8096
           metrics:
-            port: 9115
+            port: 7979
     ingress:
       app:
         className: nginx-internal
