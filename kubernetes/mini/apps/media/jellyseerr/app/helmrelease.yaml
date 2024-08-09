@@ -94,6 +94,8 @@ spec:
           - hosts:
               - *host
         annotations:
+          # Fixes "Oops" app error due to custom error pages
+          nginx.ingress.kubernetes.io/custom-http-errors: "599"
           gethomepage.dev/name: *app
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: media
