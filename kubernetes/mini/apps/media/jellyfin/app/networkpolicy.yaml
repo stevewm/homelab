@@ -37,6 +37,8 @@ spec:
         - matchName: www.omdbapi.com
         - matchName: image.tmdb.org
         - matchName: m.media-amazon.com
+        - matchName: raw.github.com
+        - matchPattern: "*.mirror.jellyfin.org"
       toPorts:
         - ports:
             - port: "443"
