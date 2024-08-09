@@ -45,7 +45,7 @@ spec:
           app:
             image:
               repository: ghcr.io/stevewm/playit
-              tag: 0.15.18@sha256:30fd119862b2957fc576d15830d62498ce7351203f6944399d9db43896cf2bc1
+              tag: 0.15.18@sha256:825aa50a5b854ab40183b4d202d5cc7e110fa3dfca318a5ee22963d1e9581e98
             probes:
               liveness:
                 enabled: false
