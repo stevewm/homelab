@@ -8,4 +8,4 @@ resources:
   - ./networkpolicy.yaml
   - ./servicemonitor.yaml
   - ../../../../templates/volsync/b2
-  - ../../../../templates/gatus/guarded
+  - ../../../../templates/gatus/external
