@@ -44,27 +44,39 @@ spec:
         containers:
           app:
             image:
-              repository: fallenbagel/jellyseerr
-              tag: 1.9.2
+              repository: docker.io/fallenbagel/jellyseerr
+              tag: 1.9.2@sha256:8f708df0ce3f202056bde5d7bff625eb59efe38f4ee47bdddc7560b6e4a5a214
+            env:
+              LOG_LEVEL: info
             probes:
-              liveness:
+              liveness: &probes
                 enabled: true
-              readiness:
-                enabled: true
-              startup:
-                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: &path /api/v1/status
+                    port: &port 5055
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
             resources:
               requests:
                 cpu: 10m
-                memory: 272M
               limits:
-                memory: 356M
+                memory: 2Gi
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop: [ALL]
     service:
       app:
         controller: jellyseerr
         ports:
           http:
-            port: 5055
+            port: *port
     ingress:
       app:
         className: nginx-internal

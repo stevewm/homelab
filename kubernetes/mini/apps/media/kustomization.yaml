@@ -6,4 +6,4 @@ resources:
   - ./namespace.yaml
   - ./networkpolicy.yaml
   - ./jellyfin/ks.yaml
-  #- ./jellyseerr/ks.yaml
+  - ./jellyseerr/ks.yaml
