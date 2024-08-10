@@ -105,6 +105,7 @@ spec:
     ingress:
       app:
         annotations:
+          nginx.ingress.kubernetes.io/custom-http-errors: "599"
           nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
         className: nginx-internal
         hosts:
@@ -117,6 +118,7 @@ spec:
       s3:
         className: nginx-internal
         annotations:
+          nginx.ingress.kubernetes.io/custom-http-errors: "599"
           nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
           nginx.ingress.kubernetes.io/proxy-connect-timeout: "180"
           nginx.ingress.kubernetes.io/proxy-body-size: 1024m
