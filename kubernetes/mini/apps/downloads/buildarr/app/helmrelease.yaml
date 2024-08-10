@@ -40,9 +40,8 @@ spec:
         pod:
           labels:
             egress.home.arpa/kubedns: allow
-
-        containers:
-          app:
+        initContainers:
+          renvsubst:
             image:
               repository: ghcr.io/stevewm/buildarr
               tag: 0.7.1@sha256:daa36d163b3ff58619c029f2dc93831472ad8cb38b387a21c7d9127f051f21b3
@@ -52,10 +51,18 @@ spec:
               capabilities:
                 drop: ["ALL"]
 
+              repository: ghcr.io/containeroo/renvsubst
+              tag: 0.10.0@sha256:650242c1638acf1a415863830de5b6a055294b107feb7d926f09739609261a48
+            args:
+              - --fail # Fail on empty and unset
+              - --input
+              - /config/buildarr.yaml
+              - --output
+              - /config/buildarr.yaml
             envFrom:
               - secretRef:
                   name: buildarr # DS_API_KEY
-            env:
+            env: &env
               BUILDARR_CONFIG_PATH: /config/buildarr.yaml
               PROWLARR_API_KEY:
                 valueFrom:
@@ -77,6 +84,21 @@ spec:
                   secretKeyRef:
                     name: sonarr
                     key: api_key
+        containers:
+          app:
+            image:
+              repository: ghcr.io/stevewm/buildarr
+              tag: 0.7.1@sha256:3ded803cb270101768b2a3bfe0f87285e52243bc63607b8fb4c029a0e40ccca1
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop: ["ALL"]
+
+            envFrom:
+              - secretRef:
+                  name: buildarr # DS_API_KEY
+            env: *env
 
             resources:
               requests:
