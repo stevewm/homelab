@@ -34,3 +34,7 @@ spec:
     - toEndpoints:
         - matchLabels:
             ingress.home.arpa/nginx-internal: allow
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            ingress.home.arpa/nginx-internal: allow
