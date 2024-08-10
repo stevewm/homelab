@@ -17,7 +17,7 @@ spec:
             storage.home.arpa/s3: allow
       toPorts:
         - ports:
-            - port: "9001"
+            - port: "9000"
               protocol: TCP
   # Allow egress to nginx
   egress:
