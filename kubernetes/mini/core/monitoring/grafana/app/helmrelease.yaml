@@ -280,7 +280,9 @@ spec:
       media:
         jellyfin:
           url: https://raw.githubusercontent.com/stevewm/homelab/main/kubernetes/mini/apps/media/jellyfin/app/resources/dashboard.json
-          datasource: Prometheus
+          datasource:
+            - name: DS_PROMETHEUS
+              value: Prometheus
         media-dashboard:
           url: https://raw.githubusercontent.com/onedr0p/exportarr/master/examples/grafana/dashboard2.json
           datasource:
