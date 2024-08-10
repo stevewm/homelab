@@ -6,6 +6,6 @@ resources:
   - ./helmrelease.yaml
   - ./externalsecret.yaml
   - ./networkpolicy.yaml
-  - ./servicemonitor.yaml
+  - ./scrapeconfig.yaml
   - ../../../../templates/volsync/b2
   - ../../../../templates/gatus/external

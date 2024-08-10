@@ -1,0 +1,19 @@
+---
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: ScrapeConfig
+metadata:
+  name: jellyfin
+spec:
+  metricsPath: /probe
+  params:
+    module: [jellyfin]
+  staticConfigs:
+    - targets:
+        - "http://jellyfin.media.svc.cluster.local:8096/Sessions"
+  relabelings:
+    - sourceLabels: [__address__]
+      targetLabel: __param_target
+    - sourceLabels: [__param_target]
+      targetLabel: instance
+    - targetLabel: __address__
+      replacement: "jellyfin.media.svc.cluster.local:7979"
