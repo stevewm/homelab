@@ -229,9 +229,6 @@ spec:
               value: Prometheus
 
       flux:
-        flux-cluster:
-          url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/cluster.json
-          datasource: Prometheus
         flux-control-plane:
           url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/control-plane.json
           datasource: Prometheus
@@ -282,7 +279,7 @@ spec:
 
       media:
         jellyfin:
-          url: https://gist.githubusercontent.com/dfsnow/aad4ec99afb413968c49efb03bdb1ab9/raw/2ec9879edae9d7c3d393346e48478140dade22b6/state-timeline-grafana-panel.json
+          url: https://raw.githubusercontent.com/stevewm/homelab/main/kubernetes/mini/apps/media/jellyfin/app/resources/dashboard.json
           datasource: Prometheus
         media-dashboard:
           url: https://raw.githubusercontent.com/onedr0p/exportarr/master/examples/grafana/dashboard2.json
