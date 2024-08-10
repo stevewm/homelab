@@ -4,7 +4,7 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: core-snapshot-controller
-  namespace: flux-system
+  namespace: storage
 spec:
   targetNamespace: kube-system
   commonMetadata:
