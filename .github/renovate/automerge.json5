@@ -3,15 +3,6 @@
   platformAutomerge: false,
   packageRules: [
     {
-      description: "Automerge digest updates",
-      matchDatasources: ["docker"],
-      automerge: true,
-      automergeType: "branch",
-      matchUpdateTypes: ["digest"],
-      matchPackagePrefixes: ["ghcr.io/onedr0p", "ghcr.io/bjw-s"],
-      ignoreTests: true,
-    },
-    {
       description: "Automerge trusted sources",
       matchDatasources: ["docker"],
       automerge: true,
