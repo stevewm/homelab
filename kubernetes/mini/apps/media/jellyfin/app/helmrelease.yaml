@@ -89,7 +89,7 @@ spec:
         ports:
           http:
             port: 8096
-          metrics:
+          exporter:
             port: 7979
     ingress:
       app:
