@@ -106,7 +106,7 @@
           "refId": "A"
         }
       ],
-      "title": "Panel Title",
+      "title": "Watching",
       "transformations": [
         {
           "id": "seriesToRows",
