@@ -45,7 +45,7 @@ spec:
           app:
             image:
               repository: ghcr.io/stevewm/buildarr
-              tag: 0.7.1@sha256:3ded803cb270101768b2a3bfe0f87285e52243bc63607b8fb4c029a0e40ccca1
+              tag: 0.7.1@sha256:daa36d163b3ff58619c029f2dc93831472ad8cb38b387a21c7d9127f051f21b3
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
