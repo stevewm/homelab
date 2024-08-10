@@ -418,6 +418,7 @@ spec:
         - hosts:
             - *host
       annotations:
+        nginx.ingress.kubernetes.io/custom-http-errors: "599"
         gethomepage.dev/name: grafana
         gethomepage.dev/enabled: 'true'
         gethomepage.dev/group: monitoring
