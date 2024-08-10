@@ -1,4 +1,5 @@
 ---
+# https://sno.ws/jellyfin-stats/#update-2024-02-23
 apiVersion: monitoring.coreos.com/v1alpha1
 kind: ScrapeConfig
 metadata:
