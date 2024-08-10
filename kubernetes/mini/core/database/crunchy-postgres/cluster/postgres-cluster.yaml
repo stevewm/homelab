@@ -74,7 +74,7 @@ spec:
     pgbackrest:
       configuration: &backupConfig
         - secret:
-            name: b2-db-backup
+            name: minio-db-backup
       global: &backupFlag
         archive-timeout: "60"
         compress-type: "bz2"
@@ -94,11 +94,12 @@ spec:
         labels:
           app.kubernetes.io/name: crunchy-postgres-backup
           egress.home.arpa/apiserver: allow
+          storage.home.arpa/s3: allow
       repos:
-        - name: repo1 # Backblaze B2
-          s3: &b2
-            bucket: 'cluster-apps-db-backup'
-            endpoint: 's3.us-east-005.backblazeb2.com'
+        - name: repo1 # minio
+          s3: &minio
+            bucket: 'mini-crunchy-postgres-backup'
+            endpoint: 'minio.storage.svc.cluster.local:9000'
             region: "us-east-1"
           schedules:
             full: "0 1 * * 0" # Sunday at 01:00
@@ -113,7 +114,7 @@ spec:
   #     global: *backupFlag
   #     repo:
   #       name: 'repo1'
-  #       s3: *b2
+  #       s3: *minio
 
   proxy:
     pgBouncer:
