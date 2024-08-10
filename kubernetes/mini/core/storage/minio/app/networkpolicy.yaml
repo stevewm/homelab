@@ -19,6 +19,7 @@ spec:
         - ports:
             - port: "9001"
               protocol: TCP
+  # Allow egress to nginx
   egress:
     - toEndpoints:
         - matchLabels:
