@@ -10,7 +10,7 @@ resources:
   - ./config/secrets/
   - ../../../../templates/volsync/b2
   - ../../../../templates/gatus/external
-  - ../../../../templates/secretgenerator
+  - ../../../../templates/secretgenerator/default
 configMapGenerator:
   - name: minecraft-bluemap
     files:

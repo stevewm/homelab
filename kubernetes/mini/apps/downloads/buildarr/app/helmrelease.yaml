@@ -50,7 +50,6 @@ spec:
               readOnlyRootFilesystem: true
               capabilities:
                 drop: ["ALL"]
-
               repository: ghcr.io/containeroo/renvsubst
               tag: 0.10.0@sha256:650242c1638acf1a415863830de5b6a055294b107feb7d926f09739609261a48
             args:
@@ -63,7 +62,6 @@ spec:
               - secretRef:
                   name: buildarr # DS_API_KEY
             env: &env
-              BUILDARR_CONFIG_PATH: /config/buildarr.yaml
               PROWLARR_API_KEY:
                 valueFrom:
                   secretKeyRef:
