@@ -42,7 +42,7 @@ spec:
               protocol: TCP
     - toEndpoints:
         - matchLabels:
-            app.kubernetes.io/name: jellyseerr
+            app.kubernetes.io/name: jellyfin
       toPorts:
         - ports:
             - port: "8096"
