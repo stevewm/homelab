@@ -40,6 +40,13 @@ spec:
         - ports:
             - port: "80"
               protocol: TCP
+    - toEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: jellyseerr
+      toPorts:
+        - ports:
+            - port: "8096"
+              protocol: TCP
     - toFQDNs:
         - matchName: api.themoviedb.org
         - matchName: api.github.com

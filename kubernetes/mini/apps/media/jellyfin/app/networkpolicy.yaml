@@ -12,8 +12,8 @@ spec:
     - fromEndpoints:
         # - matchLabels:
         #     app.kubernetes.io/name: jellystat
-        # - matchLabels:
-        #     app.kubernetes.io/name: jellyseerr
+        - matchLabels:
+            app.kubernetes.io/name: jellyseerr
         - matchLabels:
             app.kubernetes.io/name: homepage
             io.kubernetes.pod.namespace: selfhosted
