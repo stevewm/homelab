@@ -12,8 +12,10 @@ spec:
     - fromEndpoints:
         - matchLabels:
             app.kubernetes.io/name: radarr
+            io.kubernetes.pod.namespace: downloads
         - matchLabels:
             app.kubernetes.io/name: sonarr
+            io.kubernetes.pod.namespace: downloads
         - matchLabels:
             app.kubernetes.io/name: homepage
             io.kubernetes.pod.namespace: selfhosted
@@ -29,6 +31,7 @@ spec:
     - toEndpoints:
         - matchLabels:
             app.kubernetes.io/name: sonarr
+            io.kubernetes.pod.namespace: downloads
       toPorts:
         - ports:
             - port: "80"
@@ -36,6 +39,7 @@ spec:
     - toEndpoints:
         - matchLabels:
             app.kubernetes.io/name: radarr
+            io.kubernetes.pod.namespace: downloads
       toPorts:
         - ports:
             - port: "80"
