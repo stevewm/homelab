@@ -85,7 +85,7 @@ spec:
         ports:
           game:
             port: 2420
-            targetPort: 2420
+            targetPort: 42420
     persistence:
       gamedata:
         existingClaim: vintagestory-gamedata
