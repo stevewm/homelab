@@ -33,7 +33,7 @@ spec:
         strategy: Recreate
         pod:
           labels:
-            ingress.home.arpa/nginx-internal: allow
+            ingress.home.arpa/nginx-external: allow
             ingress.home.arpa/homepage: allow
             egress.home.arpa/kubedns: allow
           securityContext:
@@ -82,9 +82,9 @@ spec:
             port: *port
     ingress:
       app:
-        className: nginx-internal
+        className: nginx-external
         hosts:
-          - host: &host js.${DOMAIN}
+          - host: &host ${APP_SUBDOMAIN}.${DOMAIN}
             paths:
               - path: /
                 service:
@@ -94,6 +94,7 @@ spec:
           - hosts:
               - *host
         annotations:
+          external-dns.alpha.kubernetes.io/target: ext.${DOMAIN}
           # Fixes "Oops" app error due to custom error pages
           nginx.ingress.kubernetes.io/custom-http-errors: "599"
           gethomepage.dev/name: *app
@@ -103,13 +104,6 @@ spec:
           gethomepage.dev/widget.key: "{{ `{{ HOMEPAGE_VAR_JELLYSEERR_API_KEY }}` }}"
           gethomepage.dev/widget.type: jellyseerr
           gethomepage.dev/widget.url: "http://jellyseerr.media.svc.cluster.local:5055"
-          # nginx.ingress.kubernetes.io/configuration-snippet: |
-          #   proxy_set_header Accept-Encoding "";
-          #   sub_filter
-          #   '</head>'
-          #   '<link rel="stylesheet" type="text/css" href="https://themes.${DOMAIN}/css/base/overseer/plex.css">
-          #   </head>';
-          #   sub_filter_once on;
     persistence:
       config:
         existingClaim: ${VOLSYNC_CLAIM}
