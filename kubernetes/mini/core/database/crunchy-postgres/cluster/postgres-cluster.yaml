@@ -55,6 +55,11 @@ spec:
       password:
         type: AlphaNumeric
     # Applications
+    - name: authelia
+      databases:
+        - authelia
+      password:
+        type: AlphaNumeric
     - name: prowlarr
       databases:
         - prowlarr
