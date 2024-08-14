@@ -50,11 +50,6 @@ spec:
               AUTHELIA_THEME: dark
               X_AUTHELIA_CONFIG: /config/config.yaml
               X_AUTHELIA_CONFIG_FILTERS: expand-env
-              AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD:
-                valueFrom:
-                  secretKeyRef:
-                    name: glauth
-                    key: ldap_search_password
             probes:
               liveness: &probes
                 enabled: true
