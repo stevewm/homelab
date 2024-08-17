@@ -37,6 +37,6 @@ repos:
       - id: check-charts-support-renovate
 
   - repo: https://github.com/renovatebot/pre-commit-hooks
-    rev: 38.39.0
+    rev: 38.39.2
     hooks:
       - id: renovate-config-validator
