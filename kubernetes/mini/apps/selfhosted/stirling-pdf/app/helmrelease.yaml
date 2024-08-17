@@ -38,7 +38,7 @@ spec:
           app:
             image:
               repository: frooodle/s-pdf
-              tag: 0.27.0
+              tag: 0.28.1
             env:
               DOCKER_ENABLE_SECURITY: 'false'
             probes:
