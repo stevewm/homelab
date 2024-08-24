@@ -50,7 +50,7 @@ spec:
           app:
             image:
               repository: ghcr.io/stevewm/sabnzbd
-              tag: 4.3.2@sha256:8c0f3f91207cbb7be2392b841d17beff68d1311a04a430a64e3b28496767c683
+              tag: 4.3.3@sha256:31c7519be90637005c9cb9665676a83bbbeac038148a4415beec344a1feee473
             env:
               SABNZBD__PORT: &port 80
               SABNZBD__API_KEY:
