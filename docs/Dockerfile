@@ -4,7 +4,7 @@
 # unknown/unknown arch: https://github.com/orgs/community/discussions/45969
 #
 
-FROM ghcr.io/squidfunk/mkdocs-material:9.5.31 AS mkdocs-build
+FROM ghcr.io/squidfunk/mkdocs-material:9.5.33 AS mkdocs-build
 WORKDIR /src
 
 COPY . .
