@@ -24,7 +24,7 @@ kind: CiliumClusterwideNetworkPolicy
 metadata:
   name: apps-to-glauth
 spec:
-  description: "Allow apps to access glauth"
+  description: "Allow ingress from apps to glauth"
   endpointSelector:
     matchLabels:
       app.kubernetes.io/name: glauth
@@ -34,3 +34,29 @@ spec:
     - fromEndpoints:
         - matchLabels:
             auth.home.arpa/ldap: allow
+      toPorts:
+        - ports:
+            - port: '389'
+              protocol: TCP
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/cilium.io/ciliumclusterwidenetworkpolicy_v2.json
+---
+apiVersion: cilium.io/v2
+kind: CiliumClusterwideNetworkPolicy
+metadata:
+  name: apps-to-glauth-egress
+spec:
+  description: "Allow egress from apps to glauth"
+  endpointSelector:
+    matchLabels:
+      auth.home.arpa/ldap: allow
+
+  egress:
+    - toEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: glauth
+            io.kubernetes.pod.namespace: security
+      toPorts:
+        - ports:
+            - port: '389'
+              protocol: TCP
