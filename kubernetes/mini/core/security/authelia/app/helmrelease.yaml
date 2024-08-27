@@ -76,6 +76,7 @@ spec:
                 memory: 128Mi
         pod:
           labels:
+            auth.home.arpa/ldap: allow
             db.home.arpa/dragonfly: allow
             db.home.arpa/pg: postgres
             ingress.home.arpa/nginx-internal: allow
