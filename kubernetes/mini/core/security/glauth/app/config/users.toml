@@ -1,3 +1,5 @@
+# passbcrypt generation: https://gchq.github.io/CyberChef/#recipe=Bcrypt(12)To_Hex('None',0)
+
 [[users]]
     name = "search"
     uidnumber = 5000
@@ -22,5 +24,3 @@
     uidnumber = 5002
     primarygroup = 6502
     passbcrypt = "{{ .GLAUTH_CL_PSW_BCRYPT }}"
-
-

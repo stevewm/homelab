@@ -1,5 +1,5 @@
 [[groups]]
-    name = "service"
+    name = "svcaccts"
     gidnumber = 6500
 
 [[groups]]
