@@ -3,7 +3,7 @@
 # Note: Authelia vars should be escaped with $${VAR_NAME} to avoid interpolation by Flux
 authentication_backend:
   ldap:
-    address: ldap://ldap.security.svc.cluster.local:389
+    address: ldap://glauth.security.svc.cluster.local:389
     implementation: custom
     timeout: 5s
     start_tls: false
