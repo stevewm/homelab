@@ -37,6 +37,13 @@ session:
     database_index: 2
     host: dragonfly.database.svc.cluster.local
 
+notifier:
+  disable_startup_check: true
+  smtp:
+    address: smtp://smtp.network.svc.cluster.local:25
+    sender: Authelia <authelia@${DOMAIN}>
+    disable_require_tls: false
+
 totp:
   disable: false
   issuer: authelia.com
