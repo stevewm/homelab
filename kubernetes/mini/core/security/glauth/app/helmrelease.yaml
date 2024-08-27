@@ -102,7 +102,7 @@ spec:
     persistence:
       config:
         type: secret
-        name: glauth-secret
+        name: glauth
         globalMounts:
           - path: /config/groups.toml
             subPath: groups.toml
