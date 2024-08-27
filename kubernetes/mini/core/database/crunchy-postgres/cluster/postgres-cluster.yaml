@@ -18,6 +18,7 @@ spec:
       postgresql:
         synchronous_commit: "on"
         pg_hba:
+          - hostnossl all all 10.244.0.0/16 md5 # Needed because dbman does not support SSL yet
           - hostssl all all all md5
 
   instances:
