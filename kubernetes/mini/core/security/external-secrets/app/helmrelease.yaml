@@ -36,7 +36,7 @@ spec:
     installCRDs: true
     replicaCount: 2
     deploymentAnnotations:
-      reloader.stakater.com/auto: doppler-token
+      configmap.reloader.stakater.com/reload: doppler-token
     serviceMonitor:
       enabled: true
     resources:
