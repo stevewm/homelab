@@ -41,7 +41,7 @@ notifier:
   disable_startup_check: true
   smtp:
     address: smtp://smtp-relay.network.svc.cluster.local:25
-    sender: Authelia <authelia@${DOMAIN}>
+    sender: Authelia <noreply@${DOMAIN}>
     disable_require_tls: true
 
 totp:
