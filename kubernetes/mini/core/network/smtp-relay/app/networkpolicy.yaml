@@ -50,7 +50,7 @@ spec:
     matchLabels:
       mail.home.arpa/smtp-relay: allow
   egress:
-    - tondpoints:
+    - toEndpoints:
         - matchLabels:
             app.kubernetes.io/name: smtp-relay
             io.kubernetes.pod.namespace: network
