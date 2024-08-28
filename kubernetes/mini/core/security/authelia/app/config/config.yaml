@@ -42,7 +42,7 @@ notifier:
   smtp:
     address: smtp://smtp-relay.network.svc.cluster.local:25
     sender: Authelia <authelia@${DOMAIN}>
-    disable_require_tls: false
+    disable_require_tls: true
 
 totp:
   disable: false
