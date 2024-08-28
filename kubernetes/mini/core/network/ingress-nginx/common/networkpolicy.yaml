@@ -18,4 +18,4 @@ spec:
         - ports:
             - port: "6443"
     - toFQDNs:
-        - matchName: r3.o.lencr.org
+        - matchPattern: '*.o.lencr.org'
