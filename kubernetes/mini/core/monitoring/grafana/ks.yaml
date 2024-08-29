@@ -21,3 +21,4 @@ spec:
     substitute:
       APP: *app
       APP_SUBDOMAIN: graf
+      ES_CREATION_POLICY: Merge
