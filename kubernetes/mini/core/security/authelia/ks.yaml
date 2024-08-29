@@ -22,5 +22,7 @@ spec:
       APP: *app
       APP_UID: '65534'
       APP_GID: '65534'
+      ES_CREATION_POLICY: Merge
   dependsOn:
     - name: core-glauth
+    - name: core-smtp-relay
