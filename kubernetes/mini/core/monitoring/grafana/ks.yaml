@@ -22,3 +22,4 @@ spec:
       APP: *app
       APP_SUBDOMAIN: graf
       ES_CREATION_POLICY: Merge
+      ES_DELETION_POLICY: Keep
