@@ -37,7 +37,7 @@ services:
   radarr:
     container_name: radarr
     user: 0:0
-    image: ghcr.io/stevewm/radarr:5.9.1.9070@sha256:a0fdda151e1e38cbf813049d36f5ef95ecad5530693bd8480961c221f7110fb3
+    image: ghcr.io/stevewm/radarr:5.10.4.9218@sha256:80b0b0d7014bb10462428a3c1e968e10e5cf4a185561f1f4a92e6c2f1a28ba16
     ports:
       - 7878:7878/tcp
     environment:
