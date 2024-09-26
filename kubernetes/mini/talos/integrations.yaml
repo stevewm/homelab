@@ -12,7 +12,7 @@ releases:
     namespace: kube-system
     chart: cilium/cilium
     # renovate: depName=cilium/cilium datasource=github-releases
-    version: 1.16.0
+    version: 1.16.2
     wait: true
     values:
       - https://raw.githubusercontent.com/stevewm/homelab/main/kubernetes/mini/core/kube-system/cilium/app/values.yaml
