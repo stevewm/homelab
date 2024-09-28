@@ -49,7 +49,7 @@ spec:
           app:
             image:
               repository: ghcr.io/stevewm/prowlarr
-              tag: 1.23.1.4708@sha256:ae3385851d4eac4533e652f5a223ccbe29f67af4988218a01ce0336695bbd98a
+              tag: 1.24.3.4754@sha256:2acdd229e03e0d0ca0bf611d522e0c7ad4db213caadf3f97fb7dc546557e343f
             env:
               COMPlus_EnableDiagnostics: "0"
               PROWLARR__APP__INSTANCENAME: Prowlarr
