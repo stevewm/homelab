@@ -53,6 +53,9 @@ spec:
 
     alertmanager:
       alertmanagerSpec:
+        podMetadata:
+          labels:
+            ingress.home.arpa/nginx-internal: allow
         resources:
           requests:
             cpu: 10m
