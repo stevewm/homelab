@@ -89,7 +89,6 @@ spec:
                 cpu: 10m
                 memory: 64Mi
               limits:
-                cpu: 500m
                 memory: 128Mi
         annotations:
           reloader.stakater.com/auto: "true"

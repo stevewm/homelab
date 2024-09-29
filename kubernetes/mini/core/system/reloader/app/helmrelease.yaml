@@ -33,7 +33,7 @@ spec:
         namespace: monitoring
     resources:
       requests:
-        cpu: 100m
+        cpu: 50m
         memory: 64Mi
       limits:
         memory: 128Mi

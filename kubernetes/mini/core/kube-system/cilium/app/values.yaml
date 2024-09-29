@@ -64,7 +64,7 @@ hubble:
       ingress.home.arpa/nginx-internal: allow
     resources:
       requests:
-        cpu: 200m
+        cpu: 30m
         memory: 1Gi
       limits:
         memory: 2Gi
