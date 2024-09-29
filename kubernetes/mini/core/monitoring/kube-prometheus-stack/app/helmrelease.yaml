@@ -27,6 +27,63 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    kubeControllerManager:
+      enabled: false
+
+    kubeEtcd:
+      enabled: false
+
+    kubelet:
+      enabled: true
+      serviceMonitor:
+        metricRelabelings:
+          - action: replace
+            sourceLabels:
+              - node
+            targetLabel: instance
+
+    kubeProxy:
+      enabled: false
+
+    kubeScheduler:
+      enabled: false
+
+    grafana:
+      enabled: false
+
+    alertmanager:
+      alertmanagerSpec:
+        resources:
+          requests:
+            cpu: 10m
+            memory: 50Mi
+          limits:
+            memory: 100Mi
+      ingress:
+        enabled: true
+        ingressClassName: nginx-internal
+        hosts:
+          - &am-host am.${DOMAIN}
+        tls:
+          - hosts:
+              - *am-host
+        annotations:
+          gethomepage.dev/name: alertmanager
+          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/group: '${HOMEPAGE_CATEGORY}'
+          gethomepage.dev/icon: alertmanager.png
+
+    # https://grafana.com/grafana/dashboards/14588-vpa-recommendations/
+    kube-state-metrics:
+      rbac:
+        extraRules:
+          - apiGroups: ["autoscaling.k8s.io"]
+            resources: ["verticalpodautoscalers"]
+            verbs: ["list", "watch"]
+      prometheus:
+        monitor:
+          enabled: true
+
     prometheus:
       prometheusSpec:
         resources:
@@ -63,59 +120,6 @@ spec:
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: '${HOMEPAGE_CATEGORY}'
           gethomepage.dev/icon: prometheus.png
-
-    kubelet:
-      enabled: true
-      serviceMonitor:
-        metricRelabelings:
-          # Drop high cardinality labels
-          - action: labeldrop
-            regex: (uid)
-          - action: labeldrop
-            regex: (id|name)
-          - action: drop
-            sourceLabels: ["__name__"]
-            regex: (rest_client_request_duration_seconds_bucket|rest_client_request_duration_seconds_sum|rest_client_request_duration_seconds_count)
-
-    kubeControllerManager:
-      enabled: true
-      endpoints: &cp
-        - 192.168.1.51
-        - 192.168.1.52
-        - 192.168.1.53
-
-    kubeEtcd:
-      enabled: true
-      endpoints: *cp
-
-    kubeScheduler:
-      enabled: true
-      endpoints: *cp
-
-    kubeProxy:
-      enabled: false
-
-    grafana:
-      enabled: false
-    alertmanager:
-      alertmanagerSpec:
-        resources:
-          requests:
-            cpu: 10m
-            memory: 50Mi
-          limits:
-            memory: 100Mi
-
-    # https://grafana.com/grafana/dashboards/14588-vpa-recommendations/
-    kube-state-metrics:
-      rbac:
-        extraRules:
-          - apiGroups: ["autoscaling.k8s.io"]
-            resources: ["verticalpodautoscalers"]
-            verbs: ["list", "watch"]
-      prometheus:
-        monitor:
-          enabled: true
 
       # https://github.com/kubernetes/kube-state-metrics/blob/main/docs/customresourcestate-metrics.md#verticalpodautoscaler
       # https://github.com/kubernetes/kube-state-metrics/issues/2041#issuecomment-1614327806
@@ -162,16 +166,3 @@ spec:
                       unit: "core"
       selfMonitor:
         enabled: true
-      ingress:
-        enabled: true
-        ingressClassName: nginx-internal
-        hosts:
-          - &am-host am.${DOMAIN}
-        tls:
-          - hosts:
-              - *am-host
-        annotations:
-          gethomepage.dev/name: alertmanager
-          gethomepage.dev/enabled: 'true'
-          gethomepage.dev/group: '${HOMEPAGE_CATEGORY}'
-          gethomepage.dev/icon: alertmanager.png
