@@ -35,12 +35,6 @@ spec:
 
     kubelet:
       enabled: true
-      serviceMonitor:
-        metricRelabelings:
-          - action: replace
-            sourceLabels:
-              - node
-            targetLabel: instance
 
     kubeProxy:
       enabled: false
@@ -55,7 +49,9 @@ spec:
       alertmanagerSpec:
         podMetadata:
           labels:
+            egress.home.arpa/kubedns: allow
             ingress.home.arpa/nginx-internal: allow
+            monitoring.home.arpa/prometheus: allow
         resources:
           requests:
             cpu: 10m
@@ -88,6 +84,8 @@ spec:
           enabled: true
 
     prometheus:
+      selfMonitor:
+        enabled: true
       prometheusSpec:
         resources:
           requests:
@@ -167,5 +165,3 @@ spec:
                     commonLabels:
                       resource: "cpu"
                       unit: "core"
-      selfMonitor:
-        enabled: true
