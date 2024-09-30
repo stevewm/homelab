@@ -1,0 +1,94 @@
+version: v1alpha1
+debug: false
+persist: true
+machine:
+  type: worker
+  token: mt73kb.87zvo5fj66b6esv0
+  ca:
+    crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJQakNCOGFBREFnRUNBaEFtWTMrNWhDaXN5ZkVLb3RTQ0txUTNNQVVHQXl0bGNEQVFNUTR3REFZRFZRUUsKRXdWMFlXeHZjekFlRncweU5EQXhNVFF5TWpFNE5UaGFGdzB6TkRBeE1URXlNakU0TlRoYU1CQXhEakFNQmdOVgpCQW9UQlhSaGJHOXpNQ293QlFZREsyVndBeUVBcWJWMlJRSFQvN2JBQkJ3dXNpdGx0Qko2NytRcFlBd2pkY05VCm9yeDFLUkNqWVRCZk1BNEdBMVVkRHdFQi93UUVBd0lDaERBZEJnTlZIU1VFRmpBVUJnZ3JCZ0VGQlFjREFRWUkKS3dZQkJRVUhBd0l3RHdZRFZSMFRBUUgvQkFVd0F3RUIvekFkQmdOVkhRNEVGZ1FVbHpNSWVDOEFvQVpMekJMaQp3M1dQQ3JsV2krNHdCUVlESzJWd0EwRUFGYVNoZWZmdlJ5UGhPL2xsZ0tGa2kwR1MrbVMxenlNeTlYWDF2OUJvCkYzSGVnMjJqSkd1WVlYbkczWEd6TWJLdTdoZldObDliemd0K0ZaY0lvMWZ6RGc9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+    key: ""
+  certSANs:
+    - 127.0.0.1
+  kubelet:
+    image: ghcr.io/siderolabs/kubelet:v1.29.1
+    extraArgs:
+      feature-gates: NewVolumeManagerReconstruction=false
+      rotate-server-certificates: "true"
+    extraMounts:
+      - destination: /var/openebs/local
+        type: bind
+        source: /var/openebs/local
+        options:
+          - bind
+          - rshared
+          - rw
+    extraConfig:
+      maxPods: 150
+    defaultRuntimeSeccompProfileEnabled: true
+    disableManifestsDirectory: true
+  network:
+    hostname: worker01
+    interfaces:
+      - deviceSelector:
+          busPath: 0*
+        dhcp: true
+    disableSearchDomain: true
+  install:
+    diskSelector:
+      size: <=260GB
+      type: nvme
+    extraKernelArgs:
+      - net.ifnames=0
+    image: factory.talos.dev/installer-secureboot/df491c50a5acc05b977ef00c32050e1ceb0df746e40b33c643ac8a9bfb7c7263:v1.6.4
+    wipe: true
+  files:
+    - content: |-
+        [plugins."io.containerd.grpc.v1.cri"]
+          enable_unprivileged_ports = true
+      permissions: 0o0
+      path: /etc/cri/conf.d/20-customization.part
+      op: create
+  systemDiskEncryption:
+    state:
+      provider: luks2
+      keys:
+        - nodeID: {}
+          slot: 0
+    ephemeral:
+      provider: luks2
+      keys:
+        - nodeID: {}
+          slot: 0
+  features:
+    rbac: true
+    stableHostname: true
+    apidCheckExtKeyUsage: true
+    diskQuotaSupport: true
+    kubePrism:
+      enabled: true
+      port: 7445
+cluster:
+  id: TOORO5NBMnovK8EvczJl9OMmekqi34Q-Fbmsgn_gqI4=
+  secret: NIdE4GrSonmKOQ31/ss95v2TNU2gSkpzhXztjKFnmlQ=
+  controlPlane:
+    endpoint: https://192.168.1.55:6443
+  network:
+    cni:
+      name: none
+    dnsDomain: cluster.local
+    podSubnets:
+      - 10.244.0.0/16
+    serviceSubnets:
+      - 10.96.0.0/12
+  token: v1pj6g.uep1ph1cxuxfoneq
+  ca:
+    crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJpakNDQVMrZ0F3SUJBZ0lRSjdybGlSejd5THptSjZGdFBZK2N3ekFLQmdncWhrak9QUVFEQWpBVk1STXcKRVFZRFZRUUtFd3ByZFdKbGNtNWxkR1Z6TUI0WERUSTBNREV4TkRJeU1UZzFPRm9YRFRNME1ERXhNVEl5TVRnMQpPRm93RlRFVE1CRUdBMVVFQ2hNS2EzVmlaWEp1WlhSbGN6QlpNQk1HQnlxR1NNNDlBZ0VHQ0NxR1NNNDlBd0VICkEwSUFCSFVLU2EyQ3NFVVFtZ3JqL2hzTjYrdGJxZyt3aTh0VHR3Q0ZCVW5pQk4yckVPTnRJKzZZL3ViTmhvVGYKYkt6NitmVUlxM0hLdktWNWVoNUpEOVcwMjRXallUQmZNQTRHQTFVZER3RUIvd1FFQXdJQ2hEQWRCZ05WSFNVRQpGakFVQmdnckJnRUZCUWNEQVFZSUt3WUJCUVVIQXdJd0R3WURWUjBUQVFIL0JBVXdBd0VCL3pBZEJnTlZIUTRFCkZnUVUzUGNOdW1HemZYOXZZMjlUZkNpdjEwT0w3c293Q2dZSUtvWkl6ajBFQXdJRFNRQXdSZ0loQU9naXJyMnoKZkZWZWZZUUFrNDVnSHJOM2tydHlGY0VVZFhxblV3dVpWZ0EvQWlFQXJtc1lDQVlJbzNvcktIbDdaeEdLa21aZgpOdUVZTTU1cGxLLzFtUnZJKzU4PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+    key: ""
+  proxy:
+    disabled: true
+  discovery:
+    enabled: true
+    registries:
+      kubernetes:
+        disabled: true
+      service: {}
