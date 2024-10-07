@@ -36,7 +36,7 @@ spec:
           app:
             image:
               repository: ghcr.io/authelia/authelia
-              tag: 4.38.14@sha256:023fbe7f7d653f6b75d027d64b9eb0878a8c73f1817e40d867fe5a90b8c0dea3
+              tag: 4.38.16@sha256:172c9b2e4d7c25196404e4620f6018650cbd2124999aceaa812cf0c100ef8b23
             envFrom:
               - secretRef:
                   name: authelia-db
