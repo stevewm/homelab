@@ -2,7 +2,7 @@
 ---
 clusterName: mini
 # renovate: depName=ghcr.io/siderolabs/installer datasource=docker
-talosVersion: v1.8.0
+talosVersion: v1.8.1
 # renovate: depName=ghcr.io/siderolabs/kubelet datasource=docker
 kubernetesVersion: v1.31.1
 endpoint: https://192.168.1.55:6443
