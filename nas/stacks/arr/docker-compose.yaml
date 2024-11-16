@@ -12,7 +12,7 @@ services:
       TZ: America/Vancouver
     volumes:
       - /share/Docker/sabnzbd/config/:/config/
-      - /share/Docker/sabnzbd/media/:/data/media/
+      - /share/Media:/data/media/
     restart: always
 
   sonarr:
@@ -31,7 +31,7 @@ services:
       SONARR__LOG__LEVEL: info
     volumes:
       - /share/Docker/sonarr/config/:/config/
-      - /share/Docker/sonarr/media/:/data/media/
+      - /share/Media:/data/media/
     restart: always
 
   radarr:
@@ -50,5 +50,5 @@ services:
       RADARR__LOG__LEVEL: info
     volumes:
       - /share/Docker/radarr/config/:/config/
-      - /share/Docker/radarr/media/:/data/media/
+      - /share/Media:/data/media/
     restart: always
