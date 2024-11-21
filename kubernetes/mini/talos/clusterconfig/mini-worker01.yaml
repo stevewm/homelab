@@ -10,7 +10,7 @@ machine:
   certSANs:
     - 127.0.0.1
   kubelet:
-    image: ghcr.io/siderolabs/kubelet:v1.31.1
+    image: ghcr.io/siderolabs/kubelet:v1.31.3
     extraArgs:
       feature-gates: NewVolumeManagerReconstruction=false
       rotate-server-certificates: "true"
