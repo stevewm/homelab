@@ -2,9 +2,9 @@
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   "packageRules": [
     {
-      description: "Mini cluster",
-      matchFileNames: ["**/kubernetes/mini/**"],
-      additionalBranchPrefix: "mini-"
+      description: "main cluster",
+      matchFileNames: ["**/kubernetes/main/**"],
+      additionalBranchPrefix: "main-"
     },
     {
       description: "NAS",

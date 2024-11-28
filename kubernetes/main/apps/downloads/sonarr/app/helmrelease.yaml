@@ -1,0 +1,162 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app sonarr
+spec:
+  interval: 30m
+  maxHistory: 3
+  chart:
+    spec:
+      chart: app-template
+      version: 3.5.1
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    defaultPodOptions:
+      automountServiceAccountToken: false
+    controllers:
+      sonarr:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        strategy: Recreate
+        pod:
+          labels:
+            ingress.home.arpa/nginx-internal: allow
+            ingress.home.arpa/homepage: allow
+            egress.home.arpa/kubedns: allow
+            monitoring.home.arpa/prometheus: allow
+          securityContext:
+            runAsUser: ${APP_UID}
+            runAsGroup: ${APP_GID}
+            runAsNonRoot: true
+            fsGroup: ${APP_GID}
+            fsGroupChangePolicy: OnRootMismatch
+        containers:
+          app:
+            image:
+              repository: ghcr.io/onedr0p/sonarr
+              tag: 4.0.9.2244@sha256:cb696b95fbd35c6208914b5127f9faa6e667c1e5c6a43ddc8a7239347a8592b8
+            env:
+              COMPlus_EnableDiagnostics: "0"
+              SONARR__APP_INSTANCENAME: Sonarr
+              SONARR__AUTH__APIKEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: sonarr
+                    key: api_key
+              SONARR__AUTH__METHOD: External
+              SONARR__AUTH_REQUIRED: DisabledForLocalAddresses
+              SONARR__LOG__DBENABLED: "False"
+              SONARR__LOG__LEVEL: info
+              SONARR__SERVER__PORT: &port 80
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /ping
+                    port: *port
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+            resources:
+              requests:
+                cpu: 10m
+                memory: 272M
+              limits:
+                memory: 420M
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop: [ALL]
+          exporter:
+            dependsOn: app
+            args: ['sonarr']
+            image:
+              repository: ghcr.io/onedr0p/exportarr
+              tag: v2.0.1@sha256:727e7bc8f2f0934a2117978c59f4476b954018b849a010ea6cfb380bd6539644
+            env:
+              PORT: &metrics 9707
+              URL: http://sonarr
+              API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: sonarr
+                    key: api_key
+    serviceMonitor:
+      metrics:
+        enabled: true
+        serviceName: sonarr
+        endpoints:
+          - port: metrics
+            scheme: http
+            path: /metrics
+            interval: 15m
+            scrapeTimeout: 2m
+    service:
+      app:
+        controller: *app
+        nameOverride: sonarr
+        ports:
+          http:
+            port: *port
+          metrics:
+            port: *metrics
+    ingress:
+      app:
+        className: nginx-internal
+        hosts:
+          - host: &host ${APP_SUBDOMAIN}.${DOMAIN}
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+        tls:
+          - hosts:
+              - *host
+        annotations:
+          gethomepage.dev/name: *app
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: downloads
+          gethomepage.dev/icon: sonarr.png
+          # https://github.com/gethomepage/homepage/issues/1553
+          gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_SONARR_API_KEY}}` }}"
+          gethomepage.dev/widget.type: sonarr
+          gethomepage.dev/widget.url: "http://sonarr.downloads.svc.cluster.local"
+          nginx.ingress.kubernetes.io/configuration-snippet: |
+            proxy_set_header Accept-Encoding "";
+            sub_filter
+            '</head>'
+            '<link rel="stylesheet" type="text/css" href="https://themes.${DOMAIN}/css/base/sonarr/plex.css">
+            <link ref="stylesheet" type="text/css" href="https://themes.${DOMAIN}/css/addons/sonarr/sonarr-text-logo/sonarr-text-logo.css">
+            </head>';
+            sub_filter_once on;
+    persistence:
+      media:
+        type: nfs
+        server: ${NAS}
+        path: /volume1/Media
+        globalMounts:
+          - path: /data/media
+      config:
+        existingClaim: "${VOLSYNC_CLAIM}"

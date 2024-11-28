@@ -1,0 +1,139 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/budimanjojo/talhelper/master/pkg/config/schemas/talconfig.json
+---
+clusterName: main
+# renovate: depName=ghcr.io/siderolabs/installer datasource=docker
+talosVersion: v1.8.1
+# renovate: depName=ghcr.io/siderolabs/kubelet datasource=docker
+kubernetesVersion: v1.31.1
+endpoint: https://192.168.1.55:6443
+allowSchedulingOnMasters: true
+allowSchedulingOnControlPlanes: true
+cniConfig:
+  name: none
+
+additionalApiServerCertSans: &san
+  - 127.0.0.1 # KubePrism
+  - 192.168.1.55
+additionalMachineCertSans: *san
+
+nodes:
+  - hostname: control01
+    ipAddress: 192.168.1.51
+    controlPlane: true
+    disableSearchDomain: true
+    machineSpec:
+      mode: metal
+      arch: amd64
+      secureboot: true
+      useUKI: true
+    installDiskSelector:
+      size: "<=260GB"
+      type: nvme
+    networkInterfaces:
+      - deviceSelector:
+          busPath: "0*"
+        dhcp: true
+    machineFiles: &machineFiles
+      - path: /etc/cri/conf.d/20-customization.part
+        op: create
+        permissions: 0
+        content: |-
+          [plugins."io.containerd.grpc.v1.cri"]
+            enable_unprivileged_ports = true
+
+  - hostname: control02
+    ipAddress: 192.168.1.52
+    controlPlane: true
+    disableSearchDomain: true
+    machineSpec:
+      mode: metal
+      arch: amd64
+      secureboot: true
+      useUKI: true
+    installDiskSelector:
+      size: "<=260GB"
+      type: nvme
+    networkInterfaces:
+      - deviceSelector:
+          busPath: "0*"
+        dhcp: true
+    machineFiles: *machineFiles
+
+  - hostname: control03
+    ipAddress: 192.168.1.53
+    controlPlane: true
+    disableSearchDomain: true
+    machineSpec:
+      mode: metal
+      arch: amd64
+      secureboot: true
+      useUKI: true
+    installDiskSelector:
+      size: "<=260GB"
+      type: nvme
+    networkInterfaces:
+      - deviceSelector:
+          busPath: "0*"
+        dhcp: true
+    machineFiles: *machineFiles
+
+controlPlane:
+  schematic:
+    customization:
+      systemExtensions:
+        officialExtensions:
+          - siderolabs/intel-ucode
+          - siderolabs/i915-ucode
+  patches:
+    # Extra kubelet mounts (required for OpenEBS)
+    - &kubelet_mounts |-
+      machine:
+        kubelet:
+          extraMounts:
+            - destination: /var/openebs/local
+              type: bind
+              source: /var/openebs/local
+              options:
+                - bind
+                - rshared
+                - rw
+
+    # Enable disk encryption
+    - &encrypt |-
+      machine:
+        systemDiskEncryption:
+          ephemeral:
+            provider: luks2
+            keys:
+              - slot: 0
+                nodeID: {}
+          state:
+            provider: luks2
+            keys:
+              - slot: 0
+                nodeID: {}
+    - &wipe |-
+      machine:
+        install:
+          wipe: true
+    # Replace kubeproxy with cilium
+    - &kubeproxy |-
+      cluster:
+        proxy:
+          disabled: true
+    - &cert |- # Kubelet configuration
+      machine:
+        kubelet:
+          extraArgs:
+            feature-gates: NewVolumeManagerReconstruction=false
+            rotate-server-certificates: "true"
+          extraConfig:
+            maxPods: 150
+    - |-
+      machine:
+        network:
+          interfaces:
+            - deviceSelector:
+                busPath: "0*"
+              vip:
+                ip: 192.168.1.55

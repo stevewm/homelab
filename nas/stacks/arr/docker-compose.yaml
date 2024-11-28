@@ -5,7 +5,7 @@ services:
   sabnzbd:
     container_name: sabnzbd
     user: 0:0
-    image: ghcr.io/stevewm/sabnzbd:4.3.3@sha256:31c7519be90637005c9cb9665676a83bbbeac038148a4415beec344a1feee473
+    image: ghcr.io/onedr0p/sabnzbd:4.3.3@sha256:31c7519be90637005c9cb9665676a83bbbeac038148a4415beec344a1feee473
     ports:
       - 8080:8080/tcp
     environment:
@@ -18,7 +18,7 @@ services:
   sonarr:
     container_name: sonarr
     user: 0:0
-    image: ghcr.io/stevewm/sonarr:4.0.9.2244@sha256:cb696b95fbd35c6208914b5127f9faa6e667c1e5c6a43ddc8a7239347a8592b8
+    image: ghcr.io/onedr0p/sonarr:4.0.9.2244@sha256:cb696b95fbd35c6208914b5127f9faa6e667c1e5c6a43ddc8a7239347a8592b8
     ports:
       - 8989:8989/tcp
     environment:
@@ -37,7 +37,7 @@ services:
   radarr:
     container_name: radarr
     user: 0:0
-    image: ghcr.io/stevewm/radarr:5.11.0.9244@sha256:8262f553897618c4dca2d0574490f3cb310a8e9f1e01e78b4a0195768844ec8e
+    image: ghcr.io/onedr0p/radarr:5.11.0.9244@sha256:8262f553897618c4dca2d0574490f3cb310a8e9f1e01e78b4a0195768844ec8e
     ports:
       - 7878:7878/tcp
     environment:

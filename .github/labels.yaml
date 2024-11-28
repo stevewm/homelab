@@ -1,6 +1,6 @@
 ---
 # Clusters
-- name: cluster/mini
+- name: cluster/main
   color: 007cba
 - name: cluster/pi
   color: c51a4a

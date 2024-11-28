@@ -1,8 +1,8 @@
 ---
 # Clusters
-cluster/mini:
+cluster/main:
   - changed-files:
-      - any-glob-to-any-file: kubernetes/mini/**
+      - any-glob-to-any-file: kubernetes/main/**
 
 # Area
 core:
