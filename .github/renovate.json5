@@ -9,10 +9,10 @@
     ":disableRateLimiting",
     ":enablePreCommit",
     // Reusable config
-    "github>stevewm/renovate-config:automerge-docker-digest",
-    "github>stevewm/renovate-config:automerge-github-actions",
-    "github>stevewm/renovate-config:commit-messages",
-    "github>stevewm/renovate-config:semantic-commits"
+    "github>stevewm//renovate-config:automerge-docker-digest",
+    "github>stevewm//renovate-config:automerge-github-actions",
+    "github>stevewm//renovate-config:commit-messages",
+    "github>stevewm//renovate-config:semantic-commits"
     // In-repo config
     "github>stevewm/homelab//.github/renovate/clusters.json5",
     "github>stevewm/homelab//.github/renovate/customDatasources.json5",
