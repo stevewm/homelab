@@ -18,20 +18,6 @@
       matchUpdateTypes: ["minor", "patch"],
       matchPackageNames: ["kube-prometheus-stack"],
       ignoreTests: false,
-    },
-    {
-      description: "Auto merge pre-commit hooks",
-      matchManagers: ["pre-commit"],
-      automerge: true,
-      automergeType: "branch",
-      ignoreTests: true,
-    },
-    {
-      description: "Auto merge GitHub Actions",
-      matchManagers: ["github-actions"],
-      automerge: true,
-      automergeType: "branch",
-      ignoreTests: true,
-    },
+    }
   ]
 }
