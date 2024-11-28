@@ -1,0 +1,91 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: core-crunchy-postgres-operator
+  namespace: flux-system
+spec:
+  targetNamespace: database
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app crunchy-postgres
+      app.kubernetes.io/component: operator
+  interval: 10m
+  path: ./kubernetes/main/core/database/crunchy-postgres/operator
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+  wait: true
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: core-crunchy-postgres-cluster
+  namespace: flux-system
+spec:
+  targetNamespace: database
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app crunchy-postgres
+      app.kubernetes.io/component: cluster
+  interval: 10m
+  path: ./kubernetes/main/core/database/crunchy-postgres/cluster
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+  wait: true
+  dependsOn:
+    - name: core-crunchy-postgres-operator
+    - name: core-crunchy-postgres-userinit-controller
+    - name: core-crunchy-postgres-cluster-secretstore
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: core-crunchy-postgres-cluster-secretstore
+  namespace: flux-system
+spec:
+  targetNamespace: database
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app core-crunchy-postgres-cluster-secretstore
+      app.kubernetes.io/component: secretstore
+  interval: 10m
+  path: ./kubernetes/main/core/database/crunchy-postgres/cluster-secretstore
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+  wait: true
+  dependsOn:
+    - name: core-crunchy-postgres-operator
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: core-crunchy-postgres-userinit-controller
+  namespace: flux-system
+spec:
+  targetNamespace: database
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app crunchy-postgres
+      app.kubernetes.io/component: userinit-controller
+  interval: 10m
+  path: ./kubernetes/main/core/database/crunchy-postgres/userinit-controller
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+  wait: true
+  dependsOn:
+    - name: core-crunchy-postgres-operator

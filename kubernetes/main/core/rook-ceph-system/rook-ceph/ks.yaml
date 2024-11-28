@@ -1,0 +1,50 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: core-rook-ceph-operator
+  namespace: flux-system
+spec:
+  targetNamespace: rook-ceph-system
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app rook-ceph-operator
+      app.kubernetes.io/part-of: rook-ceph
+  interval: 10m
+  path: ./kubernetes/main/core/rook-ceph-system/rook-ceph/operator
+  prune: false # absolutely do not
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+  wait: true
+  dependsOn:
+    - name: core-cert-manager
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: core-rook-ceph-cluster
+  namespace: flux-system
+spec:
+  targetNamespace: rook-ceph-system
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app rook-ceph-cluster
+      app.kubernetes.io/part-of: rook-ceph
+  interval: 10m
+  path: ./kubernetes/main/core/rook-ceph-system/rook-ceph/cluster
+  prune: false # absolutely do not
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+  wait: true
+  dependsOn:
+    - name: core-rook-ceph-operator
+    - name: core-snapshot-controller
+  postBuild:
+    substitute:
+      APP: *app
+      APP_SUBDOMAIN: rook

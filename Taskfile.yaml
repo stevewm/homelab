@@ -5,7 +5,7 @@ tasks:
   bootstrap:
     desc: "Run a cluster bootstrap script"
     vars:
-      cluster: '{{.cluster | default "mini"}}'
+      cluster: '{{.cluster | default "main"}}'
     silent: true
     prompt: Continue to bootstrap?
     dir: ./kubernetes/{{.cluster}}/
@@ -26,7 +26,7 @@ tasks:
   genconfig:
     desc: "Generate Talos machineconfigs"
     vars:
-      cluster: '{{.cluster | default "mini"}}'
+      cluster: '{{.cluster | default "main"}}'
     silent: true
     dir: ./kubernetes/{{.cluster}}/
     cmds:
@@ -35,7 +35,7 @@ tasks:
   validatebuildarr:
     desc: "Validate Buildarr Config"
     silent: true
-    dir: ./kubernetes/mini/apps/downloads/buildarr/app/config
+    dir: ./kubernetes/main/apps/downloads/buildarr/app/config
     cmds:
       - cat buildarr.yaml.tmpl | renvsubst -f -o buildarr.yml
       - buildarr test-config
@@ -44,6 +44,6 @@ tasks:
   schemas:
     desc: "Show YAML files without a schema"
     silent: true
-    dir: ./kubernetes/mini
+    dir: ./kubernetes/main
     cmds:
       - find . -type f -name '*.yaml' -exec grep -L '^# yaml-language-server:' {} \;

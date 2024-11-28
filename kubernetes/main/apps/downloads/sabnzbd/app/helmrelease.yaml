@@ -1,0 +1,167 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app sabnzbd
+spec:
+  interval: 30m
+  maxHistory: 3
+  chart:
+    spec:
+      chart: app-template
+      version: 3.5.1
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    defaultPodOptions:
+      automountServiceAccountToken: false
+    controllers:
+      sabnzbd:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        strategy: Recreate
+        pod:
+          labels:
+            ingress.home.arpa/nginx-internal: allow
+            ingress.home.arpa/homepage: allow
+            egress.home.arpa/kubedns: allow
+            monitoring.home.arpa/prometheus: allow
+          securityContext:
+            runAsUser: ${APP_UID}
+            runAsGroup: ${APP_GID}
+            runAsNonRoot: true
+            fsGroup: ${APP_GID}
+            fsGroupChangePolicy: OnRootMismatch
+        containers:
+          app:
+            image:
+              repository: ghcr.io/onedr0p/sabnzbd
+              tag: 4.3.3@sha256:31c7519be90637005c9cb9665676a83bbbeac038148a4415beec344a1feee473
+            env:
+              SABNZBD__PORT: &port 80
+              SABNZBD__API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: sabnzbd
+                    key: api_key
+              SABNZBD__NZB_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: sabnzbd
+                    key: nzb_key
+              SABNZBD__HOST_WHITELIST_ENTRIES: >-
+                sabnzbd, sabnzbd.downloads, sabnzbd.downloads.svc, sabnzbd.downloads.svc.cluster, sabnzbd.downloads.svc.cluster.local, ${APP_SUBDOMAIN}.${DOMAIN}
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /api?mode=version
+                    port: *port
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+            resources:
+              requests:
+                cpu: 10m
+                memory: 64M
+              limits:
+                memory: 4G
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop: [ALL]
+          exporter:
+            dependsOn: app
+            args: ['sabnzbd']
+            image:
+              repository: ghcr.io/onedr0p/exportarr
+              tag: v2.0.1@sha256:727e7bc8f2f0934a2117978c59f4476b954018b849a010ea6cfb380bd6539644
+            env:
+              PORT: &metrics 9707
+              URL: http://sabnzbd
+              API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: sabnzbd
+                    key: api_key
+    serviceMonitor:
+      metrics:
+        enabled: true
+        serviceName: sabnzbd
+        endpoints:
+          - port: metrics
+            scheme: http
+            path: /metrics
+            interval: 15m
+            scrapeTimeout: 2m
+    service:
+      app:
+        controller: *app
+        nameOverride: sabnzbd
+        ports:
+          http:
+            port: *port
+          metrics:
+            port: *metrics
+    ingress:
+      app:
+        enabled: true
+        className: nginx-internal
+        hosts:
+          - host: &host ${APP_SUBDOMAIN}.${DOMAIN}
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+        tls:
+          - hosts:
+              - *host
+        annotations:
+          gethomepage.dev/name: *app
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: downloads
+          gethomepage.dev/icon: sabnzbd-alt.png
+          # https://github.com/gethomepage/homepage/issues/1553
+          gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_SABNZBD_API_KEY}}` }}"
+          gethomepage.dev/widget.type: sabnzbd
+          gethomepage.dev/widget.url: "http://sabnzbd.downloads.svc.cluster.local"
+          nginx.ingress.kubernetes.io/configuration-snippet: |
+            proxy_set_header Accept-Encoding "";
+            sub_filter
+            '</head>'
+            '<link rel="stylesheet" type="text/css" href="https://themes.${DOMAIN}/css/base/sabnzbd/plex.css">
+            </head>';
+            sub_filter_once on;
+    persistence:
+      media:
+        type: nfs
+        server: ${NAS}
+        path: /volume1/Media
+        globalMounts:
+          - path: /data/media
+      config:
+        existingClaim: ${VOLSYNC_CLAIM}
+      tmp:
+        type: emptyDir
+        globalMounts:
+          - path: /tmp
