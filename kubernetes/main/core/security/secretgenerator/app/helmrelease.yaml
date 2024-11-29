@@ -37,6 +37,8 @@ spec:
             runAsGroup: ${APP_GID}
             fsGroup: ${APP_GID}
             fsGroupChangePolicy: OnRootMismatch
+          imagePullSecrets:
+            - name: ghcr
         initContainers:
           init-config:
             image:
@@ -58,8 +60,8 @@ spec:
         containers:
           app:
             image:
-              repository: ghcr.io/stevewm/secretgenerator
-              tag: 0.1.0@sha256:7e9184af78cc2ffeb9b158de109c57ada47d40e814106dbb2a31e63dcf3d89f3
+              repository: ghcr.io/stevewm/es-secretgenerator
+              tag: 0.0.1
             env:
               CONFIG_PATH: /config
             securityContext:
