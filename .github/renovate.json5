@@ -10,6 +10,7 @@
     "github>stevewm/homelab//.github/renovate/grafanaDashboards.json5",
     "github>stevewm/homelab//.github/renovate/groups.json5",
   ],
+  
   ignorePaths: [
     "**kubernetes/**/.archive/**",
 
