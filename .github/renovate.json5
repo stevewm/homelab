@@ -1,26 +1,15 @@
 {
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   extends: [
-    "config:recommended",
-    ":semanticCommits",
-    ":dependencyDashboard",
-    "docker:enableMajor",
-    "schedule:weekends", // Reduce near-constant PR spam
-    ":disableRateLimiting",
-    ":enablePreCommit",
     // Reusable config
+    "github>stevewm/renovate-config:default.json5",
     "github>stevewm/renovate-config:automerge-docker-digest.json5",
-    "github>stevewm/renovate-config:automerge-github-actions.json5",
-    "github>stevewm/renovate-config:commit-messages.json5",
-    "github>stevewm/renovate-config:semantic-commits.json5",
     // In-repo config
     "github>stevewm/homelab//.github/renovate/clusters.json5",
     "github>stevewm/homelab//.github/renovate/customDatasources.json5",
     "github>stevewm/homelab//.github/renovate/grafanaDashboards.json5",
     "github>stevewm/homelab//.github/renovate/groups.json5",
   ],
-  "timezone": "America/Vancouver",
-  "suppressNotifications": ["prIgnoreNotification"],
   ignorePaths: [
     "**kubernetes/**/.archive/**",
 
