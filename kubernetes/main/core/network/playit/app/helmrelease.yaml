@@ -44,8 +44,8 @@ spec:
         containers:
           app:
             image:
-              repository: ghcr.io/stevewm/playit
-              tag: 0.15.26@sha256:5541c2a204f6aacdc4d90a1fd73bd7688c75719c0e8d7e5fab3db40e3a49c5d9
+              repository: ghcr.io/playit-cloud/playit-agent
+              tag: 0.15.26@sha256:6d38f9a6f61c650b7cbf93e5b5ee7d2687475468d5b0964a9833261d7417ceb8
             probes:
               liveness:
                 enabled: false
