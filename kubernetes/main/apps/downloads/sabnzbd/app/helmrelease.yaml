@@ -50,7 +50,7 @@ spec:
           app:
             image:
               repository: ghcr.io/onedr0p/sabnzbd
-              tag: 4.3.3@sha256:31c7519be90637005c9cb9665676a83bbbeac038148a4415beec344a1feee473
+              tag: 4.3.3@sha256:86c645db93affcbf01cc2bce2560082bfde791009e1506dba68269b9c50bc341
             env:
               SABNZBD__PORT: &port 80
               SABNZBD__API_KEY:
