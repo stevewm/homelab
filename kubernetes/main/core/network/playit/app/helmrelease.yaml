@@ -45,7 +45,7 @@ spec:
           app:
             image:
               repository: ghcr.io/playit-cloud/playit-agent
-              tag: 0.15.26@sha256:6d38f9a6f61c650b7cbf93e5b5ee7d2687475468d5b0964a9833261d7417ceb8
+              tag: 0.15.26@sha256:3d08eb4a627a6d167f3cce497d8e2ec8f9e7d2df4e96f0599ca41e4b957c852c
             probes:
               liveness:
                 enabled: false
