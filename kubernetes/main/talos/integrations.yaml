@@ -21,7 +21,7 @@ releases:
     namespace: system
     chart: postfinance/kubelet-csr-approver
     # renovate: depName=postfinance/kubelet-csr-approver datasource=docker
-    version: 1.2.2
+    version: 1.2.3
     wait: true
     values:
       - https://raw.githubusercontent.com/stevewm/homelab/main/kubernetes/main/core/system/kubelet-csr-approver/app/values.yaml
