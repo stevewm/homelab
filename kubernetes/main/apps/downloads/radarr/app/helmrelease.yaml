@@ -50,7 +50,7 @@ spec:
           app:
             image:
               repository: ghcr.io/onedr0p/radarr
-              tag: 5.11.0.9244@sha256:9e8c571b554549d7e01c623d423f1fbe8ec04e2c4de8bab080f5425cf4a8a3e3
+              tag: 5.15.1.9463@sha256:d097137c8190f13ff8e2e92f7fb748083d377c7f8f9a90e1460fd3b6460c0488
             env:
               COMPlus_EnableDiagnostics: "0"
               RADARR__APP__INSTANCENAME: Radarr
