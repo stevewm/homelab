@@ -50,7 +50,7 @@ spec:
               MINIO_ROOT_USER: "admin"
               MINIO_ROOT_PASSWORD:
                 secretKeyRef:
-                  name: minio
+                  name: minio-generated
                   key: password
             args: ["server", "/data", "--console-address", ":9001"]
             probes:

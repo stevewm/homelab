@@ -56,7 +56,7 @@ spec:
               PROWLARR__AUTH__APIKEY:
                 valueFrom:
                   secretKeyRef:
-                    name: prowlarr
+                    name: prowlarr-generated
                     key: api_key
               PROWLARR__AUTH__REQUIRED: DisabledForLocalAddresses
               PROWLARR__AUTH__METHOD: External

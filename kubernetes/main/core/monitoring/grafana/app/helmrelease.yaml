@@ -428,7 +428,7 @@ spec:
       GF_AUTH_GENERIC_OAUTH_CLIENT_ID: 'grafana'
       GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET:
         secretKeyRef:
-          name: grafana
+          name: grafana-generated
           key: client_secret
       GF_AUTH_GENERIC_OAUTH_SCOPES: 'openid profile email groups'
       GF_AUTH_GENERIC_OAUTH_EMPTY_SCOPES: 'false'
