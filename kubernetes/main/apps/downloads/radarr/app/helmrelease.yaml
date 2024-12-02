@@ -57,7 +57,7 @@ spec:
               RADARR__AUTH__APIKEY:
                 valueFrom:
                   secretKeyRef:
-                    name: radarr
+                    name: radarr-generated
                     key: api_key
               RADARR__AUTH__METHOD: External
               RADARR__AUTH__REQUIRED: DisabledForLocalAddresses

@@ -32,15 +32,6 @@ tasks:
     cmds:
       - talhelper genconfig
 
-  validatebuildarr:
-    desc: "Validate Buildarr Config"
-    silent: true
-    dir: ./kubernetes/main/apps/downloads/buildarr/app/config
-    cmds:
-      - cat buildarr.yaml.tmpl | renvsubst -f -o buildarr.yml
-      - buildarr test-config
-      - rm buildarr.yml
-
   schemas:
     desc: "Show YAML files without a schema"
     silent: true

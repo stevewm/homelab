@@ -122,7 +122,7 @@ spec:
               RCON_PASSWORD:
                 valueFrom:
                   secretKeyRef:
-                    name: minecraft
+                    name: minecraft-generated
                     key: rcon_password
               ENABLE_QUERY: 'true'
               # Whitelist / Ops
