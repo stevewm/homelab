@@ -1,0 +1,20 @@
+---
+version: '3'
+
+tasks:
+
+  setup:
+    desc: "Setup homelab"
+    silent: true
+    cmds:
+      - doppler setup --no-interactive
+      - uv sync --directory={{ .ROOT_DIR }}/scripts/
+
+  schemas:
+    desc: "Show YAML files without a schema [cluster=main]"
+    silent: true
+    vars:
+      cluster: '{{.cluster | default "main"}}'
+    dir: ./kubernetes/{{.cluster}}
+    cmds:
+      - find . -type f -name '*.yaml' -exec grep -L '^# yaml-language-server:' {} \;
