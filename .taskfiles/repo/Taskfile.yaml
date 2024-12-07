@@ -9,6 +9,7 @@ tasks:
     cmds:
       - doppler setup --no-interactive
       - uv sync --directory={{ .ROOT_DIR }}/scripts/
+      - pre-commit install
 
   schemas:
     desc: "Show YAML files without a schema [cluster=main]"
