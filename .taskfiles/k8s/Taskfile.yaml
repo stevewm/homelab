@@ -1,0 +1,28 @@
+---
+version: '3'
+
+env:
+  KUBECONFIG: '{{.ROOT_DIR}}/kubeconfig'
+
+tasks:
+
+  bootstrap:
+    desc: "Run a cluster bootstrap script [cluster=main]"
+    vars:
+      cluster: '{{.cluster | default "main"}}'
+    silent: true
+    prompt: Continue to bootstrap?
+    dir: ./kubernetes/{{.cluster}}/
+    cmds:
+      - ./bootstrap.sh
+
+  webhook:
+    desc: "Print the FluxCD webhook URL"
+    silent: true
+    cmds:
+      - echo "https://{{.DOMAIN}}{{.WEBHOOK_PATH}}"
+    vars:
+      DOMAIN:
+        sh: kubectl get ingress fluxcd-webhook-receiver -n flux-system -o jsonpath='{.spec.rules[0].host}'
+      WEBHOOK_PATH:
+        sh: kubectl get receiver homelab-github-receiver -n flux-system -o jsonpath='{.status.webhookPath}'

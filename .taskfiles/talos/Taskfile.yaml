@@ -1,0 +1,33 @@
+---
+version: '3'
+
+env:
+  TALOSCONFIG: '{{.ROOT_DIR}}/kubernetes/{{.cluster}}/talos'
+
+tasks:
+
+  genconfig:
+    desc: "Generate Talos machineconfigs [cluster=main]"
+    vars:
+      cluster: '{{.cluster | default "main"}}'
+    silent: true
+    dir: ./kubernetes/{{.cluster}}/
+    cmds: # Destination set in doppler.yaml
+      - doppler run -- talhelper genconfig -s talsecret.tmpl.yaml
+
+  pushsecrets:
+    desc: Pushes Talos secrets to Doppler from talsecret.yaml [debug=true]
+    silent: true
+    vars:
+      cluster: '{{.cluster | default "main"}}'
+      debug: '{{.debug | default false}}'
+    env:
+      TALOS_SECRETS_DRYRUN: '{{.debug}}'
+      TALCONFIG: '{{.ROOT_DIR}}/kubernetes/{{.cluster}}/talos'
+    dir: ./kubernetes/{{.cluster}}/talos/
+    preconditions:
+      - talhelper
+      - doppler
+      - test -f $TALCONFIG/talsecret.yaml
+    cmds:
+      - python {{ .ROOT_DIR }}/scripts/doppler-talos.py

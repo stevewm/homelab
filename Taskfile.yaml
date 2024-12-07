@@ -8,65 +8,8 @@ tasks:
     cmds:
       - task --list
 
-  setup:
-    desc: "Setup homelab"
-    silent: true
-    cmds:
-      - doppler setup --no-interactive
-      - uv sync --directory={{ .ROOT_DIR }}/scripts/
-
-  bootstrap:
-    desc: "Run a cluster bootstrap script [cluster=main]"
-    vars:
-      cluster: '{{.cluster | default "main"}}'
-    silent: true
-    prompt: Continue to bootstrap?
-    dir: ./kubernetes/{{.cluster}}/
-    cmds:
-      - ./bootstrap.sh
-
-  webhook:
-    desc: "Print the FluxCD webhook URL"
-    silent: true
-    cmds:
-      - echo "https://{{.DOMAIN}}{{.WEBHOOK_PATH}}"
-    vars:
-      DOMAIN:
-        sh: kubectl get ingress fluxcd-webhook-receiver -n flux-system -o jsonpath='{.spec.rules[0].host}'
-      WEBHOOK_PATH:
-        sh: kubectl get receiver homelab-github-receiver -n flux-system -o jsonpath='{.status.webhookPath}'
-
-  genconfig:
-    desc: "Generate Talos machineconfigs [cluster=main]"
-    vars:
-      cluster: '{{.cluster | default "main"}}'
-    silent: true
-    dir: ./kubernetes/{{.cluster}}/
-    cmds: # Destination set in doppler.yaml
-      - doppler run -- talhelper genconfig -s talsecret.tmpl.yaml
-
-  pushsecrets:
-    desc: Pushes Talos secrets to Doppler from talsecret.yaml [debug=true]
-    silent: true
-    vars:
-      cluster: '{{.cluster | default "main"}}'
-      debug: '{{.debug | default false}}'
-    env:
-      TALOS_SECRETS_DRYRUN: '{{.debug}}'
-      TALCONFIG: '{{.ROOT_DIR}}/kubernetes/{{.cluster}}/talos'
-    dir: ./kubernetes/{{.cluster}}/talos/
-    preconditions:
-      - talhelper
-      - doppler
-      - test -f $TALCONFIG/talsecret.yaml
-    cmds:
-      - python {{ .ROOT_DIR }}/scripts/doppler-talos.py
-
-  schemas:
-    desc: "Show YAML files without a schema [cluster=main]"
-    silent: true
-    vars:
-      cluster: '{{.cluster | default "main"}}'
-    dir: ./kubernetes/{{.cluster}}
-    cmds:
-      - find . -type f -name '*.yaml' -exec grep -L '^# yaml-language-server:' {} \;
+includes:
+  repo: ./.taskfiles/repo/Taskfile.yaml
+  talos: ./.taskfiles/talos/Taskfile.yaml
+  k8s: ./.taskfiles/k8s/Taskfile.yaml
+#  nas: ./.taskfiles/nas/Taskfile.yaml
