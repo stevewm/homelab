@@ -2,8 +2,21 @@
 version: '3'
 
 tasks:
+
+  default:
+    silent: true
+    cmds:
+      - task --list
+
+  setup:
+    desc: "Setup homelab"
+    silent: true
+    cmds:
+      - doppler setup --no-interactive
+      - uv sync --directory={{ .ROOT_DIR }}/scripts/
+
   bootstrap:
-    desc: "Run a cluster bootstrap script"
+    desc: "Run a cluster bootstrap script [cluster=main]"
     vars:
       cluster: '{{.cluster | default "main"}}'
     silent: true
@@ -24,17 +37,36 @@ tasks:
         sh: kubectl get receiver homelab-github-receiver -n flux-system -o jsonpath='{.status.webhookPath}'
 
   genconfig:
-    desc: "Generate Talos machineconfigs"
+    desc: "Generate Talos machineconfigs [cluster=main]"
     vars:
       cluster: '{{.cluster | default "main"}}'
     silent: true
     dir: ./kubernetes/{{.cluster}}/
+    cmds: # Destination set in doppler.yaml
+      - doppler run -- talhelper genconfig -s talsecret.tmpl.yaml
+
+  pushsecrets:
+    desc: Pushes Talos secrets to Doppler from talsecret.yaml [debug=true]
+    silent: true
+    vars:
+      cluster: '{{.cluster | default "main"}}'
+      debug: '{{.debug | default false}}'
+    env:
+      TALOS_SECRETS_DRYRUN: '{{.debug}}'
+      TALCONFIG: '{{.ROOT_DIR}}/kubernetes/{{.cluster}}/talos'
+    dir: ./kubernetes/{{.cluster}}/talos/
+    preconditions:
+      - talhelper
+      - doppler
+      - test -f $TALCONFIG/talsecret.yaml
     cmds:
-      - talhelper genconfig
+      - python {{ .ROOT_DIR }}/scripts/doppler-talos.py
 
   schemas:
-    desc: "Show YAML files without a schema"
+    desc: "Show YAML files without a schema [cluster=main]"
     silent: true
-    dir: ./kubernetes/main
+    vars:
+      cluster: '{{.cluster | default "main"}}'
+    dir: ./kubernetes/{{.cluster}}
     cmds:
       - find . -type f -name '*.yaml' -exec grep -L '^# yaml-language-server:' {} \;

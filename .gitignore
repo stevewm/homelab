@@ -34,6 +34,9 @@ terraform.rc
 
 # secrets
 doppler.json
+talsecret.yaml
 
 # python
-.virtualenv/
+.venv/
+uv.lock
+.python-version
