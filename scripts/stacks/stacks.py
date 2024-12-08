@@ -24,7 +24,7 @@ class Stack:
         self.file = compose_file
         self.repository = repository
         self.update_interval = update_interval
-        self.env = env  # { "name": "name", "value": "value" }
+        self.env = env  # { "name": "value" }
 
     def __repr__(self):
         return f"Stack(name={self.name}, file={self.file}, repository={self.repository}, env_keys={self.env})"

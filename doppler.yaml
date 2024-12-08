@@ -1,9 +1,18 @@
 ---
 setup:
-  - project: talos
-    path: kubernetes/main/talos
+
+  - path: nas/
+    project: homelab # TODO: separate setup for NAS
     config: prd
 
-  - project: homelab
-    path: kubernetes/main/
+  - path: kubernetes/main/talos
+    project: talos
+    config: prd
+
+  - path: kubernetes/main/
+    project: homelab
+    config: prd
+
+  - path: ./
+    project: homelab
     config: prd
