@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 
 DEBUG = os.environ.get("TALOS_SECRETS_DRYRUN", False).lower == "true"
-TALSECRET = f"{os.environ.get("TALCONFIG")}/talsecret.yaml"
+TALSECRET = f"{os.environ.get('TALCONFIG')}/talsecret.yaml"
 
 if DEBUG:
     logger.setLevel(logging.DEBUG)
@@ -26,7 +26,7 @@ secrets = {
     "certs.etcd.crt": "ETCDCERT",
     "certs.etcd.key": "ETCDKEY",
     "certs.k8s.crt": "K8SCERT",
-    "certs.k8s.crt": "K8SKEY",
+    "certs.k8s.key": "K8SKEY",
     "certs.k8saggregator.crt": "K8SAGGCERT",
     "certs.k8saggregator.key": "K8SAGGKEY",
     "certs.k8sserviceaccount.key": "K8SSAKEY",
@@ -41,6 +41,7 @@ with open(TALSECRET, "r") as f:
         logger.error(f"Error loading {TALSECRET}: {exc}")
         sys.exit(1)
 
+
 def get_value_from_path(data, path):
     keys = path.split(".")
     for key in keys:
@@ -53,7 +54,9 @@ for path, secret_name in secrets.items():
         value = get_value_from_path(config, path)
         if not DEBUG:
             logger.info(f"Setting {secret_name}")
-            os.system(f"doppler secrets set {secret_name} {value} --silent --no-interactive")
+            os.system(
+                f"doppler secrets set {secret_name} {value} --silent --no-interactive"
+            )
         elif DEBUG:
             logger.debug(f"DEBUG: Would set {secret_name} to: {value}")
     except KeyError as e:
