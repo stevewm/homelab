@@ -22,7 +22,6 @@ services:
     volumes:
       - /share/Docker/pihole-docker/etc-pihole/:/etc/pihole/
       - /share/Docker/pihole-docker/etc-dnsmasq.d/:/etc/dnsmasq.d/
-    restart: always
   exporter:
     container_name: exporter
     image: ekofr/pihole-exporter:v0.4.0
@@ -35,3 +34,4 @@ services:
       PIHOLE_PORT: 3001
       PIHOLE_API_TOKEN: $WEBPASSWORD
       TZ: America/Vancouver
+    restart: always

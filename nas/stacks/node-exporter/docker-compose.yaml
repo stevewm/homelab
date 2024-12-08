@@ -5,7 +5,6 @@ services:
   node-exporter:
     image: prom/node-exporter:v1.8.2
     container_name: node-exporter
-    restart: unless-stopped
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
@@ -18,3 +17,4 @@ services:
     expose:
       - 9100
     network_mode: host
+    restart: unless-stopped

@@ -43,6 +43,11 @@ repos:
     hooks:
       - id: shellcheck
 
+  - repo: https://github.com/petalmd/dockerfile-pre-commit
+    rev: v1.0
+    hooks:
+      - id: dockerlint
+
   # Python Hooks
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.8.2
