@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
 ---
 version: '3'
 
@@ -12,4 +13,4 @@ includes:
   repo: ./.taskfiles/repo/Taskfile.yaml
   talos: ./.taskfiles/talos/Taskfile.yaml
   k8s: ./.taskfiles/k8s/Taskfile.yaml
-#  nas: ./.taskfiles/nas/Taskfile.yaml
+  nas: ./.taskfiles/nas/Taskfile.yaml

@@ -3,6 +3,7 @@ kubeconfig
 Brewfile.lock.json
 *.log
 .vscode/
+.env
 
 # macOS
 .DS_Store
@@ -35,8 +36,11 @@ terraform.rc
 # secrets
 doppler.json
 talsecret.yaml
+nas/stacks/**/env.yaml
 
 # python
 .venv/
 uv.lock
 .python-version
+.ruff_cache
+__pycache__/

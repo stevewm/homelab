@@ -9,7 +9,6 @@ tasks:
     silent: true
     cmds:
       - doppler setup --no-interactive
-      - uv sync --directory={{ .ROOT_DIR }}/scripts/
       - pre-commit install
 
   schemas:

@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+---
+version: '3'
+
+tasks:
+
+  bootstrap:
+    desc: "Bootstrap Portainer by deploying the stack deployer."
+    silent: false
+    preconditions:
+      - which docker doppler
+    vars:
+      stacks: "{{ .ROOT_DIR }}/nas/stacks"
+      stack_deployer: "{{ .stacks }}/stack-deployer"
+      usr:
+        sh: doppler secrets get PORTAINER_USR --plain
+      psw:
+        sh: doppler secrets get PORTAINER_PSW --plain
+      host:
+        sh: doppler secrets get PORTAINER_HOST --plain
+    env:
+      GIT_REPO: https://github.com/stevewm/homelab
+      PORTAINER_HOST: "{{ .host }}"
+      PORTAINER_USERNAME: "{{ .usr }}"
+      PORTAINER_PASSWORD: "{{ .psw }}"
+    dir: "{{ .ROOT_DIR }}/nas"
+    cmds:
+      - doppler run -- sh -c "envsubst < {{ .stack_deployer }}/env.tmpl > {{ .stack_deployer }}/.env"
+      - docker run --rm --env-file {{ .stack_deployer }}/.env stevewm/stack-deployer:latest
+     # - rm -rf {{ .stack_deployer }}/.env
+     # One of the secrets in the template is missing, so the stack deployer fails. Probably a missing value in doppler
