@@ -1,4 +1,11 @@
 #!/usr/bin/env python3
+# /// script
+# requires-python = ">=3.13"
+# dependencies = [
+#     "pyyaml",
+#     "requests",
+# ]
+# ///
 
 # Reads secrets from `talsecret.yaml` and push them to Doppler for use
 # in bootstrapping a cluster.

@@ -31,4 +31,4 @@ tasks:
       - doppler
       - test -f $TALCONFIG/talsecret.yaml
     cmds:
-      - python {{ .ROOT_DIR }}/scripts/doppler-talos.py
+      - uv run {{ .ROOT_DIR }}/scripts/doppler-talos.py
