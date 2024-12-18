@@ -5,7 +5,7 @@ kind: Dragonfly
 metadata:
   name: dragonfly
 spec:
-  image: docker.dragonflydb.io/dragonflydb/dragonfly:v1.25.4
+  image: docker.dragonflydb.io/dragonflydb/dragonfly:v1.25.6
   replicas: 2
   args:
     - "--maxmemory=$(MAX_MEMORY)Mi"
