@@ -18,7 +18,7 @@ services:
   sonarr:
     container_name: sonarr
     user: 0:0
-    image: ghcr.io/onedr0p/sonarr:4.0.11.2680@sha256:09584fb37b5e9ecbf8548962be9b1e928b4abfc0cd773c638463e4ba78e4ebfc
+    image: ghcr.io/onedr0p/sonarr:4.0.11.2680@sha256:61fe40251b0a8684520e6d3897e321430cab9994dd4d77e6ab35b587e0204a6d
     ports:
       - 8989:8989/tcp
     environment:
