@@ -40,3 +40,4 @@ talsecret.yaml
 .venv/
 uv.lock
 .python-version
+.ruff-cache
