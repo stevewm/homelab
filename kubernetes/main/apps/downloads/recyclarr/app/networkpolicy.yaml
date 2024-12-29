@@ -12,11 +12,6 @@ spec:
     - toEndpoints:
         - matchLabels:
             app.kubernetes.io/name: radarr
-      toPorts:
-        - ports:
-            - port: "80"
-              protocol: TCP
-    - toEndpoints:
         - matchLabels:
             app.kubernetes.io/name: sonarr
       toPorts:

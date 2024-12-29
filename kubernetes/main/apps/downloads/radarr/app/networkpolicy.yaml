@@ -11,30 +11,22 @@ spec:
   ingress:
     - fromEndpoints:
         - matchLabels:
-            app.kubernetes.io/name: prowlarr
-        - matchLabels:
-            app.kubernetes.io/name: recyclarr
-        - matchLabels:
             app.kubernetes.io/name: bazarr
-        - matchLabels:
-            app.kubernetes.io/name: buildarr
         - matchLabels:
             app.kubernetes.io/name: jellyseerr
             io.kubernetes.pod.namespace: media
-      toPorts:
-        - ports:
-            - port: "80"
-              protocol: TCP
-
-  egress:
-    - toEndpoints: # prowlarr
         - matchLabels:
             app.kubernetes.io/name: prowlarr
+        - matchLabels:
+            app.kubernetes.io/name: recyclarr
       toPorts:
         - ports:
             - port: "80"
               protocol: TCP
-    - toEndpoints: # sabnzbd
+  egress:
+    - toEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: prowlarr
         - matchLabels:
             app.kubernetes.io/name: sabnzbd
       toPorts:
