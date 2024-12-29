@@ -11,11 +11,11 @@ spec:
   ingress:
     - fromEndpoints:
         - matchLabels:
+            app.kubernetes.io/name: prowlarr
+        - matchLabels:
             app.kubernetes.io/name: radarr
         - matchLabels:
             app.kubernetes.io/name: sonarr
-        - matchLabels:
-            app.kubernetes.io/name: prowlarr
       toPorts:
         - ports:
             - port: "80"

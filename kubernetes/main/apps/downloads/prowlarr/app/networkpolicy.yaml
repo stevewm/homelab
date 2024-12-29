@@ -14,8 +14,6 @@ spec:
             app.kubernetes.io/name: radarr
         - matchLabels:
             app.kubernetes.io/name: sonarr
-        - matchLabels:
-            app.kubernetes.io/name: buildarr
       toPorts:
         - ports:
             - port: "80"
@@ -24,21 +22,11 @@ spec:
   egress:
     - toEndpoints: # sabnzbd
         - matchLabels:
+            app.kubernetes.io/name: radarr
+        - matchLabels:
             app.kubernetes.io/name: sabnzbd
-      toPorts:
-        - ports:
-            - port: "80"
-              protocol: TCP
-    - toEndpoints: # sonarr
         - matchLabels:
             app.kubernetes.io/name: sonarr
-      toPorts:
-        - ports:
-            - port: "80"
-              protocol: TCP
-    - toEndpoints: # radarr
-        - matchLabels:
-            app.kubernetes.io/name: radarr
       toPorts:
         - ports:
             - port: "80"
