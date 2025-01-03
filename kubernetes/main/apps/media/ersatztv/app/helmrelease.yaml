@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 3.2.1
+      version: 3.6.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -28,6 +28,14 @@ spec:
   values:
     defaultPodOptions:
       automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: ${APP_UID}
+        runAsGroup: ${APP_GID}
+        fsGroup: ${APP_GID}
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
     controllers:
       ersatztv:
         strategy: Recreate
@@ -42,12 +50,11 @@ spec:
             fsGroupChangePolicy: OnRootMismatch
           nodeSelector:
             intel.feature.node.kubernetes.io/gpu: "true"
-            feature.node.kubernetes.io/cpu-model.family: "6"
         containers:
           app:
             image:
               repository: jasongdove/ersatztv
-              tag: v0.8.7-vaapi
+              tag: v0.8.8-vaapi@sha256:2da0a908cb7f7ab9133fe81bba2d343c585e5837d5513a7afb6d00734257ca25
             env:
               XDG_DATA_HOME: /config # https://github.com/ErsatzTV/ErsatzTV/issues/327
             probes:
@@ -59,11 +66,11 @@ spec:
                 enabled: true
             resources:
               requests:
-                cpu: 11m
+                cpu: 10m
                 memory: 300M
               limits:
-                memory: 1.2G
                 gpu.intel.com/i915: 1
+                memory: 4G
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
@@ -85,9 +92,6 @@ spec:
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *host
         annotations:
           gethomepage.dev/name: *app
           gethomepage.dev/enabled: "true"
@@ -99,6 +103,8 @@ spec:
       cache:
         type: emptyDir
       tmp:
+        type: emptyDir
+      transcode:
         type: emptyDir
       media:
         type: nfs
