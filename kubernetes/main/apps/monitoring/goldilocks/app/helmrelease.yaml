@@ -29,20 +29,23 @@ spec:
   values:
     vpa:
       enabled: false
+
     dashboard:
       flags:
         enable-cost: "false"
+
       deployment:
         additionalLabels:
           ingress.home.arpa/nginx-internal: allow
           egress.home.arpa/kubedns: allow
           egress.home.arpa/apiserver: allow
+
       ingress:
         enabled: true
         ingressClassName: nginx-internal
         annotations:
           gethomepage.dev/name: *app
-          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/enabled:
           gethomepage.dev/group: monitoring
           gethomepage.dev/icon: kubernetes.png
           # Authelia
@@ -55,6 +58,3 @@ spec:
             paths:
               - path: /
                 type: Prefix
-        tls:
-          - hosts:
-              - *host
