@@ -30,19 +30,18 @@ spec:
     fullnameOverride: nginx-internal
 
     controller:
-      service:
-        annotations:
-          external-dns.alpha.kubernetes.io/hostname: int.${DOMAIN}
+      allowSnippetAnnotations: true # required for themepark.dev
+      enableAnnotationValidations: true
+      replicaCount: 2
+      updateStrategy:
+        type: RollingUpdate
+
       labels:
         egress.home.arpa/apiserver: allow
         egress.home.arpa/kubedns: allow
         ingress.home.arpa/lan: allow
         monitoring.home.arpa/prometheus: allow
-      replicaCount: 2
-      updateStrategy:
-        type: RollingUpdate
-      allowSnippetAnnotations: true # required for themepark.dev
-      enableAnnotationValidations: true
+
       metrics:
         enabled: true
         serviceMonitor:
@@ -77,6 +76,10 @@ spec:
         proxy-buffer-size: "16k"
         ssl-protocols: "TLSv1.3 TLSv1.2"
         use-forwarded-headers: "true"
+
+      service:
+        annotations:
+          external-dns.alpha.kubernetes.io/hostname: int.${DOMAIN}
 
       ingressClassResource:
         name: nginx-internal
@@ -120,9 +123,10 @@ spec:
         - name: TEMPLATE_NAME
           value: hacker-terminal
         - name: SHOW_DETAILS
-          value: 'true'
+          value:
       podLabels:
         ingress.home.arpa/nginx-internal: allow
+
     resources:
       requests:
         cpu: 10m

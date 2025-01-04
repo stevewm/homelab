@@ -190,7 +190,7 @@ spec:
                   port: map
         annotations:
           gethomepage.dev/name: minecraft map (survival)
-          gethomepage.dev/enabled:
+          gethomepage.dev/enabled: "true"
           gethomepage.dev/group: games
           gethomepage.dev/icon: mdi-minecraft
           external-dns.alpha.kubernetes.io/target: ext.${DOMAIN}

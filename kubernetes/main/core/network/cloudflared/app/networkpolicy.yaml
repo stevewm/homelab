@@ -16,8 +16,8 @@ spec:
             app.kubernetes.io/name: prometheus
       toPorts:
         - ports:
-            - port: '8080'
-              protocol: 'TCP'
+            - port: "8080"
+              protocol: "TCP"
   egress:
     - toEndpoints:
         - matchLabels:
@@ -25,24 +25,24 @@ spec:
             app.kubernetes.io/instance: nginx-external
       toPorts:
         - ports:
-            - port: '443'
-              protocol: 'TCP'
-# https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/deploy-tunnels/tunnel-with-firewall/
+            - port: "443"
+              protocol: "TCP"
+    # https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/deploy-tunnels/tunnel-with-firewall/
     - toFQDNs:
         - matchName: region1.v2.argotunnel.com
         - matchName: region2.v2.argotunnel.com
       toPorts:
         - ports:
-            - port: '7844'
-              protocol: 'TCP'
-            - port: '7844'
-              protocol: 'UDP'
+            - port: "7844"
+              protocol: "TCP"
+            - port: "7844"
+              protocol: "UDP"
     - toFQDNs:
         - matchName: api.cloudflare.com
         - matchName: update.argotunnel.com
-        - matchPattern: '*.cloudflareaccess.com'
+        - matchPattern: "*.cloudflareaccess.com"
         - matchName: pqtunnels.cloudflareresearch.com
       toPorts:
         - ports:
-            - port: '443'
-              protocol: 'TCP'
+            - port: "443"
+              protocol: "TCP"

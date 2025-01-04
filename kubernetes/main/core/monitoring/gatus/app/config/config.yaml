@@ -29,7 +29,7 @@ endpoints:
 alerting:
   discord:
     webhook-url: $${DISCORD_WEBHOOK_URL}
-    title: 'Gatus Alert'
+    title: "Gatus Alert"
     default-alert:
       description: health check failed
       send-on-resolved: true

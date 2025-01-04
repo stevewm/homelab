@@ -31,7 +31,7 @@ prowlarr:
               baseUrl: https://drunkenslug.com
               apiPath: /api
             secret_fields:
-              apiKey: '${DS_API_KEY}'
+              apiKey: "${DS_API_KEY}"
     apps:
       applications:
         delete_unmanaged: true
@@ -42,37 +42,37 @@ prowlarr:
             base_url: http://radarr.downloads.svc.cluster.local
             sync_level: full-sync
             sync_categories:
-            - movies/hd
-            - movies/bluray
-            - movies/sd
-            - movies/web-dl
-            - movies/dvd
-            - movies/foreign
-            - movies/x265
-            - movies/other
-            - movies
-            - movies/uhd
-            - movies/3d
+              - movies/hd
+              - movies/bluray
+              - movies/sd
+              - movies/web-dl
+              - movies/dvd
+              - movies/foreign
+              - movies/x265
+              - movies/other
+              - movies
+              - movies/uhd
+              - movies/3d
             sync_reject_blocklisted_torrent_hashes: false
-            api_key: '${RADARR_API_KEY}'
+            api_key: "${RADARR_API_KEY}"
           Sonarr:
             type: sonarr
             prowlarr_url: http://prowlarr.downloads.svc.cluster.local
             base_url: http://sonarr.downloads.svc.cluster.local
             sync_level: full-sync
             sync_categories:
-            - tv
-            - tv/uhd
-            - tv/web-dl
-            - tv/foreign
-            - tv/x265
-            - tv/other
-            - tv/sd
-            - tv/hd
+              - tv
+              - tv/uhd
+              - tv/web-dl
+              - tv/foreign
+              - tv/x265
+              - tv/other
+              - tv/sd
+              - tv/hd
             sync_reject_blocklisted_torrent_hashes: false
-            api_key: '${SONARR_API_KEY}'
+            api_key: "${SONARR_API_KEY}"
             anime_sync_categories:
-            - tv/anime
+              - tv/anime
             sync_anime_standard_format_search: false
     download_clients:
       delete_unmanaged: true
@@ -83,7 +83,7 @@ prowlarr:
           type: sabnzbd
           host: sabnzbd.downloads.svc.cluster.local
           port: 80
-          api_key: '${SABNZBD_API_KEY}'
+          api_key: "${SABNZBD_API_KEY}"
           category: prowlarr
           client_priority: default
 
@@ -106,7 +106,7 @@ radarr:
           port: 80
           use_ssl: false
           url_base: null
-          api_key: '${SABNZBD_API_KEY}'
+          api_key: "${SABNZBD_API_KEY}"
           category: movies
 
 sonarr:
@@ -128,5 +128,5 @@ sonarr:
           host: http://sabnzbd.downloads.svc.cluster.local
           port: 80
           use_ssl: false
-          api_key: '${SABNZBD_API_KEY}'
+          api_key: "${SABNZBD_API_KEY}"
           category: tv

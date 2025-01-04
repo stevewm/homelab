@@ -3,15 +3,15 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: core-authelia
+  name: core-capacitor
   namespace: flux-system
 spec:
-  targetNamespace: security
+  targetNamespace: flux-system
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app authelia
+      app.kubernetes.io/name: &app capacitor
   interval: 10m
-  path: ./kubernetes/main/core/security/authelia/app
+  path: ./kubernetes/main/core/flux-system/capacitor/app
   prune: true
   sourceRef:
     kind: GitRepository
@@ -20,6 +20,4 @@ spec:
   postBuild:
     substitute:
       APP: *app
-  dependsOn:
-    - name: core-glauth
-    - name: core-smtp-relay
+      APP_SUBDOMAIN: gitops

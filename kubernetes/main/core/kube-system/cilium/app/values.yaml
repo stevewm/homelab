@@ -27,9 +27,11 @@ dnsProxy:
 # -- from talos docs --
 ipam:
   mode: kubernetes
+
 kubeProxyReplacement: true
 k8sServiceHost: localhost
 k8sServicePort: 7445
+
 securityContext:
   capabilities:
     ciliumAgent:
@@ -48,15 +50,19 @@ securityContext:
       - NET_ADMIN
       - SYS_ADMIN
       - SYS_RESOURCE
+
 cgroup:
   autoMount:
     enabled: false
   hostRoot: /sys/fs/cgroup
 # -- end of talos settings --
+
 hubble:
   enabled: true
+
   relay:
     enabled: true
+
   ui:
     enabled: true
     rollOutPods: true
@@ -78,6 +84,6 @@ hubble:
             - *host
       annotations:
         gethomepage.dev/name: hubble
-        gethomepage.dev/enabled: 'true'
+        gethomepage.dev/enabled: "true"
         gethomepage.dev/group: network
         gethomepage.dev/icon: cilium.png

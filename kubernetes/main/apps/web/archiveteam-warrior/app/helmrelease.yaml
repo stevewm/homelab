@@ -93,7 +93,7 @@ spec:
                   port: http
         annotations:
           gethomepage.dev/name: *app
-          gethomepage.dev/enabled:
+          gethomepage.dev/enabled: "true"
           gethomepage.dev/group: web
           gethomepage.dev/icon: mdi-archive-arrow-up
 

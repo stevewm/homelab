@@ -23,18 +23,42 @@ spec:
       strategy: rollback
       retries: 3
   values:
+    defaultPodOptions:
+    automountServiceAccountToken: false
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: ${APP_UID}
+      runAsGroup: ${APP_GID}
+      fsGroup: ${APP_GID}
+      fsGroupChangePolicy: OnRootMismatch
+      seccompProfile:
+        type: RuntimeDefault
+
     controllers:
       smtp-relay:
         strategy: RollingUpdate
         annotations:
           reloader.stakater.com/auto: "true"
+
+        pod:
+          labels:
+            egress.home.arpa/kubedns: allow
+            monitoring.home.arpa/prometheus: allow
+          topologySpreadConstraints:
+            - maxSkew: 1
+              topologyKey: kubernetes.io/hostname
+              whenUnsatisfiable: DoNotSchedule
+              labelSelector:
+                matchLabels:
+                  app.kubernetes.io/name: *app
+
         containers:
           app:
             image:
               repository: ghcr.io/foxcpp/maddy
               tag: 0.7.1@sha256:6ab538e2f28baf2324f7cb418c7f9476fd9c7e9fa9b14bc3aecf51a9f6962064
             env:
-              DEBUG: 'true'
+              DEBUG:
               SMTP_RELAY_SMTP_PORT: &port 25
               SMTP_RELAY_METRICS_PORT: &metricsPort 8080
               SMTP_RELAY_SERVER_PORT: 587
@@ -56,21 +80,7 @@ spec:
                 cpu: 10m
               limits:
                 memory: 128Mi
-        pod:
-          labels:
-            egress.home.arpa/kubedns: allow
-            monitoring.home.arpa/prometheus: allow
-          securityContext:
-            runAsUser: 568
-            runAsGroup: 568
-            runAsNonRoot: true
-          topologySpreadConstraints:
-            - maxSkew: 1
-              topologyKey: kubernetes.io/hostname
-              whenUnsatisfiable: DoNotSchedule
-              labelSelector:
-                matchLabels:
-                  app.kubernetes.io/name: *app
+
     service:
       app:
         controller: smtp-relay
@@ -80,6 +90,7 @@ spec:
             port: *metricsPort
           smtp:
             port: *port
+
     serviceMonitor:
       app:
         serviceName: smtp-relay
@@ -89,6 +100,7 @@ spec:
             path: /metrics
             interval: 1m
             scrapeTimeout: 10s
+
     persistence:
       config:
         type: configMap

@@ -14,7 +14,7 @@ spec:
             app.kubernetes.io/name: authelia
       toPorts:
         - ports:
-            - port: '80'
+            - port: "80"
               protocol: TCP
 
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/cilium.io/ciliumclusterwidenetworkpolicy_v2.json
@@ -36,7 +36,7 @@ spec:
             auth.home.arpa/ldap: allow
       toPorts:
         - ports:
-            - port: '389'
+            - port: "389"
               protocol: TCP
 
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/cilium.io/ciliumclusterwidenetworkpolicy_v2.json
@@ -58,5 +58,5 @@ spec:
             io.kubernetes.pod.namespace: security
       toPorts:
         - ports:
-            - port: '389'
+            - port: "389"
               protocol: TCP

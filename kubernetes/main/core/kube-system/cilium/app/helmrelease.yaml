@@ -42,8 +42,10 @@ spec:
           - http
         serviceMonitor:
           enabled: true
+
     externalIPs:
       enabled: true
+
     prometheus:
       enabled: true
       serviceMonitor:

@@ -83,7 +83,7 @@ spec:
                   port: http
         annotations:
           gethomepage.dev/name: *app
-          gethomepage.dev/enabled:
+          gethomepage.dev/enabled: "true"
           gethomepage.dev/group: selfhosted
           gethomepage.dev/icon: stirling-pdf.png
           nginx.org/client-max-body-size: "150m"

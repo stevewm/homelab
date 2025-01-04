@@ -1,6 +1,7 @@
 # 'main' cluster
 
 <!--include-start-->
+
 This cluster consists of three i5 Minisforum MS-01 nodes.
 
 ## folders
@@ -13,4 +14,5 @@ This cluster consists of three i5 Minisforum MS-01 nodes.
 ## bootstrapping
 
 Once nodes are up and running with Talos, run `bootstrap.sh` in the cluster's root directory to bootstrap the cluster with flux.
+
 <!--include-end-->

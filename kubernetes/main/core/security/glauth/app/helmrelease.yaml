@@ -26,17 +26,34 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    defaultPodOptions:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534
+        runAsGroup: 65534
+        seccompProfile:
+          type: RuntimeDefault
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: DoNotSchedule
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: *app
+
     controllers:
       glauth:
         strategy: RollingUpdate
         annotations:
           reloader.stakater.com/auto: "true"
+
         pod:
           labels:
             egress.home.arpa/kubedns: allow
             ingress.home.arpa/nginx-external: allow
             ingress.home.arpa/nginx-internal: allow
             monitoring.home.arpa/prometheus: allow
+
         containers:
           app:
             image:
@@ -66,20 +83,7 @@ spec:
                 cpu: 10m
               limits:
                 memory: 128Mi
-    defaultPodOptions:
-      securityContext:
-        runAsNonRoot: true
-        runAsUser: 65534
-        runAsGroup: 65534
-        seccompProfile:
-          type: RuntimeDefault
-      topologySpreadConstraints:
-        - maxSkew: 1
-          topologyKey: kubernetes.io/hostname
-          whenUnsatisfiable: DoNotSchedule
-          labelSelector:
-            matchLabels:
-              app.kubernetes.io/name: *app
+
     service:
       app:
         controller: *app
@@ -90,6 +94,7 @@ spec:
             enabled: true
             port: 389
             protocol: TCP
+
     serviceMonitor:
       app:
         serviceName: *app
@@ -99,6 +104,7 @@ spec:
             path: /metrics
             interval: 1m
             scrapeTimeout: 10s
+
     persistence:
       config:
         type: secret

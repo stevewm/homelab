@@ -63,13 +63,10 @@ spec:
         ingressClassName: nginx-internal
         hosts:
           - &am-host am.${DOMAIN}
-        tls:
-          - hosts:
-              - *am-host
         annotations:
           gethomepage.dev/name: alertmanager
-          gethomepage.dev/enabled: 'true'
-          gethomepage.dev/group: '${HOMEPAGE_CATEGORY}'
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: "${HOMEPAGE_CATEGORY}"
           gethomepage.dev/icon: alertmanager.png
 
     # https://grafana.com/grafana/dashboards/14588-vpa-recommendations/
@@ -113,13 +110,10 @@ spec:
         ingressClassName: nginx-internal
         hosts:
           - &prom-host prom.${DOMAIN}
-        tls:
-          - hosts:
-              - *prom-host
         annotations:
           gethomepage.dev/name: prometheus
-          gethomepage.dev/enabled: 'true'
-          gethomepage.dev/group: '${HOMEPAGE_CATEGORY}'
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: "${HOMEPAGE_CATEGORY}"
           gethomepage.dev/icon: prometheus.png
 
       # https://github.com/kubernetes/kube-state-metrics/blob/main/docs/customresourcestate-metrics.md#verticalpodautoscaler

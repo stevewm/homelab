@@ -45,7 +45,7 @@ spec:
         ingressClassName: nginx-internal
         annotations:
           gethomepage.dev/name: *app
-          gethomepage.dev/enabled:
+          gethomepage.dev/enabled: "true"
           gethomepage.dev/group: monitoring
           gethomepage.dev/icon: kubernetes.png
         hosts:

@@ -11,7 +11,7 @@ spec:
 
   egress:
     - toFQDNs:
-        - matchPattern: '*.vintagestory.at'
+        - matchPattern: "*.vintagestory.at"
       toPorts:
         - ports:
             - port: "443"

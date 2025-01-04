@@ -45,7 +45,7 @@ spec:
               tag: v1.0.0-RC1.1@sha256:6df1e795f17af43f082146e471113315487b5f0882f2ee7553d469034d929af1
             env:
               BASE_URL: &host eat.${DOMAIN}
-              ALLOW_SIGNUP: 'false'
+              ALLOW_SIGNUP: "false"
               DB_ENGINE: postgres
               POSTGRES_USER:
                 valueFrom:
@@ -120,6 +120,6 @@ spec:
                   port: http
         annotations:
           gethomepage.dev/name: *app
-          gethomepage.dev/enabled:
+          gethomepage.dev/enabled: "true"
           gethomepage.dev/group: selfhosted
           gethomepage.dev/icon: mealie.png
