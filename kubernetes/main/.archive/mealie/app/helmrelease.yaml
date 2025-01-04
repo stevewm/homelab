@@ -30,13 +30,14 @@ spec:
       automountServiceAccountToken: false
     controllers:
       mealie:
+        annotations:
+          reloader.stakater.com/auto: "true"
+
         pod:
           labels:
             db.home.arpa/pg: postgres
             ingress.home.arpa/nginx-internal: allow
-        annotations:
-          reloader.stakater.com/auto: 'true'
-        strategy: Recreate
+
         containers:
           app:
             image:
@@ -44,7 +45,7 @@ spec:
               tag: v1.0.0-RC1.1@sha256:6df1e795f17af43f082146e471113315487b5f0882f2ee7553d469034d929af1
             env:
               BASE_URL: &host eat.${DOMAIN}
-              ALLOW_SIGNUP: 'false'
+              ALLOW_SIGNUP: "false"
               DB_ENGINE: postgres
               POSTGRES_USER:
                 valueFrom:
@@ -99,12 +100,14 @@ spec:
                 memory: 128Mi
               limits:
                 memory: 256Mi
+
     service:
       app:
         controller: mealie
         ports:
           http:
             port: 9000
+
     ingress:
       app:
         className: nginx-internal
@@ -115,11 +118,8 @@ spec:
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *host
         annotations:
           gethomepage.dev/name: *app
-          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/enabled: "true"
           gethomepage.dev/group: selfhosted
           gethomepage.dev/icon: mealie.png

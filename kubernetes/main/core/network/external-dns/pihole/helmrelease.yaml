@@ -21,6 +21,7 @@ spec:
       retries: 3
   upgrade:
     cleanupOnFail: true
+    crds: Skip # installed in kubernetes/main/core/network/external-dns/cloudflare/helmrelease.yaml
     remediation:
       strategy: rollback
       retries: 3
@@ -36,7 +37,7 @@ spec:
       egress.home.arpa/apiserver: allow
       monitoring.home.arpa/prometheus: allow
     podAnnotations:
-      reloader.stakater.com/auto: 'true'
+      reloader.stakater.com/auto:
 
     serviceMonitor:
       enabled: true

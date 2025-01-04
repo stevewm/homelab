@@ -28,6 +28,14 @@ spec:
   values:
     defaultPodOptions:
       automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534
+        runAsGroup: 65534
+        fsGroup: 65534
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
@@ -40,19 +48,16 @@ spec:
                       values:
                         - minecraft
                 topologyKey: "kubernetes.io/hostname"
+
     controllers:
       vintagestory:
-        strategy: Recreate
         annotations:
-          reloader.stakater.com/auto: 'true'
+          reloader.stakater.com/auto: "true"
+
         pod:
           labels:
             ingress.home.arpa/playit: allow
-          securityContext:
-            runAsUser: ${APP_UID}
-            runAsGroup: ${APP_GID}
-            fsGroup: ${APP_GID}
-            fsGroupChangePolicy: OnRootMismatch
+
         containers:
           app:
             image:
@@ -77,6 +82,7 @@ spec:
               readOnlyRootFilesystem: true
               capabilities:
                 drop: [ALL]
+
     service:
       app:
         type: LoadBalancer
@@ -86,6 +92,7 @@ spec:
           game:
             port: 2420
             targetPort: 42420
+
     persistence:
       gamedata:
         existingClaim: vintagestory-gamedata

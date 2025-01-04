@@ -29,7 +29,7 @@ metadata:
   name: core-external-secrets-secretstore
   namespace: flux-system
   labels:
-    substitution.flux.home.arpa/disabled: 'true'
+    substitution.flux.home.arpa/disabled:
 spec:
   targetNamespace: security
   commonMetadata:

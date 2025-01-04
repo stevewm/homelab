@@ -28,9 +28,30 @@ spec:
   values:
     defaultPodOptions:
       automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534
+        runAsGroup: 65534
+        fsGroup: 65534
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 80
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values:
+                        - *app
+                topologyKey: "kubernetes.io/hostname"
+
     controllers:
       homelab-docs:
-        strategy: Recreate
+        replicas: 2
         pod:
           labels:
             ingress.home.arpa/nginx-external: allow
@@ -40,6 +61,7 @@ spec:
             runAsGroup: 568
             fsGroup: 568
             fsGroupChangePolicy: OnRootMismatch
+
         containers:
           app:
             image:
@@ -53,12 +75,14 @@ spec:
                 memory: 64Mi
             env:
               NGINX_HOST: &host ${APP_SUBDOMAIN}.${DOMAIN}
+
     service:
       app:
         controller: homelab-docs
         ports:
           http:
             port: 8080
+
     ingress:
       app:
         className: nginx-external
@@ -69,12 +93,9 @@ spec:
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *host
         annotations:
           gethomepage.dev/name: *app
-          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/enabled: "true"
           gethomepage.dev/group: dev
           gethomepage.dev/icon: mdi-text-box-outline
           external-dns.alpha.kubernetes.io/target: ext.${DOMAIN}

@@ -29,12 +29,16 @@ spec:
     serviceAccount:
       create: true
       name: *app
+
     controllers:
       dragonfly-operator:
+        annotations:
+          reloader.stakater.com/auto: "true"
+
         pod:
           labels:
-            monitoring.home.arpa/prometheus: 'allow'
-            egress.home.arpa/apiserver: 'allow'
+            monitoring.home.arpa/prometheus: "allow"
+            egress.home.arpa/apiserver: "allow"
           topologySpreadConstraints:
             - maxSkew: 1
               topologyKey: kubernetes.io/hostname
@@ -42,6 +46,7 @@ spec:
               labelSelector:
                 matchLabels:
                   app.kubernetes.io/name: dragonfly-operator
+
         containers:
           app:
             image:
@@ -90,8 +95,7 @@ spec:
                 memory: 64Mi
               limits:
                 memory: 128Mi
-        annotations:
-          reloader.stakater.com/auto: "true"
+
     service:
       app:
         controller: dragonfly-operator
@@ -100,6 +104,7 @@ spec:
             port: *port
           metrics:
             port: 8080
+
     serviceMonitor:
       app:
         serviceName: *app

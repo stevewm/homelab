@@ -36,6 +36,7 @@ spec:
         fsGroupChangePolicy: OnRootMismatch
         seccompProfile:
           type: RuntimeDefault
+
     controllers:
       tubesync:
         pod:
@@ -44,6 +45,7 @@ spec:
             ingress.home.arpa/homepage: allow
             egress.home.arpa/kubedns: allow
             egress.home.arpa/nas: allow
+
         containers:
           app:
             image:
@@ -62,12 +64,14 @@ spec:
                 memory: 128Mi
               limits:
                 memory: 1Gi
+
     service:
       app:
         controller: tubesync
         ports:
           http:
             port: 4848
+
     ingress:
       app:
         className: nginx-internal
@@ -83,6 +87,7 @@ spec:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: downloads
           gethomepage.dev/icon: youtube.png
+
     persistence:
       config:
         enabled: true

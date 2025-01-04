@@ -28,19 +28,28 @@ spec:
   values:
     defaultPodOptions:
       automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534
+        runAsGroup: 65534
+        fsGroup: 65534
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+
     controllers:
       stirling-pdf:
-        strategy: Recreate
         pod:
           labels:
             ingress.home.arpa/nginx-internal: allow
+
         containers:
           app:
             image:
               repository: frooodle/s-pdf
               tag: 0.36.5
             env:
-              DOCKER_ENABLE_SECURITY: 'false'
+              DOCKER_ENABLE_SECURITY: "false"
             probes:
               liveness:
                 enabled: true
@@ -54,12 +63,14 @@ spec:
                 memory: 250M
               limits:
                 memory: 300M
+
     service:
       app:
         controller: stirling-pdf
         ports:
           http:
             port: 8080
+
     ingress:
       app:
         className: nginx-internal
@@ -70,12 +81,9 @@ spec:
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *host
         annotations:
           gethomepage.dev/name: *app
-          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/enabled: "true"
           gethomepage.dev/group: selfhosted
           gethomepage.dev/icon: stirling-pdf.png
-          nginx.org/client-max-body-size: '150m'
+          nginx.org/client-max-body-size: "150m"

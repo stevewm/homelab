@@ -105,8 +105,8 @@ spec:
       repos:
         - name: repo1 # minio
           s3: &minio
-            bucket: 'main-crunchy-postgres-backup'
-            endpoint: 'minio.storage.svc.cluster.local:9000'
+            bucket: "main-crunchy-postgres-backup"
+            endpoint: "minio.storage.svc.cluster.local:9000"
             region: "us-east-1"
           schedules:
             full: "0 1 * * 0" # Sunday at 01:00

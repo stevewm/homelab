@@ -10,7 +10,7 @@ spec:
       app.kubernetes.io/name: tubesync
   egress:
     - toFQDNs: # TODO: More domains to add here
-        - matchPattern: '*.youtube.com'
+        - matchPattern: "*.youtube.com"
         - matchName: youtube.com
 
       toPorts:

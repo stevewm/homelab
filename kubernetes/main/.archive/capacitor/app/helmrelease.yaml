@@ -28,12 +28,14 @@ spec:
   values:
     controllers:
       capacitor:
+        strategy: RollingUpdaten
+
         pod:
           labels:
             ingress.home.arpa/nginx-internal: allow
             egress.home.arpa/kubedns: allow
             egress.home.arpa/apiserver: allow
-        strategy: RollingUpdate
+
         containers:
           app:
             image:
@@ -52,9 +54,11 @@ spec:
               readOnlyRootFilesystem: true
               capabilities:
                 drop: [ALL]
+
     serviceAccount:
       create: true
       name: "capacitor"
+
     service:
       app:
         controller: *app
@@ -62,6 +66,7 @@ spec:
           http:
             enabled: true
             port: 9000
+
     ingress:
       app:
         enabled: true
@@ -78,6 +83,3 @@ spec:
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *host

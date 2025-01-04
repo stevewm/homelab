@@ -37,9 +37,7 @@
       "Description": "Can only visit this world and chat but not use/place/break anything",
       "DefaultSpawn": null,
       "ForcedSpawn": null,
-      "Privileges": [
-        "chat"
-      ],
+      "Privileges": ["chat"],
       "RuntimePrivileges": [],
       "DefaultGameMode": 1,
       "Color": "Green",
@@ -59,9 +57,7 @@
       "Description": "Can only visit this world, chat and fly but not use/place/break anything",
       "DefaultSpawn": null,
       "ForcedSpawn": null,
-      "Privileges": [
-        "chat"
-      ],
+      "Privileges": ["chat"],
       "RuntimePrivileges": [],
       "DefaultGameMode": 2,
       "Color": "DarkGray",
@@ -322,10 +318,7 @@
     }
   ],
   "DefaultRoleCode": "suplayer",
-  "ModPaths": [
-    "Mods",
-    "/gamedata/vs/Mods"
-  ],
+  "ModPaths": ["Mods", "/gamedata/vs/Mods"],
   "AntiAbuse": 0,
 
   "WorldConfig": {

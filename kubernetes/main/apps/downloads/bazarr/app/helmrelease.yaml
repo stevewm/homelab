@@ -28,22 +28,27 @@ spec:
   values:
     defaultPodOptions:
       automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: ${APP_UID}
+        runAsGroup: ${APP_GID}
+        fsGroup: ${APP_GID}
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+
     controllers:
       bazarr:
         annotations:
           reloader.stakater.com/auto: "true"
+
         pod:
           labels:
             ingress.home.arpa/nginx-internal: allow
             ingress.home.arpa/homepage: allow
             egress.home.arpa/kubedns: allow
             monitoring.home.arpa/prometheus: allow
-          securityContext:
-            runAsUser: ${APP_UID}
-            runAsGroup: ${APP_GID}
-            runAsNonRoot: true
-            fsGroup: ${APP_GID}
-            fsGroupChangePolicy: OnRootMismatch
+
         containers:
           app:
             image:
@@ -67,6 +72,7 @@ spec:
               readOnlyRootFilesystem: true
               capabilities:
                 drop: [ALL]
+
           subcleaner:
             image:
               repository: registry.k8s.io/git-sync/git-sync
@@ -82,9 +88,10 @@ spec:
                 memory: 10M
               limits:
                 memory: 128M
+
           exporter:
             dependsOn: app
-            args: ['bazarr']
+            args: ["bazarr"]
             image:
               repository: ghcr.io/onedr0p/exportarr
               tag: v2.0.1@sha256:727e7bc8f2f0934a2117978c59f4476b954018b849a010ea6cfb380bd6539644
@@ -96,6 +103,16 @@ spec:
                   secretKeyRef:
                     name: bazarr-generated
                     key: api_key
+
+    service:
+      app:
+        controller: *app
+        ports:
+          http:
+            port: *port
+          metrics:
+            port: *metrics
+
     serviceMonitor:
       metrics:
         enabled: true
@@ -106,14 +123,7 @@ spec:
             path: /metrics
             interval: 15m
             scrapeTimeout: 2m
-    service:
-      app:
-        controller: *app
-        ports:
-          http:
-            port: *port
-          metrics:
-            port: *metrics
+
     ingress:
       app:
         className: nginx-internal
@@ -124,9 +134,6 @@ spec:
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *host
         annotations:
           gethomepage.dev/name: *app
           gethomepage.dev/enabled: "true"
@@ -143,6 +150,7 @@ spec:
             '<link rel="stylesheet" type="text/css" href="https://themes.${DOMAIN}/css/base/bazarr/plex.css">
             </head>';
             sub_filter_once on;
+
     persistence:
       config:
         enabled: true

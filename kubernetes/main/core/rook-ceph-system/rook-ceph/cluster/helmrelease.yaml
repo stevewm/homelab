@@ -38,6 +38,7 @@ spec:
         modules:
           - name: rook
             enabled: true
+
       resources:
         mgr:
           requests:
@@ -81,20 +82,24 @@ spec:
             memory: 100Mi
           limits:
             memory: 1Gi
+
       network:
         provider: host
+
       crashCollector:
         disable: false
+
       dashboard:
         enabled: true
         urlPrefix: /
+
       storage:
         useAllNodes: false
         useAllDevices: false
         config:
           osdsPerDevice: "1"
         nodes:
-          - name: control01
+          - name: control01 # FIXME: Change for new cluster build
             devices: # talosctl list /dev/disk/by-id
               - name: /dev/disk/by-id/ata-Samsung_SSD_870_QVO_1TB_S6R8NJ0W402228N
           - name: control02
@@ -103,6 +108,7 @@ spec:
           - name: control03
             devices:
               - name: /dev/disk/by-id/ata-Samsung_SSD_870_QVO_1TB_S6R8NJ0W402497M
+
     ingress:
       dashboard:
         ingressClassName: nginx-internal
@@ -111,9 +117,6 @@ spec:
         host:
           name: &host ${APP_SUBDOMAIN}.${DOMAIN}
           path: /
-        tls:
-          - hosts:
-              - *host
 
     cephBlockPools:
       - name: ceph-blockpool

@@ -28,22 +28,29 @@ spec:
   values:
     defaultPodOptions:
       automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: ${APP_UID}
+        runAsGroup: ${APP_GID}
+        fsGroup: ${APP_GID}
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+
     controllers:
       jellyfin:
-        strategy: Recreate
+        annotations:
+          reloader.stakater.com/auto: "true"
+
         pod:
           labels:
             monitoring.home.arpa/prometheus: allow
             egress.home.arpa/kubedns: allow
             ingress.home.arpa/nginx-external: allow
             ingress.home.arpa/homepage: allow
-          securityContext:
-            runAsUser: ${APP_UID}
-            runAsGroup: ${APP_GID}
-            fsGroup: ${APP_GID}
-            fsGroupChangePolicy: OnRootMismatch
           nodeSelector:
             intel.feature.node.kubernetes.io/gpu: "true"
+
         containers:
           app:
             image:
@@ -77,12 +84,14 @@ spec:
               limits:
                 gpu.intel.com/i915: 1
                 memory: 4Gi
+
           exporter:
             image:
               repository: quay.io/prometheuscommunity/json-exporter
               tag: v0.6.0@sha256:334af437e3459a28da3081e7a7686123b9d1372292b2ebf41815007e0419cd60
             args:
               - --config.file=/exporter/jellyfin.yaml
+
     service:
       app:
         controller: jellyfin
@@ -91,6 +100,7 @@ spec:
             port: 8096
           exporter:
             port: 7979
+
     ingress:
       app:
         className: nginx-external
@@ -101,9 +111,6 @@ spec:
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *host
         annotations:
           external-dns.alpha.kubernetes.io/target: ext.${DOMAIN}
           gethomepage.dev/name: *app
@@ -120,6 +127,7 @@ spec:
             '<link rel="stylesheet" type="text/css" href="https://themes.${DOMAIN}/css/base/jellyfin/plex.css">
             </head>';
             sub_filter_once on;
+
     persistence:
       config:
         existingClaim: ${VOLSYNC_CLAIM}

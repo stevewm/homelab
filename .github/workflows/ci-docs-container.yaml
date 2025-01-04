@@ -4,10 +4,10 @@ name: "Build Homelab Docs Image"
 on:
   push:
     branches:
-      - 'main'
+      - "main"
     paths:
-      - 'docs/**'
-      - 'mkdocs.yml'
+      - "docs/**"
+      - "mkdocs.yml"
 jobs:
   docker:
     runs-on: ubuntu-latest

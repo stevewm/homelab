@@ -36,20 +36,16 @@ spec:
         fsGroupChangePolicy: OnRootMismatch
         seccompProfile:
           type: RuntimeDefault
+
     controllers:
       ersatztv:
-        strategy: Recreate
         pod:
           labels:
             ingress.home.arpa/nginx-internal: allow
             ingress.home.arpa/homepage: allow
-          securityContext:
-            runAsUser: ${APP_UID}
-            runAsGroup: ${APP_GID}
-            fsGroup: ${APP_GID}
-            fsGroupChangePolicy: OnRootMismatch
           nodeSelector:
             intel.feature.node.kubernetes.io/gpu: "true"
+
         containers:
           app:
             image:
@@ -76,12 +72,14 @@ spec:
               readOnlyRootFilesystem: true
               capabilities:
                 drop: [ALL]
+
     service:
       app:
         controller: ersatztv
         ports:
           http:
             port: 8409
+
     ingress:
       app:
         className: nginx-internal
@@ -97,6 +95,7 @@ spec:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: media
           gethomepage.dev/icon: ersatztv.png
+
     persistence:
       config:
         existingClaim: ersatztv-config

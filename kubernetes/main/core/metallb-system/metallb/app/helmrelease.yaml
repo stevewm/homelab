@@ -34,6 +34,7 @@ spec:
           memory: 32Mi
         limits:
           memory: 92Mi
+
     speaker:
       resources:
         requests:

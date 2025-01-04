@@ -30,7 +30,9 @@ spec:
         v: "4"
         pod-recommendation-min-cpu-millicores: 5
         pod-recommendation-min-memory-mb: 5
+
     updater:
       enabled: false
+
     admissionController:
       enabled: false
