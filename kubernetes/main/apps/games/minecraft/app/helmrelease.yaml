@@ -29,6 +29,14 @@ spec:
   values:
     defaultPodOptions:
       automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: ${APP_UID}
+        runAsGroup: ${APP_GID}
+        fsGroup: ${APP_GID}
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
@@ -41,11 +49,11 @@ spec:
                       values:
                         - vintagestory
                 topologyKey: "kubernetes.io/hostname"
+
     controllers:
       minecraft:
-        strategy: Recreate
         annotations:
-          reloader.stakater.com/auto: 'true'
+          reloader.stakater.com/auto: "true"
         pod:
           labels:
             ingress.home.arpa/nginx-external: allow
@@ -53,13 +61,7 @@ spec:
             ingress.home.arpa/homepage: allow
             monitoring.home.arpa/prometheus: allow
             egress.home.arpa/kubedns: allow
-          annotations:
-            reloader.stakater.com/auto: 'true'
-          securityContext:
-            runAsUser: ${APP_UID}
-            runAsGroup: ${APP_GID}
-            fsGroup: ${APP_GID}
-            fsGroupChangePolicy: OnRootMismatch
+
         containers:
           app:
             image:
@@ -71,7 +73,7 @@ spec:
                 custom: true
                 spec:
                   periodSeconds: 60
-                  exec: &mc-health {command: ["mc-health"]}
+                  exec: &mc-health { command: ["mc-health"] }
               readiness: *probes
               startup:
                 <<: *probes
@@ -83,30 +85,29 @@ spec:
             env:
               # Server Configuration
               ## General
-              EULA: 'true'
-              SERVER_NAME: 'MPOF'
+              EULA: "true"
+              SERVER_NAME: MPOF
               TYPE: FABRIC
-              FORCE_REDOWNLOAD: 'true'
-
+              FORCE_REDOWNLOAD:
               # renovate: depName=minecraft datasource=custom.minecraft versioning=semver-coerced
               VERSION: 1.21.4
-              MOTD: 'be nice'
+              MOTD: be nice
               DIFFICULTY: hard
               SPAWN_PROTECTION: 0
-              SEED: '-2135836821937050197'
-              FORCE_REDOWLOAD: 'true'
-              ENABLE_WHITELIST: 'true'
+              SEED: "-2135836821937050197"
+              FORCE_REDOWLOAD: "true"
+              ENABLE_WHITELIST: "true"
               # Logging
-              ENABLE_ROLLING_LOGS: 'true'
-              LOG_TIMESTAMP: 'true'
+              ENABLE_ROLLING_LOGS: "true"
+              LOG_TIMESTAMP: "true"
               # Performance
-              JVM_XX_OPTS: '-XX:MaxRAMPercentage=75'
+              JVM_XX_OPTS: -XX:MaxRAMPercentage=75
               MAX_MEMORY: 8G
-              USE_AIKAR_FLAGS: 'true'
-              SNOOPER_ENABLED: 'false'
+              USE_AIKAR_FLAGS: "true"
+              SNOOPER_ENABLED: "false"
               VIEW_DISTANCE: 14
               ## Mods
-              REMOVE_OLD_MODS: 'true'
+              REMOVE_OLD_MODS: "true"
               MODRINTH_DEFAULT_VERSION_TYPE: release
               MODRINTH_PROJECTS: >
                 fabric-api,
@@ -124,7 +125,7 @@ spec:
                   secretKeyRef:
                     name: minecraft-generated
                     key: rcon_password
-              ENABLE_QUERY: 'true'
+              ENABLE_QUERY: "true"
               # Whitelist / Ops
               WHITELIST:
                 valueFrom:
@@ -149,10 +150,11 @@ spec:
                 memory: 4Gi
               limits:
                 memory: 8Gi
+
     service:
       minecraft:
         controller: minecraft
-        type: LoadBalancer    # https://kubernetes.io/blog/2022/05/23/service-ip-dynamic-and-static-allocation/
+        type: LoadBalancer # https://kubernetes.io/blog/2022/05/23/service-ip-dynamic-and-static-allocation/
         clusterIP: 10.96.0.30 # FIXME: Remove if/when playit supports hostname tunnel endpoints
         ports:
           java:
@@ -165,6 +167,7 @@ spec:
             port: 8100
           metrics:
             port: 25585
+
     serviceMonitor:
       metrics:
         enabled: true
@@ -174,6 +177,7 @@ spec:
             scheme: http
             path: /
             interval: 1m
+
     ingress:
       map:
         className: nginx-external
@@ -184,21 +188,19 @@ spec:
                 service:
                   identifier: minecraft
                   port: map
-        tls:
-          - hosts:
-              - *host
         annotations:
           gethomepage.dev/name: minecraft map (survival)
-          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/enabled: "true"
           gethomepage.dev/group: games
           gethomepage.dev/icon: mdi-minecraft
           external-dns.alpha.kubernetes.io/target: ext.${DOMAIN}
+
     persistence:
       data:
         existingClaim: ${VOLSYNC_CLAIM}
       bluemap:
         type: persistentVolumeClaim
-        size: 20Gi # FIXME: resize once we know how much space gets used
+        size: 10Gi # FIXME: resize once we know how much space gets used
         accessMode: ReadWriteOnce
       bluemap-config:
         type: configMap

@@ -26,19 +26,26 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    defaultPodOptions:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: ${APP_UID}
+        runAsGroup: ${APP_GID}
+        fsGroup: ${APP_GID}
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+
     controllers:
       secretgenerator:
         annotations:
           reloader.stakater.com/auto: "true"
-        strategy: Recreate
+
         pod:
-          securityContext:
-            runAsUser: ${APP_UID}
-            runAsGroup: ${APP_GID}
-            fsGroup: ${APP_GID}
-            fsGroupChangePolicy: OnRootMismatch
           imagePullSecrets:
             - name: ghcr
+
         initContainers:
           init-config:
             image:
@@ -57,6 +64,7 @@ spec:
                 cpu: 10m
               limits:
                 memory: 256Mi
+
         containers:
           app:
             image:
@@ -70,12 +78,14 @@ spec:
               capabilities:
                 drop: [ALL]
             resources: *resources
+
     service:
       app:
         controller: secretgenerator
         ports:
           http:
             port: 8000
+
     persistence:
       config:
         type: emptyDir

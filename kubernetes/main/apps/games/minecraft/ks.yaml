@@ -23,8 +23,8 @@ spec:
       APP: *app
       GATUS_NAME: minecraft-map
       APP_SUBDOMAIN: map
-      APP_UID: '1000'
-      APP_GID: '2000'
+      APP_UID: "1000"
+      APP_GID: "2000"
       VOLSYNC_CLAIM: minecraft-server
-      VOLSYNC_CAPACITY: '12Gi'
-      VOLSYNC_SCHEDULE: '0 */3 * * *' # Every 3hrs
+      VOLSYNC_CAPACITY: "12Gi"
+      VOLSYNC_SCHEDULE: "0 */3 * * *" # Every 3hrs

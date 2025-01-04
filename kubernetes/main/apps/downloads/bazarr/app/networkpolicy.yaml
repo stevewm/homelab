@@ -20,8 +20,8 @@ spec:
             - port: "80"
               protocol: TCP
     - toFQDNs:
-        - matchName: github.com                # Subcleaner repo clone
-        - matchName: api.github.com            # update check
+        - matchName: github.com # Subcleaner repo clone
+        - matchName: api.github.com # update check
         - matchName: raw.githubusercontent.com # announcements
         # subtitle providers
         - matchName: opensubtitles.com

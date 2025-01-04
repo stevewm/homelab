@@ -27,14 +27,15 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    replicas: 1
+
     annotations:
       configmap.reloader.stakater.com/reload: grafana
       secret.reloader.stakater.com/reload: grafana
+
     podLabels:
       ingress.home.arpa/nginx-internal: allow
       monitoring.home.arpa/prometheus: allow
-
-    replicas: 1
 
     dashboardProviders:
       dashboardproviders.yaml:
@@ -144,7 +145,6 @@ spec:
             editable: true
             options:
               path: /var/lib/grafana/dashboards/system
-
 
     dashboards:
       default:
@@ -423,22 +423,22 @@ spec:
       GF_SECURITY_COOKIE_SAMESITE: grafana
       GF_SERVER_ROOT_URL: https://${APP_SUBDOMAIN}.${DOMAIN}
       # OAUTH
-      GF_AUTH_GENERIC_OAUTH_ENABLED: 'true'
-      GF_AUTH_GENERIC_OAUTH_NAME: 'Authelia'
-      GF_AUTH_GENERIC_OAUTH_CLIENT_ID: 'grafana'
+      GF_AUTH_GENERIC_OAUTH_ENABLED: tr
+      GF_AUTH_GENERIC_OAUTH_NAME: Authelia
+      GF_AUTH_GENERIC_OAUTH_CLIENT_ID: grafana
       GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET:
         secretKeyRef:
           name: grafana-generated
           key: client_secret
-      GF_AUTH_GENERIC_OAUTH_SCOPES: 'openid profile email groups'
-      GF_AUTH_GENERIC_OAUTH_EMPTY_SCOPES: 'false'
+      GF_AUTH_GENERIC_OAUTH_SCOPES: "openid profile email groups"
+      GF_AUTH_GENERIC_OAUTH_EMPTY_SCOPES: "false"
       GF_AUTH_GENERIC_OAUTH_AUTH_URL: https://sso.${DOMAIN}/api/oidc/authorization
       GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://sso.${DOMAIN}/api/oidc/token
       GF_AUTH_GENERIC_OAUTH_API_URL: https://sso.${DOMAIN}/api/oidc/userinfo
-      GF_AUTH_GENERIC_OAUTH_LOGIN_ATTRIBUTE_PATH: 'preferred_username'
-      GF_AUTH_GENERIC_OAUTH_GROUPS_ATTRIBUTE_PATH: 'groups'
-      GF_AUTH_GENERIC_OAUTH_NAME_ATTRIBUTE_PATH: 'name'
-      GF_AUTH_GENERIC_OAUTH_USE_PKCE: 'true'
+      GF_AUTH_GENERIC_OAUTH_LOGIN_ATTRIBUTE_PATH: preferred_username
+      GF_AUTH_GENERIC_OAUTH_GROUPS_ATTRIBUTE_PATH: "groups"
+      GF_AUTH_GENERIC_OAUTH_NAME_ATTRIBUTE_PATH: name
+      GF_AUTH_GENERIC_OAUTH_USE_PKCE:
       GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH: contains(groups, 'admin') && 'Admin' || contains(groups, 'editor') && 'Editor' || 'Viewer'
 
     imageRenderer:
@@ -449,13 +449,10 @@ spec:
       ingressClassName: nginx-internal
       hosts:
         - &host ${APP_SUBDOMAIN}.${DOMAIN}
-      tls:
-        - hosts:
-            - *host
       annotations:
         nginx.ingress.kubernetes.io/custom-http-errors: "599"
         gethomepage.dev/name: grafana
-        gethomepage.dev/enabled: 'true'
+        gethomepage.dev/enabled: "true"
         gethomepage.dev/group: monitoring
         gethomepage.dev/icon: grafana.png
 

@@ -21,6 +21,7 @@ spec:
       retries: 3
   upgrade:
     cleanupOnFail: true
+    crds: CreateReplace
     remediation:
       strategy: rollback
       retries: 3
@@ -37,7 +38,7 @@ spec:
       egress.home.arpa/kubedns: allow
       monitoring.home.arpa/prometheus: allow
     podAnnotations:
-      reloader.stakater.com/auto: 'true'
+      reloader.stakater.com/auto:
 
     serviceMonitor:
       enabled: true

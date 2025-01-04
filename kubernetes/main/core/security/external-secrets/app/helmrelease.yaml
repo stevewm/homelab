@@ -35,10 +35,13 @@ spec:
     #     ingress.home.arpa/apiserver: allow
     installCRDs: true
     replicaCount: 2
+
     deploymentAnnotations:
       configmap.reloader.stakater.com/reload: doppler-token
+
     serviceMonitor:
       enabled: true
+
     resources:
       requests:
         cpu: 10m

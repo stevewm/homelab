@@ -28,18 +28,34 @@ spec:
   values:
     defaultPodOptions:
       automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534
+        runAsGroup: 65534
+        fsGroup: 65534
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+
     controllers:
       recyclarr:
         type: cronjob
+
+        annotations:
+          reloader.stakater.com/auto: "true"
+
         pod:
           labels:
             egress.home.arpa/kubedns: allow
             monitoring.home.arpa/prometheus: allow
-        annotations:
-          reloader.stakater.com/auto: "true"
+
         cronjob:
           schedule: "@daily"
-          ttlSecondsAfterFinished: 172800 # 48 hours
+          concurrencyPolicy: Forbid
+          backoffLimit: 0
+          failedJobsHistory: 1
+          successfulJobsHistory: 0
+
         containers:
           app:
             image:
@@ -67,6 +83,7 @@ spec:
                 memory: 37M
               limits:
                 memory: 220M
+
     persistence:
       config-cache:
         enabled: true

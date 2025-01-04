@@ -121,7 +121,7 @@ spec:
         - name: TEMPLATE_NAME
           value: hacker-terminal
         - name: SHOW_DETAILS
-          value: 'false'
+          value: "false"
       podLabels:
         ingress.home.arpa/nginx-external: allow
     resources:

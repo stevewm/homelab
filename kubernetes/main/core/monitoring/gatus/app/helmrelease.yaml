@@ -29,7 +29,22 @@ spec:
     controllers:
       gatus:
         annotations:
-          reloader.stakater.com/auto: 'true'
+          reloader.stakater.com/auto: "true"
+
+        pod:
+          dnsConfig:
+            options:
+              - { name: ndots, value: "1" }
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65534
+            runAsGroup: 65534
+            fsGroupChangePolicy: OnRootMismatch
+          labels:
+            ingress.home.arpa/nginx-external: allow
+            ingress.home.arpa/homepage: allow
+            monitoring.home.arpa/prometheus: allow
+
         initContainers:
           init-config:
             image:
@@ -51,6 +66,7 @@ spec:
                 cpu: 10m
               limits:
                 memory: 256Mi
+
         containers:
           app:
             image:
@@ -78,25 +94,28 @@ spec:
               capabilities:
                 drop: ["ALL"]
             resources: *resources
-        pod:
-          dnsConfig:
-            options:
-              - {name: ndots, value: "1"}
-          securityContext:
-            runAsNonRoot: true
-            runAsUser: 65534
-            runAsGroup: 65534
-            fsGroupChangePolicy: OnRootMismatch
-          labels:
-            ingress.home.arpa/nginx-external: allow
-            ingress.home.arpa/homepage: allow
-            monitoring.home.arpa/prometheus: allow
+
+    serviceAccount:
+      create: true
+      name: gatus
+    persistence:
+      config:
+        type: emptyDir
+      config-file:
+        type: configMap
+        name: gatus-configmap
+        globalMounts:
+          - path: /config/config.yaml
+            subPath: config.yaml
+            readOnly: true
+
     service:
       app:
         controller: gatus
         ports:
           http:
             port: *port
+
     serviceMonitor:
       app:
         serviceName: gatus
@@ -106,6 +125,7 @@ spec:
             path: /metrics
             interval: 1m
             scrapeTimeout: 10s
+
     ingress:
       app:
         annotations:
@@ -124,16 +144,3 @@ spec:
                 service:
                   identifier: app
                   port: http
-    serviceAccount:
-      create: true
-      name: gatus
-    persistence:
-      config:
-        type: emptyDir
-      config-file:
-        type: configMap
-        name: gatus-configmap
-        globalMounts:
-          - path: /config/config.yaml
-            subPath: config.yaml
-            readOnly: true

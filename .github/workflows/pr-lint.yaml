@@ -1,5 +1,5 @@
----
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+---
 name: Lint
 
 on:
@@ -86,7 +86,7 @@ jobs:
         if: steps.changed-files.outputs.any_changed == 'true'
         uses: bjw-s/action-markdownlint-cli2@v0.1
         with:
-          markdownlint_config: .github/linters/markdownlint.yaml
+          markdownlint_config: .github/linters/conf.markdownlint.yaml
           file_pattern: ${{ steps.changed-files.outputs.all_changed_files }}
 
   prettier:
@@ -106,9 +106,29 @@ jobs:
         if: steps.changed-files.outputs.any_changed == 'true'
         uses: bjw-s/action-prettier-lint@v0.1
         with:
-          prettier_ignore: .prettierignore
-          prettier_config: .prettierrc.yaml
+          prettier_ignore: .github/linters/prettierignore
+          prettier_config: .github/linters/prettierrc.yaml
           file_pattern: ${{ steps.changed-files.outputs.all_changed_files }}
+
+  shellcheck:
+    name: shellcheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v45
+        with:
+          files: |
+            **.sh
+
+      - name: Run shellcheck
+        if: steps.changed-files.outputs.any_changed == 'true'
+        run: shellcheck ${{ steps.changed-files.outputs.all_changed_files }}
 
   ruff:
     name: ruff
@@ -137,10 +157,12 @@ jobs:
     needs:
       - actionlint
       - prettier
-      #- yamllint
+      - yamllint
       - markdownlint
+      - shellcheck
       - ruff
-    if: always()
+    if: |
+      always()
     name: Lint successful
     runs-on: ubuntu-latest
     steps:
@@ -156,7 +178,8 @@ jobs:
   lint_comment:
     needs:
       - lint_success
-    if: github.event_name == 'pull_request'
+    if: |
+      always()
     name: Linting comment
     runs-on: ubuntu-latest
     steps:
@@ -169,7 +192,8 @@ jobs:
           private-key: "${{ secrets.BOT_APP_PRIVATE_KEY }}"
 
       - id: success_gif
-        if: ${{ needs.lint_success.result }} == 'success'
+        if: |
+          needs.lint_success.result == 'success'
         uses: ddradar/choose-random-action@v3
         with:
           contents: |
@@ -177,26 +201,28 @@ jobs:
             https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXA1azFpM3B1Yjh5eTdsZXBueXY2b3B5dWtmY2ZiaWVqYWE4Y2gwOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dapQjCemVIqI0/giphy.gif
 
       - id: failure_gif
-        if: ${{ needs.lint_success.result }} == 'failure'
+        if: |
+          needs.lint_success.result == 'failure'
         uses: ddradar/choose-random-action@v3
         with:
           contents: |
-            https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHBpcmJ4d2owNGVmbWRwNWZhN2thbjZqamRxeHg1bjFyYWNjcmdoaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Jeqv6YODLYys0/giphy.gif
+            https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbTBvczJvbGhnOWZ0NXJ0ZWJ1NWphN256dmRzZTBtMDF1MWgwcHhnNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7Zesyac4CuSN5rsA/giphy.gif
             https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTNkbWsyMnRqOGNldmdmNHlnbmx6aDE2M2ZndjVyM2w5Y24xMW43YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1b7C0msGxlBSM/giphy.gif
 
       - id: set_message
         run: |
           if [ "${{ needs.lint_success.result }}" == "success" ]; then
-            echo "**Linting status:** PASSED! 🎉" >> $GITHUB_OUTPUT
-            echo "![pass](${{ steps.success_gif.outputs.selected }})" >> $GITHUB_OUTPUT
+            echo "message=✅ Linting **PASSED!** ✅<br /><br /> ![pass](${{ steps.success_gif.outputs.selected }})" >> "$GITHUB_OUTPUT"
           else
-            echo "**Linting status:** FAILED! 😢" >> $GITHUB_OUTPUT
-            echo "![fail](${{ steps.failure_gif.outputs.selected }})" >> $GITHUB_OUTPUT
+            echo "message=*❌ Linting **FAILED!** ❌<br /><br /> ![fail](${{ steps.failure_gif.outputs.selected }})" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Post PR comment
         uses: mshick/add-pr-comment@v2
+        if: |
+          github.event_name == 'pull_request'
         with:
           repo-token: ${{ steps.app-token.outputs.token }}
-          message-id: ${{ github.event.pull_request.number }}
-          message: ${{ steps.set_message.outputs.selected }}
+          message-id: ${{ github.event.pull_request.number }}-linting
+          message: ${{ steps.set_message.outputs.message }}
+          refresh-message-position: "true"

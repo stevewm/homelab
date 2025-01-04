@@ -1,4 +1,9 @@
 ---
+# CI
+ci:
+  - changed-files:
+      - any-glob-to-any-file: .github/**
+
 # Clusters
 cluster/main:
   - changed-files:

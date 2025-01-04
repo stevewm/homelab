@@ -13,8 +13,8 @@ spec:
         - matchName: smtp.protonmail.ch
       toPorts:
         - ports:
-            - port: '587'
-              protocol: 'TCP'
+            - port: "587"
+              protocol: "TCP"
 
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/cilium.io/ciliumclusterwidenetworkpolicy_v2.json
 ---
@@ -35,7 +35,7 @@ spec:
             mail.home.arpa/smtp-relay: allow
       toPorts:
         - ports:
-            - port: '25'
+            - port: "25"
               protocol: TCP
 
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/cilium.io/ciliumclusterwidenetworkpolicy_v2.json
@@ -56,5 +56,5 @@ spec:
             io.kubernetes.pod.namespace: network
       toPorts:
         - ports:
-            - port: '25'
+            - port: "25"
               protocol: TCP
