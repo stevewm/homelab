@@ -1,4 +1,8 @@
 ---
+# CI
+- name: ci
+  color: c45b15
+
 # Clusters
 - name: cluster/main
   color: 007cba
@@ -6,10 +10,10 @@
   color: c51a4a
 
 # Area
-- name: apps
-  color: f9a602
 - name: core
   color: ff8f6c
+- name: apps
+  color: f9a602
 
 # NAS
 - name: nas
