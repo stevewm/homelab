@@ -1,6 +1,13 @@
 ---
+ignore: |
+  .direnv/
+  .vscode/
+  .ruff_cache
 extends: default
 rules:
-  line-length:
-    max: 80
-    level: warning
+  truthy:
+    allowed-values: ["true", "false", "on"]
+
+  line-length: disable
+
+  indentation: enable
