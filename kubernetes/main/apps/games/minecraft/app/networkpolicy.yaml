@@ -27,16 +27,16 @@ spec:
   egress:
     - toFQDNs:
         # Mods
-        - matchPattern: '*.fabricmc.net'
-        - matchPattern: '*.modrinth.com'
+        - matchPattern: "*.fabricmc.net"
+        - matchPattern: "*.modrinth.com"
         - matchName: vanillatweaks.net
         - matchName: playerdb.co
         - matchName: github.com
         # Geyser
         - matchName: api.geysermc.org
         # Mojang
-        - matchPattern: '*.mojang.com'
-        - matchPattern: '*.minecraftservices.com'
+        - matchPattern: "*.mojang.com"
+        - matchPattern: "*.minecraftservices.com"
       toPorts:
         - ports:
             - port: "443"

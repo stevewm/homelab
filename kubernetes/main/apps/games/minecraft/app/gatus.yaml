@@ -4,7 +4,7 @@ kind: ConfigMap
 metadata:
   name: minecraft-server-gatus-ep
   labels:
-    gatus.io/enabled: 'true'
+    gatus.io/enabled: "true"
 data:
   config.yaml: |
     endpoints:
