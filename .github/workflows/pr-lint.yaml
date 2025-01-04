@@ -106,8 +106,8 @@ jobs:
         if: steps.changed-files.outputs.any_changed == 'true'
         uses: bjw-s/action-prettier-lint@v0.1
         with:
-          prettier_ignore: .prettierignore
-          prettier_config: .prettierrc.yaml
+          prettier_ignore: .github/linters/prettierignore
+          prettier_config: .github/linters/prettierrc.yaml
           file_pattern: ${{ steps.changed-files.outputs.all_changed_files }}
 
   ruff:
