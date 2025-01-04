@@ -178,10 +178,7 @@ jobs:
           contents: |
             https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzBqYjExNzAwZWJoaXA4Y2EybXowbHF4eWVsa3czOG1kNDNlcWxlciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2QpH5Khv9ooec/giphy.gif
             https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXA1azFpM3B1Yjh5eTdsZXBueXY2b3B5dWtmY2ZiaWVqYWE4Y2gwOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dapQjCemVIqI0/giphy.gif
-            https://tenor.com/bkYBd.gif
-            https://tenor.com/bQwQL.gif
-            https://tenor.com/71Cr.gif
-            https://tenor.com/egXTiDbLmNj.gif
+
 
       - id: failure_gif
         if: |
@@ -191,10 +188,6 @@ jobs:
           contents: |
             https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHBpcmJ4d2owNGVmbWRwNWZhN2thbjZqamRxeHg1bjFyYWNjcmdoaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Jeqv6YODLYys0/giphy.gif
             https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTNkbWsyMnRqOGNldmdmNHlnbmx6aDE2M2ZndjVyM2w5Y24xMW43YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1b7C0msGxlBSM/giphy.gif
-            https://tenor.com/h91EjTaaG7y.gif
-            https://tenor.com/unln0tMq2mW.gif
-            https://tenor.com/uRJh1Ux3Tjn.gif
-            https://tenor.com/pGBp.gif
 
       - id: set_message
         run: |
