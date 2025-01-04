@@ -178,6 +178,7 @@ jobs:
           contents: |
             https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzBqYjExNzAwZWJoaXA4Y2EybXowbHF4eWVsa3czOG1kNDNlcWxlciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2QpH5Khv9ooec/giphy.gif
             https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXA1azFpM3B1Yjh5eTdsZXBueXY2b3B5dWtmY2ZiaWVqYWE4Y2gwOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dapQjCemVIqI0/giphy.gif
+            https://tenor.com/bkYBd.gif
 
       - id: failure_gif
         if: |
@@ -187,10 +188,11 @@ jobs:
           contents: |
             https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHBpcmJ4d2owNGVmbWRwNWZhN2thbjZqamRxeHg1bjFyYWNjcmdoaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Jeqv6YODLYys0/giphy.gif
             https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTNkbWsyMnRqOGNldmdmNHlnbmx6aDE2M2ZndjVyM2w5Y24xMW43YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1b7C0msGxlBSM/giphy.gif
+            https://tenor.com/h91EjTaaG7y.gif
 
       - id: set_message
         run: |
-          if [ ${{ needs.lint_success.result }} == "success" ]; then
+          if [ "${{ needs.lint_success.result }}" == "success" ]; then
             echo "message=**Linting status:** PASSED! 🎉 ![pass](${{ steps.success_gif.outputs.selected }})" >> "$GITHUB_OUTPUT"
           else
             echo "message=**Linting status:** FAILED! 😢 ![fail](${{ steps.failure_gif.outputs.selected }})" >> "$GITHUB_OUTPUT"
