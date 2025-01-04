@@ -192,10 +192,11 @@ jobs:
 
       - id: set_message
         run: |
+          # shellcheck disable=SC2028
           if [ "${{ needs.lint_success.result }}" == "success" ]; then
-            echo "message=**Linting status:** PASSED! 🎉 ![pass](${{ steps.success_gif.outputs.selected }})" >> "$GITHUB_OUTPUT"
+            echo "message=**Linting status:** PASSED! 🎉\n\n ![pass](${{ steps.success_gif.outputs.selected }})" >> "$GITHUB_OUTPUT"
           else
-            echo "message=**Linting status:** FAILED! 😢 ![fail](${{ steps.failure_gif.outputs.selected }})" >> "$GITHUB_OUTPUT"
+            echo "message=**Linting status:** FAILED! 😢\n\n ![fail](${{ steps.failure_gif.outputs.selected }})" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Post PR comment
