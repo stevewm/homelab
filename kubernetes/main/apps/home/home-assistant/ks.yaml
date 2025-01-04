@@ -21,6 +21,4 @@ spec:
     substitute:
       APP: *app
       APP_SUBDOMAIN: hass
-      APP_UID: "1000"
-      APP_GID: "100"
       VOLSYNC_CLAIM: home-assistant-config
