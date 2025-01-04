@@ -156,7 +156,7 @@ jobs:
   lint_comment:
     needs:
       - lint_success
-    if: github.event_name == 'pull_request'
+    if: always()
     name: Linting comment
     runs-on: ubuntu-latest
     steps:
@@ -196,6 +196,7 @@ jobs:
 
       - name: Post PR comment
         uses: mshick/add-pr-comment@v2
+        if: github.event_name == 'pull_request'
         with:
           repo-token: ${{ steps.app-token.outputs.token }}
           message-id: ${{ github.event.pull_request.number }}
