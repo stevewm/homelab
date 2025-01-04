@@ -19,6 +19,7 @@ tasks:
   pushsecrets:
     desc: Pushes Talos secrets to Doppler from talsecret.yaml [debug=true]
     silent: true
+    prompt: Secrets will be overwritten. Continue?
     vars:
       cluster: '{{.cluster | default "main"}}'
       debug: '{{.debug | default false}}'
@@ -31,4 +32,13 @@ tasks:
       - doppler
       - test -f $TALCONFIG/talsecret.yaml
     cmds:
-      - uv run {{ .ROOT_DIR }}/scripts/doppler-talos.py
+      - uv run {{ .TASKFILE_DIR }}/scripts/doppler-talos.py
+
+  kubeconfig:
+    desc: "Fetch kubeconfig from talos"
+    vars:
+      cluster: '{{.cluster | default "main"}}'
+    silent: true
+    dir: ./kubernetes/{{.cluster}}/
+    cmds:
+      - talosctl kubeconfig -n {{.cluster}} > {{ .ROOT_DIR }}/kubeconfig

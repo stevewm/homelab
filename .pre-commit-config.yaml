@@ -61,4 +61,4 @@ repos:
     rev: v0.8.6
     hooks:
       - id: ruff
-        args: [--config .github/linters/ruff.toml]
+        args: [--config=.github/linters/ruff.toml]
