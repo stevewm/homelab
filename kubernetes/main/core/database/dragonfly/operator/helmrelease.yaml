@@ -37,8 +37,8 @@ spec:
 
         pod:
           labels:
-            monitoring.home.arpa/prometheus: 'allow'
-            egress.home.arpa/apiserver: 'allow'
+            monitoring.home.arpa/prometheus: "allow"
+            egress.home.arpa/apiserver: "allow"
           topologySpreadConstraints:
             - maxSkew: 1
               topologyKey: kubernetes.io/hostname

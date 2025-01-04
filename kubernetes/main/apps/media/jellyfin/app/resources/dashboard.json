@@ -140,9 +140,7 @@
             "alias": "Item",
             "mode": "reduceRow",
             "reduce": {
-              "include": [
-                "item_index_clean"
-              ],
+              "include": ["item_index_clean"],
               "reducer": "firstNotNull"
             }
           }
@@ -153,9 +151,7 @@
             "alias": "Name",
             "mode": "reduceRow",
             "reduce": {
-              "include": [
-                "user_name"
-              ],
+              "include": ["user_name"],
               "reducer": "firstNotNull"
             }
           }
@@ -166,9 +162,7 @@
             "alias": "Temp",
             "mode": "reduceRow",
             "reduce": {
-              "include": [
-                "Item"
-              ],
+              "include": ["Item"],
               "reducer": "firstNotNull"
             }
           }
@@ -212,9 +206,7 @@
         {
           "id": "partitionByValues",
           "options": {
-            "fields": [
-              "Name"
-            ],
+            "fields": ["Name"],
             "keepFields": false,
             "naming": {
               "asLabels": true

@@ -14,5 +14,5 @@ spec:
             app.kubernetes.io/name: kromgo
       toPorts:
         - ports:
-            - port: '9090'
+            - port: "9090"
               protocol: TCP

@@ -21,4 +21,4 @@ spec:
     substitute:
       APP: *app
       APP_SUBDOMAIN: kg
-      GATUS_PATH: '/query?format=endpoint&metric=cluster_node_count'
+      GATUS_PATH: "/query?format=endpoint&metric=cluster_node_count"

@@ -32,7 +32,7 @@ spec:
             - port: "80"
               protocol: TCP
     - toFQDNs:
-        - matchName: drunkenslug.com      # linux isos
+        - matchName: drunkenslug.com # linux isos
         - matchName: prowlarr.servarr.com # update checking
         - matchName: indexers.prowlarr.com
       toPorts:

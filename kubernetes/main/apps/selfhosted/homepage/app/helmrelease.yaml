@@ -56,8 +56,8 @@ spec:
                 pathType: Prefix
 
     envFrom:
-    - secretRef:  # yamllint disable-line
-        name: homepage-app-secrets
+      - secretRef:
+          name: homepage-app-secrets
 
     resources:
       requests:

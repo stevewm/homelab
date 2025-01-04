@@ -34,9 +34,9 @@ spec:
             - port: "80"
               protocol: TCP
     - toFQDNs:
-        - matchName: api.radarr.video   # api
+        - matchName: api.radarr.video # api
         - matchName: radarr.servarr.com # update check
-        - matchName: image.tmdb.org     # info
+        - matchName: image.tmdb.org # info
       toPorts:
         - ports:
             - port: "443"
