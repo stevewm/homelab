@@ -26,34 +26,40 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    installCRDs: true
+    enableCertificateOwnerRef: true
     # podLabels:
     #   egress.home.arpa/apiserver: allow
+
     # webhook:
     #   podLabels:
     #     ingress.home.arpa/apiserver: allow
     #     egress.home.arpa/apiserver: allow
+
     # cainjector:
     #   podLabels:
     #     egress.home.arpa/apiserver: allow
+
     # startupapicheck:
     #   podLabels:
     #     egress.home.arpa/apiserver: allow
 
-    installCRDs: true
-    enableCertificateOwnerRef: true
     deploymentAnnotations:
-      reloader.stakater.com/auto: 'true'
+      reloader.stakater.com/auto:
+
     config:
       apiVersion: controller.config.cert-manager.io/v1alpha1
       kind: ControllerConfiguration
       featureGates:
         AdditionalCertificateOutputFormats: true
         ExperimentalGatewayAPISupport: false
+
     prometheus:
       enabled: true
       servicemonitor:
         enabled: true
         prometheusInstance: monitoring
+
     resources:
       requests:
         cpu: 10m
