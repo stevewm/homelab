@@ -205,4 +205,4 @@ jobs:
         with:
           repo-token: ${{ steps.app-token.outputs.token }}
           message-id: ${{ github.event.pull_request.number }}
-          message: ${{ steps.set_message.outputs.selected }}
+          message: ${{ steps.set_message.outputs.message }}
