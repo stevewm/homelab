@@ -44,7 +44,8 @@ spec:
       vintagestory:
         strategy: Recreate
         annotations:
-          reloader.stakater.com/auto: 'true'
+          reloader.stakater.com/auto: "true"
+
         pod:
           labels:
             ingress.home.arpa/playit: allow
@@ -53,6 +54,7 @@ spec:
             runAsGroup: ${APP_GID}
             fsGroup: ${APP_GID}
             fsGroupChangePolicy: OnRootMismatch
+
         containers:
           app:
             image:
@@ -77,6 +79,7 @@ spec:
               readOnlyRootFilesystem: true
               capabilities:
                 drop: [ALL]
+
     service:
       app:
         type: LoadBalancer
@@ -86,6 +89,7 @@ spec:
           game:
             port: 2420
             targetPort: 42420
+
     persistence:
       gamedata:
         existingClaim: vintagestory-gamedata

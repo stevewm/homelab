@@ -29,23 +29,27 @@ spec:
   values:
     defaultPodOptions:
       automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: ${APP_UID}
+        runAsGroup: ${APP_GID}
+        fsGroup: ${APP_GID}
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+
     controllers:
       sonarr:
         annotations:
           reloader.stakater.com/auto: "true"
-        strategy: Recreate
+
         pod:
           labels:
             ingress.home.arpa/nginx-internal: allow
             ingress.home.arpa/homepage: allow
             egress.home.arpa/kubedns: allow
             monitoring.home.arpa/prometheus: allow
-          securityContext:
-            runAsUser: ${APP_UID}
-            runAsGroup: ${APP_GID}
-            runAsNonRoot: true
-            fsGroup: ${APP_GID}
-            fsGroupChangePolicy: OnRootMismatch
+
         containers:
           app:
             image:
@@ -88,6 +92,7 @@ spec:
               readOnlyRootFilesystem: true
               capabilities:
                 drop: [ALL]
+
           exporter:
             dependsOn: app
             args: ['sonarr']
@@ -102,6 +107,7 @@ spec:
                   secretKeyRef:
                     name: sonarr
                     key: api_key
+
     serviceMonitor:
       metrics:
         enabled: true
@@ -112,6 +118,7 @@ spec:
             path: /metrics
             interval: 15m
             scrapeTimeout: 2m
+
     service:
       app:
         controller: *app
@@ -121,6 +128,7 @@ spec:
             port: *port
           metrics:
             port: *metrics
+
     ingress:
       app:
         className: nginx-internal
@@ -131,9 +139,6 @@ spec:
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *host
         annotations:
           gethomepage.dev/name: *app
           gethomepage.dev/enabled: "true"
@@ -151,6 +156,7 @@ spec:
             <link ref="stylesheet" type="text/css" href="https://themes.${DOMAIN}/css/addons/sonarr/sonarr-text-logo/sonarr-text-logo.css">
             </head>';
             sub_filter_once on;
+
     persistence:
       media:
         type: nfs
