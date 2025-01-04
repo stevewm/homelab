@@ -140,7 +140,8 @@ jobs:
       - yamllint
       - markdownlint
       - ruff
-    if: always()
+    if: |
+      always()
     name: Lint successful
     runs-on: ubuntu-latest
     steps:
@@ -156,7 +157,8 @@ jobs:
   lint_comment:
     needs:
       - lint_success
-    if: always()
+    if: |
+      always()
     name: Linting comment
     runs-on: ubuntu-latest
     steps:
@@ -169,7 +171,8 @@ jobs:
           private-key: "${{ secrets.BOT_APP_PRIVATE_KEY }}"
 
       - id: success_gif
-        if: ${{ needs.lint_success.result }} == 'success'
+        if: |
+          needs.lint_success.result == 'success'
         uses: ddradar/choose-random-action@v3
         with:
           contents: |
@@ -177,7 +180,8 @@ jobs:
             https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXA1azFpM3B1Yjh5eTdsZXBueXY2b3B5dWtmY2ZiaWVqYWE4Y2gwOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dapQjCemVIqI0/giphy.gif
 
       - id: failure_gif
-        if: ${{ needs.lint_success.result }} == 'failure'
+        if: |
+          needs.lint_success.result == 'failure'
         uses: ddradar/choose-random-action@v3
         with:
           contents: |
@@ -186,17 +190,18 @@ jobs:
 
       - id: set_message
         run: |
-          if [ "${{ needs.lint_success.result }}" == "success" ]; then
-            echo "**Linting status:** PASSED! 🎉" >> $GITHUB_OUTPUT
-            echo "![pass](${{ steps.success_gif.outputs.selected }})" >> $GITHUB_OUTPUT
+          if [ ${{ needs.lint_success.result }} == "success" ]; then
+            echo "**Linting status:** PASSED! 🎉" >> "$GITHUB_OUTPUT"
+            echo "![pass](${{ steps.success_gif.outputs.selected }})" >> "$GITHUB_OUTPUT"
           else
-            echo "**Linting status:** FAILED! 😢" >> $GITHUB_OUTPUT
-            echo "![fail](${{ steps.failure_gif.outputs.selected }})" >> $GITHUB_OUTPUT
+            echo "**Linting status:** FAILED! 😢" >> "$GITHUB_OUTPUT"
+            echo "![fail](${{ steps.failure_gif.outputs.selected }})" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Post PR comment
         uses: mshick/add-pr-comment@v2
-        if: github.event_name == 'pull_request'
+        if: |
+          github.event_name == 'pull_request'
         with:
           repo-token: ${{ steps.app-token.outputs.token }}
           message-id: ${{ github.event.pull_request.number }}
