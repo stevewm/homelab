@@ -191,11 +191,9 @@ jobs:
       - id: set_message
         run: |
           if [ ${{ needs.lint_success.result }} == "success" ]; then
-            echo "**Linting status:** PASSED! 🎉" >> "$GITHUB_OUTPUT"
-            echo "![pass](${{ steps.success_gif.outputs.selected }})" >> "$GITHUB_OUTPUT"
+            echo "message=**Linting status:** PASSED! 🎉 ![pass](${{ steps.success_gif.outputs.selected }})" >> "$GITHUB_OUTPUT"
           else
-            echo "**Linting status:** FAILED! 😢" >> "$GITHUB_OUTPUT"
-            echo "![fail](${{ steps.failure_gif.outputs.selected }})" >> "$GITHUB_OUTPUT"
+            echo "message=**Linting status:** FAILED! 😢 ![fail](${{ steps.failure_gif.outputs.selected }})" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Post PR comment
