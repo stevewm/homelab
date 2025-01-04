@@ -185,7 +185,7 @@ jobs:
         uses: ddradar/choose-random-action@v3
         with:
           contents: |
-            https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHBpcmJ4d2owNGVmbWRwNWZhN2thbjZqamRxeHg1bjFyYWNjcmdoaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Jeqv6YODLYys0/giphy.gif
+            https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbTBvczJvbGhnOWZ0NXJ0ZWJ1NWphN256dmRzZTBtMDF1MWgwcHhnNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7Zesyac4CuSN5rsA/giphy.gif
             https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTNkbWsyMnRqOGNldmdmNHlnbmx6aDE2M2ZndjVyM2w5Y24xMW43YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1b7C0msGxlBSM/giphy.gif
 
       - id: set_message
