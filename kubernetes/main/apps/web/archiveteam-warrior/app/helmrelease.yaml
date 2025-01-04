@@ -28,6 +28,14 @@ spec:
   values:
     defaultPodOptions:
       automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534
+        runAsGroup: 65534
+        fsGroup: 65534
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
@@ -38,23 +46,19 @@ spec:
                     - key: app.kubernetes.io/name
                       operator: In
                       values:
-                        - archiveteam-warrior
+                        - *app
                 topologyKey: "kubernetes.io/hostname"
+
     controllers:
       archiveteam-warrior:
-        strategy: Recreate
         pod:
-          securityContext:
-            runAsUser: 1000
-            runAsGroup: 1000
-            fsGroup: 1000
-            fsGroupChangePolicy: OnRootMismatch
           labels:
             ingress.home.arpa/nginx-internal: allow
             egress.home.arpa/kubedns: allow
           annotations:
             kubernetes.io/egress-bandwidth: "10M"
             kubernetes.io/ingress-bandwidth: "10M"
+
         containers:
           app:
             image:
@@ -67,14 +71,16 @@ spec:
               limits:
                 memory: 500Mi
             env:
-              DOWNLOADER: 'stevewm'
+              DOWNLOADER: stevewm
               SELECTED_PROJECT: auto
+
     service:
       app:
         controller: archiveteam-warrior
         ports:
           http:
             port: &port 8001
+
     ingress:
       app:
         className: nginx-internal
@@ -85,14 +91,12 @@ spec:
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *host
         annotations:
           gethomepage.dev/name: *app
-          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/enabled:
           gethomepage.dev/group: web
           gethomepage.dev/icon: mdi-archive-arrow-up
+
     persistence:
       config:
         type: persistentVolumeClaim
