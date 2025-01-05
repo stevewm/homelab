@@ -103,9 +103,7 @@
     {
       description: "Jellyfin",
       groupName: "Jellyfin",
-      matchPackageNames: [
-        "jellyfin/jellyfin",
-      ],
+      matchPackageNames: ["jellyfin/jellyfin"],
       matchDatasources: ["helm", "docker"],
       group: {
         commitMessageTopic: "{{{groupName}}} group",
