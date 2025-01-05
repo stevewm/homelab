@@ -1,37 +1,37 @@
 ---
-version: "3"
+name: pihole
 
 services:
-  pihole:
-    container_name: pihole
-    image: ghcr.io/pi-hole/pihole:2024.07.0
-    network_mode: host
-    ports:
-      - 53:53/tcp
-      - 53:53/udp
-      - 80:3001/tcp
-    dns:
-      - 127.0.0.1
-      - 1.1.1.1
-    environment:
-      TZ: America/Vancouver
-      DNSMASQ_LISTENING: all
-      WEBTHEME: default-dark
-      WEB_PORT: 3001
-      WEBPASSWORD: $WEBPASSWORD
-    volumes:
-      - /share/Docker/pihole-docker/etc-pihole/:/etc/pihole/
-      - /share/Docker/pihole-docker/etc-dnsmasq.d/:/etc/dnsmasq.d/
-    restart: always
   exporter:
-    container_name: exporter
     image: ekofr/pihole-exporter:v0.4.0
-    network_mode: host
-    ports:
-      - 9617:9617/tcp
+    container_name: exporter
     environment:
       PIHOLE_PROTOCOL: http
       PIHOLE_HOSTNAME: localhost
       PIHOLE_PORT: 3001
       PIHOLE_API_TOKEN: $WEBPASSWORD
       TZ: America/Vancouver
+    ports:
+      - "9617:9617/tcp"
+    network_mode: host
+  pihole:
+    image: ghcr.io/pi-hole/pihole:2024.07.0
+    container_name: pihole
+    volumes:
+      - /share/Docker/pihole-docker/etc-pihole/:/etc/pihole/
+      - /share/Docker/pihole-docker/etc-dnsmasq.d/:/etc/dnsmasq.d/
+    environment:
+      TZ: America/Vancouver
+      DNSMASQ_LISTENING: all
+      WEBTHEME: default-dark
+      WEB_PORT: 3001
+      WEBPASSWORD: $WEBPASSWORD
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "80:3001/tcp"
+    network_mode: host
+    restart: always
+    dns:
+      - 127.0.0.1
+      - 1.1.1.1
