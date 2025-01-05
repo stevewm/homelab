@@ -66,7 +66,7 @@ spec:
           app:
             image:
               repository: ghcr.io/stevewm/docs
-              tag: 1.0.0@sha256:ca088887ed81e358fb16de8a1c4c51402407a8716881285742a673e16e20ab28
+              tag: 1.0.0@sha256:013742d2d7a2ed27293d51297fa7f7208879f7b91f6602505df0e2ec9fbc5db8
             resources:
               requests:
                 cpu: 5m
