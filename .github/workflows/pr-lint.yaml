@@ -228,6 +228,11 @@ jobs:
           contents: |
             https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzBqYjExNzAwZWJoaXA4Y2EybXowbHF4eWVsa3czOG1kNDNlcWxlciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2QpH5Khv9ooec/giphy.gif
             https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXA1azFpM3B1Yjh5eTdsZXBueXY2b3B5dWtmY2ZiaWVqYWE4Y2gwOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dapQjCemVIqI0/giphy.gif
+            https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExaDZiaHJmaHRjNW05YXpqN2gxNm9tM2x2cjNtbGNqZjZpMHVrMGttZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/V6M5QNt6RXq4MwvPz5/giphy.gif
+            https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHg5Zng3bmJzZGpxcTl0aTIyOG9lNDY0ZXU5NXRnN2U4OHluanY2aSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gfI0eOndvuL9GV6RNx/giphy.gif
+            https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWQ1aGVvM3pqOGRkM3hyd3hheTBkeDlpb2gzbG95ejRsbTNlZHZkMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1MnPXgYcP0g3eWvQYY/giphy.gif
+            https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHM0dXBjZzk3NjRzMzFzdXFxa3AzeTVnNDR5d3ozd2Zsb3Nsc2ZnbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/7bkKhCVTn5INCGsKcX/giphy.gif
+
 
       - id: failure_gif
         if: |
@@ -237,6 +242,11 @@ jobs:
           contents: |
             https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbTBvczJvbGhnOWZ0NXJ0ZWJ1NWphN256dmRzZTBtMDF1MWgwcHhnNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7Zesyac4CuSN5rsA/giphy.gif
             https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTNkbWsyMnRqOGNldmdmNHlnbmx6aDE2M2ZndjVyM2w5Y24xMW43YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1b7C0msGxlBSM/giphy.gif
+            https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTdweTZ0ZjgxdWk4azM2MXV1Nms2dm1rOXMwZTMzcjcyeG9lZG9iYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/oqavwrpgRKGRVl7nxt/giphy.gif
+            https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXQ1bWw5MnVrZGQzcHIxaHE2dDI3cDB4MWl4cG54Mm5wNzlvN2d2eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KnfIZOpsTPdOTllXpn/giphy.gif
+            https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYXRzaDBldzRqdmtoYm9wdXJmZzNudmdhNXVtZmRoZHRsM2Noa252YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LlAk7GX8WhiIF4wApU/giphy.gif
+            https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2VlaTc5cHdnOHRudDMwZ3A1bXhsMG9nYnRncWNjeW5kOG50N2Q1cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Ed81Zo8zPREEbsIkhA/giphy.gif
+            https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2lrZHBvODEybWh2dDNhZ3VveDd6anloZHVibmhsOHpkMmltNWc1ciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NXsHgfgEPxbk691HdK/giphy.gif
 
       - id: set_message
         run: |
