@@ -10,8 +10,6 @@ services:
       - /share/Docker/jellyfin/config:/config
       - /share/Media:/media
     environment:
-      PUID: 1001
-      PGID: 100
       TZ: Europe/Amsterdam
       JELLYFIN_DATA_DIR: /config
       JELLYFIN_CACHE_DIR: /cache
@@ -33,3 +31,5 @@ services:
       timeout: 30s
       retries: 3
     user: 1001:100
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128
