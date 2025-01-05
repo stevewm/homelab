@@ -36,6 +36,7 @@ terraform.rc
 doppler.json
 talsecret.yaml
 .env
+.secrets
 
 # python
 .venv/
