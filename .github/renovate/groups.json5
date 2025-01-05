@@ -100,5 +100,17 @@
       },
       separateMinorPatch: false,
     },
+    {
+      description: "Jellyfin",
+      groupName: "Jellyfin",
+      matchPackageNames: [
+        "jellyfin/jellyfin",
+      ],
+      matchDatasources: ["helm", "docker"],
+      group: {
+        commitMessageTopic: "{{{groupName}}} group",
+      },
+      separateMinorPatch: false,
+    },
   ],
 }
