@@ -31,7 +31,7 @@ spec:
 
     image:
       repository: ghcr.io/gethomepage/homepage
-      tag: v0.10.6
+      tag: v0.10.7
 
     podLabels:
       ingress.home.arpa/nginx-internal: allow
