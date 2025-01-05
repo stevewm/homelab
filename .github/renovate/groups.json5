@@ -65,21 +65,21 @@
       separateMinorPatch: false,
     },
     {
-      "description": "Dragonfly operator",
-      "groupName": "Dragonfly Operator",
-      "matchPackagePatterns": ["dragonfly(?:db)?.operator"],
-      "matchDatasources": ["docker", "github-releases"],
-      "group": {
-        "commitMessageTopic": "{{{groupName}}} group"
+      description: "Dragonfly operator",
+      groupName: "Dragonfly Operator",
+      matchPackagePatterns: ["dragonfly(?:db)?.operator"],
+      matchDatasources: ["docker", "github-releases"],
+      group: {
+        commitMessageTopic: "{{{groupName}}} group",
       },
-      "separateMinorPatch": true
+      separateMinorPatch: true,
     },
     {
       description: "Intel device plugins",
       groupName: "Intel Device Plugins",
       matchPackageNames: [
         "intel-device-plugins-operator",
-        "intel-device-plugins-gpu"
+        "intel-device-plugins-gpu",
       ],
       matchDatasources: ["helm", "docker"],
       group: {
@@ -92,7 +92,7 @@
       groupName: "Kubelet CSR Approver",
       matchPackageNames: [
         "kubelet-csr-approver",
-        "postfinance/kubelet-csr-approver"
+        "postfinance/kubelet-csr-approver",
       ],
       matchDatasources: ["helm", "docker", "github-releases"],
       group: {

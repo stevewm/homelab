@@ -1,11 +1,12 @@
-
-{ // I hate Renovate config so much, my god
+{
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   customDatasources: {
-    "minecraft": {
+    minecraft: {
       defaultRegistryUrlTemplate: "https://launchermeta.mojang.com/mc/game/version_manifest_v2.json",
       format: "json",
-      transformTemplates: ['{ "releases": versions[type="release"].{"version": id, "releaseTimestamp": releaseTime} }']
-    }
-  }
+      transformTemplates: [
+        '{ "releases": versions[type="release"].{"version": id, "releaseTimestamp": releaseTime} }',
+      ],
+    },
+  },
 }
