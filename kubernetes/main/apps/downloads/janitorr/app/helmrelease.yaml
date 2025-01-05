@@ -1,0 +1,122 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2beta2.schema.json
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app janitorr
+spec:
+  interval: 30m
+  maxHistory: 3
+  chart:
+    spec:
+      chart: app-template
+      version: 3.6.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    defaultPodOptions:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534
+        runAsGroup: 65534
+        fsGroup: 65534
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+
+    controllers:
+      janitorr:
+        annotations:
+          reloader.stakater.com/auto: "true"
+
+        pod:
+          labels:
+            egress.home.arpa/kubedns: allow
+
+        containers:
+          app:
+            image:
+              repository: ghcr.io/schaka/janitorr:stable
+              tag: v1.6.9@sha256:cd788319e250c9a84c724e00a3e99705c22aa148164d170556e09e7f4e5ad205
+            env:
+              SONARR_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: sonarr
+                    key: api-key
+              RADARR_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: radarr
+                    key: api-key
+              BAZARR_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: bazarr
+                    key: api-key
+              JELLYFIN_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: janitorr
+                    key: jellyfin_api_key
+              JELLYSEERR_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: janitorr
+                    key: jellyseerr_api_key
+
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /health
+                    port: 80
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+            resources:
+              requests:
+                cpu: 10m
+                memory: 164M
+              limits:
+                memory: 220M
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop: [ALL]
+
+    persistence:
+      config:
+        type: configMap
+        name: janitorr-config
+        globalMounts:
+          - path: /workspace/application.yml
+            subPath: application.yml
+            readOnly: true
+      media:
+        enabled: true
+        type: nfs
+        server: ${NAS}
+        path: /volume1/Media
+        globalMounts:
+          - path: /data/media
+      logs:
+        type: emptyDir
