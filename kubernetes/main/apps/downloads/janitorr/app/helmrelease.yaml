@@ -49,7 +49,7 @@ spec:
         containers:
           app:
             image:
-              repository: ghcr.io/schaka/janitorr:stable
+              repository: ghcr.io/schaka/janitorr
               tag: v1.6.9@sha256:cd788319e250c9a84c724e00a3e99705c22aa148164d170556e09e7f4e5ad205
             env:
               SONARR_API_KEY:
