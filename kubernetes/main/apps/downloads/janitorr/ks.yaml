@@ -23,6 +23,3 @@ spec:
     - name: app-bazarr
     - name: app-jellyfin
     - name: app-jellyseerr
-  postBuild:
-    substitute:
-      VOLSYNC_CLAIM: janitorr-config
