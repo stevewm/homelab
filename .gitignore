@@ -2,7 +2,6 @@
 kubeconfig
 Brewfile.lock.json
 *.log
-.vscode/
 
 # macOS
 .DS_Store
