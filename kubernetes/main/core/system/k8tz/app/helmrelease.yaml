@@ -28,7 +28,7 @@ spec:
     keepHistory: false
   values:
     namespace: null
-    timezone: America/Vancouver
+    timezone: Europe/Amsterdam
     cronJobTimeZone: true
     resources:
       requests:
