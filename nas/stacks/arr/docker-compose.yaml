@@ -20,7 +20,7 @@ services:
       - "7878:7878/tcp"
     restart: always
     healthcheck:
-      test: curl --fail http://localhost:787/ping || exit 1
+      test: curl --fail http://localhost:7878/ping || exit 1
       interval: 10s
       timeout: 1s
       retries: 3
