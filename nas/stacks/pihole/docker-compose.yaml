@@ -20,19 +20,29 @@ services:
       - "80:3001/tcp"
     network_mode: host
     restart: always
+    healthcheck:
+      test: curl --fail http://localhost:3001/admin/login.php # FIXME: better endpoint available?
+      interval: 10s
+      timeout: 1s
+      retries: 3
     dns:
       - 127.0.0.1
       - 1.1.1.1
 
-  exporter:
+  pihole-exporter:
     image: ekofr/pihole-exporter:v0.4.0@sha256:b101b2beb6787aee407be287fe35426cf88f15233ed01aeeef445931232d89e4
     container_name: exporter
     environment:
+      TZ: Europe/Amsterdam
       PIHOLE_PROTOCOL: http
       PIHOLE_HOSTNAME: localhost
       PIHOLE_PORT: 3001
       PIHOLE_API_TOKEN: $WEBPASSWORD
-      TZ: Europe/Amsterdam
     ports:
       - "9617:9617/tcp"
-    network_mode: host
+    restart: always
+    healthcheck:
+      test: curl --fail http://localhost:9617/metrics
+      interval: 10s
+      timeout: 1s
+      retries: 3
