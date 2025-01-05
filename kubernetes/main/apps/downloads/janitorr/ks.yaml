@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: app-janitorr
+  namespace: flux-system
+spec:
+  targetNamespace: downloads
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app janitorr
+  interval: 10m
+  path: ./kubernetes/main/apps/downloads/janitorr/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+  wait: true
+  dependsOn:
+    - name: app-sonarr
+    - name: app-radarr
+    - name: app-bazarr
+    - name: app-jellyfin
+    - name: app-jellyseerr
+  postBuild:
+    substitute:
+      VOLSYNC_CLAIM: janitorr-config

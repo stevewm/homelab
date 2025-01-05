@@ -6,6 +6,7 @@ resources:
   - ./namespace.yaml
   - ./networkpolicy.yaml
   - ./bazarr/ks.yaml
+  - ./janitorr/ks.yaml
   - ./prowlarr/ks.yaml
   - ./radarr/ks.yaml
   - ./recyclarr/ks.yaml
