@@ -1,54 +1,51 @@
 ---
-version: "3"
+name: arr-stack
 
 services:
-  sabnzbd:
-    container_name: sabnzbd
-    user: 0:0
-    image: ghcr.io/onedr0p/sabnzbd:4.4.1@sha256:4188d3c29c53de1018edcfd5dc2d0a0c7955b9a239b91ff6c859626abd3494dc
-    ports:
-      - 8080:8080/tcp
-    environment:
-      TZ: America/Vancouver
-    volumes:
-      - /share/Docker/sabnzbd/config/:/config/
-      - /share/Media:/data/media/
-    restart: always
-
-  sonarr:
-    container_name: sonarr
-    user: 0:0
-    image: ghcr.io/onedr0p/sonarr:4.0.11.2680@sha256:be61367714d750b241eec33c10cafd89002564404c18706b3f3e93ea40c2e608
-    ports:
-      - 8989:8989/tcp
-    environment:
-      TZ: America/Vancouver
-      COMPlus_EnableDiagnostics: "0"
-      SONARR__APP_INSTANCENAME: Sonarr
-      SONARR__AUTH__METHOD: External
-      SONARR__AUTH_REQUIRED: DisabledForLocalAddresses
-      SONARR__LOG__DBENABLED: "False"
-      SONARR__LOG__LEVEL: info
-    volumes:
-      - /share/Docker/sonarr/config/:/config/
-      - /share/Media:/data/media/
-    restart: always
-
   radarr:
-    container_name: radarr
-    user: 0:0
     image: ghcr.io/onedr0p/radarr:5.16.3.9541@sha256:c486358da837234118d4d3bedb88269e6ad55919efc31aa84cb478780d59b93a
-    ports:
-      - 7878:7878/tcp
+    container_name: radarr
+    volumes:
+      - /share/Docker/radarr/config/:/config/
+      - /share/Media:/data/media/
     environment:
-      TZ: America/Vancouver
+      TZ: Europe/Amsterdam
       COMPlus_EnableDiagnostics: "0"
       RADARR__APP__INSTANCENAME: Radarr
       RADARR__AUTH__METHOD: External
       RADARR__AUTH__REQUIRED: DisabledForLocalAddresses
       RADARR__LOG__DBENABLED: "False"
       RADARR__LOG__LEVEL: info
+    ports:
+      - "7878:7878/tcp"
+    restart: always
+
+  sabnzbd:
+    image: ghcr.io/onedr0p/sabnzbd:4.4.1@sha256:4188d3c29c53de1018edcfd5dc2d0a0c7955b9a239b91ff6c859626abd3494dc
+    container_name: sabnzbd
     volumes:
-      - /share/Docker/radarr/config/:/config/
+      - /share/Docker/sabnzbd/config/:/config/
       - /share/Media:/data/media/
+    environment:
+      TZ: Europe/Amsterdam
+    ports:
+      - "8080:8080/tcp"
+    restart: always
+
+  sonarr:
+    image: ghcr.io/onedr0p/sonarr:4.0.11.2680@sha256:be61367714d750b241eec33c10cafd89002564404c18706b3f3e93ea40c2e608
+    container_name: sonarr
+    volumes:
+      - /share/Docker/sonarr/config/:/config/
+      - /share/Media:/data/media/
+    environment:
+      TZ: Europe/Amsterdam
+      COMPlus_EnableDiagnostics: "0"
+      SONARR__APP_INSTANCENAME: Sonarr
+      SONARR__AUTH__METHOD: External
+      SONARR__AUTH_REQUIRED: DisabledForLocalAddresses
+      SONARR__LOG__DBENABLED: "False"
+      SONARR__LOG__LEVEL: info
+    ports:
+      - "8989:8989/tcp"
     restart: always
