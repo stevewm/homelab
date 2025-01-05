@@ -33,7 +33,7 @@ services:
     restart: always
 
   sonarr:
-    image: ghcr.io/onedr0p/sonarr:4.0.11.2680@sha256:be61367714d750b241eec33c10cafd89002564404c18706b3f3e93ea40c2e608
+    image: ghcr.io/onedr0p/radarr:5.17.2.9580@sha256:32d0e8d46f5619069d88445936670ffbca5a3aab7ed2e94e77a834ed85df81bb
     container_name: sonarr
     volumes:
       - /share/Docker/sonarr/config/:/config/
