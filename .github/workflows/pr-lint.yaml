@@ -124,7 +124,7 @@ jobs:
         uses: tj-actions/changed-files@v45
         with:
           files: |
-            docker-compose.yaml
+            **/docker-compose.yaml
 
       - name: Install dclint
         if: steps.changed-files.outputs.any_changed == 'true'
