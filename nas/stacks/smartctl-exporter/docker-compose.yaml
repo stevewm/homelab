@@ -4,8 +4,8 @@ name: smartctl-exporter
 services:
   smartctl-exporter:
     image: quay.io/prometheuscommunity/smartctl-exporter:v0.13.0
-    ports:
-      - "9633:9633"
     restart: always
     user: root
+    expose:
+      - "9633"
     privileged: True
