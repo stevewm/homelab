@@ -4,7 +4,13 @@
 # 1 - warning
 # 2 - error
 rules:
+  # https://github.com/zavoloklom/docker-compose-linter/blob/main/docs/rules/no-unbound-port-interfaces-rule.md
+  no-unbound-port-interfaces: 0
+
+  # https://github.com/zavoloklom/docker-compose-linter/blob/main/docs/rules/services-alphabetical-order-rule.md
+  services-alphabetical-order: 0
+
+  # https://github.com/zavoloklom/docker-compose-linter/blob/main/docs/rules/require-quotes-in-ports-rule.md
   require-quotes-in-ports:
     - 2
     - quoteType: double
-  no-unbound-port-interfaces: 0
