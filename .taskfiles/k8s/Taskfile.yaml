@@ -1,12 +1,11 @@
 # yaml-language-server: $schema=https://taskfile.dev/schema.json
 ---
-version: '3'
+version: "3"
 
 env:
-  KUBECONFIG: '{{.ROOT_DIR}}/kubeconfig'
+  KUBECONFIG: "{{.ROOT_DIR}}/kubeconfig"
 
 tasks:
-
   bootstrap:
     desc: "Run a cluster bootstrap script [cluster=main]"
     vars:

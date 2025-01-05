@@ -1,12 +1,11 @@
 # yaml-language-server: $schema=https://taskfile.dev/schema.json
 ---
-version: '3'
+version: "3"
 
 env:
-  TALOSCONFIG: '{{.ROOT_DIR}}/kubernetes/{{.cluster}}/talos'
+  TALOSCONFIG: "{{.ROOT_DIR}}/kubernetes/{{.cluster}}/talos"
 
 tasks:
-
   genconfig:
     desc: "Generate Talos machineconfigs [cluster=main]"
     vars:
@@ -22,10 +21,10 @@ tasks:
     prompt: Secrets will be overwritten. Continue?
     vars:
       cluster: '{{.cluster | default "main"}}'
-      debug: '{{.debug | default false}}'
+      debug: "{{.debug | default false}}"
     env:
-      TALOS_SECRETS_DRYRUN: '{{.debug}}'
-      TALCONFIG: '{{.ROOT_DIR}}/kubernetes/{{.cluster}}/talos'
+      TALOS_SECRETS_DRYRUN: "{{.debug}}"
+      TALCONFIG: "{{.ROOT_DIR}}/kubernetes/{{.cluster}}/talos"
     dir: ./kubernetes/{{.cluster}}/talos/
     preconditions:
       - talhelper
