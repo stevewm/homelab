@@ -1,15 +1,15 @@
 {
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
-  "packageRules": [
+  packageRules: [
     {
       description: "main cluster",
       matchFileNames: ["**/kubernetes/main/**"],
-      additionalBranchPrefix: "main-"
+      additionalBranchPrefix: "main-",
     },
     {
       description: "NAS",
       matchFileNames: ["**/nas/**"],
-      additionalBranchPrefix: "nas-"
-    }
-  ]
+      additionalBranchPrefix: "nas-",
+    },
+  ],
 }

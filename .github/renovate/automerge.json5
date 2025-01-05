@@ -18,6 +18,6 @@
       matchUpdateTypes: ["minor", "patch"],
       matchPackageNames: ["kube-prometheus-stack"],
       ignoreTests: false,
-    }
-  ]
+    },
+  ],
 }
