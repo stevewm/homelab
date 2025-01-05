@@ -10,7 +10,7 @@ services:
       PIHOLE_HOSTNAME: localhost
       PIHOLE_PORT: 3001
       PIHOLE_API_TOKEN: $WEBPASSWORD
-      TZ: America/Vancouver
+      TZ: Europe/Amsterdam
     ports:
       - "9617:9617/tcp"
     network_mode: host
@@ -21,7 +21,7 @@ services:
       - /share/Docker/pihole-docker/etc-pihole/:/etc/pihole/
       - /share/Docker/pihole-docker/etc-dnsmasq.d/:/etc/dnsmasq.d/
     environment:
-      TZ: America/Vancouver
+      TZ: Europe/Amsterdam
       DNSMASQ_LISTENING: all
       WEBTHEME: default-dark
       WEB_PORT: 3001
