@@ -233,7 +233,6 @@ jobs:
             https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWQ1aGVvM3pqOGRkM3hyd3hheTBkeDlpb2gzbG95ejRsbTNlZHZkMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1MnPXgYcP0g3eWvQYY/giphy.gif
             https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHM0dXBjZzk3NjRzMzFzdXFxa3AzeTVnNDR5d3ozd2Zsb3Nsc2ZnbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/7bkKhCVTn5INCGsKcX/giphy.gif
 
-
       - id: failure_gif
         if: |
           needs.lint_success.result == 'failure'
