@@ -26,24 +26,6 @@ services:
       retries: 3
     user: 1001:100
 
-  sabnzbd:
-    image: ghcr.io/onedr0p/sabnzbd:4.4.1@sha256:4188d3c29c53de1018edcfd5dc2d0a0c7955b9a239b91ff6c859626abd3494dc
-    container_name: sabnzbd
-    volumes:
-      - /share/Docker/sabnzbd/config/:/config/
-      - /share/Media:/data/media/
-    environment:
-      TZ: Europe/Amsterdam
-    ports:
-      - "8080:8080/tcp"
-    restart: always
-    healthcheck:
-      test: curl --fail http://localhost:8080/api?mode=version || exit 1
-      interval: 10s
-      timeout: 1s
-      retries: 3
-    user: 1001:100
-
   sonarr:
     image: ghcr.io/onedr0p/sonarr:4.0.11.2680@sha256:be61367714d750b241eec33c10cafd89002564404c18706b3f3e93ea40c2e608
     container_name: sonarr
@@ -63,6 +45,24 @@ services:
     restart: always
     healthcheck:
       test: curl --fail http://localhost:8989/ping || exit 1
+      interval: 10s
+      timeout: 1s
+      retries: 3
+    user: 1001:100
+
+  sabnzbd:
+    image: ghcr.io/onedr0p/sabnzbd:4.4.1@sha256:4188d3c29c53de1018edcfd5dc2d0a0c7955b9a239b91ff6c859626abd3494dc
+    container_name: sabnzbd
+    volumes:
+      - /share/Docker/sabnzbd/config/:/config/
+      - /share/Media:/data/media/
+    environment:
+      TZ: Europe/Amsterdam
+    ports:
+      - "8080:8080/tcp"
+    restart: always
+    healthcheck:
+      test: curl --fail http://localhost:8080/api?mode=version || exit 1
       interval: 10s
       timeout: 1s
       retries: 3
