@@ -34,7 +34,7 @@ jobs:
         if: steps.changed-files.outputs.any_changed == 'true'
         uses: bjw-s/action-actionlint@v0.1
         with:
-          # actionlint_config: .actionlint.yml
+          # actionlint_config: .github/linters/actionlint.yml
           file_pattern: ${{ steps.changed-files.outputs.all_changed_files }}
 
   yamllint:
@@ -136,8 +136,7 @@ jobs:
         if: steps.changed-files.outputs.any_changed == 'true'
         shell: bash
         run: |
-          dclint ${{ steps.changed-files.outputs.all_changed_files }} --config .github/linters/dclint.yaml
-
+          dclint --config .github/linters/dclint.yaml ${{ steps.changed-files.outputs.all_changed_files }}
 
   shellcheck:
     name: shellcheck
@@ -188,6 +187,7 @@ jobs:
       - prettier
       - yamllint
       - markdownlint
+      - dclint
       - shellcheck
       - ruff
     if: |

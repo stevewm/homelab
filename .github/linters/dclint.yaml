@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/zavoloklom/docker-compose-linter/refs/heads/main/schemas/linter-config.schema.json
+---
+# 0 - disabled
+# 1 - warning
+# 2 - error
+rules:
+  require-quotes-in-ports:
+    - 2
+    - quoteType: double
+  no-unbound-port-interfaces: 0
