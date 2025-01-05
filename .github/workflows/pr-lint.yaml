@@ -110,6 +110,35 @@ jobs:
           prettier_config: .github/linters/prettierrc.yaml
           file_pattern: ${{ steps.changed-files.outputs.all_changed_files }}
 
+  dclint:
+    name: dclint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v45
+        with:
+          files: |
+            docker-compose.yaml
+
+      - name: Install dclint
+        if: steps.changed-files.outputs.any_changed == 'true'
+        shell: bash
+        run: |
+          npm install --g dclint
+
+      - name: Run dclint
+        if: steps.changed-files.outputs.any_changed == 'true'
+        shell: bash
+        run: |
+          dclint ${{ steps.changed-files.outputs.all_changed_files }} --config .github/linters/dclint.yaml
+
+
   shellcheck:
     name: shellcheck
     runs-on: ubuntu-latest

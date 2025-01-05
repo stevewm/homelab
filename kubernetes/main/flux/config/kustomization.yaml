@@ -6,4 +6,3 @@ resources:
   - ./vars.yaml
   - ./cluster.yaml
   - ./flux.yaml
-  - ./vars.yaml
