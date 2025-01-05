@@ -45,6 +45,11 @@ repos:
     rev: 39.86.3
     hooks:
       - id: renovate-config-validator
+        files: |
+          (?x)^(
+            .github/renovate.json.*|
+            .github/renovate/.*.json.*
+          )$
 
   - repo: https://github.com/koalaman/shellcheck-precommit
     rev: v0.10.0
