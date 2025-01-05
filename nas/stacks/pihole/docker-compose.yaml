@@ -21,7 +21,7 @@ services:
     network_mode: host
     restart: always
     healthcheck:
-      test: curl --fail http://localhost:3001/admin/login.php # FIXME: better endpoint available?
+      test: curl --fail http://localhost:3001/admin/login.php  # FIXME: better endpoint available?
       interval: 10s
       timeout: 1s
       retries: 3

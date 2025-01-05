@@ -10,4 +10,4 @@ services:
     user: root
     expose:
       - "9633"
-    privileged: True
+    privileged: true
