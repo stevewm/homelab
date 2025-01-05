@@ -27,8 +27,8 @@ services:
     restart: always
     healthcheck:
       test: curl --fail http://localhost:8096/health || exit 1
-      interval: 45s
-      timeout: 30s
+      interval: 10s
+      timeout: 1s
       retries: 3
     user: 1001:100
     devices:
