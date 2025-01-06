@@ -9,7 +9,7 @@ spec:
   targetNamespace: network
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app external-dns
+      app.kubernetes.io/name: external-dns
   interval: 10m
   path: ./kubernetes/main/core/network/external-dns/common
   prune: true
@@ -28,7 +28,7 @@ spec:
   targetNamespace: network
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app external-dns
+      app.kubernetes.io/name: external-dns
       app.kubernetes.io/instance: pihole
   interval: 10m
   path: ./kubernetes/main/core/network/external-dns/pihole
@@ -52,7 +52,7 @@ spec:
   targetNamespace: network
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app external-dns
+      app.kubernetes.io/name: external-dns
       app.kubernetes.io/instance: cloudflare
   interval: 10m
   path: ./kubernetes/main/core/network/external-dns/cloudflare

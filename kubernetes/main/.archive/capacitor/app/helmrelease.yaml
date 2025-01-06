@@ -77,7 +77,7 @@ spec:
           gethomepage.dev/group: monitoring
           gethomepage.dev/icon: mdi-sync
         hosts:
-          - host: &host ${APP_SUBDOMAIN}.${DOMAIN}
+          - host: ${APP_SUBDOMAIN}.${DOMAIN}
             paths:
               - path: /
                 service:

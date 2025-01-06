@@ -9,7 +9,7 @@ spec:
   targetNamespace: system
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app descheduler
+      app.kubernetes.io/name: descheduler
   path: ./kubernetes/main/core/system/descheduler/app
   sourceRef:
     kind: GitRepository

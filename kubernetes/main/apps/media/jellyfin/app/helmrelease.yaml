@@ -68,7 +68,7 @@ spec:
                 spec:
                   httpGet:
                     path: /health
-                    port: &port 8096
+                    port: 8096
                   initialDelaySeconds: 0
                   periodSeconds: 10
                   timeoutSeconds: 1
@@ -94,7 +94,7 @@ spec:
 
     service:
       app:
-        controller: jellyfin
+        controller: *app
         ports:
           http:
             port: 8096
@@ -105,7 +105,7 @@ spec:
       app:
         className: nginx-external
         hosts:
-          - host: &host ${APP_SUBDOMAIN}.${DOMAIN}
+          - host: ${APP_SUBDOMAIN}.${DOMAIN}
             paths:
               - path: /
                 service:

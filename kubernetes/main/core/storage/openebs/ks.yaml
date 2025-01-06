@@ -9,7 +9,7 @@ spec:
   targetNamespace: storage
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app openebs
+      app.kubernetes.io/name: openebs
   interval: 10m
   path: ./kubernetes/main/core/storage/openebs/app
   prune: true

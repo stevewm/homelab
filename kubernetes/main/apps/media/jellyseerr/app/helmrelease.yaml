@@ -80,7 +80,7 @@ spec:
 
     service:
       app:
-        controller: jellyseerr
+        controller: *app
         ports:
           http:
             port: *port
@@ -89,7 +89,7 @@ spec:
       app:
         className: nginx-external
         hosts:
-          - host: &host ${APP_SUBDOMAIN}.${DOMAIN}
+          - host: ${APP_SUBDOMAIN}.${DOMAIN}
             paths:
               - path: /
                 service:

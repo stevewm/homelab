@@ -66,7 +66,7 @@ spec:
 
     service:
       app:
-        controller: stirling-pdf
+        controller: *app
         ports:
           http:
             port: 8080
@@ -75,7 +75,7 @@ spec:
       app:
         className: nginx-internal
         hosts:
-          - host: &host ${APP_SUBDOMAIN}.${DOMAIN}
+          - host: ${APP_SUBDOMAIN}.${DOMAIN}
             paths:
               - path: /
                 service:
@@ -87,3 +87,13 @@ spec:
           gethomepage.dev/group: selfhosted
           gethomepage.dev/icon: stirling-pdf.png
           nginx.org/client-max-body-size: "150m"
+
+    persistence:
+      configs:
+        type: emptyDir
+      customFiles:
+        type: emptyDir
+      logs:
+        type: emptyDir
+      pipeline:
+        type: emptyDir

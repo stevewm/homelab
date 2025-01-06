@@ -115,7 +115,7 @@ spec:
         annotations:
           nginx.ingress.kubernetes.io/backend-protocol: HTTPS
         host:
-          name: &host ${APP_SUBDOMAIN}.${DOMAIN}
+          name: rook.${DOMAIN}
           path: /
 
     cephBlockPools:

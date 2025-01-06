@@ -20,6 +20,7 @@ spec:
   postBuild:
     substitute:
       APP: *app
+      APP_SUBDOMAIN: auth
   dependsOn:
     - name: core-glauth
     - name: core-smtp-relay

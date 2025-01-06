@@ -6,10 +6,10 @@ metadata:
   name: core-smartctl-exporter
   namespace: flux-system
 spec:
-  targetNamespace: &namespace monitoring
+  targetNamespace: monitoring
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app smartctl-exporter
+      app.kubernetes.io/name: smartctl-exporter
   interval: 10m
   path: ./kubernetes/main/core/monitoring/smartctl-exporter/app
   prune: true

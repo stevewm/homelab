@@ -74,7 +74,7 @@ spec:
               limits:
                 memory: 64Mi
             env:
-              NGINX_HOST: &host ${APP_SUBDOMAIN}.${DOMAIN}
+              NGINX_HOST: &host docs.${DOMAIN}
 
     service:
       app:

@@ -6,10 +6,10 @@ metadata:
   name: core-gatus
   namespace: flux-system
 spec:
-  targetNamespace: &namespace monitoring
+  targetNamespace: monitoring
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app gatus
+      app.kubernetes.io/name: gatus
   interval: 10m
   path: ./kubernetes/main/core/monitoring/gatus/app
   prune: true

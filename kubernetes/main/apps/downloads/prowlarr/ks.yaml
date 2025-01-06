@@ -23,6 +23,6 @@ spec:
     substitute:
       APP: *app
       APP_SUBDOMAIN: plr
-      APP_UID: "1000"
+      APP_UID: "1001"
       APP_GID: "100"
       VOLSYNC_CLAIM: prowlarr-config

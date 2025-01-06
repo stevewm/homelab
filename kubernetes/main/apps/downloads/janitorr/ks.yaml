@@ -9,7 +9,7 @@ spec:
   targetNamespace: downloads
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app janitorr
+      app.kubernetes.io/name: janitorr
   interval: 10m
   path: ./kubernetes/main/apps/downloads/janitorr/app
   prune: true

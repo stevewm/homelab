@@ -78,10 +78,7 @@ hubble:
       enabled: true
       className: nginx-internal
       hosts:
-        - &host cni.${DOMAIN}
-      tls:
-        - hosts:
-            - *host
+        - cni.${DOMAIN}
       annotations:
         gethomepage.dev/name: hubble
         gethomepage.dev/enabled: "true"

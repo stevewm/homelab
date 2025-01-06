@@ -46,7 +46,7 @@ spec:
                     - key: app.kubernetes.io/name
                       operator: In
                       values:
-                        - authelia
+                        - *app
                 topologyKey: "kubernetes.io/hostname"
 
     controllers:
@@ -85,7 +85,7 @@ spec:
               tag: 4.38.18@sha256:a5e6fa4b1dbdc296f80f9175157b145a0598690ec8cd4d6e105cd4498fe0c731
             envFrom:
               - secretRef:
-                  name: authelia
+                  name: *app
               - secretRef:
                   name: authelia-db
               - secretRef:
@@ -125,7 +125,7 @@ spec:
 
     service:
       app:
-        controller: authelia
+        controller: *app
         ports:
           http:
             port: *port
@@ -135,7 +135,7 @@ spec:
 
     serviceMonitor:
       app:
-        serviceName: authelia
+        serviceName: *app
         endpoints:
           - port: metrics
 
@@ -143,7 +143,7 @@ spec:
       app:
         className: nginx-internal
         annotations:
-          #external-dns.alpha.kubernetes.io/target: ext.${DOMAIN}
+          # external-dns.alpha.kubernetes.io/target: ext.${DOMAIN}
           nginx.ingress.kubernetes.io/configuration-snippet: |
             add_header Cache-Control "no-store";
             add_header Pragma "no-cache";
@@ -160,7 +160,7 @@ spec:
     persistence:
       config:
         type: configMap
-        name: authelia
+        name: *app
         globalMounts:
           - path: /config/config.yaml
             subPath: config.yaml

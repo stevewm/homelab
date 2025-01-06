@@ -9,7 +9,7 @@ spec:
   targetNamespace: system
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app reloader
+      app.kubernetes.io/name: reloader
   interval: 10m
   path: ./kubernetes/main/core/system/reloader/app
   prune: true
