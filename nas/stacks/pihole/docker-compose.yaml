@@ -31,7 +31,9 @@ services:
 
   pihole-exporter:
     image: ekofr/pihole-exporter:v0.4.0@sha256:b101b2beb6787aee407be287fe35426cf88f15233ed01aeeef445931232d89e4
-    container_name: exporter
+    container_name: pihole-exporter
+    depends_on:
+      - pihole
     environment:
       TZ: Europe/Amsterdam
       PIHOLE_PROTOCOL: http
