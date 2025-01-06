@@ -119,7 +119,7 @@ spec:
       configuration: *backupConfig
       global: *backupFlag
       repo:
-        name: 'repo1'
+        name: "repo1"
         s3: *minio
 
   proxy:
