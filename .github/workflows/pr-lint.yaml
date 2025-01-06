@@ -66,6 +66,35 @@ jobs:
         run: |
           yamllint --config-file .github/linters/yamllint.yaml --format github ${{ steps.changed-files.outputs.all_changed_files }}
 
+  markdown-link-check:
+    name: markdown-link-check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v45
+        with:
+          files: |
+            **.md
+
+      - name: Install markdown-link-check
+        if: steps.changed-files.outputs.any_changed == 'true'
+        shell: bash
+        # FIXME: 3.13.6 is broken: https://github.com/tcort/markdown-link-check/issues/369
+        run: |
+          npm install --g markdown-link-check@3.12.2
+
+      - name: Run markdown-link-check
+        if: steps.changed-files.outputs.any_changed == 'true'
+        shell: bash
+        run: |
+          markdown-link-check --quiet --config ${{ steps.changed-files.outputs.all_changed_files }}
+
   markdownlint:
     name: markdownlint
     runs-on: ubuntu-latest
@@ -186,6 +215,7 @@ jobs:
       - actionlint
       - prettier
       - yamllint
+      - markdown-link-check
       - markdownlint
       - dclint
       - shellcheck

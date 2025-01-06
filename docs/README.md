@@ -1,5 +1,3 @@
-<a name="readme-top"></a>
-
 # Home Lab
 
 ![Kubernetes Version](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fstevewm%2Fhomelab%2Fmain%2Fkubernetes%2Fmain%2Ftalos%2Ftalconfig.yaml&query=%24.kubernetesVersion&style=for-the-badge&logo=kubernetes&label=K8S)
@@ -27,10 +25,6 @@ This repo contains the configuration and documentation for my home infrastructur
 | [Doppler](https://www.doppler.com/)                             | Secret management                        |
 | [pre-commit](https://pre-commit.com/)                           | Linting and validation                   |
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ## Acknowledgements
 
 Inspired by [bjw-s/home-ops](https://github.com/bjw-s/home-ops), [geerlingguy/pi-cluster](https://github.com/geerlingguy/pi-cluster) and the [k8s-at-home](https://github.com/topics/k8s-at-home) community.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
