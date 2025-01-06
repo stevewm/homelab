@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: kromgo
+  name: &app kromgo
 spec:
   interval: 30m
   chart:
@@ -87,7 +87,7 @@ spec:
 
     service:
       app:
-        controller: kromgo
+        controller: *app
         ports:
           http:
             port: 8080
@@ -98,7 +98,7 @@ spec:
         annotations:
           external-dns.alpha.kubernetes.io/target: ext.${DOMAIN}
         hosts:
-          - host: kg.${DOMAIN}
+          - host: ${APP_SUBDOMAIN}.${DOMAIN}
             paths:
               - path: /
                 service:

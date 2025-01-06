@@ -9,7 +9,7 @@ spec:
   targetNamespace: flux-system
   commonMetadata:
     labels:
-      app.kubernetes.io/part-of: &app fluxcd
+      app.kubernetes.io/part-of: fluxcd
   interval: 10m
   path: ./kubernetes/main/core/flux-system/fluxcd/addons
   prune: true

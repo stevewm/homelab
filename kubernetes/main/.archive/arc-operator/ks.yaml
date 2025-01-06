@@ -9,7 +9,7 @@ spec:
   targetNamespace: dev
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app arc-operator
+      app.kubernetes.io/name: arc-operator
   interval: 10m
   path: ./kubernetes/main/apps/dev/arc-operator/app
   prune: true

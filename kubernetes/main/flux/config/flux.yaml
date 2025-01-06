@@ -62,8 +62,9 @@ spec:
       target:
         kind: Deployment
         name: (kustomize-controller|helm-controller|source-controller)
-        # Enable drift detection for HelmReleases and set the log level to debug
-        # https://fluxcd.io/flux/components/helm/helmreleases/#drift-detection
+
+    # Enable drift detection for HelmReleases and set the log level to debug
+    # https://fluxcd.io/flux/components/helm/helmreleases/#drift-detection
     - patch: |
         - op: add
           path: /spec/template/spec/containers/0/args/-
@@ -74,8 +75,9 @@ spec:
       target:
         kind: Deployment
         name: helm-controller
-        # Enable Helm near OOM detection
-        # https://fluxcd.io/flux/cheatsheets/bootstrap/#enable-helm-near-oom-detection
+
+    # Enable Helm near OOM detection
+    # https://fluxcd.io/flux/cheatsheets/bootstrap/#enable-helm-near-oom-detection
     - patch: |
         - op: add
           path: /spec/template/spec/containers/0/args/-
@@ -89,7 +91,8 @@ spec:
       target:
         kind: Deployment
         name: helm-controller
-      # Label pod  for ingress-nginx access
+
+    # Label pod  for ingress-nginx access
     - patch: |
         apiVersion: apps/v1
         kind: Deployment

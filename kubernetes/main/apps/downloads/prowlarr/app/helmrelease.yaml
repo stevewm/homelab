@@ -104,12 +104,12 @@ spec:
               API_KEY:
                 valueFrom:
                   secretKeyRef:
-                    name: prowlarr
+                    name: *app
                     key: api_key
 
     service:
       app:
-        controller: prowlarr
+        controller: *app
         ports:
           http:
             port: *port
@@ -119,7 +119,7 @@ spec:
     serviceMonitor:
       metrics:
         enabled: true
-        serviceName: prowlarr
+        serviceName: *app
         endpoints:
           - port: metrics
             scheme: http
@@ -132,7 +132,7 @@ spec:
         enabled: true
         className: nginx-internal
         hosts:
-          - host: &host ${APP_SUBDOMAIN}.${DOMAIN}
+          - host: ${APP_SUBDOMAIN}.${DOMAIN}
             paths:
               - path: /
                 service:
@@ -145,7 +145,7 @@ spec:
           gethomepage.dev/icon: prowlarr.png
           # https://github.com/gethomepage/homepage/issues/1553
           gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_PROWLARR_API_KEY}}` }}"
-          gethomepage.dev/widget.type: prowlarr
+          gethomepage.dev/widget.type: *app
           gethomepage.dev/widget.url: "http://prowlarr.downloads.svc.cluster.local"
           nginx.ingress.kubernetes.io/configuration-snippet: |
             proxy_set_header Accept-Encoding "";

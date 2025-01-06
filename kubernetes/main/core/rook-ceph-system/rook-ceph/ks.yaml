@@ -9,7 +9,7 @@ spec:
   targetNamespace: rook-ceph-system
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app rook-ceph-operator
+      app.kubernetes.io/name: rook-ceph-operator
       app.kubernetes.io/part-of: rook-ceph
   interval: 10m
   path: ./kubernetes/main/core/rook-ceph-system/rook-ceph/operator
@@ -32,7 +32,7 @@ spec:
   targetNamespace: rook-ceph-system
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app rook-ceph-cluster
+      app.kubernetes.io/name: rook-ceph-cluster
       app.kubernetes.io/part-of: rook-ceph
   interval: 10m
   path: ./kubernetes/main/core/rook-ceph-system/rook-ceph/cluster
@@ -44,7 +44,3 @@ spec:
   dependsOn:
     - name: core-rook-ceph-operator
     - name: core-snapshot-controller
-  postBuild:
-    substitute:
-      APP: *app
-      APP_SUBDOMAIN: rook

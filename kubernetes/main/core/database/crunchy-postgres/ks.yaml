@@ -9,7 +9,7 @@ spec:
   targetNamespace: database
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app crunchy-postgres
+      app.kubernetes.io/name: crunchy-postgres
       app.kubernetes.io/component: operator
   interval: 10m
   path: ./kubernetes/main/core/database/crunchy-postgres/operator
@@ -30,7 +30,7 @@ spec:
   targetNamespace: database
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app crunchy-postgres
+      app.kubernetes.io/name: crunchy-postgres
       app.kubernetes.io/component: cluster
   interval: 10m
   path: ./kubernetes/main/core/database/crunchy-postgres/cluster
@@ -55,7 +55,7 @@ spec:
   targetNamespace: database
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app core-crunchy-postgres-cluster-secretstore
+      app.kubernetes.io/name: core-crunchy-postgres-cluster-secretstore
       app.kubernetes.io/component: secretstore
   interval: 10m
   path: ./kubernetes/main/core/database/crunchy-postgres/cluster-secretstore
@@ -78,7 +78,7 @@ spec:
   targetNamespace: database
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app crunchy-postgres
+      app.kubernetes.io/name: crunchy-postgres
       app.kubernetes.io/component: userinit-controller
   interval: 10m
   path: ./kubernetes/main/core/database/crunchy-postgres/userinit-controller

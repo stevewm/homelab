@@ -9,7 +9,7 @@ spec:
   targetNamespace: monitoring
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app goldilocks
+      app.kubernetes.io/name: goldilocks
   interval: 10m
   path: ./kubernetes/main/apps/monitoring/goldilocks/app
   prune: true
@@ -31,7 +31,7 @@ spec:
   targetNamespace: monitoring
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app vertical-pod-autoscaler
+      app.kubernetes.io/name: vertical-pod-autoscaler
       app.kubernetes.io/part-of: goldilocks
   interval: 10m
   path: ./kubernetes/main/apps/monitoring/goldilocks/vpa

@@ -11,4 +11,4 @@ resources:
   # Ingress
   - ./allow-ingress-apiserver.yaml
   - ./allow-ingress-lan.yaml
-  #- ./default-allow-egress-kubedns.yaml # TODO: reinstate once other netpols are working
+# - ./default-allow-egress-kubedns.yaml # TODO: reinstate once other netpols are working

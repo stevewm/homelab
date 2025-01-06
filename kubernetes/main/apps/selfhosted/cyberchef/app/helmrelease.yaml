@@ -64,7 +64,7 @@ spec:
 
     service:
       app:
-        controller: cyberchef
+        controller: *app
         ports:
           http:
             port: 8000
@@ -73,7 +73,7 @@ spec:
       app:
         className: nginx-internal
         hosts:
-          - host: &host ${APP_SUBDOMAIN}.${DOMAIN}
+          - host: ${APP_SUBDOMAIN}.${DOMAIN}
             paths:
               - path: /
                 service:

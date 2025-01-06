@@ -9,7 +9,7 @@ spec:
   targetNamespace: system
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app node-feature-discovery
+      app.kubernetes.io/name: node-feature-discovery
   interval: 10m
   path: ./kubernetes/main/core/system/node-feature-discovery/app
   prune: true

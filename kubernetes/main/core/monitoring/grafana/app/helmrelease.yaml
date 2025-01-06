@@ -448,7 +448,7 @@ spec:
       enabled: true
       ingressClassName: nginx-internal
       hosts:
-        - &host ${APP_SUBDOMAIN}.${DOMAIN}
+        - ${APP_SUBDOMAIN}.${DOMAIN}
       annotations:
         nginx.ingress.kubernetes.io/custom-http-errors: "599"
         gethomepage.dev/name: grafana

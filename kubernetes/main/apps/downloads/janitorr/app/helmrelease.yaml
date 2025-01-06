@@ -30,9 +30,9 @@ spec:
       automountServiceAccountToken: false
       securityContext:
         runAsNonRoot: true
-        runAsUser: 65534
-        runAsGroup: 65534
-        fsGroup: 65534
+        runAsUser: 1001
+        runAsGroup: 100
+        fsGroup: 100
         fsGroupChangePolicy: OnRootMismatch
         seccompProfile:
           type: RuntimeDefault
@@ -70,12 +70,12 @@ spec:
               JELLYFIN_API_KEY:
                 valueFrom:
                   secretKeyRef:
-                    name: janitorr
+                    name: *app
                     key: jellyfin_api_key
               JELLYSEERR_API_KEY:
                 valueFrom:
                   secretKeyRef:
-                    name: janitorr
+                    name: *app
                     key: jellyseerr_api_key
 
             probes:

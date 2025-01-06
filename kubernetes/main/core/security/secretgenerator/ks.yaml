@@ -9,7 +9,7 @@ spec:
   targetNamespace: security
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app core-secretgenerator
+      app.kubernetes.io/name: core-secretgenerator
   interval: 10m
   path: ./kubernetes/main/core/security/secretgenerator/app
   prune: true

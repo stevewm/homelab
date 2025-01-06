@@ -9,7 +9,7 @@ spec:
   targetNamespace: monitoring
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app speedtest-exporter
+      app.kubernetes.io/name: speedtest-exporter
   interval: 10m
   path: ./kubernetes/main/apps/monitoring/speedtest-exporter/app
   prune: true
@@ -17,6 +17,3 @@ spec:
     kind: GitRepository
     name: homelab
   wait: false
-  postBuild:
-    substitute:
-      APP: *app
