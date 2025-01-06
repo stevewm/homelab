@@ -102,7 +102,7 @@ spec:
           gethomepage.dev/group: home
           gethomepage.dev/icon: home-assistant.png
         hosts:
-          - host: hass.${DOMAIN}
+          - host: ${APP_SUBDOMAIN}.${DOMAIN}
             paths:
               - path: /(.*)
                 service:

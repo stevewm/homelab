@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: janitorr
+  name: &app janitorr
 spec:
   interval: 30m
   maxHistory: 3
@@ -70,12 +70,12 @@ spec:
               JELLYFIN_API_KEY:
                 valueFrom:
                   secretKeyRef:
-                    name: janitorr
+                    name: *app
                     key: jellyfin_api_key
               JELLYSEERR_API_KEY:
                 valueFrom:
                   secretKeyRef:
-                    name: janitorr
+                    name: *app
                     key: jellyseerr_api_key
 
             probes:
