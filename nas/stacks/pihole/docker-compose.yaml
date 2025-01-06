@@ -42,7 +42,6 @@ services:
       - "9617:9617/tcp"
     restart: always
     healthcheck:
-      test: curl --fail http://localhost:9617/metrics
       interval: 10s
       timeout: 1s
       retries: 3

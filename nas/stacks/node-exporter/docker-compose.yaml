@@ -17,7 +17,6 @@ services:
       - --collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)
     restart: unless-stopped
     healthcheck:
-      test: curl --fail http://localhost:9100/metrics
       interval: 10s
       timeout: 1s
       retries: 3
