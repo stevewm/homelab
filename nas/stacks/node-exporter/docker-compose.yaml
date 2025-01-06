@@ -16,9 +16,5 @@ services:
       - --path.sysfs=/host/sys
       - --collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)
     restart: unless-stopped
-    healthcheck:
-      interval: 10s
-      timeout: 1s
-      retries: 3
     expose:
       - "9100"

@@ -9,10 +9,10 @@ services:
       - /share/Docker/pihole-docker/etc-pihole/:/etc/pihole/
       - /share/Docker/pihole-docker/etc-dnsmasq.d/:/etc/dnsmasq.d/
     environment:
-      TZ: Europe/Amsterdam
+      TZ: &tz Europe/Amsterdam
       DNSMASQ_LISTENING: all
       WEBTHEME: default-dark
-      WEB_PORT: 3001
+      WEB_PORT: &port 3001
       WEBPASSWORD: $WEBPASSWORD
     ports:
       - "53:53/tcp"
@@ -35,15 +35,11 @@ services:
     depends_on:
       - pihole
     environment:
-      TZ: Europe/Amsterdam
+      TZ: *tz
       PIHOLE_PROTOCOL: http
       PIHOLE_HOSTNAME: localhost
-      PIHOLE_PORT: 3001
+      PIHOLE_PORT: *port
       PIHOLE_API_TOKEN: $WEBPASSWORD
     ports:
       - "9617:9617/tcp"
     restart: always
-    healthcheck:
-      interval: 10s
-      timeout: 1s
-      retries: 3
