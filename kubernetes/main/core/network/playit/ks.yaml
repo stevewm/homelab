@@ -9,7 +9,7 @@ spec:
   targetNamespace: network
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app playit
+      app.kubernetes.io/name: playit
   interval: 10m
   path: ./kubernetes/main/core/network/playit/app
   prune: true
@@ -17,9 +17,6 @@ spec:
     kind: GitRepository
     name: homelab
   wait: true
-  postBuild:
-    substitute:
-      APP: *app
   dependsOn:
     - name: core-external-secrets-secretstore
     - name: core-external-dns-cloudflare

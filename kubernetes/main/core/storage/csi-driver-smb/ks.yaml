@@ -9,7 +9,7 @@ spec:
   targetNamespace: storage
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app csi-driver-smb
+      app.kubernetes.io/name: csi-driver-smb
   interval: 10m
   path: ./kubernetes/main/core/storage/csi-driver-smb/app
   prune: true
@@ -27,6 +27,9 @@ metadata:
   namespace: flux-system
 spec:
   targetNamespace: storage
+  commonMetadata:
+    labels:
+      app.kubernetes.io/part-of: csi-driver-smb
   interval: 10m
   path: ./kubernetes/main/core/storage/csi-driver-smb/storageclasses
   prune: true

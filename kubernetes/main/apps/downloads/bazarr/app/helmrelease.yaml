@@ -116,7 +116,7 @@ spec:
     serviceMonitor:
       metrics:
         enabled: true
-        serviceName: bazarr
+        serviceName: *app
         endpoints:
           - port: metrics
             scheme: http
@@ -128,7 +128,7 @@ spec:
       app:
         className: nginx-internal
         hosts:
-          - host: &host ${APP_SUBDOMAIN}.${DOMAIN}
+          - host: ${APP_SUBDOMAIN}.${DOMAIN}
             paths:
               - path: /
                 service:
@@ -141,7 +141,7 @@ spec:
           gethomepage.dev/icon: bazarr.png
           # https://github.com/gethomepage/homepage/issues/1553
           gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_BAZARR_API_KEY}}` }}"
-          gethomepage.dev/widget.type: bazarr
+          gethomepage.dev/widget.type: *app
           gethomepage.dev/widget.url: "http://bazarr.downloads.svc.cluster.local"
           nginx.ingress.kubernetes.io/configuration-snippet: |
             proxy_set_header Accept-Encoding "";

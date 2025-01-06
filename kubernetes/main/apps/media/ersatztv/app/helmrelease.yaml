@@ -75,7 +75,7 @@ spec:
 
     service:
       app:
-        controller: ersatztv
+        controller: *app
         ports:
           http:
             port: 8409
@@ -84,7 +84,7 @@ spec:
       app:
         className: nginx-internal
         hosts:
-          - host: &host tv.$
+          - host: ${APP_SUBDOMAIN}.${DOMAIN}
             paths:
               - path: /
                 service:

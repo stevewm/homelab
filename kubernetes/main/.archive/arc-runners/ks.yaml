@@ -9,7 +9,7 @@ spec:
   targetNamespace: dev
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app arc-runners
+      app.kubernetes.io/name: arc-runners
   interval: 10m
   path: ./kubernetes/main/apps/dev/arc-runners/app
   prune: true

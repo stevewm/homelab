@@ -49,7 +49,7 @@ spec:
           gethomepage.dev/group: monitoring
           gethomepage.dev/icon: kubernetes.png
         hosts:
-          - host: &host goldilocks.${DOMAIN}
+          - host: goldilocks.${DOMAIN}
             paths:
               - path: /
                 type: Prefix

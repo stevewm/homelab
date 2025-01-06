@@ -9,7 +9,7 @@ spec:
   targetNamespace: volsync-system
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app volsync
+      app.kubernetes.io/name: volsync
   interval: 10m
   path: ./kubernetes/main/core/volsync-system/volsync/app
   prune: true

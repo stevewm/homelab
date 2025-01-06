@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: &app cloudflared
+  name: cloudflared
 spec:
   interval: 30m
   maxHistory: 3
@@ -68,7 +68,6 @@ spec:
                   secretKeyRef:
                     name: cloudflared
                     key: TunnelID
-
             probes:
               liveness:
                 enabled: true
@@ -101,7 +100,6 @@ spec:
                     port: 8080
                   failureThreshold: 30
                   periodSeconds: 10
-
             resources:
               requests:
                 cpu: 5m

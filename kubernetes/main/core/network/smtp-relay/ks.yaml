@@ -9,7 +9,7 @@ spec:
   targetNamespace: network
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app smtp-relay
+      app.kubernetes.io/name: smtp-relay
   interval: 10m
   path: ./kubernetes/main/core/network/smtp-relay/app
   prune: true

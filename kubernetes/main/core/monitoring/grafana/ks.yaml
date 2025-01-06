@@ -6,7 +6,7 @@ metadata:
   name: core-grafana
   namespace: flux-system
 spec:
-  targetNamespace: &namespace monitoring
+  targetNamespace: monitoring
   commonMetadata:
     labels:
       app.kubernetes.io/name: &app grafana

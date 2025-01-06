@@ -9,7 +9,7 @@ spec:
   targetNamespace: security
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app core-glauth
+      app.kubernetes.io/name: glauth
   interval: 10m
   path: ./kubernetes/main/core/security/glauth/app
   prune: true

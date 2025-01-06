@@ -86,7 +86,7 @@ controlPlane:
           - siderolabs/i915-ucode
   patches:
     # Extra kubelet mounts (required for OpenEBS)
-    - &kubelet_mounts |-
+    - |-
       machine:
         kubelet:
           extraMounts:
@@ -99,7 +99,7 @@ controlPlane:
                 - rw
 
     # Enable disk encryption
-    - &encrypt |-
+    - |-
       machine:
         systemDiskEncryption:
           ephemeral:
@@ -112,16 +112,18 @@ controlPlane:
             keys:
               - slot: 0
                 nodeID: {}
-    - &wipe |-
+    - |-
       machine:
         install:
           wipe: true
+
     # Replace kubeproxy with cilium
-    - &kubeproxy |-
+    - |-
       cluster:
         proxy:
           disabled: true
-    - &cert |- # Kubelet configuration
+
+    - |- # Kubelet configuration
       machine:
         kubelet:
           extraArgs:

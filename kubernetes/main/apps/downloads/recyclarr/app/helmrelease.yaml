@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: recyclarr
+  name: &app recyclarr
 spec:
   interval: 30m
   maxHistory: 3
@@ -92,7 +92,7 @@ spec:
           - path: /config/cache
       config-file:
         type: configMap
-        name: recyclarr
+        name: *app
         globalMounts:
           - path: /config/recyclarr.yml
             subPath: recyclarr.yml

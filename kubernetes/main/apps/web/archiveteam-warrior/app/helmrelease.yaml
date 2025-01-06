@@ -76,16 +76,16 @@ spec:
 
     service:
       app:
-        controller: archiveteam-warrior
+        controller: *app
         ports:
           http:
-            port: &port 8001
+            port: 8001
 
     ingress:
       app:
         className: nginx-internal
         hosts:
-          - host: &host ${APP_SUBDOMAIN}.${DOMAIN}
+          - host: ${APP_SUBDOMAIN}.${DOMAIN}
             paths:
               - path: /
                 service:

@@ -130,13 +130,13 @@ spec:
               WHITELIST:
                 valueFrom:
                   secretKeyRef:
-                    name: minecraft
+                    name: *app
                     key: whitelist
               EXISTING_WHITELIST_FILE: SYNC_FILE_MERGE_LIST
               OPS:
                 valueFrom:
                   secretKeyRef:
-                    name: minecraft
+                    name: *app
                     key: ops
               EXISTING_OPS_FILE: SYNCHRONIZE
             securityContext:
@@ -153,7 +153,7 @@ spec:
 
     service:
       minecraft:
-        controller: minecraft
+        controller: *app
         type: LoadBalancer # https://kubernetes.io/blog/2022/05/23/service-ip-dynamic-and-static-allocation/
         clusterIP: 10.96.0.30 # FIXME: Remove if/when playit supports hostname tunnel endpoints
         ports:
@@ -171,7 +171,7 @@ spec:
     serviceMonitor:
       metrics:
         enabled: true
-        serviceName: minecraft
+        serviceName: *app
         endpoints:
           - port: metrics
             scheme: http
@@ -182,11 +182,11 @@ spec:
       map:
         className: nginx-external
         hosts:
-          - host: &host ${APP_SUBDOMAIN}.${DOMAIN}
+          - host: ${APP_SUBDOMAIN}.${DOMAIN}
             paths:
               - path: /
                 service:
-                  identifier: minecraft
+                  identifier: *app
                   port: map
         annotations:
           gethomepage.dev/name: minecraft map (survival)

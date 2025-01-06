@@ -9,7 +9,7 @@ spec:
   targetNamespace: selfhosted
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app mealie
+      app.kubernetes.io/name: mealie
   interval: 10m
   path: ./kubernetes/main/apps/selfhosted/mealie/app
   prune: true

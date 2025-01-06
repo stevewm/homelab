@@ -78,7 +78,7 @@ spec:
 
     service:
       app:
-        controller: homelab-docs
+        controller: *app
         ports:
           http:
             port: 8080

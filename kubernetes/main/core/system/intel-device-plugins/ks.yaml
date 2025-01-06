@@ -9,7 +9,7 @@ spec:
   targetNamespace: system
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app intel-device-plugins-operator
+      app.kubernetes.io/name: intel-device-plugins-operator
   path: ./kubernetes/main/core/system/intel-device-plugins/operator
   sourceRef:
     kind: GitRepository
@@ -32,7 +32,7 @@ spec:
   targetNamespace: system
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app intel-device-plugins-gpu
+      app.kubernetes.io/name: intel-device-plugins-gpu
       app.kubernetes.io/part-of: intel-device-plugins-operator
   path: ./kubernetes/main/core/system/intel-device-plugins/gpu
   sourceRef:

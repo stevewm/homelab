@@ -9,7 +9,7 @@ spec:
   targetNamespace: network
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app cloudflared
+      app.kubernetes.io/name: cloudflared
   interval: 10m
   path: ./kubernetes/main/core/network/cloudflared/app
   prune: true
