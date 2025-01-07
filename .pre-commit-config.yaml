@@ -67,8 +67,8 @@ repos:
       - id: ruff
         args: [--config=.github/linters/ruff.toml]
 
-  - repo: https://github.com/tcort/markdown-link-check
-    rev: v3.12.2
+  - repo: https://github.com/lycheeverse/lychee.git
+    rev: v0.15.1
     hooks:
-      - id: markdown-link-check
-        args: [--quiet]
+      - id: lychee
+        args: [--no-progress]
