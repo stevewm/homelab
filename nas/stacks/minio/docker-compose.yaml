@@ -3,7 +3,7 @@ name: minio
 
 services:
   minio:
-    image: quay.io/minio/minio:RELEASE.2024-12-18T13-15-44Z
+    image: quay.io/minio/minio:RELEASE.2024-12-18T13-15-44Z@sha256:34c8e2f52a5984492555427fee07254c80036bdb7079bb91679232abd7a4fa20
     container_name: minio
     volumes:
       - /share/Docker/minio/data:/data
