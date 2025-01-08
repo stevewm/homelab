@@ -15,7 +15,11 @@ services:
       - "9001:9001"
     command: server /data --console-address ":9001"
     healthcheck:
-      test: ["CMD", "mc", "ready", "local"]
+      test:
+        - "CMD"
+        - "mc"
+        - "ready"
+        - "local"
       interval: 5s
       timeout: 5s
       retries: 5
