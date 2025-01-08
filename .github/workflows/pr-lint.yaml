@@ -85,6 +85,7 @@ jobs:
         with:
           args: |
             --no-progress ${{ steps.changed-files.outputs.all_changed_files }}
+          failIfEmpty: false
 
   markdownlint:
     name: markdownlint
