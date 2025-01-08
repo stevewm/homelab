@@ -1,14 +1,19 @@
 # Intro
 
-This cluster consists of three i5 Minisforum MS-01 nodes.
+This cluster consists of three Minisforum MS-01 nodes with:
 
-## Folders
+- i5-12900H
+- 96GB RAM
+- 1TB NVMe SSD (boot disk)
+- 3.92TB U.2 SSD (data disk)
 
+## Structure
+
+The cluster's folder structure is:
+
+- `/.archive`: Applications no longer deployed but preserved for future use by myself (or others via kubesearch)
 - `/apps`: applications deployed the cluster
-- `/flux`: flux configuration
 - `/core`: core cluster components that `apps` depend upon (controllers, etc)
+- `/flux`: flux configuration
+- `/templates`: Reusable templates for the cluster (eg VolSync)
 - `/talos`: talos configuration and bootstrapping
-
-## Bootstrapping
-
-Once nodes are up and running with Talos, run `bootstrap.sh` in the cluster's root directory to bootstrap the cluster with flux.
