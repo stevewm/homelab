@@ -2,6 +2,7 @@
 kubeconfig
 Brewfile.lock.json
 *.log
+.github/mkdocs/site
 
 # macOS
 .DS_Store

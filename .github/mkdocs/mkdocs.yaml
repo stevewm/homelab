@@ -1,5 +1,7 @@
 ---
-site_name: Home Lab Docs
+site_name: Homelab Docs
+docs_dir: ../../docs
+repo_url: https://github.com/stevewm/homelab
 theme:
   name: material
   logo: logo.png
