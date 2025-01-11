@@ -60,6 +60,12 @@ jobs:
         run: |
           pip install --user mkdocs-material
 
+      - name: Install mkdocs plugins
+        if: steps.changed-files.outputs.any_changed == 'true'
+        shell: bash
+        run: |
+          pip install --requirement .github/mkdocs/requirements.txt
+
       - name: Run mkdocs-material
         if: steps.changed-files.outputs.any_changed == 'true'
         shell: bash
