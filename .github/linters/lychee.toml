@@ -1,13 +1,20 @@
-exclude_link_local = false
-exclude_loopback = false
+exclude_all_private = true
+include_mail = false
 
-exclude_path = ['.github/linters/lychee.toml']
+exclude_path = [
+  '.github/linters/lychee.toml', # non-standard config location
+  #'kubernetes\/[^/]+\/flux\/repos\/helm\/.*' # helm repos
+  'kubernetes/main/flux/repos/helm', # FIXME: https://github.com/lycheeverse/lychee/issues/1608
+  'kubernetes/main/apps/games/minecraft/app/config',
+  'kubernetes/main/.archive/buildarr/app/config/buildarr.yaml'
+  ]
 
 exclude = [
   '.*\.local',
-  '.*.localhost',
-  '^https://lilnas:\d*.*',
-  # 403 on GHA runs
+  '^[a-zA-Z]+:\/\/\w+(:\d+)?(\/.*)?$', # ignore hostname protocol addresses (tcp://)
+  'https:\/\/grafana\.com\/api\/.*',
+  'https://api.playit.cloud/agent',
+  # dont like lychee
   '^https://reddit.com/',
   '^https://dash.cloudflare.com/'
 ]
