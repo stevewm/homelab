@@ -47,7 +47,6 @@ jobs:
       - run: |
           cat .github/linters/lychee_issue.md .lychee/out.md > /lychee/issue.md
 
-
       - name: Find Comment
         uses: peter-evans/find-comment@v1
         id: fc
