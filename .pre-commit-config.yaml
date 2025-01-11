@@ -71,4 +71,4 @@ repos:
     rev: v0.15.1
     hooks:
       - id: lychee
-        args: [--no-progress]
+        args: [--no-progress, --config=.github/linters/lychee.toml]
