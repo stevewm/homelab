@@ -8,21 +8,30 @@ on:
     paths:
       - "docs/**"
       - ".github/mkdocs/**"
-permissions:
-  contents: write
 
 jobs:
-  deploy:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Configure Git Credentials
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+
+      - name: Generate Token
+        uses: actions/create-github-app-token@v1
+        if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+        id: app-token
+        with:
+          app-id: "${{ secrets.BOT_APP_ID }}"
+          private-key: "${{ secrets.BOT_APP_PRIVATE_KEY }}"
+
+      # https://api.github.com/users/botty-hill[bot]
+      - run: |
+          git config user.name botty-hill[bot]
+          git config user.email 177703528+botty-hill[bot]@users.noreply.github.com
+
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x
+
       - run: echo "cache_id=$(date --utc '+%V')" >> "$GITHUB_ENV"
 
       - uses: actions/cache@v4
@@ -31,6 +40,9 @@ jobs:
           path: .cache
           restore-keys: |
             mkdocs-material-
+
       - run: pip install mkdocs-material
 
-      - run: mkdocs --config-file .github/mkdocs/mkdocs.yaml gh-deploy --force
+      - run: |
+          mkdocs --config-file .github/mkdocs/mkdocs.yaml gh-deploy --force \
+           --message 'chore(docs): publish to gh-pages'
