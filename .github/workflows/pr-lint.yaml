@@ -119,7 +119,8 @@ jobs:
         uses: lycheeverse/lychee-action@v2
         with:
           args: |
-            --no-progress ${{ steps.changed-files.outputs.all_changed_files }}
+            --no-progress ${{ steps.changed-files.outputs.all_changed_files }} \
+            --config .github/linters/lychee.toml
           failIfEmpty: false
 
   markdownlint:

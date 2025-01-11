@@ -1,0 +1,6 @@
+exclude_link_local = false
+exclude_loopback = false
+
+exclude = [
+  '.*\.local'
+]
