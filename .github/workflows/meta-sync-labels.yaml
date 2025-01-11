@@ -4,10 +4,14 @@ name: "Meta: Sync labels"
 on:
   workflow_dispatch:
   push:
-    branches: ["main"]
-    paths: [".github/labels.yaml"]
+    branches:
+      - main
+    paths:
+      - .github/labels.yaml
+
   schedule:
     - cron: "0 0 * * *"
+
 permissions:
   issues: write
 

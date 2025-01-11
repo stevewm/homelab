@@ -19,3 +19,12 @@ tasks:
     dir: ./kubernetes/{{.cluster}}
     cmds:
       - find . -type f -name '*.yaml' -exec grep -L '^# yaml-language-server:' {} \;
+
+  docs:
+    desc: "Serve the docs locally"
+    silent: true
+    dir: "{{ .ROOT_DIR }}"
+    preconditions:
+      - mkdocs
+    cmds:
+      - mkdocs serve --config-file .github/mkdocs/mkdocs.yaml
