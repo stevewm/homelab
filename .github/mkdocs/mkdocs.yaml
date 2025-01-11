@@ -1,0 +1,19 @@
+---
+site_name: Homelab Docs
+docs_dir: ../../docs
+repo_url: https://github.com/stevewm/homelab
+repo_name: stevewm/homelab
+theme:
+  name: material
+  logo: logo.png
+  palette:
+    scheme: slate
+    primary: deep orange
+    accent: orange
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.path
+plugins: []

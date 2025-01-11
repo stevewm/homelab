@@ -37,6 +37,41 @@ jobs:
           # actionlint_config: .github/linters/actionlint.yml
           file_pattern: ${{ steps.changed-files.outputs.all_changed_files }}
 
+  mkdocs:
+    name: mkdocs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v45
+        with:
+          files: |
+            docs/**
+            .github/mkdocs/**
+
+      - name: Install mkdocs-material
+        if: steps.changed-files.outputs.any_changed == 'true'
+        shell: bash
+        run: |
+          pip install --user mkdocs-material
+
+      - name: Install mkdocs plugins
+        if: steps.changed-files.outputs.any_changed == 'true'
+        shell: bash
+        run: |
+          pip install --requirement .github/mkdocs/requirements.txt
+
+      - name: Run mkdocs-material
+        if: steps.changed-files.outputs.any_changed == 'true'
+        shell: bash
+        run: |
+          mkdocs build --strict --config-file .github/mkdocs/mkdocs.yaml
+
   yamllint:
     name: yamllint
     runs-on: ubuntu-latest
@@ -205,6 +240,7 @@ jobs:
   lint_success:
     needs:
       - actionlint
+      - mkdocs
       - prettier
       - yamllint
       - lychee
