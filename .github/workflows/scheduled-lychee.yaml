@@ -9,14 +9,6 @@ on:
         description: Dry Run
         default: "false"
         required: false
-      logLevel:
-        description: Log Level
-        default: debug
-        required: false
-      version:
-        description: Renovate version
-        default: latest
-        required: false
   schedule:
     - cron: "0 17 * * 0" # Sunday 5pm
   push:
@@ -28,18 +20,9 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
   cancel-in-progress: true
 
-env:
-  LOG_LEVEL: "${{ inputs.logLevel || 'debug' }}"
-  RENOVATE_AUTODISCOVER: true
-  RENOVATE_AUTODISCOVER_FILTER: "${{ github.repository }}"
-  RENOVATE_DRY_RUN: "${{ inputs.dryRun == true }}"
-  RENOVATE_PLATFORM: github
-  RENOVATE_PLATFORM_COMMIT: true
-  WORKFLOW_RENOVATE_VERSION: "${{ inputs.version || 'latest' }}"
-
 jobs:
-  renovate:
-    name: Renovate
+  lychee:
+    name: Lychee
     runs-on: ubuntu-latest
     steps:
       - name: Generate Token
