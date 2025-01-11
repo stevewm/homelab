@@ -51,7 +51,7 @@ jobs:
         uses: peter-evans/find-comment@v1
         id: fc
         with:
-          comment-author: "bottyhill[bot]"
+          comment-author: "botty-hill[bot]"
           body-includes: "# Link Checker"
         continue-on-error: true
 
