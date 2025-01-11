@@ -1,0 +1,79 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+---
+name: "Scheduled: Lychee" # opens an issue with the contents of the markdown output and attaches a bobby hill blind gif or something unique to this action
+
+on:
+  workflow_dispatch:
+    inputs:
+      dryRun:
+        description: Dry Run
+        default: "false"
+        required: false
+      logLevel:
+        description: Log Level
+        default: debug
+        required: false
+      version:
+        description: Renovate version
+        default: latest
+        required: false
+  schedule:
+    - cron: "0 17 * * 0" # Sunday 5pm
+  push:
+    branches: ["main"]
+    paths:
+      - .github/linters/lychee.toml
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  LOG_LEVEL: "${{ inputs.logLevel || 'debug' }}"
+  RENOVATE_AUTODISCOVER: true
+  RENOVATE_AUTODISCOVER_FILTER: "${{ github.repository }}"
+  RENOVATE_DRY_RUN: "${{ inputs.dryRun == true }}"
+  RENOVATE_PLATFORM: github
+  RENOVATE_PLATFORM_COMMIT: true
+  WORKFLOW_RENOVATE_VERSION: "${{ inputs.version || 'latest' }}"
+
+jobs:
+  renovate:
+    name: Renovate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate Token
+        uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: "${{ secrets.BOT_APP_ID }}"
+          private-key: "${{ secrets.BOT_APP_PRIVATE_KEY }}"
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: "${{ steps.app-token.outputs.token }}"
+
+      - name: Run lychee
+        id: lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: |
+            --config .github/linters/lychee.toml
+          fail: false
+
+      - name: Find Comment
+        uses: peter-evans/find-comment@v1
+        id: fc
+        with:
+          comment-author: "github-actions[bot]"
+          body-includes: This comment was written by a bot!
+
+      - name: Update Link Checker Issue
+        if: inputs.dryRun == false
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: Link Checker
+          content-filepath: ./lychee/out.md
+          token: "${{ steps.app-token.outputs.token }}"
+          issue-number: ${{ github.event.pull_request.number }}
