@@ -21,10 +21,10 @@ tasks:
       - find . -type f -name '*.yaml' -exec grep -L '^# yaml-language-server:' {} \;
 
   docs:
-    desc: Serve the docs locally
+    desc: "Serve the docs locally"
     silent: true
     dir: "{{ .ROOT_DIR }}"
-    cmds:
-      - mkdocs serve --config-file .github/mkdocs/mkdocs.yaml
     preconditions:
       - mkdocs
+    cmds:
+      - mkdocs serve --config-file .github/mkdocs/mkdocs.yaml
