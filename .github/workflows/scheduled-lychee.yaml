@@ -48,7 +48,7 @@ jobs:
           cat .github/linters/lychee_issue.md .lychee/out.md > /lychee/issue.md
 
       - name: Find Comment
-        uses: peter-evans/find-comment@v1
+        uses: peter-evans/find-comment@v3
         id: fc
         with:
           comment-author: "botty-hill[bot]"
