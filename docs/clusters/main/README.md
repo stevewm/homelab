@@ -7,7 +7,7 @@ This cluster consists of three Minisforum MS-01 nodes with:
 - 1TB NVMe SSD (boot disk)
 - 3.92TB U.2 SSD (data disk)
 
-## Structure
+## Folder Structure
 
 The cluster's folder structure is:
 
