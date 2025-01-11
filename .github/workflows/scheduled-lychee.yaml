@@ -66,9 +66,8 @@ jobs:
         uses: peter-evans/find-comment@v1
         id: fc
         with:
-          comment-author: 'github-actions[bot]'
+          comment-author: "github-actions[bot]"
           body-includes: This comment was written by a bot!
-
 
       - name: Update Link Checker Issue
         if: inputs.dryRun == false
