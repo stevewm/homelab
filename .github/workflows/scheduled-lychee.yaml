@@ -61,19 +61,23 @@ jobs:
           args: |
             --config .github/linters/lychee.toml
           fail: false
+      - run: |
+          cat .github/linters/lychee_issue.md .lychee/out.md > /lychee/issue.md
+
 
       - name: Find Comment
         uses: peter-evans/find-comment@v1
         id: fc
         with:
-          comment-author: "github-actions[bot]"
-          body-includes: This comment was written by a bot!
+          comment-author: "bottyhill[bot]"
+          body-includes: "# Link Checker"
+        continue-on-error: true
 
       - name: Update Link Checker Issue
         if: inputs.dryRun == false
         uses: peter-evans/create-issue-from-file@v5
         with:
           title: Link Checker
-          content-filepath: ./lychee/out.md
+          content-filepath: ./lychee/issue.md
           token: "${{ steps.app-token.outputs.token }}"
           issue-number: ${{ github.event.pull_request.number }}
