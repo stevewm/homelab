@@ -23,26 +23,9 @@ jobs:
           app-id: "${{ secrets.BOT_APP_ID }}"
           private-key: "${{ secrets.BOT_APP_PRIVATE_KEY }}"
 
-      # https://api.github.com/users/botty-hill[bot]
-      - run: |
-          git config user.name botty-hill[bot]
-          git config user.email 177703528+botty-hill[bot]@users.noreply.github.com
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: 3.x
-
-      - run: echo "cache_id=$(date --utc '+%V')" >> "$GITHUB_ENV"
-
-      - uses: actions/cache@v4
-        with:
-          key: mkdocs-material-${{ env.cache_id }}
-          path: .cache
-          restore-keys: |
-            mkdocs-material-
-
-      - run: pip install mkdocs-material
-
-      - run: |
-          mkdocs --config-file .github/mkdocs/mkdocs.yaml gh-deploy --force \
-           --message 'chore(docs): publish to gh-pages'
+      - name: Publish docs
+        uses: mhausenblas/mkdocs-deploy-gh-pages@master
+        env:
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+          CONFIG_FILE: .github/mkdocs/mkdocs.yaml
+          REQUIREMENTS: requirements.txt
