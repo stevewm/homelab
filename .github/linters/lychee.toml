@@ -1,6 +1,13 @@
 exclude_link_local = false
 exclude_loopback = false
 
+exclude_path = ['.github/linters/lychee.toml']
+
 exclude = [
-  '.*\.local'
+  '.*\.local',
+  '.*.localhost',
+  '^https://lilnas:\d*.*',
+  # 403 on GHA runs
+  '^https://reddit.com/',
+  '^https://dash.cloudflare.com/'
 ]
