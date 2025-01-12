@@ -31,7 +31,7 @@ spec:
 
     image:
       repository: ghcr.io/gethomepage/homepage
-      tag: v0.10.8
+      tag: v0.10.9@sha256:b6d732817572f9af99ec168b10641b8f7820f30cfa5a5cc5c68f1e291804bec8
 
     podLabels:
       ingress.home.arpa/nginx-internal: allow
@@ -74,7 +74,6 @@ spec:
         theme: dark
         # Photo credit: https://unsplash.com/@ryan_hutton_
         background: https://images.unsplash.com/photo-1444080748397-f442aa95c3e5?auto=format&fit=crop&w=2560&q=80
-        favicon: https://docs.${DOMAIN}/logo.png
 
         cardBlur: sm
         disableCollapse: true
