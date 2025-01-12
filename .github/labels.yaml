@@ -26,3 +26,5 @@
   color: ce490c
 - name: do-not-merge
   color: e00000
+- name: link-checker
+  color: 008cf7
