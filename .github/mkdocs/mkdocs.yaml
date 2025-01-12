@@ -5,7 +5,7 @@ repo_url: https://github.com/stevewm/homelab
 repo_name: stevewm/homelab
 theme:
   name: material
-  logo: logo.png
+  logo: assets/logo.png
   palette:
     scheme: slate
     primary: deep orange

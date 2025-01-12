@@ -6,7 +6,8 @@ exclude_path = [
   #'kubernetes\/[^/]+\/flux\/repos\/helm\/.*' # helm repos
   'kubernetes/main/flux/repos/helm', # FIXME: https://github.com/lycheeverse/lychee/issues/1608
   'kubernetes/main/apps/games/minecraft/app/config',
-  'kubernetes/main/.archive/buildarr/app/config/buildarr.yaml'
+  'kubernetes/main/.archive/buildarr/app/config/buildarr.yaml',
+  'docs/assets'
   ]
 
 exclude = [
