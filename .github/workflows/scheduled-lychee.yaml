@@ -47,32 +47,38 @@ jobs:
           failIfEmpty: false
           format: markdown
 
-      - run: |
-          cat .github/linters/lychee_issue.md .lychee/results.md > .lychee/issue.md
-
-      - name: Find Comment
-        uses: peter-evans/find-comment@v3
-        id: fc
+      - name: Find Issue
+        id: last-issue
+        uses: micalevisk/last-issue-action@v2
         with:
-          comment-author: "botty-hill[bot]"
-          body-includes: "# Link Checker"
-        continue-on-error: true
+          state: all
+          labels: |
+            link-checker
 
       - name: Create Issue
         if: inputs.dryRun == false
         uses: peter-evans/create-issue-from-file@v5
         id: update
         with:
-          title: Link Checker
-          content-filepath: ./lychee/issue.md
+          title: 🔗 Link Checker
+          content-filepath: ./lychee/out.md
           token: "${{ steps.app-token.outputs.token }}"
-          issue-number: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ steps.last-issue.outputs.issue-number }}
+          labels: |
+            link-checker
 
       - name: Close Issue
         if: steps.lychee.outputs.exit_code == 0
         uses: actions-cool/issues-helper@v3
         with:
           actions: 'close-issue'
+          token: "${{ steps.app-token.outputs.token }}"
+          issue-number: ${{ steps.update.outputs.issue-number }}
+
+      - name: Open issue
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'open-issue'
           token: "${{ steps.app-token.outputs.token }}"
           issue-number: ${{ steps.update.outputs.issue-number }}
 
