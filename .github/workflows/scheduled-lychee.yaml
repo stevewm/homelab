@@ -41,8 +41,7 @@ jobs:
         id: lychee
         uses: lycheeverse/lychee-action@v2
         with:
-          args: |
-            --no-progress --config .github/linters/lychee.toml . **
+          args: "--no-progress --config .github/linters/lychee.toml . **"
           token: "${{ steps.app-token.outputs.token }}"
           fail: false
           failIfEmpty: false
