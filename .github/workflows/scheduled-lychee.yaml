@@ -68,7 +68,7 @@ jobs:
             link-checker
 
       - name: Close Issue
-        if: steps.lychee.outputs.exit_code == 0
+        if: steps.lychee.outputs.exit_code == 0 && steps.last-issue.outputs.issue-number != ''
         uses: actions-cool/issues-helper@v3
         with:
           actions: 'close-issue'
@@ -76,6 +76,7 @@ jobs:
           issue-number: ${{ steps.update.outputs.issue-number }}
 
       - name: Open issue
+        if: steps.last-issue.outputs.issue-number != ''
         uses: actions-cool/issues-helper@v3
         with:
           actions: 'open-issue'
@@ -83,6 +84,7 @@ jobs:
           issue-number: ${{ steps.update.outputs.issue-number }}
 
       - name: Lock Issue
+        if: steps.last-issue.outputs.issue-number != ''
         uses: actions-cool/issues-helper@v3
         with:
           actions: 'lock-issue'
