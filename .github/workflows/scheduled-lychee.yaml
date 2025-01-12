@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 ---
-name: "Scheduled: Lychee" # opens an issue with the contents of the markdown output and attaches a bobby hill blind gif or something unique to this action
+name: "Scheduled: Lychee"
 
 on:
   workflow_dispatch:
@@ -42,10 +42,13 @@ jobs:
         uses: lycheeverse/lychee-action@v2
         with:
           args: |
-            --config .github/linters/lychee.toml
+            --no-progress --config .github/linters/lychee.toml . **
+          token: "${{ steps.app-token.outputs.token }}"
           fail: false
+          failIfEmpty: false
+
       - run: |
-          cat .github/linters/lychee_issue.md .lychee/out.md > /lychee/issue.md
+          cat .github/linters/lychee_issue.md .lychee/results.md > /lychee/issue.md
 
       - name: Find Comment
         uses: peter-evans/find-comment@v3
@@ -55,11 +58,27 @@ jobs:
           body-includes: "# Link Checker"
         continue-on-error: true
 
-      - name: Update Link Checker Issue
+      - name: Create Issue
         if: inputs.dryRun == false
         uses: peter-evans/create-issue-from-file@v5
+        id: update
         with:
           title: Link Checker
           content-filepath: ./lychee/issue.md
           token: "${{ steps.app-token.outputs.token }}"
-          issue-number: ${{ github.event.pull_request.number }}
+          issue-number: ${{ steps.fc.outputs.comment-id }}
+
+      - name: Close Issue
+        if: steps.lychee.outputs.exit_code == 0
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'close-issue'
+          token: "${{ steps.app-token.outputs.token }}"
+          issue-number: ${{ steps.update.outputs.issue-number }}
+
+      - name: Lock Issue
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'lock-issue'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ steps.update.outputs.issue-number }}
