@@ -45,9 +45,10 @@ jobs:
           token: "${{ steps.app-token.outputs.token }}"
           fail: false
           failIfEmpty: false
+          format: markdown
 
       - run: |
-          cat .github/linters/lychee_issue.md .lychee/results.md > /lychee/issue.md
+          cat .github/linters/lychee_issue.md .lychee/results.md > .lychee/issue.md
 
       - name: Find Comment
         uses: peter-evans/find-comment@v3
