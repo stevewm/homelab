@@ -36,22 +36,22 @@ spec:
         fsGroupChangePolicy: OnRootMismatch
         seccompProfile:
           type: RuntimeDefault
-      affinity:
-        podAntiAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 80
-              podAffinityTerm:
-                labelSelector:
-                  matchExpressions:
-                    - key: app.kubernetes.io/name
-                      operator: In
-                      values:
-                        - *app
-                topologyKey: "kubernetes.io/hostname"
+      # affinity:
+      #   podAntiAffinity:
+      #     preferredDuringSchedulingIgnoredDuringExecution:
+      #       - weight: 80
+      #         podAffinityTerm:
+      #           labelSelector:
+      #             matchExpressions:
+      #               - key: app.kubernetes.io/name
+      #                 operator: In
+      #                 values:
+      #                   - *app
+      #           topologyKey: "kubernetes.io/hostname"
 
     controllers:
       authelia:
-        replicas: 2
+        replicas: 1
         strategy: RollingUpdate
 
         annotations:
