@@ -4,9 +4,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ./namespace.yaml
-  - ./descheduler/ks.yaml
+  # - ./descheduler/ks.yaml
   - ./intel-device-plugins/ks.yaml
   - ./k8tz/ks.yaml
-  - ./kubelet-csr-approver/ks.yaml
   - ./node-feature-discovery/ks.yaml
   - ./reloader/ks.yaml
