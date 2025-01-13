@@ -27,6 +27,13 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    controller:
+      args:
+        enableDistributedSnapshotting: true
+
+      serviceMonitor:
+        create: true
+
     resources:
       requests:
         cpu: 150m
