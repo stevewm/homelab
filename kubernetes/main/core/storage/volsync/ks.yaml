@@ -6,12 +6,12 @@ metadata:
   name: core-volsync
   namespace: flux-system
 spec:
-  targetNamespace: volsync-system
+  targetNamespace: storage
   commonMetadata:
     labels:
       app.kubernetes.io/name: volsync
   interval: 10m
-  path: ./kubernetes/main/core/volsync-system/volsync/app
+  path: ./kubernetes/main/core/storage/volsync/app
   prune: true
   sourceRef:
     kind: GitRepository
