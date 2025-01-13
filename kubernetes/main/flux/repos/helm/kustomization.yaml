@@ -11,6 +11,7 @@ resources:
   - ./crunchy-userinit-controller.yaml
   - ./crunchydata.yaml
   - ./csi-driver-smb.yaml
+  - ./democratic-csi.yaml
   - ./descheduler.yaml
   - ./external-dns.yaml
   - ./external-secrets.yaml
@@ -29,7 +30,7 @@ resources:
   - ./openebs.yaml
   - ./piraeus.yaml
   - ./prometheus-community.yaml
-  - ./rook-ceph.yaml
+  # - ./rook-ceph.yaml # FIXME: enable once we're no longer single node
   - ./spegel.yaml
   - ./stakater.yaml
   - ./tofu-controller.yaml
