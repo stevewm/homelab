@@ -50,6 +50,9 @@ controlPlane:
         officialExtensions:
           - siderolabs/intel-ucode
           - siderolabs/i915-ucode
+          - siderolabs/thunderbolt
+          - siderolabs/uinput
+
   patches:
     # Extra kubelet mounts (required for OpenEBS)
     - |-
