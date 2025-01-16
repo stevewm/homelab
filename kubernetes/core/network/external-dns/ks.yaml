@@ -1,0 +1,48 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: core-external-dns-pihole
+  namespace: flux-system
+spec:
+  targetNamespace: network
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: external-dns
+      app.kubernetes.io/instance: pihole
+  interval: 10m
+  path: ./kubernetes//core/network/external-dns/pihole
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+  wait: false
+  dependsOn:
+    - name: core-external-secrets-secretstore
+    - name: core-kube-prometheus-stack
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: core-external-dns-cloudflare
+  namespace: flux-system
+spec:
+  targetNamespace: network
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: external-dns
+      app.kubernetes.io/instance: cloudflare
+  interval: 10m
+  path: ./kubernetes//core/network/external-dns/cloudflare
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+  wait: true
+  dependsOn:
+    - name: core-external-secrets-secretstore
+    - name: core-kube-prometheus-stack
+    - name: core-external-dns-common

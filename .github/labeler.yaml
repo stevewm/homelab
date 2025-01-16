@@ -5,9 +5,9 @@ ci:
       - any-glob-to-any-file: .github/**
 
 # Clusters
-cluster/main:
+cluster:
   - changed-files:
-      - any-glob-to-any-file: kubernetes/main/**
+      - any-glob-to-any-file: kubernetes/**
 
 # Area
 core:

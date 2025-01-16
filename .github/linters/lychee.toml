@@ -4,9 +4,9 @@ include_mail = false
 exclude_path = [
   '.github/linters/lychee.toml', # non-standard config location
   #'kubernetes\/[^/]+\/flux\/repos\/helm\/.*' # helm repos
-  'kubernetes/main/flux/repos/helm', # FIXME: https://github.com/lycheeverse/lychee/issues/1608
-  'kubernetes/main/apps/games/minecraft/app/config',
-  'kubernetes/main/.archive/buildarr/app/config/buildarr.yaml',
+  'kubernetes/flux/repos/helm', # FIXME: https://github.com/lycheeverse/lychee/issues/1608
+  'kubernetes/apps/games/minecraft/app/config',
+  'kubernetes/.archive/buildarr/app/config/buildarr.yaml',
   'docs/assets'
   ]
 

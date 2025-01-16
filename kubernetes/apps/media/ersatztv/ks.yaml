@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: app-ersatztv
+  namespace: flux-system
+spec:
+  targetNamespace: media
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: &app ersatztv
+  interval: 10m
+  path: ./kubernetes//apps/media/ersatztv/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+  wait: false
+  dependsOn:
+    - name: app-jellyfin
+  postBuild:
+    substitute:
+      APP: *app
+      APP_SUBDOMAIN: tv
+      APP_UID: "1000"
+      APP_GID: "100"
+      VOLSYNC_CLAIM: ersatztv-config
