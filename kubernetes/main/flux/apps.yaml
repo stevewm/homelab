@@ -16,20 +16,6 @@ spec:
   postBuild:
     substituteFrom:
       - kind: ConfigMap
-        name: cluster-vars
-  patches:
-    - patch: |-
-        apiVersion: kustomize.toolkit.fluxcd.io/v1
-        kind: Kustomization
-        metadata:
-          name: not-used
-          namespace: not-used
-        spec:
-          postBuild:
-            substituteFrom:
-              - kind: ConfigMap
-                name: cluster-vars
-      target:
-        group: kustomize.toolkit.fluxcd.io
-        kind: Kustomization
-        labelSelector: substitution.flux.home.arpa/disabled notin (true)
+        name: cluster-settings
+  dependsOn:
+    - name: core
