@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: &app homepage
   interval: 10m
-  path: ./kubernetes//apps/selfhosted/homepage/app
+  path: ./kubernetes/apps/selfhosted/homepage/app
   prune: true
   sourceRef:
     kind: GitRepository

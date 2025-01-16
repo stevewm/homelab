@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: &app themepark
   interval: 10m
-  path: ./kubernetes//apps/selfhosted/themepark/app
+  path: ./kubernetes/apps/selfhosted/themepark/app
   prune: true
   sourceRef:
     kind: GitRepository

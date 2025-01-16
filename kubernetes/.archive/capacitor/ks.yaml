@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: &app capacitor
   interval: 10m
-  path: ./kubernetes//core/flux-system/capacitor/app
+  path: ./kubernetes/core/flux-system/capacitor/app
   prune: true
   sourceRef:
     kind: GitRepository

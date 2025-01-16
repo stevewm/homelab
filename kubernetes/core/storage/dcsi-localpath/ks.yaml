@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: dsci-localpath
   interval: 10m
-  path: ./kubernetes//core/storage/dcsi-localpath/app
+  path: ./kubernetes/core/storage/dcsi-localpath/app
   prune: true
   sourceRef:
     kind: GitRepository

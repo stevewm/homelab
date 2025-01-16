@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: core-secretgenerator
   interval: 10m
-  path: ./kubernetes//core/security/secretgenerator/app
+  path: ./kubernetes/core/security/secretgenerator/app
   prune: true
   sourceRef:
     kind: GitRepository

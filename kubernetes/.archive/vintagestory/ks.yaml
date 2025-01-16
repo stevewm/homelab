@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: &app vintagestory
   interval: 10m
-  path: ./kubernetes//apps/games/vintagestory/app
+  path: ./kubernetes/apps/games/vintagestory/app
   prune: true
   sourceRef:
     kind: GitRepository

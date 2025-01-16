@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: csi-driver-smb
   interval: 10m
-  path: ./kubernetes//core/storage/csi-driver-smb/app
+  path: ./kubernetes/core/storage/csi-driver-smb/app
   prune: true
   sourceRef:
     kind: GitRepository
@@ -31,7 +31,7 @@ spec:
     labels:
       app.kubernetes.io/part-of: csi-driver-smb
   interval: 10m
-  path: ./kubernetes//core/storage/csi-driver-smb/storageclasses
+  path: ./kubernetes/core/storage/csi-driver-smb/storageclasses
   prune: true
   sourceRef:
     kind: GitRepository

@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: node-feature-discovery
   interval: 10m
-  path: ./kubernetes//core/system/node-feature-discovery/app
+  path: ./kubernetes/core/system/node-feature-discovery/app
   prune: true
   sourceRef:
     kind: GitRepository

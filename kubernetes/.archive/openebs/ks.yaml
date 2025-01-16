@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: openebs
   interval: 10m
-  path: ./kubernetes//core/storage/openebs/app
+  path: ./kubernetes/core/storage/openebs/app
   prune: true
   sourceRef:
     kind: GitRepository

@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: janitorr
   interval: 10m
-  path: ./kubernetes//apps/downloads/janitorr/app
+  path: ./kubernetes/apps/downloads/janitorr/app
   prune: true
   sourceRef:
     kind: GitRepository

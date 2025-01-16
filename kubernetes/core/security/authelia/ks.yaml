@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: &app authelia
   interval: 10m
-  path: ./kubernetes//core/security/authelia/app
+  path: ./kubernetes/core/security/authelia/app
   prune: true
   sourceRef:
     kind: GitRepository

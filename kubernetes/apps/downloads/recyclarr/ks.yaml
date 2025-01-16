@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: recyclarr
   interval: 10m
-  path: ./kubernetes//apps/downloads/recyclarr/app
+  path: ./kubernetes/apps/downloads/recyclarr/app
   prune: true
   sourceRef:
     kind: GitRepository

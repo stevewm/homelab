@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: gatus
   interval: 10m
-  path: ./kubernetes//core/monitoring/gatus/app
+  path: ./kubernetes/core/monitoring/gatus/app
   prune: true
   sourceRef:
     kind: GitRepository

@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: &app kromgo
   interval: 10m
-  path: ./kubernetes//apps/monitoring/kromgo/app
+  path: ./kubernetes/apps/monitoring/kromgo/app
   prune: true
   sourceRef:
     kind: GitRepository

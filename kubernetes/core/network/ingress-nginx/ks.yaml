@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: ingress-nginx
   interval: 10m
-  path: ./kubernetes//core/network/ingress-nginx/internal
+  path: ./kubernetes/core/network/ingress-nginx/internal
   prune: true
   sourceRef:
     kind: GitRepository
@@ -34,7 +34,7 @@ spec:
     labels:
       app.kubernetes.io/name: ingress-nginx
   interval: 10m
-  path: ./kubernetes//core/network/ingress-nginx/external
+  path: ./kubernetes/core/network/ingress-nginx/external
   prune: true
   sourceRef:
     kind: GitRepository
@@ -58,7 +58,7 @@ spec:
       app.kubernetes.io/name: &app ingress-nginx
       app.kubernetes.io/part-of: *app
   interval: 10m
-  path: ./kubernetes//core/network/ingress-nginx/common
+  path: ./kubernetes/core/network/ingress-nginx/common
   prune: true
   sourceRef:
     kind: GitRepository

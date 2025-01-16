@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: &app buildarr
   interval: 10m
-  path: ./kubernetes//apps/downloads/buildarr/app
+  path: ./kubernetes/apps/downloads/buildarr/app
   prune: true
   sourceRef:
     kind: GitRepository

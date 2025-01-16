@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: &app radarr
   interval: 10m
-  path: ./kubernetes//apps/downloads/radarr/app
+  path: ./kubernetes/apps/downloads/radarr/app
   prune: true
   sourceRef:
     kind: GitRepository

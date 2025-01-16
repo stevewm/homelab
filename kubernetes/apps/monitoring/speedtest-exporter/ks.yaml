@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: speedtest-exporter
   interval: 10m
-  path: ./kubernetes//apps/monitoring/speedtest-exporter/app
+  path: ./kubernetes/apps/monitoring/speedtest-exporter/app
   prune: true
   sourceRef:
     kind: GitRepository

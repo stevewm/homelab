@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: &app sabnzbd
   interval: 10m
-  path: ./kubernetes//apps/downloads/sabnzbd/app
+  path: ./kubernetes/apps/downloads/sabnzbd/app
   prune: true
   sourceRef:
     kind: GitRepository

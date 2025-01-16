@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: &app prowlarr
   interval: 10m
-  path: ./kubernetes//apps/downloads/prowlarr/app
+  path: ./kubernetes/apps/downloads/prowlarr/app
   prune: true
   sourceRef:
     kind: GitRepository

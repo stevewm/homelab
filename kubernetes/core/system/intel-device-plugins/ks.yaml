@@ -10,7 +10,7 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: intel-device-plugins-operator
-  path: ./kubernetes//core/system/intel-device-plugins/operator
+  path: ./kubernetes/core/system/intel-device-plugins/operator
   sourceRef:
     kind: GitRepository
     name: homelab
@@ -34,7 +34,7 @@ spec:
     labels:
       app.kubernetes.io/name: intel-device-plugins-gpu
       app.kubernetes.io/part-of: intel-device-plugins-operator
-  path: ./kubernetes//core/system/intel-device-plugins/gpu
+  path: ./kubernetes/core/system/intel-device-plugins/gpu
   sourceRef:
     kind: GitRepository
     name: homelab

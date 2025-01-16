@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: arc-runners
   interval: 10m
-  path: ./kubernetes//apps/dev/arc-runners/app
+  path: ./kubernetes/apps/dev/arc-runners/app
   prune: true
   sourceRef:
     kind: GitRepository

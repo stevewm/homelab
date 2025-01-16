@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: metallb
   interval: 10m
-  path: ./kubernetes//core/metallb-system/metallb/app
+  path: ./kubernetes/core/metallb-system/metallb/app
   prune: true
   sourceRef:
     kind: GitRepository
@@ -31,7 +31,7 @@ spec:
     labels:
       app.kubernetes.io/name: metallb
   interval: 10m
-  path: ./kubernetes//core/metallb-system/metallb/pool
+  path: ./kubernetes/core/metallb-system/metallb/pool
   prune: true
   sourceRef:
     kind: GitRepository

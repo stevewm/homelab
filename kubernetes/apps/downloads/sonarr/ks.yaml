@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: &app sonarr
   interval: 10m
-  path: ./kubernetes//apps/downloads/sonarr/app
+  path: ./kubernetes/apps/downloads/sonarr/app
   prune: true
   sourceRef:
     kind: GitRepository

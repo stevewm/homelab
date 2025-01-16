@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: external-secrets
   interval: 10m
-  path: ./kubernetes//core/security/external-secrets/app
+  path: ./kubernetes/core/security/external-secrets/app
   prune: true
   sourceRef:
     kind: GitRepository
@@ -37,7 +37,7 @@ spec:
       app.kubernetes.io/name: external-secrets
       app.kubernetes.io/component: secretstore
   interval: 10m
-  path: ./kubernetes//core/security/external-secrets/secretstore
+  path: ./kubernetes/core/security/external-secrets/secretstore
   prune: true
   sourceRef:
     kind: GitRepository

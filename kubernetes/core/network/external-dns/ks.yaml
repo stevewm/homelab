@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/name: external-dns
       app.kubernetes.io/instance: pihole
   interval: 10m
-  path: ./kubernetes//core/network/external-dns/pihole
+  path: ./kubernetes/core/network/external-dns/pihole
   prune: true
   sourceRef:
     kind: GitRepository
@@ -36,7 +36,7 @@ spec:
       app.kubernetes.io/name: external-dns
       app.kubernetes.io/instance: cloudflare
   interval: 10m
-  path: ./kubernetes//core/network/external-dns/cloudflare
+  path: ./kubernetes/core/network/external-dns/cloudflare
   prune: true
   sourceRef:
     kind: GitRepository

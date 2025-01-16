@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: &app grafana
   interval: 10m
-  path: ./kubernetes//core/monitoring/grafana/app
+  path: ./kubernetes/core/monitoring/grafana/app
   prune: true
   sourceRef:
     kind: GitRepository

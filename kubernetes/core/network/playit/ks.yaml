@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: playit
   interval: 10m
-  path: ./kubernetes//core/network/playit/app
+  path: ./kubernetes/core/network/playit/app
   prune: true
   sourceRef:
     kind: GitRepository

@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/name: crunchy-postgres
       app.kubernetes.io/component: operator
   interval: 10m
-  path: ./kubernetes//core/database/crunchy-postgres/operator
+  path: ./kubernetes/core/database/crunchy-postgres/operator
   prune: true
   sourceRef:
     kind: GitRepository
@@ -33,7 +33,7 @@ spec:
       app.kubernetes.io/name: crunchy-postgres
       app.kubernetes.io/component: cluster
   interval: 10m
-  path: ./kubernetes//core/database/crunchy-postgres/cluster
+  path: ./kubernetes/core/database/crunchy-postgres/cluster
   prune: true
   sourceRef:
     kind: GitRepository
@@ -58,7 +58,7 @@ spec:
       app.kubernetes.io/name: core-crunchy-postgres-cluster-secretstore
       app.kubernetes.io/component: secretstore
   interval: 10m
-  path: ./kubernetes//core/database/crunchy-postgres/cluster-secretstore
+  path: ./kubernetes/core/database/crunchy-postgres/cluster-secretstore
   prune: true
   sourceRef:
     kind: GitRepository
@@ -81,7 +81,7 @@ spec:
       app.kubernetes.io/name: crunchy-postgres
       app.kubernetes.io/component: userinit-controller
   interval: 10m
-  path: ./kubernetes//core/database/crunchy-postgres/userinit-controller
+  path: ./kubernetes/core/database/crunchy-postgres/userinit-controller
   prune: true
   sourceRef:
     kind: GitRepository

@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: goldilocks
   interval: 10m
-  path: ./kubernetes//apps/monitoring/goldilocks/app
+  path: ./kubernetes/apps/monitoring/goldilocks/app
   prune: true
   sourceRef:
     kind: GitRepository
@@ -34,7 +34,7 @@ spec:
       app.kubernetes.io/name: vertical-pod-autoscaler
       app.kubernetes.io/part-of: goldilocks
   interval: 10m
-  path: ./kubernetes//apps/monitoring/goldilocks/vpa
+  path: ./kubernetes/apps/monitoring/goldilocks/vpa
   prune: true
   sourceRef:
     kind: GitRepository

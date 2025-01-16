@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: &app ersatztv
   interval: 10m
-  path: ./kubernetes//apps/media/ersatztv/app
+  path: ./kubernetes/apps/media/ersatztv/app
   prune: true
   sourceRef:
     kind: GitRepository

@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: snapshot-controller
   interval: 10m
-  path: ./kubernetes//core/storage/snapshot-controller/app
+  path: ./kubernetes/core/storage/snapshot-controller/app
   prune: true
   sourceRef:
     kind: GitRepository

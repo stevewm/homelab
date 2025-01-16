@@ -13,7 +13,7 @@ spec:
       app.kubernetes.io/part-of: dragonfly
       app.kubernetes.io/component: operator
   interval: 10m
-  path: ./kubernetes//core/database/dragonfly/operator
+  path: ./kubernetes/core/database/dragonfly/operator
   prune: true
   sourceRef:
     kind: GitRepository
@@ -35,7 +35,7 @@ spec:
       app.kubernetes.io/part-of: dragonfly
       app.kubernetes.io/component: cluster
   interval: 10m
-  path: ./kubernetes//core/database/dragonfly/cluster
+  path: ./kubernetes/core/database/dragonfly/cluster
   prune: true
   sourceRef:
     kind: GitRepository

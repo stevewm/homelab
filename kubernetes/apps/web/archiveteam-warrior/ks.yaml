@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: &app archiveteam-warrior
   interval: 10m
-  path: ./kubernetes//apps/web/archiveteam-warrior/app
+  path: ./kubernetes/apps/web/archiveteam-warrior/app
   prune: true
   sourceRef:
     kind: GitRepository

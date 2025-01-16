@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: &app tubesync
   interval: 10m
-  path: ./kubernetes//apps/downloads/tubesync/app
+  path: ./kubernetes/apps/downloads/tubesync/app
   prune: true
   sourceRef:
     kind: GitRepository

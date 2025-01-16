@@ -10,7 +10,7 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: descheduler
-  path: ./kubernetes//core/system/descheduler/app
+  path: ./kubernetes/core/system/descheduler/app
   sourceRef:
     kind: GitRepository
     name: homelab

@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: flux-operator
   interval: 10m
-  path: ./kubernetes//core/flux-system/flux-operator/app
+  path: ./kubernetes/core/flux-system/flux-operator/app
   prune: false
   sourceRef:
     kind: GitRepository
@@ -31,7 +31,7 @@ spec:
     labels:
       app.kubernetes.io/name: flux-instance
   interval: 10m
-  path: ./kubernetes//core/flux-system/flux-operator/instance
+  path: ./kubernetes/core/flux-system/flux-operator/instance
   prune: false
   sourceRef:
     kind: GitRepository

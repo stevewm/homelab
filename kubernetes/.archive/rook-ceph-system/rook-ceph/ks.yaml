@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/name: rook-ceph-operator
       app.kubernetes.io/part-of: rook-ceph
   interval: 10m
-  path: ./kubernetes//core/rook-ceph-system/rook-ceph/operator
+  path: ./kubernetes/core/rook-ceph-system/rook-ceph/operator
   prune: false # absolutely do not
   sourceRef:
     kind: GitRepository
@@ -35,7 +35,7 @@ spec:
       app.kubernetes.io/name: rook-ceph-cluster
       app.kubernetes.io/part-of: rook-ceph
   interval: 10m
-  path: ./kubernetes//core/rook-ceph-system/rook-ceph/cluster
+  path: ./kubernetes/core/rook-ceph-system/rook-ceph/cluster
   prune: false # absolutely do not
   sourceRef:
     kind: GitRepository

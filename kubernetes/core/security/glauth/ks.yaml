@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: glauth
   interval: 10m
-  path: ./kubernetes//core/security/glauth/app
+  path: ./kubernetes/core/security/glauth/app
   prune: true
   sourceRef:
     kind: GitRepository

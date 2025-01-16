@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: metrics-server
   interval: 10m
-  path: ./kubernetes//core/kube-system/metrics-server/app
+  path: ./kubernetes/core/kube-system/metrics-server/app
   prune: true
   sourceRef:
     kind: GitRepository
