@@ -2,15 +2,10 @@
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-resources:
-  - ./externalsecret.yaml
-  - ./ingress.yaml
-  - ./networkpolicy.yaml
-  - ./receiver.yaml
 configMapGenerator:
   - name: fluxcd-secretgenerator
     files:
-      - secrets.yaml=./config/secrets.yaml
+      - secrets.yaml=./secrets.yaml
 generatorOptions:
   disableNameSuffixHash: true
   labels:
