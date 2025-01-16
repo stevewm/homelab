@@ -33,7 +33,7 @@ nodes:
       - deviceSelector:
           busPath: "0*"
         dhcp: true
-    machineFiles: &machineFiles
+    machineFiles:
       - path: /etc/cri/conf.d/20-customization.part
         op: create
         permissions: 0
@@ -41,45 +41,11 @@ nodes:
           [plugins."io.containerd.grpc.v1.cri"]
             enable_unprivileged_ports = true
 
-  - hostname: control02
-    ipAddress: 192.168.1.52
-    controlPlane: true
-    disableSearchDomain: true
-    machineSpec:
-      mode: metal
-      arch: amd64
-      secureboot: true
-      useUKI: true
-    installDiskSelector:
-      size: "<=260GB"
-      type: nvme
-    networkInterfaces:
-      - deviceSelector:
-          busPath: "0*"
-        dhcp: true
-    machineFiles: *machineFiles
-
-  - hostname: control03
-    ipAddress: 192.168.1.53
-    controlPlane: true
-    disableSearchDomain: true
-    machineSpec:
-      mode: metal
-      arch: amd64
-      secureboot: true
-      useUKI: true
-    installDiskSelector:
-      size: "<=260GB"
-      type: nvme
-    networkInterfaces:
-      - deviceSelector:
-          busPath: "0*"
-        dhcp: true
-    machineFiles: *machineFiles
-
 controlPlane:
   schematic:
     customization:
+      extraKernelArgs:
+        - net.ifnames=1 # Enable predictable NIC naming
       systemExtensions:
         officialExtensions:
           - siderolabs/intel-ucode
@@ -139,3 +105,34 @@ controlPlane:
                 busPath: "0*"
               vip:
                 ip: 192.168.1.55
+
+    # Enable MutatingAdmissionPolicy
+    - |-
+      cluster:
+        apiServer:
+          extraArgs:
+            runtime-config: admissionregistration.k8s.io/v1alpha1=true
+            feature-gates: MutatingAdmissionPolicy=true
+
+    # Configure cluster
+    - |-
+      cluster:
+        allowSchedulingOnControlPlanes: true
+        coreDNS:
+            disabled: true
+        proxy:
+          disabled: true
+        scheduler:
+          config:
+            apiVersion: kubescheduler.config.k8s.io/v1
+            kind: KubeSchedulerConfiguration
+            profiles:
+              - schedulerName: default-scheduler
+                pluginConfig:
+                  - name: PodTopologySpread
+                    args:
+                      defaultingType: List
+                      defaultConstraints:
+                        - maxSkew: 1
+                          topologyKey: kubernetes.io/hostname
+                          whenUnsatisfiable: ScheduleAnyway
