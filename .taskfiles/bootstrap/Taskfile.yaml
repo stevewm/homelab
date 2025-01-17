@@ -1,0 +1,44 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+---
+version: "3"
+
+tasks:
+
+  talos:
+    desc: Bootstrap Talos
+    vars:
+      TALOS_CONTROLLER:
+        sh: talosctl config info --output json | jq --raw-output '.endpoints[]' | shuf -n 1
+    preconditions:
+      - which jq minijinja-cli sops talosctl
+      - test -f "${TALOSCONFIG}"
+      - talosctl config info
+    cmds:
+      - task: :talos:apply-clusterconfig
+        vars:
+          INSECURE: "true"
+      - until talosctl --nodes {{ .TALOS_CONTROLLER }} bootstrap; do sleep 5; done
+      - talosctl kubeconfig --nodes {{ .TALOS_CONTROLLER }} --force --force-context-name "homelab" "${KUBECONFIG}"
+
+  flux:
+    desc: Bootstrap flux deployments
+    silent: true
+    prompt: Continue to bootstrap?
+    preconditions:
+      - which doppler helmfile kubectl minijinja-cli
+      - test -f "${TALOSCONFIG}"
+      - test -f "${KUBECONFIG}"
+      - test -f {{ .K8S_DIR }}/.bootstrap/helmfile.yaml
+      - test -f {{.K8S_DIR}}/.bootstrap/helmfile.yaml
+      - test -f {{.K8S_DIR}}/.bootstrap/templates/doppler.yaml.j2
+      - test -f {{.K8S_DIR}}/flux/cluster-meta/settings/mutatingadmissionpolicy.yaml
+      - doppler whoami
+      - talosctl config info
+    env:
+      NODE_COUNT:
+        sh: talosctl config info --output json | jq --raw-output '.nodes | length'
+    cmds:
+      - until kubectl wait nodes --for=condition=Ready=False --all --timeout=10m; do sleep 5; done
+      - doppler run -- minijinja-cli kubernetes/.bootstrap/templates/doppler.yaml.j2 | kubectl apply --server-side --filename -
+      - kubectl apply --server-side --filename {{ .K8S_DIR }}/flux/config/mutatingadmissionpolicy.yaml
+      - helmfile --quiet --file {{ .K8S_DIR }}/bootstrap/helmfile.yaml apply --skip-diff-on-install --suppress-diff

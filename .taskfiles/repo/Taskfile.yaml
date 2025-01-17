@@ -4,7 +4,7 @@ version: "3"
 
 tasks:
   setup:
-    desc: "Setup homelab"
+    desc: Setup environment
     silent: true
     cmds:
       - doppler setup --no-interactive
@@ -12,16 +12,14 @@ tasks:
       - pre-commit install
 
   schemas:
-    desc: "Show YAML files without a schema [cluster=main]"
+    desc: Show YAML files without a schema
     silent: true
-    vars:
-      cluster: '{{.cluster | default "main"}}'
-    dir: ./kubernetes/{{.cluster}}
+    dir: "{{ .K8S_DIR }}"
     cmds:
       - find . -type f -name '*.yaml' -exec grep -L '^# yaml-language-server:' {} \;
 
   docs:
-    desc: "Serve the docs locally"
+    desc: Serve docs locally
     silent: true
     dir: "{{ .ROOT_DIR }}"
     preconditions:

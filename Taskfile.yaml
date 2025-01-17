@@ -1,14 +1,28 @@
 ---
 version: "3"
 
+set:
+  - pipefail
+
+vars:
+  K8S_DIR: "{{ .ROOT_DIR }}/kubernetes"
+  TALOS_DIR: "{{ .K8S_DIR }}/talos"
+
+env:
+  KUBECONFIG: "{{ .K8S_DIR }}/kubeconfig"
+  MINIJINJA_CONFIG_FILE: "{{ .ROOT_DIR }}/.minijinja.toml"
+  TALOSCONFIG: "{{ .K8S_DIR }}/talos/clusterconfig/talosconfig"
+
 tasks:
   default:
     silent: true
     cmds:
+      - cat .taskfiles/.homelab.txt
       - task --list
 
 includes:
+  bootstrap: ./.taskfiles/bootstrap/Taskfile.yaml
+  k8s: ./.taskfiles/k8s/Taskfile.yaml
   repo: ./.taskfiles/repo/Taskfile.yaml
   talos: ./.taskfiles/talos/Taskfile.yaml
-  k8s: ./.taskfiles/k8s/Taskfile.yaml
-# nas: ./.taskfiles/nas/Taskfile.yaml
+  # nas: ./.taskfiles/nas/Taskfile.yaml
