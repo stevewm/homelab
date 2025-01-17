@@ -1,5 +1,7 @@
 # Homelab
 
+Welcome to the repository for my home infrastructure, otherwise known as my homelab.
+
 ![Kubernetes Version](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fstevewm%2Fhomelab%2Fmain%2Fkubernetes%2Fmain%2Ftalos%2Ftalconfig.yaml&query=%24.kubernetesVersion&style=for-the-badge&logo=kubernetes&label=K8S)
 ![Talos Version](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fstevewm%2Fhomelab%2Fmain%2Fkubernetes%2Fmain%2Ftalos%2Ftalconfig.yaml&query=%24.talosVersion&style=for-the-badge&logo=talos&label=talos&color=%23FA640A&link=https%3A%2F%2Ftalos.dev%2F)
 
@@ -10,9 +12,11 @@
 ![Cluster Age](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.cfg.sh%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_age_days&style=for-the-badge&logo=kubernetes&label=Age)
 ![Uptime](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.cfg.sh%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_uptime_days&style=for-the-badge&logo=kubernetes&label=Uptime)
 
-This repo contains the configuration and documentation for my home infrastructure. I try to adhere to GitOps principles and automate as much as possible.
+## 📚 Docs
 
-## Built With
+Documentation can be found [here](https://stevewm.github.io/homelab/).
+
+## 🛠️ Built With
 
 | Name                                                            | Purpose                                  |
 | --------------------------------------------------------------- | ---------------------------------------- |
@@ -26,6 +30,6 @@ This repo contains the configuration and documentation for my home infrastructur
 | [pre-commit](https://pre-commit.com/)                           | Linting and validation                   |
 | [go-task](https://github.com/go-task/task)                      | Task runner                              |
 
-## Acknowledgements
+## 🤝 Acknowledgements
 
 Inspired by [bjw-s/home-ops](https://github.com/bjw-s-labs/home-ops), [geerlingguy/pi-cluster](https://github.com/geerlingguy/pi-cluster) and the [k8s-at-home](https://github.com/topics/k8s-at-home) community.
