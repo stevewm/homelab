@@ -3,10 +3,18 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ./namespace.yaml
-  - ./networkpolicy.yaml
   - ./cloudflared/ks.yaml
   - ./external-dns/ks.yaml
   - ./ingress-nginx/ks.yaml
   - ./playit/ks.yaml
   - ./smtp-relay/ks.yaml
+components:
+  - ../../components/namespace
+  - ../../components/networkpolicy/default-deny
+patches:
+  - patch: |
+      - op: add
+        path: /metadata/name
+        value: network
+    target:
+      kind: Namespace

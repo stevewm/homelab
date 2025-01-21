@@ -6,3 +6,13 @@ resources:
   - ./goldilocks/ks.yaml
   - ./kromgo/ks.yaml
   - ./speedtest-exporter/ks.yaml
+components:
+  - ../../components/namespace
+  - ../../components/networkpolicy/default-deny
+patches:
+  - patch: |
+      - op: add
+        path: /metadata/name
+        value: monitoring
+    target:
+      kind: Namespace

@@ -3,8 +3,16 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ./namespace.yaml
-  - ./networkpolicy.yaml
   - ./ersatztv/ks.yaml
   - ./jellyfin/ks.yaml
   - ./jellyseerr/ks.yaml
+components:
+  - ../../components/namespace
+  - ../../components/networkpolicy/default-deny
+patches:
+  - patch: |
+      - op: add
+        path: /metadata/name
+        value: media
+    target:
+      kind: Namespace

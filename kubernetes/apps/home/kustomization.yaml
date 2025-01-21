@@ -3,6 +3,14 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ./namespace.yaml
-  - ./networkpolicy.yaml
   - ./home-assistant/ks.yaml
+components:
+  - ../../components/namespace
+  - ../../components/networkpolicy/default-deny
+patches:
+  - patch: |
+      - op: add
+        path: /metadata/name
+        value: home
+    target:
+      kind: Namespace

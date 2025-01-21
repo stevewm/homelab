@@ -6,4 +6,5 @@ resources:
   - ./cilium/ks.yaml
   - ./coredns/ks.yaml
   - ./metrics-server/ks.yaml
-  - ./networkpolicy.yaml
+components:
+  - ../../components/networkpolicy/default-allow

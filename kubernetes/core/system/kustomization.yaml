@@ -3,9 +3,16 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ./namespace.yaml
-  # - ./descheduler/ks.yaml
   - ./intel-device-plugins/ks.yaml
   - ./k8tz/ks.yaml
   - ./node-feature-discovery/ks.yaml
   - ./reloader/ks.yaml
+components:
+  - ../../components/namespace
+patches:
+  - patch: |
+      - op: add
+        path: /metadata/name
+        value: system
+    target:
+      kind: Namespace

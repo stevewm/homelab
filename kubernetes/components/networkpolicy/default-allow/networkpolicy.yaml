@@ -3,11 +3,12 @@
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: default-deny
-  namespace: monitoring
+  name: default-allow
 spec:
   endpointSelector: {}
   ingress:
-    - {}
+    - fromEndpoints:
+        - {}
   egress:
-    - {}
+    - toEndpoints:
+        - {}
