@@ -6,8 +6,8 @@ namespace: games
 resources:
   - ./minecraft/ks.yaml
 components:
-  - ../../components/namespace
-  - ../../components/networkpolicy/default-deny
+  - ../../flux/components/namespace
+  - ../../flux/components/networkpolicy/default-deny
 patches:
   - patch: |
       - op: add

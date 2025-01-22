@@ -4,8 +4,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: ci
 components:
-  - ../../components/namespace
-  - ../../components/networkpolicy/default-deny
+  - ../../flux/components/namespace
+  - ../../flux/components/networkpolicy/default-deny
 patches:
   - patch: |
       - op: add

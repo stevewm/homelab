@@ -8,7 +8,7 @@ resources:
   - ./snapshot-controller/ks.yaml
   - ./volsync/ks.yaml
 components:
-  - ../../components/namespace
+  - ../../flux/components/namespace
 patches:
   - patch: |
       - op: add

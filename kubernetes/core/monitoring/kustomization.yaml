@@ -9,8 +9,8 @@ resources:
   - ./kube-prometheus-stack/ks.yaml
   - ./smartctl-exporter/ks.yaml
 components:
-  - ../../components/namespace
-  - ../../components/networkpolicy/default-deny
+  - ../../flux/components/namespace
+  - ../../flux/components/networkpolicy/default-deny
 patches:
   - patch: |
       - op: add

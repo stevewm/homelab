@@ -8,4 +8,4 @@ resources:
   - ./coredns/ks.yaml
   - ./metrics-server/ks.yaml
 components:
-  - ../../components/networkpolicy/default-allow
+  - ../../flux/components/networkpolicy/default-allow

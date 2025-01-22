@@ -9,7 +9,7 @@ resources:
   - ./node-feature-discovery/ks.yaml
   - ./reloader/ks.yaml
 components:
-  - ../../components/namespace
+  - ../../flux/components/namespace
 patches:
   - patch: |
       - op: add

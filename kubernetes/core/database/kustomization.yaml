@@ -7,8 +7,8 @@ resources:
   - ./crunchy-postgres/ks.yaml
   - ./dragonfly/ks.yaml
 components:
-  - ../../components/namespace
-  - ../../components/networkpolicy/default-deny
+  - ../../flux/components/namespace
+  - ../../flux/components/networkpolicy/default-deny
 patches:
   - patch: |
       - op: add
