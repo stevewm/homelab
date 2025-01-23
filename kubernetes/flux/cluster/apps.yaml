@@ -3,11 +3,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: core
+  name: cluster-apps
   namespace: flux-system
 spec:
   interval: 10m
-  path: ./kubernetes/core
+  path: ./kubernetes/apps
   prune: true
   wait: true
   sourceRef:
@@ -17,3 +17,6 @@ spec:
     substituteFrom:
       - kind: ConfigMap
         name: cluster-settings
+  dependsOn:
+    - name: cluster-core
+    - name: cluster-meta
