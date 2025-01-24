@@ -17,9 +17,11 @@ spec:
         name: prometheus-community
         namespace: flux-system
   install:
+    crds: Skip
     remediation:
       retries: 3
   upgrade:
+    crds: Skip
     cleanupOnFail: true
     remediation:
       strategy: rollback
@@ -27,6 +29,10 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    crds:
+      enabled: false
+    cleanPrometheusOperatorObjectNames: true
+
     kubeControllerManager:
       enabled: false
 
