@@ -46,26 +46,45 @@ controlPlane:
     customization:
       extraKernelArgs:
         - net.ifnames=1 # Enable predictable NIC naming
+        - init_on_alloc=0 # Less security, more speed
+        - init_on_free=0 # Less security, more speed
+        - intel_iommu=on # PCI Passthrough
+        - iommu=pt # PCI Passthrough
       systemExtensions:
         officialExtensions:
           - siderolabs/intel-ucode
-          - siderolabs/i915-ucode
+          - siderolabs/i915
           - siderolabs/thunderbolt
           - siderolabs/uinput
+          - siderolabs/mei
 
   patches:
-    # Extra kubelet mounts (required for OpenEBS)
+    # Extra kubelet mounts (hostpath storage)
     - |-
       machine:
         kubelet:
           extraMounts:
-            - destination: /var/openebs/local
+            - destination: /var/mnt/local
               type: bind
-              source: /var/openebs/local
+              source: /var/mnt/local
               options:
                 - bind
                 - rshared
                 - rw
+
+    # Configure NFS mount options
+    - |
+      machine:
+        files:
+          - op: overwrite
+            path: /etc/nfsmount.conf
+            permissions: 0o644
+            content: |
+              [ NFSMount_Global_Options ]
+              nfsvers=4.2
+              hard=True
+              noatime=True
+              nconnect=16
 
     # Enable disk encryption
     - |-
@@ -139,3 +158,23 @@ controlPlane:
                         - maxSkew: 1
                           topologyKey: kubernetes.io/hostname
                           whenUnsatisfiable: ScheduleAnyway
+
+    # Enable K8s Talos API Access
+    - |-
+      machine:
+        features:
+          kubernetesTalosAPIAccess:
+            enabled: true
+            allowedRoles:
+              - os:admin
+            allowedKubernetesNamespaces:
+              - actions-runner-system
+              - system-upgrade
+
+    # Configure udev rules
+    - |-
+      machine:
+        udev:
+          rules:
+            # Intel GPU
+            - SUBSYSTEM=="drm", KERNEL=="renderD*", GROUP="44", MODE="0660"
