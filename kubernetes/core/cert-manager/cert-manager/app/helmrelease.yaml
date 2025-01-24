@@ -16,53 +16,17 @@ spec:
         name: jetstack
         namespace: flux-system
   install:
+    crds: CreateReplace
     remediation:
       retries: 3
   upgrade:
+    crds: CreateReplace
     cleanupOnFail: true
     remediation:
       strategy: rollback
       retries: 3
   uninstall:
     keepHistory: false
-  values:
-    installCRDs: true
-    enableCertificateOwnerRef: true
-    # podLabels:
-    #   egress.home.arpa/apiserver: allow
-
-    # webhook:
-    #   podLabels:
-    #     ingress.home.arpa/apiserver: allow
-    #     egress.home.arpa/apiserver: allow
-
-    # cainjector:
-    #   podLabels:
-    #     egress.home.arpa/apiserver: allow
-
-    # startupapicheck:
-    #   podLabels:
-    #     egress.home.arpa/apiserver: allow
-
-    deploymentAnnotations:
-      reloader.stakater.com/auto:
-
-    config:
-      apiVersion: controller.config.cert-manager.io/v1alpha1
-      kind: ControllerConfiguration
-      featureGates:
-        AdditionalCertificateOutputFormats: true
-        ExperimentalGatewayAPISupport: false
-
-    prometheus:
-      enabled: true
-      servicemonitor:
-        enabled: true
-        prometheusInstance: monitoring
-
-    resources:
-      requests:
-        cpu: 10m
-        memory: 32Mi
-      limits:
-        memory: 92Mi
+  valuesFrom:
+    - kind: ConfigMap
+      name: cert-manager-helm-values

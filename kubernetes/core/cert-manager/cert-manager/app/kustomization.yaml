@@ -8,3 +8,9 @@ resources:
   - ./le-prod-issuer.yaml
   # - ./le-staging-issuer.yaml
   # - ./networkpolicy.yaml
+configMapGenerator:
+  - name: cert-manager-helm-values
+    files:
+      - values.yaml=./values.yaml
+configurations:
+  - kustomizeconfig.yaml
