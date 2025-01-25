@@ -2,6 +2,9 @@
 ---
 version: "3"
 
+env:
+  DOPPLER_PROJECT: talos
+
 tasks:
   genconfig:
     desc: "Generate Talos machineconfigs"
