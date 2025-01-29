@@ -52,6 +52,8 @@ releases:
     version: 0.13.0
     values:
       - ../core/flux-system/flux-operator/app/values.yaml
+    needs:
+      - monitoring/prometheus-operator-crds
 
   - name: flux-instance
     namespace: flux-system
