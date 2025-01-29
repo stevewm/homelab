@@ -14,7 +14,7 @@ tasks:
       WEBHOOK_PATH:
         sh: kubectl get receiver homelab-github-receiver -n flux-system -o jsonpath='{.status.webhookPath}'
 
-  cleanup-pods:
+  cleanup:
     desc: Clean up pods with a Failed/Pending/Succeeded phase
     preconditions:
       - which kubectl
@@ -28,7 +28,7 @@ tasks:
               - Succeeded
         cmd: kubectl delete pods --field-selector status.phase={{ .ITEM.PHASE }} -A --ignore-not-found=true
 
-  sync-externalsecrets:
+  sync-es:
     desc: Force sync all ExternalSecret resources
     preconditions:
       - which kubectl

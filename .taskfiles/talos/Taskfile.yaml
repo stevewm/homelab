@@ -17,7 +17,7 @@ tasks:
     desc: Apply clusterconfig for a Talos cluster
     vars:
       CLUSTERCONFIG_FILES:
-        sh: ls {{ .TALOS_DIR }}clusterconfig/*.yaml
+        sh: ls {{ .TALOS_DIR }}/clusterconfig/*.yaml
     preconditions:
       - which ls
       - test -f "${TALOSCONFIG}"
@@ -28,7 +28,7 @@ tasks:
         vars:
           FILENAME: "{{ .ITEM }}"
           HOSTNAME: |-
-            {{ trimPrefix (printf "homelab-") (base .ITEM) | trimSuffix ".yaml" }}
+            {{ trimPrefix (printf "main-") (base .ITEM) | trimSuffix ".yaml" }}
           DRY_RUN: "{{ .DRY_RUN }}"
           INSECURE: "{{ .INSECURE }}"
 
@@ -52,12 +52,22 @@ tasks:
         {{ if eq "true" .INSECURE }}--insecure{{ end }}
         {{ if eq "true" .DRY_RUN }}--dry-run{{ end }}
 
+  kubeconfig:
+    desc: "Generate kubeconfig for a Talos cluster"
+    preconditions:
+      - which talosctl
+      - test -f "${TALOSCONFIG}"
+    silent: true
+    dir: "{{ .TALOS_DIR }}"
+    cmds:
+      - talosctl kubeconfig
+
   pushsecrets:
     desc: Pushes Talos secrets to Doppler from talsecret.yaml [debug=true]
     silent: true
     prompt: Secrets will be overwritten. Continue?
     vars:
-      DEBUG: "{{.DEBUG | default true}}" # Prevent unhappy accidents
+      DEBUG: "{{ .DEBUG | default true }}" # Prevent unhappy accidents
     env:
       TALOS_SECRETS_DRYRUN: "{{ .DEBUG }}"
     dir: "{{ .TALOS_DIR }}"
