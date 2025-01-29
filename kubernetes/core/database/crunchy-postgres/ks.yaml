@@ -4,9 +4,9 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: core-crunchy-postgres-operator
-  namespace: flux-system
+  namespace: &namespace database
 spec:
-  targetNamespace: database
+  targetNamespace: *namespace
   commonMetadata:
     labels:
       app.kubernetes.io/name: crunchy-postgres
@@ -25,9 +25,9 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: core-crunchy-postgres-cluster
-  namespace: flux-system
+  namespace: &namespace database
 spec:
-  targetNamespace: database
+  targetNamespace: *namespace
   commonMetadata:
     labels:
       app.kubernetes.io/name: crunchy-postgres
@@ -50,9 +50,9 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: core-crunchy-postgres-cluster-secretstore
-  namespace: flux-system
+  namespace: &namespace database
 spec:
-  targetNamespace: database
+  targetNamespace: *namespace
   commonMetadata:
     labels:
       app.kubernetes.io/name: core-crunchy-postgres-cluster-secretstore
@@ -73,9 +73,9 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: core-crunchy-postgres-userinit-controller
-  namespace: flux-system
+  namespace: &namespace database
 spec:
-  targetNamespace: database
+  targetNamespace: *namespace
   commonMetadata:
     labels:
       app.kubernetes.io/name: crunchy-postgres

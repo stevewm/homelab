@@ -4,9 +4,9 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: core-metallb
-  namespace: flux-system
+  namespace: &namespace metallb-system
 spec:
-  targetNamespace: metallb-system
+  targetNamespace: *namespace
   commonMetadata:
     labels:
       app.kubernetes.io/name: metallb
@@ -24,9 +24,9 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: core-metallb-pool
-  namespace: flux-system
+  namespace: &namespace metallb-system
 spec:
-  targetNamespace: metallb-system
+  targetNamespace: *namespace
   commonMetadata:
     labels:
       app.kubernetes.io/name: metallb

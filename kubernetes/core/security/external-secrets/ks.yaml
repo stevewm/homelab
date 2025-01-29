@@ -4,9 +4,9 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: core-external-secrets
-  namespace: flux-system
+  namespace: &namespace security
 spec:
-  targetNamespace: security
+  targetNamespace: *namespace
   commonMetadata:
     labels:
       app.kubernetes.io/name: external-secrets
@@ -27,11 +27,11 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: core-external-secrets-secretstore
-  namespace: flux-system
+  namespace: &namespace security
   labels:
     substitution.flux.home.arpa/disabled: "true"
 spec:
-  targetNamespace: security
+  targetNamespace: *namespace
   commonMetadata:
     labels:
       app.kubernetes.io/name: external-secrets
