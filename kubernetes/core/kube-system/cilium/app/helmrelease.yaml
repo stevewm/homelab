@@ -31,6 +31,18 @@ spec:
       name: cilium-values
   values:
     hubble:
+      ui:
+        ingress:
+          enabled: true
+          className: nginx-internal
+          hosts:
+            - cni.${DOMAIN}
+          annotations:
+            gethomepage.dev/name: hubble
+            gethomepage.dev/enabled: "true"
+            gethomepage.dev/group: network
+            gethomepage.dev/icon: cilium.png
+
       metrics:
         enabled:
           - dns:query
