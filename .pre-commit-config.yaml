@@ -42,7 +42,7 @@ repos:
           )$
 
   - repo: https://github.com/renovatebot/pre-commit-hooks
-    rev: 39.133.4
+    rev: 39.146.1
     hooks:
       - id: renovate-config-validator
         files: |
