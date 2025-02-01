@@ -50,7 +50,7 @@ spec:
           app:
             image:
               repository: ghcr.io/meeb/tubesync
-              tag: latest@sha256:6b79f0b2cb081134bb538ad47283d6a8eb3716cc70604655bbe43545e5898517
+              tag: latest@sha256:241e7e86c8b7eb0b7a5e667581b3b0009ad931e71bdd3319444d3a796f4a4a1a
             env:
               TUBESYNC_RESET_DOWNLOAD_DIR: false
             securityContext:
