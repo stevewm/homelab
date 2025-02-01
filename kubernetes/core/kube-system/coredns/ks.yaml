@@ -9,9 +9,9 @@ spec:
   targetNamespace: *namespace
   commonMetadata:
     labels:
-      app.kubernetes.io/name: core-dns
+      app.kubernetes.io/name: coredns
   interval: 10m
-  path: ./kubernetes/core/kube-system/core-dns/app
+  path: ./kubernetes/core/kube-system/coredns/app
   prune: true
   sourceRef:
     kind: GitRepository
