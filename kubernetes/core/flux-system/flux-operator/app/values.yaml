@@ -1,3 +1,7 @@
 ---
+commonLabels:
+  egress.home.arpa/apiserver: allow
+  egress.home.arpa/kubedns: allow
+  egress.home.arpa/internet: allow
 serviceMonitor:
   create: true

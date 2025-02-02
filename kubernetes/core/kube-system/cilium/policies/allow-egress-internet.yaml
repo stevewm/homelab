@@ -7,7 +7,7 @@ metadata:
 spec:
   endpointSelector:
     matchLabels:
-      ingress.home.arpa/internet: allow
+      egress.home.arpa/internet: allow
   egress:
     - toCIDRSet:
         - cidr: 0.0.0.0/0

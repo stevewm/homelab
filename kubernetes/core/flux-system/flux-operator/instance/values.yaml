@@ -19,6 +19,9 @@ instance:
   commonMetadata:
     labels:
       app.kubernetes.io/name: flux
+      egress.home.arpa/apiserver: allow
+      egress.home.arpa/kubedns: allow
+      egress.home.arpa/internet: allow
   kustomize:
     patches:
       # Increase the number of workers and limits
