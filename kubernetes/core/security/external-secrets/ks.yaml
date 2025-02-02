@@ -43,9 +43,5 @@ spec:
     name: homelab
     namespace: flux-system
   wait: true
-  postBuild:
-    substituteFrom:
-      - kind: Secret
-        name: doppler
   dependsOn:
     - name: core-external-secrets

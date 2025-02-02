@@ -10,5 +10,5 @@ spec:
         secretRef:
           dopplerToken:
             namespace: security
-            name: doppler-token
+            name: doppler
             key: token
