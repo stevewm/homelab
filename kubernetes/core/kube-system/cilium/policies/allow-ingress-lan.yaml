@@ -10,6 +10,6 @@ spec:
       ingress.home.arpa/lan: allow
   ingress:
     - fromCIDRSet:
-        - cidr: 192.168.1.0/24
+        - cidr: 10.0.0.24
     - fromEntities:
-        - world # TODO: Remove this once this netpol works properly
+        - world # FIXME: Remove this once this netpol works properly
