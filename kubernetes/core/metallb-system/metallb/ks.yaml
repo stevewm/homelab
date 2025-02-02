@@ -16,6 +16,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: homelab
+    namespace: flux-system
   wait: true
 
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
@@ -36,6 +37,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: homelab
+    namespace: flux-system
   wait: false
   dependsOn:
     - name: core-metallb

@@ -17,6 +17,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: homelab
+    namespace: flux-system
   wait: true
   dependsOn:
     - name: core-cert-manager
@@ -40,6 +41,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: homelab
+    namespace: flux-system
   wait: true
   dependsOn:
     - name: core-rook-ceph-operator

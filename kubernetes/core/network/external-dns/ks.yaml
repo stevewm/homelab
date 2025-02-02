@@ -17,6 +17,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: homelab
+    namespace: flux-system
   wait: false
   dependsOn:
     - name: core-external-secrets-secretstore
@@ -41,6 +42,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: homelab
+    namespace: flux-system
   wait: true
   dependsOn:
     - name: core-external-secrets-secretstore
