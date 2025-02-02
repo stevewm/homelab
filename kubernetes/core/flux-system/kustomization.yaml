@@ -5,3 +5,4 @@ kind: Kustomization
 namespace: flux-system
 resources:
   - ./flux-operator/ks.yaml
+  - ./kustomize-mutating-webhook/ks.yaml

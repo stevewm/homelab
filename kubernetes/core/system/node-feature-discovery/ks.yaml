@@ -20,3 +20,4 @@ spec:
   wait: true
   dependsOn:
     - name: core-kube-prometheus-stack
+      namespace: monitoring

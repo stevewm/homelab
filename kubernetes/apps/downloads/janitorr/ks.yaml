@@ -23,4 +23,6 @@ spec:
     - name: app-radarr
     - name: app-bazarr
     - name: app-jellyfin
+      namespace: media
     - name: app-jellyseerr
+      namespace: media

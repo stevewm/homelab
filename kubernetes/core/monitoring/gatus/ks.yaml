@@ -21,3 +21,6 @@ spec:
   postBuild:
     substitute:
       APP_SUBDOMAIN: status
+  dependsOn:
+    - name: core-external-secrets
+      namespace: security

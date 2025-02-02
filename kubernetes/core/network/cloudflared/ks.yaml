@@ -20,5 +20,6 @@ spec:
   wait: false
   dependsOn:
     - name: core-external-secrets-secretstore
+      namespace: security
     - name: core-external-dns-common
     - name: core-ingress-nginx-external

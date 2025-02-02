@@ -20,3 +20,4 @@ spec:
   wait: true
   dependsOn:
     - name: core-external-secrets-secretstore
+      namespace: security

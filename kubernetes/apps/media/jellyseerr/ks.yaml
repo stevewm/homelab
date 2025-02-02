@@ -20,7 +20,9 @@ spec:
   wait: false
   dependsOn:
     - name: app-sonarr
+      namespace: downloads
     - name: app-radarr
+      namespace: downloads
     - name: app-jellyfin
   postBuild:
     substitute:

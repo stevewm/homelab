@@ -1,0 +1,10 @@
+---
+certManager:
+  enabled: true
+configMaps:
+  - create: true
+    name: cluster-settings
+    data:
+      NAS: "192.168.1.234"
+      DOMAIN: cfg.sh
+secrets: []

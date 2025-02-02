@@ -25,3 +25,4 @@ spec:
   dependsOn:
     - name: core-glauth
     - name: core-smtp-relay
+      namespace: network
