@@ -51,4 +51,3 @@ spec:
       namespace: security
     - name: core-kube-prometheus-stack
       namespace: monitoring
-    - name: core-external-dns-common
