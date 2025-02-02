@@ -14,6 +14,8 @@ repositories:
     url: https://coredns.github.io/helm
   - name: jetstack
     url: https://charts.jetstack.io
+  - name: fluxcd-kustomize-mutating-webhook
+    url: https://xunholy.github.io/fluxcd-kustomize-mutating-webhook
 
 releases:
   - name: prometheus-operator-crds
