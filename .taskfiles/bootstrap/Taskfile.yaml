@@ -25,7 +25,7 @@ tasks:
 
   flux:
     desc: Bootstrap flux deployments
-    silent: false
+    silent: true
     prompt: Continue to bootstrap?
     preconditions:
       - which doppler helmfile kubectl minijinja-cli
