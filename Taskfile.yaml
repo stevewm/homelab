@@ -26,3 +26,4 @@ includes:
   repo: ./.taskfiles/repo/Taskfile.yaml
   talos: ./.taskfiles/talos/Taskfile.yaml
   # nas: ./.taskfiles/nas/Taskfile.yaml
+  volsync: ./.taskfiles/volsync/Taskfile.yaml

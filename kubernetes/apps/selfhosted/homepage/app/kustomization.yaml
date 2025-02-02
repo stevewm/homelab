@@ -6,4 +6,5 @@ resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
   - ./networkpolicy.yaml
-  - ../../../../templates/gatus/guarded
+components:
+  - ../../../../flux/components/gatus/guarded

@@ -7,7 +7,7 @@ env:
 
 tasks:
   genconfig:
-    desc: "Generate Talos machineconfigs"
+    desc: Generate Talos machineconfigs
     silent: true
     dir: "{{ .TALOS_DIR }}"
     cmds: # project config set in `doppler.yaml`
@@ -53,7 +53,7 @@ tasks:
         {{ if eq "true" .DRY_RUN }}--dry-run{{ end }}
 
   kubeconfig:
-    desc: "Generate kubeconfig for a Talos cluster"
+    desc: Generate kubeconfig for a Talos cluster
     preconditions:
       - which talosctl
       - test -f "${TALOSCONFIG}"
@@ -61,6 +61,19 @@ tasks:
     dir: "{{ .TALOS_DIR }}"
     cmds:
       - talosctl kubeconfig
+
+  reset:
+    desc: Reset a node to maintenance mode
+    silent: true
+    prompt: "Reset node {{ .HOSTNAME }}?"
+    preconditions:
+      - which talosctl
+      - test -f "${TALOSCONFIG}"
+    requires:
+      vars:
+        - HOSTNAME
+    cmds:
+      - talosctl reset --graceful=false -n {{ .HOSTNAME }} --reboot
 
   pushsecrets:
     desc: Pushes Talos secrets to Doppler from talsecret.yaml [debug=true]

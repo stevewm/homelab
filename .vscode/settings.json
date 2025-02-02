@@ -4,5 +4,11 @@
   "prettier.ignorePath": ".github/linters/prettierignore",
   "markdownlint.config": {
     "extends": ".github/linters/conf.markdownlint.yaml"
+  },
+  "yaml.schemas": {
+    // External Secrets
+    "https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/external-secrets.io/externalsecret_v1beta1.json": "externalsecret.yaml",
+    // Flux
+    "https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json": "ks.yaml",
   }
 }

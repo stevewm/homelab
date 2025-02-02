@@ -5,9 +5,11 @@ kind: Kustomization
 resources:
   - ./helmrelease.yaml
   - ./networkpolicy.yaml
-  - ../../../../templates/volsync/b2
-  - ../../../../templates/gatus/guarded
-  - ../../../../templates/secretgenerator/default
+
+components:
+  - ../../../../flux/components/volsync/b2
+  - ../../../../flux/components/gatus/guarded
+  - ../../../../flux/components/secretgenerator/default
 configMapGenerator:
   - name: radarr-secretgenerator
     files:

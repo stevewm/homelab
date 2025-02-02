@@ -60,6 +60,21 @@ controlPlane:
           - siderolabs/mei
 
   patches:
+    # Disable search domain everywhere
+    - |-
+      machine:
+        network:
+          disableSearchDomain: true
+
+    # Enable host dns
+    - |-
+      machine:
+        features:
+          hostDNS:
+            enabled: true
+            resolveMemberNames: true
+            forwardKubeDNSToHost: false
+
   # hostpath storage partition
     - |-
       machine:

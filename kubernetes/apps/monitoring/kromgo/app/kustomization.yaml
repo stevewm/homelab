@@ -5,7 +5,8 @@ kind: Kustomization
 resources:
   - ./helmrelease.yaml
   - ./networkpolicy.yaml
-  - ../../../../templates/gatus/external
+components:
+  - ../../../../flux/components/gatus/external
 configMapGenerator:
   - name: kromgo-configmap
     files:

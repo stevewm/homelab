@@ -8,9 +8,10 @@ resources:
   - ./gatus.yaml
   - ./networkpolicy.yaml
   - ./config/secrets/
-  - ../../../../templates/volsync/b2
-  - ../../../../templates/gatus/external
-  - ../../../../templates/secretgenerator/default
+components:
+  - ../../../../flux/components/volsync/b2
+  - ../../../../flux/components/gatus/external
+  - ../../../../flux/components/secretgenerator/default
 configMapGenerator:
   - name: minecraft-bluemap
     files:

@@ -5,5 +5,6 @@ kind: Kustomization
 resources:
   - ./helmrelease.yaml
   - ./networkpolicy.yaml
-  - ../../../../templates/volsync/b2
-  - ../../../../templates/gatus/external
+components:
+  - ../../../../flux/components/volsync/b2
+  - ../../../../flux/components/gatus/external
