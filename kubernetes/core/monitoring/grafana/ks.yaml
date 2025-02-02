@@ -23,3 +23,6 @@ spec:
       APP: *app
       APP_SUBDOMAIN: graf
       ES_DELETION_POLICY: Keep
+  dependsOn:
+    - name: core-external-secrets
+      namespace: security
