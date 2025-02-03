@@ -19,8 +19,6 @@ spec:
     namespace: flux-system
   wait: true
   dependsOn:
-    - name: core-metallb
-      namespace: metallb-system
     - name: core-ingress-nginx-common
 
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
@@ -44,8 +42,6 @@ spec:
     namespace: flux-system
   wait: true
   dependsOn:
-    - name: core-metallb
-      namespace: metallb-system
     - name: core-ingress-nginx-common
 
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json

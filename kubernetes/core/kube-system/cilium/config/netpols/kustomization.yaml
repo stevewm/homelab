@@ -5,11 +5,11 @@ kind: Kustomization
 resources:
   # Network policies
   # Egress
-  - ./netpols/allow-egress-apiserver.yaml
-  - ./netpols/allow-egress-kubedns.yaml
-  - ./netpols/allow-egress-internet.yaml
-  - ./netpols/allow-egress-nas.yaml
+  - ./allow-egress-apiserver.yaml
+  - ./allow-egress-kubedns.yaml
+  - ./allow-egress-internet.yaml
+  - ./allow-egress-nas.yaml
   # Ingress
-  - ./netpols/allow-ingress-apiserver.yaml
-  - ./netpols/allow-ingress-lan.yaml
-# - ./netpols/default-allow-egress-kubedns.yaml # TODO: reinstate once other netpols are working
+  - ./allow-ingress-apiserver.yaml
+  - ./allow-ingress-lan.yaml
+# - ./default-allow-egress-kubedns.yaml # TODO: reinstate once other netpols are working
