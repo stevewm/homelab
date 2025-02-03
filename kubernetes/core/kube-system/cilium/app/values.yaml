@@ -47,9 +47,6 @@ devices: enp+
 
 l2announcements:
   enabled: true
-loadBalancer:
-  algorithm: maglev
-  mode: dsr
 
 externalIPs:
   enabled: true
