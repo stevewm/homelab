@@ -4,7 +4,7 @@ operator:
   rollOutPods: true
   replicas: 1
 bandwidthManager:
-  enabled: true
+  enabled: false
   bbr: true
 localRedirectPolicy: true
 
