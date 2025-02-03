@@ -1,12 +1,23 @@
 ---
-rollOutCiliumPods: true
 operator:
+  replicas: 2
   rollOutPods: true
-  replicas: 1
+  prometheus:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+  dashboards:
+    enabled: true
+    annotations:
+      grafana_folder: Network
+
 bandwidthManager:
   enabled: false
   bbr: true
+
 localRedirectPolicy: true
+routingMode: native
+rollOutCiliumPods: true
 
 bpf:
   datapathMode: netkit
@@ -19,8 +30,10 @@ bgp:
   announce:
     loadbalancerIP: true
     podCIDR: false
+
 bgpControlPlane:
   enabled: true
+
 dnsProxy:
   endpointMaxIpPerHostname: 100
   maxDeferredConnectionDeletes: 15000
@@ -52,13 +65,21 @@ dashboards:
   annotations:
     grafana_folder: Network
 
+hubble:
+  enabled: true
+
+  relay:
+    enabled: true
+
+
 # -- from talos docs --
 ipam:
   mode: kubernetes
 
 kubeProxyReplacement: true
-k8sServiceHost: localhost
+k8sServiceHost: 127.0.0.1
 k8sServicePort: 7445
+kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
 
 policyAuditMode: true
 
@@ -86,9 +107,3 @@ cgroup:
     enabled: false
   hostRoot: /sys/fs/cgroup
 # -- end of talos settings --
-
-hubble:
-  enabled: true
-
-  relay:
-    enabled: true
