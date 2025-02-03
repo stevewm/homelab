@@ -19,4 +19,4 @@ spec:
       - kind: ConfigMap
         name: cluster-settings
   dependsOn:
-    - name: cluster-meta
+    - name: cluster-repos
