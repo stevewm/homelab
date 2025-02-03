@@ -5,6 +5,7 @@ operator:
   replicas: 1
 bandwidthManager:
   enabled: false
+  bbr: true
 localRedirectPolicy: true
 
 bpf:
