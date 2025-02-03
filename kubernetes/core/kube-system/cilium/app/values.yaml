@@ -16,7 +16,6 @@ bandwidthManager:
   bbr: true
 
 localRedirectPolicy: true
-routingMode: native
 rollOutCiliumPods: true
 
 bpf:
