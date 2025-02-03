@@ -6,6 +6,7 @@ resources:
   - ./backube.yaml
   - ./bjw-s.yaml
   - ./cilium.yaml
+  - ./coredns.yaml
   - ./crunchy-userinit-controller.yaml
   - ./crunchydata.yaml
   - ./democratic-csi.yaml
