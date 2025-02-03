@@ -13,9 +13,6 @@ bpf:
   hostLegacyRouting: true
   masquerade: true
   tproxy: true
-  autoMount:
-    enabled: false
-  root: /sys/fs/bpf
 
 bgp:
   enabled: false
@@ -28,6 +25,9 @@ dnsProxy:
   endpointMaxIpPerHostname: 100
   maxDeferredConnectionDeletes: 15000
   minTtl: 300
+
+envoy:
+  enabled: false
 
 cni:
   exclusive: false
