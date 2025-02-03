@@ -31,6 +31,7 @@ nodes:
     networkInterfaces:
       - deviceSelector:
           hardwareAddr: "58:47:ca:7a:f1:25"
+        mtu: 9000
         dhcp: true
         vip:
           ip: *vip
@@ -141,6 +142,9 @@ controlPlane:
           disableManifestsDirectory: true
           extraConfig:
             maxPods: 150
+          nodeIP:
+            validSubnets:
+                - 10.0.0.0/24
 
     # Enable MutatingAdmissionPolicy
     - |-
@@ -172,6 +176,12 @@ controlPlane:
                         - maxSkew: 1
                           topologyKey: kubernetes.io/hostname
                           whenUnsatisfiable: ScheduleAnyway
+
+    - |-
+      cluster:
+        etcd:
+          advertisedSubnets:
+            - 10.0.0.0/24
 
     # Enable K8s Talos API Access
     - |-
