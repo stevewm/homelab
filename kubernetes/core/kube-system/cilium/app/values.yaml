@@ -7,12 +7,16 @@ bandwidthManager:
   enabled: true
   bbr: true
 localRedirectPolicy: true
+
 bpf:
+  datapathMode: netkit
+  hostLegacyRouting: true
   masquerade: true
   tproxy: true
   autoMount:
     enabled: false
   root: /sys/fs/bpf
+
 bgp:
   enabled: false
   announce:
@@ -24,6 +28,30 @@ dnsProxy:
   endpointMaxIpPerHostname: 100
   maxDeferredConnectionDeletes: 15000
   minTtl: 300
+
+cni:
+  exclusive: false
+devices: enp+
+
+l2announcements:
+  enabled: true
+loadBalancer:
+  algorithm: maglev
+  mode: dsr
+
+externalIPs:
+  enabled: true
+
+prometheus:
+  enabled: true
+  serviceMonitor:
+    enabled: true
+    trustCRDsExist: true
+dashboards:
+  enabled: true
+  annotations:
+    grafana_folder: Network
+
 # -- from talos docs --
 ipam:
   mode: kubernetes
@@ -64,15 +92,3 @@ hubble:
 
   relay:
     enabled: true
-
-  ui:
-    enabled: true
-    rollOutPods: true
-    podLabels:
-      ingress.home.arpa/nginx-internal: allow
-    resources:
-      requests:
-        cpu: 30m
-        memory: 1Gi
-      limits:
-        memory: 2Gi
