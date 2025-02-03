@@ -1,6 +1,6 @@
 ---
 operator:
-  replicas: 2
+  replicas: 1
   rollOutPods: true
   prometheus:
     enabled: true
