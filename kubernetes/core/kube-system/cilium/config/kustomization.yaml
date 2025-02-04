@@ -5,4 +5,4 @@ kind: Kustomization
 resources:
   - ./l2.yaml
   - ./pool.yaml
-  - ./netpols
+  #- ./netpols

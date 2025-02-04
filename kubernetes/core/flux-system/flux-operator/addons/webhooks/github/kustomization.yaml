@@ -6,4 +6,4 @@ resources:
   - ./externalsecret.yaml
   - ./ingress.yaml
   - ./receiver.yaml
-  - ./networkpolicy.yaml
+  #- ./networkpolicy.yaml

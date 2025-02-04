@@ -5,4 +5,4 @@ kind: Kustomization
 resources:
   - ./postgres-cluster.yaml
   - ./externalsecret.yaml
-  - ./networkpolicy.yaml
+  #- ./networkpolicy.yaml
