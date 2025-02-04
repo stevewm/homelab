@@ -62,3 +62,8 @@ spec:
   wait: true
   dependsOn:
     - name: core-flux-instance
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: cluster-settings
+        optional: false
