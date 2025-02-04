@@ -26,3 +26,5 @@ spec:
   dependsOn:
     - name: core-external-secrets
       namespace: security
+    - name: core-secretgenerator
+      namespace: security
