@@ -30,8 +30,7 @@ nodes:
       model: Patriot M.2 P320 256GB
     networkInterfaces:
       - deviceSelector:
-          hardwareAddr: "58:47:ca:7a:f1:25"
-        mtu: 9000
+          physical: true # should select any hardware network device, if you have just one, it will be selected
         dhcp: true
         vip:
           ip: *vip
@@ -145,6 +144,9 @@ controlPlane:
     - |-
       cluster:
         allowSchedulingOnControlPlanes: true
+        controllerManager:
+          extraArgs:
+            bind-address: 0.0.0.0
         coreDNS:
             disabled: true
         proxy:
@@ -167,6 +169,8 @@ controlPlane:
     - |-
       cluster:
         etcd:
+          extraArgs:
+            listen-metrics-urls: http://0.0.0.0:2381
           advertisedSubnets:
             - 10.0.0.0/24
 

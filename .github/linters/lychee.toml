@@ -5,6 +5,7 @@ exclude_path = [
   '.github/linters/lychee.toml', # non-standard config location
   #'kubernetes\/[^/]+\/flux\/repos\/helm\/.*' # helm repos
   'kubernetes/flux/repos/helm', # FIXME: https://github.com/lycheeverse/lychee/issues/1608
+  'kubernetes/talos/talconfig.yaml',
   'kubernetes/apps/games/minecraft/app/config',
   'kubernetes/.archive/buildarr/app/config/buildarr.yaml',
   'docs/assets'

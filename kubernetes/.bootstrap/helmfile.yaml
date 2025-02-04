@@ -34,7 +34,7 @@ releases:
     hooks:
       - events: ["postsync"]
         command: bash
-        args: ['{{ requiredEnv "KUBERNETES_DIR" }}/.bootstrap/cilium-postsync.sh']
+        args: ['{{ requiredEnv "K8S_DIR" }}/.bootstrap/cilium-postsync.sh']
 
   - name: coredns
     namespace: kube-system

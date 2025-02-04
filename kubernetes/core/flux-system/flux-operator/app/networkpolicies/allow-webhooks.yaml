@@ -2,13 +2,11 @@
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: allow-scraping
+  name: allow-webhooks
 spec:
-  endpointSelector: {}
+  endpointSelector:
+    matchLabels:
+      app: notification-controller
   ingress:
     - fromEntities:
         - cluster
-      toPorts:
-        - ports:
-            - port: "8080"
-              protocol: TCP

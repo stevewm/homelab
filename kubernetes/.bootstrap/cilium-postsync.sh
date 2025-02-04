@@ -22,14 +22,14 @@ apply_kustomize_config() {
         --server-side \
         --field-manager=kustomize-controller \
         --kustomize \
-        "${KUBERNETES_DIR}/core/kube-system/cilium/config"
+        "${K8S_DIR}/core/kube-system/cilium/config"
 
     kubectl apply \
         --namespace=kube-system \
         --server-side \
         --field-manager=kustomize-controller \
         --kustomize \
-        "${KUBERNETES_DIR}/core/flux-system/flux-operator/app/networkpolicies"
+        "${K8S_DIR}/core/flux-system/flux-operator/app/networkpolicies"
 }
 
 main() {
