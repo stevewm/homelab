@@ -24,5 +24,6 @@ spec:
       APP_SUBDOMAIN: auth
   dependsOn:
     - name: core-glauth
+    - name: core-secretgenerator
     - name: core-smtp-relay
       namespace: network

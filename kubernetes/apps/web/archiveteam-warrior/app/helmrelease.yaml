@@ -99,7 +99,7 @@ spec:
     persistence:
       config:
         type: persistentVolumeClaim
-        storageClass: openebs-hostpath
+        storageClass: local-hostpath
         size: 20Gi
         accessMode: ReadWriteOnce
         globalMounts:

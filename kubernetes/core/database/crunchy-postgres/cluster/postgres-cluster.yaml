@@ -32,7 +32,7 @@ spec:
           storage.home.arpa/s3: allow
       replicas: &replica 1
       dataVolumeClaimSpec:
-        storageClassName: openebs-hostpath
+        storageClassName: local-hostpath
         accessModes:
           - ReadWriteOnce
         resources:
