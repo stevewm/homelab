@@ -30,7 +30,7 @@ nodes:
       model: Patriot M.2 P320 256GB
     networkInterfaces:
       - deviceSelector:
-          physical: true # should select any hardware network device, if you have just one, it will be selected
+          hardwareAddr: 58:47:ca:7a:f1:25
         dhcp: true
         vip:
           ip: *vip
