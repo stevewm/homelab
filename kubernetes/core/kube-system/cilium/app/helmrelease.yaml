@@ -32,16 +32,6 @@ spec:
   values:
     hubble:
       ui:
-        enabled: true
-        rollOutPods: true
-        podLabels:
-          ingress.home.arpa/nginx-internal: allow
-        resources:
-          requests:
-            cpu: 30m
-            memory: 1Gi
-          limits:
-            memory: 2Gi
         ingress:
           enabled: true
           className: nginx-internal
