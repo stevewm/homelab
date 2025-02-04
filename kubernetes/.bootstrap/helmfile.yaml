@@ -31,6 +31,10 @@ releases:
       - ../core/kube-system/cilium/app/values.yaml
     needs:
       - monitoring/prometheus-operator-crds
+    hooks:
+      - events: ["postsync"]
+        command: bash
+        args: ['{{ requiredEnv "KUBERNETES_DIR" }}/.bootstrap/cilium-postsync.sh']
 
   - name: coredns
     namespace: kube-system

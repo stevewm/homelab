@@ -114,19 +114,6 @@ controlPlane:
     # Enable disk encryption
     - |-
       machine:
-        systemDiskEncryption:
-          ephemeral:
-            provider: luks2
-            keys:
-              - slot: 0
-                nodeID: {}
-          state:
-            provider: luks2
-            keys:
-              - slot: 0
-                nodeID: {}
-    - |-
-      machine:
         install:
           wipe: true
 
