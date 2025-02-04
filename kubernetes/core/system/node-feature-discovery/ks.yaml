@@ -19,5 +19,5 @@ spec:
     namespace: flux-system
   wait: true
   dependsOn:
-    - name: core-kube-prometheus-stack
+    - name: core-prometheus-operator-crds
       namespace: monitoring

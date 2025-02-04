@@ -22,7 +22,7 @@ spec:
   dependsOn:
     - name: core-external-secrets-secretstore
       namespace: security
-    - name: core-kube-prometheus-stack
+    - name: core-prometheus-operator-crds
       namespace: monitoring
 
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
@@ -49,5 +49,5 @@ spec:
   dependsOn:
     - name: core-external-secrets-secretstore
       namespace: security
-    - name: core-kube-prometheus-stack
+    - name: core-prometheus-operator-crds
       namespace: monitoring
