@@ -73,7 +73,7 @@ spec:
       config:
         driver: local-hostpath
         local-hostpath:
-          shareBasePath: &storagePath /mnt/local
+          shareBasePath: &storagePath /var/mnt/local
           controllerBasePath: *storagePath
           dirPermissionsMode: "0770"
           dirPermissionsUser: 0
