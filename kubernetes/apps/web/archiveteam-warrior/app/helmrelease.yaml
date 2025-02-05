@@ -95,12 +95,3 @@ spec:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: web
           gethomepage.dev/icon: mdi-archive-arrow-up
-
-    persistence:
-      config:
-        type: persistentVolumeClaim
-        storageClass: local-hostpath
-        size: 20Gi
-        accessMode: ReadWriteOnce
-        globalMounts:
-          - path: /projects
