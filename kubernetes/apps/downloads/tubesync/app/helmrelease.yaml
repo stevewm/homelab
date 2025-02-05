@@ -96,6 +96,6 @@ spec:
         enabled: true
         type: nfs
         server: ${NAS}
-        path: /volume1/Media/YouTube
+        path: /volume1/Media/youtube
         globalMounts:
           - path: /downloads
