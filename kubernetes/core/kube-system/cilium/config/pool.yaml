@@ -8,4 +8,4 @@ spec:
   allowFirstLastIPs: "Yes"
   blocks:
     - start: 10.0.0.50
-    - stop: 10.0.0.99
+      stop: 10.0.0.99
