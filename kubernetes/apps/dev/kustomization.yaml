@@ -5,4 +5,4 @@ kind: Kustomization
 namespace: dev
 components:
   - ../../flux/components/namespace
-  - ../../flux/components/networkpolicy/default-allow
+  #- ../../flux/components/networkpolicy/default-allow

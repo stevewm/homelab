@@ -5,4 +5,4 @@ kind: Kustomization
 namespace: ci
 components:
   - ../../flux/components/namespace
-  - ../../flux/components/networkpolicy/default-deny
+  #- ../../flux/components/networkpolicy/default-deny
