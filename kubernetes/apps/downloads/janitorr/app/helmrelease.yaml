@@ -120,3 +120,5 @@ spec:
           - path: /data/media
       logs:
         type: emptyDir
+      tmp:
+        type: emptyDir
