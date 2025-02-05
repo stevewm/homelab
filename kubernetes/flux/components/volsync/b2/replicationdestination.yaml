@@ -10,10 +10,10 @@ spec:
   restic:
     repository: ${APP}-volsync-b2
     copyMethod: ${VOLSYNC_COPY_METHOD:-Snapshot}
-    storageClassName: ${VOLSYNC_STORAGECLASS:-csi-local-hostpath}
+    storageClassName: ${VOLSYNC_STORAGECLASS:-local-hostpath}
     capacity: ${VOLSYNC_CAPACITY:-1Gi}
     accessModes: ["${VOLSYNC_ACCESSMODES:-ReadWriteOnce}"]
-    volumeSnapshotClassName: ${VOLSYNC_STORAGECLASS:-csi-local-hostpath}
+    volumeSnapshotClassName: ${VOLSYNC_STORAGECLASS:-local-hostpath}
     moverSecurityContext:
       runAsUser: ${APP_UID:-568}
       runAsGroup: ${APP_GID:-568}
