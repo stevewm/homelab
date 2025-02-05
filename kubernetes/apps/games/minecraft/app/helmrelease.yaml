@@ -114,7 +114,6 @@ spec:
                 fabricexporter,
                 spark,
                 bluemap,
-                bluemap-sign-markers,
                 geyser:beta,
                 floodgate:beta
               # https://vanillatweaks.net/share#oNYxlz
