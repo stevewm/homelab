@@ -81,16 +81,16 @@ controlPlane:
         disks:
           - device: /dev/nvme1n1
             partitions:
-              - mountpoint: /var/mnt/local
+              - mountpoint: /var/lib/local
 
     # Extra kubelet mounts (hostpath storage)
     - |
       machine:
         kubelet:
           extraMounts:
-            - destination: /var/mnt/local
+            - destination: /var/lib/local
               type: bind
-              source: /var/mnt/local
+              source: /var/lib/local
               options:
                 - bind
                 - rshared
