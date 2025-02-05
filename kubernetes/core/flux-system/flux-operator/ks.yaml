@@ -62,6 +62,7 @@ spec:
   wait: true
   dependsOn:
     - name: core-flux-instance
+    - name: core-external-secrets
   postBuild:
     substituteFrom:
       - kind: ConfigMap
