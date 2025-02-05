@@ -101,7 +101,7 @@ spec:
               API_KEY:
                 valueFrom:
                   secretKeyRef:
-                    name: bazarr-generated
+                    name: bazarr
                     key: api_key
 
     service:
