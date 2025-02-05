@@ -100,7 +100,7 @@ spec:
                 - nginx-external
 
       extraArgs:
-        default-ssl-certificate: "network/cfg-sh-tls"
+        default-ssl-certificate: "network/cluster-ingress-cert-tls"
 
       topologySpreadConstraints:
         - maxSkew: 1

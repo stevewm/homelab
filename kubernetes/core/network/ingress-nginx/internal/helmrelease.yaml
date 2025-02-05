@@ -52,7 +52,8 @@ spec:
       config:
         custom-http-errors: >-
           401,403,404,500,501,502,503
-        block-user-agents: "AmazonBot,GPTBot,~*GPTBot*,ChatGPT-User,~*ChatGPT-User*,Google-Extended,~*Google-Extended*,CCBot,~*CCBot*,Omgilibot,~*Omgilibot*,FacebookBot,~*FacebookBot*" # taken from https://github.com/superseriousbusiness/gotosocial/blob/main/internal/web/robots.go
+        # https://ethanmarcotte.com/wrote/blockin-bots/
+        block-user-agents: "AmazonBot,GPTBot,~*GPTBot*,ChatGPT-User,~*ChatGPT-User*,Google-Extended,~*Google-Extended*,CCBot,~*CCBot*,Omgilibot,~*Omgilibot*,FacebookBot,~*FacebookBot*"
         client-header-timeout: 120
         client-body-buffer-size: "100M"
         client-body-timeout: 120
@@ -102,7 +103,7 @@ spec:
                 - nginx-internal
 
       extraArgs:
-        default-ssl-certificate: "network/cfg-sh-tls"
+        default-ssl-certificate: "network/cluster-ingress-cert-tls"
 
       topologySpreadConstraints:
         - maxSkew: 2
