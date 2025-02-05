@@ -100,4 +100,4 @@ spec:
       config:
         type: emptyDir
         globalMounts:
-          - path: /projects
+          - path: /home/warrior/projects
