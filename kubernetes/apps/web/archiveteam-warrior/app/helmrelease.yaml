@@ -98,6 +98,14 @@ spec:
 
     persistence:
       config:
-        type: emptyDir
+        type: persistentVolumeClaim
+        size: 10Gi
+        accessMode: ReadWriteOnce
         globalMounts:
           - path: /home/warrior/projects
+      data:
+        type: persistentVolumeClaim
+        size: 10Gi
+        accessMode: ReadWriteOnce
+        globalMounts:
+          - /home/warrior/data
