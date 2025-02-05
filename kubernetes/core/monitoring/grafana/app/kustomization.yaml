@@ -4,13 +4,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ./helmrelease.yaml
-  - ./pushsecret.yaml
-components:
-  - ../../../../flux/components/secretgenerator/default
-configMapGenerator:
-  - name: grafana-secretgenerator
-    files:
-      - secrets.yaml=./config/secrets.yaml
 generatorOptions:
   disableNameSuffixHash: true
   labels:
