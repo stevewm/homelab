@@ -95,3 +95,9 @@ spec:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: web
           gethomepage.dev/icon: mdi-archive-arrow-up
+
+    persistence:
+      config:
+        type: emptyDir
+        globalMounts:
+          - path: /projects
