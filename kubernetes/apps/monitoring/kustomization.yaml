@@ -9,11 +9,4 @@ resources:
   - ./speedtest-exporter/ks.yaml
 components:
   - ../../flux/components/namespace
-  - ../../flux/components/networkpolicy/default-deny
-patches:
-  - patch: |
-      - op: add
-        path: /metadata/name
-        value: monitoring
-    target:
-      kind: Namespace
+  #- ../../flux/components/networkpolicy/default-deny

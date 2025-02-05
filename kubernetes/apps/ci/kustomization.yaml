@@ -6,10 +6,3 @@ namespace: ci
 components:
   - ../../flux/components/namespace
   - ../../flux/components/networkpolicy/default-deny
-patches:
-  - patch: |
-      - op: add
-        path: /metadata/name
-        value: ci
-    target:
-      kind: Namespace

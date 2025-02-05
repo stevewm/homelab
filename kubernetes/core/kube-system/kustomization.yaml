@@ -7,5 +7,5 @@ resources:
   - ./cilium/ks.yaml
   - ./coredns/ks.yaml
   - ./metrics-server/ks.yaml
-components:
-  - ../../flux/components/networkpolicy/default-allow
+# components:
+#   - ../../flux/components/networkpolicy/default-allow

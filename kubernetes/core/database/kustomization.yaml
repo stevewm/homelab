@@ -9,10 +9,3 @@ resources:
 components:
   - ../../flux/components/namespace
   - ../../flux/components/networkpolicy/default-deny
-patches:
-  - patch: |
-      - op: add
-        path: /metadata/name
-        value: database
-    target:
-      kind: Namespace

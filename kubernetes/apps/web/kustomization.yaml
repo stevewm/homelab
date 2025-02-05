@@ -7,11 +7,4 @@ resources:
   - ./archiveteam-warrior/ks.yaml
 components:
   - ../../flux/components/namespace
-  - ../../flux/components/networkpolicy/default-deny
-patches:
-  - patch: |
-      - op: add
-        path: /metadata/name
-        value: web
-    target:
-      kind: Namespace
+  #- ../../flux/components/networkpolicy/default-deny

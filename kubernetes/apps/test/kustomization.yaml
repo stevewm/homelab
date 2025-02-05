@@ -5,11 +5,4 @@ kind: Kustomization
 namespace: test
 components:
   - ../../flux/components/namespace
-  - ../../flux/components/networkpolicy/default-allow
-patches:
-  - patch: |
-      - op: add
-        path: /metadata/name
-        value: test
-    target:
-      kind: Namespace
+  #- ../../flux/components/networkpolicy/default-allow

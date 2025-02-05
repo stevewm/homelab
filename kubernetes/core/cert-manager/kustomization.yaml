@@ -8,10 +8,3 @@ resources:
 components:
   - ../../flux/components/namespace
   # - ../../flux/components/networkpolicy/default-deny
-patches:
-  - patch: |
-      - op: add
-        path: /metadata/name
-        value: cert-manager
-    target:
-      kind: Namespace

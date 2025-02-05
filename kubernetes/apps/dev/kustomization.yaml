@@ -6,10 +6,3 @@ namespace: dev
 components:
   - ../../flux/components/namespace
   - ../../flux/components/networkpolicy/default-allow
-patches:
-  - patch: |
-      - op: add
-        path: /metadata/name
-        value: dev
-    target:
-      kind: Namespace
