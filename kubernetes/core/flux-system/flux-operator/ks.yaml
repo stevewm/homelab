@@ -60,11 +60,12 @@ spec:
     name: homelab
     namespace: flux-system
   wait: true
-  dependsOn:
-    - name: core-flux-instance
-    - name: core-external-secrets
   postBuild:
     substituteFrom:
       - kind: ConfigMap
         name: cluster-settings
         optional: false
+  dependsOn:
+    - name: core-flux-instance
+    - name: core-external-secrets
+      namespace: security
