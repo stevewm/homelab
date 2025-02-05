@@ -20,4 +20,3 @@ spec:
         name: cluster-settings
   dependsOn:
     - name: cluster-core
-    - name: cluster-meta
