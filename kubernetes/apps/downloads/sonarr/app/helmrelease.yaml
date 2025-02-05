@@ -61,7 +61,7 @@ spec:
               SONARR__AUTH__APIKEY:
                 valueFrom:
                   secretKeyRef:
-                    name: sonarr-generated
+                    name: sonarr
                     key: api_key
               SONARR__AUTH__METHOD: External
               SONARR__AUTH_REQUIRED: DisabledForLocalAddresses

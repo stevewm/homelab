@@ -2,4 +2,33 @@
 ---
 version: "3"
 
-tasks: {}
+vars:
+  PORTAINER_API_URL: ""
+  # PORTAINER_API_KEY:
+  #   sh: doppler secrets get -p homelab PORTAINER_API_KEY --plain
+  STACK_DIR: "{{ .NAS_DIR }}/stacks"
+
+tasks:
+  deploy:
+    desc: Deploy a Stack to Portainer [STACK_NAME, DRY_RUN=false]
+    vars:
+      DRY_RUN: "{{ .DRY_RUN | false }}"
+    requires:
+      vars:
+        - STACK_NAME
+    preconditions:
+      - which doppler
+      - doppler whoami
+      - test -f "{{ .STACK_DIR }}/{{ .STACK_NAME }}/docker-compose.yaml"
+
+  remove:
+    desc: Remove a Stack from Portainer [STACK_NAME, ARCHIVE=true]
+    vars:
+      ARCHIVE: "{{ .ARCHIVE | true }}"
+      DRY_RUN: "{{ .DRY_RUN | false }}"
+    requires:
+      vars:
+        - STACK_NAME
+    preconditions:
+      - which doppler
+      - doppler whoami

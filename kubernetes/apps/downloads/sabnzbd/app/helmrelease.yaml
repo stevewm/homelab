@@ -60,12 +60,12 @@ spec:
               SABNZBD__API_KEY:
                 valueFrom:
                   secretKeyRef:
-                    name: sabnzbd-generated
+                    name: sabnzbd
                     key: api_key
               SABNZBD__NZB_KEY:
                 valueFrom:
                   secretKeyRef:
-                    name: sabnzbd-generated
+                    name: sabnzbd
                     key: nzb_key
               SABNZBD__HOST_WHITELIST_ENTRIES: >-
                 sabnzbd, sabnzbd.downloads, sabnzbd.downloads.svc, sabnzbd.downloads.svc.cluster, sabnzbd.downloads.svc.cluster.local, ${APP_SUBDOMAIN}.${DOMAIN}

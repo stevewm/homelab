@@ -7,11 +7,9 @@ resources:
   - ./externalsecret.yaml
   - ./gatus.yaml
   #- ./networkpolicy.yaml
-  - ./config/secrets/
 components:
   - ../../../../flux/components/volsync/b2
   - ../../../../flux/components/gatus/external
-  - ../../../../flux/components/secretgenerator/default
 configMapGenerator:
   - name: minecraft-bluemap
     files:
