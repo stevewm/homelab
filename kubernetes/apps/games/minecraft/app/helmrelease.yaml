@@ -154,7 +154,8 @@ spec:
       minecraft:
         controller: *app
         type: LoadBalancer # https://kubernetes.io/blog/2022/05/23/service-ip-dynamic-and-static-allocation/
-        clusterIP: 10.96.0.30 # FIXME: Remove if/when playit supports hostname tunnel endpoints
+        annotations:
+          "lbipam.cilium.io/ips": "10.0.0.69"
         ports:
           java:
             port: 25565
