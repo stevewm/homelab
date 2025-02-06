@@ -117,6 +117,7 @@ spec:
       mods:
         type: configMap
         name: vintagestory
+        defaultMode: 0777
         globalMounts:
           - path: /gamedata/mods.sh
             subPath: mods.sh
