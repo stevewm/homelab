@@ -67,7 +67,6 @@ spec:
 
             env:
               MODS_DIR: /gamedata/Mods
-              COMPlus_EnableDiagnostics: "0"
 
         containers:
           app:
@@ -81,6 +80,8 @@ spec:
             #     enabled: true
             #   startup:
             #     enabled: true
+            env:
+              COMPlus_EnableDiagnostics: "0"
             resources:
               requests:
                 cpu: 250m
