@@ -79,7 +79,7 @@ spec:
                 spec:
                   httpGet:
                     path: /
-                    port: 8001
+                    port: &port 8001
                   initialDelaySeconds: 0
                   periodSeconds: 10
                   timeoutSeconds: 1
@@ -98,7 +98,7 @@ spec:
         controller: *app
         ports:
           http:
-            port: 8001
+            port: *port
 
     ingress:
       app:
