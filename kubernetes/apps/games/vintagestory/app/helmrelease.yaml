@@ -71,8 +71,8 @@ spec:
         containers:
           app:
             image:
-              repository: ghcr.io/stevewm/vintagestory
-              tag: 1.19.8@sha256:2b3e6eb684b8af322120f6fa7bd0183e66a10aa93d81c7e87fbdd8f3b682301e
+              repository: devidian/vintagestory
+              tag: latest@sha256:82f3b375064ffb5892c9ecef20cfd11af7c0f783254512c88813bd5d7b9eee87
             # probes:
             #   liveness:
             #     enabled: true
@@ -111,7 +111,7 @@ spec:
         type: configMap
         name: vintagestory
         globalMounts:
-          - path: /data/serverconfig.json
+          - path: /gamedata/serverconfig.json
             subPath: serverconfig.json
             readOnly: true
       mods:
