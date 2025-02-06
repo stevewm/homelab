@@ -67,6 +67,7 @@ spec:
 
             env:
               MODS_DIR: /gamedata/Mods
+              COMPlus_EnableDiagnostics: "0"
 
         containers:
           app:
