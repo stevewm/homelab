@@ -91,7 +91,7 @@ spec:
     persistence:
       configs:
         type: emptyDir
-      customFiles:
+      customfiles:
         type: emptyDir
       logs:
         type: emptyDir
