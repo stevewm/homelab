@@ -66,7 +66,7 @@ spec:
             args: ["/gamedata/mods.sh"]
 
             env:
-              MODS_DIR: /gamedata/Mods
+              MODS_DIR: /gamedata/vs/Mods
 
         containers:
           app:
