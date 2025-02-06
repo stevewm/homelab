@@ -104,7 +104,7 @@ spec:
           "lbipam.cilium.io/ips": "10.0.0.70"
         ports:
           game:
-            port: 2420
+            port: 42420
 
     persistence:
       gamedata:

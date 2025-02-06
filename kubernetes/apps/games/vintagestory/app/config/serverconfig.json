@@ -6,7 +6,7 @@
   "ServerDescription": "Be nice!",
   "WelcomeMessage": "Welcome {0}, try not to die!",
   "Ip": null,
-  "Port": 2420,
+  "Port": 42420,
   "Upnp": false,
   "CompressPackets": true,
   "AdvertiseServer": false,
