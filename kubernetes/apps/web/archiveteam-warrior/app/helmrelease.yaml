@@ -30,9 +30,9 @@ spec:
       automountServiceAccountToken: false
       securityContext:
         runAsNonRoot: true
-        runAsUser: 65534
-        runAsGroup: 65534
-        fsGroup: 65534
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
         fsGroupChangePolicy: OnRootMismatch
         seccompProfile:
           type: RuntimeDefault
@@ -61,8 +61,8 @@ spec:
         containers:
           app:
             image:
-              repository: atdr.meo.ws/archiveteam/warrior-dockerfile
-              tag: latest@sha256:afe7e9a9a1cd11d044ec960f48a3f3d8e871d0bd058c204163757e6bc7b74ee6 # >:(
+              repository: atdr.meo.ws/archiveteam/usgovernment-grab
+              tag: latest@sha256:ac349ca227c1939211389ed452812bbabb083140a9564a1eb0f3ca2be2f296d3 # >:(
             resources:
               requests:
                 cpu: 20m
@@ -71,7 +71,27 @@ spec:
                 memory: 500Mi
             env:
               DOWNLOADER: stevewm
-              SELECTED_PROJECT: auto
+              #SELECTED_PROJECT: auto
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /
+                    port: 8001
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+              startup:
+                enabled: false
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop: ["ALL"]
 
     service:
       app:
@@ -98,14 +118,12 @@ spec:
 
     persistence:
       config:
+        enabled: true
         type: persistentVolumeClaim
-        size: 10Gi
         accessMode: ReadWriteOnce
+        size: 20Gi
         globalMounts:
           - path: /home/warrior/projects
-      data:
-        type: persistentVolumeClaim
-        size: 10Gi
-        accessMode: ReadWriteOnce
-        globalMounts:
-          - /home/warrior/data
+            subPath: projects
+          - path: /home/warrior/data
+            subPath: data
