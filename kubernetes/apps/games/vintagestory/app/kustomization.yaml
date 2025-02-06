@@ -5,7 +5,8 @@ kind: Kustomization
 resources:
   - ./helmrelease.yaml
   - ./networkpolicy.yaml
-  - ../../../../templates/volsync/b2
+components:
+  - ../../../../flux/components/volsync/b2
 configMapGenerator:
   - name: vintagestory
     files:
