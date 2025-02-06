@@ -102,7 +102,7 @@ spec:
               LOG_TIMESTAMP: "true"
               # Performance
               JVM_XX_OPTS: -XX:MaxRAMPercentage=75
-              MAX_MEMORY: 8G
+              MAX_MEMORY: 14G
               USE_AIKAR_FLAGS: "true"
               SNOOPER_ENABLED: "false"
               VIEW_DISTANCE: 14
@@ -146,9 +146,9 @@ spec:
             resources:
               requests:
                 cpu: 250m
-                memory: 4Gi
+                memory: 10Gi
               limits:
-                memory: 8Gi
+                memory: 14Gi
 
     service:
       minecraft:
