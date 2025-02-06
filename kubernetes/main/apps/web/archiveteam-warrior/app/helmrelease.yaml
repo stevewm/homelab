@@ -57,7 +57,6 @@ spec:
             egress.home.arpa/kubedns: allow
           annotations:
             kubernetes.io/egress-bandwidth: "10M"
-            kubernetes.io/ingress-bandwidth: "10M"
 
         containers:
           app:
