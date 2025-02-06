@@ -12,6 +12,9 @@ configMapGenerator:
     files:
       - serverconfig.json=./config/serverconfig.json
       - mods.sh=./config/mods.sh
+      # Mod configuration
+      - betterruins.yaml=./config/betterruins.yaml
+      - primitivesurvival119.json=./config/primitivesurvival119.json
 generatorOptions:
   disableNameSuffixHash: true
   annotations:
