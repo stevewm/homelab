@@ -5,6 +5,7 @@ kind: Kustomization
 namespace: games
 resources:
   - ./minecraft/ks.yaml
+  - ./vintagestory/ks.yaml
 components:
   - ../../flux/components/namespace
   #- ../../flux/components/networkpolicy/default-deny
