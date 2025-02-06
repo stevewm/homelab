@@ -116,12 +116,12 @@ spec:
           - path: /gamedata/serverconfig.json
             subPath: serverconfig.json
             readOnly: true
-          - path: /gamedata/vs/ModConfig/primitivesurvival119.json
-            subPath: primitivesurvival119.json
-            readOnly: false
-          - path: /gamedata/vs/ModConfig/betterruins.yaml
-            subPath: betterruins.yaml
-            readOnly: false
+          # - path: /gamedata/vs/ModConfig/primitivesurvival119.json
+          #   subPath: primitivesurvival119.json
+          #   readOnly: false
+          # - path: /gamedata/vs/ModConfig/betterruins.yaml
+          #   subPath: betterruins.yaml
+          #   readOnly: false
       mods:
         type: configMap
         name: vintagestory
