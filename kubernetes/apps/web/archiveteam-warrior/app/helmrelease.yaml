@@ -71,7 +71,7 @@ spec:
                 memory: 500Mi
             env:
               DOWNLOADER: stevewm
-              #SELECTED_PROJECT: auto
+              SELECTED_PROJECT: auto
             probes:
               liveness: &probes
                 enabled: true
