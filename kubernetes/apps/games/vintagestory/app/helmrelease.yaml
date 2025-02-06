@@ -60,8 +60,8 @@ spec:
         initContainers:
           init-mods:
             image:
-              repository: alpine
-              tag: 3.21.2@sha256:f3240395711384fc3c07daa46cbc8d73aa5ba25ad1deb97424992760f8cb2b94
+              repository: alpine/curl
+              tag: 8.11.1@sha256:45e1452f5dd0dc1761e285e59b21fcc43d656ee2696ece8bab77a983199d198a
             command: ["/bin/sh", "-c"]
             args: ["/gamedata/mods.sh"]
 
