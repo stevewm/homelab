@@ -85,12 +85,14 @@ spec:
                 memory: 220M
 
     persistence:
-      config-cache:
-        enabled: true
+      tmp:
         type: emptyDir
         globalMounts:
           - path: /config/cache
-      config-file:
+            subPath: cache
+          - path: /config/logs
+            subPath: logs
+      config:
         type: configMap
         name: *app
         globalMounts:
