@@ -30,9 +30,9 @@ spec:
       automountServiceAccountToken: false
       securityContext:
         runAsNonRoot: true
-        runAsUser: 65534
-        runAsGroup: 65534
-        fsGroup: 65534
+        runAsUser: 1002
+        runAsGroup: 1002
+        fsGroup: 1002
         fsGroupChangePolicy: OnRootMismatch
         seccompProfile:
           type: RuntimeDefault
@@ -117,7 +117,7 @@ spec:
       mods:
         type: configMap
         name: vintagestory
-        defaultMode: 0777
+        defaultMode: 0755
         globalMounts:
           - path: /gamedata/mods.sh
             subPath: mods.sh
