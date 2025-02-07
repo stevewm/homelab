@@ -62,7 +62,7 @@ spec:
           app:
             image:
               repository: atdr.meo.ws/archiveteam/usgovernment-grab
-              tag: latest@sha256:ac349ca227c1939211389ed452812bbabb083140a9564a1eb0f3ca2be2f296d3 # >:(
+              tag: latest@sha256:903ffadbe4f3423d207b127fa8b587055d52bfd74ec4dc2f7be6bf417970e870 # >:(
             resources:
               requests:
                 cpu: 20m
