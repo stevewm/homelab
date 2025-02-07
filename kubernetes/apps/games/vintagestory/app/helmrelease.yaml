@@ -134,7 +134,7 @@ spec:
             readOnly: true
       rcon:
         type: secret
-        name: vintagercon
+        name: vintagestory
         globalMounts:
           - path: /data/ModConfig/vintagercon.json
             subPath: vintagercon.json
