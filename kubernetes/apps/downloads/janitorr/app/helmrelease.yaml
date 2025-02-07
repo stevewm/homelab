@@ -94,9 +94,9 @@ spec:
             resources:
               requests:
                 cpu: 10m
-                memory: 164M
+                memory: 512M
               limits:
-                memory: 220M
+                memory: 1G
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
