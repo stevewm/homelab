@@ -92,7 +92,7 @@ spec:
                 cpu: 2
             securityContext:
               allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
+              readOnlyRootFilesystem: false
               capabilities:
                 drop: [ALL]
 
@@ -138,6 +138,6 @@ spec:
         type: secret
         name: vintagestory
         globalMounts:
-          - path: /data/ModConfig/vintagercon.json
-            subPath: vintagercon.json
+          - path: /data/ModConfig/vsrcon.json
+            subPath: vsrcon.json
             readOnly: true
