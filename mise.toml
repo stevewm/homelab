@@ -32,8 +32,8 @@ rust = "latest"
 "stern" = "1.31.0"
 
 # Talos
-"talos" = "1.9.0"
-"talhelper" = "3.0.15"
+"talos" = "1.9.3"
+"talhelper" = "3.0.18"
 
 # Tools
 "task" = "3.38.0"
@@ -43,5 +43,4 @@ rust = "latest"
 "pipx:pre-commit" = "latest"
 "doppler" = "latest"
 "cargo:minijinja-cli" = "2.7.0"
-# "go:github.com/gorcon/rcon-cli" = "0.10.3"
-# "go:github.com/go-task/task" = "v3.41.0"
+"go:github.com/gorcon/rcon-cli" = "0.10.3"
