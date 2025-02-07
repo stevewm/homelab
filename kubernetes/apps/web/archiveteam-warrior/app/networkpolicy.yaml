@@ -11,4 +11,4 @@ spec:
 
   egress:
     - toEntities:
-        - world # FIXME: narrow this once we know where it's calling
+        - world

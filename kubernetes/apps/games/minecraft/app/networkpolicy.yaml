@@ -17,7 +17,7 @@ spec:
             - port: "25565"
               protocol: TCP
     - fromEntities:
-        - world # TODO: figure out why some traffic from the local network shows its source as the internal cidr
+        - world
       toPorts:
         - ports:
             - port: "25565"

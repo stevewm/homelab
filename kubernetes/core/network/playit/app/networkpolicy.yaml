@@ -11,7 +11,7 @@ spec:
 
   egress:
     - toEntities:
-        - world # TODO: get concrete info on what ports are required
+        - world
     - toEndpoints:
         - matchLabels:
             ingress.home.arpa/playit: allow
