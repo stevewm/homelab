@@ -59,12 +59,14 @@ spec:
             ingress.home.arpa/playit: allow
 
         initContainers:
-          init-mods:
+          init:
             image:
               repository: alpine/curl
               tag: 8.11.1@sha256:45e1452f5dd0dc1761e285e59b21fcc43d656ee2696ece8bab77a983199d198a
             command: ["/bin/sh", "-c"]
             args: ["/data/init.sh"]
+            env:
+              VS_DATA_PATH: &data /data
 
         containers:
           app:
@@ -80,7 +82,7 @@ spec:
             #     enabled: true
             env:
               COMPlus_EnableDiagnostics: "0"
-              VS_DATA_PATH: /data
+              VS_DATA_PATH: *data
             resources:
               requests:
                 cpu: 250m

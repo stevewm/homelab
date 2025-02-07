@@ -2,7 +2,7 @@
 
 set -e
 
-MODS_DIR="${VS_DATA_PATH}/Mods"
+MODS_DIR="${VS_DATA_PATH:?}/Mods"
 
 download_mods() {
   mkdir -p "$MODS_DIR"
