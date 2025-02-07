@@ -10,7 +10,6 @@ tasks:
       VSCODE_EXTENSIONS:
         sh: jq -r '.recommendations | join(", ")' {{ .ROOT_DIR }}/.vscode/extensions.json
     cmds:
-      - brew
       - doppler setup --no-interactive
       - mise install
       - pre-commit install
