@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/name: coredns
   interval: 10m
   path: ./kubernetes/core/kube-system/coredns/app
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: homelab

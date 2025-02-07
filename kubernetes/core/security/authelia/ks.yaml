@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/name: &app authelia
   interval: 10m
   path: ./kubernetes/core/security/authelia/app
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: homelab

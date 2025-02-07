@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/name: smtp-relay
   interval: 10m
   path: ./kubernetes/core/network/smtp-relay/app
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: homelab

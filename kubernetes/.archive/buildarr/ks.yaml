@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/name: &app buildarr
   interval: 10m
   path: ./kubernetes/apps/downloads/buildarr/app
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: homelab

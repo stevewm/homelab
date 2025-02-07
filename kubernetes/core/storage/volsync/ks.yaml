@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/name: volsync
   interval: 10m
   path: ./kubernetes/core/storage/volsync/app
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: homelab
