@@ -1,0 +1,197 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/budimanjojo/talhelper/master/pkg/config/schemas/talconfig.json
+---
+clusterName: main
+# renovate: depName=ghcr.io/siderolabs/installer datasource=docker
+talosVersion: v1.9.3
+# renovate: depName=ghcr.io/siderolabs/kubelet datasource=docker
+kubernetesVersion: v1.32.1
+endpoint: https://10.0.0.31:6443 # single node mode
+allowSchedulingOnMasters: true
+allowSchedulingOnControlPlanes: true
+cniConfig:
+  name: none
+
+additionalApiServerCertSans: &san
+  - 127.0.0.1 # KubePrism
+  - 10.0.0.31
+  # - &vip 10.0.0.40 # VIP
+additionalMachineCertSans: *san
+
+nodes:
+  - hostname: control01
+    ipAddress: 10.0.0.31
+    controlPlane: true
+    disableSearchDomain: true
+    machineSpec:
+      mode: metal
+      arch: amd64
+      secureboot: true
+      useUKI: true
+    installDiskSelector:
+      model: Patriot M.2 P320 256GB
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: 58:47:ca:7a:f1:25
+        dhcp: true
+        # vip:
+        #   ip: *vip
+    machineFiles:
+      - path: /etc/cri/conf.d/20-customization.part
+        op: create
+        permissions: 0
+        content: |-
+          [plugins."io.containerd.grpc.v1.cri"]
+            enable_unprivileged_ports = true
+
+controlPlane:
+  schematic:
+    customization:
+      extraKernelArgs:
+        - net.ifnames=1 # Enable predictable NIC naming
+        - init_on_alloc=0 # Less security, more speed
+        - init_on_free=0 # Less security, more speed
+        - intel_iommu=on # PCI Passthrough
+        - iommu=pt # PCI Passthrough
+      systemExtensions:
+        officialExtensions:
+          - siderolabs/intel-ucode
+          - siderolabs/i915
+          - siderolabs/thunderbolt
+          - siderolabs/uinput
+          - siderolabs/mei
+
+  patches:
+    # Disable search domain everywhere
+    - |-
+      machine:
+        network:
+          disableSearchDomain: true
+
+    # Enable host dns
+    - |-
+      machine:
+        features:
+          hostDNS:
+            enabled: true
+            resolveMemberNames: true
+            forwardKubeDNSToHost: false
+
+    # hostpath storage partition
+    - |-
+      machine:
+        disks:
+          - device: /dev/nvme1n1
+            partitions:
+              - mountpoint: /var/lib/csi-local-hostpath
+
+    # Extra kubelet mounts (hostpath storage)
+    - |
+      machine:
+        kubelet:
+          extraMounts:
+            - destination: /var/lib/csi-local-hostpath
+              type: bind
+              source: /var/lib/csi-local-hostpath
+              options:
+                - bind
+                - rshared
+                - rw
+
+    # Configure NFS mount options
+    - |
+      machine:
+        files:
+          - op: overwrite
+            path: /etc/nfsmount.conf
+            permissions: 0o644
+            content: |
+              [ NFSMount_Global_Options ]
+              nfsvers=4.2
+              hard=True
+              noatime=True
+              nconnect=16
+
+    # Enable disk encryption
+    - |-
+      machine:
+        install:
+          wipe: true
+
+    # Replace kubeproxy with cilium
+    - |-
+      cluster:
+        proxy:
+          disabled: true
+
+    - |- # Kubelet configuration
+      machine:
+        kubelet:
+          disableManifestsDirectory: true
+          extraConfig:
+            maxPods: 150
+          nodeIP:
+            validSubnets:
+                - 10.0.0.0/24
+
+    # Enable MutatingAdmissionPolicy
+    - |-
+      cluster:
+        apiServer:
+          extraArgs:
+            runtime-config: admissionregistration.k8s.io/v1alpha1=true
+            feature-gates: MutatingAdmissionPolicy=true
+            service-node-port-range: 30000-42767
+
+    # Configure cluster
+    - |-
+      cluster:
+        allowSchedulingOnControlPlanes: true
+        controllerManager:
+          extraArgs:
+            bind-address: 0.0.0.0
+        coreDNS:
+            disabled: true
+        proxy:
+          disabled: true
+        scheduler:
+          config:
+            apiVersion: kubescheduler.config.k8s.io/v1
+            kind: KubeSchedulerConfiguration
+            profiles:
+              - schedulerName: default-scheduler
+                pluginConfig:
+                  - name: PodTopologySpread
+                    args:
+                      defaultingType: List
+                      defaultConstraints:
+                        - maxSkew: 1
+                          topologyKey: kubernetes.io/hostname
+                          whenUnsatisfiable: ScheduleAnyway
+
+    - |-
+      cluster:
+        etcd:
+          extraArgs:
+            listen-metrics-urls: http://0.0.0.0:2381
+          advertisedSubnets:
+            - 10.0.0.0/24
+
+    # Enable K8s Talos API Access
+    - |-
+      machine:
+        features:
+          kubernetesTalosAPIAccess:
+            enabled: true
+            allowedRoles:
+              - os:admin
+            allowedKubernetesNamespaces:
+              - actions-runner-system
+              - system-upgrade
+
+    # Configure udev rules
+    - |-
+      machine:
+        udev:
+          rules:
+            # Intel GPU
+            - SUBSYSTEM=="drm", KERNEL=="renderD*", GROUP="44", MODE="0660"

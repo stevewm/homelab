@@ -1,0 +1,84 @@
+# yaml-language-server: $schema=https://json.schemastore.org/helmfile
+---
+helmDefaults:
+  wait: true
+  waitForJobs: true
+  timeout: 600
+  recreatePods: true
+  force: true
+
+repositories:
+  - name: cilium
+    url: https://helm.cilium.io
+  - name: coredns
+    url: https://coredns.github.io/helm
+  - name: jetstack
+    url: https://charts.jetstack.io
+  - name: fluxcd-kustomize-mutating-webhook
+    url: https://xunholy.github.io/fluxcd-kustomize-mutating-webhook
+
+releases:
+  - name: prometheus-operator-crds
+    namespace: monitoring
+    chart: oci://ghcr.io/prometheus-community/charts/prometheus-operator-crds
+    version: 17.0.2
+
+  - name: cilium
+    namespace: kube-system
+    chart: cilium/cilium
+    version: 1.16.5
+    values:
+      - ../core/kube-system/cilium/app/values.yaml
+    needs:
+      - monitoring/prometheus-operator-crds
+    hooks:
+      - events: ["postsync"]
+        command: bash
+        args: ['{{ requiredEnv "K8S_DIR" }}/.bootstrap/cilium-postsync.sh']
+
+  - name: coredns
+    namespace: kube-system
+    chart: coredns/coredns
+    version: 1.37.1
+    values:
+      - ../core/kube-system/coredns/app/values.yaml
+    needs:
+      - kube-system/cilium
+
+  - name: cert-manager
+    namespace: cert-manager
+    chart: jetstack/cert-manager
+    version: v1.16.3
+    values:
+      - ../core/cert-manager/cert-manager/app/values.yaml
+    needs:
+      - kube-system/coredns
+
+  - name: kustomize-mutating-webhook
+    namespace: flux-system
+    chart: fluxcd-kustomize-mutating-webhook/kustomize-mutating-webhook
+    version: 0.3.0
+    values:
+      - ../core/flux-system/kustomize-mutating-webhook/app/values.yaml
+    needs:
+      - cert-manager/cert-manager
+
+  - name: flux-operator
+    namespace: flux-system
+    chart: oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator
+    version: 0.13.0
+    values:
+      - ../core/flux-system/flux-operator/app/values.yaml
+    needs:
+      - monitoring/prometheus-operator-crds
+      - flux-system/kustomize-mutating-webhook
+
+  - name: flux-instance
+    namespace: flux-system
+    chart: oci://ghcr.io/controlplaneio-fluxcd/charts/flux-instance
+    version: 0.13.0
+    wait: false
+    values:
+      - ../core/flux-system/flux-operator/instance/values.yaml
+    needs:
+      - flux-system/flux-operator

@@ -1,0 +1,48 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: core-intel-device-plugins-operator
+  namespace: &namespace system
+spec:
+  targetNamespace: *namespace
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: intel-device-plugins-operator
+  path: ./kubernetes/core/system/intel-device-plugins/operator
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+    namespace: flux-system
+  interval: 10m
+  prune: false
+  wait: true
+  dependsOn:
+    - name: core-cert-manager
+      namespace: cert-manager
+    - name: core-node-feature-discovery
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: core-intel-device-plugins-gpu
+  namespace: &namespace system
+spec:
+  targetNamespace: *namespace
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: intel-device-plugins-gpu
+      app.kubernetes.io/part-of: intel-device-plugins-operator
+  path: ./kubernetes/core/system/intel-device-plugins/gpu
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+    namespace: flux-system
+  interval: 30m
+  prune: false
+  wait: true
+  dependsOn:
+    - name: core-intel-device-plugins-operator

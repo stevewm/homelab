@@ -1,0 +1,43 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/cilium.io/ciliumnetworkpolicy_v2.json
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: minecraft
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: minecraft
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: playit
+      toPorts:
+        - ports:
+            - port: "25565"
+              protocol: TCP
+    - fromEntities:
+        - world
+      toPorts:
+        - ports:
+            - port: "25565"
+              protocol: TCP
+            - port: "19132"
+              protocol: UDP
+  egress:
+    - toFQDNs:
+        # Mods
+        - matchPattern: "*.fabricmc.net"
+        - matchPattern: "*.modrinth.com"
+        - matchName: vanillatweaks.net
+        - matchName: playerdb.co
+        - matchName: github.com
+        # Geyser
+        - matchName: api.geysermc.org
+        # Mojang
+        - matchPattern: "*.mojang.com"
+        - matchPattern: "*.minecraftservices.com"
+      toPorts:
+        - ports:
+            - port: "443"
+              protocol: TCP

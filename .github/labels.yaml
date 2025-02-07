@@ -4,7 +4,7 @@
   color: c45b15
 
 # Clusters
-- name: cluster/main
+- name: cluster
   color: 007cba
 - name: cluster/pi
   color: c51a4a

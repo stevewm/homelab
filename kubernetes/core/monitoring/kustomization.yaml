@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://json.schemastore.org/kustomization.json
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: monitoring
+resources:
+  - ./gatus/ks.yaml
+  - ./grafana/ks.yaml
+  - ./kube-prometheus-stack/ks.yaml
+  - ./prometheus-operator/ks.yaml
+  - ./smartctl-exporter/ks.yaml
+components:
+  - ../../flux/components/namespace
+  #- ../../flux/components/networkpolicy/default-deny
+patches:
+  - patch: |
+      - op: add
+        path: /metadata/labels/pod-security.kubernetes.io~1enforce
+        value: privileged
+    target:
+      kind: Namespace

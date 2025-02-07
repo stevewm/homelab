@@ -1,4 +1,4 @@
-# NAS
+# 💾 NAS
 
 The NAS is an ASUSTOR Flashstor 6 with 6x2TB NVMe drives.
 

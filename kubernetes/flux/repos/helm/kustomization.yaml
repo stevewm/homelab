@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=https://json.schemastore.org/kustomization.json
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ./backube.yaml
+  - ./bjw-s.yaml
+  - ./cilium.yaml
+  - ./controlplaneio.yaml
+  - ./coredns.yaml
+  - ./crunchy-userinit-controller.yaml
+  - ./crunchydata.yaml
+  - ./democratic-csi.yaml
+  # - ./descheduler.yaml # FIXME: enable once we're no longer single node
+  - ./external-dns.yaml
+  - ./external-secrets.yaml
+  - ./fairwinds-stable.yaml
+  - ./fluxcd-kustomize-mutating-webhook.yaml
+  - ./grafana.yaml
+  - ./ingress-nginx.yaml
+  - ./intel.yaml
+  - ./itzg.yaml
+  - ./jameswynn.yaml
+  - ./jetstack.yaml
+  - ./k8tz.yaml
+  - ./metallb.yaml
+  - ./metrics-server.yaml
+  - ./node-feature-discovery.yaml
+  - ./openebs.yaml
+  - ./piraeus.yaml
+  - ./prometheus-community.yaml
+  # - ./rook-ceph.yaml # FIXME: enable once we're no longer single node
+  - ./stakater.yaml

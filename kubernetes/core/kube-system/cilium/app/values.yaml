@@ -1,0 +1,115 @@
+---
+operator:
+  replicas: 1
+  rollOutPods: true
+  prometheus:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+  dashboards:
+    enabled: true
+    annotations:
+      grafana_folder: Network
+
+bandwidthManager:
+  enabled: false
+  bbr: true
+
+localRedirectPolicy: true
+rollOutCiliumPods: true
+
+bpf:
+  datapathMode: netkit
+  hostLegacyRouting: true
+  masquerade: true
+  tproxy: true
+
+bgp:
+  enabled: false
+  announce:
+    loadbalancerIP: true
+    podCIDR: false
+
+bgpControlPlane:
+  enabled: true
+
+dnsProxy:
+  endpointMaxIpPerHostname: 100
+  maxDeferredConnectionDeletes: 15000
+  minTtl: 300
+
+envoy:
+  enabled: false
+
+cni:
+  exclusive: false
+devices: enp+
+
+l2announcements:
+  enabled: true
+
+externalIPs:
+  enabled: true
+
+prometheus:
+  enabled: true
+  serviceMonitor:
+    enabled: true
+    trustCRDsExist: true
+dashboards:
+  enabled: true
+  annotations:
+    grafana_folder: Network
+
+hubble:
+  enabled: true
+  ui:
+    enabled: true
+    rollOutPods: true
+    podLabels:
+      ingress.home.arpa/nginx-internal: allow
+    resources:
+      requests:
+        cpu: 30m
+        memory: 1Gi
+      limits:
+        memory: 2Gi
+
+  relay:
+    enabled: true
+
+# -- from talos docs --
+ipam:
+  mode: kubernetes
+
+kubeProxyReplacement: true
+k8sServiceHost: 127.0.0.1
+k8sServicePort: 7445
+kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
+
+policyAuditMode: true
+
+securityContext:
+  capabilities:
+    ciliumAgent:
+      - CHOWN
+      - KILL
+      - NET_ADMIN
+      - NET_RAW
+      - IPC_LOCK
+      - SYS_ADMIN
+      - SYS_RESOURCE
+      - DAC_OVERRIDE
+      - FOWNER
+      - SETGID
+      - SETUI
+    cleanCiliumState:
+      - NET_ADMIN
+      - SYS_ADMIN
+      - SYS_RESOURCE
+
+cgroup:
+  autoMount:
+    enabled: false
+  hostRoot: /sys/fs/cgroup
+# -- end of talos settings --

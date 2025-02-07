@@ -1,0 +1,73 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+---
+version: "3"
+
+vars:
+  DOPPLER_PROJECT: "homelab"
+
+tasks:
+  talos:
+    desc: Bootstrap Talos
+    silent: true
+    vars:
+      TALOS_CONTROLLER:
+        sh: talosctl config info --output json | jq --raw-output '.endpoints[]' | shuf -n 1
+    preconditions:
+      - which jq minijinja-cli sops talosctl
+      - test -f "${TALOSCONFIG}"
+      - talosctl config info
+    cmds:
+      - task: :talos:genconfig
+      - task: :talos:apply
+        vars:
+          INSECURE: "true"
+      - until talosctl --nodes {{ .TALOS_CONTROLLER }} bootstrap; do sleep 5; done
+      - talosctl kubeconfig --nodes {{ .TALOS_CONTROLLER }} --force --force-context-name "homelab" "${KUBECONFIG}"
+
+  flux:
+    desc: Bootstrap flux deployments
+    silent: true
+    prompt: Continue to bootstrap?
+    preconditions:
+      - which doppler helmfile kubectl minijinja-cli
+      - test -f "${TALOSCONFIG}"
+      - test -f "${KUBECONFIG}"
+      - test -f {{ .K8S_DIR }}/.bootstrap/helmfile.yaml
+      - test -f {{ .K8S_DIR }}/.bootstrap/bootstrap.yaml.j2
+      - doppler whoami
+      - talosctl config info
+    env:
+      K8S_DIR: "{{ .K8S_DIR }}"
+      NODE_COUNT:
+        sh: talosctl config info --output json | jq --raw-output '.nodes | length'
+    cmds:
+      - until kubectl wait nodes --for=condition=Ready=False --all --timeout=10m; do sleep 5; done
+      - doppler -p {{ .DOPPLER_PROJECT }} run -- minijinja-cli kubernetes/.bootstrap/bootstrap.yaml.j2 | kubectl apply --server-side --filename -
+      - helmfile --quiet --file {{ .K8S_DIR }}/.bootstrap/helmfile.yaml apply --skip-diff-on-install --suppress-diff
+      - until kubectl wait nodes --for=condition=Ready=True --all --timeout=10m; do sleep 5; done
+
+  recreate:
+    desc: Reset cluster and bootstrap both Talos and Flux
+    silent: true
+    prompt: Reset and bootstrap?
+    preconditions:
+      - test -f "${TALOSCONFIG}"
+      - test -d {{ .TALOS_DIR }}/clusterconfig/
+    vars:
+      HOSTNAMES:
+        sh: ls {{ .TALOS_DIR }}/clusterconfig/*.yaml
+    cmds:
+      # TODO: Trigger and wait for VolSync backups
+      - task: volsync:snapshot-all
+        vars:
+          WAIT: true
+      - for:
+          var: HOSTNAMES
+        task: :talos:reset
+        vars:
+          HOSTNAME: |-
+            {{ trimPrefix (printf "main-") (base .ITEM) | trimSuffix ".yaml" }}
+        # FIXME: # https://github.com/go-task/task/issues/1870
+      - cmd: task bootstrap:talos --yes
+      - cmd: talosctl reboot --nodes {{ .TALOS_CONTROLLER }}
+      - cmd: task bootstrap:flux --yes

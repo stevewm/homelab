@@ -1,0 +1,449 @@
+version: 7
+
+##########
+## Loot ##
+##########
+
+# Allows to change the loot additions and changes of betterruins. Set to 0 to completely disable them.
+loot:
+  0.75
+  # from 0 to 10 (default: 1)
+# Adjusts the spawn chance percentage for meteorite blocks in BetterRuins. Set to 100% for meteorite to appear in all eligible blocks, or lower the percentage to control its rarity. Setting it to 0% disables meteorite spawns entirely.
+meteorvalue:
+  25
+  # from 0 to 100 (default: 25)
+
+##########
+## Lore ##
+##########
+
+# Allows to toggle the spawning of betterruins lore content. Untick to disable spawning.
+lore:
+  true
+  #  (default: True)
+
+###########################
+## Overall Spawn Chances ##
+###########################
+
+# Affects the spawn chance of all structures (not villages).
+structures_spawn_chance:
+  0.4
+  # from 0 to 100 (default: 1)
+# Affects the spawn chance of all villages which are groups of smaller structures cluttered close to each other (not structures).
+villages_spawn_chance:
+  0.5
+  # from 0 to 100 (default: 1)
+
+###########################
+## Megastructures Global ##
+###########################
+
+# Specifies the minimum distance this structure must maintain from other structures in its group measured in blocks.
+megastructures_min_distance:
+  6500
+  # from 0 to 40000 (default: 6500)
+
+###############################
+## Megastructure Wallsegment ##
+###############################
+
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+# https://github.com/AreYSerious/betterruins/wiki/Mega-Structures#01-wall-segment
+01wallsegment_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+
+#################################
+## Megastructure Rockformation ##
+#################################
+
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+# https://github.com/AreYSerious/betterruins/wiki/Mega-Structures#02-rock-formation
+02rockformation_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+
+###############################
+## Megastructure Nordichouse ##
+###############################
+
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+# https://github.com/AreYSerious/betterruins/wiki/Mega-Structures#03-nordic-house
+03nordichouse_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+
+##############################
+## Megastructure Visingborg ##
+##############################
+
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+# https://github.com/AreYSerious/betterruins/wiki/Mega-Structures#04-visingsborg
+04visingborg_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+
+#########################################
+## Megastructure Catnoir's Castle Ruin ##
+#########################################
+
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+# https://github.com/AreYSerious/betterruins/wiki/Mega-Structures#05-catnoirs-castle-ruin
+05catnoirscastleruin_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+
+###########################################
+## Megastructure Destroyed Larged Church ##
+###########################################
+
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+# https://github.com/AreYSerious/betterruins/wiki/Mega-Structures#06-destroyed-large-church
+06destroyedlargechurch_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+
+####################################
+## Megastructure Wolfstone Castle ##
+####################################
+
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+# https://github.com/AreYSerious/betterruins/wiki/Mega-Structures#07-wolfstone-castle
+07wolfstonecastle_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+
+#########################
+## Megastructure Oasis ##
+#########################
+
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+# https://github.com/AreYSerious/betterruins/wiki/Mega-Structures#08-oasis
+08oasis_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+# Specifies the maximum temperature limit for this structure to spawn. Structures will not spawn if the temperature exceeds this value.
+08oasis_max_temp:
+  39
+  # from -60 to 60 (default: 39)
+# Specifies the minimum temperature required for this structure to spawn. Structures will not spawn if the temperature is below this value.
+08oasis_min_temp:
+  25
+  # from -60 to 60 (default: 25)
+
+######################################
+## Megastructure Forlorn Hope Tower ##
+######################################
+
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+# https://github.com/AreYSerious/betterruins/wiki/Mega-Structures#09-forlorn-hope-tower
+09forlornhopetower_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+# Specifies the maximum temperature limit for this structure to spawn. Structures will not spawn if the temperature exceeds this value.
+09forlornhopetower_max_temp:
+  -4
+  # from -60 to 60 (default: -4)
+# Specifies the minimum temperature required for this structure to spawn. Structures will not spawn if the temperature is below this value.
+09forlornhopetower_min_temp:
+  -30
+  # from -60 to 60 (default: -30)
+
+###################################
+## Megastructure Giant Cathedral ##
+###################################
+
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+# https://github.com/AreYSerious/betterruins/wiki/Mega-Structures#10-giant-cathedral
+10giantcathedral_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+# Specifies the maximum temperature limit for this structure to spawn. Structures will not spawn if the temperature exceeds this value.
+10giantcathedral_max_temp:
+  -7
+  # from -60 to 60 (default: -7)
+# Specifies the minimum temperature required for this structure to spawn. Structures will not spawn if the temperature is below this value.
+10giantcathedral_min_temp:
+  -30
+  # from -60 to 60 (default: -30)
+
+###################################
+## Megastructure Shopping Centre ##
+###################################
+
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+# https://github.com/AreYSerious/betterruins/wiki/Mega-Structures#11-shopping-centre
+11shoppingcentre_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+
+#######################################
+## Megastructure Underground Library ##
+#######################################
+
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+# https://github.com/AreYSerious/betterruins/wiki/Mega-Structures#12-underground-library
+12undergroundlibrary_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+
+###########################
+## Megastructure Mansion ##
+###########################
+
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+# https://github.com/AreYSerious/betterruins/wiki/Mega-Structures#14-mansion
+14mansion_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+
+############################
+## Megastructure Auldburg ##
+############################
+
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+# https://github.com/AreYSerious/betterruins/wiki/Mega-Structures#15-auldburg
+15auldburg_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+
+#################################
+## Megastructure Norman Castle ##
+#################################
+
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+# https://github.com/AreYSerious/betterruins/wiki/Mega-Structures#15-normancastle
+16normancastle_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+
+############################
+## Megastructure Aqueduct ##
+############################
+
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+# https://github.com/AreYSerious/betterruins/wiki/Mega-Structures#16-aqueduct
+17aqueduct_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+
+####################################
+## Megastructure Jumblerockcastle ##
+####################################
+
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+# https://github.com/AreYSerious/betterruins/wiki/mega-structures#17-jumblerock-castle
+18jumblerockcastle_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+
+###################
+## Translocators ##
+###################
+
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+# https://github.com/AreYSerious/betterruins/wiki/translocators
+translocatorruins_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+# Specifies the minimum distance this structure must maintain from other structures in its group measured in blocks.
+translocatorruins_min_distance:
+  1600
+  # from 0 to 40000 (default: 1600)
+
+##############
+## Villages ##
+##############
+
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+# https://github.com/AreYSerious/betterruins/wiki/villages#vsvillage
+vsvillage_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+# https://github.com/AreYSerious/betterruins/wiki/villages#forest-village
+forestvillage_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+# https://github.com/AreYSerious/betterruins/wiki/villages#desert-village
+desertvillage_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+# https://github.com/AreYSerious/betterruins/wiki/villages#prison-village
+prisonvillage_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+# https://github.com/AreYSerious/betterruins/wiki/villages#colored-village
+coloredvillage_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+ogdredvillage_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+femursnappervillage_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+
+###########
+## Ruins ##
+###########
+
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+# https://github.com/AreYSerious/betterruins/wiki/ruins#large-surface-ruins
+largeruins_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+# https://github.com/AreYSerious/betterruins/wiki/ruins#medium-surface-ruins
+mediumruins_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+# https://github.com/AreYSerious/betterruins/wiki/ruins#medium-surface-ruins
+desertruins_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+surfaceunderground_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+# Specifies the minimum distance this structure must maintain from other structures in its group measured in blocks.
+surfaceunderground_min_distance:
+  7500
+  # from 0 to 40000 (default: 7500)
+
+###############
+## Waystones ##
+###############
+
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+waystones_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+# Specifies the minimum distance this structure must maintain from other structures in its group measured in blocks.
+waystones_min_distance:
+  5000
+  # from 0 to 40000 (default: 5000)
+
+###############
+## Monoliths ##
+###############
+
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+monolith_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+# Specifies the minimum distance this structure must maintain from other structures in its group measured in blocks.
+monolith_min_distance:
+  40000
+  # from 0 to 40000 (default: 40000)
+
+#################
+## Underground ##
+#################
+
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+underground_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+
+############
+## Graves ##
+############
+
+# Defines the chance for this structure to spawn (within its group, if applicable). Higher values increase the spawn frequency.
+# https://github.com/AreYSerious/betterruins/wiki/graves
+graves_spawn_chance:
+  1
+  # from 0 to 100 (default: 1)
+# Specifies the minimum distance this structure must maintain from other structures in its group measured in blocks.
+graves_min_distance:
+  850
+  # from 0 to 40000 (default: 850)
+
+#############################
+## Blueprints Spawn Chance ##
+#############################
+
+# Defines whether the blueprints can be duplicated with a crafting recipe to trade among players. Tick to Enable duplication via crafting.
+schematic_crafting:
+  false
+  #  (default: False)
+# Defines the chance this blueprint can spawn in structures. A higher value increases the spawn likelihood. Set to 0 to disable spawning, but it will not disable the item itself.
+schematic_door:
+  2
+  # from 0 to 1000 (default: 2)
+# Defines the chance this blueprint can spawn in structures. A higher value increases the spawn likelihood. Set to 0 to disable spawning, but it will not disable the item itself.
+schematic_bed:
+  2
+  # from 0 to 1000 (default: 2)
+# Defines the chance this blueprint can spawn in structures. A higher value increases the spawn likelihood. Set to 0 to disable spawning, but it will not disable the item itself.
+schematic_chest:
+  2
+  # from 0 to 1000 (default: 2)
+# Defines the chance this blueprint can spawn in structures. A higher value increases the spawn likelihood. Set to 0 to disable spawning, but it will not disable the item itself.
+schematic_crate:
+  2
+  # from 0 to 1000 (default: 2)
+# Defines the chance this blueprint can spawn in structures. A higher value increases the spawn likelihood. Set to 0 to disable spawning, but it will not disable the item itself.
+schematic_gaslamp:
+  2
+  # from 0 to 1000 (default: 2)
+# Defines the chance this blueprint can spawn in structures. A higher value increases the spawn likelihood. Set to 0 to disable spawning, but it will not disable the item itself.
+schematic_jonaslamp:
+  2
+  # from 0 to 1000 (default: 2)
+# Defines the chance this blueprint can spawn in structures. A higher value increases the spawn likelihood. Set to 0 to disable spawning, but it will not disable the item itself.
+schematic_banner:
+  2
+  # from 0 to 1000 (default: 2)
+# Defines the chance this blueprint can spawn in structures. A higher value increases the spawn likelihood. Set to 0 to disable spawning, but it will not disable the item itself.
+schematic_table:
+  2
+  # from 0 to 1000 (default: 2)
+# Defines the chance this blueprint can spawn in structures. A higher value increases the spawn likelihood. Set to 0 to disable spawning, but it will not disable the item itself.
+schematic_stone:
+  2
+  # from 0 to 1000 (default: 2)
+# Defines the chance this blueprint can spawn in structures. A higher value increases the spawn likelihood. Set to 0 to disable spawning, but it will not disable the item itself.
+schematic_wood:
+  2
+  # from 0 to 1000 (default: 2)
+# Defines the chance this blueprint can spawn in structures. A higher value increases the spawn likelihood. Set to 0 to disable spawning, but it will not disable the item itself.
+schematic_ancient:
+  2
+  # from 0 to 1000 (default: 2)
+# Defines the chance this blueprint can spawn in structures. A higher value increases the spawn likelihood. Set to 0 to disable spawning, but it will not disable the item itself.
+schematic_candle:
+  2
+  # from 0 to 1000 (default: 2)
+# Defines the chance this blueprint can spawn in structures. A higher value increases the spawn likelihood. Set to 0 to disable spawning, but it will not disable the item itself.
+schematic_road:
+  2
+  # from 0 to 1000 (default: 2)
+# Defines the chance this blueprint can spawn in structures. A higher value increases the spawn likelihood. Set to 0 to disable spawning, but it will not disable the item itself.
+schematic_roofing:
+  2
+  # from 0 to 1000 (default: 2)
+# Defines the chance this blueprint can spawn in structures. A higher value increases the spawn likelihood. Set to 0 to disable spawning, but it will not disable the item itself.
+schematic_palisade:
+  2
+  # from 0 to 1000 (default: 2)
+# Defines the chance this blueprint can spawn in structures. A higher value increases the spawn likelihood. Set to 0 to disable spawning, but it will not disable the item itself.
+schematic_mechanical:
+  1
+  # from 0 to 1000 (default: 1)
+# Defines the chance this blueprint can spawn in structures. A higher value increases the spawn likelihood. Set to 0 to disable spawning, but it will not disable the item itself.
+schematic_jonaspart:
+  1
+  # from 0 to 1000 (default: 1)
+# Defines the chance this blueprint can spawn in structures. A higher value increases the spawn likelihood. Set to 0 to disable spawning, but it will not disable the item itself.
+schematic_jonasassembly:
+  1
+  # from 0 to 1000 (default: 1)

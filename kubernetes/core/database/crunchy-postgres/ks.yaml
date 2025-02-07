@@ -1,0 +1,97 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: core-crunchy-postgres-operator
+  namespace: &namespace database
+spec:
+  targetNamespace: *namespace
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: crunchy-postgres
+      app.kubernetes.io/component: operator
+  interval: 10m
+  path: ./kubernetes/core/database/crunchy-postgres/operator
+  prune: false
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+    namespace: flux-system
+  wait: true
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: core-crunchy-postgres-cluster
+  namespace: &namespace database
+spec:
+  targetNamespace: *namespace
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: crunchy-postgres
+      app.kubernetes.io/component: cluster
+  interval: 10m
+  path: ./kubernetes/core/database/crunchy-postgres/cluster
+  prune: false
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+    namespace: flux-system
+  wait: true
+  dependsOn:
+    - name: core-crunchy-postgres-operator
+    - name: core-crunchy-postgres-userinit-controller
+    - name: core-crunchy-postgres-cluster-secretstore
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: core-crunchy-postgres-cluster-secretstore
+  namespace: &namespace database
+spec:
+  targetNamespace: *namespace
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: core-crunchy-postgres-cluster-secretstore
+      app.kubernetes.io/component: secretstore
+  interval: 10m
+  path: ./kubernetes/core/database/crunchy-postgres/cluster-secretstore
+  prune: false
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+    namespace: flux-system
+  wait: true
+  dependsOn:
+    - name: core-crunchy-postgres-operator
+    - name: core-external-secrets
+      namespace: security
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: core-crunchy-postgres-userinit-controller
+  namespace: &namespace database
+spec:
+  targetNamespace: *namespace
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: crunchy-postgres
+      app.kubernetes.io/component: userinit-controller
+  interval: 10m
+  path: ./kubernetes/core/database/crunchy-postgres/userinit-controller
+  prune: false
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+    namespace: flux-system
+  wait: true
+  dependsOn:
+    - name: core-crunchy-postgres-operator

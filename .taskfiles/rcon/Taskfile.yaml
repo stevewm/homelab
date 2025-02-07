@@ -1,0 +1,41 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+---
+version: "3"
+
+tasks:
+  vs:
+    desc: Connect to Vintage Story rcon
+    silent: true
+    cmds:
+      - task: _rcon
+        vars:
+          NAME: vintagestory
+
+  mc:
+    desc: Connect to Minecraft rcon
+    silent: true
+    cmds:
+      - task: _rcon
+        vars:
+          NAME: minecraft
+
+  _rcon:
+    desc: Open an rcon connection
+    internal: true
+    interactive: true
+    silent: true
+    vars:
+      RCON_ADDRESS:
+        sh: kubectl get svc -l app.kubernetes.io/name={{ .NAME }} -o json | jq -r '.items[].status.loadBalancer.ingress[0].ip'
+      RCON_PORT:
+        sh: kubectl get svc -l app.kubernetes.io/name={{ .NAME }} -o json | jq -r '.items[].spec.ports[] | select(.name == "rcon") | .nodePort'
+      TYPE: "rcon"
+    requires:
+      vars:
+        - NAME
+    dir: "{{ .RCON_DIR }}"
+    preconditions:
+      - which rcon
+    cmds:
+      - echo "Opening rcon for {{ upper .NAME }}"
+      - rcon --address {{ .RCON_ADDRESS }}:{{ .RCON_PORT }} --password $(doppler secrets get {{ upper .NAME }}_RCON_PASSWORD -p {{ .DOPPLER_PROJECT }} --plain) --type {{ .TYPE }}
