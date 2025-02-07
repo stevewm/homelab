@@ -40,7 +40,7 @@ download_mods() {
 
 copy_directories() {
   for dir in /tmp/*/; do
-    rsync -av --ignore-existing "$dir" "$VS_DATA_PATH/"
+    cp -r "$dir" "$VS_DATA_PATH/"
     echo "Copying $dir to $VS_DATA_PATH"
   done
 
