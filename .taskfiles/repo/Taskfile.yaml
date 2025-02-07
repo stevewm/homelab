@@ -12,7 +12,7 @@ tasks:
         sh: jq -r '.recommendations | join(", ")' {{ .ROOT_DIR }}/.vscode/extensions.json
     cmds:
       - mise install
-      - doppler setup
+      - doppler login
       - pre-commit install
       - for:
           var: VSCODE_EXTENSIONS
