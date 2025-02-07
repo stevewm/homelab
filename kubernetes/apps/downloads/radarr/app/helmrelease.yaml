@@ -31,9 +31,9 @@ spec:
       automountServiceAccountToken: false
       securityContext:
         runAsNonRoot: true
-        runAsUser: ${APP_UID}
-        runAsGroup: ${APP_GID}
-        fsGroup: ${APP_GID}
+        runAsUser: 1001
+        runAsGroup: 199
+        fsGroup: 100
         fsGroupChangePolicy: OnRootMismatch
         seccompProfile:
           type: RuntimeDefault
