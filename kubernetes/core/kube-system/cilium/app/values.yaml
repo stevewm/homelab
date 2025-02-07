@@ -78,7 +78,6 @@ hubble:
   relay:
     enabled: true
 
-
 # -- from talos docs --
 ipam:
   mode: kubernetes

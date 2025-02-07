@@ -14,6 +14,6 @@ Requires [homebrew](https://brew.sh/), [Brew-file](https://github.com/rcmdnk/hom
 The homelab depends on a few cloud services to provide essential functionality.
 
 | Service                                              | Purpose           |
-|------------------------------------------------------|-------------------|
+| ---------------------------------------------------- | ----------------- |
 | [Doppler](https://doppler.com/)                      | Secret management |
 | [GitHub Actions](https://docs.github.com/en/actions) | CI/CD workflows   |

@@ -76,7 +76,7 @@ controlPlane:
             resolveMemberNames: true
             forwardKubeDNSToHost: false
 
-  # hostpath storage partition
+    # hostpath storage partition
     - |-
       machine:
         disks:
