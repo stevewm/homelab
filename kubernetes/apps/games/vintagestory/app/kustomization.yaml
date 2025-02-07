@@ -13,7 +13,7 @@ configMapGenerator:
     files:
       - serverconfig.json=./config/server/serverconfig.json
       # Mod configuration
-      - init.sh=./config/mods/init.sh
+      - init.sh=./config/init.sh
       - betterruins.yaml=./config/mods/betterruins.yaml
       - primitivesurvival119.json=./config/mods/primitivesurvival119.json
 generatorOptions:

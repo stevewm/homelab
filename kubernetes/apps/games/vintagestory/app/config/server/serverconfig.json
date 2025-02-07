@@ -323,7 +323,7 @@
 
   "WorldConfig": {
     "Seed": null,
-    "SaveFileLocation": "/data/Saves/mpof.vcdbs",
+    "SaveFileLocation": "/data/Saves/world.vcdbs",
     "WorldName": "MPOF",
     "AllowCreativeMode": false,
     "PlayStyle": "surviveandbuild",
@@ -369,11 +369,11 @@
       "temporalGearRespawnUses": "10",
       "temporalStormSleeping": "0",
       "worldClimate": "realistic",
-      "landcover": "0.4",
-      "oceanscale": "2",
+      "landcover": "0.5",
+      "oceanscale": "1.5",
       "upheavelCommonness": "0.2",
       "geologicActivity": "0.3",
-      "landformScale": "1.60",
+      "landformScale": "1.80",
       "worldWidth": "1024000",
       "worldLength": "1024000",
       "worldEdge": "traversable",
