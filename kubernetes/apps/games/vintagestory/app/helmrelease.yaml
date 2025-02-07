@@ -105,6 +105,7 @@ spec:
         ports:
           game:
             port: 42420
+            nodePort: 42420
 
     persistence:
       gamedata:
