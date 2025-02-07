@@ -17,4 +17,6 @@ spec:
     kind: GitRepository
     name: homelab
     namespace: flux-system
-  wait: false
+  wait: true
+  dependsOn:
+    - name: core-snapshot-controller
