@@ -9,7 +9,6 @@ Requires [homebrew](https://brew.sh/), [Brew-file](https://github.com/rcmdnk/hom
 1. Run `brew file install --file .github/Brewfile` to install `mise` and `go-task` if you don't have them already.
 2. Run `task repo:setup` to set up the development environment. This can also be run again to update.
 
-
 ## ☁️ Cloud Services
 
 The homelab depends on a few cloud services to provide essential functionality.
