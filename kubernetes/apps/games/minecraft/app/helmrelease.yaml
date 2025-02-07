@@ -165,6 +165,8 @@ spec:
             protocol: UDP
           map:
             port: 8100
+          rcon:
+            port: 25575
           metrics:
             port: 25585
 
