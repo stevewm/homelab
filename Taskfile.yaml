@@ -19,7 +19,7 @@ tasks:
   default:
     silent: true
     cmds:
-      - echo -e "\033[32m$(cat /Users/steve/Repositories/homelab/.taskfiles/.homelab.txt)\033[0m"
+      - echo -e "\033[32m$(cat {{ .ROOT_DIR }}/.taskfiles/.homelab.txt)\033[0m"
       - task --list
 
 includes:
