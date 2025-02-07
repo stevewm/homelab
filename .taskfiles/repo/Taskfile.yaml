@@ -5,7 +5,6 @@ version: "3"
 tasks:
   setup:
     desc: Setup environment
-    silent: true
     interactive: true
     vars:
       VSCODE_EXTENSIONS:
