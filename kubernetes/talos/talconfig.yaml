@@ -13,6 +13,7 @@ cniConfig:
 
 additionalApiServerCertSans: &san
   - 127.0.0.1 # KubePrism
+  - 10.0.0.31
   # - &vip 10.0.0.40 # VIP
 additionalMachineCertSans: *san
 
@@ -139,7 +140,7 @@ controlPlane:
           extraArgs:
             runtime-config: admissionregistration.k8s.io/v1alpha1=true
             feature-gates: MutatingAdmissionPolicy=true
-            service-node-port-range=30000-42767
+            service-node-port-range: 30000-42767
 
     # Configure cluster
     - |-
