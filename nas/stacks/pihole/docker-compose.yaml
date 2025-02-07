@@ -20,11 +20,6 @@ services:
       - "80:3001/tcp"
     network_mode: host
     restart: always
-    healthcheck:
-      test: curl --fail http://localhost:3001/admin/login.php # FIXME: better endpoint available?
-      interval: 10s
-      timeout: 1s
-      retries: 3
     dns:
       - 127.0.0.1
       - 1.1.1.1
