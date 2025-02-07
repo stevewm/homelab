@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "tamasfe.even-better-toml",
+    "Tyriar.sort-lines",
+    "EditorConfig.EditorConfig",
+    "eamodio.gitlens",
+    "mrmlnc.vscode-json5"
+    ],
+    "unwantedRecommendations": []
+}

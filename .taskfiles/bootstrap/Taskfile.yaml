@@ -58,6 +58,9 @@ tasks:
         sh: ls {{ .TALOS_DIR }}/clusterconfig/*.yaml
     cmds:
       # TODO: Trigger and wait for VolSync backups
+      - task: volsync:snapshot-all
+        vars:
+          WAIT: true
       - for:
           var: HOSTNAMES
         task: :talos:reset
@@ -66,4 +69,5 @@ tasks:
             {{ trimPrefix (printf "main-") (base .ITEM) | trimSuffix ".yaml" }}
         # FIXME: # https://github.com/go-task/task/issues/1870
       - cmd: task bootstrap:talos --yes
+      - cmd: talosctl reboot --nodes {{ .TALOS_CONTROLLER }}
       - cmd: task bootstrap:flux --yes

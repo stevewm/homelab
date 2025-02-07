@@ -6,10 +6,18 @@ tasks:
   setup:
     desc: Setup environment
     silent: true
+    vars:
+      VSCODE_EXTENSIONS:
+        sh: jq -r '.recommendations | join(", ")' {{ .ROOT_DIR }}/.vscode/extensions.json
     cmds:
+      - brew
       - doppler setup --no-interactive
-      - uv sync --directory={{ .ROOT_DIR }}/scripts/
+      - mise install
       - pre-commit install
+      - for:
+          var: VSCODE_EXTENSIONS
+        cmd: code --install-extension {{ trimSuffix "," .ITEM }}
+
 
   schemas:
     desc: Show YAML files without a schema

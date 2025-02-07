@@ -8,10 +8,11 @@ vars:
   K8S_DIR: "{{ .ROOT_DIR }}/kubernetes"
   TALOS_DIR: "{{ .K8S_DIR }}/talos"
   NAS_DIR: "{{ .ROOT_DIR }}/nas"
+  DOPPLER_PROJECT: "homelab"
 
 env:
   KUBECONFIG: "{{ .K8S_DIR }}/kubeconfig"
-  MINIJINJA_CONFIG_FILE: "{{ .ROOT_DIR }}/.minijinja.toml"
+  MINIJINJA_CONFIG_FILE: "{{ .ROOT_DIR }}/.github/.minijinja.toml"
   TALOSCONFIG: "{{ .K8S_DIR }}/talos/clusterconfig/talosconfig"
 
 tasks:
@@ -23,8 +24,8 @@ tasks:
 
 includes:
   bootstrap: ./.taskfiles/bootstrap/Taskfile.yaml
-  k8s: ./.taskfiles/k8s/Taskfile.yaml
+  #k8s: ./.taskfiles/k8s/Taskfile.yaml
+  rcon: ./.taskfiles/rcon/Taskfile.yaml
   repo: ./.taskfiles/repo/Taskfile.yaml
   talos: ./.taskfiles/talos/Taskfile.yaml
-  nas: ./.taskfiles/nas/Taskfile.yaml
   volsync: ./.taskfiles/volsync/Taskfile.yaml
