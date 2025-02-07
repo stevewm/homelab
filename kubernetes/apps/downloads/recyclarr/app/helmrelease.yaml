@@ -85,14 +85,13 @@ spec:
                 memory: 220M
 
     persistence:
-      tmp:
-        type: emptyDir
-        globalMounts:
-          - path: /config/cache
-            subPath: cache
-          - path: /config/logs
-            subPath: logs
       config:
+        existingClaim: recyclarr-config
+        advancedMounts:
+          recyclarr:
+            app:
+              - path: /config
+      config-file:
         type: configMap
         name: *app
         globalMounts:
