@@ -19,7 +19,6 @@ tasks:
           var: VSCODE_EXTENSIONS
         cmd: code --install-extension {{ trimSuffix "," .ITEM }}
 
-
   schemas:
     desc: Show YAML files without a schema
     silent: true
