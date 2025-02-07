@@ -31,6 +31,7 @@ download_mods() {
   rm -rf "${MODS_DIR:?}"/*
   cd "$MODS_DIR"
   for url in $urls; do
+    echo "Downloading $url..."
     curl -LOJsf "$url"
   done
 
@@ -40,9 +41,10 @@ download_mods() {
 copy_directories() {
   for dir in /tmp/*/; do
     cp -rn "$dir" "$VS_DATA_PATH/"
+    echo "Copying $dir to $VS_DATA_PATH"
   done
 
-  echo "Directories copied from /tmp to $VS_DATA_PATH without overwriting existing files!"
+  echo "Finished copying from $dir"
 }
 
 # Main script execution
