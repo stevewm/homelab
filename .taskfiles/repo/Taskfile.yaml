@@ -10,9 +10,11 @@ tasks:
     vars:
       VSCODE_EXTENSIONS:
         sh: jq -r '.recommendations | join(", ")' {{ .ROOT_DIR }}/.vscode/extensions.json
+      LOGGED_IN:
+        sh: doppler whoami;
     cmds:
       - mise install
-      - doppler login
+      - if ! doppler whoami > /dev/null 2>&1; then doppler login; fi
       - pre-commit install
       - for:
           var: VSCODE_EXTENSIONS
