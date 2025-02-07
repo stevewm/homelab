@@ -30,9 +30,9 @@ spec:
       automountServiceAccountToken: false
       securityContext:
         runAsNonRoot: true
-        runAsUser: 1002
-        runAsGroup: 1002
-        fsGroup: 1002
+        runAsUser: 2000
+        runAsGroup: 2000
+        fsGroup: 2000
         fsGroupChangePolicy: OnRootMismatch
         seccompProfile:
           type: RuntimeDefault
@@ -64,10 +64,7 @@ spec:
               repository: alpine/curl
               tag: 8.11.1@sha256:45e1452f5dd0dc1761e285e59b21fcc43d656ee2696ece8bab77a983199d198a
             command: ["/bin/sh", "-c"]
-            args: ["/gamedata/mods.sh"]
-
-            env:
-              MODS_DIR: /gamedata/vs/Mods
+            args: ["/data/init.sh"]
 
         containers:
           app:
@@ -83,6 +80,7 @@ spec:
             #     enabled: true
             env:
               COMPlus_EnableDiagnostics: "0"
+              VS_DATA_PATH: /data
             resources:
               requests:
                 cpu: 250m
@@ -104,30 +102,40 @@ spec:
           "lbipam.cilium.io/ips": "10.0.0.70"
         ports:
           game:
-            port: 42420
-            nodePort: 42420
+            port: &game 42420
+            nodePort: *game
+          rcon:
+            port: &rcon 42425
+            nodePort: *rcon
 
     persistence:
-      gamedata:
+      data:
         existingClaim: vintagestory-gamedata
       config:
         type: configMap
         name: vintagestory
         globalMounts:
-          - path: /gamedata/serverconfig.json
+          - path: /data/serverconfig.json
             subPath: serverconfig.json
             readOnly: true
-          # - path: /gamedata/vs/ModConfig/primitivesurvival119.json
-          #   subPath: primitivesurvival119.json
-          #   readOnly: false
-          # - path: /gamedata/vs/ModConfig/betterruins.yaml
-          #   subPath: betterruins.yaml
-          #   readOnly: false
+          - path: /tmp/ModConfig/primitivesurvival119.json
+            subPath: primitivesurvival119.json
+            readOnly: true
+          - path: /tmp/ModConfig/betterruins.yaml
+            subPath: betterruins.yaml
+            readOnly: true
       mods:
         type: configMap
         name: vintagestory
         defaultMode: 0755
         globalMounts:
-          - path: /gamedata/mods.sh
-            subPath: mods.sh
+          - path: /data/init.sh
+            subPath: init.sh
+            readOnly: true
+      rcon:
+        type: secret
+        name: vintagercon
+        globalMounts:
+          - path: /data/ModConfig/vintagercon.json
+            subPath: vintagercon.json
             readOnly: true

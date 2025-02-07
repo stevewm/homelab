@@ -318,12 +318,12 @@
     }
   ],
   "DefaultRoleCode": "suplayer",
-  "ModPaths": ["Mods", "/gamedata/vs/Mods"],
+  "ModPaths": ["Mods", "/data/Mods"],
   "AntiAbuse": 0,
 
   "WorldConfig": {
     "Seed": null,
-    "SaveFileLocation": "/gamedata/Saves/mpof.vcdbs",
+    "SaveFileLocation": "/data/Saves/mpof.vcdbs",
     "WorldName": "MPOF",
     "AllowCreativeMode": false,
     "PlayStyle": "surviveandbuild",
@@ -341,7 +341,7 @@
       "lungCapacity": "40000",
       "daysPerMonth": "20",
       "harshWinters": "true",
-      "blockGravity": "sandgravel",
+      "blockGravity": "sandgravelsoil",
       "caveIns": "on",
       "allowUndergroundFarming": true,
       "bodyTemperatureResistance": "0",

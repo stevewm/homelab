@@ -4,17 +4,18 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ./helmrelease.yaml
+  - ./externalsecret.yaml
   - ./networkpolicy.yaml
 components:
   - ../../../../flux/components/volsync/b2
 configMapGenerator:
   - name: vintagestory
     files:
-      - serverconfig.json=./config/serverconfig.json
-      - mods.sh=./config/mods.sh
+      - serverconfig.json=./config/server/serverconfig.json
       # Mod configuration
-      - betterruins.yaml=./config/betterruins.yaml
-      - primitivesurvival119.json=./config/primitivesurvival119.json
+      - init.sh=./config/mods/init.sh
+      - betterruins.yaml=./config/mods/betterruins.yaml
+      - primitivesurvival119.json=./config/mods/primitivesurvival119.json
 generatorOptions:
   disableNameSuffixHash: true
   annotations:
