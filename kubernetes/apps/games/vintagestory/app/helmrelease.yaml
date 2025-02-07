@@ -1,0 +1,143 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: vintagestory
+spec:
+  interval: 30m
+  maxHistory: 3
+  chart:
+    spec:
+      chart: app-template
+      version: 3.3.2
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    defaultPodOptions:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 2000
+        runAsGroup: 2000
+        fsGroup: 2000
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+      # affinity:
+      #   podAntiAffinity:
+      #     preferredDuringSchedulingIgnoredDuringExecution:
+      #       - weight: 80
+      #         podAffinityTerm:
+      #           labelSelector:
+      #             matchExpressions:
+      #               - key: app.kubernetes.io/name
+      #                 operator: In
+      #                 values:
+      #                   - minecraft
+      #           topologyKey: "kubernetes.io/hostname"
+
+    controllers:
+      vintagestory:
+        annotations:
+          reloader.stakater.com/auto: "true"
+
+        pod:
+          labels:
+            ingress.home.arpa/playit: allow
+
+        initContainers:
+          init:
+            image:
+              repository: alpine/curl
+              tag: 8.11.1@sha256:45e1452f5dd0dc1761e285e59b21fcc43d656ee2696ece8bab77a983199d198a
+            command: ["/bin/sh", "-c"]
+            args: ["/data/init.sh"]
+            env:
+              VS_DATA_PATH: &data /data
+
+        containers:
+          app:
+            image:
+              repository: devidian/vintagestory
+              tag: latest@sha256:82f3b375064ffb5892c9ecef20cfd11af7c0f783254512c88813bd5d7b9eee87
+            # probes:
+            #   liveness:
+            #     enabled: true
+            #   readiness:
+            #     enabled: true
+            #   startup:
+            #     enabled: true
+            env:
+              COMPlus_EnableDiagnostics: "0"
+              VS_DATA_PATH: *data
+            resources:
+              requests:
+                cpu: 250m
+                memory: 3Gi
+              limits:
+                memory: 6Gi
+                cpu: 2
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: false
+              capabilities:
+                drop: [ALL]
+
+    service:
+      app:
+        type: LoadBalancer
+        controller: vintagestory
+        annotations:
+          "lbipam.cilium.io/ips": "10.0.0.70"
+        ports:
+          game:
+            port: &game 42420
+            nodePort: *game
+          rcon:
+            port: &rcon 42425
+            nodePort: *rcon
+
+    persistence:
+      data:
+        existingClaim: vintagestory-gamedata
+      config:
+        type: configMap
+        name: vintagestory
+        globalMounts:
+          - path: /data/serverconfig.json
+            subPath: serverconfig.json
+            readOnly: true
+          - path: /tmp/ModConfig/primitivesurvival119.json
+            subPath: primitivesurvival119.json
+            readOnly: true
+          - path: /tmp/ModConfig/betterruins.yaml
+            subPath: betterruins.yaml
+            readOnly: true
+      mods:
+        type: configMap
+        name: vintagestory
+        defaultMode: 0755
+        globalMounts:
+          - path: /data/init.sh
+            subPath: init.sh
+            readOnly: true
+      rcon:
+        type: secret
+        name: vintagestory
+        globalMounts:
+          - path: /data/ModConfig/vsrcon.json
+            subPath: vsrcon.json
+            readOnly: true

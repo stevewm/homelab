@@ -3,41 +3,90 @@
 version: "3"
 
 env:
-  TALOSCONFIG: "{{.ROOT_DIR}}/kubernetes/{{.cluster}}/talos"
+  DOPPLER_PROJECT: talos
 
 tasks:
   genconfig:
-    desc: "Generate Talos machineconfigs [cluster=main]"
-    vars:
-      cluster: '{{.cluster | default "main"}}'
+    desc: Generate Talos machineconfigs
     silent: true
-    dir: ./kubernetes/{{.cluster}}/
-    cmds: # Destination set in doppler.yaml
+    dir: "{{ .TALOS_DIR }}"
+    cmds: # project config set in `doppler.yaml`
       - doppler run -- talhelper genconfig -s talsecret.tmpl.yaml
+
+  apply:
+    desc: Apply clusterconfig for a Talos cluster
+    vars:
+      CLUSTERCONFIG_FILES:
+        sh: ls {{ .TALOS_DIR }}/clusterconfig/*.yaml
+    preconditions:
+      - which ls
+      - test -f "${TALOSCONFIG}"
+    cmds:
+      - for:
+          var: CLUSTERCONFIG_FILES
+        task: _apply-machineconfig
+        vars:
+          FILENAME: "{{ .ITEM }}"
+          HOSTNAME: |-
+            {{ trimPrefix (printf "main-") (base .ITEM) | trimSuffix ".yaml" }}
+          DRY_RUN: "{{ .DRY_RUN }}"
+          INSECURE: "{{ .INSECURE }}"
+
+  _apply-machineconfig:
+    internal: true
+    desc: Apply a single Talos machineConfig to a Talos node
+    preconditions:
+      - which talosctl
+      - test -f "{{ .FILENAME }}"
+    requires:
+      vars:
+        - HOSTNAME
+        - FILENAME
+    vars:
+      MODE: '{{.MODE | default "auto"}}'
+    cmds:
+      - talosctl apply-config
+        --nodes "{{ .HOSTNAME }}"
+        --file "{{ .FILENAME }}"
+        --mode="{{ .MODE }}"
+        {{ if eq "true" .INSECURE }}--insecure{{ end }}
+        {{ if eq "true" .DRY_RUN }}--dry-run{{ end }}
+
+  kubeconfig:
+    desc: Generate kubeconfig for a Talos cluster
+    preconditions:
+      - which talosctl
+      - test -f "${TALOSCONFIG}"
+    silent: true
+    dir: "{{ .TALOS_DIR }}"
+    cmds:
+      - talosctl kubeconfig
+
+  reset:
+    desc: Reset a node to maintenance mode
+    silent: true
+    prompt: "Reset node {{ .HOSTNAME }}?"
+    preconditions:
+      - which talosctl
+      - test -f "${TALOSCONFIG}"
+    requires:
+      vars:
+        - HOSTNAME
+    cmds:
+      - talosctl reset --graceful=false -n {{ .HOSTNAME }} --reboot
 
   pushsecrets:
     desc: Pushes Talos secrets to Doppler from talsecret.yaml [debug=true]
     silent: true
     prompt: Secrets will be overwritten. Continue?
     vars:
-      cluster: '{{.cluster | default "main"}}'
-      debug: "{{.debug | default false}}"
+      DEBUG: "{{ .DEBUG | default true }}" # Prevent unhappy accidents
     env:
-      TALOS_SECRETS_DRYRUN: "{{.debug}}"
-      TALCONFIG: "{{.ROOT_DIR}}/kubernetes/{{.cluster}}/talos"
-    dir: ./kubernetes/{{.cluster}}/talos/
+      TALOS_SECRETS_DRYRUN: "{{ .DEBUG }}"
+    dir: "{{ .TALOS_DIR }}"
     preconditions:
       - talhelper
       - doppler
-      - test -f $TALCONFIG/talsecret.yaml
+      - test -f "${TALOSCONFIG}/talsecret.yaml"
     cmds:
       - uv run {{ .TASKFILE_DIR }}/scripts/doppler-talos.py
-
-  kubeconfig:
-    desc: "Fetch kubeconfig from talos"
-    vars:
-      cluster: '{{.cluster | default "main"}}'
-    silent: true
-    dir: ./kubernetes/{{.cluster}}/
-    cmds:
-      - talosctl kubeconfig -n {{.cluster}} > {{ .ROOT_DIR }}/kubeconfig
