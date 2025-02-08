@@ -46,7 +46,7 @@ spec:
           app:
             image:
               repository: ghcr.io/onedr0p/home-assistant
-              tag: 2025.1.2@sha256:7103698ead18144a39ae5412467fe1885331367aeb22a9c2046640f0c8f84cf7
+              tag: 2025.2.1@sha256:22f4ece646d7d5f1fd0c69e7c5ba7341e06205ce499a94e8096e64d06f8edf24
             resources:
               requests:
                 cpu: 47m
