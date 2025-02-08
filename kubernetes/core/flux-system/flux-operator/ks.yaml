@@ -54,7 +54,7 @@ spec:
       app.kubernetes.io/name: flux-instance
   interval: 10m
   path: ./kubernetes/core/flux-system/flux-operator/addons
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: homelab

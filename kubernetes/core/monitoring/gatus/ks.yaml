@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/name: gatus
   interval: 10m
   path: ./kubernetes/core/monitoring/gatus/app
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: homelab

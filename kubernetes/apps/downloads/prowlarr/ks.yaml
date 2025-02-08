@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/name: &app prowlarr
   interval: 10m
   path: ./kubernetes/apps/downloads/prowlarr/app
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: homelab

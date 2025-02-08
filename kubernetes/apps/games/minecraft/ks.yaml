@@ -13,7 +13,7 @@ spec:
       app.kubernetes.io/instance: survival
   interval: 10m
   path: ./kubernetes/apps/games/minecraft/app
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: homelab
