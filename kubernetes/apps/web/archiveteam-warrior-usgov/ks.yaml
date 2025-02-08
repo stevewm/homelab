@@ -3,7 +3,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: app-archiveteam-warrior
+  name: app-archiveteam-warrior-usgov
   namespace: &namespace web
 spec:
   targetNamespace: *namespace

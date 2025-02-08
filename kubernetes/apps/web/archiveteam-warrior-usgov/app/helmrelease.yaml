@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: &app archiveteam-warrior
+  name: archiveteam-warrior-usgov
 spec:
   interval: 30m
   maxHistory: 3
@@ -75,12 +75,12 @@ spec:
               SELECTED_PROJECT: auto
             probes:
               liveness: &probes
-                enabled: true
+                enabled: false # FIXME
                 custom: true
                 spec:
                   httpGet:
                     path: /
-                    port: &port 8001
+                    port: 8001
                   initialDelaySeconds: 0
                   periodSeconds: 10
                   timeoutSeconds: 1
@@ -93,29 +93,6 @@ spec:
               readOnlyRootFilesystem: true
               capabilities:
                 drop: ["ALL"]
-
-    service:
-      app:
-        controller: *app
-        ports:
-          http:
-            port: *port
-
-    ingress:
-      app:
-        className: nginx-internal
-        hosts:
-          - host: ${APP_SUBDOMAIN}.${DOMAIN}
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
-        annotations:
-          gethomepage.dev/name: *app
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/group: web
-          gethomepage.dev/icon: mdi-archive-arrow-up
 
     persistence:
       grab:
