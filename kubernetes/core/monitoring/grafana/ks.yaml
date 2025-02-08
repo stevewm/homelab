@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/name: &app grafana
   interval: 10m
   path: ./kubernetes/core/monitoring/grafana/app
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: homelab

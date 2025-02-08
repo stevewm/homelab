@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/name: speedtest-exporter
   interval: 10m
   path: ./kubernetes/apps/monitoring/speedtest-exporter/app
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: homelab

@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/name: &app jellyfin
   interval: 10m
   path: ./kubernetes/apps/media/jellyfin/app
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: homelab

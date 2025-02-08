@@ -9,7 +9,7 @@ spec:
   targetNamespace: flux-system
   interval: 10m
   path: ./kubernetes/flux/repos
-  prune: true
+  prune: false
   wait: true
   sourceRef:
     kind: GitRepository

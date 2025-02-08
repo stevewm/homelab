@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/name: cloudflared
   interval: 10m
   path: ./kubernetes/core/network/cloudflared/app
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: homelab

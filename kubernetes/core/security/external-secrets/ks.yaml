@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/name: external-secrets
   interval: 10m
   path: ./kubernetes/core/security/external-secrets/app
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: homelab
@@ -37,7 +37,7 @@ spec:
       app.kubernetes.io/component: secretstore
   interval: 10m
   path: ./kubernetes/core/security/external-secrets/secretstore
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: homelab

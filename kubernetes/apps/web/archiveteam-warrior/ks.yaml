@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/name: &app archiveteam-warrior
   interval: 10m
   path: ./kubernetes/apps/web/archiveteam-warrior/app
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: homelab

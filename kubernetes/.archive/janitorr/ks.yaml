@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/name: janitorr
   interval: 10m
   path: ./kubernetes/apps/downloads/janitorr/app
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: homelab
