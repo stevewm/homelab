@@ -50,7 +50,7 @@ spec:
           app:
             image:
               repository: ghcr.io/schaka/janitorr
-              tag: v1.6.9@sha256:cd788319e250c9a84c724e00a3e99705c22aa148164d170556e09e7f4e5ad205
+              tag: v1.6.10@sha256:fa76d13133bea2bb4441c0f0c50f182d40d1e8640a9c049b092eef5655d0ba85
             env:
               SONARR_API_KEY:
                 valueFrom:
