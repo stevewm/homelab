@@ -32,7 +32,7 @@ jobs:
           token: "${{ steps.app-token.outputs.token }}"
 
       - name: Run flux-local test
-        uses: docker://ghcr.io/allenporter/flux-local:v7.0.0
+        uses: docker://ghcr.io/allenporter/flux-local:v7.0.0@sha256:abf237e31d20de26f8a4b08e588cc927cb0a9f0ecf90d04bada00f393b919354
         with:
           args: test --enable-helm --all-namespaces --path /github/workspace/kubernetes/flux/cluster -v
 
@@ -68,7 +68,7 @@ jobs:
           path: default
 
       - name: Run flux-local diff
-        uses: docker://ghcr.io/allenporter/flux-local:v7.0.0
+        uses: docker://ghcr.io/allenporter/flux-local:v7.0.0@sha256:abf237e31d20de26f8a4b08e588cc927cb0a9f0ecf90d04bada00f393b919354
         with:
           args: >-
             diff ${{ matrix.resources }}
