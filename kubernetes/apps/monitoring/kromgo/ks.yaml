@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/name: &app kromgo
   interval: 10m
   path: ./kubernetes/apps/monitoring/kromgo/app
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: homelab

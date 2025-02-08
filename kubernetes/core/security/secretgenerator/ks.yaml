@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/name: core-secretgenerator
   interval: 10m
   path: ./kubernetes/core/security/secretgenerator/app
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: homelab

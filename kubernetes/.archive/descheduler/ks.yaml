@@ -16,5 +16,5 @@ spec:
     name: homelab
     namespace: flux-system
   interval: 10m
-  prune: true
+  prune: false
   wait: true

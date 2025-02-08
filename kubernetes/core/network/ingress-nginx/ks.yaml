@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/name: ingress-nginx
   interval: 10m
   path: ./kubernetes/core/network/ingress-nginx/internal
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: homelab
@@ -35,7 +35,7 @@ spec:
       app.kubernetes.io/name: ingress-nginx
   interval: 10m
   path: ./kubernetes/core/network/ingress-nginx/external
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: homelab
@@ -59,7 +59,7 @@ spec:
       app.kubernetes.io/part-of: *app
   interval: 10m
   path: ./kubernetes/core/network/ingress-nginx/common
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: homelab

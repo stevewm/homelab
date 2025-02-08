@@ -16,7 +16,7 @@ spec:
     name: homelab
     namespace: flux-system
   interval: 10m
-  prune: true
+  prune: false
   wait: true
   dependsOn:
     - name: core-cert-manager
@@ -42,7 +42,7 @@ spec:
     name: homelab
     namespace: flux-system
   interval: 30m
-  prune: true
+  prune: false
   wait: true
   dependsOn:
     - name: core-intel-device-plugins-operator
