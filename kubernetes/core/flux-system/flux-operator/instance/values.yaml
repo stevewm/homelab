@@ -14,7 +14,7 @@ instance:
     name: homelab
     kind: GitRepository
     url: https://github.com/stevewm/homelab.git
-    ref: refs/heads/flux_operator
+    ref: refs/heads/main
     path: kubernetes/flux/cluster
   commonMetadata:
     labels:
