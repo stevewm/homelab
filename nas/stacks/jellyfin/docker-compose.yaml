@@ -3,7 +3,7 @@ name: jellyfin
 
 services:
   jellyfin:
-    image: jellyfin/jellyfin:10.10.5@sha256:0ff2f1533e53e7811a04e6cfaf38ce5f467079271e7ed6155bdf36b60423095b
+    image: jellyfin/jellyfin:10.10.5@sha256:89d020f73334642943eca3269d2a652ad897481bdf0bd9827e108c939af49f24
     container_name: jellyfin
     volumes:
       - /share/Docker/jellyfin/cache:/cache
