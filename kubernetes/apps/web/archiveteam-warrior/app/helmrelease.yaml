@@ -63,6 +63,7 @@ spec:
             image:
               repository: atdr.meo.ws/archiveteam/usgovernment-grab
               tag: latest@sha256:903ffadbe4f3423d207b127fa8b587055d52bfd74ec4dc2f7be6bf417970e870 # >:(
+            args: ["stevewm"] # downloader
             resources:
               requests:
                 cpu: 20m
@@ -117,13 +118,11 @@ spec:
           gethomepage.dev/icon: mdi-archive-arrow-up
 
     persistence:
-      config:
+      grab:
         enabled: true
         type: persistentVolumeClaim
         accessMode: ReadWriteOnce
         size: 20Gi
         globalMounts:
-          - path: /home/warrior/projects
-            subPath: projects
-          - path: /home/warrior/data
+          - path: /grab/data
             subPath: data
