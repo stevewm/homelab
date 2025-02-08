@@ -70,22 +70,11 @@ spec:
                 memory: 300Mi
               limits:
                 memory: 500Mi
-            env:
-              DOWNLOADER: stevewm
-              SELECTED_PROJECT: auto
             probes:
-              liveness: &probes
-                enabled: false # FIXME
-                custom: true
-                spec:
-                  httpGet:
-                    path: /
-                    port: 8001
-                  initialDelaySeconds: 0
-                  periodSeconds: 10
-                  timeoutSeconds: 1
-                  failureThreshold: 3
-              readiness: *probes
+              liveness:
+                enabled: false
+              readiness:
+                enabled: false
               startup:
                 enabled: false
             securityContext:
