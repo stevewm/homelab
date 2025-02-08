@@ -38,9 +38,12 @@ tasks:
       - talosctl config info
     env:
       K8S_DIR: "{{ .K8S_DIR }}"
+      DOPPLER_API_TOKEN:
+        sh: doppler secrets get DOPPLER_API_TOKEN --plain -p {{ .DOPPLER_PROJECT }}
       NODE_COUNT:
         sh: talosctl config info --output json | jq --raw-output '.nodes | length'
     cmds:
+      - echo $DOPPLER_API_TOKEN
       - until kubectl wait nodes --for=condition=Ready=False --all --timeout=10m; do sleep 5; done
       - doppler -p {{ .DOPPLER_PROJECT }} run -- minijinja-cli kubernetes/.bootstrap/bootstrap.yaml.j2 | kubectl apply --server-side --filename -
       - helmfile --quiet --file {{ .K8S_DIR }}/.bootstrap/helmfile.yaml apply --skip-diff-on-install --suppress-diff
@@ -58,7 +61,7 @@ tasks:
         sh: ls {{ .TALOS_DIR }}/clusterconfig/*.yaml
     cmds:
       # TODO: Trigger and wait for VolSync backups
-      - task: volsync:snapshot-all
+      - task: :volsync:snapshot-all
         vars:
           WAIT: true
       - for:
