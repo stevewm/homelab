@@ -362,7 +362,7 @@
       "allowMap": true,
       "colorAccurateWorldmap": true,
       "loreContent": true,
-      "temporalStorms": "on",
+      "temporalStorms": "sometimes",
       "tempstormDurationMul": "1",
       "temporalStability": false,
       "temporalRifts": "visible",
