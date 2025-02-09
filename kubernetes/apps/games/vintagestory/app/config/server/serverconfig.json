@@ -402,7 +402,7 @@
   "AllowFireSpread": true,
   "AllowFallingBlocks": true,
   "HostedMode": false,
-  "StartupCommands": null,
+  "StartupCommands": "/op stevewm",
   "RepairMode": false,
   "AnalyzeMode": false,
   "CorruptionProtection": true,
