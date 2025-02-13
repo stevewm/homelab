@@ -344,7 +344,7 @@
       "blockGravity": "sandgravelsoil",
       "caveIns": "on",
       "allowUndergroundFarming": true,
-      "bodyTemperatureResistance": "0",
+      "bodyTemperatureResistance": "5",
       "creatureHostility": "aggressive",
       "creatureStrength": "1",
       "playerHealthPoints": "15",
