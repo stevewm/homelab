@@ -16,6 +16,8 @@ download_mods() {
   # 26632: VSImGui 1.1.7
   # 30915: Th3Dungeon 0.4.0
   # 25132: VintageRCon 1.0
+  # 30921: WebCartographer 0.6.1
+  # 33205: Primitive Survival Pelt Patch 0.0.1
 
   urls="\
   https://mods.vintagestory.at/download?fileid=29227 \
@@ -26,7 +28,9 @@ download_mods() {
   https://mods.vintagestory.at/download?fileid=31137 \
   https://mods.vintagestory.at/download?fileid=26632 \
   https://mods.vintagestory.at/download?fileid=30915 \
-  https://mods.vintagestory.at/download?fileid=25132"
+  https://mods.vintagestory.at/download?fileid=25132 \
+  https://mods.vintagestory.at/download?fileid=30921 \
+  https://mods.vintagestory.at/download?fileid=33205"
 
   rm -rf "${MODS_DIR:?}"/*
   cd "$MODS_DIR"
