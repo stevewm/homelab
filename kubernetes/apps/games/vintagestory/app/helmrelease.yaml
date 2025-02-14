@@ -72,7 +72,7 @@ spec:
           app:
             image:
               repository: devidian/vintagestory
-              tag: latest@sha256:82f3b375064ffb5892c9ecef20cfd11af7c0f783254512c88813bd5d7b9eee87
+              tag: latest@sha256:b60ad6f0ac9455cbf30fdc1153542664532e0aad5e914eef4521583f32d02630
             # probes:
             #   liveness:
             #     enabled: true
@@ -86,9 +86,9 @@ spec:
             resources:
               requests:
                 cpu: 250m
-                memory: 3Gi
+                memory: 4Gi
               limits:
-                memory: 6Gi
+                memory: 8Gi
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: false
