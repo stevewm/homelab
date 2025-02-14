@@ -12,10 +12,13 @@ cluster:
 # Area
 core:
   - changed-files:
-      - any-glob-to-any-file: kubernetes/**/core/**
+      - any-glob-to-any-file: kubernetes/core/**
 apps:
   - changed-files:
-      - any-glob-to-any-file: kubernetes/**/apps/**
+      - any-glob-to-any-file: kubernetes/apps/**
+flux:
+  - changed-files:
+      - any-glob-to-any-file: kubernetes/flux/**
 
 # NAS
 nas:
