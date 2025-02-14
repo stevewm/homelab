@@ -13,7 +13,7 @@ spec:
   interval: 30m
   timeout: 5m
   path: ./kubernetes/core/monitoring/prometheus-operator/crds
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: homelab

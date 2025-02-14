@@ -14,7 +14,7 @@ spec:
       app.kubernetes.io/component: operator
   interval: 10m
   path: ./kubernetes/core/database/dragonfly/operator
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: homelab
@@ -37,7 +37,7 @@ spec:
       app.kubernetes.io/component: cluster
   interval: 10m
   path: ./kubernetes/core/database/dragonfly/cluster
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: homelab
