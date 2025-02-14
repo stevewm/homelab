@@ -154,7 +154,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: ${VOLSYNC_CLAIM}
+        existingClaim: bazarr-config
       config-cache:
         type: emptyDir
         globalMounts:

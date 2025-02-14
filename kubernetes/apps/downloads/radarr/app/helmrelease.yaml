@@ -158,7 +158,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: ${VOLSYNC_CLAIM}
+        existingClaim: radarr-config
       media:
         enabled: true
         type: nfs

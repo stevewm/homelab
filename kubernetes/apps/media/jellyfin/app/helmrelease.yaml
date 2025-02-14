@@ -130,7 +130,7 @@ spec:
 
     persistence:
       config:
-        existingClaim: ${VOLSYNC_CLAIM}
+        existingClaim: jellyfin-config
       cache:
         type: emptyDir
       transcode:

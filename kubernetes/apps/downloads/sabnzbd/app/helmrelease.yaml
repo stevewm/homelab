@@ -166,7 +166,7 @@ spec:
         globalMounts:
           - path: /data/media
       config:
-        existingClaim: ${VOLSYNC_CLAIM}
+        existingClaim: sabnzbd-config
       tmp:
         type: emptyDir
         globalMounts:

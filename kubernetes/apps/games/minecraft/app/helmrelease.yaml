@@ -199,7 +199,7 @@ spec:
 
     persistence:
       data:
-        existingClaim: ${VOLSYNC_CLAIM}
+        existingClaim: minecraft-server
       bluemap:
         type: persistentVolumeClaim
         size: 10Gi # FIXME: resize once we know how much space gets used
