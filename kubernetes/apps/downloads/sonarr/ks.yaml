@@ -22,7 +22,7 @@ spec:
     - name: app-sabnzbd
     - name: app-prowlarr
   components:
-    - ../../../flux/components/volsync/b2
+    - ../../../../flux/components/volsync/b2
   postBuild:
     substitute:
       APP: *app
