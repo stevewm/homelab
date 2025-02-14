@@ -9,7 +9,7 @@ spec:
   targetNamespace: *namespace
   commonMetadata:
     labels:
-      app.kubernetes.io/name: minecraft
+      app.kubernetes.io/name: &app minecraft
       app.kubernetes.io/instance: survival
   interval: 10m
   path: ./kubernetes/apps/games/minecraft/app
@@ -19,8 +19,11 @@ spec:
     name: homelab
     namespace: flux-system
   wait: true
+  components:
+    - ../../../flux/components/volsync/b2
   postBuild:
     substitute:
+      APP: *app
       VOLSYNC_CLAIM: minecraft-server
       VOLSYNC_CAPACITY: "12Gi"
       VOLSYNC_SCHEDULE: "0 */3 * * *" # Every 3hrs

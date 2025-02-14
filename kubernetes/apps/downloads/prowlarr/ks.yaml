@@ -9,7 +9,7 @@ spec:
   targetNamespace: *namespace
   commonMetadata:
     labels:
-      app.kubernetes.io/name: prowlarr
+      app.kubernetes.io/name: &app prowlarr
   interval: 10m
   path: ./kubernetes/apps/downloads/prowlarr/app
   prune: false
@@ -20,6 +20,9 @@ spec:
   wait: true
   dependsOn:
     - name: app-sabnzbd
+  components:
+    - ../../../flux/components/volsync/b2
   postBuild:
     substitute:
+      APP: *app
       VOLSYNC_CLAIM: prowlarr-config

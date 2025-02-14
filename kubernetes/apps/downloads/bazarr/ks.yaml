@@ -9,7 +9,7 @@ spec:
   targetNamespace: *namespace
   commonMetadata:
     labels:
-      app.kubernetes.io/name: bazarr
+      app.kubernetes.io/name: &app bazarr
   interval: 10m
   path: ./kubernetes/apps/downloads/bazarr/app
   prune: false
@@ -21,6 +21,9 @@ spec:
   dependsOn:
     - name: app-sonarr
     - name: app-radarr
+  components:
+    - ../../../flux/components/volsync/b2
   postBuild:
     substitute:
+      APP: *app
       VOLSYNC_CLAIM: bazarr-config

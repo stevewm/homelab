@@ -9,7 +9,7 @@ spec:
   targetNamespace: *namespace
   commonMetadata:
     labels:
-      app.kubernetes.io/name: jellyfin
+      app.kubernetes.io/name: &app jellyfin
   interval: 10m
   path: ./kubernetes/apps/media/jellyfin/app
   prune: false
@@ -18,7 +18,10 @@ spec:
     name: homelab
     namespace: flux-system
   wait: true
+  components:
+    - ../../../flux/components/volsync/b2
   postBuild:
     substitute:
+      APP: *app
       VOLSYNC_CLAIM: jellyfin-config
       VOLSYNC_CAPACITY: 20Gi

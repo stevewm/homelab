@@ -9,7 +9,7 @@ spec:
   targetNamespace: *namespace
   commonMetadata:
     labels:
-      app.kubernetes.io/name: jellyseerr
+      app.kubernetes.io/name: &app jellyseerr
   interval: 10m
   path: ./kubernetes/apps/media/jellyseerr/app
   prune: false
@@ -24,6 +24,9 @@ spec:
     - name: app-radarr
       namespace: downloads
     - name: app-jellyfin
+  components:
+    - ../../../flux/components/volsync/b2
   postBuild:
     substitute:
+      APP: *app
       VOLSYNC_CLAIM: jellyseerr-config
