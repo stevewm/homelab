@@ -7,17 +7,19 @@ MODS_DIR="${VS_DATA_PATH:?}/Mods"
 download_mods() {
   mkdir -p "$MODS_DIR"
 
-  # Mod List (ID: Name Version)
-  # 29227: Primitive Survival 3.7.5
-  # 31297: Expanded Foods 1.7.3
-  # 31302: A Culinary Artillery 1.2.3
-  # 26136: Carry-On 1.8.0-pre1
-  # 31137: Better Ruins 0.4.6
-  # 26632: VSImGui 1.1.7
-  # 30915: Th3Dungeon 0.4.0
-  # 25132: VintageRCon 1.0
-  # 30921: WebCartographer 0.6.1
-  # 33205: Primitive Survival Pelt Patch 0.0.1
+  # Mod List
+  # ID   : Name                           Version
+  # 29227: Primitive Survival             3.7.5
+  # 31297: Expanded Foods                 1.7.3
+  # 31302: A Culinary Artillery           1.2.3
+  # 26136: Carry-On                       1.8.0-pre1
+  # 31137: Better Ruins                   0.4.6
+  # 26632: VSImGui                        1.1.7
+  # 30915: Th3Dungeon                     0.4.0
+  # 25132: VintageRCon                    1.0
+  # 30921: WebCartographer                0.6.1
+  # 33205: Primitive Survival Pelt Patch  0.0.1
+  # 33300: AFK Module                     1.0.3
 
   urls="\
   https://mods.vintagestory.at/download?fileid=29227 \
@@ -30,7 +32,8 @@ download_mods() {
   https://mods.vintagestory.at/download?fileid=30915 \
   https://mods.vintagestory.at/download?fileid=25132 \
   https://mods.vintagestory.at/download?fileid=30921 \
-  https://mods.vintagestory.at/download?fileid=33205"
+  https://mods.vintagestory.at/download?fileid=33205 \
+  https://mods.vintagestory.at/download?fileid=33300"
 
   rm -rf "${MODS_DIR:?}"/*
   cd "$MODS_DIR"
