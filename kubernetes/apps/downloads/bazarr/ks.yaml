@@ -21,10 +21,9 @@ spec:
   dependsOn:
     - name: app-sonarr
     - name: app-radarr
+  components:
+    - ../../../../flux/components/volsync/b2
   postBuild:
     substitute:
       APP: *app
-      APP_SUBDOMAIN: bzr
-      APP_UID: "1001"
-      APP_GID: "100"
       VOLSYNC_CLAIM: bazarr-config

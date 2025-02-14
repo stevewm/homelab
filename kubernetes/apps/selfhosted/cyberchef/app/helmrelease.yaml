@@ -73,7 +73,7 @@ spec:
       app:
         className: nginx-internal
         hosts:
-          - host: ${APP_SUBDOMAIN}.${DOMAIN}
+          - host: cc.${DOMAIN}
             paths:
               - path: /
                 service:

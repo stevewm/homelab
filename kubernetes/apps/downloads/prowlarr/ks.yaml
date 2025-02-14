@@ -20,10 +20,9 @@ spec:
   wait: true
   dependsOn:
     - name: app-sabnzbd
+  components:
+    - ../../../../flux/components/volsync/b2
   postBuild:
     substitute:
       APP: *app
-      APP_SUBDOMAIN: plr
-      APP_UID: "1001"
-      APP_GID: "100"
       VOLSYNC_CLAIM: prowlarr-config

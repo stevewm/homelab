@@ -30,9 +30,9 @@ spec:
       automountServiceAccountToken: false
       securityContext:
         runAsNonRoot: true
-        runAsUser: ${APP_UID}
-        runAsGroup: ${APP_GID}
-        fsGroup: ${APP_GID}
+        runAsUser: 1001
+        runAsGroup: 100
+        fsGroup: 100
         fsGroupChangePolicy: OnRootMismatch
         seccompProfile:
           type: RuntimeDefault
@@ -128,7 +128,7 @@ spec:
       app:
         className: nginx-internal
         hosts:
-          - host: ${APP_SUBDOMAIN}.${DOMAIN}
+          - host: bzr.${DOMAIN}
             paths:
               - path: /
                 service:
@@ -154,7 +154,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: ${VOLSYNC_CLAIM}
+        existingClaim: bazarr-config
       config-cache:
         type: emptyDir
         globalMounts:
@@ -162,7 +162,7 @@ spec:
       media:
         enabled: true
         type: nfs
-        server: ${NAS}
+        server: lilnas
         path: /volume1/Media
         globalMounts:
           - path: /data/media

@@ -7,8 +7,6 @@ resources:
   - ./externalsecret.yaml
   #- ./networkpolicy.yaml
   - ./config/secrets
-components:
-  - ../../../../flux/components/secretgenerator/default
 configMapGenerator:
   - name: authelia
     files:

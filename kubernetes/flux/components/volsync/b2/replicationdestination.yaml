@@ -15,6 +15,6 @@ spec:
     accessModes: ["${VOLSYNC_ACCESSMODES:-ReadWriteOnce}"]
     volumeSnapshotClassName: ${VOLSYNC_STORAGECLASS:-local-hostpath}
     moverSecurityContext:
-      runAsUser: ${APP_UID:-568}
-      runAsGroup: ${APP_GID:-568}
-      fsGroup: ${APP_GID:-568}
+      runAsUser: ${APP_UID:-1001}
+      runAsGroup: ${APP_GID:-100}
+      fsGroup: ${APP_GID:-100}

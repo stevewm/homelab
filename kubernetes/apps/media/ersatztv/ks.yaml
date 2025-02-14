@@ -20,10 +20,9 @@ spec:
   wait: true
   dependsOn:
     - name: app-jellyfin
+  components:
+    - ../../../../flux/components/volsync/b2
   postBuild:
     substitute:
       APP: *app
-      APP_SUBDOMAIN: tv
-      APP_UID: "1000"
-      APP_GID: "100"
       VOLSYNC_CLAIM: ersatztv-config

@@ -75,7 +75,7 @@ spec:
       app:
         className: nginx-internal
         hosts:
-          - host: ${APP_SUBDOMAIN}.${DOMAIN}
+          - host: pdf.${DOMAIN}
             paths:
               - path: /
                 service:
