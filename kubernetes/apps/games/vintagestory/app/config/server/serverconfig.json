@@ -348,7 +348,7 @@
       "creatureHostility": "aggressive",
       "creatureStrength": "1",
       "playerHealthPoints": "15",
-      "playerHungerSpeed": "0.75",
+      "playerHungerSpeed": "0.85",
       "playerHealthRegenSpeed": "1",
       "playerMoveSpeed": "1.5",
       "foodSpoilSpeed": "0.8",
