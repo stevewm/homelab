@@ -18,10 +18,9 @@ spec:
     name: homelab
     namespace: flux-system
   wait: true
+  components:
+    - ../../../../flux/components/volsync/b2
   postBuild:
     substitute:
       APP: *app
-      APP_SUBDOMAIN: nzb
-      APP_UID: "1001"
-      APP_GID: "100"
       VOLSYNC_CLAIM: sabnzbd-config

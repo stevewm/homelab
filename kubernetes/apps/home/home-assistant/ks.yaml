@@ -18,8 +18,9 @@ spec:
     name: homelab
     namespace: flux-system
   wait: true
+  components:
+    - ../../../../flux/components/volsync/b2
   postBuild:
     substitute:
       APP: *app
-      APP_SUBDOMAIN: hass
       VOLSYNC_CLAIM: home-assistant-config

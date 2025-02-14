@@ -6,6 +6,3 @@ resources:
   - ./helmrelease.yaml
   - ./externalsecret.yaml
   # - ./networkpolicy.yaml
-components:
-  - ../../../../flux/components/volsync/b2
-  - ../../../../flux/components/gatus/guarded

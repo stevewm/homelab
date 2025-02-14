@@ -18,11 +18,10 @@ spec:
     name: homelab
     namespace: flux-system
   wait: true
+  components:
+    - ../../../../flux/components/volsync/b2
   postBuild:
     substitute:
       APP: *app
-      APP_SUBDOMAIN: jf
-      APP_UID: "1001"
-      APP_GID: "100"
       VOLSYNC_CLAIM: jellyfin-config
       VOLSYNC_CAPACITY: 20Gi
