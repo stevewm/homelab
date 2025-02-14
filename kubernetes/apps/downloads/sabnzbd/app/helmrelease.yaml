@@ -161,7 +161,7 @@ spec:
     persistence:
       media:
         type: nfs
-        server: ${NAS}
+        server: lilnas
         path: /volume1/Media
         globalMounts:
           - path: /data/media
