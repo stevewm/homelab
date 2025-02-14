@@ -9,4 +9,3 @@ resources:
   - ./scrapeconfig.yaml
 components:
   - ../../../../flux/components/volsync/b2
-  - ../../../../flux/components/gatus/external

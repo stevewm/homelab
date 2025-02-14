@@ -9,7 +9,7 @@ spec:
   targetNamespace: *namespace
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app homepage
+      app.kubernetes.io/name: homepage
   interval: 10m
   path: ./kubernetes/apps/selfhosted/homepage/app
   prune: false
@@ -18,7 +18,3 @@ spec:
     name: homelab
     namespace: flux-system
   wait: true
-  postBuild:
-    substitute:
-      APP: *app
-      APP_SUBDOMAIN: home

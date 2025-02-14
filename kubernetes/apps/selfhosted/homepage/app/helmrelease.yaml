@@ -50,7 +50,7 @@ spec:
         ingressClassName: nginx-internal
         enabled: true
         hosts:
-          - host: ${APP_SUBDOMAIN}.${DOMAIN}
+          - host: home.${DOMAIN}
             paths:
               - path: /
                 pathType: Prefix

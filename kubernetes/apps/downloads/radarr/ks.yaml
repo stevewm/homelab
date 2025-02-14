@@ -9,7 +9,7 @@ spec:
   targetNamespace: *namespace
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app radarr
+      app.kubernetes.io/name: radarr
   interval: 10m
   path: ./kubernetes/apps/downloads/radarr/app
   prune: false
@@ -23,6 +23,4 @@ spec:
     - name: app-prowlarr
   postBuild:
     substitute:
-      APP: *app
-      APP_SUBDOMAIN: rdr
       VOLSYNC_CLAIM: radarr-config

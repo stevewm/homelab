@@ -6,4 +6,3 @@ resources:
   - ./helmrelease.yaml
 components:
   - ../../../../flux/components/volsync/b2
-  - ../../../../flux/components/gatus/guarded

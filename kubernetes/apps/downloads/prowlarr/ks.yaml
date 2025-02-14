@@ -9,7 +9,7 @@ spec:
   targetNamespace: *namespace
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app prowlarr
+      app.kubernetes.io/name: prowlarr
   interval: 10m
   path: ./kubernetes/apps/downloads/prowlarr/app
   prune: false
@@ -22,8 +22,4 @@ spec:
     - name: app-sabnzbd
   postBuild:
     substitute:
-      APP: *app
-      APP_SUBDOMAIN: plr
-      APP_UID: "1001"
-      APP_GID: "100"
       VOLSYNC_CLAIM: prowlarr-config

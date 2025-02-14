@@ -9,7 +9,7 @@ spec:
   targetNamespace: *namespace
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app home-assistant
+      app.kubernetes.io/name: home-assistant
   interval: 10m
   path: ./kubernetes/apps/home/home-assistant/app
   prune: false
@@ -20,6 +20,5 @@ spec:
   wait: true
   postBuild:
     substitute:
-      APP: *app
       APP_SUBDOMAIN: hass
       VOLSYNC_CLAIM: home-assistant-config

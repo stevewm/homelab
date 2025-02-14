@@ -9,7 +9,7 @@ spec:
   targetNamespace: *namespace
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app bazarr
+      app.kubernetes.io/name: bazarr
   interval: 10m
   path: ./kubernetes/apps/downloads/bazarr/app
   prune: false
@@ -23,8 +23,4 @@ spec:
     - name: app-radarr
   postBuild:
     substitute:
-      APP: *app
-      APP_SUBDOMAIN: bzr
-      APP_UID: "1001"
-      APP_GID: "100"
       VOLSYNC_CLAIM: bazarr-config

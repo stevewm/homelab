@@ -9,7 +9,7 @@ spec:
   targetNamespace: *namespace
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app ersatztv
+      app.kubernetes.io/name: ersatztv
   interval: 10m
   path: ./kubernetes/apps/media/ersatztv/app
   prune: false
@@ -22,8 +22,4 @@ spec:
     - name: app-jellyfin
   postBuild:
     substitute:
-      APP: *app
-      APP_SUBDOMAIN: tv
-      APP_UID: "1000"
-      APP_GID: "100"
       VOLSYNC_CLAIM: ersatztv-config

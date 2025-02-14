@@ -9,7 +9,7 @@ spec:
   targetNamespace: *namespace
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app sonarr
+      app.kubernetes.io/name: sonarr
   interval: 10m
   path: ./kubernetes/apps/downloads/sonarr/app
   prune: false
@@ -23,8 +23,4 @@ spec:
     - name: app-prowlarr
   postBuild:
     substitute:
-      APP: *app
-      APP_SUBDOMAIN: snr
-      APP_UID: "1001"
-      APP_GID: "100"
       VOLSYNC_CLAIM: sonarr-config
