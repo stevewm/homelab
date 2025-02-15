@@ -27,7 +27,7 @@ rust = "latest"
 "aqua:CrunchyData/postgres-operator-client" = "0.5.1"
 "kustomize" = "5.6.0"
 "helm" = "3.17.0"
-"helmfile" = "0.170.1"
+"helmfile" = "0.171.0"
 "k9s" = "0.32.7"
 "stern" = "1.31.0"
 
