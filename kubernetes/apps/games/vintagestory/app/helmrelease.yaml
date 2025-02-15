@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: vintagestory
+  name: &app vintagestory
 spec:
   interval: 30m
   maxHistory: 3
@@ -95,6 +95,29 @@ spec:
               capabilities:
                 drop: [ALL]
 
+          map:
+            image:
+              repository: ghcr.io/bjw-s-labs/caddy-scratch
+              tag: 2.9.1@sha256:dcb8f0969727716dfd4aef9c5ea799bca793a76fbc423c9cbc165b3fbba2436f
+            command: caddy
+            args: ["file-server", "--listen 80 ", "--root /map"]
+            probes:
+              liveness:
+                enabled: true
+              readiness:
+                enabled: true
+            resources:
+              requests:
+                cpu: 25m
+                memory: 100Mi
+              limits:
+                memory: 200Mi
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFileSystem: true
+              capabilities:
+                drop: [ALL]
+
     service:
       app:
         type: LoadBalancer
@@ -108,6 +131,25 @@ spec:
           rcon:
             port: &rcon 42425
             nodePort: *rcon
+          map:
+            port: 80
+
+    ingress:
+      map:
+        className: nginx-external
+        hosts:
+          - host: vs.${DOMAIN}
+            paths:
+              - path: /
+                service:
+                  identifier: *app
+                  port: map
+        annotations:
+          gethomepage.dev/name: vintage story map
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: games
+          gethomepage.dev/icon: map
+          external-dns.alpha.kubernetes.io/target: ext.${DOMAIN}
 
     persistence:
       data:
@@ -115,16 +157,25 @@ spec:
       config:
         type: configMap
         name: vintagestory
-        globalMounts:
-          - path: /data/serverconfig.json
-            subPath: serverconfig.json
-            readOnly: true
-          - path: /tmp/ModConfig/primitivesurvival119.json
-            subPath: primitivesurvival119.json
-            readOnly: true
-          - path: /tmp/ModConfig/betterruins.yaml
-            subPath: betterruins.yaml
-            readOnly: true
+        advancedMounts:
+          vintagestory:
+            app:
+              - path: /data/serverconfig.json
+                subPath: serverconfig.json
+                readOnly: true
+              - path: /tmp/ModConfig/primitivesurvival119.json
+                subPath: primitivesurvival119.json
+                readOnly: true
+              - path: /tmp/ModConfig/betterruins.yaml
+                subPath: betterruins.yaml
+                readOnly: true
+              - path: /tmp/ModConfig/WebCartographerConfig.json
+                subPath: WebCartographerConfig.json
+                readOnly: true
+      map:
+        type: persistentVolumeClaim
+        accessMode: ReadWriteOnce
+        size: 10Gi
       mods:
         type: configMap
         name: vintagestory
@@ -136,7 +187,9 @@ spec:
       rcon:
         type: secret
         name: vintagestory
-        globalMounts:
-          - path: /data/ModConfig/vsrcon.json
-            subPath: vsrcon.json
-            readOnly: true
+        advancedMounts:
+          vintagestory:
+            app:
+              - path: /data/ModConfig/vsrcon.json
+                subPath: vsrcon.json
+                readOnly: true

@@ -14,6 +14,8 @@
   color: ff8f6c
 - name: apps
   color: f9a602
+- name: flux
+  color: 02e5f9
 
 # NAS
 - name: nas

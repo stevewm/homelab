@@ -1,0 +1,15 @@
+{
+  "Mode": 4,
+  "OutputDirectory": "/map",
+  "FixWhiteLines": false,
+  "ExtractWorldMap": true,
+  "CreateZoomLevels": true,
+  "ExtractStructures": true,
+  "AbsolutePositions": false,
+  "ExportHeightmap": false,
+  "ExportSigns": true,
+  "ExportUntaggedSigns": false,
+  "TileSize": 256,
+  "MaxDegreeOfParallelism": -1,
+  "BaseZoomLevel": 9
+}
