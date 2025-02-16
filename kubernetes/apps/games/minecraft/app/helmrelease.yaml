@@ -11,7 +11,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 3.7.0
+      version: 3.7.1
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -31,9 +31,9 @@ spec:
       automountServiceAccountToken: false
       securityContext:
         runAsNonRoot: true
-        runAsUser: ${APP_UID}
-        runAsGroup: ${APP_GID}
-        fsGroup: ${APP_GID}
+        runAsUser: 1000
+        runAsGroup: 2000
+        fsGroup: 2000
         fsGroupChangePolicy: OnRootMismatch
         seccompProfile:
           type: RuntimeDefault
@@ -66,7 +66,7 @@ spec:
           app:
             image:
               repository: ghcr.io/itzg/minecraft-server
-              tag: java21@sha256:eaeccb8f086e6c20128b64272188d97636c7918958704aa769a18acc9d444444
+              tag: java21@sha256:9653682b5f7079ed6fb7ea22b79ec963d48f818e72fbbdb69cf5af96931c689e
             probes:
               liveness: &probes
                 enabled: true
@@ -184,7 +184,7 @@ spec:
       map:
         className: nginx-external
         hosts:
-          - host: ${APP_SUBDOMAIN}.${DOMAIN}
+          - host: mcmap.${DOMAIN}
             paths:
               - path: /
                 service:
@@ -199,7 +199,7 @@ spec:
 
     persistence:
       data:
-        existingClaim: ${VOLSYNC_CLAIM}
+        existingClaim: minecraft-server
       bluemap:
         type: persistentVolumeClaim
         size: 10Gi # FIXME: resize once we know how much space gets used

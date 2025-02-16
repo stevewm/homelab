@@ -9,16 +9,12 @@ spec:
   targetNamespace: *namespace
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app archiveteam-warrior-usgov
+      app.kubernetes.io/name: archiveteam-warrior-usgov
   interval: 10m
   path: ./kubernetes/apps/web/archiveteam-warrior-usgov/app
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: homelab
     namespace: flux-system
   wait: true
-  postBuild:
-    substitute:
-      APP: *app
-      APP_SUBDOMAIN: aw

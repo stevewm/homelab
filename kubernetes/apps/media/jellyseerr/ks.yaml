@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/name: &app jellyseerr
   interval: 10m
   path: ./kubernetes/apps/media/jellyseerr/app
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: homelab
@@ -24,10 +24,9 @@ spec:
     - name: app-radarr
       namespace: downloads
     - name: app-jellyfin
+  components:
+    - ../../../../flux/components/volsync/b2
   postBuild:
     substitute:
       APP: *app
-      APP_SUBDOMAIN: req
-      APP_UID: "1000"
-      APP_GID: "100"
       VOLSYNC_CLAIM: jellyseerr-config

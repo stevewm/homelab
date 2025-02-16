@@ -9,20 +9,15 @@ spec:
   targetNamespace: *namespace
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app grafana
+      app.kubernetes.io/name: grafana
   interval: 10m
   path: ./kubernetes/core/monitoring/grafana/app
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: homelab
     namespace: flux-system
   wait: true
-  postBuild:
-    substitute:
-      APP: *app
-      APP_SUBDOMAIN: graf
-      ES_DELETION_POLICY: Keep
   dependsOn:
     - name: core-kube-prometheus-stack
     - name: core-prometheus-operator-crds

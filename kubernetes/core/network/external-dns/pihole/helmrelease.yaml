@@ -11,7 +11,7 @@ spec:
   chart:
     spec:
       chart: external-dns
-      version: 1.15.1
+      version: 1.15.2
       sourceRef:
         kind: HelmRepository
         name: external-dns
@@ -56,7 +56,7 @@ spec:
 
     env:
       - name: EXTERNAL_DNS_PIHOLE_SERVER
-        value: http://${NAS}:3001
+        value: http://lilnas:3001
       - name: EXTERNAL_DNS_PIHOLE_PASSWORD
         valueFrom:
           secretKeyRef:

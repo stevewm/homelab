@@ -9,17 +9,12 @@ spec:
   targetNamespace: *namespace
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app kromgo
+      app.kubernetes.io/name: kromgo
   interval: 10m
   path: ./kubernetes/apps/monitoring/kromgo/app
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: homelab
     namespace: flux-system
   wait: true
-  postBuild:
-    substitute:
-      APP: *app
-      APP_SUBDOMAIN: kg
-      GATUS_PATH: "/query?format=endpoint&metric=cluster_node_count"

@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 3.7.0
+      version: 3.7.1
       interval: 30m
       sourceRef:
         kind: HelmRepository
@@ -32,7 +32,7 @@ spec:
       securityContext:
         runAsNonRoot: true
         runAsUser: 1001
-        runAsGroup: 199
+        runAsGroup: 100
         fsGroup: 100
         fsGroupChangePolicy: OnRootMismatch
         seccompProfile:
@@ -132,7 +132,7 @@ spec:
       radarr:
         className: nginx-internal
         hosts:
-          - host: ${APP_SUBDOMAIN}.${DOMAIN}
+          - host: plr.${DOMAIN}
             paths:
               - path: /
                 service:
@@ -158,11 +158,11 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: ${VOLSYNC_CLAIM}
+        existingClaim: radarr-config
       media:
         enabled: true
         type: nfs
-        server: ${NAS}
+        server: lilnas
         path: /volume1/Media
         globalMounts:
           - path: /data/media

@@ -6,8 +6,6 @@ resources:
   - ./helmrelease.yaml
   - ./externalsecret.yaml
   #- ./networkpolicy.yaml
-components:
-  - ../../../../flux/components/volsync/b2
 configMapGenerator:
   - name: vintagestory
     files:

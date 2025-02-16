@@ -12,12 +12,14 @@ spec:
       app.kubernetes.io/name: &app vintagestory
   interval: 10m
   path: ./kubernetes/apps/games/vintagestory/app
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: homelab
     namespace: flux-system
   wait: true
+  components:
+    - ../../../../flux/components/volsync/b2
   postBuild:
     substitute:
       APP: *app

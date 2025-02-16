@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/name: &app sonarr
   interval: 10m
   path: ./kubernetes/apps/downloads/sonarr/app
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: homelab
@@ -21,10 +21,9 @@ spec:
   dependsOn:
     - name: app-sabnzbd
     - name: app-prowlarr
+  components:
+    - ../../../../flux/components/volsync/b2
   postBuild:
     substitute:
       APP: *app
-      APP_SUBDOMAIN: snr
-      APP_UID: "1001"
-      APP_GID: "100"
       VOLSYNC_CLAIM: sonarr-config

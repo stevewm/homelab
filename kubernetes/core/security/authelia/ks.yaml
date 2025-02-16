@@ -9,19 +9,15 @@ spec:
   targetNamespace: *namespace
   commonMetadata:
     labels:
-      app.kubernetes.io/name: &app authelia
+      app.kubernetes.io/name: authelia
   interval: 10m
   path: ./kubernetes/core/security/authelia/app
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: homelab
     namespace: flux-system
   wait: true
-  postBuild:
-    substitute:
-      APP: *app
-      APP_SUBDOMAIN: auth
   dependsOn:
     - name: core-glauth
     - name: core-secretgenerator

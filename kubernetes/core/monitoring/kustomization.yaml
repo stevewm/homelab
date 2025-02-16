@@ -10,7 +10,7 @@ resources:
   - ./smartctl-exporter/ks.yaml
 components:
   - ../../flux/components/namespace
-  #- ../../flux/components/networkpolicy/default-deny
+  # - ../../flux/components/networkpolicy/default-deny
 patches:
   - patch: |
       - op: add

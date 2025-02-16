@@ -12,16 +12,15 @@ spec:
       app.kubernetes.io/name: &app sabnzbd
   interval: 10m
   path: ./kubernetes/apps/downloads/sabnzbd/app
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: homelab
     namespace: flux-system
   wait: true
+  components:
+    - ../../../../flux/components/volsync/b2
   postBuild:
     substitute:
       APP: *app
-      APP_SUBDOMAIN: nzb
-      APP_UID: "1001"
-      APP_GID: "100"
       VOLSYNC_CLAIM: sabnzbd-config

@@ -1,0 +1,37 @@
+---
+# Note: Gatus vars should be escaped with $${VAR_NAME} to avoid interpolation by Flux
+web:
+  port: 80
+storage:
+  storage:
+    type: sqlite
+    path: /data/data.db
+metrics: true
+debug: false
+ui:
+  name: Health Dashboard
+  header: "what's up?"
+  logo: https://docs.${DOMAIN}/logo.png
+# alerting: []
+connectivity:
+  checker:
+    target: 1.1.1.1:53
+    interval: 1m
+endpoints:
+  - name: "gatus"
+    group: external
+    url: "https://${APP_SUBDOMAIN}.${DOMAIN}/"
+    interval: 1m
+    client:
+      dns-resolver: tcp://1.1.1.1:53
+    conditions:
+      - "[STATUS] == 200"
+alerting:
+  discord:
+    webhook-url: $${DISCORD_WEBHOOK_URL}
+    title: "Gatus Alert"
+    default-alert:
+      description: health check failed
+      send-on-resolved: true
+      failure-threshold: 3
+      success-threshold: 3
