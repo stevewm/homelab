@@ -12,6 +12,7 @@
   ],
 
   ignorePaths: ["**kubernetes/**/.archive/**", "**nas/.archive/**"],
+
   flux: {
     fileMatch: ["kubernetes/.+\\.yaml$"],
   },
