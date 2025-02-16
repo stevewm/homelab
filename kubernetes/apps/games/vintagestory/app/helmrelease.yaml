@@ -154,26 +154,22 @@ spec:
     persistence:
       data:
         existingClaim: vintagestory-gamedata
-      tmp:
-        type: emptyDir
       config:
         type: configMap
         name: vintagestory
-        advancedMounts:
-          vintagestory:
-            app:
-              - path: /data/serverconfig.json
-                subPath: serverconfig.json
-                readOnly: true
-              - path: /tmp/ModConfig/primitivesurvival119.json
-                subPath: primitivesurvival119.json
-                readOnly: true
-              - path: /tmp/ModConfig/betterruins.yaml
-                subPath: betterruins.yaml
-                readOnly: true
-              - path: /tmp/ModConfig/WebCartographerConfig.json
-                subPath: WebCartographerConfig.json
-                readOnly: true
+        globalMounts:
+          - path: /data/serverconfig.json
+            subPath: serverconfig.json
+            readOnly: true
+          - path: /tmp/ModConfig/primitivesurvival119.json
+            subPath: primitivesurvival119.json
+            readOnly: true
+          - path: /tmp/ModConfig/betterruins.yaml
+            subPath: betterruins.yaml
+            readOnly: true
+          - path: /tmp/ModConfig/WebCartographerConfig.json
+            subPath: WebCartographerConfig.json
+            readOnly: true
       map:
         type: persistentVolumeClaim
         accessMode: ReadWriteOnce
