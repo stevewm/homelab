@@ -3,6 +3,7 @@
 # Homelab
 
 Welcome to the repository for my home infrastructure, otherwise known as my homelab.
+
 </div>
 
 <div align="center">
@@ -32,17 +33,17 @@ Documentation can be found [here](https://stevewm.github.io/homelab/).
 
 ## 🛠️ Built With
 
-| Name                                                            | Purpose                                  |
-| --------------------------------------------------------------- | ---------------------------------------- |
-| [Talos](https://www.talos.dev/)                                 | Kubernetes distribution                  |
-| [FluxCD](https://fluxcd.io/)                                    | GitOps                                   |
-| [Renovate](https://github.com/renovatebot/renovate)             | Automated dependency upgrades            |
-| [GitHub Actions](https://docs.github.com/en/actions)            | Automation                               |
-| [mkdocs-material](https://squidfunk.github.io/mkdocs-material/) | Documentation                            |
-| [mise](https://mise.jdx.dev/)                                   | Project tools and environment variables  |
-| [Doppler](https://www.doppler.com/)                             | Secrets management                       |
-| [pre-commit](https://pre-commit.com/)                           | Linting and validation                   |
-| [go-task](https://github.com/go-task/task)                      | Task runner                              |
+| Name                                                            | Purpose                                 |
+| --------------------------------------------------------------- | --------------------------------------- |
+| [Talos](https://www.talos.dev/)                                 | Kubernetes distribution                 |
+| [FluxCD](https://fluxcd.io/)                                    | GitOps                                  |
+| [Renovate](https://github.com/renovatebot/renovate)             | Automated dependency upgrades           |
+| [GitHub Actions](https://docs.github.com/en/actions)            | Automation                              |
+| [mkdocs-material](https://squidfunk.github.io/mkdocs-material/) | Documentation                           |
+| [mise](https://mise.jdx.dev/)                                   | Project tools and environment variables |
+| [Doppler](https://www.doppler.com/)                             | Secrets management                      |
+| [pre-commit](https://pre-commit.com/)                           | Linting and validation                  |
+| [go-task](https://github.com/go-task/task)                      | Task runner                             |
 
 ## 🤝 Acknowledgements
 
