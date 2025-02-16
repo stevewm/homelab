@@ -137,7 +137,7 @@ spec:
       map:
         className: nginx-external
         hosts:
-          - host: vs.${DOMAIN}
+          - host: vsmap.${DOMAIN}
             paths:
               - path: /
                 service:
