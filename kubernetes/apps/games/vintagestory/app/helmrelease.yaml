@@ -121,7 +121,7 @@ spec:
     service:
       app:
         type: LoadBalancer
-        controller: vintagestory
+        controller: *app
         annotations:
           "lbipam.cilium.io/ips": "10.0.0.70"
         ports:
@@ -142,7 +142,7 @@ spec:
             paths:
               - path: /
                 service:
-                  identifier: *app
+                  identifier: app
                   port: map
         annotations:
           gethomepage.dev/name: vintage story map
