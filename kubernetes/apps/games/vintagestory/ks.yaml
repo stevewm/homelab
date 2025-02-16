@@ -25,3 +25,5 @@ spec:
       APP: *app
       VOLSYNC_CLAIM: vintagestory-gamedata
       VOLSYNC_CAPACITY: "25Gi"
+      APP_UID: "2000"
+      APP_GID: "2000"
