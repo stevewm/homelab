@@ -1,6 +1,7 @@
 {
   "Mode": 4,
   "OutputDirectory": "/map",
+  "ExportOnStart": true,
   "FixWhiteLines": false,
   "ExtractWorldMap": true,
   "CreateZoomLevels": true,
