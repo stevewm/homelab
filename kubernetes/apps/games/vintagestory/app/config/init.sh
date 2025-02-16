@@ -19,7 +19,6 @@ download_mods() {
   # 25132: VintageRCon                    1.0
   # 30921: WebCartographer                0.6.1
   # 33205: Primitive Survival Pelt Patch  0.0.1
-  # 33300: AFK Module                     1.0.3
 
   urls="\
   https://mods.vintagestory.at/download?fileid=29227 \
@@ -32,8 +31,7 @@ download_mods() {
   https://mods.vintagestory.at/download?fileid=30915 \
   https://mods.vintagestory.at/download?fileid=25132 \
   https://mods.vintagestory.at/download?fileid=30921 \
-  https://mods.vintagestory.at/download?fileid=33205 \
-  https://mods.vintagestory.at/download?fileid=33300"
+  https://mods.vintagestory.at/download?fileid=33205"
 
   rm -rf "${MODS_DIR:?}"/*
   cd "$MODS_DIR"
