@@ -154,6 +154,8 @@ spec:
     persistence:
       data:
         existingClaim: vintagestory-gamedata
+      tmp:
+        type: emptyDir
       config:
         type: configMap
         name: vintagestory
