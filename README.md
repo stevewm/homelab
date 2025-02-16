@@ -39,7 +39,7 @@ Documentation can be found [here](https://stevewm.github.io/homelab/).
 | [Renovate](https://github.com/renovatebot/renovate)             | Automated dependency upgrades            |
 | [GitHub Actions](https://docs.github.com/en/actions)            | Automation                               |
 | [mkdocs-material](https://squidfunk.github.io/mkdocs-material/) | Documentation                            |
-| [direnv](https://direnv.net/)                                   | Directory-specific environment variables |
+| [mise](https://mise.jdx.dev/)                                   | Project tools and environment variables  |
 | [Doppler](https://www.doppler.com/)                             | Secrets management                       |
 | [pre-commit](https://pre-commit.com/)                           | Linting and validation                   |
 | [go-task](https://github.com/go-task/task)                      | Task runner                              |
