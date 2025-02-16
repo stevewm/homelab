@@ -329,6 +329,8 @@
     "PlayStyle": "surviveandbuild",
     "PlayStyleLangCode": "surviveandbuild-bands",
     "WorldType": "standard",
+    "playerHungerSpeed": "0.85",
+    "bodyTemperatureResistance": "5",
     "WorldConfiguration": {
       "gameMode": "survival",
       "startingClimate": "temperate",
