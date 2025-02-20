@@ -6,6 +6,8 @@
   "CreateZoomLevels": true,
   "ExtractStructures": true,
   "AbsolutePositions": false,
+  "ExportOnStart": true,
+  "StopOnDone": false,
   "ExportHeightmap": false,
   "ExportSigns": true,
   "ExportUntaggedSigns": false,
