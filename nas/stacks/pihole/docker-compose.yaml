@@ -25,7 +25,7 @@ services:
       - 1.1.1.1
 
   pihole-exporter:
-    image: ekofr/pihole-exporter:v0.4.0@sha256:b101b2beb6787aee407be287fe35426cf88f15233ed01aeeef445931232d89e4
+    image: ekofr/pihole-exporter:v1.0.0@sha256:688f95ff562905721742f1c2be22a794c0d89869d8c8e7c9bf0e17ceb8eb8e1e
     container_name: pihole-exporter
     depends_on:
       - pihole
