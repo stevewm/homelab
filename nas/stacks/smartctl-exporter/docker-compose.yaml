@@ -7,6 +7,6 @@ services:
     container_name: smartctl-exporter
     restart: always
     user: root
-    expose:
-      - "9633"
+    ports:
+      - "9633:9633/tcp"
     privileged: true
