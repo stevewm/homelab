@@ -1,7 +1,6 @@
 ---
 # https://yamllint.readthedocs.io/en/stable/rules.html
 ignore: |
-  .direnv/
   .vscode/
   .ruff_cache
 extends: default
