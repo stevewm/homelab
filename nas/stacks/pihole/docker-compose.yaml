@@ -3,6 +3,7 @@ name: pihole
 
 services:
   pihole:
+    # renovate: datasource=github-releases depName=pi-hole/pi-hole
     image: ghcr.io/pi-hole/pihole:2025.02.6@sha256:bcf79fe65348067d17b7b14fd7e2cb8177bbb4e972e1880a905169334e69c1a2
     container_name: pihole
     volumes:
