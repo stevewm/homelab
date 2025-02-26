@@ -28,5 +28,5 @@ spec:
     keepHistory: false
   values:
     nodeFeatureRule: false
-    sharedDevNum: 8 # Nodes*2
+    sharedDevNum: 3
     resourceManager: true
