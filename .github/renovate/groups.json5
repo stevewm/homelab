@@ -97,5 +97,15 @@
       },
       separateMinorPatch: false,
     },
+    {
+      description: "Mise",
+      groupName: "Mise",
+      matchManagers: ["mise"],
+      automerge: true,
+      group: {
+        commitMessageTopic: "repo tooling",
+      },
+      separateMinorPatch: false,
+    },
   ],
 }
