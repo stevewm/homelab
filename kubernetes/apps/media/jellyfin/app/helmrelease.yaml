@@ -95,6 +95,8 @@ spec:
     service:
       app:
         controller: *app
+        annotations:
+          "lbipam.cilium.io/ips": "10.0.0.80"
         ports:
           http:
             port: 8096
