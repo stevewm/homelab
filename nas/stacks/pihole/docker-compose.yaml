@@ -17,7 +17,7 @@ services:
     ports:
       - "53:53/tcp"
       - "53:53/udp"
-      - "80:3001/tcp"
+      - "8080:3001/tcp"
     network_mode: host
     restart: always
     dns:
