@@ -30,6 +30,7 @@ rust = "latest"
 "helmfile" = "0.171.0"
 "k9s" = "0.32.7"
 "stern" = "1.31.0"
+"krew" = "0.4.4"
 
 # Talos
 "talos" = "1.9.3"

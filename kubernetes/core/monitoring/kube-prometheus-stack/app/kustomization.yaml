@@ -6,5 +6,6 @@ resources:
   - ./helmrelease.yaml
   #- ./networkpolicy.yaml
   - ./alertmanagerconfig.yaml
+  - ./externalsecret.yaml
   - ./alerts
   - ./scrapeconfigs
