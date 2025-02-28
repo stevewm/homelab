@@ -2,18 +2,18 @@
 name: pihole
 
 services:
-  pihole:
-    image: ghcr.io/pi-hole/pihole:2025.02.6@sha256:bcf79fe65348067d17b7b14fd7e2cb8177bbb4e972e1880a905169334e69c1a2
+  pihole: # https://github.com/kubernetes-sigs/external-dns/issues/5113
+    image: ghcr.io/pi-hole/pihole:2025.02.4@sha256:d83cd1ca243eace24c9d2f7320634eb47dee06dcdacb15247fdc1e30efd69438
     container_name: pihole
     volumes:
       - /share/Docker/pihole-docker/etc-pihole/:/etc/pihole/
       - /share/Docker/pihole-docker/etc-dnsmasq.d/:/etc/dnsmasq.d/
     environment:
       TZ: &tz Europe/Amsterdam
-      FTLCONF_dns_listeningMode: all
-      FTLCONF_webserver_interface_theme: default-dark
-      FTLCONF_webserver_port: &port '3001,8443s'
-      FTLCONF_webserver_api_password: $WEBPASSWORD
+      DNSMASQ_LISTENING: all
+      WEBTHEME: default-dark
+      WEB_PORT: &port 3001
+      WEBPASSWORD: $WEBPASSWORD
     ports:
       - "53:53/tcp"
       - "53:53/udp"
@@ -25,7 +25,7 @@ services:
       - 1.1.1.1
 
   pihole-exporter:
-    image: ekofr/pihole-exporter:v0.4.0@sha256:b101b2beb6787aee407be287fe35426cf88f15233ed01aeeef445931232d89e4
+    image: ekofr/pihole-exporter:v1.0.0@sha256:688f95ff562905721742f1c2be22a794c0d89869d8c8e7c9bf0e17ceb8eb8e1e
     container_name: pihole-exporter
     depends_on:
       - pihole
