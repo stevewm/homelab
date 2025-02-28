@@ -1,0 +1,83 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: lge-dev-renew
+spec:
+  interval: 30m
+  maxHistory: 3
+  chart:
+    spec:
+      chart: app-template
+      version: 3.7.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    defaultPodOptions:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534
+        runAsGroup: 65534
+        fsGroup: 65534
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+
+    controllers:
+      renew:
+        type: cronjob
+
+        pod:
+          labels:
+            egress.home.arpa/kubedns: allow
+
+        cronjob:
+          schedule: "@daily"
+          concurrencyPolicy: Forbid
+          backoffLimit: 0
+          failedJobsHistory: 1
+          successfulJobsHistory: 0
+
+        containers:
+          app:
+            image:
+              repository: quay.io/curl/curl
+              tag: 8.12.1@sha256:ac1494c2f47b71aef9872ad3bda18b777bf3d34bcbcb4516a67349c860990404
+            command:
+              - "/scripts/renew.sh"
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities:
+                drop: ["ALL"]
+            resources:
+              requests:
+                cpu: 10m
+                memory: 50M
+              limits:
+                memory: 75M
+
+    persistence:
+      renew:
+        type: secret
+        name: lge
+        defaultMode: 0775
+        advancedMounts:
+          renew:
+            app:
+              - path: /scripts/renew.sh
+                subPath: renew.sh
