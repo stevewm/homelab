@@ -1,10 +1,27 @@
 ---
+---
+image:
+  repsotory: ghcr.io/xunholy/kustomize-mutating-webhook
+replicaCount: 1
 certManager:
   enabled: true
+env:
+  LOG_LEVEL: debug
+podDisruptionBudget:
+  enabled: false
+securityContext:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  capabilities:
+    drop:
+      - ALL
+  seccompProfile:
+    type: RuntimeDefault
+service:
+  headless: false
 configMaps:
   - create: true
     name: cluster-settings
     data:
       NAS: "10.0.0.2"
       DOMAIN: cfg.sh
-secrets: []
