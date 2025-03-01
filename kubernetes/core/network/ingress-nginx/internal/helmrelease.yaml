@@ -30,8 +30,6 @@ spec:
     fullnameOverride: nginx-internal
 
     controller:
-      allowSnippetAnnotations: true # required for themepark.dev
-      enableAnnotationValidations: true
       replicaCount: 2
       updateStrategy:
         type: RollingUpdate
@@ -49,11 +47,17 @@ spec:
           namespaceSelector:
             any: true
 
+      service:
+        annotations:
+          external-dns.alpha.kubernetes.io/hostname: int.${DOMAIN}
+
       config:
         custom-http-errors: >-
           401,403,404,500,501,502,503
+        allow-snippet-annotations: true
+        annotations-risk-level: Critical # less security more pretty pages
         # https://ethanmarcotte.com/wrote/blockin-bots/
-        block-user-agents: "AmazonBot,GPTBot,~*GPTBot*,ChatGPT-User,~*ChatGPT-User*,Google-Extended,~*Google-Extended*,CCBot,~*CCBot*,Omgilibot,~*Omgilibot*,FacebookBot,~*FacebookBot*"
+        block-user-agents: "AdsBot-Google,Amazonbot,anthropic-ai,Applebot,Applebot-Extended,AwarioRssBot,AwarioSmartBot,Bytespider,CCBot,ChatGPT,ChatGPT-User,Claude-Web,ClaudeBot,cohere-ai,DataForSeoBot,Diffbot,FacebookBot,Google-Extended,GPTBot,ImagesiftBot,magpie-crawler,omgili,Omgilibot,peer39_crawler,PerplexityBot,YouBot"
         client-header-timeout: 120
         client-body-buffer-size: "100M"
         client-body-timeout: 120
@@ -77,10 +81,6 @@ spec:
         proxy-buffer-size: "16k"
         ssl-protocols: "TLSv1.3 TLSv1.2"
         use-forwarded-headers: "true"
-
-      service:
-        annotations:
-          external-dns.alpha.kubernetes.io/hostname: int.${DOMAIN}
 
       ingressClassResource:
         name: nginx-internal
@@ -124,7 +124,7 @@ spec:
         - name: TEMPLATE_NAME
           value: hacker-terminal
         - name: SHOW_DETAILS
-          value:
+          value: "true"
       podLabels:
         ingress.home.arpa/nginx-internal: allow
 

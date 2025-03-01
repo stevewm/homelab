@@ -30,19 +30,16 @@ spec:
     fullnameOverride: nginx-external
 
     controller:
-      service:
-        annotations:
-          external-dns.alpha.kubernetes.io/hostname: ext.${DOMAIN}
+      replicaCount: 2
+      updateStrategy:
+        type: RollingUpdate
+
       labels:
         egress.home.arpa/apiserver: allow
         egress.home.arpa/kubedns: allow
         ingress.home.arpa/lan: allow
         monitoring.home.arpa/prometheus: allow
-      replicaCount: 2
-      updateStrategy:
-        type: RollingUpdate
-      allowSnippetAnnotations: true # required for themepark.dev
-      enableAnnotationValidations: true
+
       metrics:
         enabled: true
         serviceMonitor:
@@ -50,9 +47,15 @@ spec:
           namespaceSelector:
             any: true
 
+      service:
+        annotations:
+          external-dns.alpha.kubernetes.io/hostname: ext.${DOMAIN}
+
       config:
         custom-http-errors: >-
           401,403,404,500,501,502,503
+        allow-snippet-annotations: true
+        annotations-risk-level: Critical # less security more pretty pages
         # https://ethanmarcotte.com/wrote/blockin-bots/
         block-user-agents: "AdsBot-Google,Amazonbot,anthropic-ai,Applebot,Applebot-Extended,AwarioRssBot,AwarioSmartBot,Bytespider,CCBot,ChatGPT,ChatGPT-User,Claude-Web,ClaudeBot,cohere-ai,DataForSeoBot,Diffbot,FacebookBot,Google-Extended,GPTBot,ImagesiftBot,magpie-crawler,omgili,Omgilibot,peer39_crawler,PerplexityBot,YouBot"
         client-header-timeout: 120
@@ -124,6 +127,7 @@ spec:
           value: "false"
       podLabels:
         ingress.home.arpa/nginx-external: allow
+
     resources:
       requests:
         cpu: 10m
