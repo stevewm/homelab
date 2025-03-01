@@ -1,5 +1,4 @@
 ---
----
 image:
   repsotory: ghcr.io/xunholy/kustomize-mutating-webhook
 replicaCount: 1
