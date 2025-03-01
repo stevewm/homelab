@@ -86,6 +86,10 @@ spec:
 
     persistence:
       config:
+        type: persistentVolumeClaim
+        size: 1Gi
+        accessMode: ReadWriteOnce
+      config-file:
         type: configMap
         name: *app
         globalMounts:
