@@ -62,7 +62,7 @@ spec:
           init:
             image:
               repository: alpine/curl
-              tag: 8.12.1@sha256:c04612c34c339577e7c083d9611f5f97fd5368fdff087334fb0ad7feb2a99d4c
+              tag: 8.12.1@sha256:6a84041f423cebb821ba076f77185e91dbbbc86be47bc0f4cc5b830670c48d21
             command: ["/bin/sh", "-c"]
             args: ["/data/init.sh"]
             env:
