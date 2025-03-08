@@ -101,10 +101,19 @@ spec:
               tag: 2.9.1@sha256:4edeb1025e6012a6813fe018a09310b3bda86a15cd941dd59cbc4882d06f2888
             args: ["file-server", "--listen", ":80", "--root", "/map/html"]
             probes:
-              liveness:
+              liveness: &probes
                 enabled: true
-              readiness:
-                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /
+                    port: 80
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+
             resources:
               requests:
                 cpu: 25m
