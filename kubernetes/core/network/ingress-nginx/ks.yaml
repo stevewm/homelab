@@ -64,7 +64,7 @@ spec:
     kind: GitRepository
     name: homelab
     namespace: flux-system
-  wait: false # FIXME: https://github.com/cert-manager/cert-manager/issues/7540
+  wait: true
   dependsOn:
     - name: core-cert-manager
       namespace: cert-manager
