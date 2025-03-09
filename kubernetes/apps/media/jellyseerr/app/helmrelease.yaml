@@ -48,8 +48,8 @@ spec:
         containers:
           app:
             image:
-              repository: docker.io/fallenbagel/jellyseerr
-              tag: 2.3.0@sha256:df53a7b06006e9da117a7072a55cf5d8b2071a6272f6bb329d8ca62b6f5c08a6
+              repository: ghcr.io/fallenbagel/jellyseerr
+              tag: 2.3.0@sha256:54dbb8d97c52039ff94efe3be9de2f44833cdee72b0b5d49ca9e30d2ecca0cee
             env:
               LOG_LEVEL: info
               PORT: &port 80
