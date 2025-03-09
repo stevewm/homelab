@@ -49,7 +49,7 @@ spec:
         containers:
           app:
             image:
-              repository: jasongdove/ersatztv
+              repository: jasongdove/ersatztv # FIXME: Docker Hub
               tag: v25.1.0-vaapi@sha256:f845dc4d4d458cdeac89f97b2331fe02bb5877e4772ab9cef0e71b776382a657
             env:
               XDG_DATA_HOME: /config # https://github.com/ErsatzTV/ErsatzTV/issues/327

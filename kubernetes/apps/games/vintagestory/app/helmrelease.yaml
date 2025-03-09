@@ -61,8 +61,8 @@ spec:
         initContainers:
           init:
             image:
-              repository: alpine/curl
-              tag: 8.12.1@sha256:3e5cc383db4730ed17b1904b031cc4965aa418a394649912899372a9e4eb9547
+              repository: quay.io/curl/curl
+              tag: 8.12.1@sha256:84ec2a70279219a45d327ec1f2f112d019bc9dcdd0e19f1ba7689b646c2de0c2
             command: ["/bin/sh", "-c"]
             args: ["/data/init.sh"]
             env:
@@ -71,7 +71,7 @@ spec:
         containers:
           app:
             image:
-              repository: devidian/vintagestory
+              repository: devidian/vintagestory # FIXME: Docker Hub
               tag: latest@sha256:b60ad6f0ac9455cbf30fdc1153542664532e0aad5e914eef4521583f32d02630
             # probes:
             #   liveness:

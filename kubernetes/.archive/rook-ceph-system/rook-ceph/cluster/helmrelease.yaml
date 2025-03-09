@@ -99,7 +99,7 @@ spec:
         config:
           osdsPerDevice: "1"
         nodes:
-          - name: control01 # FIXME: Change for new cluster build
+          - name: control01
             devices: # talosctl list /dev/disk/by-id
               - name: /dev/disk/by-id/ata-Samsung_SSD_870_QVO_1TB_S6R8NJ0W402228N
           - name: control02
