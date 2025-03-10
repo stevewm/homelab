@@ -92,3 +92,8 @@ spec:
             path: /metrics
             interval: 15m
             scrapeTimeout: 2m
+
+    persistence:
+      config:
+        type: configMap
+        name: tapo
