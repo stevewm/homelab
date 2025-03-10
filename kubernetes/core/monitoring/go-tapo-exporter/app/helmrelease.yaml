@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: app go-tapo-exporter
+  name: go-tapo-exporter
 spec:
   interval: 30m
   maxHistory: 3
