@@ -89,6 +89,14 @@ spec:
             editable: true
             options:
               path: /var/lib/grafana/dashboards/games
+          - name: Home
+            disableDeletion: false
+            editable: true
+            folder: ""
+            options:
+              path: /var/lib/grafana/dashboards/home
+            orgId: 1
+            type: file
           - name: kubernetes
             orgId: 1
             folder: Kubernetes
@@ -244,6 +252,15 @@ spec:
           # renovate: dashboardName="Minecraft Fabric"
           gnetId: 14492
           revision: 2
+          datasource:
+            - name: DS_PROMETHEUS
+              value: Prometheus
+
+      home:
+        tapo:
+          # renovate: dashboardName="Tapo P110"
+          gnetId: 21982
+          revision: 3
           datasource:
             - name: DS_PROMETHEUS
               value: Prometheus
