@@ -97,14 +97,6 @@ spec:
             editable: true
             options:
               path: /var/lib/grafana/dashboards/kubernetes
-          - name: minio
-            orgId: 1
-            folder: MinIO
-            type: file
-            disableDelete: true
-            editable: true
-            options:
-              path: /var/lib/grafana/dashboards/minio
           - name: media
             orgId: 1
             folder: Media
@@ -290,21 +282,12 @@ spec:
 
       media:
         jellyfin:
-          url: https://raw.githubusercontent.com/stevewm/homelab/refs/heads/main/kubernetes/main/apps/media/jellyfin/app/resources/dashboard.json
+          url: https://raw.githubusercontent.com/stevewm/homelab/refs/heads/main/kubernetes/apps/media/jellyfin/app/resources/dashboard.json
           datasource:
             - name: DS_PROMETHEUS
               value: Prometheus
         media-dashboard:
           url: https://raw.githubusercontent.com/onedr0p/exportarr/master/examples/grafana/dashboard2.json
-          datasource:
-            - name: DS_PROMETHEUS
-              value: Prometheus
-
-      minio:
-        dashboard:
-          # renovate: dashboardName="MinIO Dashboard"
-          gnetId: 13502
-          revision: 26
           datasource:
             - name: DS_PROMETHEUS
               value: Prometheus
