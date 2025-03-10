@@ -268,6 +268,7 @@ jobs:
             https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHg5Zng3bmJzZGpxcTl0aTIyOG9lNDY0ZXU5NXRnN2U4OHluanY2aSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gfI0eOndvuL9GV6RNx/giphy.gif
             https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWQ1aGVvM3pqOGRkM3hyd3hheTBkeDlpb2gzbG95ejRsbTNlZHZkMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1MnPXgYcP0g3eWvQYY/giphy.gif
             https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHM0dXBjZzk3NjRzMzFzdXFxa3AzeTVnNDR5d3ozd2Zsb3Nsc2ZnbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/7bkKhCVTn5INCGsKcX/giphy.gif
+            https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTdjbjhyM25uMTZiZnp5eGRxejhudWx5bmhzYWNjNHV6MXl2eWsyOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Ph0RMR5qgeyMS2x3hC/giphy.gif
 
       - id: failure_gif
         if: |
@@ -282,6 +283,7 @@ jobs:
             https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYXRzaDBldzRqdmtoYm9wdXJmZzNudmdhNXVtZmRoZHRsM2Noa252YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LlAk7GX8WhiIF4wApU/giphy.gif
             https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2VlaTc5cHdnOHRudDMwZ3A1bXhsMG9nYnRncWNjeW5kOG50N2Q1cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Ed81Zo8zPREEbsIkhA/giphy.gif
             https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2lrZHBvODEybWh2dDNhZ3VveDd6anloZHVibmhsOHpkMmltNWc1ciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NXsHgfgEPxbk691HdK/giphy.gif
+            https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDJveWtyeXVtMzQ5aGUycDJsa2p5ODJ1cGNmcGMwZzNpd2ZveWs5dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Nx3PN1kaLGe94CJb2A/giphy.gif
 
       - id: set_message
         run: |
