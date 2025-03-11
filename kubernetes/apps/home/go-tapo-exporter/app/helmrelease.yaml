@@ -95,5 +95,5 @@ spec:
 
     persistence:
       config:
-        type: secret
+        type: configMap
         name: tapo
