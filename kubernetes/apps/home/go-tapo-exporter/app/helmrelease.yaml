@@ -53,7 +53,7 @@ spec:
               repository: tess1o/go-tapo-exporter
               tag: 0.0.1@sha256:5183c593832e5c1293106853923858303ed1e5818e0335fb6701d9c738d4db8d
             env:
-              TAPO_USERNAME:
+              TAPO_EMAIL:
                 valueFrom:
                   secretKeyRef:
                     name: tapo
