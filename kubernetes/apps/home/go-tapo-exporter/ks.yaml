@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: go-tapo-exporter
   interval: 10m
-  path: ./kubernetes/app/home/go-tapo-exporter/app
+  path: ./kubernetes/apps/home/go-tapo-exporter/app
   prune: true
   sourceRef:
     kind: GitRepository
