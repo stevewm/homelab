@@ -261,9 +261,7 @@ spec:
           # renovate: dashboardName="Tapo P110"
           gnetId: 21982
           revision: 3
-          datasource:
-            - name: DS_PROMETHEUS
-              value: Prometheus
+          datasource: Prometheus
 
       kubernetes:
         k8s-system-api-server:
