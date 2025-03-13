@@ -39,7 +39,7 @@ spec:
           type: RuntimeDefault
 
     controllers:
-      minecraft:
+      ut2004:
         annotations:
           reloader.stakater.com/auto: "true"
         pod:
