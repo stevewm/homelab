@@ -63,6 +63,7 @@ spec:
                   name: *app
                   key: cdkey
               GAME_TYPE: UT2K4Assault.ASGameInfo
+              MAP_NAME: AS-Convoy
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: false
@@ -93,7 +94,7 @@ spec:
             protocol: UDP
 
     persistence:
-      maps:
+      addons:
         enabled: true
         type: nfs
         server: lilnas
