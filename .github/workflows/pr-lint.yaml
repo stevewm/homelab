@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
           fetch-depth: 0
 
@@ -32,7 +32,7 @@ jobs:
 
       - name: Run actionlint
         if: steps.changed-files.outputs.any_changed == 'true'
-        uses: bjw-s/action-actionlint@v0.1
+        uses: bjw-s/action-actionlint@83d0aa4dfef4ebecbdd304776e133f5936ff7358 # v0.1
         with:
           # actionlint_config: .github/linters/actionlint.yml
           file_pattern: ${{ steps.changed-files.outputs.all_changed_files }}
@@ -42,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
           fetch-depth: 0
 
@@ -77,7 +77,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
           fetch-depth: 0
 
@@ -106,7 +106,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
           fetch-depth: 0
 
@@ -119,7 +119,7 @@ jobs:
 
       - name: Run markdownlint-cli2
         if: steps.changed-files.outputs.any_changed == 'true'
-        uses: bjw-s/action-markdownlint-cli2@v0.1
+        uses: bjw-s/action-markdownlint-cli2@c3c44cc6f77516007f1a85d982ed6276e840dcec # v0.1
         with:
           markdownlint_config: .github/linters/conf.markdownlint.yaml
           file_pattern: ${{ steps.changed-files.outputs.all_changed_files }}
@@ -129,7 +129,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
           fetch-depth: 0
 
@@ -139,7 +139,7 @@ jobs:
 
       - name: Run prettier
         if: steps.changed-files.outputs.any_changed == 'true'
-        uses: bjw-s/action-prettier-lint@v0.1
+        uses: bjw-s/action-prettier-lint@1014e6a3453ff28a8b746715f44a75306d223266 # v0.1
         with:
           prettier_ignore: .github/linters/prettierignore
           prettier_config: .github/linters/prettierrc.yaml
@@ -150,7 +150,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
           fetch-depth: 0
 
@@ -178,7 +178,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
           fetch-depth: 0
 
@@ -198,7 +198,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
           fetch-depth: 0
 
@@ -211,7 +211,7 @@ jobs:
 
       - name: Run ruff
         if: steps.changed-files.outputs.any_changed == 'true'
-        uses: astral-sh/ruff-action@v3
+        uses: astral-sh/ruff-action@39f75e526a505e26a302f8796977b50c13720edf # v3
         with:
           args: "--config .github/linters/ruff.toml --format github"
           src: ${{ steps.changed-files.outputs.all_changed_files }}
@@ -249,7 +249,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Generate Token
-        uses: actions/create-github-app-token@v1
+        uses: actions/create-github-app-token@21cfef2b496dd8ef5b904c159339626a10ad380e # v1
         if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
         id: app-token
         with:
@@ -259,7 +259,7 @@ jobs:
       - id: success_gif
         if: |
           needs.lint_success.result == 'success'
-        uses: ddradar/choose-random-action@v3
+        uses: ddradar/choose-random-action@48b56fba9a94389c7f9124a31c958a522ce39923 # v3
         with:
           contents: |
             https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzBqYjExNzAwZWJoaXA4Y2EybXowbHF4eWVsa3czOG1kNDNlcWxlciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2QpH5Khv9ooec/giphy.gif
@@ -273,7 +273,7 @@ jobs:
       - id: failure_gif
         if: |
           needs.lint_success.result == 'failure'
-        uses: ddradar/choose-random-action@v3
+        uses: ddradar/choose-random-action@48b56fba9a94389c7f9124a31c958a522ce39923 # v3
         with:
           contents: |
             https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbTBvczJvbGhnOWZ0NXJ0ZWJ1NWphN256dmRzZTBtMDF1MWgwcHhnNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7Zesyac4CuSN5rsA/giphy.gif
@@ -294,7 +294,7 @@ jobs:
           fi
 
       - name: Post PR comment
-        uses: mshick/add-pr-comment@v2
+        uses: mshick/add-pr-comment@b8f338c590a895d50bcbfa6c5859251edc8952fc # v2
         if: |
           github.event_name == 'pull_request'
         with:
