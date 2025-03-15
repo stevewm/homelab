@@ -2,7 +2,7 @@
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   extends: [
     // Reusable config
-    "github>stevewm/renovate-config:default.json5",
+    "github>stevewm/renovate-config",
     "github>stevewm/renovate-config:automerge-docker-digest.json5",
     // In-repo config
     "github>stevewm/homelab//.github/renovate/clusters.json5",
