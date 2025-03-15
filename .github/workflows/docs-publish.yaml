@@ -20,8 +20,8 @@ jobs:
         uses: actions/create-github-app-token@v1
         id: app-token
         with:
-          app-id: "${{ secrets.BOT_APP_ID }}"
-          private-key: "${{ secrets.BOT_APP_PRIVATE_KEY }}"
+          app-id: "${{ secrets.BOTTY_HILL_APP_ID }}"
+          private-key: "${{ secrets.BOTTY_HILL_PRIVATE_KEY }}"
 
       - name: Publish Docs
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
