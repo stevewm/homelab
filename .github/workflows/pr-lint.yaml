@@ -24,7 +24,7 @@ jobs:
 
       - name: Get changed files
         id: changed-files
-        uses: tj-actions/changed-files@v45
+        uses: tj-actions/changed-files@9200e69727eb73eb060652b19946b8a2fdfb654b # v45.0.8
         with:
           files: |
             .github/workflows/**/*.yml
@@ -48,7 +48,7 @@ jobs:
 
       - name: Get changed files
         id: changed-files
-        uses: tj-actions/changed-files@v45
+        uses: tj-actions/changed-files@9200e69727eb73eb060652b19946b8a2fdfb654b # v45.0.8
         with:
           files: |
             docs/**
@@ -83,7 +83,7 @@ jobs:
 
       - name: Get changed files
         id: changed-files
-        uses: tj-actions/changed-files@v45
+        uses: tj-actions/changed-files@9200e69727eb73eb060652b19946b8a2fdfb654b # v45.0.8
         with:
           files: |
             **.yml
@@ -112,7 +112,7 @@ jobs:
 
       - name: Get changed files
         id: changed-files
-        uses: tj-actions/changed-files@v45
+        uses: tj-actions/changed-files@9200e69727eb73eb060652b19946b8a2fdfb654b # v45.0.8
         with:
           files: |
             **.md
@@ -135,7 +135,7 @@ jobs:
 
       - name: Get changed files
         id: changed-files
-        uses: tj-actions/changed-files@v45
+        uses: tj-actions/changed-files@9200e69727eb73eb060652b19946b8a2fdfb654b # v45.0.8
 
       - name: Run prettier
         if: steps.changed-files.outputs.any_changed == 'true'
@@ -156,7 +156,7 @@ jobs:
 
       - name: Get changed files
         id: changed-files
-        uses: tj-actions/changed-files@v45
+        uses: tj-actions/changed-files@9200e69727eb73eb060652b19946b8a2fdfb654b # v45.0.8
         with:
           files: |
             **/docker-compose.yaml
@@ -184,7 +184,7 @@ jobs:
 
       - name: Get changed files
         id: changed-files
-        uses: tj-actions/changed-files@v45
+        uses: tj-actions/changed-files@9200e69727eb73eb060652b19946b8a2fdfb654b # v45.0.8
         with:
           files: |
             **.sh
@@ -204,7 +204,7 @@ jobs:
 
       - name: Get changed files
         id: changed-files
-        uses: tj-actions/changed-files@v45
+        uses: tj-actions/changed-files@9200e69727eb73eb060652b19946b8a2fdfb654b # v45.0.8
         with:
           files: |
             **.py
@@ -253,8 +253,8 @@ jobs:
         if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
         id: app-token
         with:
-          app-id: "${{ secrets.BOT_APP_ID }}"
-          private-key: "${{ secrets.BOT_APP_PRIVATE_KEY }}"
+          app-id: "${{ secrets.BOTTY_HILL_APP_ID }}"
+          private-key: "${{ secrets.BOTTY_HILL_PRIVATE_KEY }}"
 
       - id: success_gif
         if: |
