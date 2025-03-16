@@ -40,12 +40,12 @@ spec:
 
     controllers:
       ut2004:
+        replicas: 0
         annotations:
           reloader.stakater.com/auto: "true"
         pod:
           labels:
             ingress.home.arpa/playit: allow
-            monitoring.home.arpa/prometheus: allow
             egress.home.arpa/kubedns: allow
 
         containers:
@@ -57,12 +57,6 @@ spec:
               liveness: &probes
                 enabled: true
               readiness: *probes
-            env:
-              CD_KEY:
-                secretKeyRef:
-                  name: *app
-                  key: cdkey
-              GAME_TYPE: UT2K4Assault.ASGameInfo
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: false
@@ -70,10 +64,10 @@ spec:
                 drop: [ALL]
             resources:
               requests:
-                cpu: 100m
-                memory: 256Mi
+                cpu: 250m
+                memory: 1Gi
               limits:
-                memory: 384Mi
+                memory: 4Gi
 
     service:
       ut2004:
