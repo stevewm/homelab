@@ -23,7 +23,6 @@ resources:
   - ./jameswynn.yaml
   - ./jetstack.yaml
   - ./k8tz.yaml
-  - ./metallb.yaml
   - ./metrics-server.yaml
   - ./node-feature-discovery.yaml
   - ./openebs.yaml

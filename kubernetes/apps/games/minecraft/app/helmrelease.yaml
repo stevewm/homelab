@@ -202,7 +202,7 @@ spec:
         existingClaim: minecraft-server
       bluemap:
         type: persistentVolumeClaim
-        size: 10Gi # FIXME: resize once we know how much space gets used
+        size: 10Gi
         accessMode: ReadWriteOnce
       bluemap-config:
         type: configMap
