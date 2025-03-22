@@ -211,7 +211,7 @@ jobs:
 
       - name: Run ruff
         if: steps.changed-files.outputs.any_changed == 'true'
-        uses: astral-sh/ruff-action@39f75e526a505e26a302f8796977b50c13720edf # v3
+        uses: astral-sh/ruff-action@9828f49eb4cadf267b40eaa330295c412c68c1f9 # v3
         with:
           args: "--config .github/linters/ruff.toml --format github"
           src: ${{ steps.changed-files.outputs.all_changed_files }}
