@@ -57,7 +57,7 @@ releases:
   - name: kustomize-mutating-webhook
     namespace: flux-system
     chart: fluxcd-kustomize-mutating-webhook/kustomize-mutating-webhook
-    version: 0.4.2
+    version: 0.4.3
     values:
       - ../core/flux-system/kustomize-mutating-webhook/app/values.yaml
     needs:
