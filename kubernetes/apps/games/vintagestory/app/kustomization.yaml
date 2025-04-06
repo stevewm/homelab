@@ -11,6 +11,7 @@ configMapGenerator:
     files:
       - serverconfig.json=./config/server/serverconfig.json
       # Mod downloader
+      - .env=./config/init/.env
       - init.sh=./config/init/init.sh
       - mods.py=./config/init/mods.py
       - mods.yaml=./config/init/mods.yaml
