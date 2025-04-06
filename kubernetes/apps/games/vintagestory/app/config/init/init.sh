@@ -4,12 +4,11 @@ set -e
 
 MODS_DIR="${VS_DATA_PATH:?}/Mods"
 # shellcheck disable=SC2034 # used in mods.py
-MODS_FILE="/init/mods.yaml"
 
 download_mods() {
   mkdir -p "$MODS_DIR"
 
-  uv run --script /init/mods.py
+  uv run --script /init/mods.py --env-file /init/.env
 }
 
 copy_directories() {
