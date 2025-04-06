@@ -64,7 +64,7 @@ spec:
               repository: ghcr.io/astral-sh/uv
               tag: python3.13-alpine@sha256:2fcaaa7c55366de8343185a027e8d66308c319bd634ce8a2888748f4d4ffce97
             command: ["/bin/sh", "-c"]
-            args: ["/data/init.sh"]
+            args: ["/init/init.sh"]
             env:
               VS_DATA_PATH: &data /data
 

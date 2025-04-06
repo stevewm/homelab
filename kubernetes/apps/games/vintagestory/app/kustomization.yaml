@@ -11,9 +11,9 @@ configMapGenerator:
     files:
       - serverconfig.json=./config/server/serverconfig.json
       # Mod downloader
-      - init.sh=./config/init.sh
-      - mods.py=./config/mods.py
-      - mods.yaml=./config/mods.yaml
+      - init.sh=./init/init.sh
+      - mods.py=./init/mods.py
+      - mods.yaml=./init/mods.yaml
       # Mod config
       - betterruins.yaml=./config/mods/betterruins.yaml
       - primitivesurvival119.json=./config/mods/primitivesurvival119.json
