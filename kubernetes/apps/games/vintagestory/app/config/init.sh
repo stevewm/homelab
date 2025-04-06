@@ -7,31 +7,17 @@ MODS_DIR="${VS_DATA_PATH:?}/Mods"
 download_mods() {
   mkdir -p "$MODS_DIR"
 
-  # Mod List
-  # ID   : Name                           Version
-  # 29227: Primitive Survival             3.7.5
-  # 31297: Expanded Foods                 1.7.3
-  # 31302: A Culinary Artillery           1.2.3
-  # 26136: Carry-On                       1.8.0-pre1
-  # 31137: Better Ruins                   0.4.6
-  # 26632: VSImGui                        1.1.7
-  # 30915: Th3Dungeon                     0.4.0
-  # 25132: VintageRCon                    1.0
-  # 30921: WebCartographer                0.6.1
-  # 33205: Primitive Survival Pelt Patch  0.0.1
-
   urls="\
-  https://mods.vintagestory.at/download?fileid=29227 \
-  https://mods.vintagestory.at/download?fileid=31297 \
-  https://mods.vintagestory.at/download?fileid=31302 \
-  https://mods.vintagestory.at/download?fileid=26136 \
-  https://mods.vintagestory.at/download?fileid=30660 \
-  https://mods.vintagestory.at/download?fileid=31137 \
-  https://mods.vintagestory.at/download?fileid=26632 \
-  https://mods.vintagestory.at/download?fileid=30915 \
-  https://mods.vintagestory.at/download?fileid=25132 \
-  https://mods.vintagestory.at/download?fileid=30921 \
-  https://mods.vintagestory.at/download?fileid=33205"
+  https://mods.vintagestory.at/download/35898/primitivesurvival_3.7.6.zip \
+  https://mods.vintagestory.at/download/33380/ExpandedFoods%201.7.4.zip \
+  https://mods.vintagestory.at/download/35171/ACulinaryArtillery%201.2.5.zip \
+  https://mods.vintagestory.at/download/38654/CarryOn-1.20_v1.8.0-rc.4.zip \
+  https://mods.vintagestory.at/download/37908/BetterRuinsv0.4.9.zip \
+  https://mods.vintagestory.at/download/39899/vsimgui_1.1.8.zip \
+  https://mods.vintagestory.at/download/39423/th3dungeon_0.4.2.zip \
+  https://mods.vintagestory.at/download/25132/VintageRCon-1.0.zip \
+  https://mods.vintagestory.at/download/34353/webcartographer_0.7.0.zip \
+  https://mods.vintagestory.at/download/33205/ps-peltpatch-0.0.1.zip"
 
   rm -rf "${MODS_DIR:?}"/*
   cd "$MODS_DIR"
