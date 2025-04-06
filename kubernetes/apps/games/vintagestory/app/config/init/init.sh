@@ -2,8 +2,9 @@
 
 set -e
 
-MODS_DIR="${VS_DATA_PATH:?}/Mods"
+MODS_DIR="/data/Mods"
 # shellcheck disable=SC2034 # used in mods.py
+
 
 download_mods() {
   mkdir -p "$MODS_DIR"
