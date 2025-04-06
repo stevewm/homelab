@@ -9,7 +9,7 @@ MODS_FILE="/init/mods.yaml"
 download_mods() {
   mkdir -p "$MODS_DIR"
 
-  uv run --script mods.py
+  uv run --script /init/mods.py
 }
 
 copy_directories() {
