@@ -187,8 +187,14 @@ spec:
         name: vintagestory
         defaultMode: 0755
         globalMounts:
-          - path: /data/init.sh
+          - path: /init/init.sh
             subPath: init.sh
+            readOnly: true
+          - path: /init/mods.py
+            subPath: mods.py
+            readOnly: true
+          - path: /init/mods.yaml
+            subPath: mods.yaml
             readOnly: true
       rcon:
         type: secret
