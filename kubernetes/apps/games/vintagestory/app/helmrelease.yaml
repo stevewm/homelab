@@ -197,6 +197,8 @@ spec:
           - path: /init/mods.yaml
             subPath: mods.yaml
             readOnly: true
+      .cache:
+        type: emptyDir
       rcon:
         type: secret
         name: vintagestory
