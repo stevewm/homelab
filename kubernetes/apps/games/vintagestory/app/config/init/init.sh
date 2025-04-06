@@ -2,7 +2,7 @@
 
 set -e
 
-MODS_DIR="/data/Mods"
+MODS_DIR="${VS_DATA_PATH:?}/Mods"
 # shellcheck disable=SC2034 # used in mods.py
 
 
