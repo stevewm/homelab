@@ -50,7 +50,7 @@ spec:
           app:
             image:
               repository: ghcr.io/home-operations/theme-park
-              tag: 1.2.0@sha256:ee5a741acfc654abab9674335e17edcda29da2305094bbc114c7e70baf3c7517
+              tag: 1.20.0@sha256:ee5a741acfc654abab9674335e17edcda29da2305094bbc114c7e70baf3c7517
             env:
               TP_DOMAIN: &host themes.${DOMAIN}
               TP_THEME: plex
