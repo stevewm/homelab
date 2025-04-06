@@ -1,0 +1,20 @@
+---
+mods:
+  - id: primitivesurvival
+    version: 3.7.6
+  - id: ExpandedFoods
+    version: 1.7.4
+  - id: ACulinaryArtillery
+    version: 1.2.5
+  - id: CarryOn
+    version: 1.8.0-rc.3
+  - id: BetterRuins
+    version: 0.4.9
+  - id: th3dungeon
+    version: 0.4.2
+  - id: VintageRCon
+    version: 1.0.0
+  - id: webcartographer
+    version: 0.7.0
+  - id: ps-peltpatch
+    version: 0.0.1

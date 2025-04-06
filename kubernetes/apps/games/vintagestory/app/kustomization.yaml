@@ -10,8 +10,11 @@ configMapGenerator:
   - name: vintagestory
     files:
       - serverconfig.json=./config/server/serverconfig.json
-      # Mod configuration
+      # Mod downloader
       - init.sh=./config/init.sh
+      - mods.py=./config/mods.py
+      - mods.yaml=./config/mods.yaml
+      # Mod config
       - betterruins.yaml=./config/mods/betterruins.yaml
       - primitivesurvival119.json=./config/mods/primitivesurvival119.json
       - WebCartographerConfig.json=./config/mods/WebCartographerConfig.json
