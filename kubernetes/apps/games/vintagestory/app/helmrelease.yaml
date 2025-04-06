@@ -61,10 +61,10 @@ spec:
         initContainers:
           init:
             image:
-              repository: quay.io/curl/curl
-              tag: 8.13.0@sha256:f7100c4af2ea54f6fd73e517ef5d51ab4fd47c1bb89c0c5ec5b18ebe832e0205
+              repository: ghcr.io/astral-sh/uv
+              tag: python3.13-alpine@sha256:2fcaaa7c55366de8343185a027e8d66308c319bd634ce8a2888748f4d4ffce97
             command: ["/bin/sh", "-c"]
-            args: ["/data/init.sh"]
+            args: ["/init/init.sh"]
             env:
               VS_DATA_PATH: &data /data
 
