@@ -15,7 +15,7 @@ import sys
 # Constants
 MODS_API_BASE_URL = "https://mods.vintagestory.at/api/mod/"
 MODS_FILE = os.getenv("MODS_FILE", "/init/mods.yaml")
-MODS_DIR = os.getenv("MODS_DIR")
+MODS_DIR = os.getenv("MODS_DIR", "/data/Mods")
 
 f = open(MODS_FILE, "r")
 
