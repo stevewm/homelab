@@ -187,8 +187,8 @@ spec:
         name: vintagestory
         defaultMode: 0755
         globalMounts:
-          - path: /init/.env
-            subPath: .env
+          - path: /init/mods.env
+            subPath: mods.env
             readOnly: true
           - path: /init/init.sh
             subPath: init.sh

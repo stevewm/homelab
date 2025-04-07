@@ -9,7 +9,7 @@ MODS_DIR="${VS_DATA_PATH:?}/Mods"
 download_mods() {
   mkdir -p "$MODS_DIR"
 
-  uv run --script /init/mods.py --env-file /init/.env
+  uv run --script /init/mods.py --env-file /init/mods.env
 }
 
 copy_directories() {
