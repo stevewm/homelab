@@ -357,7 +357,7 @@ spec:
         node-exporter-full:
           # renovate: dashboardName="Node Exporter Full"
           gnetId: 1860
-          revision: 38
+          revision: 39
           datasource: Prometheus
 
         node-feature-discovery:
