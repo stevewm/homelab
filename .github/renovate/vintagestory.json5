@@ -1,0 +1,32 @@
+{
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  customDatasources: {
+    "vs-mods": {
+      defaultRegistryUrlTemplate: "https://mods.vintagestory.at/api/mod/{{packageName}}",
+      format: "json",
+      transformTemplates: ['{"releases":[{"version": mod.releases[0].modversion}]}'],
+    },
+  },
+  "customManagers": [
+    {
+      customType: "regex",
+      description: "Process Vintage Story mods",
+      fileMatch: ["(^|/)vintagestory(-\\w+)?/.*/mods\\.yaml$"],
+      "matchStrings": [
+        "- id: (?<packageName>\\S+)\\s+version: (?<currentValue>\\S+)"
+      ],
+      autoReplaceStringTemplate: "- id: {{{packageName}}}\n{{{indentation}}}version: {{{newValue}}}",
+      datasourceTemplate: "custom.vs-mods",
+      versioningTemplate: "semver-coerced"
+    },
+  ],
+  packageRules: [
+    {
+      matchDatasources: ["custom.vs-mods"],
+      matchManagers: ["regex"],
+      semanticCommitScope: "vintage-story",
+      commitMessageTopic: "mod {{depName}}",
+      commitMessageExtra: "( {{currentVersion}} → {{newVersion}} )",
+    },
+  ],
+}
