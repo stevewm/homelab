@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: webos-dev-renew
   interval: 10m
-  path: ./kubernetes/apps/scripts/scheduled/lge-dev-renew
+  path: ./kubernetes/apps/scripts/lge-dev-renew
   prune: true
   sourceRef:
     kind: GitRepository
