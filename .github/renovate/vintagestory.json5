@@ -13,7 +13,7 @@
       description: "Process Vintage Story mods",
       fileMatch: ["(^|/)vintagestory(-\\w+)?/.*/mods\\.yaml$"],
       "matchStrings": [
-        "- id: (?<packageName>\\S+)\\s+version: (?<currentValue>\\S+)"
+        "- id: (?<packageName>\\S+)\\n(?<indentation>\\s+)version: (?<currentValue>\\S+)"
       ],
       autoReplaceStringTemplate: "- id: {{{packageName}}}\n{{{indentation}}}version: {{{newValue}}}",
       datasourceTemplate: "custom.vs-mods",
