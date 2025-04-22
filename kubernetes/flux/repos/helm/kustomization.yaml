@@ -18,7 +18,6 @@ resources:
   - ./intel.yaml
   - ./itzg.yaml
   - ./jameswynn.yaml
-  - ./jetstack.yaml
   - ./k8tz.yaml
   - ./metrics-server.yaml
   - ./node-feature-discovery.yaml
