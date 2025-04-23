@@ -1,10 +1,14 @@
+// Configures Renovate to update Vintage Story mods defined in `mods.yaml` files.
+// Uses the Vintage Story ModDB API. Does not take into account game version compatibility!
 {
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   customDatasources: {
     "vs-mods": {
       defaultRegistryUrlTemplate: "https://mods.vintagestory.at/api/mod/{{packageName}}",
       format: "json",
-      transformTemplates: ['{"releases":[{"version": mod.releases[0].modversion}]}'],
+      transformTemplates: [
+        '{"releases":[{"version": mod.releases[0].modversion, "releaseTimestamp": mod.releases[0].created}], "sourceUrl": "https://mods.vintagestory.at/" & mod.urlalias & "#tab-files"}'
+        ],
     },
   },
   "customManagers": [
@@ -12,7 +16,7 @@
       customType: "regex",
       description: "Process Vintage Story mods",
       fileMatch: ["(^|/)vintagestory(-\\w+)?/.*/mods\\.yaml$"],
-      "matchStrings": [
+      matchStrings: [
         "- id: (?<packageName>\\S+)\\n(?<indentation>\\s+)version: (?<currentValue>\\S+)"
       ],
       autoReplaceStringTemplate: "- id: {{{packageName}}}\n{{{indentation}}}version: {{{newValue}}}",
