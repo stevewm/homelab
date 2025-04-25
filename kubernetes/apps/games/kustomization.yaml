@@ -5,7 +5,6 @@ kind: Kustomization
 namespace: games
 resources:
   - ./minecraft/ks.yaml
-  - ./ut2004/ks.yaml
   - ./vintagestory/ks.yaml
 components:
   - ../../flux/components/namespace
