@@ -1,7 +1,7 @@
 ---
 mods:
   - id: primitivesurvival
-    version: 3.7.6
+    version: 3.7.7
   - id: ExpandedFoods
     version: 1.7.4
   - id: ACulinaryArtillery
