@@ -9,7 +9,7 @@ mods:
   - id: CarryOn
     version: 1.8.0-rc.3
   - id: BetterRuins
-    version: 0.4.9
+    version: 0.4.11
   - id: th3dungeon
     version: 0.4.2
   - id: VintageRCon
