@@ -22,7 +22,7 @@ rust = "latest"
 "pipx:flux-local" = "7.0.0"
 
 # Kube
-"kubectl" = "1.32.3"
+"kubectl" = "1.33.0"
 "kubecolor" = "0.0.25"
 "aqua:CrunchyData/postgres-operator-client" = "0.5.1"
 "kustomize" = "5.6.0"
