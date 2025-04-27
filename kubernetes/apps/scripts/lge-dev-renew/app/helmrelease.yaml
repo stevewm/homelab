@@ -56,7 +56,7 @@ spec:
           app:
             image:
               repository: quay.io/curl/curl
-              tag: 8.13.0@sha256:2430f5b829c10466b2c19a689f61d16a516233759d15d2840d3e3ba7c332cce5
+              tag: 8.13.0@sha256:f7100c4af2ea54f6fd73e517ef5d51ab4fd47c1bb89c0c5ec5b18ebe832e0205
             command:
               - "/scripts/renew.sh"
             securityContext:
