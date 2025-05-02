@@ -62,7 +62,7 @@ spec:
           init:
             image:
               repository: ghcr.io/astral-sh/uv
-              tag: python3.13-alpine@sha256:9d01b01565d83112445d14d31ea21656157f8c286eb127d374cfb90f9480d2e0
+              tag: python3.13-alpine@sha256:010682fab4a674b199bd9a6b57a9a20e01e1f3f1d35aba5b774b724426759360
             command: ["/bin/sh", "-c"]
             args: ["/init/init.sh"]
             env:
