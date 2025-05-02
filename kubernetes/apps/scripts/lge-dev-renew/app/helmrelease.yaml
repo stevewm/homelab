@@ -55,10 +55,11 @@ spec:
         containers:
           app:
             image:
-              repository: quay.io/curl/curl
-              tag: 8.13.0@sha256:f7100c4af2ea54f6fd73e517ef5d51ab4fd47c1bb89c0c5ec5b18ebe832e0205
+              repository: ghcr.io/orange-opensource/hurl
+              tag: 6.1.1@sha256:0fafe31238304394bcba7ab49509dcbb4356798b6a99973d41ef722f6cbbb1e9
             command:
-              - "/scripts/renew.sh"
+              - hurl
+              - /hurlfile
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
@@ -75,9 +76,8 @@ spec:
       renew:
         type: secret
         name: lge
-        defaultMode: 0775
         advancedMounts:
           renew:
             app:
-              - path: /scripts/renew.sh
-                subPath: renew.sh
+              - path: /hurlfile
+                subPath: hurlfile
