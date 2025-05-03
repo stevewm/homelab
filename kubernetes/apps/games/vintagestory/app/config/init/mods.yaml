@@ -15,6 +15,6 @@ mods:
   - id: VintageRCon
     version: 1.0.0
   - id: webcartographer
-    version: 0.7.1
+    version: 0.7.3
   - id: ps-peltpatch
     version: 0.0.1
