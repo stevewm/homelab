@@ -169,6 +169,9 @@ spec:
           - path: /data/serverconfig.json
             subPath: serverconfig.json
             readOnly: true
+          - path: /data/servermagicnumbers.json
+            subPath: servermagicnumbers.json
+            readOnly: true
           - path: /tmp/ModConfig/primitivesurvival119.json
             subPath: primitivesurvival119.json
             readOnly: true
