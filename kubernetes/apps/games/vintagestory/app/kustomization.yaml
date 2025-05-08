@@ -10,6 +10,7 @@ configMapGenerator:
   - name: vintagestory
     files:
       - serverconfig.json=./config/server/serverconfig.json
+      - servermagicnumbers.json=./config/server/servermagicnumbers.json
       # Mod downloader
       - mods.env=./config/init/mods.env
       - init.sh=./config/init/init.sh
