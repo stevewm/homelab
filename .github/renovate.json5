@@ -10,6 +10,8 @@
     "github>stevewm/homelab//.github/renovate/grafanaDashboards.json5",
     "github>stevewm/homelab//.github/renovate/groups.json5",
     "github>stevewm/homelab//.github/renovate/vintagestory.json5",
+    // 3rd party config
+    "github>mirceanton/renovate-config:custom-manager-mise.json5#563f485db859084f436e7ce9ff30587263fdec12"
   ],
 
   ignorePaths: ["**kubernetes/**/.archive/**", "**nas/.archive/**"],
