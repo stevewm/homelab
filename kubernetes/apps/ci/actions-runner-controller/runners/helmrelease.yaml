@@ -39,6 +39,9 @@ spec:
       name: actions-runner-controller
       namespace: ci
     template:
+      metadata:
+        labels:
+          app.kubernetes.io/name: homelab-runner
       spec:
         containers:
           - name: runner
