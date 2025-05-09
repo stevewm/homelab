@@ -7,7 +7,6 @@ resources:
   #- ./authelia/ks.yaml
   - ./external-secrets/ks.yaml
   - ./glauth/ks.yaml
-  - ./secretgenerator/ks.yaml
 components:
   - ../../flux/components/namespace
   # - ../../flux/components/networkpolicy/default-deny
