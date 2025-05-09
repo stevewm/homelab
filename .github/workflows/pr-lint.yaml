@@ -211,14 +211,14 @@ jobs:
 
       - name: Run ruff check
         if: steps.changed-files.outputs.any_changed == 'true'
-        uses: astral-sh/ruff-action@c6bea5606c33b5d04902374392d9233464b90660 # v3
+        uses: astral-sh/ruff-action@84f83ecf9e1e15d26b7984c7ec9cf73d39ffc946 # v3
         with:
           args: "check --config .github/linters/ruff.toml"
           src: ${{ steps.changed-files.outputs.all_changed_files }}
 
       - name: Run ruff format
         if: steps.changed-files.outputs.any_changed == 'true'
-        uses: astral-sh/ruff-action@c6bea5606c33b5d04902374392d9233464b90660 # v3
+        uses: astral-sh/ruff-action@84f83ecf9e1e15d26b7984c7ec9cf73d39ffc946 # v3
         with:
           args: "format --check --config .github/linters/ruff.toml"
           src: ${{ steps.changed-files.outputs.all_changed_files }}
