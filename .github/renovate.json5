@@ -14,6 +14,12 @@
     "github>mirceanton/renovate-config:custom-manager-mise.json5#563f485db859084f436e7ce9ff30587263fdec12"
   ],
 
+  schedule: [
+    "* 17-23 * * 5", // Friday 5 PM to 11 PM
+    "* 0-23 * * 6",  // Saturday
+    "* 0-23 * * 7"   // Sunday
+  ],
+
   ignorePaths: ["**kubernetes/**/.archive/**", "**nas/.archive/**"],
 
   flux: {
