@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+---
+version: "3"
+
+tasks:
+  test:
+    desc: Run flux-local test
+    dir: "{{ .ROOT_DIR }}"
+    # preconditions:
+    #   - flux-local
+    cmds:
+      - echo $PATH
+      - flux-local test --enable-helm --all-namespaces --path {{ .K8S_DIR }}/flux/cluster -v
