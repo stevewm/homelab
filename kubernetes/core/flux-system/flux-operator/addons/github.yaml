@@ -38,10 +38,10 @@ spec:
   eventSeverity: info
   eventSources:
     - kind: Kustomization
-      name: cluster
+      name: cluster-core
     - kind: Kustomization
-      name: apps
+      name: cluster-apps
     - kind: Kustomization
-      name: core
+      name: cluster-repos
   exclusionList:
     - waiting.*socket
