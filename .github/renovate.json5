@@ -1,34 +1,37 @@
 {
-  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
   extends: [
-    // Reusable config
-    "github>stevewm/renovate-config:default.json5",
-    "github>stevewm/renovate-config:automerge-docker-digest.json5",
-    // In-repo config
-    "github>stevewm/homelab//.github/renovate/clusters.json5",
-    "github>stevewm/homelab//.github/renovate/customDatasources.json5",
-    "github>stevewm/homelab//.github/renovate/grafanaDashboards.json5",
-    "github>stevewm/homelab//.github/renovate/groups.json5",
-    "github>stevewm/homelab//.github/renovate/vintagestory.json5",
-    // 3rd party config
-    "github>mirceanton/renovate-config:custom-manager-mise.json5#563f485db859084f436e7ce9ff30587263fdec12"
+    'github>stevewm/renovate-config:default.json5',
+    'github>stevewm/renovate-config:automerge-docker-digest.json5',
+    'github>stevewm/homelab//.github/renovate/clusters.json5',
+    'github>stevewm/homelab//.github/renovate/customDatasources.json5',
+    'github>stevewm/homelab//.github/renovate/grafanaDashboards.json5',
+    'github>stevewm/homelab//.github/renovate/groups.json5',
+    'github>stevewm/homelab//.github/renovate/vintagestory.json5',
+    'github>mirceanton/renovate-config:custom-manager-mise.json5#563f485db859084f436e7ce9ff30587263fdec12',
   ],
-
   schedule: [
-    "* 17-23 * * 5", // Friday 5 PM to 11 PM
-    "* 0-23 * * 6",  // Saturday
-    "* 0-23 * * 7"   // Sunday
+    '* 17-23 * * 5',
+    '* 0-23 * * 6',
+    '* 0-23 * * 7',
   ],
-
-  ignorePaths: ["**kubernetes/**/.archive/**", "**nas/.archive/**"],
-
+  ignorePaths: [
+    '**kubernetes/**/.archive/**',
+    '**nas/.archive/**',
+  ],
   flux: {
-    fileMatch: ["kubernetes/.+\\.yaml$"],
+    managerFilePatterns: [
+      '/kubernetes/.+\\.yaml$/',
+    ],
   },
-  "helm-values": {
-    fileMatch: ["(^|/)kubernetes/.+\\.ya?ml(\\.j2)?$"],
+  'helm-values': {
+    managerFilePatterns: [
+      '/(^|/)kubernetes/.+\\.ya?ml(\\.j2)?$/',
+    ],
   },
   kubernetes: {
-    fileMatch: ["(^|/)kubernetes/.+\\.ya?ml(\\.j2)?$"],
+    managerFilePatterns: [
+      '/(^|/)kubernetes/.+\\.ya?ml(\\.j2)?$/',
+    ],
   },
 }
