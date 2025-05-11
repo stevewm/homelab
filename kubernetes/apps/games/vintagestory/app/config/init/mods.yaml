@@ -16,5 +16,5 @@ mods:
     version: 1.0.0
   - id: webcartographer
     version: 0.7.3
-  - id: ps-peltpatch
-    version: 0.0.1
+  - id: pspeltpatch
+    version: 0.0.2
