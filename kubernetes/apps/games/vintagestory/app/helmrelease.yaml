@@ -94,7 +94,7 @@ spec:
           map:
             image:
               repository: ghcr.io/bjw-s-labs/caddy-scratch
-              tag: 2.9.1@sha256:2d67c97edae1a7d6fcadbd668136f6822444b9b1cf3f096f5f71fe1121c00555
+              tag: 2.10.0@sha256:0dc7e15fdf8ad46400406b37db6fbff50bee38af8b778a100d786ed96af55bd6
             args: ["file-server", "--listen", ":80", "--root", "/map/html"]
             probes:
               liveness: &probes
