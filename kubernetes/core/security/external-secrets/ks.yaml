@@ -52,6 +52,6 @@ spec:
     kind: GitRepository
     name: homelab
     namespace: flux-system
-  wait: true
+  wait: false
   dependsOn:
     - name: core-external-secrets
