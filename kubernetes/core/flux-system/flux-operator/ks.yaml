@@ -10,7 +10,8 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: flux-operator
-  interval: 10m
+  interval: 30m
+  timeout: 5m
   path: ./kubernetes/core/flux-system/flux-operator/app
   prune: false # bad idea to prune this
   sourceRef:
@@ -31,7 +32,8 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: flux-instance
-  interval: 10m
+  interval: 30m
+  timeout: 5m
   path: ./kubernetes/core/flux-system/flux-operator/instance
   prune: false # bad idea to prune this
   sourceRef:
@@ -52,7 +54,8 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: flux-instance
-  interval: 10m
+  interval: 30m
+  timeout: 5m
   path: ./kubernetes/core/flux-system/flux-operator/addons
   prune: true
   sourceRef:

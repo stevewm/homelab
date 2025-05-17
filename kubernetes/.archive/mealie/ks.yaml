@@ -10,7 +10,8 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: mealie
-  interval: 10m
+  interval: 30m
+  timeout: 5m
   path: ./kubernetes/apps/selfhosted/mealie/app
   prune: false
   sourceRef:

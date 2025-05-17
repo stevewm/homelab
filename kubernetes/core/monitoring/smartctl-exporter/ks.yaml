@@ -10,7 +10,8 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: smartctl-exporter
-  interval: 10m
+  interval: 30m
+  timeout: 5m
   path: ./kubernetes/core/monitoring/smartctl-exporter/app
   prune: true
   sourceRef:

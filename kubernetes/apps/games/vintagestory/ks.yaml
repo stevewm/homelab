@@ -10,7 +10,8 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: &app vintagestory
-  interval: 10m
+  interval: 30m
+  timeout: 5m
   path: ./kubernetes/apps/games/vintagestory/app
   prune: true
   sourceRef:

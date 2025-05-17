@@ -10,7 +10,8 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: external-secrets
-  interval: 10m
+  interval: 30m
+  timeout: 5m
   path: ./kubernetes/core/security/external-secrets/app
   prune: true
   sourceRef:
@@ -40,7 +41,8 @@ spec:
       kind: HelmRelease
       name: external-secrets
       namespace: *namespace
-  interval: 10m
+  interval: 30m
+  timeout: 5m
   path: ./kubernetes/core/security/external-secrets/secretstore
   prune: true
   sourceRef:

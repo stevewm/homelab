@@ -10,7 +10,8 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: ingress-nginx
-  interval: 10m
+  interval: 30m
+  timeout: 5m
   path: ./kubernetes/core/network/ingress-nginx/internal
   prune: true
   sourceRef:
@@ -33,7 +34,8 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: ingress-nginx
-  interval: 10m
+  interval: 30m
+  timeout: 5m
   path: ./kubernetes/core/network/ingress-nginx/external
   prune: true
   sourceRef:
@@ -57,7 +59,8 @@ spec:
     labels:
       app.kubernetes.io/name: &app ingress-nginx
       app.kubernetes.io/part-of: *app
-  interval: 10m
+  interval: 30m
+  timeout: 5m
   path: ./kubernetes/core/network/ingress-nginx/common
   prune: true
   sourceRef:

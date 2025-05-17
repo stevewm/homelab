@@ -12,7 +12,8 @@ spec:
       app.kubernetes.io/name: *app
       app.kubernetes.io/part-of: dragonfly
       app.kubernetes.io/component: operator
-  interval: 10m
+  interval: 30m
+  timeout: 5m
   path: ./kubernetes/core/database/dragonfly/operator
   prune: true
   sourceRef:
@@ -35,7 +36,8 @@ spec:
       app.kubernetes.io/name: *app
       app.kubernetes.io/part-of: dragonfly
       app.kubernetes.io/component: cluster
-  interval: 10m
+  interval: 30m
+  timeout: 5m
   path: ./kubernetes/core/database/dragonfly/cluster
   prune: true
   sourceRef:

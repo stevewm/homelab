@@ -11,7 +11,8 @@ spec:
     labels:
       app.kubernetes.io/name: external-dns
       app.kubernetes.io/instance: pihole
-  interval: 10m
+  interval: 30m
+  timeout: 5m
   path: ./kubernetes/core/network/external-dns/pihole
   prune: true
   sourceRef:
@@ -38,7 +39,8 @@ spec:
     labels:
       app.kubernetes.io/name: external-dns
       app.kubernetes.io/instance: cloudflare
-  interval: 10m
+  interval: 30m
+  timeout: 5m
   path: ./kubernetes/core/network/external-dns/cloudflare
   prune: true
   sourceRef:

@@ -11,7 +11,8 @@ spec:
     labels:
       app.kubernetes.io/name: rook-ceph-operator
       app.kubernetes.io/part-of: rook-ceph
-  interval: 10m
+  interval: 30m
+  timeout: 5m
   path: ./kubernetes/core/rook-ceph-system/rook-ceph/operator
   prune: false # absolutely do not
   sourceRef:
@@ -35,7 +36,8 @@ spec:
     labels:
       app.kubernetes.io/name: rook-ceph-cluster
       app.kubernetes.io/part-of: rook-ceph
-  interval: 10m
+  interval: 30m
+  timeout: 5m
   path: ./kubernetes/core/rook-ceph-system/rook-ceph/cluster
   prune: false # absolutely do not
   sourceRef:
