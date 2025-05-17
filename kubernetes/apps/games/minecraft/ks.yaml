@@ -11,7 +11,8 @@ spec:
     labels:
       app.kubernetes.io/name: &app minecraft
       app.kubernetes.io/instance: survival
-  interval: 10m
+  interval: 30m
+  timeout: 5m
   path: ./kubernetes/apps/games/minecraft/app
   prune: true
   sourceRef:

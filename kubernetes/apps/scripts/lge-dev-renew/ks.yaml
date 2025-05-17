@@ -10,7 +10,8 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: webos-dev-renew
-  interval: 10m
+  interval: 30m
+  timeout: 5m
   path: ./kubernetes/apps/scripts/lge-dev-renew/app
   prune: true
   sourceRef:

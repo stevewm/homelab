@@ -10,7 +10,8 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: smtp-relay
-  interval: 10m
+  interval: 30m
+  timeout: 5m
   path: ./kubernetes/core/network/smtp-relay/app
   prune: true
   sourceRef:

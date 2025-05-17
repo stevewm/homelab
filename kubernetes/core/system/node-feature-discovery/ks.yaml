@@ -10,7 +10,8 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: node-feature-discovery
-  interval: 10m
+  interval: 30m
+  timeout: 5m
   path: ./kubernetes/core/system/node-feature-discovery/app
   prune: true
   sourceRef:

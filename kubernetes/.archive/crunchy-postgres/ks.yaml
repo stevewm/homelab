@@ -11,7 +11,8 @@ spec:
     labels:
       app.kubernetes.io/name: crunchy-postgres
       app.kubernetes.io/component: operator
-  interval: 10m
+  interval: 30m
+  timeout: 5m
   path: ./kubernetes/core/database/crunchy-postgres/operator
   prune: true
   sourceRef:
@@ -33,7 +34,8 @@ spec:
     labels:
       app.kubernetes.io/name: crunchy-postgres
       app.kubernetes.io/component: cluster
-  interval: 10m
+  interval: 30m
+  timeout: 5m
   path: ./kubernetes/core/database/crunchy-postgres/cluster
   prune: true
   sourceRef:
@@ -59,7 +61,8 @@ spec:
     labels:
       app.kubernetes.io/name: core-crunchy-postgres-cluster-secretstore
       app.kubernetes.io/component: secretstore
-  interval: 10m
+  interval: 30m
+  timeout: 5m
   path: ./kubernetes/core/database/crunchy-postgres/cluster-secretstore
   prune: true
   sourceRef:
@@ -85,7 +88,8 @@ spec:
     labels:
       app.kubernetes.io/name: crunchy-postgres
       app.kubernetes.io/component: userinit-controller
-  interval: 10m
+  interval: 30m
+  timeout: 5m
   path: ./kubernetes/core/database/crunchy-postgres/userinit-controller
   prune: true
   sourceRef:

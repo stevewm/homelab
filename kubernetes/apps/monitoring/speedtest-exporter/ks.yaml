@@ -10,7 +10,8 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: speedtest-exporter
-  interval: 10m
+  interval: 30m
+  timeout: 5m
   path: ./kubernetes/apps/monitoring/speedtest-exporter/app
   prune: true
   sourceRef:

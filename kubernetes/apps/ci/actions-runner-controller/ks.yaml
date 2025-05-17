@@ -10,14 +10,14 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: actions-runner-controller
-  interval: 10m
+  interval: 30m
+  timeout: 5m
   path: ./kubernetes/apps/ci/actions-runner-controller/app
   prune: true
   sourceRef:
     kind: GitRepository
     name: homelab
     namespace: flux-system
-  timeout: 5m
   wait: true
 
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
@@ -33,14 +33,14 @@ spec:
     labels:
       app.kubernetes.io/name: actions-runner-controller-runners
       app.kubernetes.io/part-of: actions-runner-controller
-  interval: 10m
+  interval: 30m
+  timeout: 5m
   path: ./kubernetes/apps/ci/actions-runner-controller/runners
   prune: true
   sourceRef:
     kind: GitRepository
     name: homelab
     namespace: flux-system
-  timeout: 5m
   wait: true
   dependsOn:
     - name: app-actions-runner-controller

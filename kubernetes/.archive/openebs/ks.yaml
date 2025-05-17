@@ -10,7 +10,8 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: openebs
-  interval: 10m
+  interval: 30m
+  timeout: 5m
   path: ./kubernetes/core/storage/openebs/app
   prune: false
   sourceRef:
