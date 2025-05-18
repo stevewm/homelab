@@ -180,7 +180,7 @@ spec:
         type: persistentVolumeClaim
         accessMode: ReadWriteOnce
         size: 10Gi
-       # FIXME: workaround until vsmod supports cleaning target directory
+        # FIXME: workaround until vsmod supports cleaning target directory
       mods:
         type: emptyDir
       mods_config:
