@@ -57,12 +57,10 @@ spec:
         initContainers:
           init:
             image:
-              repository: ghcr.io/astral-sh/uv
-              tag: python3.13-alpine@sha256:1e0b821e103749394629e5d2ea1722e9a571216dac582f2388186d8a157d63e4
-            command: ["/bin/sh", "-c"]
-            args: ["/init/init.sh"]
-            env:
-              VS_DATA_PATH: &data /data
+              repository: ghcr.io/stevewm/vsmod
+              tag: v0.0.1@sha256:7be5d3dc513970081900ad98b0d8c816d7ae9297e2ca95309b84d26c35939e67
+            command: ["/vsmod"]
+            args: ["download", "--file", "/init/mods.yaml"]
 
         containers:
           app:
@@ -78,7 +76,7 @@ spec:
             #     enabled: true
             env:
               COMPlus_EnableDiagnostics: "0"
-              VS_DATA_PATH: *data
+              VS_DATA_PATH: /data
             resources:
               requests:
                 cpu: 1000m
@@ -177,33 +175,21 @@ spec:
           - path: /tmp/ModConfig/WebCartographerConfig.json
             subPath: WebCartographerConfig.json
             readOnly: true
+
       map:
         type: persistentVolumeClaim
         accessMode: ReadWriteOnce
         size: 10Gi
+       # FIXME: workaround until vsmod supports cleaning target directory
       mods:
+        type: emptyDir
+      mods_config:
         type: configMap
         name: vintagestory
-        defaultMode: 0755
         globalMounts:
-          - path: /init/mods.env
-            subPath: mods.env
-            readOnly: true
-          - path: /init/init.sh
-            subPath: init.sh
-            readOnly: true
-          - path: /init/mods.py
-            subPath: mods.py
-            readOnly: true
           - path: /init/mods.yaml
             subPath: mods.yaml
             readOnly: true
-      cache:
-        type: emptyDir
-        globalMounts:
-          - path: /.cache/uv
-            subPath: uv
-            readOnly: false
       rcon:
         type: secret
         name: vintagestory
