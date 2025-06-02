@@ -85,11 +85,19 @@ spec:
           nginx.org/client-max-body-size: "150m"
 
     persistence:
-      configs:
+      temporary:
         type: emptyDir
-      customfiles:
-        type: emptyDir
-      logs:
-        type: emptyDir
-      pipeline:
-        type: emptyDir
+        medium: Memory
+        globalMounts:
+          - path: /configs
+            subPath: configs
+          - path: /customFiles
+            subPath: customFiles
+          - path: /logs
+            subPath: logs
+          - path: /pipeline
+            subPath: pipeline
+          - path: /tmp
+            subPath: tmp
+          - path: /usr/share/tessdata
+            subPath: tessdata
