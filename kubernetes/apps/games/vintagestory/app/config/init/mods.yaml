@@ -12,7 +12,7 @@ mods:
   - id: ACulinaryArtillery
     version: 1.2.5
   - id: CarryOn
-    version: 1.8.0
+    version: 1.8.1
   - id: BetterRuins
     version: 0.4.12
   - id: th3dungeon
@@ -20,6 +20,6 @@ mods:
   - id: VintageRCon
     version: 1.0.0
   - id: webcartographer
-    version: 0.7.3
+    version: 0.7.4
   - id: pspeltpatch
     version: 0.0.2

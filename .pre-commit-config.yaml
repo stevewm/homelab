@@ -43,7 +43,7 @@ repos:
   #     #     )$
 
   - repo: https://github.com/renovatebot/pre-commit-hooks
-    rev: 40.14.3
+    rev: 40.48.0
     hooks:
       - id: renovate-config-validator
         files: |
@@ -63,7 +63,7 @@ repos:
       - id: actionlint
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.11.10
+    rev: v0.11.13
     hooks:
       - id: ruff
         args: [--config=.github/linters/ruff.toml]

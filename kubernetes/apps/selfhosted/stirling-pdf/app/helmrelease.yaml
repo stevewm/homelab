@@ -43,7 +43,7 @@ spec:
           app:
             image:
               repository: docker.stirlingpdf.com/stirlingtools/stirling-pdf
-              tag: 0.46.1@sha256:0297ac115103d07bed12dd98ac138d610c82994602199feb25233df4dd50ceca
+              tag: 0.46.2@sha256:396ca949b81198a65b9abfec38518fa44e871b1970dad9f9718ffd030eef9b92
             env:
               DOCKER_ENABLE_SECURITY: "false"
             probes:
@@ -85,11 +85,19 @@ spec:
           nginx.org/client-max-body-size: "150m"
 
     persistence:
-      configs:
+      temporary:
         type: emptyDir
-      customfiles:
-        type: emptyDir
-      logs:
-        type: emptyDir
-      pipeline:
-        type: emptyDir
+        medium: Memory
+        globalMounts:
+          - path: /configs
+            subPath: configs
+          - path: /customFiles
+            subPath: customFiles
+          - path: /logs
+            subPath: logs
+          - path: /pipeline
+            subPath: pipeline
+          - path: /tmp
+            subPath: tmp
+          - path: /usr/share/tessdata
+            subPath: tessdata
