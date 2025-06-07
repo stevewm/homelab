@@ -2,7 +2,7 @@
 name: pihole
 
 services:
-  pihole: # https://github.com/kubernetes-sigs/external-dns/issues/5113
+  pihole:
     image: ghcr.io/pi-hole/pihole:2025.06.1@sha256:7d8f83d8a904b25c6074c0798c106067e3a4f2e2caeea15791326f214566b47e
     container_name: pihole
     volumes:
@@ -10,10 +10,10 @@ services:
       - /share/Docker/pihole-docker/etc-dnsmasq.d/:/etc/dnsmasq.d/
     environment:
       TZ: &tz Europe/Amsterdam
-      DNSMASQ_LISTENING: all
-      WEBTHEME: default-dark
-      WEB_PORT: &port 3001
-      WEBPASSWORD: $WEBPASSWORD
+      FTLCONF_dns_revServers: 'true,10.0.0.0/24,10.0.0.1'
+      FTLCONF_dns_upstreams: '8.8.8.8;8.8.4.4'
+      FTLCONF_webserver_api_password: $WEBPASSWORD
+      FTLCONF_webserver_port: &port '3001'
     ports:
       - "53:53/tcp"
       - "53:53/udp"
