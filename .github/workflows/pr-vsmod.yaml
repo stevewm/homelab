@@ -24,6 +24,6 @@ jobs:
           fetch-depth: 0
 
       - name: Check mod compatibility
-        uses: docker://ghcr.io/stevewm/vsmod:0.2.0
+        uses: docker://ghcr.io/stevewm/vsmod:v0.2.0
         with:
           args: download --file kubernetes/apps/games/vintagestory/init/mods.yaml --force-compatibility-check
