@@ -40,7 +40,7 @@ spec:
       egress.home.arpa/nas: allow
 
     podAnnotations:
-      reloader.stakater.com/auto:
+      reloader.stakater.com/auto: "true"
 
     serviceAccount:
       create: true
