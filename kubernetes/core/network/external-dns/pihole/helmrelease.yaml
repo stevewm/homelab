@@ -37,7 +37,7 @@ spec:
       egress.home.arpa/apiserver: allow
       monitoring.home.arpa/prometheus: allow
     podAnnotations:
-      reloader.stakater.com/auto:
+      secret.reloader.stakater.com/reload: pihole
 
     serviceMonitor:
       enabled: true
@@ -49,6 +49,7 @@ spec:
     policy: upsert-only
     registry: noop
     provider: pihole
+    extraArgs: ["--pihole-api-version=6"]
 
     sources:
       - ingress
