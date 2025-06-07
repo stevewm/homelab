@@ -3,7 +3,7 @@ name: pihole
 
 services:
   pihole: # https://github.com/kubernetes-sigs/external-dns/issues/5113
-    image: ghcr.io/pi-hole/pihole:2025.05.1@sha256:db38df3e050606bd014c801c2cbb0b13f263d3122d3d817a8cbcee807688af24
+    image: ghcr.io/pi-hole/pihole:2025.06.1@sha256:7d8f83d8a904b25c6074c0798c106067e3a4f2e2caeea15791326f214566b47e
     container_name: pihole
     volumes:
       - /share/Docker/pihole-docker/etc-pihole/:/etc/pihole/
