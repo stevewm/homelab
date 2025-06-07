@@ -7,7 +7,7 @@ mods:
   - id: ACulinaryArtillery
     version: 1.2.5
   - id: CarryOn
-    version: 1.8.0-rc.3
+    version: 1.8.1
   - id: BetterRuins
     version: 0.4.12
   - id: th3dungeon
