@@ -36,7 +36,7 @@ spec:
           enabled: true
           className: nginx-internal
           hosts:
-            - cni.${DOMAIN}
+            - cni.stevewm.dev
           annotations:
             gethomepage.dev/name: hubble
             gethomepage.dev/enabled: "true"

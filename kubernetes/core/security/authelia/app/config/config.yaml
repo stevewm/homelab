@@ -30,9 +30,9 @@ session:
   remember_me: 1M
   cookies:
     - name: cluster_session
-      domain: ${DOMAIN}
-      authelia_url: https://sso.${DOMAIN}
-      default_redirection_url: https://home.${DOMAIN}
+      domain: stevewm.dev
+      authelia_url: https://sso.stevewm.dev
+      default_redirection_url: https://home.stevewm.dev
   redis:
     database_index: 2
     host: dragonfly.database.svc.cluster.local
@@ -41,7 +41,7 @@ notifier:
   disable_startup_check: true
   smtp:
     address: smtp://smtp-relay.network.svc.cluster.local:25
-    sender: Authelia <noreply@${DOMAIN}>
+    sender: Authelia <noreply@stevewm.dev>
     disable_require_tls: true
 
 totp:
@@ -62,7 +62,7 @@ access_control:
   rules:
     # This just reduces logging noise in authelia
     - domain:
-        - "*.${DOMAIN}"
+        - "*.stevewm.dev"
       policy: one_factor
       subject: [group:admins, group:users]
       networks:
@@ -81,7 +81,7 @@ identity_providers:
         authorization_policy: "two_factor"
         require_pkce: true
         pkce_challenge_method: "S256"
-        redirect_uris: ["https://graf.${DOMAIN}/login/generic_oauth"]
+        redirect_uris: ["https://graf.stevewm.dev/login/generic_oauth"]
         scopes: ["openid", "profile", "groups", "email"]
         userinfo_signed_response_alg: "none"
         token_endpoint_auth_method: "client_secret_post"

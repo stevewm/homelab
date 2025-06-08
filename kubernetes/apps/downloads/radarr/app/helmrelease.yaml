@@ -127,7 +127,7 @@ spec:
       radarr:
         className: nginx-internal
         hosts:
-          - host: plr.${DOMAIN}
+          - host: plr.stevewm.dev
             paths:
               - path: /
                 service:
@@ -146,7 +146,7 @@ spec:
             proxy_set_header Accept-Encoding "";
             sub_filter
             '</head>'
-            '<link rel="stylesheet" type="text/css" href="https://themes.${DOMAIN}/css/base/radarr/plex.css">
+            '<link rel="stylesheet" type="text/css" href="https://themes.stevewm.dev/css/base/radarr/plex.css">
             </head>';
             sub_filter_once on;
 
@@ -157,7 +157,7 @@ spec:
       media:
         enabled: true
         type: nfs
-        server: lilnas
+        server: lilnas.home.arpa
         path: /volume1/Media
         globalMounts:
           - path: /data/media

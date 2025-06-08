@@ -31,7 +31,7 @@ spec:
     fullnameOverride: external-dns-cloudflare
 
     domainFilters:
-      - ${DOMAIN}
+      - stevewm.dev
 
     podLabels:
       egress.home.arpa/apiserver: allow

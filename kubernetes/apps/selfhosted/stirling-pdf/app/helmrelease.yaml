@@ -71,7 +71,7 @@ spec:
       app:
         className: nginx-internal
         hosts:
-          - host: pdf.${DOMAIN}
+          - host: pdf.stevewm.dev
             paths:
               - path: /
                 service:

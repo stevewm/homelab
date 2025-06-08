@@ -1,7 +1,7 @@
 [project]
 name = "homelab"
 version = "0.1.0"
-description = "homelab mono repo"
+description = "homelab monorepo"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
