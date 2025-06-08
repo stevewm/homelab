@@ -6,6 +6,9 @@ Brewfile.lock.json
 *.log
 .github/mkdocs/site
 
+# node
+node_modules
+
 # macOS
 .DS_Store
 .AppleDouble

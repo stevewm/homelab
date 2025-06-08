@@ -10,6 +10,7 @@ TALOSCONFIG = "{{ config_root }}/kubernetes/talos/clusterconfig/talosconfig"
 MINIJINJA_CONFIG_FILE="{{ config_root }}/.github/.minijinja.toml"
 HOMEBREW_BREWFILE="{{ config_root }}/.github/Brewfile"
 _.source = "./.github/scripts/env.sh"
+_.path = ['{{config_root}}/node_modules/.bin'] # megalinter
 
 [tools]
 uv = "latest"
@@ -17,6 +18,9 @@ ruff = "latest"
 python = "3"
 go = "latest"
 rust = "latest"
+
+# # Repo
+# "npm:mega-linter-runner" = "latest"
 
 # Flux
 "flux2" = "2.5.1"
