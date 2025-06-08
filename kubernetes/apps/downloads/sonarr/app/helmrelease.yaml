@@ -128,7 +128,7 @@ spec:
       app:
         className: nginx-internal
         hosts:
-          - host: snr.${DOMAIN}
+          - host: snr.stevewm.dev
             paths:
               - path: /
                 service:
@@ -147,15 +147,15 @@ spec:
             proxy_set_header Accept-Encoding "";
             sub_filter
             '</head>'
-            '<link rel="stylesheet" type="text/css" href="https://themes.${DOMAIN}/css/base/sonarr/plex.css">
-            <link ref="stylesheet" type="text/css" href="https://themes.${DOMAIN}/css/addons/sonarr/sonarr-text-logo/sonarr-text-logo.css">
+            '<link rel="stylesheet" type="text/css" href="https://themes.stevewm.dev/css/base/sonarr/plex.css">
+            <link ref="stylesheet" type="text/css" href="https://themes.stevewm.dev/css/addons/sonarr/sonarr-text-logo/sonarr-text-logo.css">
             </head>';
             sub_filter_once on;
 
     persistence:
       media:
         type: nfs
-        server: lilnas
+        server: lilnas.home.arpa
         path: /volume1/Media
         globalMounts:
           - path: /data/media

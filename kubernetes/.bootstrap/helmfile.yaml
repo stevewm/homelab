@@ -14,8 +14,6 @@ repositories:
     url: https://coredns.github.io/helm
   - name: jetstack
     url: https://charts.jetstack.io
-  - name: fluxcd-kustomize-mutating-webhook
-    url: https://xunholy.github.io/fluxcd-kustomize-mutating-webhook
 
 releases:
   - name: prometheus-operator-crds
@@ -54,15 +52,6 @@ releases:
     needs:
       - kube-system/coredns
 
-  - name: kustomize-mutating-webhook
-    namespace: flux-system
-    chart: fluxcd-kustomize-mutating-webhook/kustomize-mutating-webhook
-    version: 0.5.0
-    values:
-      - ../core/flux-system/kustomize-mutating-webhook/app/values.yaml
-    needs:
-      - cert-manager/cert-manager
-
   - name: flux-operator
     namespace: flux-system
     chart: oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator
@@ -71,7 +60,6 @@ releases:
       - ../core/flux-system/flux-operator/app/values.yaml
     needs:
       - monitoring/prometheus-operator-crds
-      - flux-system/kustomize-mutating-webhook
 
   - name: flux-instance
     namespace: flux-system

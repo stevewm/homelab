@@ -68,7 +68,7 @@ spec:
         enabled: true
         ingressClassName: nginx-internal
         hosts:
-          - am.${DOMAIN}
+          - am.stevewm.dev
         annotations:
           gethomepage.dev/name: alertmanager
           gethomepage.dev/enabled: "true"
@@ -115,7 +115,7 @@ spec:
         enabled: true
         ingressClassName: nginx-internal
         hosts:
-          - prom.${DOMAIN}
+          - prom.stevewm.dev
         annotations:
           gethomepage.dev/name: prometheus
           gethomepage.dev/enabled: "true"

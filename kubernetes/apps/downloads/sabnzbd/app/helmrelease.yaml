@@ -63,7 +63,7 @@ spec:
                     name: sabnzbd
                     key: nzb_key
               SABNZBD__HOST_WHITELIST_ENTRIES: >-
-                sabnzbd, sabnzbd.downloads, sabnzbd.downloads.svc, sabnzbd.downloads.svc.cluster, sabnzbd.downloads.svc.cluster.local, nzb.${DOMAIN}
+                sabnzbd, sabnzbd.downloads, sabnzbd.downloads.svc, sabnzbd.downloads.svc.cluster, sabnzbd.downloads.svc.cluster.local, nzb.stevewm.dev
             probes:
               liveness: &probes
                 enabled: true
@@ -130,7 +130,7 @@ spec:
         enabled: true
         className: nginx-internal
         hosts:
-          - host: nzb.${DOMAIN}
+          - host: nzb.stevewm.dev
             paths:
               - path: /
                 service:
@@ -149,14 +149,14 @@ spec:
             proxy_set_header Accept-Encoding "";
             sub_filter
             '</head>'
-            '<link rel="stylesheet" type="text/css" href="https://themes.${DOMAIN}/css/base/sabnzbd/plex.css">
+            '<link rel="stylesheet" type="text/css" href="https://themes.stevewm.dev/css/base/sabnzbd/plex.css">
             </head>';
             sub_filter_once on;
 
     persistence:
       media:
         type: nfs
-        server: lilnas
+        server: lilnas.home.arpa
         path: /volume1/Media
         globalMounts:
           - path: /data/media

@@ -1,11 +1,11 @@
 ---
 ingress:
-  - hostname: "${DOMAIN}"
+  - hostname: "stevewm.dev"
     service: https://nginx-external-controller.network.svc.cluster.local:443
     originRequest:
-      originServerName: ext.${DOMAIN}
-  - hostname: "*.${DOMAIN}"
+      originServerName: ext.stevewm.dev
+  - hostname: "*.stevewm.dev"
     service: https://nginx-external-controller.network.svc.cluster.local:443
     originRequest:
-      originServerName: ext.${DOMAIN}
+      originServerName: ext.stevewm.dev
   - service: http_status:404

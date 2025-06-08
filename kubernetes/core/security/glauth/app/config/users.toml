@@ -1,4 +1,4 @@
-# passbcrypt generation: https://gchq.github.io/CyberChef/#recipe=Bcrypt(12)To_Hex('None',0)
+# passbcrypt generation: "https://gchq.github.io/CyberChef/#recipe=Bcrypt(12)To_Hex('None',0)"
 
 [[users]]
     name = "search"
@@ -11,7 +11,7 @@
 
 [[users]]
     name = "steve"
-    mail = "steve@${DOMAIN}"
+    mail = "{{ .GLAUTH_STEVE_EMAIL }}"
     givenname = "steve"
     uidnumber = 5001
     primarygroup = 6502

@@ -15,13 +15,13 @@ Welcome to the repository for my home infrastructure, otherwise known as my home
 
 <div align="center">
 
-![Cluster Age](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.cfg.sh%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_age_days&style=for-the-badge&logo=kubernetes&label=Age)
-![Uptime](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.cfg.sh%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_uptime_days&style=for-the-badge&logo=kubernetes&label=Uptime)
+![Cluster Age](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.stevewm.dev%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_age_days&style=for-the-badge&logo=kubernetes&label=Age)
+![Uptime](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.stevewm.dev%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_uptime_days&style=for-the-badge&logo=kubernetes&label=Uptime)
 
-![Nodes](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.cfg.sh%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_node_count&style=for-the-badge&logo=kubernetes&label=Nodes)
-![Pods](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.cfg.sh%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_pod_count&style=for-the-badge&logo=talos&label=Pods)
-![CPU Usage](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.cfg.sh%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_cpu_usage&style=for-the-badge&logo=kubernetes&label=CPU)
-![Memory Usage](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.cfg.sh%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_memory_usage&style=for-the-badge&logo=kubernetes&label=Memory)
+![Nodes](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.stevewm.dev%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_node_count&style=for-the-badge&logo=kubernetes&label=Nodes)
+![Pods](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.stevewm.dev%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_pod_count&style=for-the-badge&logo=talos&label=Pods)
+![CPU Usage](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.stevewm.dev%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_cpu_usage&style=for-the-badge&logo=kubernetes&label=CPU)
+![Memory Usage](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.stevewm.dev%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_memory_usage&style=for-the-badge&logo=kubernetes&label=Memory)
 
 </div>
 
@@ -29,7 +29,7 @@ Welcome to the repository for my home infrastructure, otherwise known as my home
 
 ## 📚 Docs 📚
 
-Documentation can be found [here](https://stevewm.github.io/homelab/).
+Documentation can be found [on GitHub Pages](https://stevewm.github.io/homelab/).
 
 ## 🛠️ Built With
 

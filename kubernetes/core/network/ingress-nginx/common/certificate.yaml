@@ -9,7 +9,7 @@ spec:
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer
-  commonName: ${DOMAIN}
+  commonName: stevewm.dev
   dnsNames:
-    - ${DOMAIN}
-    - "*.${DOMAIN}"
+    - stevewm.dev
+    - "*.stevewm.dev"

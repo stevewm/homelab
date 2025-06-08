@@ -55,6 +55,7 @@ spec:
               tag: 0.8.1@sha256:55636d8a29588eea62d81d51acdafe38e0f694fb91801ab12dc1ed8c47b6439d
             env:
               DEBUG: "yes"
+              DOMAIN: stevewm.dev
               SMTP_RELAY_SMTP_PORT: &port 25
               SMTP_RELAY_METRICS_PORT: &metricsPort 8080
               SMTP_RELAY_SERVER_PORT: 587
