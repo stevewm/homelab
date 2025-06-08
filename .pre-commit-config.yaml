@@ -73,3 +73,10 @@ repos:
     hooks:
       - id: lychee
         args: [--no-progress, --config=.github/linters/lychee.toml]
+
+  - repo: https://github.com/docker-compose-linter/pre-commit-dclint
+    rev: v2.2.2
+    hooks:
+      - id: dclint
+        files: ^(docker-)?compose\.ya?ml
+        args: [--fix]
