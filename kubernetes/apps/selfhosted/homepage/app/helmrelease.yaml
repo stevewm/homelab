@@ -50,7 +50,7 @@ spec:
         ingressClassName: nginx-internal
         enabled: true
         hosts:
-          - host: home.${DOMAIN}
+          - host: home.stevewm.dev
             paths:
               - path: /
                 pathType: Prefix
@@ -103,19 +103,19 @@ spec:
       services:
         - network:
             - pi-hole:
-                href: http://lilnas:3001/admin/
+                href: http://lilnas.home.arpa:3001/admin/
                 icon: pi-hole.png
                 widget:
                   type: pihole
-                  url: "http://lilnas:3001"
+                  url: "http://lilnas.home.arpa:3001"
                   key: "{{HOMEPAGE_VAR_PIHOLE_API_KEY}}"
         - nas:
             - portal:
-                href: http://lilnas:8000
+                href: http://lilnas.home.arpa:8000
                 icon: asustor.png
 
             - portainer:
-                href: https://lilnas:19943
+                href: https://lilnas.home.arpa:19943
                 icon: portainer.png
       widgets:
         - kubernetes:

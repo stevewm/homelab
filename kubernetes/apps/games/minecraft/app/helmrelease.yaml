@@ -180,7 +180,7 @@ spec:
       map:
         className: nginx-external
         hosts:
-          - host: mcmap.${DOMAIN}
+          - host: mcmap.stevewm.dev
             paths:
               - path: /
                 service:
@@ -191,7 +191,7 @@ spec:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: games
           gethomepage.dev/icon: mdi-minecraft
-          external-dns.alpha.kubernetes.io/target: ext.${DOMAIN}
+          external-dns.alpha.kubernetes.io/target: ext.stevewm.dev
 
     persistence:
       data:

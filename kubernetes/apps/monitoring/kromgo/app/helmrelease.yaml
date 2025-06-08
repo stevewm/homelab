@@ -91,9 +91,9 @@ spec:
       app:
         className: "nginx-external"
         annotations:
-          external-dns.alpha.kubernetes.io/target: ext.${DOMAIN}
+          external-dns.alpha.kubernetes.io/target: ext.stevewm.dev
         hosts:
-          - host: kg.${DOMAIN}
+          - host: kg.stevewm.dev
             paths:
               - path: /
                 service:

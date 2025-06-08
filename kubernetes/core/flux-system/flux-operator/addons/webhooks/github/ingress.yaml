@@ -4,11 +4,11 @@ kind: Ingress
 metadata:
   name: fluxcd-webhook-receiver
   annotations:
-    external-dns.alpha.kubernetes.io/target: ext.${DOMAIN}
+    external-dns.alpha.kubernetes.io/target: ext.stevewm.dev
 spec:
   ingressClassName: nginx-external
   rules:
-    - host: flux-webhook.${DOMAIN}
+    - host: flux-webhook.stevewm.dev
       http:
         paths:
           - path: /hook/

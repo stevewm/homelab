@@ -10,5 +10,5 @@ spec:
       egress.home.arpa/nas: allow
   egress:
     - toCIDRSet:
-        #- cidr: lilnas/32
+        #- cidr: lilnas.home.arpa/32
         - cidr: 10.0.0.2/32 # FIXME: Fix variable substitution during bootstrap

@@ -85,14 +85,14 @@ spec:
       app:
         className: nginx-external
         hosts:
-          - host: req.${DOMAIN}
+          - host: req.stevewm.dev
             paths:
               - path: /
                 service:
                   identifier: app
                   port: http
         annotations:
-          external-dns.alpha.kubernetes.io/target: ext.${DOMAIN}
+          external-dns.alpha.kubernetes.io/target: ext.stevewm.dev
           # Fixes "Oops" app error due to custom error pages
           nginx.ingress.kubernetes.io/custom-http-errors: "599"
           gethomepage.dev/name: *app

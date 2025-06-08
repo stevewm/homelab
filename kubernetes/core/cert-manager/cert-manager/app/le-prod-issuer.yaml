@@ -16,4 +16,4 @@ spec:
               key: CLOUDFLARE_API_TOKEN
         selector:
           dnsZones:
-            - ${DOMAIN}
+            - stevewm.dev
