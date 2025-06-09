@@ -49,6 +49,7 @@ spec:
               tag: 2025.5.3
             env:
               VENV_FOLDER: /venv
+              HASS_HTTP_TRUSTED_PROXY: 10.244.0.0/24
             resources:
               requests:
                 cpu: 47m
