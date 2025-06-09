@@ -63,11 +63,6 @@ spec:
     name: homelab
     namespace: flux-system
   wait: true
-  postBuild:
-    substituteFrom:
-      - kind: ConfigMap
-        name: cluster-settings
-        optional: false
   dependsOn:
     - name: core-flux-instance
     - name: core-external-secrets
