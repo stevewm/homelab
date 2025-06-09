@@ -1,9 +1,9 @@
----
 # yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: &app recyclarr
+  name: recyclarr
 spec:
   interval: 30m
   maxHistory: 3
@@ -44,6 +44,7 @@ spec:
           labels:
             egress.home.arpa/kubedns: allow
             monitoring.home.arpa/prometheus: allow
+          restartPolicy: Never
 
         cronjob:
           schedule: "@daily"
@@ -82,12 +83,14 @@ spec:
 
     persistence:
       config:
-        type: persistentVolumeClaim
-        size: 1Gi
-        accessMode: ReadWriteOnce
+        existingClaim: recyclarr-config
+        advancedMounts:
+          recyclarr:
+            app:
+              - path: /config
       config-file:
         type: configMap
-        name: *app
+        name: recyclarr
         globalMounts:
           - path: /config/recyclarr.yml
             subPath: recyclarr.yml
