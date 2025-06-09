@@ -264,6 +264,9 @@ spec:
           datasource:
             - name: DS_PROMETHEUS
               value: Prometheus
+          constants:
+            - name: VAR_KWHPRICE
+              value: "0.0507" # https://kwhprice.eu/en/netherlands
 
       kubernetes:
         k8s-system-api-server:
