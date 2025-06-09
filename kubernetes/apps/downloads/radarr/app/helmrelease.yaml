@@ -127,7 +127,7 @@ spec:
       radarr:
         className: nginx-internal
         hosts:
-          - host: plr.stevewm.dev
+          - host: rdr.stevewm.dev
             paths:
               - path: /
                 service:
