@@ -29,6 +29,8 @@ spec:
     keepHistory: false
   values:
     fullnameOverride: external-dns-pihole
+    image:
+      tag: v0.17.0
 
     domainFilters:
       - stevewm.dev
