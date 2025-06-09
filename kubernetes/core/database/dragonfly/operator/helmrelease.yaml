@@ -89,7 +89,7 @@ spec:
                 memory: 128Mi
 
         serviceAccount:
-          identifier: dragonfly
+          identifier: dragonfly-operator
 
     service:
       app:
@@ -111,4 +111,4 @@ spec:
             scrapeTimeout: 10s
 
     serviceAccount:
-      dragonfly: {}
+      dragonfly-operator: {}
