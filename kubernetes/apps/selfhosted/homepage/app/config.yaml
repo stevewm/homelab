@@ -45,7 +45,7 @@ data:
         - portal:
             icon: asustor.png
             href: https://lilnas.home.arpa:8000
-        - portainer
+        - portainer:
             icon: portainer.png
             href: https://lilnas.home.arpa:19443
 
