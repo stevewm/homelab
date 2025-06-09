@@ -64,7 +64,7 @@ spec:
           identifier: homepage
 
     service:
-      main:
+      app:
         controller: homepage
         ports:
           http:
