@@ -53,6 +53,10 @@ spec:
 
     alertmanager:
       alertmanagerSpec:
+        alertmanagerConfiguration:
+          name: alertmanager
+          global:
+            resolveTimeout: 5m
         podMetadata:
           labels:
             egress.home.arpa/kubedns: allow
