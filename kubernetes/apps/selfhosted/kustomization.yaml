@@ -6,6 +6,7 @@ namespace: selfhosted
 resources:
   - ./cyberchef/ks.yaml
   - ./homepage/ks.yaml
+  - ./mealie/ks.yaml
   - ./stirling-pdf/ks.yaml
   - ./theme-park/ks.yaml
 components:
