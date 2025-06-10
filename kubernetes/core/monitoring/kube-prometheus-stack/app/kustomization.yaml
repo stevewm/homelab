@@ -7,5 +7,5 @@ resources:
   #- ./networkpolicy.yaml
   - ./alertmanagerconfig.yaml
   - ./externalsecret.yaml
-  - ./alerts
+  - ./prometheusrules
   - ./scrapeconfigs

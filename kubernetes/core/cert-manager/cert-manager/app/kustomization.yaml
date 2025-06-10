@@ -6,6 +6,7 @@ resources:
   - ./helmrepo.yaml
   - ./externalsecret.yaml
   - ./helmrelease.yaml
+  - ./prometheusrule.yaml
   - ./le-prod-issuer.yaml
   # - ./le-staging-issuer.yaml
   # - ./networkpolicy.yaml
