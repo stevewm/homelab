@@ -51,9 +51,9 @@ spec:
             resources:
               requests:
                 cpu: 10m
-                memory: 164M
+                memory: 164Mi
               limits:
-                memory: 244M
+                memory: 244Mi
             envFrom:
               - secretRef:
                   name: homepage-app-secrets

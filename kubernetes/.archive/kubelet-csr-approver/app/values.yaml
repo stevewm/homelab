@@ -5,6 +5,6 @@ bypassDnsResolution: true
 resources:
   requests:
     cpu: 50m
-    memory: 64M
+    memory: 64Mi
   limits:
-    memory: 128M
+    memory: 128Mi
