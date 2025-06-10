@@ -9,7 +9,7 @@ spec:
   trigger:
     schedule: ${VOLSYNC_SCHEDULE:-"0 */12 * * *"}
   restic:
-    repository: ${APP}-volsync-hetzner
+    repository: ${APP}-volsync
     copyMethod: ${VOLSYNC_COPY_METHOD:-Snapshot}
     storageClassName: ${VOLSYNC_STORAGECLASS:-local-hostpath}
     capacity: ${VOLSYNC_CAPACITY:-1Gi}

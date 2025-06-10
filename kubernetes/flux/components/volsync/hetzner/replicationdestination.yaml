@@ -8,7 +8,7 @@ spec:
   trigger:
     manual: restore-once
   restic:
-    repository: ${APP}-volsync-hetzner
+    repository: ${APP}-volsync
     copyMethod: ${VOLSYNC_COPY_METHOD:-Snapshot}
     storageClassName: ${VOLSYNC_STORAGECLASS:-local-hostpath}
     capacity: ${VOLSYNC_CAPACITY:-1Gi}
