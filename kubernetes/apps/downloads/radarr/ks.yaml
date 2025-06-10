@@ -23,7 +23,6 @@ spec:
     - name: app-sabnzbd
     - name: app-prowlarr
   components:
-    - ../../../../flux/components/volsync/b2
     - ../../../../flux/components/volsync/hetzner
   postBuild:
     substitute:
