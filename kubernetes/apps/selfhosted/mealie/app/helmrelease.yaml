@@ -62,7 +62,7 @@ spec:
                 cpu: 10m
                 memory: 32Mi
               limits:
-                memory: 192Mi
+                memory: 1Gi # why does it use so much memory my god
 
     service:
       app:
