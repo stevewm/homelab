@@ -19,9 +19,6 @@ python = "3"
 go = "latest"
 rust = "latest"
 
-# # Repo
-# "npm:mega-linter-runner" = "latest"
-
 # Flux
 "flux2" = "2.5.1"
 "pipx:flux-local" = "7.5.4"
@@ -49,4 +46,5 @@ rust = "latest"
 "pipx:pre-commit" = "latest"
 "doppler" = "latest"
 "cargo:minijinja-cli" = "2.7.0"
-"ubi:gorcon/rcon-cli" = { version = "latest", exe = "rcon"}
+"ubi:gorcon/rcon-cli" = { version = "latest", exe = "rcon" }
+# "npm:mega-linter-runner" = "latest"
