@@ -34,7 +34,7 @@ spec:
           type: RuntimeDefault
 
     controllers:
-      renew:
+      dyndns:
         type: cronjob
 
         pod:
