@@ -34,12 +34,12 @@ data:
     ---
     - network:
         - pihole:
-            icon: pihole.png
+            icon: pi-hole.png
             href: http://lilnas.home.arpa:3001/admin/login
-            description: Ad Blocking DNS
             widget:
               type: pihole
               url: http://lilnas.home.arpa:3001
+              version: 6
               key: "{{HOMEPAGE_VAR_PIHOLE_API_KEY}}"
     - nas:
         - portal:
