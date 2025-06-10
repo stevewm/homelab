@@ -62,14 +62,14 @@ spec:
                 cpu: 10m
                 memory: 32Mi
               limits:
-                memory: 1Gi # why does it use so much memory my god
+                memory: 512Mi
 
     service:
       app:
         controller: *app
         ports:
           http:
-            port: 8000
+            port: 9000
 
     ingress:
       app:
