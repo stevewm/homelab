@@ -49,4 +49,4 @@ rust = "latest"
 "pipx:pre-commit" = "latest"
 "doppler" = "latest"
 "cargo:minijinja-cli" = "2.7.0"
-#"go:github.com/gorcon/rcon-cli" = "0.10.3"
+"ubi:gorcon/rcon-cli" = { version = "latest", exe = "rcon"}
