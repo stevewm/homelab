@@ -64,9 +64,9 @@ spec:
             resources:
               requests:
                 cpu: 10m
-                memory: 50M
+                memory: 50Mi
               limits:
-                memory: 75M
+                memory: 75Mi
 
     persistence:
       renew:

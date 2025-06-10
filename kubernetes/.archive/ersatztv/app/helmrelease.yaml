@@ -63,10 +63,10 @@ spec:
             resources:
               requests:
                 cpu: 10m
-                memory: 300M
+                memory: 300Mi
               limits:
                 gpu.intel.com/i915: 1
-                memory: 4G
+                memory: 4Gi
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true

@@ -60,9 +60,9 @@ spec:
             resources:
               requests:
                 cpu: 10m
-                memory: 127M
+                memory: 127Mi
               limits:
-                memory: 318M
+                memory: 318Mi
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
@@ -81,9 +81,9 @@ spec:
             resources:
               requests:
                 cpu: 10m
-                memory: 10M
+                memory: 10Mi
               limits:
-                memory: 128M
+                memory: 128Mi
 
           exporter:
             dependsOn: app
