@@ -42,7 +42,7 @@ spec:
             egress.home.arpa/kubedns: allow
 
         cronjob:
-          schedule: "@daily"
+          schedule: "*/5 * * * *" # every 5mins
           concurrencyPolicy: Forbid
           backoffLimit: 0
           failedJobsHistory: 1
