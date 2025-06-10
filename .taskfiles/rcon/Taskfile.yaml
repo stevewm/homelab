@@ -33,9 +33,9 @@ tasks:
     requires:
       vars:
         - NAME
-    dir: "{{ .RCON_DIR }}"
+    dir: "{{ .ROOT_DIR }}"
     preconditions:
       - which rcon
     cmds:
-      - echo "Opening rcon for {{ upper .NAME }}"
+      - echo "Opening rcon for {{ upper .NAME }} ({{ .RCON_ADDRESS }}:{{ .RCON_PORT }})"
       - rcon --address {{ .RCON_ADDRESS }}:{{ .RCON_PORT }} --password $(doppler secrets get {{ upper .NAME }}_RCON_PASSWORD -p {{ .DOPPLER_PROJECT }} --plain) --type {{ .TYPE }}
