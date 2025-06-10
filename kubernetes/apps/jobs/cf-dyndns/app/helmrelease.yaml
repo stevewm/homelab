@@ -43,7 +43,7 @@ spec:
 
         cronjob:
           schedule: "*/5 * * * *" # every 5mins
-          concurrencyPolicy: Forbid
+          concurrencyPolicy: Replace
           backoffLimit: 0
           failedJobsHistory: 1
           successfulJobsHistory: 0
