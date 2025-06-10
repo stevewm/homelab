@@ -55,10 +55,7 @@ spec:
               tag: 0.1.1
             env:
               NAME: play
-              DOMAIN:
-                secretKeyRef:
-                  name: cloudflare
-                  key: zone_id
+              DOMAIN: stevewm.dev
               CF_API_TOKEN:
                 secretKeyRef:
                   name: cloudflare
