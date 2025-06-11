@@ -22,7 +22,7 @@ spec:
     keepHistory: false
   values:
     defaultPodOptions:
-      automountServiceAccountToken: false
+      automountServiceAccountToken: true
       securityContext:
         runAsNonRoot: true
         runAsUser: 65534
