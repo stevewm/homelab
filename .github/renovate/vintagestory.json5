@@ -3,13 +3,20 @@
 {
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   customDatasources: {
-    "vs-mods": {
+    "vintagestory-mod": {
       defaultRegistryUrlTemplate: "https://mods.vintagestory.at/api/mod/{{packageName}}",
       format: "json",
       transformTemplates: [
         '{"releases":[{"version": mod.releases[0].modversion, "releaseTimestamp": mod.releases[0].created}], "sourceUrl": "https://mods.vintagestory.at/" & mod.urlalias & "#tab-files"}'
         ],
     },
+    "vintagestory-stable": {
+      defaultRegistryUrlTemplate: "https://api.vintagestory.at/stable.json",
+      format: "json",
+      transformTemplates: [
+        '{"releases": $map($keys(), function($ver) {{ "version": $ver }})}'
+      ]
+    }
   },
   "customManagers": [
     {
@@ -20,13 +27,13 @@
         "- id: (?<packageName>\\S+)\\n(?<indentation>\\s+)version: (?<currentValue>\\S+)"
       ],
       autoReplaceStringTemplate: "- id: {{{packageName}}}\n{{{indentation}}}version: {{{newValue}}}",
-      datasourceTemplate: "custom.vs-mods",
+      datasourceTemplate: "custom.vintagestory-mod",
       versioningTemplate: "semver-coerced"
     },
   ],
   packageRules: [
     {
-      matchDatasources: ["custom.vs-mods"],
+      matchDatasources: ["custom.vintagestory-mod"],
       matchManagers: ["regex"],
       semanticCommitScope: "vintage-story",
       commitMessageTopic: "mod {{depName}}",
