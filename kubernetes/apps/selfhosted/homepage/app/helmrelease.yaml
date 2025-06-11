@@ -23,21 +23,13 @@ spec:
   values:
     defaultPodOptions:
       automountServiceAccountToken: true
-      securityContext:
-        runAsNonRoot: true
-        runAsUser: 65534
-        runAsGroup: 65534
-        fsGroup: 65534
-        fsGroupChangePolicy: OnRootMismatch
-        seccompProfile:
-          type: RuntimeDefault
 
     controllers:
       homepage:
         defaultContainerOptions:
           securityContext:
             allowPrivilegeEscalation: false
-            readOnlyRootFilesystem: true
+            readOnlyRootFilesystem: false
             capabilities:
               drop: [ALL]
 
