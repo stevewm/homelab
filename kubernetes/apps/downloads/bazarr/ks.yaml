@@ -23,7 +23,6 @@ spec:
     - name: app-sonarr
     - name: app-radarr
   components:
-    - ../../../../flux/components/volsync/b2
     - ../../../../flux/components/volsync/hetzner
   postBuild:
     substitute:

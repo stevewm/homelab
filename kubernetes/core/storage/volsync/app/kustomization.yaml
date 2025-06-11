@@ -5,3 +5,4 @@ kind: Kustomization
 resources:
   # - ./networkpolicy.yaml
   - ./helmrelease.yaml
+  - ./prometheusrule.yaml
