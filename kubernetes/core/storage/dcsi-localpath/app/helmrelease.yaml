@@ -7,14 +7,9 @@ metadata:
 
 spec:
   interval: 30m
-  chart:
-    spec:
-      chart: democratic-csi
-      version: 0.15.0
-      sourceRef:
-        kind: HelmRepository
-        name: democratic-csi
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: democratic-csi
   install:
     remediation:
       retries: 3

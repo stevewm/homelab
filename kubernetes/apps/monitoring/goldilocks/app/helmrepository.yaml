@@ -3,8 +3,7 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: itzg-minecraft
-  namespace: flux-system
+  name: fairwinds-stable
 spec:
   interval: 1h
-  url: https://itzg.github.io/minecraft-server-charts/
+  url: https://charts.fairwinds.com/stable
