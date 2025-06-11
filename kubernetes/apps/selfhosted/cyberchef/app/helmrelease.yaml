@@ -88,3 +88,17 @@ spec:
           gethomepage.dev/group: selfhosted
           gethomepage.dev/icon: cyberchef.png
           nginx.org/client-max-body-size: "1024m"
+
+    persistence:
+      cache:
+        type: emptyDir
+        advancedMounts:
+          cyberchef:
+            app:
+              - path: /var/cache/nginx
+      run:
+        type: emptyDir
+        advancedMounts:
+          cyberchef:
+            app:
+              - path: /var/run # nginx.pid
