@@ -35,6 +35,13 @@ spec:
 
     controllers:
       theme-park:
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+
         annotations:
           reloader.stakater.com/auto: "true"
 

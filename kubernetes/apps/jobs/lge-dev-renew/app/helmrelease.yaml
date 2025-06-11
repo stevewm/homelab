@@ -37,6 +37,13 @@ spec:
       renew:
         type: cronjob
 
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+
         pod:
           labels:
             egress.home.arpa/kubedns: allow
@@ -56,11 +63,7 @@ spec:
             command:
               - hurl
               - /hurlfile
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities:
-                drop: ["ALL"]
+
             resources:
               requests:
                 cpu: 10m

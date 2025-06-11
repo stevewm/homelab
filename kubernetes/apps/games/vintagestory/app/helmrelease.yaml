@@ -47,6 +47,14 @@ spec:
 
     controllers:
       vintagestory:
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false # fixme
+            capabilities:
+              drop: [ALL]
+        defaultContainerOptionsStrategy: merge
+
         annotations:
           reloader.stakater.com/auto: "true"
 
@@ -86,10 +94,7 @@ spec:
               limits:
                 memory: 8Gi
             securityContext:
-              allowPrivilegeEscalation: false
               readOnlyRootFilesystem: false
-              capabilities:
-                drop: [ALL]
 
           map:
             image:
@@ -109,6 +114,8 @@ spec:
                   timeoutSeconds: 1
                   failureThreshold: 3
               readiness: *probes
+            securityContext:
+              readOnlyRootFilesystem: true
 
             resources:
               requests:
@@ -116,11 +123,6 @@ spec:
                 memory: 100Mi
               limits:
                 memory: 200Mi
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFileSystem: true
-              capabilities:
-                drop: [ALL]
 
     service:
       app:

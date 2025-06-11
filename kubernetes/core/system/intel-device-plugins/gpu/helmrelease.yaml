@@ -7,15 +7,9 @@ metadata:
 spec:
   interval: 30m
   maxHistory: 3
-  chart:
-    spec:
-      chart: intel-device-plugins-gpu
-      version: 0.32.1
-      interval: 30m
-      sourceRef:
-        kind: HelmRepository
-        name: intel
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: intel-device-plugins-gpu
   install:
     remediation:
       retries: 3

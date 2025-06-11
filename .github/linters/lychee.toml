@@ -20,5 +20,6 @@ exclude = [
   'https://api.playit.cloud/agent',
   # dont like lychee
   '^https://reddit.com/',
-  '^https://dash.cloudflare.com/'
+  '^https://dash.cloudflare.com/',
+  '^https://charts.fairwinds.com/stable' # 403
 ]

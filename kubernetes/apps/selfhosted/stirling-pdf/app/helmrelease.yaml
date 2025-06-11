@@ -35,6 +35,12 @@ spec:
 
     controllers:
       stirling-pdf:
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
         pod:
           labels:
             ingress.home.arpa/nginx-internal: allow

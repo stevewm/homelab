@@ -34,6 +34,13 @@ spec:
 
     controllers:
       kromgo:
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+
         replicas: 1
         strategy: RollingUpdate
 

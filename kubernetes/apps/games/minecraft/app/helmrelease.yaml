@@ -48,8 +48,16 @@ spec:
 
     controllers:
       minecraft:
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false # fixme
+            capabilities:
+              drop: [ALL]
+
         annotations:
           reloader.stakater.com/auto: "true"
+
         pod:
           labels:
             ingress.home.arpa/nginx-external: allow
@@ -78,6 +86,7 @@ spec:
                   periodSeconds: 1
                   failureThreshold: 300
                   exec: *mc-health
+
             env:
               # Server Configuration
               ## General
@@ -134,11 +143,7 @@ spec:
                     name: *app
                     key: ops
               EXISTING_OPS_FILE: SYNCHRONIZE
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: false
-              capabilities:
-                drop: [ALL]
+
             resources:
               requests:
                 cpu: 250m
