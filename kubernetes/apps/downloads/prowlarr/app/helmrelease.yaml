@@ -35,8 +35,16 @@ spec:
 
     controllers:
       prowlarr:
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+
         annotations:
           reloader.stakater.com/auto: "true"
+
         strategy: Recreate
         pod:
           labels:
@@ -82,11 +90,6 @@ spec:
                 memory: 164Mi
               limits:
                 memory: 220Mi
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities:
-                drop: [ALL]
 
           exporter:
             dependsOn: app
@@ -102,6 +105,12 @@ spec:
                   secretKeyRef:
                     name: *app
                     key: api_key
+            resources:
+              requests:
+                cpu: 10m
+                memory: 30Mi
+              limits:
+                memory: 60Mi
 
     service:
       app:

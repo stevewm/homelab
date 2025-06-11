@@ -21,8 +21,26 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    defaultPodOptions:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534
+        runAsGroup: 65534
+        fsGroup: 65534
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+
     controllers:
       homepage:
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+
         pod:
           annotations:
             configmap.reloader.stakater.com/reload: &config homepage
@@ -34,7 +52,7 @@ spec:
             egress.home.arpa/nas: allow
 
         containers:
-          main:
+          app:
             image:
               repository: ghcr.io/gethomepage/homepage
               tag: v1.3.2

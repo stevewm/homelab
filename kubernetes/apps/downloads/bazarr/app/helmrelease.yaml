@@ -35,6 +35,13 @@ spec:
 
     controllers:
       bazarr:
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+
         annotations:
           reloader.stakater.com/auto: "true"
 
@@ -63,11 +70,6 @@ spec:
                 memory: 127Mi
               limits:
                 memory: 318Mi
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities:
-                drop: [ALL]
 
           subcleaner:
             image:
@@ -91,6 +93,7 @@ spec:
             image:
               repository: ghcr.io/onedr0p/exportarr
               tag: v2.2.0@sha256:320b0ea7399f4b9af4741dcdddd7d40c05c36b0359679305d8a54df4e97065df
+
             env:
               PORT: &metrics 9707
               URL: http://bazarr
@@ -99,6 +102,13 @@ spec:
                   secretKeyRef:
                     name: bazarr
                     key: api_key
+
+            resources:
+              requests:
+                cpu: 10m
+                memory: 30Mi
+              limits:
+                memory: 60Mi
 
     service:
       app:

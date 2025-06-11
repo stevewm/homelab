@@ -32,6 +32,13 @@ spec:
 
     controllers:
       smtp-relay:
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+
         strategy: RollingUpdate
         annotations:
           reloader.stakater.com/auto: "true"
@@ -67,11 +74,7 @@ spec:
                 enabled: true
               readiness:
                 enabled: true
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities:
-              drop: ["ALL"]
+
             resources:
               requests:
                 cpu: 10m

@@ -35,6 +35,13 @@ spec:
 
     controllers:
       jellyfin:
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+
         annotations:
           reloader.stakater.com/auto: "true"
 
@@ -87,6 +94,12 @@ spec:
               tag: v0.7.0@sha256:3a777171d39ad435cb39519e84e0a8b5c63c7e716cc06011f8140cfaabfc1baf
             args:
               - --config.file=/exporter/jellyfin.yaml
+            resources:
+              requests:
+                cpu: 10m
+                memory: 40Mi
+              limits:
+                memory: 80Mi
 
     service:
       app:
