@@ -35,6 +35,13 @@ spec:
 
     controllers:
       jellyseerr:
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+
         pod:
           labels:
             ingress.home.arpa/nginx-external: allow
@@ -68,11 +75,6 @@ spec:
                 cpu: 10m
               limits:
                 memory: 2Gi
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities:
-                drop: [ALL]
 
     service:
       app:

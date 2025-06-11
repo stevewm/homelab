@@ -37,6 +37,13 @@ spec:
       dyndns:
         type: cronjob
 
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+
         pod:
           labels:
             egress.home.arpa/kubedns: allow
@@ -60,12 +67,6 @@ spec:
                 secretKeyRef:
                   name: cloudflare
                   key: api_token
-
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities:
-                drop: ["ALL"]
 
             resources:
               requests:

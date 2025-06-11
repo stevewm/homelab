@@ -35,6 +35,13 @@ spec:
 
     controllers:
       sabnzbd:
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+
         annotations:
           reloader.stakater.com/auto: "true"
 
@@ -83,11 +90,6 @@ spec:
                 memory: 64Mi
               limits:
                 memory: 4Gi
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities:
-                drop: [ALL]
 
           exporter:
             dependsOn: app
@@ -103,6 +105,12 @@ spec:
                   secretKeyRef:
                     name: sabnzbd
                     key: api_key
+            resources:
+              requests:
+                cpu: 10m
+                memory: 30Mi
+              limits:
+                memory: 60Mi
 
     service:
       app:

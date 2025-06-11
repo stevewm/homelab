@@ -3,19 +3,14 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: grafana
+  name: &app grafana
 spec:
   interval: 30m
   timeout: 20m
   maxHistory: 3
-  chart:
-    spec:
-      chart: grafana
-      version: 9.2.2
-      sourceRef:
-        kind: HelmRepository
-        name: grafana
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: *app
   install:
     remediation:
       retries: 3

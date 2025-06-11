@@ -37,6 +37,13 @@ spec:
       recyclarr:
         type: cronjob
 
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+
         annotations:
           reloader.stakater.com/auto: "true"
 
@@ -69,11 +76,6 @@ spec:
                   name: sonarr
                   key: api_key
             args: ["sync"]
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities:
-                drop: ["ALL"]
             resources:
               requests:
                 cpu: 10m
