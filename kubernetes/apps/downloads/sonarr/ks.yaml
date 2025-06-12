@@ -24,6 +24,7 @@ spec:
     - name: app-prowlarr
   components:
     - ../../../../flux/components/volsync/hetzner
+    - ../../../../flux/components/keda/nas-nfs-scaler
   postBuild:
     substitute:
       APP: *app
