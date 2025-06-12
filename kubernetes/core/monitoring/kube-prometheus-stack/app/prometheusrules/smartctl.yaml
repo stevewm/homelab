@@ -48,7 +48,7 @@ spec:
           labels:
             severity: critical
 
-        - alert: SmartDeviceAvailableSpareUnderThreadhold
+        - alert: SmartDeviceAvailableSpareUnderThreshold
           expr: |
             smartctl_device_available_spare_threshold > smartctl_device_available_spare
           for: 5m
