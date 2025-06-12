@@ -24,7 +24,7 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    alertmanagerAddress: http://alertmanager.monitoring.svc.cluster.local:9093
+    alertmanagerAddress: http://alertmanager-operated.monitoring.svc.cluster.local:9093
     image:
       registry: quay.io
       # TODO: Enable on next Flux release and remove name & tag
