@@ -11,7 +11,7 @@ spec:
     staticConfig:
       static:
         - lilnas.home.arpa # nas
-        - P115.home.arpa   # rack plug
+        - P115.home.arpa # rack plug
 
 ---
 apiVersion: monitoring.coreos.com/v1
