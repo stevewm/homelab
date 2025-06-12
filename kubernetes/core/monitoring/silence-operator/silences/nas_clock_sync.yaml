@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://k8s-schemas.bjw-s.dev/monitoring.giantswarm.io/silence_v1alpha1.json
+---
+apiVersion: monitoring.giantswarm.io/v1alpha1
+kind: Silence
+metadata:
+  name: nas-clock-sync
+spec: # it's definitely synced ¯\_(ツ)_/¯
+  matchers:
+    - name: alertname
+      value: NodeClockNotSynchronising
+      isRegex: false
+    - name: instance
+      value: lilnas.home.arpa:9100
+      isRegex: false
