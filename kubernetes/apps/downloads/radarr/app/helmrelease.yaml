@@ -169,3 +169,13 @@ spec:
         path: /volume1/Media
         globalMounts:
           - path: /data/media
+      refresh:
+        type: secret
+        name: scripts
+        defaultMode: 0755
+        advancedMounts:
+          sonarr:
+            app:
+              - path: /scripts/jellyfin-refresh.sh
+                subPath: jellyfin-refresh.sh
+                readOnly: true

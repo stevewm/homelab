@@ -169,6 +169,19 @@ spec:
           - path: /data/media
       config:
         existingClaim: sabnzbd-config
+      refresh:
+        type: secret
+        name: scripts
+        defaultMode: 0755
+        advancedMounts:
+          sabnzbd:
+            app:
+              - path: /scripts/radarr-refresh.sh
+                subPath: radarr-refresh.sh
+                readOnly: true
+              - path: /scripts/sonarr-refresh.sh
+                subPath: sonarr-refresh.sh
+                readOnly: true
       tmp:
         type: emptyDir
         globalMounts:
