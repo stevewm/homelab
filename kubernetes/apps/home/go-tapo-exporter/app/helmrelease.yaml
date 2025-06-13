@@ -86,7 +86,7 @@ spec:
           - port: metrics
             scheme: http
             path: /metrics
-            interval: 15m
+            interval: 5m
             scrapeTimeout: 2m
 
     persistence:
