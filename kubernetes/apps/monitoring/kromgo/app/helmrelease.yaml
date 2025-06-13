@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -34,6 +34,13 @@ spec:
 
     controllers:
       kromgo:
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+
         replicas: 1
         strategy: RollingUpdate
 
@@ -76,9 +83,9 @@ spec:
             resources:
               requests:
                 cpu: 5m
-                memory: 10M
+                memory: 10Mi
               limits:
-                memory: 64M
+                memory: 64Mi
 
     service:
       app:
@@ -91,9 +98,9 @@ spec:
       app:
         className: "nginx-external"
         annotations:
-          external-dns.alpha.kubernetes.io/target: ext.${DOMAIN}
+          external-dns.alpha.kubernetes.io/target: ext.stevewm.dev
         hosts:
-          - host: kg.${DOMAIN}
+          - host: kg.stevewm.dev
             paths:
               - path: /
                 service:

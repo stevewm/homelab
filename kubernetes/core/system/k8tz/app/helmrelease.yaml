@@ -3,19 +3,14 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: k8tz
+  name: &app k8tz
 spec:
-  releaseName: k8tz
+  releaseName: *app
   interval: 30m
   maxHistory: 3
-  chart:
-    spec:
-      chart: k8tz
-      version: 0.18.0
-      sourceRef:
-        kind: HelmRepository
-        name: k8tz
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: *app
   install:
     remediation:
       retries: 3
@@ -33,6 +28,6 @@ spec:
     resources:
       requests:
         cpu: 10m
-        memory: 32M
+        memory: 32Mi
       limits:
-        memory: 48M
+        memory: 48Mi

@@ -23,3 +23,9 @@ spec:
     - name: app-sabnzbd
     - name: app-sonarr
     - name: app-radarr
+  components:
+    - ../../../../flux/components/volsync/hetzner
+  postBuild:
+    substitute:
+      APP: recyclarr
+      VOLSYNC_CLAIM: recyclarr-config

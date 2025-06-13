@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -47,6 +47,13 @@ spec:
 
     controllers:
       authelia:
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+
         replicas: 1
         strategy: RollingUpdate
 
@@ -86,6 +93,7 @@ spec:
                   name: authelia-db
               - secretRef:
                   name: authelia-generated
+
             env:
               AUTHELIA_SERVER_ADDRESS: tcp://0.0.0.0:80
               AUTHELIA_SERVER_DISABLE_HEALTHCHECK: "true"
@@ -94,6 +102,7 @@ spec:
               AUTHELIA_THEME: dark
               X_AUTHELIA_CONFIG: /config/config.yaml
               X_AUTHELIA_CONFIG_FILTERS: expand-env
+
             probes:
               liveness: &probes
                 enabled: true
@@ -107,11 +116,7 @@ spec:
                   timeoutSeconds: 1
                   failureThreshold: 3
               readiness: *probes
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities:
-              drop: ["ALL"]
+
             resources:
               requests:
                 cpu: 10m
@@ -139,14 +144,14 @@ spec:
       app:
         className: nginx-internal
         annotations:
-          # external-dns.alpha.kubernetes.io/target: ext.${DOMAIN}
+          # external-dns.alpha.kubernetes.io/target: ext.stevewm.dev
           nginx.ingress.kubernetes.io/configuration-snippet: |
             add_header Cache-Control "no-store";
             add_header Pragma "no-cache";
             add_header X-Frame-Options "SAMEORIGIN";
             add_header X-XSS-Protection "1; mode=block";
         hosts:
-          - host: sso.${DOMAIN}
+          - host: sso.stevewm.dev
             paths:
               - path: /
                 service:

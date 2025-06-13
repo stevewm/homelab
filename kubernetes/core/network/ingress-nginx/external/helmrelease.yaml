@@ -15,7 +15,6 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: ingress-nginx
-        namespace: flux-system
   install:
     remediation:
       retries: 3
@@ -49,7 +48,7 @@ spec:
 
       service:
         annotations:
-          external-dns.alpha.kubernetes.io/hostname: ext.${DOMAIN}
+          external-dns.alpha.kubernetes.io/hostname: ext.stevewm.dev
 
       config:
         custom-http-errors: >-
@@ -131,6 +130,6 @@ spec:
     resources:
       requests:
         cpu: 10m
-        memory: 272M
+        memory: 272Mi
       limits:
-        memory: 326M
+        memory: 326Mi

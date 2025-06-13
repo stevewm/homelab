@@ -8,14 +8,9 @@ spec:
   releaseName: external-dns-cloudflare
   interval: 30m
   maxHistory: 3
-  chart:
-    spec:
-      chart: external-dns
-      version: 1.16.1
-      sourceRef:
-        kind: HelmRepository
-        name: external-dns
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: external-dns
   install:
     remediation:
       retries: 3
@@ -31,7 +26,7 @@ spec:
     fullnameOverride: external-dns-cloudflare
 
     domainFilters:
-      - ${DOMAIN}
+      - stevewm.dev
 
     podLabels:
       egress.home.arpa/apiserver: allow
@@ -78,6 +73,6 @@ spec:
     resources:
       requests:
         cpu: 10m
-        memory: 32M
+        memory: 32Mi
       limits:
-        memory: 50M
+        memory: 50Mi

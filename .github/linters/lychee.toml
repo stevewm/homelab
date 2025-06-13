@@ -12,11 +12,14 @@ exclude_path = [
   ]
 
 exclude = [
-  '.*\.local',
+  '.*\.local', # kubernetes
+  '.*\.home.arpa', # home network
   '^[a-zA-Z]+:\/\/\w+(:\d+)?(\/.*)?$', # ignore hostname protocol addresses (tcp://)
+  '^https:\/\/(?:[a-zA-Z0-9-]+\.)?stevewm\.dev\/?',
   'https:\/\/grafana\.com\/api\/.*',
   'https://api.playit.cloud/agent',
   # dont like lychee
   '^https://reddit.com/',
-  '^https://dash.cloudflare.com/'
+  '^https://dash.cloudflare.com/',
+  '^https://charts.fairwinds.com/stable' # 403
 ]

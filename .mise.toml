@@ -9,6 +9,8 @@ KUBECONFIG = "{{ config_root }}/kubernetes/kubeconfig"
 TALOSCONFIG = "{{ config_root }}/kubernetes/talos/clusterconfig/talosconfig"
 MINIJINJA_CONFIG_FILE="{{ config_root }}/.github/.minijinja.toml"
 HOMEBREW_BREWFILE="{{ config_root }}/.github/Brewfile"
+_.source = "./.github/scripts/env.sh"
+_.path = ['{{config_root}}/node_modules/.bin'] # megalinter
 
 [tools]
 uv = "latest"
@@ -44,4 +46,5 @@ rust = "latest"
 "pipx:pre-commit" = "latest"
 "doppler" = "latest"
 "cargo:minijinja-cli" = "2.7.0"
-#"go:github.com/gorcon/rcon-cli" = "0.10.3"
+"ubi:gorcon/rcon-cli" = { version = "latest", exe = "rcon" }
+# "npm:mega-linter-runner" = "latest"

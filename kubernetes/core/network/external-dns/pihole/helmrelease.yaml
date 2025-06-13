@@ -8,14 +8,9 @@ spec:
   releaseName: external-dns-pihole
   interval: 30m
   maxHistory: 3
-  chart:
-    spec:
-      chart: external-dns
-      version: 1.16.1
-      sourceRef:
-        kind: HelmRepository
-        name: external-dns
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: external-dns
   install:
     remediation:
       retries: 3
@@ -29,9 +24,11 @@ spec:
     keepHistory: false
   values:
     fullnameOverride: external-dns-pihole
+    image:
+      tag: v0.17.0
 
     domainFilters:
-      - ${DOMAIN}
+      - stevewm.dev
 
     podLabels:
       egress.home.arpa/apiserver: allow
@@ -49,7 +46,6 @@ spec:
     policy: upsert-only
     registry: noop
     provider: pihole
-    extraArgs: ["--pihole-api-version=6"]
 
     sources:
       - ingress
@@ -57,7 +53,9 @@ spec:
 
     env:
       - name: EXTERNAL_DNS_PIHOLE_SERVER
-        value: http://lilnas:3001
+        value: http://lilnas.home.arpa:3001
+      - name: EXTERNAL_DNS_PIHOLE_API_VERSION
+        value: "6"
       - name: EXTERNAL_DNS_PIHOLE_PASSWORD
         valueFrom:
           secretKeyRef:
@@ -67,6 +65,6 @@ spec:
     resources:
       requests:
         cpu: 10m
-        memory: 32M
+        memory: 32Mi
       limits:
-        memory: 50M
+        memory: 50Mi

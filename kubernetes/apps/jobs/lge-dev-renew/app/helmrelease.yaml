@@ -1,0 +1,82 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: lge-dev-renew
+spec:
+  interval: 30m
+  maxHistory: 3
+  chartRef:
+    kind: OCIRepository
+    name: app-template
+    namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    defaultPodOptions:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534
+        runAsGroup: 65534
+        fsGroup: 65534
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+
+    controllers:
+      renew:
+        type: cronjob
+
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+
+        pod:
+          labels:
+            egress.home.arpa/kubedns: allow
+
+        cronjob:
+          schedule: "@daily"
+          concurrencyPolicy: Forbid
+          backoffLimit: 0
+          failedJobsHistory: 1
+          successfulJobsHistory: 0
+
+        containers:
+          app:
+            image:
+              repository: ghcr.io/orange-opensource/hurl
+              tag: 6.1.1@sha256:0fafe31238304394bcba7ab49509dcbb4356798b6a99973d41ef722f6cbbb1e9
+            command:
+              - hurl
+              - /hurlfile
+
+            resources:
+              requests:
+                cpu: 10m
+                memory: 50Mi
+              limits:
+                memory: 75Mi
+
+    persistence:
+      renew:
+        type: secret
+        name: lge
+        advancedMounts:
+          renew:
+            app:
+              - path: /hurlfile
+                subPath: hurlfile

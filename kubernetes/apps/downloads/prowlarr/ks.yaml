@@ -22,7 +22,7 @@ spec:
   dependsOn:
     - name: app-sabnzbd
   components:
-    - ../../../../flux/components/volsync/b2
+    - ../../../../flux/components/volsync/hetzner
   postBuild:
     substitute:
       APP: *app

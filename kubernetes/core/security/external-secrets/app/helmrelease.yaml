@@ -8,14 +8,9 @@ spec:
   releaseName: external-secrets-operator
   interval: 30m
   maxHistory: 3
-  chart:
-    spec:
-      chart: external-secrets
-      version: 0.17.0
-      sourceRef:
-        kind: HelmRepository
-        name: external-secrets
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: external-secrets
   install:
     remediation:
       retries: 3
@@ -45,6 +40,6 @@ spec:
     resources:
       requests:
         cpu: 10m
-        memory: 80M
+        memory: 50Mi
       limits:
-        cpu: 20m
+        memory: 80Mi

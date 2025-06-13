@@ -3,19 +3,13 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: cilium
+  name: &app cilium
 spec:
   interval: 30m
   maxHistory: 3
-  chart:
-    spec:
-      chart: cilium
-      version: 1.17.4
-      interval: 30m
-      sourceRef:
-        kind: HelmRepository
-        name: cilium
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: *app
   install:
     remediation:
       retries: 3
@@ -36,7 +30,7 @@ spec:
           enabled: true
           className: nginx-internal
           hosts:
-            - cni.${DOMAIN}
+            - cni.stevewm.dev
           annotations:
             gethomepage.dev/name: hubble
             gethomepage.dev/enabled: "true"

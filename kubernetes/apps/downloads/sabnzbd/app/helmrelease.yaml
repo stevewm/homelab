@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -35,6 +35,13 @@ spec:
 
     controllers:
       sabnzbd:
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+
         annotations:
           reloader.stakater.com/auto: "true"
 
@@ -63,7 +70,7 @@ spec:
                     name: sabnzbd
                     key: nzb_key
               SABNZBD__HOST_WHITELIST_ENTRIES: >-
-                sabnzbd, sabnzbd.downloads, sabnzbd.downloads.svc, sabnzbd.downloads.svc.cluster, sabnzbd.downloads.svc.cluster.local, nzb.${DOMAIN}
+                sabnzbd, sabnzbd.downloads, sabnzbd.downloads.svc, sabnzbd.downloads.svc.cluster, sabnzbd.downloads.svc.cluster.local, nzb.stevewm.dev
             probes:
               liveness: &probes
                 enabled: true
@@ -80,14 +87,9 @@ spec:
             resources:
               requests:
                 cpu: 10m
-                memory: 64M
+                memory: 64Mi
               limits:
-                memory: 4G
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities:
-                drop: [ALL]
+                memory: 4Gi
 
           exporter:
             dependsOn: app
@@ -103,11 +105,16 @@ spec:
                   secretKeyRef:
                     name: sabnzbd
                     key: api_key
+            resources:
+              requests:
+                cpu: 10m
+                memory: 30Mi
+              limits:
+                memory: 60Mi
 
     service:
       app:
         controller: *app
-        nameOverride: *app
         ports:
           http:
             port: *port
@@ -130,7 +137,7 @@ spec:
         enabled: true
         className: nginx-internal
         hosts:
-          - host: nzb.${DOMAIN}
+          - host: nzb.stevewm.dev
             paths:
               - path: /
                 service:
@@ -149,14 +156,14 @@ spec:
             proxy_set_header Accept-Encoding "";
             sub_filter
             '</head>'
-            '<link rel="stylesheet" type="text/css" href="https://themes.${DOMAIN}/css/base/sabnzbd/plex.css">
+            '<link rel="stylesheet" type="text/css" href="https://themes.stevewm.dev/css/base/sabnzbd/plex.css">
             </head>';
             sub_filter_once on;
 
     persistence:
       media:
         type: nfs
-        server: lilnas
+        server: lilnas.home.arpa
         path: /volume1/Media
         globalMounts:
           - path: /data/media

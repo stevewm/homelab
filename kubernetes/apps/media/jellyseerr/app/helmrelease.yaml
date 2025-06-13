@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -35,6 +35,13 @@ spec:
 
     controllers:
       jellyseerr:
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+
         pod:
           labels:
             ingress.home.arpa/nginx-external: allow
@@ -45,7 +52,7 @@ spec:
           app:
             image:
               repository: ghcr.io/fallenbagel/jellyseerr
-              tag: 2.5.2@sha256:cf84b74c32d3049554ae02ac1da2e9e5affc693fe4263f859e804da77fe7f98f
+              tag: 2.6.0@sha256:8f320036d937d84c385ea5800f87d69ba16ec4d3770fccf6cad803b5e8d66a52
             env:
               LOG_LEVEL: info
               PORT: &port 80
@@ -68,11 +75,6 @@ spec:
                 cpu: 10m
               limits:
                 memory: 2Gi
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities:
-                drop: [ALL]
 
     service:
       app:
@@ -85,14 +87,14 @@ spec:
       app:
         className: nginx-external
         hosts:
-          - host: req.${DOMAIN}
+          - host: req.stevewm.dev
             paths:
               - path: /
                 service:
                   identifier: app
                   port: http
         annotations:
-          external-dns.alpha.kubernetes.io/target: ext.${DOMAIN}
+          external-dns.alpha.kubernetes.io/target: ext.stevewm.dev
           # Fixes "Oops" app error due to custom error pages
           nginx.ingress.kubernetes.io/custom-http-errors: "599"
           gethomepage.dev/name: *app

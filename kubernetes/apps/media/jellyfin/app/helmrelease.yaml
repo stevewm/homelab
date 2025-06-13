@@ -35,6 +35,13 @@ spec:
 
     controllers:
       jellyfin:
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+
         annotations:
           reloader.stakater.com/auto: "true"
 
@@ -87,6 +94,12 @@ spec:
               tag: v0.7.0@sha256:3a777171d39ad435cb39519e84e0a8b5c63c7e716cc06011f8140cfaabfc1baf
             args:
               - --config.file=/exporter/jellyfin.yaml
+            resources:
+              requests:
+                cpu: 10m
+                memory: 40Mi
+              limits:
+                memory: 80Mi
 
     service:
       app:
@@ -104,14 +117,14 @@ spec:
       app:
         className: nginx-external
         hosts:
-          - host: watch.${DOMAIN}
+          - host: watch.stevewm.dev
             paths:
               - path: /
                 service:
                   identifier: app
                   port: http
         annotations:
-          external-dns.alpha.kubernetes.io/target: ext.${DOMAIN}
+          external-dns.alpha.kubernetes.io/target: ext.stevewm.dev
           gethomepage.dev/name: *app
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: media
@@ -123,7 +136,7 @@ spec:
             proxy_set_header Accept-Encoding "";
             sub_filter
             '</head>'
-            '<link rel="stylesheet" type="text/css" href="https://themes.${DOMAIN}/css/base/jellyfin/plex.css">
+            '<link rel="stylesheet" type="text/css" href="https://themes.stevewm.dev/css/base/jellyfin/plex.css">
             </head>';
             sub_filter_once on;
 
@@ -136,7 +149,7 @@ spec:
         type: emptyDir
       media:
         type: nfs
-        server: lilnas
+        server: lilnas.home.arpa
         path: /volume1/Media
         globalMounts:
           - path: /data/media

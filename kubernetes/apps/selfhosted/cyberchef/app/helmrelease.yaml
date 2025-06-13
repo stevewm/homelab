@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -35,6 +35,13 @@ spec:
 
     controllers:
       cyberchef:
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+
         pod:
           labels:
             ingress.home.arpa/nginx-internal: allow
@@ -42,8 +49,8 @@ spec:
         containers:
           app:
             image:
-              repository: mpepping/cyberchef
-              tag: v10.19.4
+              repository: ghcr.io/gchq/cyberchef
+              tag: v10.19.4@sha256:a2bfe382b2547bdd0a3d0523b9a6b85fab833c56bcec86d600ba6266910b533e
             probes:
               liveness:
                 enabled: true
@@ -54,22 +61,22 @@ spec:
             resources:
               requests:
                 cpu: 10m
-                memory: 32M
+                memory: 32Mi
               limits:
-                memory: 64M
+                memory: 64Mi
 
     service:
       app:
         controller: *app
         ports:
           http:
-            port: 8000
+            port: 80
 
     ingress:
       app:
         className: nginx-internal
         hosts:
-          - host: cc.${DOMAIN}
+          - host: cc.stevewm.dev
             paths:
               - path: /
                 service:
@@ -81,3 +88,17 @@ spec:
           gethomepage.dev/group: selfhosted
           gethomepage.dev/icon: cyberchef.png
           nginx.org/client-max-body-size: "1024m"
+
+    persistence:
+      cache:
+        type: emptyDir
+        advancedMounts:
+          cyberchef:
+            app:
+              - path: /var/cache/nginx
+      run:
+        type: emptyDir
+        advancedMounts:
+          cyberchef:
+            app:
+              - path: /var/run # nginx.pid

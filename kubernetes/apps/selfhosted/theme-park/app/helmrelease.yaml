@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -35,6 +35,13 @@ spec:
 
     controllers:
       theme-park:
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+
         annotations:
           reloader.stakater.com/auto: "true"
 
@@ -46,9 +53,9 @@ spec:
           app:
             image:
               repository: ghcr.io/home-operations/theme-park
-              tag: 1.20.1@sha256:810bc350f73d11d0a71613dd7a71f25444f03d73a13b027e974c182d6011ab56
+              tag: 1.21.0@sha256:f4be0eda98d602398bfc28796960d8a6066880d5d203b7e7c538bb825363a810
             env:
-              TP_DOMAIN: &host themes.${DOMAIN}
+              TP_DOMAIN: &host themes.stevewm.dev
               TP_THEME: plex
             probes:
               liveness:
@@ -60,9 +67,9 @@ spec:
             resources:
               requests:
                 cpu: 13m
-                memory: 32M
+                memory: 32Mi
               limits:
-                memory: 64M
+                memory: 64Mi
 
     service:
       app:
@@ -84,4 +91,6 @@ spec:
 
     persistence:
       config:
+        type: emptyDir
+      tmp:
         type: emptyDir

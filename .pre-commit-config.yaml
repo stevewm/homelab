@@ -43,7 +43,7 @@ repos:
   #     #     )$
 
   - repo: https://github.com/renovatebot/pre-commit-hooks
-    rev: 40.48.0
+    rev: 40.54.0
     hooks:
       - id: renovate-config-validator
         files: |
@@ -61,6 +61,7 @@ repos:
     rev: v1.7.7
     hooks:
       - id: actionlint
+        args: [-config-file=.github/linters/actionlint.yaml]
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.11.13
@@ -73,3 +74,10 @@ repos:
     hooks:
       - id: lychee
         args: [--no-progress, --config=.github/linters/lychee.toml]
+
+  - repo: https://github.com/docker-compose-linter/pre-commit-dclint
+    rev: v3.0.0
+    hooks:
+      - id: dclint
+        files: ^(docker-)?compose\.ya?ml
+        args: [--fix]

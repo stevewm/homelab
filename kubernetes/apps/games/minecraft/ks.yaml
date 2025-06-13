@@ -21,10 +21,10 @@ spec:
     namespace: flux-system
   wait: true
   components:
-    - ../../../../flux/components/volsync/b2
+    - ../../../../flux/components/volsync/hetzner
   postBuild:
     substitute:
       APP: *app
       VOLSYNC_CLAIM: minecraft-server
       VOLSYNC_CAPACITY: "12Gi"
-      VOLSYNC_SCHEDULE: "0 */3 * * *" # Every 3hrs
+      VOLSYNC_SCHEDULE: "0 */2 * * *" # Every 2hrs

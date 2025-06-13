@@ -23,7 +23,8 @@ spec:
     - name: app-sonarr
     - name: app-radarr
   components:
-    - ../../../../flux/components/volsync/b2
+    - ../../../../flux/components/volsync/hetzner
+    - ../../../../flux/components/keda/nas-nfs-scaler
   postBuild:
     substitute:
       APP: *app

@@ -3,19 +3,14 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: grafana
+  name: &app grafana
 spec:
   interval: 30m
   timeout: 20m
   maxHistory: 3
-  chart:
-    spec:
-      chart: grafana
-      version: 9.2.2
-      sourceRef:
-        kind: HelmRepository
-        name: grafana
-        namespace: flux-system
+  chartRef:
+    kind: OCIRepository
+    name: *app
   install:
     remediation:
       retries: 3
@@ -162,6 +157,14 @@ spec:
             - name: DS_PROMETHEUS
               value: Prometheus
 
+        blackbox-http:
+          # renovate: dashboardName="Blackbox Exporter (HTTP prober)"
+          gnetId: 13659
+          revision: 1
+          datasource:
+            - name: DS_PROMETHEUS
+              value: Prometheus
+
         volsync:
           # renovate: dashboardName="VolSync Dashboard"
           gnetId: 21356
@@ -202,43 +205,6 @@ spec:
             - name: DS_PROMETHEUS
               value: Prometheus
 
-      crunchy-postgres:
-        crunchy-pgbackrest:
-          url: https://raw.githubusercontent.com/CrunchyData/postgres-operator-examples/main/kustomize/monitoring/grafana/dashboards/pgbackrest.json
-          datasource:
-            - name: DS_PROMETHEUS
-              value: Prometheus
-        crunchy-pod-details:
-          url: https://raw.githubusercontent.com/CrunchyData/postgres-operator-examples/main/kustomize/monitoring/grafana/dashboards/pod_details.json
-          datasource:
-            - name: DS_PROMETHEUS
-              value: Prometheus
-        crunchy-postgresql-details:
-          url: https://raw.githubusercontent.com/CrunchyData/postgres-operator-examples/main/kustomize/monitoring/grafana/dashboards/postgresql_details.json
-          datasource:
-            - name: DS_PROMETHEUS
-              value: Prometheus
-        crunchy-postgresql-overview:
-          url: https://raw.githubusercontent.com/CrunchyData/postgres-operator-examples/main/kustomize/monitoring/grafana/dashboards/postgresql_overview.json
-          datasource:
-            - name: DS_PROMETHEUS
-              value: Prometheus
-        crunchy-postgresql-service_health:
-          url: https://raw.githubusercontent.com/CrunchyData/postgres-operator-examples/main/kustomize/monitoring/grafana/dashboards/postgresql_service_health.json
-          datasource:
-            - name: DS_PROMETHEUS
-              value: Prometheus
-        crunchy-prometheus-alerts:
-          url: https://raw.githubusercontent.com/CrunchyData/postgres-operator-examples/main/kustomize/monitoring/grafana/dashboards/prometheus_alerts.json
-          datasource:
-            - name: DS_PROMETHEUS
-              value: Prometheus
-        crunchy-query-statistics:
-          url: https://raw.githubusercontent.com/CrunchyData/postgres-operator-examples/main/kustomize/monitoring/grafana/dashboards/query_statistics.json
-          datasource:
-            - name: DS_PROMETHEUS
-              value: Prometheus
-
       flux:
         flux-control-plane:
           url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/control-plane.json
@@ -264,6 +230,9 @@ spec:
           datasource:
             - name: DS_PROMETHEUS
               value: Prometheus
+          constants:
+            - name: VAR_KWHPRICE
+              value: "0.0507" # https://kwhprice.eu/en/netherlands
 
       kubernetes:
         k8s-system-api-server:
@@ -295,6 +264,9 @@ spec:
           # renovate: dashboardName="K8s / Storage / Volumes / Cluster"
           gnetId: 11454
           revision: 14
+          datasource: Prometheus
+        keda:
+          url: https://raw.githubusercontent.com/kedacore/keda/refs/heads/main/config/grafana/keda-dashboard.json
           datasource: Prometheus
 
       media:
@@ -358,7 +330,9 @@ spec:
           # renovate: dashboardName="Node Exporter Full"
           gnetId: 1860
           revision: 40
-          datasource: Prometheus
+          datasource:
+            - name: DS_PROMETHEUS
+              value: Prometheus
 
         node-feature-discovery:
           url: https://raw.githubusercontent.com/kubernetes-sigs/node-feature-discovery/master/examples/grafana-dashboard.json
@@ -423,7 +397,7 @@ spec:
       GF_NEWS_NEWS_FEED_ENABLED: false
       GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS: natel-discrete-panel,pr0ps-trackmap-panel,panodata-map-panel
       GF_SECURITY_COOKIE_SAMESITE: grafana
-      GF_SERVER_ROOT_URL: https://graf.${DOMAIN}
+      GF_SERVER_ROOT_URL: https://graf.stevewm.dev
       # # OAUTH
       # GF_AUTH_GENERIC_OAUTH_ENABLED: tr
       # GF_AUTH_GENERIC_OAUTH_NAME: Authelia
@@ -434,9 +408,9 @@ spec:
       #     key: client_secret
       # GF_AUTH_GENERIC_OAUTH_SCOPES: "openid profile email groups"
       # GF_AUTH_GENERIC_OAUTH_EMPTY_SCOPES: "false"
-      # GF_AUTH_GENERIC_OAUTH_AUTH_URL: https://sso.${DOMAIN}/api/oidc/authorization
-      # GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://sso.${DOMAIN}/api/oidc/token
-      # GF_AUTH_GENERIC_OAUTH_API_URL: https://sso.${DOMAIN}/api/oidc/userinfo
+      # GF_AUTH_GENERIC_OAUTH_AUTH_URL: https://sso.stevewm.dev/api/oidc/authorization
+      # GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://sso.stevewm.dev/api/oidc/token
+      # GF_AUTH_GENERIC_OAUTH_API_URL: https://sso.stevewm.dev/api/oidc/userinfo
       # GF_AUTH_GENERIC_OAUTH_LOGIN_ATTRIBUTE_PATH: preferred_username
       # GF_AUTH_GENERIC_OAUTH_GROUPS_ATTRIBUTE_PATH: "groups"
       # GF_AUTH_GENERIC_OAUTH_NAME_ATTRIBUTE_PATH: name
@@ -450,7 +424,7 @@ spec:
       enabled: true
       ingressClassName: nginx-internal
       hosts:
-        - graf.${DOMAIN}
+        - graf.stevewm.dev
       annotations:
         nginx.ingress.kubernetes.io/custom-http-errors: "599"
         gethomepage.dev/name: grafana

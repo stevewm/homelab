@@ -1,8 +1,13 @@
+.env.txt
+
 # General
 kubeconfig
 Brewfile.lock.json
 *.log
 .github/mkdocs/site
+
+# node
+node_modules
 
 # macOS
 .DS_Store

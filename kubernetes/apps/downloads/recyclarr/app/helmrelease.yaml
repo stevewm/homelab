@@ -1,9 +1,9 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: &app recyclarr
+  name: recyclarr
 spec:
   interval: 30m
   maxHistory: 3
@@ -37,6 +37,13 @@ spec:
       recyclarr:
         type: cronjob
 
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+
         annotations:
           reloader.stakater.com/auto: "true"
 
@@ -44,6 +51,7 @@ spec:
           labels:
             egress.home.arpa/kubedns: allow
             monitoring.home.arpa/prometheus: allow
+          restartPolicy: Never
 
         cronjob:
           schedule: "@daily"
@@ -68,26 +76,23 @@ spec:
                   name: sonarr
                   key: api_key
             args: ["sync"]
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities:
-                drop: ["ALL"]
             resources:
               requests:
                 cpu: 10m
-                memory: 37M
+                memory: 37Mi
               limits:
-                memory: 220M
+                memory: 220Mi
 
     persistence:
       config:
-        type: persistentVolumeClaim
-        size: 1Gi
-        accessMode: ReadWriteOnce
+        existingClaim: recyclarr-config
+        advancedMounts:
+          recyclarr:
+            app:
+              - path: /config
       config-file:
         type: configMap
-        name: *app
+        name: recyclarr
         globalMounts:
           - path: /config/recyclarr.yml
             subPath: recyclarr.yml

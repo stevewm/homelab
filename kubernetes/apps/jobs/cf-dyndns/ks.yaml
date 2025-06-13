@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: app-cf-dyndns
+  namespace: &namespace jobs
+spec:
+  targetNamespace: *namespace
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: cf-dyndns
+  interval: 30m
+  timeout: 5m
+  path: ./kubernetes/apps/jobs/cf-dyndns/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+    namespace: flux-system
+  wait: true

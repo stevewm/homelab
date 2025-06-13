@@ -15,7 +15,6 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: fairwinds-stable
-        namespace: flux-system
   install:
     remediation:
       retries: 3
@@ -49,7 +48,7 @@ spec:
           gethomepage.dev/group: monitoring
           gethomepage.dev/icon: kubernetes.png
         hosts:
-          - host: goldilocks.${DOMAIN}
+          - host: goldilocks.stevewm.dev
             paths:
               - path: /
                 type: Prefix

@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -35,6 +35,13 @@ spec:
 
     controllers:
       tapo:
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+
         annotations:
           reloader.stakater.com/auto: "true"
 
@@ -63,30 +70,23 @@ spec:
             resources:
               requests:
                 cpu: 10m
-                memory: 64M
+                memory: 64Mi
               limits:
-                memory: 128M
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities:
-                drop: [ALL]
+                memory: 128Mi
+
     service:
       app:
-        controller: tapo
         ports:
           metrics:
             port: 8086
 
     serviceMonitor:
       metrics:
-        enabled: true
-        serviceName: tapo
         endpoints:
           - port: metrics
             scheme: http
             path: /metrics
-            interval: 15m
+            interval: 5m
             scrapeTimeout: 2m
 
     persistence:

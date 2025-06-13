@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -47,6 +47,13 @@ spec:
 
     controllers:
       archiveteam-warrior:
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+
         pod:
           labels:
             ingress.home.arpa/nginx-internal: allow
@@ -58,7 +65,7 @@ spec:
           app:
             image:
               repository: atdr.meo.ws/archiveteam/usgovernment-grab
-              tag: latest@sha256:903ffadbe4f3423d207b127fa8b587055d52bfd74ec4dc2f7be6bf417970e870 # >:(
+              tag: latest@sha256:903ffadbe4f3423d207b127fa8b587055d52bfd74ec4dc2f7be6bf417970e870 # fixme >:(
             args: ["stevewm"] # downloader name, env var is not supported by usgovernment-grab
             resources:
               requests:
@@ -73,11 +80,6 @@ spec:
                 enabled: false
               startup:
                 enabled: false
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities:
-                drop: ["ALL"]
 
     persistence:
       grab:

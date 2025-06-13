@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/volsync.backube/replicationdestination_v1alpha1.json
+---
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: ${APP}-bootstrap-hetzner
+spec:
+  trigger:
+    manual: restore-once
+  restic:
+    repository: ${APP}-volsync
+    copyMethod: ${VOLSYNC_COPY_METHOD:-Snapshot}
+    storageClassName: ${VOLSYNC_STORAGECLASS:-local-hostpath}
+    capacity: ${VOLSYNC_CAPACITY:-1Gi}
+    accessModes: ["${VOLSYNC_ACCESSMODES:-ReadWriteOnce}"]
+    volumeSnapshotClassName: ${VOLSYNC_STORAGECLASS:-local-hostpath}
+    moverSecurityContext:
+      runAsUser: ${APP_UID:-1001}
+      runAsGroup: ${APP_GID:-100}
+      fsGroup: ${APP_GID:-100}
