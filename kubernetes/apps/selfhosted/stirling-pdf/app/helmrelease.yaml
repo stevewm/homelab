@@ -48,8 +48,8 @@ spec:
         containers:
           app:
             image:
-              repository: docker.stirlingpdf.com/stirlingtools/stirling-pdf
-              tag: 0.46.2@sha256:396ca949b81198a65b9abfec38518fa44e871b1970dad9f9718ffd030eef9b92
+              repository: ghcr.io/stirling-tools/stirling-pdf
+              tag: 0.46.2-fat@sha256:df615ff58f1827cc814cb118a6d834b81a8b24a2edb6a04a653fb0c01f070bcf
             env:
               DOCKER_ENABLE_SECURITY: "false"
             probes:
