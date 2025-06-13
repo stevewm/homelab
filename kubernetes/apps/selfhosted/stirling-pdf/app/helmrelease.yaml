@@ -52,6 +52,8 @@ spec:
               tag: 0.46.2-fat@sha256:df615ff58f1827cc814cb118a6d834b81a8b24a2edb6a04a653fb0c01f070bcf
             env:
               DOCKER_ENABLE_SECURITY: "false"
+              SYSTEM_SHOWUPDATE: "false"
+              SYSTEM_ENABLEANALYTICS: "false"
             probes:
               liveness:
                 enabled: true
@@ -64,7 +66,7 @@ spec:
                 cpu: 10m
                 memory: 250Mi
               limits:
-                memory: 600Mi
+                memory: 1Gi
 
     service:
       app:
