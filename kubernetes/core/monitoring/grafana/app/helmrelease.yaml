@@ -158,7 +158,7 @@ spec:
               value: Prometheus
 
         blackbox-http:
-           # renovate: dashboardName="Blackbox Exporter (HTTP prober)"
+          # renovate: dashboardName="Blackbox Exporter (HTTP prober)"
           gnetId: 13659
           revision: 1
           datasource:

@@ -10,10 +10,10 @@ services:
       - /share/Docker/pihole-docker/etc-dnsmasq.d/:/etc/dnsmasq.d/
     environment:
       TZ: &tz Europe/Amsterdam
-      FTLCONF_dns_revServers: 'true,10.0.0.0/24,10.0.0.1,home.arpa'
-      FTLCONF_dns_upstreams: '8.8.8.8;8.8.4.4'
+      FTLCONF_dns_revServers: "true,10.0.0.0/24,10.0.0.1,home.arpa"
+      FTLCONF_dns_upstreams: "8.8.8.8;8.8.4.4"
       FTLCONF_webserver_api_password: $WEBPASSWORD
-      FTLCONF_webserver_port: &port '3001'
+      FTLCONF_webserver_port: &port "3001"
     ports:
       - "53:53/tcp"
       - "53:53/udp"
