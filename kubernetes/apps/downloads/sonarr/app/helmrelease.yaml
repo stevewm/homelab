@@ -168,3 +168,13 @@ spec:
           - path: /data/media
       config:
         existingClaim: sonarr-config
+      refresh:
+        type: secret
+        name: scripts
+        defaultMode: 0755
+        advancedMounts:
+          sonarr:
+            app:
+              - path: /scripts/jellyfin-refresh.sh
+                subPath: jellyfin-refresh.sh
+                readOnly: true
