@@ -174,7 +174,7 @@ spec:
         name: scripts
         defaultMode: 0755
         advancedMounts:
-          sonarr:
+          radarr:
             app:
               - path: /scripts/jellyfin-refresh.sh
                 subPath: jellyfin-refresh.sh
