@@ -59,7 +59,7 @@ spec:
           app:
             image:
               repository: ghcr.io/pascaliske/cloudflare-dyndns
-              tag: 0.1.1
+              tag: 0.1.1@sha256:2a3b7fe330b41a9a4ca943401979ed202582f0739263f95f7b4f8f4b1ac3ea0b
             env:
               NAME: play
               DOMAIN: stevewm.dev
