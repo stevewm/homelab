@@ -21,7 +21,7 @@ rust = "latest"
 
 # Flux
 "flux2" = "2.5.1"
-"pipx:flux-local" = "7.5.4"
+"pipx:flux-local" = "7.5.5"
 
 # Kube
 "kubectl" = "1.33.0"
