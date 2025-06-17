@@ -46,8 +46,8 @@ spec:
     provider: cloudflare
 
     sources:
-      - httproute
       - crd
+      - gateway-httproute
 
     txtOwnerId: main
     txtPrefix: "k8s."
@@ -62,13 +62,14 @@ spec:
         valueFrom:
           secretKeyRef:
             name: cloudflare
-            key: zone_id # note actually a secret, but let's not expose it
+            key: zone_id
 
     extraArgs:
       - --crd-source-apiversion=externaldns.k8s.io/v1alpha1
       - --crd-source-kind=DNSEndpoint
       - --cloudflare-proxied
-      - --ingress-class=nginx-external
+      - --cloudflare-dns-records-per-page=1000
+      - --gateway-name=external
 
     resources:
       requests:

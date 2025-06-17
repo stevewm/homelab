@@ -4,31 +4,31 @@ kind: Gateway
 metadata:
   name: internal
   annotations:
-    external-dns.alpha.kubernetes.io/target: internal.${SECRET_DOMAIN_1}
+    external-dns.alpha.kubernetes.io/target: int.stevewm.dev
 spec:
   gatewayClassName: envoy-gateway
-  addresses:
-    # - type: IPAddress
-    #   value: 192.168.15.20
+  # addresses:
+  #   # - type: IPAddress
+  #   #   value: 192.168.15.20
   infrastructure:
     annotations:
-      external-dns.alpha.kubernetes.io/hostname: internal.${SECRET_DOMAIN_1}
+      external-dns.alpha.kubernetes.io/hostname: int.stevewm.dev
   listeners:
-    - name: http-0
+    - name: http
       protocol: HTTP
       port: 80
-      hostname: "*.${SECRET_DOMAIN_0}"
+      hostname: "*.stevewm.dev"
       allowedRoutes:
         namespaces:
           from: Same
-    - name: https-0
+    - name: https
       protocol: HTTPS
       port: 443
-      hostname: "*.${SECRET_DOMAIN_0}"
+      hostname: "*.stevewm.dev"
       allowedRoutes:
         namespaces:
           from: All
       tls:
         certificateRefs:
           - kind: Secret
-            name: domain-0-prod-tls
+            name: cluster-gateway-cert-tls

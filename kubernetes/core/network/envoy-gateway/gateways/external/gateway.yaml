@@ -4,7 +4,7 @@ kind: Gateway
 metadata:
   name: external
   annotations:
-    external-dns.alpha.kubernetes.io/target: external.${SECRET_DOMAIN_1}
+    external-dns.alpha.kubernetes.io/target: ext.stevewm.dev
 spec:
   gatewayClassName: envoy-gateway
   # addresses:
@@ -12,7 +12,7 @@ spec:
   #     value: 192.168.15.21
   infrastructure:
     annotations:
-      external-dns.alpha.kubernetes.io/hostname: external.${SECRET_DOMAIN_1}
+      external-dns.alpha.kubernetes.io/hostname: ext.stevewm.dev
   listeners:
     - name: http-0
       protocol: HTTP
