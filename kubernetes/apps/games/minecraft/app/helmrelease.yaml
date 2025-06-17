@@ -115,12 +115,13 @@ spec:
               REMOVE_OLD_MODS: "true"
               MODRINTH_DEFAULT_VERSION_TYPE: release
               MODRINTH_PROJECTS: >
+                bluemap,
+                distanthorizons:beta,
                 fabric-api,
                 fabricexporter,
-                spark,
-                bluemap,
+                floodgate:beta,
                 geyser:beta,
-                floodgate:beta
+                spark,
               # https://vanillatweaks.net/share#oNYxlz
               VANILLA_TWEAKS_SHARE_CODES: oNYxlz # Coord HUD, Anti-Endermen Griefing
               ## RCON
