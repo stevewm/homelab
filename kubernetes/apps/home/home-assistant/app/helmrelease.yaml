@@ -114,27 +114,19 @@ spec:
           http:
             port: 12321
 
-    ingress:
-      main:
-        className: nginx-internal
-        hosts:
-          - host: hass.stevewm.dev
-            paths:
-              - path: /
-                pathType: Prefix
-                service:
-                  identifier: app
-                  port: http
+    route:
+      app:
+        hostnames: ["hass.stevewm.dev"]
+        parentRefs:
+          - name: internal
+            namespace: network
+            sectionName: https
       code:
-        className: nginx-internal
-        hosts:
-          - host: hass-vsc.stevewm.dev
-            paths:
-              - path: /
-                pathType: Prefix
-                service:
-                  identifier: code
-                  port: http
+        hostnames: ["hass-vsc.stevewm.dev"]
+        parentRefs:
+          - name: internal
+            namespace: network
+            sectionName: https
 
     persistence:
       config:

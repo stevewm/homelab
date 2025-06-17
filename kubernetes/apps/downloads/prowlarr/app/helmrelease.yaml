@@ -132,33 +132,13 @@ spec:
             interval: 15m
             scrapeTimeout: 2m
 
-    ingress:
-      main:
-        enabled: true
-        className: nginx-internal
-        hosts:
-          - host: plr.stevewm.dev
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
-        annotations:
-          gethomepage.dev/name: *app
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/group: downloads
-          gethomepage.dev/icon: prowlarr.png
-          # https://github.com/gethomepage/homepage/issues/1553
-          gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_PROWLARR_API_KEY}}` }}"
-          gethomepage.dev/widget.type: *app
-          gethomepage.dev/widget.url: "http://prowlarr.downloads.svc.cluster.local"
-          nginx.ingress.kubernetes.io/configuration-snippet: |
-            proxy_set_header Accept-Encoding "";
-            sub_filter
-            '</head>'
-            '<link rel="stylesheet" type="text/css" href="https://themes.stevewm.dev/css/base/prowlarr/plex.css">
-            </head>';
-            sub_filter_once on;
+    route:
+      app:
+        hostnames: ["plr.stevewm.dev"]
+        parentRefs:
+          - name: internal
+            namespace: network
+            sectionName: https
 
     persistence:
       config:

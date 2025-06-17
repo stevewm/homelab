@@ -131,33 +131,13 @@ spec:
           metrics:
             port: *metrics
 
-    ingress:
+    route:
       app:
-        className: nginx-internal
-        hosts:
-          - host: snr.stevewm.dev
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
-        annotations:
-          gethomepage.dev/name: *app
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/group: downloads
-          gethomepage.dev/icon: sonarr.png
-          # https://github.com/gethomepage/homepage/issues/1553
-          gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_SONARR_API_KEY}}` }}"
-          gethomepage.dev/widget.type: *app
-          gethomepage.dev/widget.url: "http://sonarr.downloads.svc.cluster.local"
-          nginx.ingress.kubernetes.io/configuration-snippet: |
-            proxy_set_header Accept-Encoding "";
-            sub_filter
-            '</head>'
-            '<link rel="stylesheet" type="text/css" href="https://themes.stevewm.dev/css/base/sonarr/plex.css">
-            <link ref="stylesheet" type="text/css" href="https://themes.stevewm.dev/css/addons/sonarr/sonarr-text-logo/sonarr-text-logo.css">
-            </head>';
-            sub_filter_once on;
+        hostnames: ["snr.stevewm.dev"]
+        parentRefs:
+          - name: internal
+            namespace: network
+            sectionName: https
 
     persistence:
       media:

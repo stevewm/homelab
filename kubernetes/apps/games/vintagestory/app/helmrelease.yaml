@@ -140,22 +140,13 @@ spec:
           map:
             port: 80
 
-    ingress:
-      map:
-        className: nginx-external
-        hosts:
-          - host: vsmap.stevewm.dev
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: map
-        annotations:
-          gethomepage.dev/name: vintage story map
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/group: games
-          gethomepage.dev/icon: mdi-map
-          external-dns.alpha.kubernetes.io/target: ext.stevewm.dev
+    route:
+      app:
+        hostnames: ["vsmap.stevewm.dev"]
+        parentRefs:
+          - name: internal
+            namespace: network
+            sectionName: https
 
     persistence:
       data:

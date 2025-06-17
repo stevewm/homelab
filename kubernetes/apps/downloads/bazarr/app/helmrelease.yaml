@@ -130,32 +130,13 @@ spec:
             interval: 15m
             scrapeTimeout: 2m
 
-    ingress:
+    route:
       app:
-        className: nginx-internal
-        hosts:
-          - host: bzr.stevewm.dev
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
-        annotations:
-          gethomepage.dev/name: *app
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/group: downloads
-          gethomepage.dev/icon: bazarr.png
-          # https://github.com/gethomepage/homepage/issues/1553
-          gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_BAZARR_API_KEY}}` }}"
-          gethomepage.dev/widget.type: *app
-          gethomepage.dev/widget.url: "http://bazarr.downloads.svc.cluster.local"
-          nginx.ingress.kubernetes.io/configuration-snippet: |
-            proxy_set_header Accept-Encoding "";
-            sub_filter
-            '</head>'
-            '<link rel="stylesheet" type="text/css" href="https://themes.stevewm.dev/css/base/bazarr/plex.css">
-            </head>';
-            sub_filter_once on;
+        hostnames: ["bzr.stevewm.dev"]
+        parentRefs:
+          - name: internal
+            namespace: network
+            sectionName: https
 
     persistence:
       config:

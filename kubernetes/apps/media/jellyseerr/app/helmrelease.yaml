@@ -83,27 +83,13 @@ spec:
           http:
             port: *port
 
-    ingress:
+    route:
       app:
-        className: nginx-external
-        hosts:
-          - host: req.stevewm.dev
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
-        annotations:
-          external-dns.alpha.kubernetes.io/target: ext.stevewm.dev
-          # Fixes "Oops" app error due to custom error pages
-          nginx.ingress.kubernetes.io/custom-http-errors: "599"
-          gethomepage.dev/name: *app
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/group: media
-          gethomepage.dev/icon: jellyseerr.png
-          gethomepage.dev/widget.key: "{{ `{{ HOMEPAGE_VAR_JELLYSEERR_API_KEY }}` }}"
-          gethomepage.dev/widget.type: jellyseerr
-          gethomepage.dev/widget.url: "http://jellyseerr.media.svc.cluster.local:5055"
+        hostnames: ["req.stevewm.dev"]
+        parentRefs:
+          - name: external
+            namespace: network
+            sectionName: https
 
     persistence:
       config:

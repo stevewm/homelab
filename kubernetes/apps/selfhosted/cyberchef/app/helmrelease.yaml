@@ -72,22 +72,13 @@ spec:
           http:
             port: 80
 
-    ingress:
+    route:
       app:
-        className: nginx-internal
-        hosts:
-          - host: cc.stevewm.dev
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
-        annotations:
-          gethomepage.dev/name: *app
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/group: selfhosted
-          gethomepage.dev/icon: cyberchef.png
-          nginx.org/client-max-body-size: "1024m"
+        hostnames: ["cc.stevewm.dev"]
+        parentRefs:
+          - name: internal
+            namespace: network
+            sectionName: https
 
     persistence:
       cache:
