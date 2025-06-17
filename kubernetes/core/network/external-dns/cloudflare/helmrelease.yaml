@@ -46,7 +46,7 @@ spec:
     provider: cloudflare
 
     sources:
-      - ingress
+      - httproute
       - crd
 
     txtOwnerId: main
