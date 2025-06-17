@@ -95,7 +95,7 @@ spec:
               TYPE: FABRIC
               FORCE_REDOWNLOAD:
               # renovate: depName=minecraft datasource=custom.minecraft versioning=semver-coerced
-              VERSION: 1.21.6
+              VERSION: 1.21.5
               MOTD: be nice
               DIFFICULTY: hard
               SPAWN_PROTECTION: 0
