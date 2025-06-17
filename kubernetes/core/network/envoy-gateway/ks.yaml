@@ -39,7 +39,6 @@ spec:
     - name: core-cilium
       namespace: kube-system
 
-
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
@@ -64,7 +63,6 @@ spec:
     namespace: flux-system
   dependsOn:
     - name: core-envoy-gateway
-
 
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
 ---
