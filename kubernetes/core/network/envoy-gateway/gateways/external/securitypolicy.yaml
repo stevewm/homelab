@@ -1,0 +1,28 @@
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: SecurityPolicy
+metadata:
+  name: authelia-extauth
+spec:
+  targetRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: external
+  extAuth:
+    http:
+      backendRefs:
+        - name: authelia
+          namespace: security
+          port: 80
+      path: /api/authz/ext-authz/
+      headersToBackend:
+        - remote-*
+        - authelia-*
+    failOpen: false
+    headersToExtAuth:
+      - X-Forwarded-For # this is here so we can get the real IP
+      - X-Forwarded-Proto
+      - accept
+      - cookie
+      - authorization
+      - header-authorization

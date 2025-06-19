@@ -40,15 +40,4 @@ spec:
           egress.home.arpa/apiserver: allow
 
       ingress:
-        enabled: true
-        ingressClassName: nginx-internal
-        annotations:
-          gethomepage.dev/name: *app
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/group: monitoring
-          gethomepage.dev/icon: kubernetes.png
-        hosts:
-          - host: goldilocks.stevewm.dev
-            paths:
-              - path: /
-                type: Prefix
+        enabled: false # Use HTTPRoute instead

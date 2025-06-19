@@ -22,4 +22,4 @@ spec:
   dependsOn:
     - name: core-external-secrets-secretstore
       namespace: security
-    - name: core-ingress-nginx-external
+    - name: core-envoy-gateway-gateways

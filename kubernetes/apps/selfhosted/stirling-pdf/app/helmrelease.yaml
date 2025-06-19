@@ -75,22 +75,18 @@ spec:
           http:
             port: 8080
 
-    ingress:
+    route:
       app:
-        className: nginx-internal
-        hosts:
-          - host: pdf.stevewm.dev
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
+        hostnames: ["pdf.stevewm.dev"]
+        parentRefs:
+          - name: internal
+            namespace: network
+            sectionName: https
         annotations:
           gethomepage.dev/name: *app
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: selfhosted
           gethomepage.dev/icon: stirling-pdf.png
-          nginx.org/client-max-body-size: "150m"
 
     persistence:
       temporary:

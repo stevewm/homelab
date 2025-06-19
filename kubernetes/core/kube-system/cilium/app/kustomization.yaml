@@ -5,6 +5,7 @@ kind: Kustomization
 resources:
   - ./ocirepository.yaml
   - ./helmrelease.yaml
+  - ./httproute.yaml
 configMapGenerator:
   - name: cilium-values
     files:

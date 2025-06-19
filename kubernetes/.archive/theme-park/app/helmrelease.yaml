@@ -55,7 +55,7 @@ spec:
               repository: ghcr.io/home-operations/theme-park
               tag: 1.21.0@sha256:f4be0eda98d602398bfc28796960d8a6066880d5d203b7e7c538bb825363a810
             env:
-              TP_DOMAIN: &host themes.stevewm.dev
+              TP_DOMAIN: themes.stevewm.dev
               TP_THEME: plex
             probes:
               liveness:
@@ -78,16 +78,13 @@ spec:
           http:
             port: 8080
 
-    ingress:
+    route:
       app:
-        className: nginx-internal
-        hosts:
-          - host: *host
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
+        hostnames: ["themes.stevewm.dev"]
+        parentRefs:
+          - name: internal
+            namespace: network
+            sectionName: https
 
     persistence:
       config:

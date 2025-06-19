@@ -16,7 +16,7 @@ spec:
       retries: 3
   upgrade:
     cleanupOnFail: true
-    crds: Skip # installed in kubernetes/core/network/external-dns/cloudflare/helmrelease.yaml
+    crds: Skip # installed in ../external-dns/cloudflare/helmrelease.yaml
     remediation:
       strategy: rollback
       retries: 3
@@ -48,7 +48,7 @@ spec:
     provider: pihole
 
     sources:
-      - ingress
+      - gateway-httproute
       - service
 
     env:
@@ -61,6 +61,9 @@ spec:
           secretKeyRef:
             name: pihole
             key: password
+
+    extraArgs:
+      - --gateway-name=internal
 
     resources:
       requests:

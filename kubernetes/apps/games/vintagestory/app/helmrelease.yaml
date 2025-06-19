@@ -138,24 +138,24 @@ spec:
             port: &rcon 42425
             nodePort: *rcon
           map:
-            port: 80
+            port: &map 80
 
-    ingress:
-      map:
-        className: nginx-external
-        hosts:
-          - host: vsmap.stevewm.dev
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: map
+    route:
+      app:
+        hostnames: ["vsmap.stevewm.dev"]
+        parentRefs:
+          - name: internal
+            namespace: network
+            sectionName: https
+        rules:
+          - backendRefs:
+              - identifier: app
+                port: *map
         annotations:
-          gethomepage.dev/name: vintage story map
+          gethomepage.dev/name: *app
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: games
           gethomepage.dev/icon: mdi-map
-          external-dns.alpha.kubernetes.io/target: ext.stevewm.dev
 
     persistence:
       data:

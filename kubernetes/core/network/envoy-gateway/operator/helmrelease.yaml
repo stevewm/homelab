@@ -1,0 +1,25 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: envoy-gateway-operator
+spec:
+  interval: 1h
+  timeout: 5m
+  chartRef:
+    kind: OCIRepository
+    name: envoy-gateway-operator
+  install:
+    crds: CreateReplace
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    crds: CreateReplace
+    remediation:
+      retries: -1
+  values:
+    config:
+      envoyGateway:
+        gateway:
+          controllerName: gateway.envoyproxy.io/gatewayclass-controller
