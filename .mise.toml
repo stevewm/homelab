@@ -41,7 +41,7 @@ rust = "latest"
 # Tools
 "task" = "3.38.0"
 "pipx:yamllint" = "1.37.1"
-"yq" = "4.45.2"
+"yq" = "4.45.4"
 "jq" = "1.7.1"
 "pipx:pre-commit" = "latest"
 "doppler" = "latest"
