@@ -18,5 +18,5 @@ The homelab depends on a few cloud services to provide essential functionality.
 | [Doppler](https://doppler.com/)                      | Secret management     |
 | [GitHub Actions](https://docs.github.com/en/actions) | CI/CD workflows       |
 | [Cloudflare](https://cloudflare.com)                 | DNS and web tunneling |
-| [Playit](https://playit.gg)                          | TCP/UDP tunneling     |
 | [ProtonMail](https://mail.proton.me)                 | Email                 |
+| [Hetzner](https://hetzner.com)                       | Backup storage        |

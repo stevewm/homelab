@@ -34,6 +34,9 @@ jobs:
           - language: actions
             build-mode: none
             source-root: .
+          - language: python
+            build-mode: none
+            source-root: .
 
     steps:
       - name: Checkout
