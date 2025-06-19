@@ -20,7 +20,7 @@ go = "latest"
 rust = "latest"
 
 # Flux
-"flux2" = "2.5.1"
+"flux2" = "2.6.2"
 "pipx:flux-local" = "7.5.5"
 
 # Kube
