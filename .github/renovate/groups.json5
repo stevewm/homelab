@@ -2,19 +2,8 @@
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   packageRules: [
     {
-      description: "Flux Group",
-      groupName: "Flux",
-      matchPackagePatterns: ["^flux", "^ghcr.io/fluxcd/"],
-      matchDatasources: ["docker", "github-tags"],
-      versioning: "semver",
-      group: {
-        commitMessageTopic: "{{{groupName}}} group",
-      },
-      separateMinorPatch: true,
-    },
-    {
-      description: "Rook-Ceph image and chart",
-      groupName: "Rook Ceph",
+      description: "Rook-Ceph group",
+      groupName: "Rook-Ceph",
       matchPackagePatterns: ["rook.ceph"],
       matchDatasources: ["docker", "helm"],
       group: {
@@ -23,22 +12,26 @@
       separateMinorPatch: true,
     },
     {
-      description: "Cilium image and chart",
-      groupName: "cilium",
-      matchPackageNames: [
-        "quay.io/cilium/cilium",
-        "quay.io/cilium/operator-generic",
-        "cilium",
-        "cilium/cilium",
-      ],
-      matchDatasources: ["helm", "docker", "github-releases"],
-      group: {
-        commitMessageTopic: "{{{groupName}}} group",
-      },
-      separateMinorPatch: true,
+      "description": "Cert-Manager group",
+      "groupName": "Cert-Manager",
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["/cert-manager/"],
+      "group": {
+        "commitMessageTopic": "{{{groupName}}} group"
+      }
+    },
+
+    {
+      "description": "Cilium group",
+      "groupName": "Cilium",
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["/cilium/"],
+      "group": {
+        "commitMessageTopic": "{{{groupName}}} group"
+      }
     },
     {
-      description: "Actions Runner Controller charts",
+      description: "Actions Runner Controller group",
       groupName: "ARC",
       matchPackageNames: [
         "ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set-controller",
@@ -51,7 +44,7 @@
       separateMinorPatch: false,
     },
     {
-      description: "Talos",
+      description: "Talos group",
       groupName: "Talos",
       matchPackageNames: [
         "ghcr.io/siderolabs/installer",
@@ -65,7 +58,7 @@
       separateMinorPatch: false,
     },
     {
-      description: "Dragonfly operator",
+      description: "Dragonfly Operator group",
       groupName: "Dragonfly Operator",
       matchPackagePatterns: ["dragonfly(?:db)?.operator"],
       matchDatasources: ["docker", "github-releases"],
@@ -75,7 +68,7 @@
       separateMinorPatch: true,
     },
     {
-      description: "Intel device plugins",
+      description: "IntelDdevice Plugins group",
       groupName: "Intel Device Plugins",
       matchPackageNames: [
         "intel-device-plugins-operator",
@@ -88,24 +81,29 @@
       separateMinorPatch: false,
     },
     {
-      description: "Jellyfin",
-      groupName: "Jellyfin",
-      matchPackageNames: ["jellyfin/jellyfin"],
-      matchDatasources: ["helm", "docker"],
+      description: "Flux Local",
+      groupName: "flux-local",
+      matchPackageNames: ["/flux-local/"],
       group: {
         commitMessageTopic: "{{{groupName}}} group",
       },
-      separateMinorPatch: false,
     },
     {
-      description: "Mise",
-      groupName: "Mise",
-      matchManagers: ["mise"],
-      automerge: true,
+      description: "Flux Operator group",
+      groupName: "Flux Operator",
+      matchDatasources: ["docker"],
+      matchPackageNames: ["/flux-operator/", "/flux-instance/"],
       group: {
-        commitMessageTopic: "repo tooling",
+        commitMessageTopic: "{{{groupName}}} group",
       },
-      separateMinorPatch: false,
+    },
+    {
+      description: "CoreDNS group",
+      groupName: "CoreDNS",
+      matchPackageNames: ["/coredns/"],
+      group: {
+        commitMessageTopic: "{{{groupName}}} group",
+      },
     },
   ],
 }
