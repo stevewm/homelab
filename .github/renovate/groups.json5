@@ -105,5 +105,13 @@
         commitMessageTopic: "{{{groupName}}} group",
       },
     },
+    {
+      description: "mise group",
+      groupName: "repo tools",
+      matchManagers: ["mise"],
+      group: {
+        commitMessageTopic: "{{{groupName}}}",
+      },
+    },
   ],
 }
