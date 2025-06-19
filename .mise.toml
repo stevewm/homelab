@@ -36,7 +36,7 @@ rust = "latest"
 
 # Talos
 "talos" = "1.9.3"
-"talhelper" = "3.0.23"
+"talhelper" = "3.0.29"
 
 # Tools
 "task" = "3.38.0"
