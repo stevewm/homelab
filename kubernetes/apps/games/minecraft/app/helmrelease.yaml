@@ -166,7 +166,7 @@ spec:
             port: 19132
             protocol: UDP
           map:
-            port: 8100
+            port: &map 8100
           rcon:
             port: 25575
           metrics:
@@ -182,22 +182,22 @@ spec:
             path: /
             interval: 1m
 
-    ingress:
-      map:
-        className: nginx-external
-        hosts:
-          - host: mcmap.stevewm.dev
-            paths:
-              - path: /
-                service:
-                  identifier: *app
-                  port: map
+    route:
+      app:
+        hostnames: ["mcmap.stevewm.dev"]
+        parentRefs:
+          - name: external
+            namespace: network
+            sectionName: https
+        rules:
+          - backendRefs:
+              - identifier: *app
+                port: *map
         annotations:
-          gethomepage.dev/name: minecraft map (survival)
+          gethomepage.dev/name: *app
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: games
-          gethomepage.dev/icon: mdi-minecraft
-          external-dns.alpha.kubernetes.io/target: ext.stevewm.dev
+          gethomepage.dev/icon: minecraft.png
 
     persistence:
       data:

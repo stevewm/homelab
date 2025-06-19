@@ -27,16 +27,9 @@ spec:
     hubble:
       ui:
         ingress:
-          enabled: true
-          className: nginx-internal
-          hosts:
-            - cni.stevewm.dev
-          annotations:
-            gethomepage.dev/name: hubble
-            gethomepage.dev/enabled: "true"
-            gethomepage.dev/group: network
-            gethomepage.dev/icon: cilium.png
-
+          enabled: false # Use the HTTPRoute instead
+      dashboards:
+        enabled: true
       metrics:
         enabled:
           - dns:query

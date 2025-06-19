@@ -1,0 +1,31 @@
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: external
+  annotations:
+    external-dns.alpha.kubernetes.io/target: ext.stevewm.dev
+spec:
+  gatewayClassName: envoy-gateway
+  infrastructure:
+    annotations:
+      external-dns.alpha.kubernetes.io/hostname: ext.stevewm.dev
+  listeners:
+    - name: http
+      protocol: HTTP
+      port: 80
+      hostname: "*.stevewm.dev"
+      allowedRoutes:
+        namespaces:
+          from: Same
+    - name: https
+      protocol: HTTPS
+      port: 443
+      hostname: "*.stevewm.dev"
+      allowedRoutes:
+        namespaces:
+          from: All
+      tls:
+        certificateRefs:
+          - kind: Secret
+            name: cluster-gateway-cert-tls

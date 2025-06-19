@@ -18,16 +18,9 @@ rules:
       - list
   - apiGroups:
       - extensions
-      - networking.k8s.io
+      - gateway.networking.k8s.io
     resources:
-      - ingresses
-    verbs:
-      - get
-      - list
-  - apiGroups:
-      - traefik.containo.us
-    resources:
-      - ingressroutes
+      - httproutes
     verbs:
       - get
       - list

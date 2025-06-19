@@ -131,32 +131,21 @@ spec:
             interval: 15m
             scrapeTimeout: 2m
 
-    ingress:
-      radarr:
-        className: nginx-internal
-        hosts:
-          - host: rdr.stevewm.dev
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
+    route:
+      app:
+        hostnames: ["rdr.stevewm.dev"]
+        parentRefs:
+          - name: internal
+            namespace: network
+            sectionName: https
         annotations:
           gethomepage.dev/name: *app
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: downloads
           gethomepage.dev/icon: radarr.png
-          # https://github.com/gethomepage/homepage/issues/1553
           gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_RADARR_API_KEY}}` }}"
           gethomepage.dev/widget.type: *app
           gethomepage.dev/widget.url: "http://radarr.downloads.svc.cluster.local"
-          nginx.ingress.kubernetes.io/configuration-snippet: |
-            proxy_set_header Accept-Encoding "";
-            sub_filter
-            '</head>'
-            '<link rel="stylesheet" type="text/css" href="https://themes.stevewm.dev/css/base/radarr/plex.css">
-            </head>';
-            sub_filter_once on;
 
     persistence:
       config:

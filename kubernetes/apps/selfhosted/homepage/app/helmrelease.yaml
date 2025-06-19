@@ -80,16 +80,13 @@ spec:
           http:
             port: 3000
 
-    ingress:
+    route:
       app:
-        className: nginx-internal
-        hosts:
-          - host: home.stevewm.dev
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
+        hostnames: ["home.stevewm.dev"]
+        parentRefs:
+          - name: internal
+            namespace: network
+            sectionName: https
 
     persistence:
       logs:

@@ -109,36 +109,29 @@ spec:
           "lbipam.cilium.io/ips": "10.0.0.80"
         ports:
           http:
-            port: 8096
+            port: &http 8096
           exporter:
             port: 7979
 
-    ingress:
+    route:
       app:
-        className: nginx-external
-        hosts:
-          - host: watch.stevewm.dev
-            paths:
-              - path: /
-                service:
-                  identifier: app
-                  port: http
+        hostnames: ["watch.stevewm.dev"]
+        parentRefs:
+          - name: external
+            namespace: network
+            sectionName: https
+        rules:
+          - backendRefs:
+              - identifier: app
+                port: *http
         annotations:
-          external-dns.alpha.kubernetes.io/target: ext.stevewm.dev
           gethomepage.dev/name: *app
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: media
           gethomepage.dev/icon: jellyfin.png
-          gethomepage.dev/widget.key: "{{ `{{ HOMEPAGE_VAR_JELLYFIN_API_KEY }}` }}"
-          gethomepage.dev/widget.type: jellyfin
-          gethomepage.dev/widget.url: "http://jellyfin.media.svc.cluster.local:8096"
-          nginx.ingress.kubernetes.io/configuration-snippet: |
-            proxy_set_header Accept-Encoding "";
-            sub_filter
-            '</head>'
-            '<link rel="stylesheet" type="text/css" href="https://themes.stevewm.dev/css/base/jellyfin/plex.css">
-            </head>';
-            sub_filter_once on;
+          gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_JELLYFIN_API_KEY}}` }}"
+          gethomepage.dev/widget.type: *app
+          gethomepage.dev/widget.url: "http://jellyfin.media.svc.cluster.local"
 
     persistence:
       config:

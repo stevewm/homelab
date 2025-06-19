@@ -421,16 +421,21 @@ spec:
       enabled: true
 
     ingress:
-      enabled: true
-      ingressClassName: nginx-internal
-      hosts:
-        - graf.stevewm.dev
-      annotations:
-        nginx.ingress.kubernetes.io/custom-http-errors: "599"
-        gethomepage.dev/name: grafana
-        gethomepage.dev/enabled: "true"
-        gethomepage.dev/group: monitoring
-        gethomepage.dev/icon: grafana.png
+      enabled: false
+
+    route:
+      main:
+        enabled: true
+        hostnames: ["graf.stevewm.dev"]
+        parentRefs:
+          - name: internal
+            namespace: kube-system
+            sectionName: https
+        annotations:
+          gethomepage.dev/name: *app
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: monitoring
+          gethomepage.dev/icon: grafana.png
 
     persistence:
       enabled: false

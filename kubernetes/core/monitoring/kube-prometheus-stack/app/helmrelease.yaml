@@ -63,16 +63,20 @@ spec:
             memory: 50Mi
           limits:
             memory: 100Mi
-      ingress:
-        enabled: true
-        ingressClassName: nginx-internal
-        hosts:
-          - am.stevewm.dev
-        annotations:
-          gethomepage.dev/name: alertmanager
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/group: &group monitoring
-          gethomepage.dev/icon: alertmanager.png
+      route:
+        main:
+          enabled: true
+          hostnames: ["am.stevewm.dev"]
+          parentRefs:
+            - name: internal
+              namespace: kube-system
+              sectionName: https
+          annotations:
+            gethomepage.dev/name: alertmanager
+            gethomepage.dev/enabled: "true"
+            gethomepage.dev/group: monitoring
+            gethomepage.dev/icon: alertmanager.png
+            gethomepage.dev/pod-selector: alertmanager=kube-prometheus-stack
 
     # https://grafana.com/grafana/dashboards/14588-vpa-recommendations/
     kube-state-metrics:
@@ -110,13 +114,17 @@ spec:
         podMetadata:
           labels:
             ingress.home.arpa/nginx-internal: allow
-      ingress:
-        enabled: true
-        ingressClassName: nginx-internal
-        hosts:
-          - prom.stevewm.dev
-        annotations:
-          gethomepage.dev/name: prometheus
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/group: *group
-          gethomepage.dev/icon: prometheus.png
+      route:
+        main:
+          enabled: true
+          hostnames: ["prom.stevewm.dev"]
+          parentRefs:
+            - name: internal
+              namespace: kube-system
+              sectionName: https
+          annotations:
+            gethomepage.dev/name: prometheus
+            gethomepage.dev/enabled: "true"
+            gethomepage.dev/group: monitoring
+            gethomepage.dev/icon: prometheus.png
+            gethomepage.dev/pod-selector: app.kubernetes.io/name=prometheus
