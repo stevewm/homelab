@@ -80,7 +80,7 @@ spec:
         type: LoadBalancer
         controller: *app
         annotations:
-          "lbipam.cilium.io/ips": "10.0.0.71"
+          "lbipam.cilium.io/ips": "10.0.0.68"
         ports:
           game:
             port: 7777
