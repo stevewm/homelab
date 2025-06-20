@@ -109,6 +109,7 @@
       description: "mise group",
       groupName: "repo tools",
       matchManagers: ["mise"],
+      ignoreDeps: ["/flux-local/"],
       group: {
         commitMessageTopic: "{{{groupName}}}",
       },
