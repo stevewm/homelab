@@ -1,0 +1,116 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app ut2004
+spec:
+  interval: 30m
+  maxHistory: 3
+  chartRef:
+    kind: OCIRepository
+    name: app-template
+    namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    defaultPodOptions:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534
+        runAsGroup: 65534
+        fsGroup: 65534
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+
+    controllers:
+      ut2004:
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+        defaultContainerOptionsStrategy: merge
+
+        annotations:
+          reloader.stakater.com/auto: "true"
+
+        containers:
+          app:
+            image:
+              repository: ghcr.io/phasecorex/ut2004-server
+              tag: latest@sha256:73bf51c6549f567e61798390c9a93ee99d066d7243ad4092162b9fcd330624eb
+            # probes:
+            #   liveness:
+            #     enabled: true
+            #   readiness:
+            #     enabled: true
+            #   startup:
+            #     enabled: true
+            env:
+              MAP_NAME: "AS-BP2-Jumpship"
+              GAME_TYPE: "Assault"
+              CD_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: ut2004
+                    key: cdkey
+            resources:
+              requests:
+                cpu: 150m
+                memory: 1Gi
+              limits:
+                memory: 4Gi
+            securityContext:
+              readOnlyRootFilesystem: false
+
+    service:
+      app:
+        type: LoadBalancer
+        controller: *app
+        annotations:
+          "lbipam.cilium.io/ips": "10.0.0.71"
+        ports:
+          game:
+            port: 7777
+            protocol: UDP
+          query:
+            port: 7778
+            protocol: UDP
+          gamespy-query:
+            port: 7787
+            protocol: UDP
+          # admin:
+          #   port: 80
+
+    # route:
+    #   app:
+    #     hostnames: ["ut2004.stevewm.dev"]
+    #     parentRefs:
+    #       - name: internal
+    #         namespace: network
+    #         sectionName: https
+    #     rules:
+    #       - backendRefs:
+    #           - identifier: app
+    #             port: *map
+    #     annotations:
+    #       gethomepage.dev/name: ut2004 admin panel
+    #       gethomepage.dev/enabled: "true"
+    #       gethomepage.dev/group: games
+    #       gethomepage.dev/icon: mdi-map
+
+    persistence:
+      data:
+        existingClaim: ut2004-gamedata
