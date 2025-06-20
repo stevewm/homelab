@@ -68,10 +68,10 @@ spec:
                     key: cdkey
             resources:
               requests:
-                cpu: 150m
-                memory: 1Gi
+                cpu: 50m
+                memory: 512Mi
               limits:
-                memory: 4Gi
+                memory: 2Gi
             securityContext:
               readOnlyRootFilesystem: false
 
