@@ -2,6 +2,9 @@
 ---
 name: "PR: VSMod Check"
 
+permissions:
+  contents: read
+
 on:
   workflow_dispatch:
   pull_request:
