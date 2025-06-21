@@ -24,7 +24,7 @@
     {
       "description": "Cilium group",
       "groupName": "Cilium",
-      "matchDatasources": ["docker"],
+      "matchDatasources": ["helm", "docker"],
       "matchPackageNames": ["/cilium/"],
       "group": {
         "commitMessageTopic": "{{{groupName}}} group"
@@ -109,7 +109,7 @@
       description: "mise group",
       groupName: "repo tools",
       matchManagers: ["mise"],
-      ignoreDeps: ["/flux-local/"],
+      ignoreDeps: ["pipx:flux-local"],
       group: {
         commitMessageTopic: "{{{groupName}}}",
       },
