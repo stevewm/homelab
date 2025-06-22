@@ -16,7 +16,7 @@ mods:
   - id: BetterRuins
     version: 0.4.13
   - id: th3dungeon
-    version: 0.4.2
+    version: 0.4.3
   - id: VintageRCon
     version: 1.0.0
   - id: webcartographer
