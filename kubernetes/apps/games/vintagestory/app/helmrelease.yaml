@@ -66,7 +66,7 @@ spec:
           init:
             image:
               repository: ghcr.io/stevewm/vsmod
-              tag: v0.2.0@sha256:b978b71e5ff0c2f50420f9821b40f94b19962ae6607c505f31a1b43105c38f81
+              tag: v0.2.0@sha256:7fa899f01fb2a03b39c526c6ffbf43b9148a7ec8f1b97c67457175e596f06502
             command: ["/vsmod"]
             args: ["download", "--file", "/init/mods.yaml"]
 
