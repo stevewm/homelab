@@ -13,9 +13,6 @@ configMapGenerator:
       - serverconfig.json=./config/server/serverconfig.json
       - servermagicnumbers.json=./config/server/servermagicnumbers.json
       # Mod downloader
-      - mods.env=./config/init/mods.env
-      - init.sh=./config/init/init.sh
-      - mods.py=./config/init/mods.py
       - mods.yaml=./config/init/mods.yaml
       # Mod config
       - betterruins.yaml=./config/mods/betterruins.yaml

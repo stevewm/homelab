@@ -1,4 +1,9 @@
 ---
+game_version: "~1.20.0"
+mods_dir: /data/mods
+hooks:
+  download:
+    pre_run: "rm -rf {{.ModsDir}}/*.zip" # clear out old mods
 mods:
   - id: primitivesurvival
     version: 3.7.8
