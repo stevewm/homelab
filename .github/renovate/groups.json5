@@ -114,5 +114,14 @@
         commitMessageTopic: "{{{groupName}}}",
       },
     },
+    {
+      description: "vsmod",
+      groupName: "vsmod",
+      matchManagers: ["mise"],
+      matchPackageNames: ["ghcr.io/stevewm/vsmod"],
+      group: {
+        commitMessageTopic: "{{{groupName}}}",
+      },
+    },
   ],
 }
