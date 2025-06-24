@@ -68,7 +68,7 @@ spec:
               repository: ghcr.io/stevewm/vsmod
               tag: v0.4.3@sha256:b53dd4fbb5f0ed1b1ac088ca8a4c6ecbd243a07f8847cde175da223f5354fdd2
             command: ["/vsmod"]
-            args: ["download", "--file", "/init/mods.yaml"]
+            args: ["download", "--file", "/init/mods.yaml", "--debug"]
 
         containers:
           app:
