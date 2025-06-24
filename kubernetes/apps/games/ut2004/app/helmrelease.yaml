@@ -65,7 +65,7 @@ spec:
                 valueFrom:
                   secretKeyRef:
                     name: ut2004
-                    key: cdkey
+                    key: cd_key
             resources:
               requests:
                 cpu: 50m
