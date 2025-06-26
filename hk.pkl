@@ -1,0 +1,83 @@
+amends "package://github.com/jdx/hk/releases/download/v1.2.0/hk@1.2.0#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v1.2.0/hk@1.2.0#/Builtins.pkl"
+
+local config = ".github/linters"
+local linters = new Mapping<String, Step> {
+
+    // builtins
+    ["actionlint"] = Builtins.actionlint
+    ["hadolint"] = Builtins.hadolint
+    ["shellcheck"] = Builtins.shellcheck
+    ["newlines"] = Builtins.newlines
+
+    // custom linter configurations
+    ["prettier"] {
+      glob = List("*.js", "*.jsx", "*.mjs", "*.cjs", "*.ts", "*.tsx", "*.mts", "*.cts", "*.css", "*.scss", "*.less", "*.html", "*.json", "*.jsonc", "*.yaml", "*.markdown", "*.markdown.mdx", "*.graphql", "*.handlebars", "*.svelte", "*.astro", "*.htmlangular")
+      stage = List("*.js", "*.jsx", "*.mjs", "*.cjs", "*.ts", "*.tsx", "*.mts", "*.cts", "*.css", "*.scss", "*.less", "*.html", "*.json", "*.jsonc", "*.yaml", "*.markdown", "*.markdown.mdx", "*.graphql", "*.handlebars", "*.svelte", "*.astro", "*.htmlangular")
+      batch = true
+      check = "prettier --config "+config+"/prettierrc.yaml --check {{ files }}"
+      check_list_files = "prettier --list-different {{ files }}"
+      fix = "prettier --config "+config+"/prettierrc.yaml --write {{ files }}"
+    }
+
+    ["ruff"] {
+      glob = "*.py"
+      stage = ".py"
+      check = "ruff check --config "+config+"/ruff.toml {{files}}"
+      fix = "ruff check --config ruff check --config "+config+"/ruff.toml --fix {{files}}"
+    }
+
+    ["markdownlint"] {
+      glob = "*.md"
+      stage = "*.md"
+      check = "markdownlint-cli2 --config "+config+"/conf.markdownlint.yaml {{files}}"
+      fix = "markdownlint-cli2 --config "+config+"/conf.markdownlint.yaml --fix {{files}}"
+    }
+
+    // ["lychee"] {
+    //   glob = "*"
+    //   check = "lychee --no-progress --config "+config+"/lychee.toml {{files}}"
+    // }
+
+    ["dclint"] {
+      glob = "docker-compose.yaml"
+      check = "dclint {{files}} --config "+config+"/dclint.yaml"
+      fix = "dclint {{files}} --config "+config+"/dclint.yaml --fix"
+    }
+
+    ["renovate-config"] {
+      glob = List(".github/renovate.json5", ".github/renovate/*.json5")
+      check = "renovate-config-validator {{files}}"
+    }
+
+    ["mkdocs"] {
+      glob = List(".github/mkdocs/mkdocs.yaml", "docs/*.md")
+      check = "mkdocs build --strict --config-file .github/mkdocs/mkdocs.yaml"
+    }
+
+    ["yamllint"] {
+      glob = "*.{yml,yaml}"
+      check = "yamllint --config-file "+config+"/yamllint.yaml {{files}}"
+    }
+
+    ["pkl"] {
+        glob = "*.pkl"
+        check = "pkl eval {{files}} >/dev/null"
+    }
+}
+
+hooks {
+    ["pre-commit"] {
+        fix = true
+        stash = "git"
+        steps = linters
+    }
+    // "fix" and "check" are special steps for `hk fix` and `hk check` commands
+    ["fix"] {
+        fix = true
+        steps = linters
+    }
+    ["check"] {
+        steps = linters
+    }
+}
