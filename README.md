@@ -9,7 +9,7 @@ Welcome to the repository for my home infrastructure, otherwise known as my home
 <div align="center">
 
 ![Kubernetes Version](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fstevewm%2Fhomelab%2Fmain%2Fkubernetes%2Ftalos%2Ftalconfig.yaml&query=%24.kubernetesVersion&style=for-the-badge&logo=kubernetes&label=K8S)
-![Talos Version](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fstevewm%2Fhomelab%2Fmain%2Fkubernetes%2Ftalos%2Ftalconfig.yaml&query=%24.talosVersion&style=for-the-badge&logo=talos&label=talos&color=%23FA640A&link=https%3A%2F%2Ftalos.dev%2F)
+![Talos Version](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fstevewm%2Fhomelab%2Fmain%2Fkubernetes%2Ftalos%2Ftalconfig.yaml&query=%24.talosVersion&style=for-the-badge&logo=talos&label=talos&color=%23FA640A&link=https%3A%2F%2Ftalos.dev%2F) as
 
 </div>
 
@@ -41,8 +41,8 @@ Documentation can be found [on GitHub Pages](https://stevewm.github.io/homelab/)
 | [GitHub Actions](https://docs.github.com/en/actions)            | Automation                              |
 | [mkdocs-material](https://squidfunk.github.io/mkdocs-material/) | Documentation                           |
 | [mise](https://mise.jdx.dev/)                                   | Project tools and environment variables |
+| [hk](https://hk.jdx.dev)                                        | Linting and validation                  |
 | [Doppler](https://www.doppler.com/)                             | Secrets management                      |
-| [pre-commit](https://pre-commit.com/)                           | Linting and validation                  |
 | [go-task](https://github.com/go-task/task)                      | Task runner                             |
 
 ## 🤝 Acknowledgements

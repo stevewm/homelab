@@ -3,7 +3,6 @@
 name: "PR: Lint"
 
 on:
-  workflow_dispatch:
   pull_request:
     branches:
       - main
@@ -13,243 +12,19 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  actionlint:
-    name: actionlint
+  lint:
+    name: Linting
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
           fetch-depth: 0
-
-      - name: Get changed files
-        id: changed-files
-        uses: JJGadgets/tj-actions-changed-files@9200e69727eb73eb060652b19946b8a2fdfb654b
-        with:
-          files: |
-            .github/workflows/**/*.yml
-            .github/workflows/**/*.yaml
-
-      - name: Run actionlint
-        if: steps.changed-files.outputs.any_changed == 'true'
-        uses: bjw-s/action-actionlint@b346813e82708106544f48a93a5b3fbeeb8e37eb # v0.1
-        with:
-          actionlint_config: .github/linters/actionlint.yaml
-          file_pattern: ${{ steps.changed-files.outputs.all_changed_files }}
-
-  mkdocs:
-    name: mkdocs
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-        with:
-          fetch-depth: 0
-
-      - name: Get changed files
-        id: changed-files
-        uses: JJGadgets/tj-actions-changed-files@9200e69727eb73eb060652b19946b8a2fdfb654b
-        with:
-          files: |
-            docs/**
-            .github/mkdocs/**
-
-      - name: Install mkdocs-material
-        if: steps.changed-files.outputs.any_changed == 'true'
-        shell: bash
-        run: |
-          pip install --user mkdocs-material
-
-      - name: Install mkdocs plugins
-        if: steps.changed-files.outputs.any_changed == 'true'
-        shell: bash
-        run: |
-          pip install --requirement .github/mkdocs/requirements.txt
-
-      - name: Run mkdocs-material
-        if: steps.changed-files.outputs.any_changed == 'true'
-        shell: bash
-        run: |
-          mkdocs build --strict --config-file .github/mkdocs/mkdocs.yaml
-
-  yamllint:
-    name: yamllint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-        with:
-          fetch-depth: 0
-
-      - name: Get changed files
-        id: changed-files
-        uses: JJGadgets/tj-actions-changed-files@9200e69727eb73eb060652b19946b8a2fdfb654b
-        with:
-          files: |
-            **.yml
-            **.yaml
-
-      - name: Install yamllint
-        if: steps.changed-files.outputs.any_changed == 'true'
-        shell: bash
-        run: |
-          pip install --user yamllint
-
-      - name: Run yamllint
-        if: steps.changed-files.outputs.any_changed == 'true'
-        shell: bash
-        run: |
-          yamllint --config-file .github/linters/yamllint.yaml --format github ${{ steps.changed-files.outputs.all_changed_files }}
-
-  markdownlint:
-    name: markdownlint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-        with:
-          fetch-depth: 0
-
-      - name: Get changed files
-        id: changed-files
-        uses: JJGadgets/tj-actions-changed-files@9200e69727eb73eb060652b19946b8a2fdfb654b
-        with:
-          files: |
-            **.md
-
-      - name: Run markdownlint-cli2
-        if: steps.changed-files.outputs.any_changed == 'true'
-        uses: bjw-s/action-markdownlint-cli2@c3c44cc6f77516007f1a85d982ed6276e840dcec # v0.1
-        with:
-          markdownlint_config: .github/linters/conf.markdownlint.yaml
-          file_pattern: ${{ steps.changed-files.outputs.all_changed_files }}
-
-  prettier:
-    name: prettier
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-        with:
-          fetch-depth: 0
-
-      - name: Get changed files
-        id: changed-files
-        uses: JJGadgets/tj-actions-changed-files@9200e69727eb73eb060652b19946b8a2fdfb654b
-
-      - name: Run prettier
-        if: steps.changed-files.outputs.any_changed == 'true'
-        uses: bjw-s/action-prettier-lint@1014e6a3453ff28a8b746715f44a75306d223266 # v0.1
-        with:
-          prettier_ignore: .github/linters/prettierignore
-          prettier_config: .github/linters/prettierrc.yaml
-          file_pattern: ${{ steps.changed-files.outputs.all_changed_files }}
-
-  dclint:
-    name: dclint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-        with:
-          fetch-depth: 0
-
-      - name: Get changed files
-        id: changed-files
-        uses: JJGadgets/tj-actions-changed-files@9200e69727eb73eb060652b19946b8a2fdfb654b
-        with:
-          files: |
-            **/docker-compose.yaml
-
-      - name: Install dclint
-        if: steps.changed-files.outputs.any_changed == 'true'
-        shell: bash
-        run: |
-          npm install --g dclint
-
-      - name: Run dclint
-        if: steps.changed-files.outputs.any_changed == 'true'
-        shell: bash
-        run: |
-          dclint --config .github/linters/dclint.yaml ${{ steps.changed-files.outputs.all_changed_files }}
-
-  shellcheck:
-    name: shellcheck
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-        with:
-          fetch-depth: 0
-
-      - name: Get changed files
-        id: changed-files
-        uses: JJGadgets/tj-actions-changed-files@9200e69727eb73eb060652b19946b8a2fdfb654b
-        with:
-          files: |
-            **.sh
-
-      - name: Run shellcheck
-        if: steps.changed-files.outputs.any_changed == 'true'
-        run: shellcheck ${{ steps.changed-files.outputs.all_changed_files }}
-
-  ruff:
-    name: ruff
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-        with:
-          fetch-depth: 0
-
-      - name: Get changed files
-        id: changed-files
-        uses: JJGadgets/tj-actions-changed-files@9200e69727eb73eb060652b19946b8a2fdfb654b
-        with:
-          files: |
-            **.py
-
-      - name: Run ruff check
-        if: steps.changed-files.outputs.any_changed == 'true'
-        uses: astral-sh/ruff-action@eaf0ecdd668ceea36159ff9d91882c9795d89b49 # v3
-        with:
-          args: "check --config .github/linters/ruff.toml"
-          src: ${{ steps.changed-files.outputs.all_changed_files }}
-
-      - name: Run ruff format
-        if: steps.changed-files.outputs.any_changed == 'true'
-        uses: astral-sh/ruff-action@eaf0ecdd668ceea36159ff9d91882c9795d89b49 # v3
-        with:
-          args: "format --check --config .github/linters/ruff.toml"
-          src: ${{ steps.changed-files.outputs.all_changed_files }}
-
-  lint_success:
-    needs:
-      - actionlint
-      - mkdocs
-      - prettier
-      - yamllint
-      - markdownlint
-      - dclint
-      - shellcheck
-      - ruff
-    if: |
-      always()
-    name: Lint successful
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check job status
-        if: >-
-          ${{
-              (
-                contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
-              )
-          }}
-        run: exit 1
+      - uses: jdx/mise-action@v2
+      - name: Run hk checks
+        run: hk check --from-ref ${{ github.event.pull_request.base.sha }} --to-ref ${{ github.event.pull_request.head.sha }}
 
   lint_comment:
-    needs:
-      - lint_success
+    needs: [lint]
     if: |
       always()
     name: Linting comment
@@ -265,7 +40,7 @@ jobs:
 
       - id: success_gif
         if: |
-          needs.lint_success.result == 'success'
+          needs.lint.result == 'success'
         uses: ddradar/choose-random-action@48b56fba9a94389c7f9124a31c958a522ce39923 # v3
         with:
           contents: |
@@ -279,7 +54,7 @@ jobs:
 
       - id: failure_gif
         if: |
-          needs.lint_success.result == 'failure'
+          needs.lint.result == 'failure'
         uses: ddradar/choose-random-action@48b56fba9a94389c7f9124a31c958a522ce39923 # v3
         with:
           contents: |
@@ -294,7 +69,7 @@ jobs:
 
       - id: set_message
         run: |
-          if [ "${{ needs.lint_success.result }}" == "success" ]; then
+          if [ "${{ needs.lint.result }}" == "success" ]; then
             echo "message=✅ Linting **PASSED!** ✅<br /><br /> ![pass](${{ steps.success_gif.outputs.selected }})" >> "$GITHUB_OUTPUT"
           else
             echo "message=❌ Linting **FAILED!** ❌<br /><br /> ![fail](${{ steps.failure_gif.outputs.selected }})" >> "$GITHUB_OUTPUT"
