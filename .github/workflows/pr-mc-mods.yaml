@@ -47,6 +47,12 @@ jobs:
           cmd: |
             yq -r '.spec.values.controllers.minecraft.containers.app.env.MODRINTH_DEFAULT_VERSION_TYPE' $MC_HR
 
+      - name: Print extracted values
+        run: |
+          echo "MC_VERSION: ${{ steps.mc_version.outputs.result }}"
+          echo "MODRINTH_PROJECTS: ${{ steps.modrinth_projects.outputs.result }}"
+          echo "MODRINTH_ALLOWED_VERSION_TYPE: ${{ steps.modrinth_allowed_version_type.outputs.result }}"
+
       - uses: pbrisbin/setup-tool-action@v2
         with:
           name: mc-image-helper
