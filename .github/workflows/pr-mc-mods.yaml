@@ -47,15 +47,22 @@ jobs:
           cmd: |
             yq -r '.spec.values.controllers.minecraft.containers.app.env.MODRINTH_DEFAULT_VERSION_TYPE' $MC_HR
 
+      - uses: pbrisbin/setup-tool-action@v2
+        with:
+          name: mc-image-helper
+          version: 1.45.0
+          url: "https://github.com/itzg/mc-image-helper/releases/download/{version}/mc-image-helper-{version}.tgz"
+          subdir: bin
+
       - uses: robinraju/release-downloader@v1
         with:
           repository: "itzg/mc-image-helper"
-          fileName: "mc-image-helper-*.tgz "
+          fileName: "mc-image-helper-*.zip"
           latest: true
-          tarBall: true
-          zipBall: false
+          tarBall: false
+          zipBall: true
           extract: true
-          out-file-path: ${{ github.workspace }}
+          out-file-path: /tmp
 
       - name: Check mod compatibility
         env:
