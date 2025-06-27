@@ -47,10 +47,14 @@ jobs:
           cmd: |
             yq -r '.spec.values.controllers.minecraft.containers.app.env.MODRINTH_DEFAULT_VERSION_TYPE' $MC_HR
 
-      - name: Install mc-image-helper
-        uses: jaxxstorm/action-install-gh-release@v1.10.0
+      - uses: robinraju/release-downloader@v1
         with:
-          repo: itzg/mc-image-helper
+          repository: "itzg/mc-image-helper"
+          fileName: "mc-image-helper-*.tgz "
+          latest: true
+          tarBall: true
+          zipBall: false
+          out-file-path: ${{ github.workspace }}
 
       - name: Check mod compatibility
         env:
