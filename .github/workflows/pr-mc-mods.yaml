@@ -54,6 +54,7 @@ jobs:
           latest: true
           tarBall: true
           zipBall: false
+          extract: true
           out-file-path: ${{ github.workspace }}
 
       - name: Check mod compatibility
