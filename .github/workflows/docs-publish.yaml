@@ -10,6 +10,10 @@ on:
       - .github/mkdocs/**
       - .github/workflows/docs-publish.yaml
 
+permissions:
+  contents: write
+  pages: write
+
 jobs:
   publish:
     runs-on: ubuntu-latest
