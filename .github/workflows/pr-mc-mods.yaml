@@ -9,8 +9,8 @@ on:
   pull_request:
     branches:
       - main
-    # paths:
-    #   - kubernetes/apps/games/minecraft/**
+    paths:
+      - kubernetes/apps/games/minecraft/**
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
