@@ -38,7 +38,7 @@ spec:
         defaultContainerOptions:
           securityContext:
             allowPrivilegeEscalation: false
-            readOnlyRootFilesystem: true
+            readOnlyRootFilesystem: false
             capabilities:
               drop: [ALL]
         defaultContainerOptionsStrategy: merge
@@ -73,6 +73,8 @@ spec:
                 memory: 512Mi
               limits:
                 memory: 2Gi
+            securityContext:
+              readOnlyRootFilesystem: false
 
     service:
       app:
