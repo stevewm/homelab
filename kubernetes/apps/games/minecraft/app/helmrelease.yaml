@@ -93,7 +93,7 @@ spec:
               EULA: "true"
               SERVER_NAME: MPOF
               TYPE: FABRIC
-              FORCE_REDOWNLOAD:
+              FORCE_REDOWNLOAD: true
               # renovate: depName=minecraft datasource=custom.minecraft versioning=semver-coerced
               VERSION: 1.21.5
               MOTD: be nice
