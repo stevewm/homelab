@@ -9,8 +9,8 @@ on:
   pull_request:
     branches:
       - main
-      # paths:
-      #   - kubernetes/apps/games/minecraft/**
+    # paths:
+    #   - kubernetes/apps/games/minecraft/**
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
@@ -22,7 +22,7 @@ jobs:
     env:
       MC_HR: ${{ github.workspace }}/kubernetes/apps/games/minecraft/app/helmrelease.yaml
       # renovate: depName=itzg/mc-image-helper source=github-releases
-      MC_IMAGE_HELPER_VERSION: 1.45.0
+      MC_IMAGE_HELPER_VERSION: "1.45.0"
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
@@ -30,31 +30,33 @@ jobs:
           fetch-depth: 0
 
       - name: Extract MC_VERSION
-        uses: mikefarah/yq@master
+        uses: mikefarah/yq@v4.45.4
         id: mc_version
         with:
-          cmd: yq -r '.spec.values.controllers.minecraft.containers.app.env.VERSION' $MC_HR
+          cmd: |
+            yq -r '.spec.values.controllers.minecraft.containers.app.env.VERSION' $MC_HR
 
       - name: Extract MODRINTH_PROJECTS
-        uses: mikefarah/yq@master
+        uses: mikefarah/yq@v4.45.4
         id: modrinth_projects
         with:
           cmd: |
             yq -r '.spec.values.controllers.minecraft.containers.app.env.MODRINTH_PROJECTS' $MC_HR
 
       - name: Extract MODRINTH_ALLOWED_VERSION_TYPE
-        uses: mikefarah/yq@master
+        uses: mikefarah/yq@v4.45.4
         id: modrinth_allowed_version_type
         with:
           cmd: |
             yq -r '.spec.values.controllers.minecraft.containers.app.env.MODRINTH_DEFAULT_VERSION_TYPE' $MC_HR
 
       - name: Extract TYPE
-        uses: mikefarah/yq@master
+        uses: mikefarah/yq@v4.45.4
         id: type
         with:
           cmd: |
             yq -r '.spec.values.controllers.minecraft.containers.app.env.TYPE' $MC_HR
+
       - name: Print extracted values
         run: |
           echo "MC_VERSION: ${{ steps.mc_version.outputs.result }}"
@@ -70,6 +72,7 @@ jobs:
           tar xzf mc-image-helper.tgz -C "${{ github.workspace }}"
           rm mc-image-helper.tgz
 
+      # https://github.com/itzg/docker-minecraft-server/blob/master/scripts/start-setupModpack
       - name: Check mod compatibility
         env:
           MODRINTH_PROJECTS: ${{ steps.modrinth_projects.outputs.result }}
