@@ -25,8 +25,12 @@ on:
       - .github/renovate.json5
       - .github/renovate/**.json5
 
+permissions:
+  contents: read
+  pull-requests: write
+
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
+  group: ${{ github.ref }}-${{ github.workflow }}
   cancel-in-progress: true
 
 env:
