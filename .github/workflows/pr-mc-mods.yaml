@@ -20,7 +20,9 @@ jobs:
   modrinth:
     runs-on: ubuntu-latest
     env:
-      MC_HR: kubernetes/apps/games/minecraft/app/helmrelease.yaml
+      MC_HR: ${{ github.workspace }}/kubernetes/apps/games/minecraft/app/helmrelease.yaml
+      # renovate: depName=itzg/mc-image-helper source=github-releases
+      MC_IMAGE_HELPER_VERSION: 1.45.0
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
@@ -47,30 +49,38 @@ jobs:
           cmd: |
             yq -r '.spec.values.controllers.minecraft.containers.app.env.MODRINTH_DEFAULT_VERSION_TYPE' $MC_HR
 
+      - name: Extract TYPE
+        uses: mikefarah/yq@master
+        id: type
+        with:
+          cmd: |
+            yq -r '.spec.values.controllers.minecraft.containers.app.env.TYPE' $MC_HR
       - name: Print extracted values
         run: |
           echo "MC_VERSION: ${{ steps.mc_version.outputs.result }}"
+          echo "TYPE: ${{ steps.type.outputs.result }}"
           echo "MODRINTH_PROJECTS: ${{ steps.modrinth_projects.outputs.result }}"
           echo "MODRINTH_ALLOWED_VERSION_TYPE: ${{ steps.modrinth_allowed_version_type.outputs.result }}"
 
-      - uses: pbrisbin/setup-tool-action@v2
-        with:
-          name: mc-image-helper
-          version: 1.45.0
-          url: "https://github.com/itzg/mc-image-helper/releases/download/{version}/mc-image-helper-{version}.tgz"
-          subdir: mc-image-helper-{version}/bin
+      - name: Install mc-image-helper
+        run: |
+          url="https://github.com/itzg/mc-image-helper/releases/download/${MC_IMAGE_HELPER_VERSION}/mc-image-helper-${MC_IMAGE_HELPER_VERSION}.tgz"
+
+          curl -fsSL -o mc-image-helper.tgz "$url"
+          tar xzf mc-image-helper.tgz -C "${${{github.workspace}}:-.}"
+          rm mc-image-helper.tgz
 
       - name: Check mod compatibility
         env:
           MODRINTH_PROJECTS: ${{ steps.modrinth_projects.outputs.result }}
           VERSION: ${{ steps.mc_version.outputs.result }}
-          TYPE: "FABRIC"
+          TYPE: ${{ steps.type.outputs.result }}
           MODRINTH_ALLOWED_VERSION_TYPE: ${{ steps.modrinth_allowed_version_type.outputs.result }}
         run: |
           set -e
           if [[ $MODRINTH_PROJECTS ]]; then
             loader="${TYPE,,}"
-            mc-image-helper modrinth \
+            "${{github.workspace}}/mc-image-helper-$MC_IMAGE_HELPER_VERSION/bin/mc-image-helper" modrinth \
               --output-directory=/tmp/mods \
               --world-directory="world" \
               --projects="${MODRINTH_PROJECTS}" \
