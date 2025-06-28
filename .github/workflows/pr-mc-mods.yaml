@@ -67,7 +67,7 @@ jobs:
           url="https://github.com/itzg/mc-image-helper/releases/download/${MC_IMAGE_HELPER_VERSION}/mc-image-helper-${MC_IMAGE_HELPER_VERSION}.tgz"
 
           curl -fsSL -o mc-image-helper.tgz "$url"
-          tar xzf mc-image-helper.tgz -C "${${{github.workspace}}:-.}"
+          tar xzf mc-image-helper.tgz -C "${{ github.workspace }}"
           rm mc-image-helper.tgz
 
       - name: Check mod compatibility
@@ -76,13 +76,14 @@ jobs:
           VERSION: ${{ steps.mc_version.outputs.result }}
           TYPE: ${{ steps.type.outputs.result }}
           MODRINTH_ALLOWED_VERSION_TYPE: ${{ steps.modrinth_allowed_version_type.outputs.result }}
+          MODRINTH_DOWNLOAD_DEPENDENCIES: "none"
         run: |
           set -e
           if [[ $MODRINTH_PROJECTS ]]; then
             loader="${TYPE,,}"
-            "${{github.workspace}}/mc-image-helper-$MC_IMAGE_HELPER_VERSION/bin/mc-image-helper" modrinth \
-              --output-directory=/tmp/mods \
-              --world-directory="world" \
+            "${{ github.workspace }}/mc-image-helper-$MC_IMAGE_HELPER_VERSION/bin/mc-image-helper" modrinth \
+              --output-directory="${{ runner.temp }}/mods" \
+              --world-directory="${{ runner.temp }}/world" \
               --projects="${MODRINTH_PROJECTS}" \
               --game-version="${VERSION}" \
               --loader="$loader" \
