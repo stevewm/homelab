@@ -6,7 +6,7 @@ This repository uses [mise](https://mise.jdx.dev/) to configure a self-contained
 
 Requires [homebrew](https://brew.sh/), [Brew-file](https://github.com/rcmdnk/homebrew-file) and Visual Studio Code to be installed.
 
-1. Run `brew file install --file .github/Brewfile` to install `mise` and `go-task` if you don't have them already.
+1. Run `brew file install --file .github/Brewfile` to install `mise`.
 2. Run `task repo:setup` to set up the development environment. This can also be run again to update.
 
 ## ☁️ Cloud Dependencies
