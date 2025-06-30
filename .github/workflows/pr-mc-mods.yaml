@@ -1,5 +1,6 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 ---
-name: "PR: Mod Compatibility Check"
+name: "PR: Minecraft Mod Compatibility Check"
 
 permissions:
   contents: read
@@ -21,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       MC_HR: ${{ github.workspace }}/kubernetes/apps/games/minecraft/app/helmrelease.yaml
-      # renovate: depName=itzg/mc-image-helper source=github-releases
+      # renovate: depName=itzg/mc-image-helper datasource=github-releases
       MC_IMAGE_HELPER_VERSION: "1.45.0"
     steps:
       - name: Checkout
