@@ -37,12 +37,15 @@ rust = "latest"
 "talhelper" = "3.0.29"
 
 # Tools
-"task" = "3.38.0"
+task = "latest"
 "yq" = "4.45.4"
 "jq" = "1.7.1"
 "doppler" = "latest"
 "cargo:minijinja-cli" = "2.7.0"
 "ubi:gorcon/rcon-cli" = { version = "latest", exe = "rcon" }
+slsa-verifier = "latest"
+cosign = "latest"
+
 
 # hk
 hk = "latest"
