@@ -115,3 +115,5 @@ spec:
     persistence:
       data:
         existingClaim: ut2004-gamedata
+    config:
+      type: emptyDir
