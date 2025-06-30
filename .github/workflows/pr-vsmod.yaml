@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 ---
-name: "PR: VSMod Check"
+name: "PR: Vintage Story Mod Compatibility Check"
 
 permissions:
   contents: read
