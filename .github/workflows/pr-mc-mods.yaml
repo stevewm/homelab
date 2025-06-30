@@ -12,6 +12,7 @@ on:
       - main
     paths:
       - kubernetes/apps/games/minecraft/**
+      - .github/workflows/pr-mc-mods.yaml
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
