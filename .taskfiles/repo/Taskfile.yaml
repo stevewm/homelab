@@ -12,6 +12,7 @@ tasks:
     cmds:
       - mise install
       - if ! doppler whoami > /dev/null 2>&1; then doppler login; fi
+      - rm -rf {{ .ROOT_DIR }}/.github/hooks # https://github.com/jdx/hk/issues/113
       - hk install
       - for:
           var: VSCODE_EXTENSIONS
