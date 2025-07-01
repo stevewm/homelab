@@ -10,7 +10,6 @@
       matchUpdateTypes: ["minor", "patch", "digest"],
       matchPackagePrefixes: ["ghcr.io/stevewm"],
       ignoreTests: true,
-      schedule: ["* 0-4,22-23 * * 1-5"],
     },
     {
       description: "Automerge digests",
@@ -20,7 +19,6 @@
       matchUpdateTypes: ["digest"],
       matchPackagePrefixes: ["ghcr.io/home-operations"],
       ignoreTests: true,
-      schedule: ["* 0-4,22-23 * * 1-5"],
     },
     {
       description: "Auto merge KPS minors and patches",
@@ -29,7 +27,6 @@
       matchUpdateTypes: ["minor", "patch"],
       matchPackageNames: ["kube-prometheus-stack"],
       ignoreTests: false,
-      schedule: ["* 0-4,22-23 * * 1-5"],
     },
   ],
 }
