@@ -61,7 +61,7 @@ spec:
             env:
               MAP_NAME: "AS-BP2-Jumpship"
               GAME_TYPE: "Assault"
-              PUID: 65534
+              PUID: 2000
               CD_KEY:
                 valueFrom:
                   secretKeyRef:
