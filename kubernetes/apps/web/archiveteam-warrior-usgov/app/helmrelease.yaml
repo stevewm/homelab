@@ -65,7 +65,7 @@ spec:
           app:
             image:
               repository: atdr.meo.ws/archiveteam/usgovernment-grab
-              tag: latest@sha256:903ffadbe4f3423d207b127fa8b587055d52bfd74ec4dc2f7be6bf417970e870 # fixme >:(
+              tag: latest # fixme >:(
             args: ["stevewm"] # downloader name, env var is not supported by usgovernment-grab
             resources:
               requests:
