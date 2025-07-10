@@ -38,7 +38,7 @@ rust = "latest"
 
 # Tools
 task = "latest"
-"yq" = "4.45.4"
+"yq" = "4.46.1"
 "jq" = "1.7.1"
 "doppler" = "latest"
 "cargo:minijinja-cli" = "2.7.0"
