@@ -7,7 +7,7 @@ spec:
   hostnames: ["flux-webhook.stevewm.dev"]
   parentRefs:
     - name: external
-      namespace: kube-system
+      namespace: network
       sectionName: https
   rules:
     - backendRefs:
