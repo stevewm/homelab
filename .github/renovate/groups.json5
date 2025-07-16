@@ -68,7 +68,7 @@
       separateMinorPatch: true,
     },
     {
-      description: "IntelDdevice Plugins group",
+      description: "Intel Device Plugins group",
       groupName: "Intel Device Plugins",
       matchPackageNames: [
         "intel-device-plugins-operator",
@@ -103,6 +103,14 @@
       matchPackageNames: ["/coredns/"],
       group: {
         commitMessageTopic: "{{{groupName}}} group",
+      },
+    },
+    {
+      description: "Prometheus Operator CRDs group",
+      groupName: "Prometheus Operator CRDs",
+      matchPackageNames: ["/prometheus-operator-crds/"],
+      group: {
+        commitMessageTopic: "{{{groupName}}} group"
       },
     },
     {
