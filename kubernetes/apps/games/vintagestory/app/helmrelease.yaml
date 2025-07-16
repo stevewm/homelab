@@ -75,13 +75,18 @@ spec:
             image:
               repository: devidian/vintagestory # FIXME: Docker Hub
               tag: latest@sha256:064e622953fcd91f3d9ba24f84615949561fbe75dd24f4addbaca669cc2c4ffa
-            # probes:
-            #   liveness:
-            #     enabled: true
-            #   readiness:
-            #     enabled: true
-            #   startup:
-            #     enabled: true
+            probes:
+              liveness: &game-probes
+                enabled: true
+                custom: true
+                spec:
+                  tcpSocket:
+                    port: game
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *game-probes
             env:
               COMPlus_EnableDiagnostics: "0"
               VS_DATA_PATH: /data
@@ -100,7 +105,7 @@ spec:
               tag: 2.10.0@sha256:c0f4aa9571043db64cae8e0c93674bdebcba5ee36a32e6f9d4e47588d1f55f3d
             args: ["file-server", "--listen", ":80", "--root", "/map/html"]
             probes:
-              liveness: &probes
+              liveness: &map-probes
                 enabled: true
                 custom: true
                 spec:
@@ -111,7 +116,7 @@ spec:
                   periodSeconds: 10
                   timeoutSeconds: 1
                   failureThreshold: 3
-              readiness: *probes
+              readiness: *map-probes
             securityContext:
               readOnlyRootFilesystem: true
 
