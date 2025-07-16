@@ -69,7 +69,7 @@ spec:
           hostnames: ["am.stevewm.dev"]
           parentRefs:
             - name: internal
-              namespace: kube-system
+              namespace: network
               sectionName: https
           annotations:
             gethomepage.dev/name: alertmanager
@@ -110,7 +110,7 @@ spec:
           - memory-snapshot-on-shutdown
           - new-service-discovery-manager
         externalLabels:
-          cluster: ${CLUSTER}
+          cluster: mini
         podMetadata:
           labels:
             ingress.home.arpa/nginx-internal: allow
@@ -120,7 +120,7 @@ spec:
           hostnames: ["prom.stevewm.dev"]
           parentRefs:
             - name: internal
-              namespace: kube-system
+              namespace: network
               sectionName: https
           annotations:
             gethomepage.dev/name: prometheus
