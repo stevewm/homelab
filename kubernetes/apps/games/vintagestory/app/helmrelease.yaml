@@ -81,7 +81,7 @@ spec:
                 custom: true
                 spec:
                   tcpSocket:
-                    port: game
+                    port: &game 42420
                   initialDelaySeconds: 0
                   periodSeconds: 10
                   timeoutSeconds: 1
@@ -135,7 +135,7 @@ spec:
           "lbipam.cilium.io/ips": "10.0.0.70"
         ports:
           game:
-            port: &game 42420
+            port: *game
             nodePort: *game
           rcon:
             port: &rcon 42425
