@@ -429,7 +429,7 @@ spec:
         hostnames: ["graf.stevewm.dev"]
         parentRefs:
           - name: internal
-            namespace: kube-system
+            namespace: network
             sectionName: https
         annotations:
           gethomepage.dev/name: *app
