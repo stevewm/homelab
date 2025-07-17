@@ -1,5 +1,5 @@
 ---
-apiVersion: monitoring.giantswarm.io/v1alpha1
+apiVersion: observability.giantswarm.io/v1alpha2
 kind: Silence
 metadata:
   name: nas-clock-sync
@@ -7,7 +7,7 @@ spec: # it's definitely synced ¯\_(ツ)_/¯
   matchers:
     - name: alertname
       value: NodeClockNotSynchronising
-      isRegex: false
+      matchType: "="
     - name: instance
       value: lilnas.home.arpa:9100
-      isRegex: false
+      matchType: "="
