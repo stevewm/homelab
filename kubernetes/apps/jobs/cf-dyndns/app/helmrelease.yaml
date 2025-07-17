@@ -1,5 +1,5 @@
----
 # yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
@@ -23,6 +23,7 @@ spec:
     keepHistory: false
   values:
     defaultPodOptions:
+      restartPolicy: Always
       automountServiceAccountToken: false
       securityContext:
         runAsNonRoot: true
@@ -50,6 +51,7 @@ spec:
 
         cronjob:
           schedule: "*/5 * * * *" # every 5mins
+
           concurrencyPolicy: Replace
           backoffLimit: 0
           failedJobsHistory: 1
