@@ -5,6 +5,5 @@ kind: Kustomization
 namespace: jobs
 resources:
   - ./lge-dev-renew/ks.yaml
-  - ./cf-dyndns/ks.yaml
 components:
   - ../../flux/components/namespace
