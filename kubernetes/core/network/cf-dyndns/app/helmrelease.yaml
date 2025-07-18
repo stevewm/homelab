@@ -54,7 +54,7 @@ spec:
 
           concurrencyPolicy: Replace
           backoffLimit: 0
-          failedJobsHistory: 1
+          failedJobsHistory: 0 # fails sometimes, runs often enough to not care
           successfulJobsHistory: 0
 
         containers:
