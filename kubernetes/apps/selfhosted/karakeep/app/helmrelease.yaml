@@ -52,12 +52,12 @@ spec:
                 valueFrom:
                   secretKeyRef:
                     name: karakeep
-                    key: meilisearch_master_key
+                    key: MEILISEARCH_MASTER_KEY
               NEXTAUTH_SECRET:
                 valueFrom:
                   secretKeyRef:
                     name: karakeep
-                    key: encryption_key
+                    key: NEXTAUTH_SECRET
               NEXTAUTH_URL: https://kk.stevewm.dev
               DISABLE_NEW_RELEASE_CHECK: true
               COREPACK_INTEGRITY_KEYS: 0
@@ -132,7 +132,7 @@ spec:
                 valueFrom:
                   secretKeyRef:
                     name: karakeep
-                    key: meilisearch_master_key
+                    key: MEILISEARCH_MASTER_KEY
             resources:
               requests:
                 cpu: 10m
