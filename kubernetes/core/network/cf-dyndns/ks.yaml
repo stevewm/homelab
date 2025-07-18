@@ -3,7 +3,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: app-cf-dyndns
+  name: core-cf-dyndns
   namespace: &namespace network
 spec:
   targetNamespace: *namespace
