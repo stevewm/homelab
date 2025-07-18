@@ -49,7 +49,6 @@ spec:
 
     sources:
       - gateway-httproute
-      - service
 
     env:
       - name: EXTERNAL_DNS_PIHOLE_SERVER
