@@ -35,6 +35,7 @@ spec:
 
     controllers:
       ut2004:
+        replicas: 0
         defaultContainerOptions:
           securityContext:
             allowPrivilegeEscalation: false
