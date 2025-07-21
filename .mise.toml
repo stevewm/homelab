@@ -12,10 +12,8 @@ HOMEBREW_BREWFILE="{{ config_root }}/.github/Brewfile"
 _.path = ['{{config_root}}/node_modules/.bin']
 
 [tools]
-uv = "latest"
+uv = "0.8.0"
 python = "3"
-go = "latest"
-rust = "latest"
 
 # Flux
 "flux2" = "2.6.4"
@@ -37,25 +35,25 @@ rust = "latest"
 "talhelper" = "3.0.30"
 
 # Tools
-task = "latest"
+task = "3.44.0"
 "yq" = "4.46.1"
 "jq" = "1.7.1"
-"doppler" = "latest"
+"doppler" = "3.75.1"
 "cargo:minijinja-cli" = "2.7.0"
-"ubi:gorcon/rcon-cli" = { version = "latest", exe = "rcon" }
-slsa-verifier = "latest"
-cosign = "latest"
+"ubi:gorcon/rcon-cli" = { version = "0.10.3", exe = "rcon" }
+slsa-verifier = "2.7.1"
+cosign = "2.5.3"
 
 
 # hk
-hk = "latest"
-pkl = "latest"
-ruff = "latest"
-yamlfmt = "latest"
-lychee = "latest"
-"npm:markdownlint-cli2" = "latest"
-"npm:dclint" = "latest"
-"npm:renovate" = "latest"
-"pipx:yamllint" = "latest"
-actionlint = "latest"
-"npm:prettier" = "latest"
+hk = "1.2.2"
+pkl = "0.28.2"
+ruff = "0.12.4"
+yamlfmt = "0.17.2"
+lychee = "v0.19.1"
+"npm:markdownlint-cli2" = "0.18.1"
+"npm:dclint" = "3.0.0"
+"npm:renovate" = "41.42.1"
+"pipx:yamllint" = "1.37.1"
+actionlint = "1.7.7"
+"npm:prettier" = "3.6.2"
