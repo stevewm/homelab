@@ -8,6 +8,3 @@ resources:
 components:
   - ../../flux/components/namespace
   #- ../../flux/components/networkpolicy/default-allow
-
-generators:
-  - generator.yaml
