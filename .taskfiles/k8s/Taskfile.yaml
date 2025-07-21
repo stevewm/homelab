@@ -40,3 +40,24 @@ tasks:
           var: SECRETS
           split: "\n"
         cmd: kubectl --namespace {{splitList "," .ITEM | first}} annotate externalsecret {{splitList "," .ITEM | last}} force-sync="{{now | unixEpoch}}" --overwrite
+
+  oidc:
+    desc: |
+      Create OIDC secrets for an application and push them to Doppler
+    silent: true
+    dir: "{{ .K8S_DIR }}"
+    preconditions:
+      - which docker doppler
+    vars:
+      AUTHELIA_OUTPUT:
+        sh: docker run --rm authelia/authelia:latest authelia crypto hash generate pbkdf2 --variant sha512 --random --random.length 72 --random.charset rfc3986
+      APP_CLIENT_SECRET:
+        sh: "echo '{{ .AUTHELIA_OUTPUT }}' | grep '^Random Password:' | cut -d':' -f2- | xargs"
+      APP_CLIENT_SECRET_DIGEST:
+        sh: "echo '{{ .AUTHELIA_OUTPUT }}' | grep '^Digest:' | cut -d':' -f2- | xargs"
+    requires:
+      vars: [APP]
+    cmds:
+      - echo "Creating OIDC secrets for {{ .APP }}"
+      - doppler secrets set {{ .APP | upper }}_CLIENT_SECRET '{{ .APP_CLIENT_SECRET }}'
+      - doppler secrets set {{ .APP | upper }}_CLIENT_SECRET_DIGEST '{{ .APP_CLIENT_SECRET_DIGEST }}'
