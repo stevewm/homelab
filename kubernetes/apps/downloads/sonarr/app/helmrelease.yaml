@@ -90,46 +90,12 @@ spec:
               limits:
                 memory: 420Mi
 
-          exporter:
-            dependsOn: app
-            args: ["sonarr"]
-            image:
-              repository: ghcr.io/onedr0p/exportarr
-              tag: v2.2.0@sha256:320b0ea7399f4b9af4741dcdddd7d40c05c36b0359679305d8a54df4e97065df
-            env:
-              PORT: &metrics 9707
-              URL: http://sonarr
-              API_KEY:
-                valueFrom:
-                  secretKeyRef:
-                    name: sonarr
-                    key: api_key
-            resources:
-              requests:
-                cpu: 10m
-                memory: 30Mi
-              limits:
-                memory: 60Mi
-
-    serviceMonitor:
-      metrics:
-        enabled: true
-        serviceName: *app
-        endpoints:
-          - port: metrics
-            scheme: http
-            path: /metrics
-            interval: 15m
-            scrapeTimeout: 2m
-
     service:
       app:
         controller: *app
         ports:
           http:
             port: *port
-          metrics:
-            port: *metrics
 
     route:
       app:

@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: app-scraparr
+  namespace: &namespace downloads
+spec:
+  targetNamespace: *namespace
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: scraparr
+  interval: 30m
+  timeout: 5m
+  path: ./kubernetes/apps/downloads/scraparr/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+    namespace: flux-system
+  wait: true
+  dependsOn:
+    - name: app-sabnzbd
+    - name: app-prowlarr
+    - name: app-sonarr
+    - name: app-radarr
+    - name: app-bazarr
