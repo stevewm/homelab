@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: &app prowlarr
+  name: &app scraparr
 spec:
   interval: 30m
   maxHistory: 3
@@ -26,15 +26,14 @@ spec:
       automountServiceAccountToken: false
       securityContext:
         runAsNonRoot: true
-        runAsUser: 1001
-        runAsGroup: 100
-        fsGroup: 100
+        runAsUser: 1000
+        runAsGroup: 1000
         fsGroupChangePolicy: OnRootMismatch
         seccompProfile:
           type: RuntimeDefault
 
     controllers:
-      prowlarr:
+      scraparr:
         defaultContainerOptions:
           securityContext:
             allowPrivilegeEscalation: false
@@ -45,7 +44,6 @@ spec:
         annotations:
           reloader.stakater.com/auto: "true"
 
-        strategy: Recreate
         pod:
           labels:
             ingress.home.arpa/nginx-internal: allow
@@ -56,29 +54,48 @@ spec:
         containers:
           app:
             image:
-              repository: ghcr.io/home-operations/prowlarr
-              tag: 2.0.1.5101@sha256:e9e0cf64a1ab90ca61688de85bb732d7c3e5142d40a2d9af6172551252cb31c3
+              repository: ghcr.io/thecfu/scraparr
+              tag: 2.2.2@51d4f62c49bf9a664595dc44ce10a8062984871534c280f887027033d88083a5
             env:
-              COMPlus_EnableDiagnostics: "0"
-              PROWLARR__APP__INSTANCENAME: Prowlarr
-              PROWLARR__AUTH__APIKEY:
+              SONARR_URL: http://sonarr.downloads.svc.cluster.local
+              SONARR_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: sonarr
+                    key: api_key
+              RADARR_URL: http://radarr.downloads.svc.cluster.local
+              RADARR_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: radarr
+                    key: api_key
+              PROWLARR_URL: http://prowlarr.downloads.svc.cluster.local
+              PROWLARR_API_KEY:
                 valueFrom:
                   secretKeyRef:
                     name: prowlarr
                     key: api_key
-              PROWLARR__AUTH__REQUIRED: DisabledForLocalAddresses
-              PROWLARR__AUTH__METHOD: External
-              PROWLARR__LOG__DBENABLED: "False"
-              PROWLARR__LOG__LEVEL: info
-              PROWLARR__SERVER__PORT: &port 80
+              BAZARR_URL: http://bazarr.downloads.svc.cluster.local
+              BAZARR_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: bazarr
+                    key: api_key
+              JELLYSEERR_URL: http://jellyseerr.downloads.svc.cluster.local
+              JELLYSEERR_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: jellyseerr
+                    key: api_key
+
             probes:
               liveness: &probes
                 enabled: true
                 custom: true
                 spec:
                   httpGet:
-                    path: /ping
-                    port: *port
+                    path: /metrics
+                    port: &port 7100
                   initialDelaySeconds: 0
                   periodSeconds: 10
                   timeoutSeconds: 1
@@ -87,34 +104,24 @@ spec:
             resources:
               requests:
                 cpu: 10m
-                memory: 164Mi
+                memory: 50Mi
               limits:
-                memory: 220Mi
+                memory: 100Mi
+
+    serviceMonitor:
+      metrics:
+        enabled: true
+        serviceName: *app
+        endpoints:
+          - port: metrics
+            scheme: http
+            path: /metrics
+            interval: 15m
+            scrapeTimeout: 2m
 
     service:
       app:
         controller: *app
         ports:
-          http:
+          metrics:
             port: *port
-
-    route:
-      app:
-        hostnames: ["plr.stevewm.dev"]
-        parentRefs:
-          - name: internal
-            namespace: network
-            sectionName: https
-        annotations:
-          gethomepage.dev/name: *app
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/group: downloads
-          gethomepage.dev/icon: prowlarr.png
-          gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_PROWLARR_API_KEY}}` }}"
-          gethomepage.dev/widget.type: *app
-          gethomepage.dev/widget.url: "http://prowlarr.downloads.svc.cluster.local"
-
-    persistence:
-      config:
-        enabled: true
-        existingClaim: prowlarr-config
