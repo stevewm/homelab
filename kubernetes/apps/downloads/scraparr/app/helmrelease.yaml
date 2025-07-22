@@ -28,6 +28,7 @@ spec:
         runAsNonRoot: true
         runAsUser: 1000
         runAsGroup: 1000
+        fsGroup: 1000
         fsGroupChangePolicy: OnRootMismatch
         seccompProfile:
           type: RuntimeDefault
@@ -116,8 +117,8 @@ spec:
           - port: metrics
             scheme: http
             path: /metrics
-            interval: 15m
-            scrapeTimeout: 2m
+            interval: 1m
+            scrapeTimeout: 10s
 
     service:
       app:
