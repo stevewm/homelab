@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=https://github.com/datreeio/CRDs-catalog/raw/main/helm.toolkit.fluxcd.io/helmrelease_v2.json
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: crunchy-postgres-operator
+spec:
+  interval: 30m
+  maxHistory: 3
+  chartRef:
+    kind: OCIRepository
+    name: pgo
+  install:
+    crds: CreateReplace
+    remediation:
+      retries: 3
+  upgrade:
+    crds: CreateReplace
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    customPodLabels:
+      egress.home.arpa/kubedns: allow
+      egress.home.arpa/apiserver: allow
+
+    install:
+      clusterLabels:
+        app.kubernetes.io/name: pgo
