@@ -20,6 +20,8 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
+  driftDetection:
+    mode: warn
   valuesFrom:
     - kind: ConfigMap
       name: cilium-values

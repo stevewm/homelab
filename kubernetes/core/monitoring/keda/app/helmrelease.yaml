@@ -21,5 +21,7 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
+  driftDetection:
+    mode: warn
   values:
     enableServiceLinks: false
