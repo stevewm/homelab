@@ -21,6 +21,8 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
+  driftDetection:
+    mode: warn
   values:
     # podLabels: # FIXME: Revisit this nightmare another time
     #   egress.home.arpa/apiserver: allow

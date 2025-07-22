@@ -22,6 +22,8 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
+  driftDetection:
+    mode: warn
   values:
     fullnameOverride: external-dns-pihole
     image:
