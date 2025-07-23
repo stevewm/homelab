@@ -8,7 +8,6 @@ KUBECONFIG = "{{ config_root }}/kubernetes/kubeconfig"
 TALOSCONFIG = "{{ config_root }}/kubernetes/talos/clusterconfig/talosconfig"
 MINIJINJA_CONFIG_FILE="{{ config_root }}/.github/.minijinja.toml"
 HOMEBREW_BREWFILE="{{ config_root }}/.github/Brewfile"
-# _.source = "./.github/scripts/env.sh"
 _.path = ['{{config_root}}/node_modules/.bin']
 
 [tools]
@@ -50,7 +49,6 @@ hk = "1.2.2"
 pkl = "0.28.2"
 ruff = "0.12.4"
 yamlfmt = "0.17.2"
-lychee = "v0.19.1"
 "npm:markdownlint-cli2" = "0.18.1"
 "npm:dclint" = "3.0.0"
 "npm:renovate" = "41.43.0"
