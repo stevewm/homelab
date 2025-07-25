@@ -12,6 +12,9 @@ spec:
     copyMethod: ${VOLSYNC_COPY_METHOD:-Snapshot}
     storageClassName: ${VOLSYNC_STORAGECLASS:-local-hostpath}
     capacity: ${VOLSYNC_CAPACITY:-1Gi}
+    cleanupCachePVC: true
+    cleanupTempPVC: true
+    enableFileDeletion: true
     accessModes: ["${VOLSYNC_ACCESSMODES:-ReadWriteOnce}"]
     volumeSnapshotClassName: ${VOLSYNC_STORAGECLASS:-local-hostpath}
     moverSecurityContext:
