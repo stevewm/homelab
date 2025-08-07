@@ -20,7 +20,7 @@ python = "3"
 
 # Kube
 "kubectl" = "1.33.3"
-"kubecolor" = "0.0.25"
+"ubi:kubecolor/kubecolor" = "0.5.1"
 "aqua:CrunchyData/postgres-operator-client" = "0.5.2"
 "kustomize" = "5.7.1"
 "helm" = "3.18.4"
