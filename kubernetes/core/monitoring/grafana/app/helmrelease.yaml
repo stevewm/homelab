@@ -46,14 +46,14 @@ spec:
               path: /var/lib/grafana/dashboards/default
             orgId: 1
             type: file
-          - name: ceph
-            orgId: 1
-            folder: Ceph
-            type: file
-            disableDeletion: false
-            editable: true
-            options:
-              path: /var/lib/grafana/dashboards/ceph
+          # - name: ceph
+          #   orgId: 1
+          #   folder: Ceph
+          #   type: file
+          #   disableDeletion: false
+          #   editable: true
+          #   options:
+          #     path: /var/lib/grafana/dashboards/ceph
           - name: cilium
             orgId: 1
             folder: Cilium
@@ -118,14 +118,6 @@ spec:
             editable: true
             options:
               path: /var/lib/grafana/dashboards/network
-          - name: nginx
-            orgId: 1
-            folder: Nginx
-            type: file
-            disableDeletion: false
-            editable: true
-            options:
-              path: /var/lib/grafana/dashboards/nginx
           - name: prometheus
             orgId: 1
             folder: Prometheus
@@ -175,22 +167,22 @@ spec:
             - name: DS_PROMETHEUS
               value: Prometheus
 
-      ceph:
-        ceph-cluster:
-          # renovate: dashboardName="Ceph Cluster"
-          gnetId: 2842
-          revision: 18
-          datasource: Prometheus
-        ceph-osd:
-          # renovate: dashboardName="Ceph - OSD (Single)"
-          gnetId: 5336
-          revision: 9
-          datasource: Prometheus
-        ceph-pools:
-          # renovate: dashboardName="Ceph - Pools"
-          gnetId: 5342
-          revision: 9
-          datasource: Prometheus
+      # ceph:
+      #   ceph-cluster:
+      #     # renovate: dashboardName="Ceph Cluster"
+      #     gnetId: 2842
+      #     revision: 18
+      #     datasource: Prometheus
+      #   ceph-osd:
+      #     # renovate: dashboardName="Ceph - OSD (Single)"
+      #     gnetId: 5336
+      #     revision: 9
+      #     datasource: Prometheus
+      #   ceph-pools:
+      #     # renovate: dashboardName="Ceph - Pools"
+      #     gnetId: 5342
+      #     revision: 9
+      #     datasource: Prometheus
 
       cilium:
         cilium:
@@ -281,7 +273,9 @@ spec:
           # renovate: dashboardName="Scraparr"
           gnetId: 22934
           revision: 3
-          datasource: Prometheus
+          datasource:
+            - name: DS_MIMIR
+              value: Prometheus
 
       network:
         cloudflared:
@@ -311,14 +305,6 @@ spec:
           datasource:
             - name: DS_PROMETHEUS
               value: Prometheus
-
-      nginx:
-        nginx:
-          url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/grafana/dashboards/nginx.json
-          datasource: Prometheus
-        nginx-request-handling-performance:
-          url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/grafana/dashboards/request-handling-performance.json
-          datasource: Prometheus
 
       prometheus:
         prometheus:
@@ -378,14 +364,6 @@ spec:
             orgId: 1
           - name: Alertmanager
             orgId: 1
-
-      nginx:
-        nginx:
-          url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/grafana/dashboards/nginx.json
-          datasource: Prometheus
-        nginx-request-handling-performance:
-          url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/grafana/dashboards/request-handling-performance.json
-          datasource: Prometheus
 
     env:
       GF_ANALYTICS_CHECK_FOR_UPDATES: false
