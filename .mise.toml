@@ -11,7 +11,7 @@ HOMEBREW_BREWFILE="{{ config_root }}/.github/Brewfile"
 _.path = ['{{config_root}}/node_modules/.bin']
 
 [tools]
-uv = "0.8.6"
+uv = "0.8.8"
 python = "3"
 
 # Flux
@@ -24,7 +24,7 @@ python = "3"
 "aqua:CrunchyData/postgres-operator-client" = "0.5.2"
 "kustomize" = "5.7.1"
 "helm" = "3.18.4"
-"helmfile" = "1.1.3"
+"helmfile" = "1.1.4"
 "k9s" = "0.32.7"
 "stern" = "1.31.0"
 "krew" = "0.4.4"
@@ -51,7 +51,7 @@ ruff = "0.12.8"
 yamlfmt = "0.17.2"
 "npm:markdownlint-cli2" = "0.18.1"
 "npm:dclint" = "3.1.0"
-"npm:renovate" = "41.59.0"
+"npm:renovate" = "41.60.2"
 "pipx:yamllint" = "1.37.1"
 actionlint = "1.7.7"
 "npm:prettier" = "3.6.2"
