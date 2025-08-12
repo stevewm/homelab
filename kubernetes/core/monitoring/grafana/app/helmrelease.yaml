@@ -54,22 +54,14 @@ spec:
           #   editable: true
           #   options:
           #     path: /var/lib/grafana/dashboards/ceph
-          - name: cilium
-            orgId: 1
-            folder: Cilium
-            type: file
-            disableDeletion: false
-            editable: true
-            options:
-              path: /var/lib/grafana/dashboards/cilium
-          - name: crunchy-postgres
-            orgId: 1
-            folder: Crunchy Postgres
-            type: file
-            disableDeletion: false
-            editable: true
-            options:
-              path: /var/lib/grafana/dashboards/crunchy-postgres
+          # - name: crunchy-postgres
+          #   orgId: 1
+          #   folder: Crunchy Postgres
+          #   type: file
+          #   disableDeletion: false
+          #   editable: true
+          #   options:
+          #     path: /var/lib/grafana/dashboards/crunchy-postgres
           - name: games
             orgId: 1
             folder: Games
@@ -176,21 +168,6 @@ spec:
       #     revision: 9
       #     datasource: Prometheus
 
-      cilium:
-        cilium:
-          gnetId: 6658
-          revision: 2
-          datasource:
-            - name: DS_PROMETHEUS
-              value: Prometheus
-
-        cilium-policy-verdicts:
-          gnetId: 18015
-          revision: 4
-          datasource:
-            - name: DS_PROMETHEUS
-              value: Prometheus
-
       games:
         minecraft:
           # renovate: dashboardName="Minecraft Fabric"
@@ -261,7 +238,6 @@ spec:
             - name: DS_MIMIR
               value: Prometheus
 
-      network:
         cloudflared:
           # renovate: dashboardName="Cloudflare Tunnels (cloudflared)"
           gnetId: 17457
@@ -317,12 +293,6 @@ spec:
           datasource:
             - name: DS_PROMETHEUS
               value: Prometheus
-
-        vpa-recommendations:
-          # renovate: dashboardName="VPA Recommendations"
-          gnetId: 14588
-          revision: 5
-          datasource: Prometheus
 
     datasources:
       datasources.yaml:
