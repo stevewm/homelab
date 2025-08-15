@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/name: crossplane
   interval: 30m
   timeout: 5m
-  path: ./kubernetes/core/home/crossplane/app
+  path: ./kubernetes/core/crossplane-system/crossplane/app
   prune: true
   sourceRef:
     kind: GitRepository
