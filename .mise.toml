@@ -45,13 +45,13 @@ cosign = "2.5.3"
 
 
 # hk
-hk = "1.10.3"
+hk = "1.10.4"
 pkl = "0.29.0"
 ruff = "0.12.10"
 yamlfmt = "0.17.2"
 "npm:markdownlint-cli2" = "0.18.1"
 "npm:dclint" = "3.1.0"
-"npm:renovate" = "41.82.9"
+"npm:renovate" = "41.82.10"
 "pipx:yamllint" = "1.37.1"
 actionlint = "1.7.7"
 "npm:prettier" = "3.6.2"
