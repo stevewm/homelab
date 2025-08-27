@@ -128,7 +128,7 @@ spec:
         server: lilnas.home.arpa
         path: /volume1/Media/
         globalMounts:
-          - path: /media/Downloads/soulseek
-            subPath: Downloads/soulseek
+          - path: /media/downloads/soulseek
+            subPath: downloads/soulseek
       tmp:
         type: emptyDir
