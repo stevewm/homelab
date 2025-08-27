@@ -1,0 +1,134 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app slskd
+spec:
+  interval: 30m
+  maxHistory: 3
+  chartRef:
+    kind: OCIRepository
+    name: app-template
+    namespace: flux-system
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  uninstall:
+    keepHistory: false
+  driftDetection:
+    mode: warn
+  values:
+    defaultPodOptions:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        runAsGroup: 100
+        fsGroup: 100
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+
+    controllers:
+      slskd:
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+
+        annotations:
+          reloader.stakater.com/auto: "true"
+
+        containers:
+          app:
+            image:
+              repository: ghcr.io/slskd/slskd
+              tag: 0.23.2@sha256:28df5325f301537ea8669b2ef90112a30cc9f2efd3eb714c9a778460b5dc6288
+            env:
+              DOTNET_BUNDLE_EXTRACT_BASE_DIR: /tmp/.net
+              SLSKD_APP_DIR: /config
+              SLSKD_HTTP_PORT: &port 80
+              SLSKD_NO_AUTH: true
+              SLSKD_NO_HTTPS: true
+              SLSKD_SLSK_LISTEN_PORT: &soulseekPort 50300
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /health
+                    port: *port
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+            resources:
+              requests:
+                cpu: 10m
+                memory: 128Mi
+              limits:
+                memory: 1Gi
+
+    service:
+      app:
+        forceRename: "{{ .Release.Name }}"
+        primary: true
+        ports:
+          http:
+            port: *port
+      soulseek:
+        type: LoadBalancer
+        ports:
+          soulseek-tcp:
+            port: *soulseekPort
+            protocol: TCP
+
+    route:
+      app:
+        hostnames: ["{{ .Release.Name }}.stevewm.dev"]
+        parentRefs:
+          - name: internal
+            namespace: network
+            sectionName: https
+        rules:
+          - backendRefs:
+              - identifier: app
+                port: *port
+        annotations:
+          gethomepage.dev/name: *app
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: downloads
+          gethomepage.dev/icon: soulseek.png
+
+    persistence:
+      config:
+        type: persistentVolumeClaim
+        size: 256Mi
+        accessMode: ReadWriteOnce
+      config-file:
+        type: configMap
+        name: "{{ .Release.Name }}"
+        defaultMode: 0775
+        globalMounts:
+          - path: /config/slskd.yml
+            subPath: slskd.yml
+            readOnly: true
+      media:
+        type: nfs
+        server: lilnas.home.arpa
+        path: /volume1/Media/
+        globalMounts:
+          - path: /media/Downloads/soulseek
+            subPath: Downloads/soulseek
+      tmp:
+        type: emptyDir
