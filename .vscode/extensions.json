@@ -1,10 +1,12 @@
 {
   "recommendations": [
-    "tamasfe.even-better-toml",
-    "Tyriar.sort-lines",
     "EditorConfig.EditorConfig",
+    "Pkl.pkl-vscode",
+    "Tyriar.sort-lines",
     "eamodio.gitlens",
-    "mrmlnc.vscode-json5"
+    "mrmlnc.vscode-json5",
+    "redhat.vscode-yaml",
+    "tamasfe.even-better-toml",
   ],
   "unwantedRecommendations": []
 }

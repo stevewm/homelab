@@ -5,10 +5,12 @@ version: "3"
 tasks:
   setup:
     desc: Setup environment
+    preconditions:
+      - which jq mise doppler hk code
     interactive: true
     vars:
       VSCODE_EXTENSIONS:
-        sh: jq -r '.recommendations | join(", ")' {{ .ROOT_DIR }}/.vscode/extensions.json
+        sh: jq -r '.recommendations | join(" ")' {{ .ROOT_DIR }}/.vscode/extensions.json
     cmds:
       - mise install
       - if ! doppler whoami > /dev/null 2>&1; then doppler login; fi
@@ -16,7 +18,7 @@ tasks:
       - hk install
       - for:
           var: VSCODE_EXTENSIONS
-        cmd: code --install-extension {{ trimSuffix "," .ITEM }}
+        cmd: code --install-extension {{ .ITEM }}
 
   schemas:
     desc: Show YAML files without a schema
