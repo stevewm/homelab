@@ -21,3 +21,6 @@ spec:
   wait: true
   components:
     - ../../../../flux/components/keda/nas-nfs-scaler
+  postBuild:
+    substitute:
+      APP: slskd
