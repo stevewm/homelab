@@ -59,6 +59,9 @@ spec:
               SLSKD_NO_AUTH: true
               SLSKD_NO_HTTPS: true
               SLSKD_SLSK_LISTEN_PORT: &soulseekPort 50300
+            envFrom:
+              - secretRef:
+                  name: "{{ .Release.Name }}"
             probes:
               liveness: &probes
                 enabled: true
