@@ -24,4 +24,4 @@ mods:
   - id: pspeltpatch
     version: 0.0.2
   - id: chiseltoolslite
-    version: 1.14.20
+    version: 1.15.1
