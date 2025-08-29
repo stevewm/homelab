@@ -1,5 +1,5 @@
 ---
-game_version: "~1.20.0"
+game_version: "~1.21.0"
 mods_dir: /data/mods
 hooks:
   download:
