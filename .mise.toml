@@ -11,7 +11,7 @@ HOMEBREW_BREWFILE="{{ config_root }}/.github/Brewfile"
 _.path = ['{{config_root}}/node_modules/.bin']
 
 [tools]
-uv = "0.8.13"
+uv = "0.8.14"
 python = "3"
 
 # Flux
@@ -19,7 +19,7 @@ python = "3"
 "pipx:flux-local" = "7.5.6"
 
 # Kube
-"kubectl" = "1.33.4"
+"kubectl" = "1.34.0"
 "ubi:kubecolor/kubecolor" = "0.5.1"
 "aqua:CrunchyData/postgres-operator-client" = "0.5.2"
 "kustomize" = "5.7.1"
@@ -31,7 +31,7 @@ python = "3"
 
 # Talos
 "talos" = "1.9.3"
-"talhelper" = "3.0.32"
+"talhelper" = "3.0.33"
 
 # Tools
 task = "3.44.0"
@@ -45,13 +45,13 @@ cosign = "2.5.3"
 
 
 # hk
-hk = "1.10.4"
-pkl = "0.29.0"
-ruff = "0.12.10"
+hk = "1.10.7"
+pkl = "0.29.1"
+ruff = "0.12.11"
 yamlfmt = "0.17.2"
 "npm:markdownlint-cli2" = "0.18.1"
 "npm:dclint" = "3.1.0"
-"npm:renovate" = "41.82.10"
+"npm:renovate" = "41.90.1"
 "pipx:yamllint" = "1.37.1"
 actionlint = "1.7.7"
 "npm:prettier" = "3.6.2"
