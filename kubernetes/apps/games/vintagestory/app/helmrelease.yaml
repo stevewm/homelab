@@ -171,7 +171,7 @@ spec:
         globalMounts:
           - path: /data/serverconfig.json
             subPath: serverconfig.json
-            readOnly: true
+            readOnly: false
           - path: /data/servermagicnumbers.json
             subPath: servermagicnumbers.json
             readOnly: true
