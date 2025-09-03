@@ -55,7 +55,7 @@ spec:
                   secretKeyRef:
                     name: wrtag
                     key: api_key
-              WRTTAG_WEB_LISTEN_ADDR: ":80"
+              WRTAG_WEB_LISTEN_ADDR: ":80"
               WRTAG_WEB_PUBLIC_URL: https://wrtag.stevewm.dev
               WRTAG_WEB_DB_PATH: /data/wrtag.db
               WRTAG_LOG_LEVEL: debug
