@@ -127,6 +127,14 @@ spec:
           - path: /config/slskd.yml
             subPath: slskd.yml
             readOnly: true
+      scripts:
+        type: configMap
+        name: "{{ .Release.Name }}"
+        defaultMode: 0755
+        globalMounts:
+          - path: /scripts/wrtag.sh
+            subPath: wrtag.sh
+            readOnly: true
       media:
         type: nfs
         server: lilnas.home.arpa
