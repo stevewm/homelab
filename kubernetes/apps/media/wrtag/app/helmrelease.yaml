@@ -122,3 +122,5 @@ spec:
             subPath: downloads/soulseek
           - path: /media/music
             subPath: music
+      tmp:
+        type: emptyDir
