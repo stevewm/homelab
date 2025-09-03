@@ -61,21 +61,22 @@ spec:
               WRTAG_LOG_LEVEL: debug
               WRTAG_PATH_FORMAT: '/media/music/{{`{{ artists .Release.Artists | sort | join "; " | safepath }}`}}/({{`{{ .Release.ReleaseGroup.FirstReleaseDate.Year }}`}} {{`{{ .Release.Title | safepath }}`}}{{`{{ if not (eq .ReleaseDisambiguation "") }}`}} ({{`{{ .ReleaseDisambiguation | safepath }}`}}){{`{{ end }}`}}/{{`{{ pad0 2 .TrackNum }}`}} {{`{{ .Track.Title | safepath }}`}}{{`{{ .Ext }}`}}'
 
-            probes:
-              liveness: &probes
-                enabled: true
-                custom: true
-                spec:
-                  httpGet:
-                    path: /
-                    port: 80
-                  initialDelaySeconds: 0
-                  periodSeconds: 10
-                  timeoutSeconds: 1
-                  failureThreshold: 3
-              readiness: *probes
-              startup:
-                enabled: false
+            # probes:
+            #   liveness: &probes
+            #     enabled: true
+            #     custom: true
+            #     spec:
+            #       httpGet:
+            #         path: /
+            #         port: 80
+            #       initialDelaySeconds: 0
+            #       periodSeconds: 10
+            #       timeoutSeconds: 1
+            #       failureThreshold: 3
+            #   readiness: *probes
+            #   startup:
+            #     enabled: false
+
             resources:
               requests:
                 cpu: 10m
