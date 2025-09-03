@@ -1,9 +1,9 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/helm.toolkit.fluxcd.io/helmrelease_v2.json
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: &app slskd
+  name: &app wrtag
 spec:
   interval: 30m
   maxHistory: 3
@@ -13,7 +13,7 @@ spec:
     namespace: flux-system
   install:
     remediation:
-      retries: -1
+      retries: 3
   upgrade:
     cleanupOnFail: true
     remediation:
@@ -36,7 +36,7 @@ spec:
           type: RuntimeDefault
 
     controllers:
-      slskd:
+      wrtag:
         defaultContainerOptions:
           securityContext:
             allowPrivilegeEscalation: false
@@ -44,97 +44,74 @@ spec:
             capabilities:
               drop: [ALL]
 
-        annotations:
-          reloader.stakater.com/auto: "true"
-
         containers:
           app:
             image:
-              repository: ghcr.io/slskd/slskd
-              tag: 0.23.2@sha256:28df5325f301537ea8669b2ef90112a30cc9f2efd3eb714c9a778460b5dc6288
+              repository: ghcr.io/sentriz/wrtag
+              tag: v0.17.0@@sha256:c64513d370f3560e7bd203332127a3719d8ae7e783fe092b1003657400e09f0a
             env:
-              DOTNET_BUNDLE_EXTRACT_BASE_DIR: /tmp/.net
-              SLSKD_APP_DIR: /config
-              SLSKD_HTTP_PORT: &port 80
-              SLSKD_NO_AUTH: true
-              SLSKD_NO_HTTPS: true
-              SLSKD_SLSK_LISTEN_PORT: &soulseekPort 50300
-              WRTAG_URL: wrtag.media.svc.cluster.local
-            envFrom:
-              - secretRef:
-                  name: "{{ .Release.Name }}"
+              WRTAG_WEB_API_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: wrtag
+                    key: api_key
+              WRTTAG_WEB_LISTEN_ADDR: ":80"
+              WRTAG_WEB_PUBLIC_URL: https://wrtag.stevewm.dev
+              WRTAG_WEB_DB_PATH: /data/wrtag.db
+              WRTAG_LOG_LEVEL: debug
+              WRTAG_PATH_FORMAT: '/media/music/{{`{{ artists .Release.Artists | sort | join "; " | safepath }}`}}/({{`{{ .Release.ReleaseGroup.FirstReleaseDate.Year }}`}} {{`{{ .Release.Title | safepath }}`}}{{`{{ if not (eq .ReleaseDisambiguation "") }}`}} ({{`{{ .ReleaseDisambiguation | safepath }}`}}){{`{{ end }}`}}/{{`{{ pad0 2 .TrackNum }}`}} {{`{{ .Track.Title | safepath }}`}}{{`{{ .Ext }}`}}'
+
             probes:
               liveness: &probes
                 enabled: true
                 custom: true
                 spec:
                   httpGet:
-                    path: /health
-                    port: *port
+                    path: /
+                    port: 80
                   initialDelaySeconds: 0
                   periodSeconds: 10
                   timeoutSeconds: 1
                   failureThreshold: 3
               readiness: *probes
+              startup:
+                enabled: false
             resources:
               requests:
                 cpu: 10m
                 memory: 128Mi
               limits:
-                memory: 1Gi
+                memory: 256Mi
 
     service:
       app:
-        forceRename: "{{ .Release.Name }}"
-        primary: true
+        controller: *app
         ports:
           http:
-            port: *port
-      soulseek:
-        type: LoadBalancer
-        ports:
-          soulseek-tcp:
-            port: *soulseekPort
-            protocol: TCP
+            port: &http 80
 
     route:
       app:
-        hostnames: ["{{ .Release.Name }}.stevewm.dev"]
+        hostnames: ["wrtag.stevewm.dev"]
         parentRefs:
-          - name: internal
+          - name: external
             namespace: network
             sectionName: https
         rules:
           - backendRefs:
               - identifier: app
-                port: *port
+                port: *http
         annotations:
           gethomepage.dev/name: *app
           gethomepage.dev/enabled: "true"
-          gethomepage.dev/group: downloads
-          gethomepage.dev/icon: soulseek.png
+          gethomepage.dev/group: media
+          gethomepage.dev/icon: musicbrainz.png
 
     persistence:
-      config:
+      data:
         type: persistentVolumeClaim
-        size: 256Mi
+        size: 512Mi
         accessMode: ReadWriteOnce
-      config-file:
-        type: configMap
-        name: "{{ .Release.Name }}"
-        defaultMode: 0775
-        globalMounts:
-          - path: /config/slskd.yml
-            subPath: slskd.yml
-            readOnly: true
-      scripts:
-        type: configMap
-        name: "{{ .Release.Name }}"
-        defaultMode: 0755
-        globalMounts:
-          - path: /scripts/wrtag.sh
-            subPath: wrtag.sh
-            readOnly: true
       media:
         type: nfs
         server: lilnas.home.arpa
@@ -144,5 +121,3 @@ spec:
             subPath: downloads/soulseek
           - path: /media/music
             subPath: music
-      tmp:
-        type: emptyDir
