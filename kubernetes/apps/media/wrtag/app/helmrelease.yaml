@@ -59,7 +59,7 @@ spec:
               WRTAG_WEB_PUBLIC_URL: https://wrtag.stevewm.dev
               WRTAG_WEB_DB_PATH: /data/wrtag.db
               WRTAG_LOG_LEVEL: debug
-              WRTAG_PATH_FORMAT: '/media/music/{{`{{ artists .Release.Artists | sort | join "; " | safepath }}`}}/({{`{{ .Release.ReleaseGroup.FirstReleaseDate.Year }}`}} {{`{{ .Release.Title | safepath }}`}}{{`{{ if not (eq .ReleaseDisambiguation "") }}`}} ({{`{{ .ReleaseDisambiguation | safepath }}`}}){{`{{ end }}`}}/{{`{{ pad0 2 .TrackNum }}`}} {{`{{ .Track.Title | safepath }}`}}{{`{{ .Ext }}`}}'
+              WRTAG_PATH_FORMAT: '/media/music/{{`{{ artists .Release.Artists | sort | join "; " | safepath }}`}}/({{`{{ .Release.ReleaseGroup.FirstReleaseDate.Year }}`}}) {{`{{ .Release.Title | safepath }}`}}{{`{{ if not (eq .ReleaseDisambiguation "") }}`}} ({{`{{ .ReleaseDisambiguation | safepath }}`}}){{`{{ end }}`}}/{{`{{ pad0 2 .TrackNum }}`}} {{`{{ .Track.Title | safepath }}`}}{{`{{ .Ext }}`}}'
 
             # probes:
             #   liveness: &probes
