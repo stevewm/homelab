@@ -15,8 +15,15 @@ permissions:
 remote_configuration: false
 shares:
   directories:
-    - /media/downloads/soulseek/shared
+    - /media/music
   filters:
     - \.ini$
     - Thumbs.db$
     - \.DS_Store$
+integration:
+  scripts:
+    post_download_script:
+      on:
+        - DownloadDirectoryComplete
+      run:
+        command: /scripts/wrtag.sh

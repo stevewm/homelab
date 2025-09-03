@@ -9,6 +9,7 @@ configMapGenerator:
   - name: slskd
     files:
       - slskd.yml=./config/slskd.yml
+      - wrtag.sh=./config/wrtag.sh
 generatorOptions:
   disableNameSuffixHash: true
   annotations:
