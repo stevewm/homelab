@@ -9,7 +9,7 @@ spec:
   targetNamespace: *namespace
   commonMetadata:
     labels:
-      app.kubernetes.io/name: wrtag
+      app.kubernetes.io/name: &app wrtag
   interval: 30m
   timeout: 5m
   path: ./kubernetes/apps/media/wrtag/app
@@ -21,3 +21,6 @@ spec:
   wait: true
   components:
     - ../../../../flux/components/keda/nas-nfs-scaler
+  postBuild:
+    substitute:
+      APP: *app
