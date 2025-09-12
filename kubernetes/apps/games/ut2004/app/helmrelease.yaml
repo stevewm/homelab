@@ -53,7 +53,7 @@ spec:
           app:
             image:
               repository: ghcr.io/phasecorex/ut2004-server
-              tag: latest@sha256:d9715f4a0a074b4e02c98ce29abbc5a41541277758a99439df8526fd2ee6eb8d
+              tag: latest@sha256:e4aef2fb2c8169dee7385cb3e93b1ab98d2bdf7b9e96716a8fda918780f77126
             # probes:
             #   liveness:
             #     enabled: true
