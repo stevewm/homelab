@@ -87,7 +87,7 @@ spec:
           app:
             image:
               repository: ghcr.io/authelia/authelia
-              tag: 4.39.6@sha256:08776367d54d4482c54ac8ca75b18f7db3287b751106e19736780c5f6811374d
+              tag: 4.39.10@sha256:ed52a81c71dfb3b84327a1397081423773804281519b4f6c337cb12a4c58bef9
             envFrom:
               - secretRef:
                   name: *app
