@@ -11,7 +11,7 @@ HOMEBREW_BREWFILE="{{ config_root }}/.github/Brewfile"
 _.path = ['{{config_root}}/node_modules/.bin']
 
 [tools]
-uv = "0.8.17"
+uv = "0.8.19"
 python = "3"
 
 # Flux
@@ -45,13 +45,13 @@ cosign = "2.6.0"
 
 
 # hk
-hk = "1.13.4"
+hk = "1.15.2"
 pkl = "0.29.1"
-ruff = "0.13.0"
+ruff = "0.13.1"
 yamlfmt = "0.17.2"
 "npm:markdownlint-cli2" = "0.18.1"
 "npm:dclint" = "3.1.0"
-"npm:renovate" = "41.116.0"
+"npm:renovate" = "41.119.5"
 "pipx:yamllint" = "1.37.1"
 actionlint = "1.7.7"
 "npm:prettier" = "3.6.2"
