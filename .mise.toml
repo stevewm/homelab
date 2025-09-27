@@ -11,7 +11,7 @@ HOMEBREW_BREWFILE="{{ config_root }}/.github/Brewfile"
 _.path = ['{{config_root}}/node_modules/.bin']
 
 [tools]
-uv = "0.8.19"
+uv = "0.8.22"
 python = "3"
 
 # Flux
@@ -31,12 +31,12 @@ python = "3"
 
 # Talos
 "talos" = "1.9.3"
-"talhelper" = "3.0.35"
+"talhelper" = "3.0.36"
 
 # Tools
 task = "3.44.0"
 "yq" = "4.47.2"
-"jq" = "1.7.1"
+"jq" = "1.8.1"
 "doppler" = "3.75.1"
 "cargo:minijinja-cli" = "2.7.0"
 "ubi:gorcon/rcon-cli" = { version = "0.10.3", exe = "rcon" }
@@ -45,13 +45,13 @@ cosign = "2.6.0"
 
 
 # hk
-hk = "1.15.3"
+hk = "1.15.6"
 pkl = "0.29.1"
-ruff = "0.13.1"
+ruff = "0.13.2"
 yamlfmt = "0.17.2"
 "npm:markdownlint-cli2" = "0.18.1"
 "npm:dclint" = "3.1.0"
-"npm:renovate" = "41.122.3"
+"npm:renovate" = "41.131.8"
 "pipx:yamllint" = "1.37.1"
 actionlint = "1.7.7"
 "npm:prettier" = "3.6.2"
