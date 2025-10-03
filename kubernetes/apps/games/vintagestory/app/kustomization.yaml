@@ -6,7 +6,6 @@ resources:
   - ./helmrelease.yaml
   - ./externalsecret.yaml
   #- ./probe.yaml
-  #- ./networkpolicy.yaml
 configMapGenerator:
   - name: vintagestory
     files:

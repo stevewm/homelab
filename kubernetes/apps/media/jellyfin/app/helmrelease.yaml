@@ -48,11 +48,6 @@ spec:
           reloader.stakater.com/auto: "true"
 
         pod:
-          labels:
-            monitoring.home.arpa/prometheus: allow
-            egress.home.arpa/kubedns: allow
-            ingress.home.arpa/nginx-external: allow
-            ingress.home.arpa/homepage: allow
           nodeSelector:
             intel.feature.node.kubernetes.io/gpu: "true"
 

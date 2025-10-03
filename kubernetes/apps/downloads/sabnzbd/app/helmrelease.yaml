@@ -47,13 +47,6 @@ spec:
         annotations:
           reloader.stakater.com/auto: "true"
 
-        pod:
-          labels:
-            ingress.home.arpa/nginx-internal: allow
-            ingress.home.arpa/homepage: allow
-            egress.home.arpa/kubedns: allow
-            monitoring.home.arpa/prometheus: allow
-
         containers:
           app:
             image:

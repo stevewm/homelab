@@ -50,9 +50,6 @@ spec:
           reloader.stakater.com/auto: "true"
 
         pod:
-          labels:
-            egress.home.arpa/kubedns: allow
-            monitoring.home.arpa/prometheus: allow
           restartPolicy: Never
 
         cronjob:

@@ -2,21 +2,6 @@
 crds:
   enabled: true
 enableCertificateOwnerRef: true
-# podLabels:
-#   egress.home.arpa/apiserver: allow
-
-# webhook:
-#   podLabels:
-#     ingress.home.arpa/apiserver: allow
-#     egress.home.arpa/apiserver: allow
-
-# cainjector:
-#   podLabels:
-#     egress.home.arpa/apiserver: allow
-
-# startupapicheck:
-#   podLabels:
-#     egress.home.arpa/apiserver: allow
 
 deploymentAnnotations:
   reloader.stakater.com/auto: "true"
