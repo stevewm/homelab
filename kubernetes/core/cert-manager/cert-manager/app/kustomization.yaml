@@ -9,7 +9,6 @@ resources:
   - ./prometheusrule.yaml
   - ./le-prod-issuer.yaml
   # - ./le-staging-issuer.yaml
-  # - ./networkpolicy.yaml
 configMapGenerator:
   - name: cert-manager-helm-values
     files:
