@@ -7,4 +7,3 @@ resources:
   - ./helmrelease.yaml
   - ./rbac.yaml
   - ./config.yaml
-  #- ./networkpolicy.yaml

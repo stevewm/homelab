@@ -24,12 +24,6 @@ spec:
   driftDetection:
     mode: warn
   values:
-    # podLabels: # FIXME: Revisit this nightmare another time
-    #   egress.home.arpa/apiserver: allow
-    # webhook:
-    #   podLabels:
-    #     egress.home.arpa/apiserver: allow
-    #     ingress.home.arpa/apiserver: allow
     installCRDs: true
     replicaCount: 2
 

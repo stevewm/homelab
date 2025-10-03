@@ -47,10 +47,6 @@ spec:
             capabilities:
               drop: [ALL]
 
-        pod:
-          labels:
-            egress.home.arpa/kubedns: allow
-
         cronjob:
           schedule: "*/5 * * * *" # every 5mins
 

@@ -5,7 +5,6 @@ kind: Kustomization
 resources:
   - ./helmrelease.yaml
   - ./ocirepository.yaml
-  #- ./networkpolicies
 configMapGenerator:
   - name: flux-operator-helm-values
     files:

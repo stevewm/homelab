@@ -6,4 +6,3 @@ resources:
   - ./externalsecret.yaml
   - ./httproute.yaml
   - ./receiver.yaml
-  #- ./networkpolicy.yaml

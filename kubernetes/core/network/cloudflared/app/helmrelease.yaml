@@ -52,11 +52,6 @@ spec:
           secret.reloader.stakater.com/reload: cloudflared
 
         pod:
-          labels:
-            egress.home.arpa/internet: allow
-            egress.home.arpa/kubedns: allow
-            ingress.home.arpa/nginx-external: allow
-
           topologySpreadConstraints:
             - maxSkew: 1
               topologyKey: kubernetes.io/hostname
