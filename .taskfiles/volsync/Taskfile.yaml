@@ -40,3 +40,17 @@ tasks:
         {{ if eq "true" .WAIT }}until kubectl --namespace {{ .NS }} get job/{{ .JOB }} &>/dev/null; do sleep 5; done{{ end }}
       - |-
         {{ if eq "true" .WAIT }}kubectl --namespace {{ .NS }} wait job/{{ .JOB }} --for=condition=complete --timeout=120m{{ end }}
+
+  unlock:
+    desc: Unlock a restic source repo [NS=default] [APP=required] [DEST=hetzner]
+    preconditions:
+      - which kubectl
+      - kubectl --namespace {{ .NS }} get replicationsource {{ .APP }}-backup-{{ .DEST | default "hetzner" }}
+    requires:
+      vars:
+        - APP
+    vars:
+      NS: '{{ .NS | default "default" }}'
+      APP: "{{ .APP }}"
+    cmds:
+      - kubectl --namespace {{ .NS }} patch --field-manager=flux-client-side-apply replicationsources {{ .APP }}-backup-hetzner --type merge --patch "{\"spec\":{\"restic\":{\"unlock\":\"{{now | unixEpoch}}\"}}}"

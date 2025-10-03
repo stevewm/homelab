@@ -66,7 +66,7 @@ spec:
           app:
             image:
               repository: ghcr.io/home-operations/home-assistant
-              tag: 2025.7.3
+              tag: 2025.10.1
             env:
               VENV_FOLDER: /venv
               HASS_HTTP_TRUSTED_PROXY: 10.244.0.0/24
@@ -80,7 +80,7 @@ spec:
           code-server:
             image:
               repository: ghcr.io/coder/code-server
-              tag: 4.102.1@sha256:8e54ed8a175d4dc223186078dc0c89157887ad8a2c17b41b2ff6f1a0b3d724d9
+              tag: 4.104.2@sha256:6edc8e2d2849749c1a1a5eff8e76563b96db407e68899c143473a6004d0a6b5a
             args:
               - --auth
               - none
@@ -122,7 +122,7 @@ spec:
           - hass.stevewm.dev
         parentRefs:
           - name: internal
-            namespace: kube-system
+            namespace: network
             sectionName: https
         rules:
           - matches:

@@ -23,31 +23,26 @@ local linters = new Mapping<String, Step> {
     ["ruff"] {
       glob = "*.py"
       stage = ".py"
-      check = "ruff check --config "+config+"/ruff.toml {{files}}"
-      fix = "ruff check --config ruff check --config "+config+"/ruff.toml --fix {{files}}"
+      check = "ruff check --config "+config+"/ruff.toml {{ files }}"
+      fix = "ruff check --config ruff check --config "+config+"/ruff.toml --fix {{ files }}"
     }
 
     ["markdownlint"] {
       glob = "*.md"
       stage = "*.md"
-      check = "markdownlint-cli2 --config "+config+"/conf.markdownlint.yaml {{files}}"
-      fix = "markdownlint-cli2 --config "+config+"/conf.markdownlint.yaml --fix {{files}}"
+      check = "markdownlint-cli2 --config "+config+"/conf.markdownlint.yaml {{ files }}"
+      fix = "markdownlint-cli2 --config "+config+"/conf.markdownlint.yaml --fix {{ files }}"
     }
-
-    // ["lychee"] {
-    //   glob = "*"
-    //   check = "lychee --no-progress --config "+config+"/lychee.toml {{files}}"
-    // }
 
     ["dclint"] {
       glob = "docker-compose.yaml"
-      check = "dclint {{files}} --config "+config+"/dclint.yaml"
-      fix = "dclint {{files}} --config "+config+"/dclint.yaml --fix"
+      check = "dclint {{ files }} --config "+config+"/dclint.yaml"
+      fix = "dclint {{ files }} --config "+config+"/dclint.yaml --fix"
     }
 
     ["renovate-config"] {
       glob = List(".github/renovate.json5", ".github/renovate/*.json5")
-      check = "renovate-config-validator {{files}}"
+      check = "renovate-config-validator {{ files }}"
     }
 
     ["mkdocs"] {
@@ -57,12 +52,12 @@ local linters = new Mapping<String, Step> {
 
     ["yamllint"] {
       glob = "*.{yml,yaml}"
-      check = "yamllint --config-file "+config+"/yamllint.yaml {{files}}"
+      check = "yamllint --config-file "+config+"/yamllint.yaml {{ files }}"
     }
 
     ["pkl"] {
         glob = "*.pkl"
-        check = "pkl eval {{files}} >/dev/null"
+        check = "pkl eval {{ files }} >/dev/null"
     }
 }
 

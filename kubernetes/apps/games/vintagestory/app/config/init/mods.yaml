@@ -1,22 +1,22 @@
 ---
-game_version: "~1.20.0"
+game_version: "~1.21.0"
 mods_dir: /data/mods
 hooks:
   download:
     pre_run: "rm -rf {{.ModsDir}}/*.zip" # clear out old mods
 mods:
   - id: primitivesurvival
-    version: 3.8.0
+    version: 3.9.4
   - id: ExpandedFoods
     version: 1.7.4
   - id: ACulinaryArtillery
     version: 1.2.5
   - id: CarryOn
-    version: 1.8.2
+    version: 1.10.2
   - id: BetterRuins
-    version: 0.4.13
+    version: 0.5.0
   - id: th3dungeon
-    version: 0.4.3
+    version: 0.4.4
   - id: VintageRCon
     version: 1.0.0
   - id: webcartographer
@@ -24,4 +24,4 @@ mods:
   - id: pspeltpatch
     version: 0.0.2
   - id: chiseltoolslite
-    version: 1.14.20
+    version: 1.15.1

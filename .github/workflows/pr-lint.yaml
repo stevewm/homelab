@@ -20,10 +20,21 @@ jobs:
     name: Linting
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - name: Generate Token
+        uses: actions/create-github-app-token@67018539274d69449ef7c02e8e71183d1719ab42 # v2
+        id: app-token
         with:
+          app-id: "${{ secrets.BOTTY_HILL_APP_ID }}"
+          private-key: "${{ secrets.BOTTY_HILL_PRIVATE_KEY }}"
+
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
+        with:
+          token: "${{ steps.app-token.outputs.token }}"
           fetch-depth: 0
-      - uses: jdx/mise-action@bfb9fa0b029db830a8c570757cee683df207a6c5 # v2
+
+      - uses: jdx/mise-action@156251fcc627ac4e26cb0f93dd47d1d4979abf24 # v3
+        env:
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
       - name: Run hk checks
         run: hk check --from-ref ${{ github.event.pull_request.base.sha }} --to-ref ${{ github.event.pull_request.head.sha }}
 
@@ -35,7 +46,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Generate Token
-        uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2
+        uses: actions/create-github-app-token@67018539274d69449ef7c02e8e71183d1719ab42 # v2
         if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
         id: app-token
         with:

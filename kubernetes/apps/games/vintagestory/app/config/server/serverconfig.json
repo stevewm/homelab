@@ -323,7 +323,7 @@
 
   "WorldConfig": {
     "Seed": null,
-    "SaveFileLocation": "/data/Saves/world.vcdbs",
+    "SaveFileLocation": "/data/Saves/new-world.vcdbs",
     "WorldName": "MPOF",
     "AllowCreativeMode": false,
     "PlayStyle": "surviveandbuild",

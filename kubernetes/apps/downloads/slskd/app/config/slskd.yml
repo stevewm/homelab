@@ -1,0 +1,29 @@
+---
+directories:
+  downloads: /media/downloads/soulseek/complete
+  incomplete: /media/downloads/soulseek/incomplete
+flags:
+  no_version_check: true
+metrics:
+  enabled: true
+  url: /metrics
+  authentication:
+    disabled: true
+permissions:
+  file:
+    mode: 750
+remote_configuration: false
+shares:
+  directories:
+    - /media/music
+  filters:
+    - \.ini$
+    - Thumbs.db$
+    - \.DS_Store$
+integration:
+  scripts:
+    post_download_script:
+      on:
+        - DownloadDirectoryComplete
+      run:
+        command: /scripts/wrtag.sh

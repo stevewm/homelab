@@ -24,19 +24,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Generate Token
-        uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2
+        uses: actions/create-github-app-token@67018539274d69449ef7c02e8e71183d1719ab42 # v2
         id: app-token
         with:
           app-id: "${{ secrets.BOTTY_HILL_APP_ID }}"
           private-key: "${{ secrets.BOTTY_HILL_PRIVATE_KEY }}"
 
       - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
         with:
           token: "${{ steps.app-token.outputs.token }}"
 
       - name: Run flux-local test
-        uses: docker://ghcr.io/allenporter/flux-local:v7.6.0@sha256:73b596f1a66b8e197271677dd70e333f75432740d9b2a7d862db5471e682930c
+        uses: docker://ghcr.io/allenporter/flux-local:v7.10.0@sha256:af0e9be64b5a3384a8f4140d59bf8be876fcc6168091371b98b5e40e111c13d8
         with:
           args: test --enable-helm --all-namespaces --path /github/workspace/kubernetes/flux/cluster -v
 
@@ -52,27 +52,27 @@ jobs:
       fail-fast: false
     steps:
       - name: Generate Token
-        uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2
+        uses: actions/create-github-app-token@67018539274d69449ef7c02e8e71183d1719ab42 # v2
         id: app-token
         with:
           app-id: "${{ secrets.BOTTY_HILL_APP_ID }}"
           private-key: "${{ secrets.BOTTY_HILL_PRIVATE_KEY }}"
 
       - name: Checkout Pull Request Branch
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
         with:
           token: "${{ steps.app-token.outputs.token }}"
           path: pull
 
       - name: Checkout Default Branch
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
         with:
           token: "${{ steps.app-token.outputs.token }}"
           ref: "${{ github.event.repository.default_branch }}"
           path: default
 
       - name: Run flux-local diff
-        uses: docker://ghcr.io/allenporter/flux-local:v7.6.0@sha256:73b596f1a66b8e197271677dd70e333f75432740d9b2a7d862db5471e682930c
+        uses: docker://ghcr.io/allenporter/flux-local:v7.10.0@sha256:af0e9be64b5a3384a8f4140d59bf8be876fcc6168091371b98b5e40e111c13d8
         with:
           args: >-
             diff ${{ matrix.resources }}

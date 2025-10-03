@@ -5,12 +5,14 @@ version: "3"
 tasks:
   webhook:
     desc: Print the FluxCD webhook URL
+    preconditions:
+      - which kubectl
     silent: true
     cmds:
       - echo "https://{{ .DOMAIN }}{{ .WEBHOOK_PATH }}"
     vars:
       DOMAIN:
-        sh: kubectl get ingress fluxcd-webhook-receiver -n flux-system -o jsonpath='{.spec.rules[0].host}'
+        sh: kubectl get httproute github-webhook -n flux-system -o jsonpath='{.spec.hostnames[0]}'
       WEBHOOK_PATH:
         sh: kubectl get receiver homelab-github-receiver -n flux-system -o jsonpath='{.status.webhookPath}'
 

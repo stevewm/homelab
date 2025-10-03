@@ -58,7 +58,7 @@ spec:
           app:
             image:
               repository: ghcr.io/thecfu/scraparr
-              tag: 2.2.2@sha256:51d4f62c49bf9a664595dc44ce10a8062984871534c280f887027033d88083a5
+              tag: 2.2.4@sha256:4aa7e22f7a632082dbfe6e4be694068b08e5764b83c95339220ff2b33bf43be2
             env:
               SONARR_URL: http://sonarr.downloads.svc.cluster.local
               SONARR_API_KEY:

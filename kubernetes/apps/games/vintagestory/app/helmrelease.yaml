@@ -49,6 +49,7 @@ spec:
 
     controllers:
       vintagestory:
+        replicas: 0
         defaultContainerOptions:
           securityContext:
             allowPrivilegeEscalation: false
@@ -76,7 +77,7 @@ spec:
           app:
             image:
               repository: devidian/vintagestory # FIXME: Docker Hub
-              tag: latest@sha256:064e622953fcd91f3d9ba24f84615949561fbe75dd24f4addbaca669cc2c4ffa
+              tag: latest@sha256:a37da895f1cbac20c35fa5e82fc6fb4fe236b7182c0706069bb352ce941ad1b4
             probes:
               liveness: &game-probes
                 enabled: true
@@ -104,7 +105,7 @@ spec:
           map:
             image:
               repository: ghcr.io/bjw-s-labs/caddy-scratch
-              tag: 2.10.0@sha256:c0f4aa9571043db64cae8e0c93674bdebcba5ee36a32e6f9d4e47588d1f55f3d
+              tag: 2.10.2@sha256:7849984c9270f4445ab7afaad47017cf3129ea8c02fa7c5b1afa5862b83260e3
             args: ["file-server", "--listen", ":80", "--root", "/map/html"]
             probes:
               liveness: &map-probes
@@ -171,7 +172,7 @@ spec:
         globalMounts:
           - path: /data/serverconfig.json
             subPath: serverconfig.json
-            readOnly: true
+            readOnly: false
           - path: /data/servermagicnumbers.json
             subPath: servermagicnumbers.json
             readOnly: true

@@ -6,6 +6,7 @@ namespace: media
 resources:
   - ./jellyfin/ks.yaml
   - ./jellyseerr/ks.yaml
+  - ./wrtag/ks.yaml
 components:
   - ../../flux/components/namespace
   #- ../../flux/components/networkpolicy/default-deny

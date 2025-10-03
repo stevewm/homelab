@@ -58,7 +58,7 @@ spec:
           app:
             image:
               repository: ghcr.io/home-operations/radarr
-              tag: 5.27.1.10122@sha256:e6e4fb8383b9f232a5f7d6d7c1eadd03501685468c382131643ba8aed03098ba
+              tag: 6.0.1.10258@sha256:b67ac38b70e9f0d2aee0be31be27fd25d9d35ed1f7204d012fd05effabc395f5
             env:
               COMPlus_EnableDiagnostics: "0"
               RADARR__APP__INSTANCENAME: Radarr
@@ -90,7 +90,7 @@ spec:
                 cpu: 10m
                 memory: 110Mi
               limits:
-                memory: 327Mi
+                memory: 512Mi
 
     service:
       app:
