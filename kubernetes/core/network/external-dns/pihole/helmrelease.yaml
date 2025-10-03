@@ -32,9 +32,6 @@ spec:
     domainFilters:
       - stevewm.dev
 
-    podLabels:
-      egress.home.arpa/apiserver: allow
-      monitoring.home.arpa/prometheus: allow
     podAnnotations:
       secret.reloader.stakater.com/reload: pihole
 
