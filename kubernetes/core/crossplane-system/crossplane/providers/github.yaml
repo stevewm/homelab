@@ -4,5 +4,4 @@ kind: Provider
 metadata:
   name: provider-upjet-github
 spec:
-  # renovate: datasource=github-releases depName=crossplane-contrib/provider-upjet-github
-  package: crossplane-contrib/provider-upjet-github:v0.18.5
+  package: ghcr.io/crossplane-contrib/provider-upjet-github:v0.18.5@sha256:e44f742f1e3761cc96e12da044148f7eb9abc458e6831d82362c0cd489cb3ed6
