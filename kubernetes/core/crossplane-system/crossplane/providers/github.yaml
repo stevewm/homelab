@@ -1,0 +1,8 @@
+---
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-upjet-github
+spec:
+  # renovate: datasource=github-releases depName=crossplane-contrib/provider-upjet-github
+  package: crossplane-contrib/provider-upjet-github:v0.18.5
