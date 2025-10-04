@@ -43,7 +43,6 @@ task = "3.44.0"
 slsa-verifier = "2.7.1"
 cosign = "2.6.1"
 
-
 # hk
 hk = "1.16.0"
 pkl = "0.29.1"
