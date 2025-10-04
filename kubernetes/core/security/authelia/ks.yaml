@@ -24,3 +24,6 @@ spec:
     - name: core-secretgenerator
     - name: core-smtp-relay
       namespace: network
+  postBuild:
+    substitute:
+      APP: authelia
