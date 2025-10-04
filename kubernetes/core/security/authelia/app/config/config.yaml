@@ -7,15 +7,16 @@ authentication_backend:
     timeout: 5s
     start_tls: false
     base_dn: dc=home,dc=arpa
-    additional_users_dn: ou=people,ou=users
-    users_filter: (&({username_attribute}={input})(objectClass=posixAccount))
-    additional_groups_dn: ou=users
-    groups_filter: (&(uniqueMember={dn})(objectClass=posixGroup))
-    user: cn=search,ou=svcaccts,ou=users,dc=home,dc=arpa
+    additional_users_dn: ou=people
+    users_filter: (&({username_attribute}={input})(objectClass=person))
+    additional_groups_dn: ou=groups
+    groups_filter: (member={dn})
+    user: uid=search,ou=svcaccts,dc=home,dc=arpa
+    password: '{{ secret "/config/secret/AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD" }}'
     attributes:
       username: uid
-      display_name: givenName
-      group_name: ou
+      display_name: displayName
+      group_name: cn
       mail: mail
       member_of: memberOf
   password_reset:
@@ -27,8 +28,9 @@ session:
   inactivity: 5m
   expiration: 1h
   remember_me: 1M
+  secret: '{{ secret "/config/secret/AUTHELIA_REDIS_ENCRYPTION_KEY" }}'
   cookies:
-    - name: cluster_session
+    - name: authelia_sessio
       domain: stevewm.dev
       authelia_url: https://sso.stevewm.dev
       default_redirection_url: https://home.stevewm.dev
@@ -37,18 +39,18 @@ session:
     host: dragonfly.database.svc.cluster.local
 
 storage:
-  encryption_key:
-    { { secret "/config/secret/AUTHELIA_STORAGE_ENCRYPTION_KEY" } }
+  encryption_key: |
+    {{ secret "/config/secret/AUTHELIA_STORAGE_ENCRYPTION_KEY" }}
   postgres:
-    address: tcp://authelia-pods.security.svc.cluster.local:5432
-    database: authelia
-    username: { { secret "/config/db/username" } }
-    password: { { secret "/config/db/password" } }
+    address: '{{ secret "/config/db/host" }}:{{ secret "/config/db/port" }}'
+    database: '{{ secret "/config/db/dbname" }}'
+    username: '{{ secret "/config/db/user" }}'
+    password: '{{ secret "/config/db/password" }}'
 
 notifier:
   disable_startup_check: true
   smtp:
-    address: smtp://smtp-relay.network.svc.cluster.local:25
+    address: smtp-relay.network.svc.cluster.local:25
     sender: Authelia <noreply@stevewm.dev>
     disable_require_tls: true
 
