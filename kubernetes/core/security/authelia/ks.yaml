@@ -21,9 +21,10 @@ spec:
   wait: true
   dependsOn:
     - name: core-glauth
-    - name: core-secretgenerator
     - name: core-smtp-relay
       namespace: network
+  components:
+    - ../../../../flux/components/postgres
   postBuild:
     substitute:
       APP: authelia

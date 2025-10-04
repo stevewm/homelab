@@ -5,9 +5,6 @@ kind: Kustomization
 resources:
   - ./helmrelease.yaml
   - ./externalsecret.yaml
-  - ./config/secrets
-components:
-  - ../../../flux/components/postgres
 configMapGenerator:
   - name: authelia
     files:
