@@ -40,6 +40,6 @@ spec:
     kind: GitRepository
     name: homelab
     namespace: flux-system
-    wait: true
-    dependsOn:
-      - name: core-crossplane
+  wait: true
+  dependsOn:
+    - name: core-crossplane
