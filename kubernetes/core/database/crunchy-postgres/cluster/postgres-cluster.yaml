@@ -64,10 +64,10 @@ spec:
 
   backups:
     pgbackrest:
-      configuration: &backupConfig
+      configuration: #&backupConfig
         - secret:
             name: hetzner-db-backup
-      global: &backupFlag
+      global: #&backupFlag
         archive-timeout: "60"
         compress-type: "bz2"
         compress-level: "9"
@@ -88,8 +88,8 @@ spec:
           egress.home.arpa/apiserver: allow
           storage.home.arpa/s3: allow
       repos:
-        - name: repo1 # minio
-          s3: &minio
+        - name: repo1 # hetzner
+          s3: #&hetzner
             bucket: "stevewm-mini-cluster-postgres-backup"
             endpoint: "nbg1.your-objectstorage.com"
             region: "eu-central"
@@ -98,14 +98,14 @@ spec:
             differential: "0 1 * * 1-6" # Mon-Sat at 01:00
             incremental: "0 2-23 * * *" # Every hour except 01:00
 
-  dataSource:
-    pgbackrest:
-      stanza: "db"
-      configuration: *backupConfig
-      global: *backupFlag
-      repo:
-        name: "repo1"
-        s3: *minio
+  # dataSource:
+  #   pgbackrest:
+  #     stanza: "db"
+  #     configuration: *backupConfig
+  #     global: *backupFlag
+  #     repo:
+  #       name: "repo1"
+  #       s3: *hetzner
 
   proxy:
     pgBouncer:
