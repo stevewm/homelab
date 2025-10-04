@@ -45,7 +45,7 @@ tasks:
 
   oidc:
     desc: |
-      Create OIDC secrets for an application and push them to Doppler
+      Create OIDC secrets for an application and push them to Doppler [APP=required]
     silent: true
     dir: "{{ .K8S_DIR }}"
     preconditions:
@@ -61,5 +61,14 @@ tasks:
       vars: [APP]
     cmds:
       - echo "Creating OIDC secrets for {{ .APP }}"
-      - doppler secrets set {{ .APP | upper }}_CLIENT_SECRET '{{ .APP_CLIENT_SECRET }}'
-      - doppler secrets set {{ .APP | upper }}_CLIENT_SECRET_DIGEST '{{ .APP_CLIENT_SECRET_DIGEST }}'
+      - |
+        if [ -z "{{ .APP_CLIENT_SECRET }}" ] || [ -z "{{ .APP_CLIENT_SECRET_DIGEST }}" ]; then
+          echo "Error: Failed to generate secret or digest"
+          exit 1
+        fi
+      # Use printf to properly escape special characters
+      - |
+        SECRET="{{ .APP_CLIENT_SECRET }}"
+        DIGEST="{{ .APP_CLIENT_SECRET_DIGEST }}"
+        doppler secrets set "{{ .APP | upper }}_OAUTH_CLIENT_SECRET" "$SECRET"
+        doppler secrets set "{{ .APP | upper }}_OAUTH_CLIENT_SECRET_DIGEST" "$DIGEST"

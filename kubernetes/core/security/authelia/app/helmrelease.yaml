@@ -91,7 +91,7 @@ spec:
               AUTHELIA_TELEMETRY_METRICS_ENABLED: "true"
               AUTHELIA_THEME: dark
               X_AUTHELIA_CONFIG: /config/config.yaml
-              X_AUTHELIA_CONFIG_FILTERS: expand-env
+              X_AUTHELIA_CONFIG_FILTERS: template
 
             probes:
               liveness: &probes
@@ -146,3 +146,15 @@ spec:
           - path: /config/config.yaml
             subPath: config.yaml
             readOnly: true
+      secret-files:
+        enabled: true
+        type: secret
+        name: authelia
+        globalMounts:
+          - path: /config/secret
+      db-secret-files:
+        enabled: true
+        type: secret
+        name: authelia-db
+        globalMounts:
+          - path: /config/db
