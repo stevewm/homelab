@@ -28,3 +28,4 @@ spec:
   postBuild:
     substitute:
       APP: authelia
+      POSTGRES_REPLICAS: "1"
