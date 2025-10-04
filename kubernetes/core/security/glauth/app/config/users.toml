@@ -1,5 +1,3 @@
-# passbcrypt generation: "https://gchq.github.io/CyberChef/#recipe=Bcrypt(12)To_Hex('None',0)"
-
 [[users]]
     name = "search"
     uidnumber = 5000

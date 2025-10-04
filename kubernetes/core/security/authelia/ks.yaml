@@ -28,3 +28,17 @@ spec:
   postBuild:
     substitute:
       APP: authelia
+      POSTGRES_REPLICAS: "1"
+  patches:
+    - patch: |-
+        apiVersion: postgres-operator.crunchydata.com/v1beta1
+        kind: PostgresCluster
+        metadata:
+          name: ${APP}
+        spec:
+          patroni:
+            dynamicConfiguration:
+              postgresql:
+                pg_hba:
+                  - "hostnossl authelia all 10.244.0.0/16 md5"
+                  - "hostssl all all all md5"

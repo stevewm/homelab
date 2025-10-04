@@ -12,6 +12,7 @@ authentication_backend:
     additional_groups_dn: ou=users
     groups_filter: (&(uniqueMember={dn})(objectClass=posixGroup))
     user: cn=search,ou=svcaccts,ou=users,dc=home,dc=arpa
+    password: '{{ secret "/config/secret/AUTHELIA_AUTHENTICATION_BACKEND_LDAP_PASSWORD" }}'
     attributes:
       username: uid
       display_name: givenName
@@ -27,8 +28,9 @@ session:
   inactivity: 5m
   expiration: 1h
   remember_me: 1M
+  secret: '{{ secret "/config/secret/AUTHELIA_REDIS_ENCRYPTION_KEY" }}'
   cookies:
-    - name: cluster_session
+    - name: authelia_sessio
       domain: stevewm.dev
       authelia_url: https://sso.stevewm.dev
       default_redirection_url: https://home.stevewm.dev
@@ -37,18 +39,19 @@ session:
     host: dragonfly.database.svc.cluster.local
 
 storage:
-  encryption_key:
-    { { secret "/config/secret/AUTHELIA_STORAGE_ENCRYPTION_KEY" } }
+  encryption_key: |
+    {{ secret "/config/secret/AUTHELIA_STORAGE_ENCRYPTION_KEY" }}
   postgres:
-    address: tcp://authelia-pods.security.svc.cluster.local:5432
-    database: authelia
-    username: { { secret "/config/db/username" } }
-    password: { { secret "/config/db/password" } }
+    address: 'tcp://{{ secret "/config/db/host" }}:{{ secret "/config/db/port" }}'
+    database: '{{ secret "/config/db/dbname" }}'
+    username: '{{ secret "/config/db/user" }}'
+    password: '{{ secret "/config/db/password" }}'
+    schema: authelia
 
 notifier:
   disable_startup_check: true
   smtp:
-    address: smtp://smtp-relay.network.svc.cluster.local:25
+    address: smtp-relay.network.svc.cluster.local:25
     sender: Authelia <noreply@stevewm.dev>
     disable_require_tls: true
 
