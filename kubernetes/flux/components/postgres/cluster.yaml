@@ -1,9 +1,11 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/postgres-operator.crunchydata.com/postgrescluster_v1beta1.json
 ---
-# yaml-language-server: $schema=https://kube-schemas.pages.dev/postgres-operator.crunchydata.com/postgrescluster_v1beta1.json
 apiVersion: postgres-operator.crunchydata.com/v1beta1
 kind: PostgresCluster
 metadata:
   name: ${APP}
+  annotations:
+    postgres-operator.crunchydata.com/autoCreateUserSchema: true
 spec:
   postgresVersion: 17
   monitoring:
@@ -28,7 +30,7 @@ spec:
       metadata:
         labels:
           app.kubernetes.io/name: ${APP}-crunchy-postgres
-      replicas: 3
+      replicas: "${POSTGRES_REPLICAS:=3}"
       dataVolumeClaimSpec:
         storageClassName: local-hostpath
         accessModes: ["ReadWriteOnce"]

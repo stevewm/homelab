@@ -80,16 +80,20 @@ spec:
             image:
               repository: ghcr.io/authelia/authelia
               tag: 4.39.11@sha256:30e45eeb81c8d82ad7679df008a57b61253c932341c861ef3fb20776804ca251
-            envFrom:
+            envFrom: # TODO: Move to file secrets
               - secretRef:
                   name: *app
 
             env:
-              AUTHELIA_SERVER_ADDRESS: tcp://0.0.0.0:80
+              AUTHELIA_LOG_LEVEL: info
+              AUTHELIA_NOTIFIER_SMTP_SENDER: "Authelia <authelia@stevewm.dev>"
               AUTHELIA_SERVER_DISABLE_HEALTHCHECK: "true"
-              AUTHELIA_TELEMETRY_METRICS_ADDRESS: tcp://0.0.0.0:80
+              AUTHELIA_SERVER_ADDRESS: tcp://0.0.0.0:80
+              AUTHELIA_TELEMETRY_METRICS_ADDRESS: tcp://0.0.0.0:8080
               AUTHELIA_TELEMETRY_METRICS_ENABLED: "true"
               AUTHELIA_THEME: dark
+              AUTHELIA_TOTP_ISSUER: authelia.com
+              AUTHELIA_WEBAUTHN_DISABLE: "true"
               X_AUTHELIA_CONFIG: /config/config.yaml
               X_AUTHELIA_CONFIG_FILTERS: template
 
@@ -122,7 +126,7 @@ spec:
             port: *port
             primary: true
           metrics:
-            port: 8080
+            port: 80
 
     serviceMonitor:
       app:
@@ -155,6 +159,6 @@ spec:
       db-secret-files:
         enabled: true
         type: secret
-        name: authelia-db
+        name: authelia-pguser-authelia
         globalMounts:
           - path: /config/db
