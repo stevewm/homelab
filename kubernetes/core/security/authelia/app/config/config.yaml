@@ -50,9 +50,7 @@ storage:
 
 notifier:
   smtp:
-    username: '{{ secret "/config/secret/SMTP_RELAY_USERNAME" }}'
-    password: '{{ secret "/config/secret/SMTP_RELAY_PASSWORD" }}'
-    address: smtp://smtp-relay.network.svc.cluster.local:25
+    address: smtp-relay.network.svc.cluster.local:25
     sender: '{{ secret "/config/secret/SMTP_RELAY_USERNAME" }}'
     disable_require_tls: true
 
