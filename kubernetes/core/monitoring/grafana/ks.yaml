@@ -22,3 +22,8 @@ spec:
   dependsOn:
     - name: core-kube-prometheus-stack
     - name: core-prometheus-operator-crds
+  components:
+    - ../../../../flux/components/sso-secret
+  postBuild:
+    substitute:
+      APP: grafana
