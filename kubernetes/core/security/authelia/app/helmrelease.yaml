@@ -86,7 +86,6 @@ spec:
 
             env:
               AUTHELIA_LOG_LEVEL: info
-              AUTHELIA_NOTIFIER_SMTP_SENDER: "Authelia <authelia@stevewm.dev>"
               AUTHELIA_SERVER_DISABLE_HEALTHCHECK: "true"
               AUTHELIA_SERVER_ADDRESS: tcp://0.0.0.0:80
               AUTHELIA_TELEMETRY_METRICS_ADDRESS: tcp://0.0.0.0:8080
@@ -126,7 +125,7 @@ spec:
             port: *port
             primary: true
           metrics:
-            port: 80
+            port: 8080
 
     serviceMonitor:
       app:
