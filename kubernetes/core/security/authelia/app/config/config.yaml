@@ -89,7 +89,7 @@ identity_providers:
     clients:
       - client_name: grafana
         client_id: grafana
-        client_secret: '{{ secret "/config/secret/GRAFANA_OAUTH_CLIENT_SECRET_DIGEST" }}'
+        client_secret: '{{ secret "/config/secret/GRAFANA_OAUTH_CLIENT_SECRET" }}'
         public: false
         authorization_policy: two_factor
         require_pkce: true
