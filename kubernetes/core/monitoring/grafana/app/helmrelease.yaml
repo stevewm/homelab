@@ -335,6 +335,7 @@ spec:
       # OAUTH
       GF_AUTH_GENERIC_OAUTH_ENABLED: true
       GF_AUTH_GENERIC_OAUTH_NAME: Authelia
+      GF_AUTH_GENERIC_OAUTH_ICON: signin
       GF_AUTH_GENERIC_OAUTH_CLIENT_ID: grafana
       GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET:
         secretKeyRef:
