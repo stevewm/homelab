@@ -21,6 +21,7 @@ spec:
   wait: true
   components:
     - ../../../../flux/components/volsync/hetzner
+    - ../../../../flux/components/sso-secret
   postBuild:
     substitute:
       APP: *app

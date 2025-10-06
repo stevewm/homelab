@@ -60,6 +60,20 @@ spec:
               DAILY_SCHEDULE_TIME: 05:00
               ALLOW_SIGNUP: "false"
               LOG_LEVEL: debug
+              # Authelia
+              OIDC_AUTH_ENABLED: "true"
+              OIDC_SIGNUP_ENABLED: "true"
+              OIDC_CONFIGURATION_URL: "https://sso.stevewm.dev/.well-known/openid-configuration"
+              OIDC_CLIENT_ID: "mealie"
+              OIDC_CLIENT_SECRET:
+                valueFrom:
+                  secretKeyRef:
+                    name: mealie-sso
+                    key: client_secret
+              OIDC_AUTO_REDIRECT: "false"
+              OIDC_ADMIN_GROUP: "admins"
+              OIDC_USER_GROUP: "people"
+
             probes:
               liveness:
                 enabled: true
