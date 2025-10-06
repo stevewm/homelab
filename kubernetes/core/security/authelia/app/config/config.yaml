@@ -115,16 +115,25 @@ identity_providers:
         authorization_policy: "two_factor"
         require_pkce: false
         pkce_challenge_method: ""
-        redirect_uris:
-          - "https://kk.stevewm.dev/api/auth/callback/custom"
-        scopes:
-          - "openid"
-          - "profile"
-          - "email"
-        response_types:
-          - "code"
-        grant_types:
-          - "authorization_code"
+        redirect_uris: ["https://kk.stevewm.dev/api/auth/callback/custom"]
+        scopes: ["openid", "profile", "email"]
+        response_types: ["code"]
+        grant_types: ["authorization_code"]
+        access_token_signed_response_alg: "none"
+        userinfo_signed_response_alg: "none"
+        token_endpoint_auth_method: "client_secret_basic"
+
+      - client_name: Mealie
+        client_id: mealie
+        client_secret: '{{ secret "/config/secret/MEALIE_OAUTH_CLIENT_SECRET_DIGEST" }}'
+        public: false
+        authorization_policy: "two_factor"
+        require_pkce: true
+        pkce_challenge_method: "S256"
+        redirect_uris: ["https://eat.stevewm.dev/login"]
+        scopes: ["openid", "email", "profile", "groups"]
+        response_types: ["code"]
+        grant_types: ["authorization_code"]
         access_token_signed_response_alg: "none"
         userinfo_signed_response_alg: "none"
         token_endpoint_auth_method: "client_secret_basic"
