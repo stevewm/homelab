@@ -30,45 +30,27 @@ tasks:
         cmd: kubectl delete pods --field-selector status.phase={{.ITEM.PHASE}} -A --ignore-not-found=true
 
   sync-es:
-    desc: Force sync all ExternalSecret resources
+    desc: Force sync ExternalSecret resources [APP=optional]
     preconditions:
       - which kubectl
       - test -f "${KUBECONFIG}"
     vars:
       SECRETS:
-        sh: kubectl get externalsecret --all-namespaces --no-headers --output=jsonpath='{range .items[*]}{.metadata.namespace},{.metadata.name}{"\n"}{end}'
+        sh: kubectl get externalsecret --all-namespaces --no-headers --output=jsonpath='{range .items[*]}{.metadata.namespace},{.metadata.name}{"\n"}{end}'{{ if .APP }} --selector=app.kubernetes.io/name={{ .APP }}{{ end }}
     cmds:
       - for:
           var: SECRETS
           split: "\n"
-        cmd: kubectl --namespace {{splitList "," .ITEM | first}} annotate externalsecret {{splitList "," .ITEM | last}} force-sync="{{now | unixEpoch}}" --overwrite
+        cmd: kubectl --namespace {{ splitList "," .ITEM | first }} annotate externalsecret {{ splitList "," .ITEM | last }} force-sync="{{ now | unixEpoch }}" --overwrite
 
   oidc:
     desc: |
-      Create OIDC secrets for an application and push them to Doppler [APP=required]
+      Create and push OIDC secrets to Doppler [APP=required]
     silent: true
-    dir: "{{ .K8S_DIR }}"
+    dir: "{{ .ROOT_DIR }}"
     preconditions:
       - which docker doppler
-    vars:
-      AUTHELIA_OUTPUT:
-        sh: docker run --rm authelia/authelia:latest authelia crypto hash generate pbkdf2 --variant sha512 --random --random.length 72 --random.charset rfc3986
-      APP_CLIENT_SECRET:
-        sh: "echo '{{ .AUTHELIA_OUTPUT }}' | grep '^Random Password:' | cut -d':' -f2- | xargs"
-      APP_CLIENT_SECRET_DIGEST:
-        sh: "echo '{{ .AUTHELIA_OUTPUT }}' | grep '^Digest:' | cut -d':' -f2- | xargs"
     requires:
       vars: [APP]
     cmds:
-      - echo "Creating OIDC secrets for {{ .APP }}"
-      - |
-        if [ -z "{{ .APP_CLIENT_SECRET }}" ] || [ -z "{{ .APP_CLIENT_SECRET_DIGEST }}" ]; then
-          echo "Error: Failed to generate secret or digest"
-          exit 1
-        fi
-      # Use printf to properly escape special characters
-      - |
-        SECRET="{{ .APP_CLIENT_SECRET }}"
-        DIGEST="{{ .APP_CLIENT_SECRET_DIGEST }}"
-        doppler secrets set "{{ .APP | upper }}_OAUTH_CLIENT_SECRET" "$SECRET"
-        doppler secrets set "{{ .APP | upper }}_OAUTH_CLIENT_SECRET_DIGEST" "$DIGEST"
+      - APP="{{ .APP | upper }}" {{ .TASKFILE_DIR }}/scripts/create-oidc-secrets.sh
