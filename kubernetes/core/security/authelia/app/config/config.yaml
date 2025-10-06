@@ -1,6 +1,10 @@
 # yaml-language-server: $schema=https://www.authelia.com/schemas/latest/json-schema/configuration.json
 ---
 authentication_backend:
+  password_reset:
+    disable: true
+  refresh_interval: 1m
+
   ldap:
     address: ldap://glauth.security.svc.cluster.local:389
     implementation: custom
@@ -19,9 +23,6 @@ authentication_backend:
       group_name: ou
       mail: mail
       member_of: memberOf
-  password_reset:
-    disable: true
-  refresh_interval: 1m
 
 session:
   same_site: lax
@@ -98,43 +99,58 @@ identity_providers:
         public: false
         authorization_policy: two_factor
         require_pkce: true
-        pkce_challenge_method: "S256"
+        pkce_challenge_method: S256
         response_types: ["code"]
         grant_types: ["authorization_code"]
         pre_configured_consent_duration: 1y
         scopes: [openid, profile, groups, email]
         redirect_uris: ["https://graf.stevewm.dev/login/generic_oauth"]
-        access_token_signed_response_alg: "none"
-        userinfo_signed_response_alg: "none"
-        token_endpoint_auth_method: "client_secret_basic"
+        access_token_signed_response_alg: none
+        userinfo_signed_response_alg: none
+        token_endpoint_auth_method: client_secret_basic
 
       - client_name: Karakeep
         client_id: karakeep
-        claims_policy: "karakeep"
+        claims_policy: karakeep
         client_secret: '{{ secret "/config/secret/KARAKEEP_OAUTH_CLIENT_SECRET_DIGEST" }}'
         public: false
-        authorization_policy: "two_factor"
+        authorization_policy: two_factor
         require_pkce: false
         pkce_challenge_method: ""
         redirect_uris: ["https://kk.stevewm.dev/api/auth/callback/custom"]
         scopes: ["openid", "profile", "email"]
         response_types: ["code"]
         grant_types: ["authorization_code"]
-        access_token_signed_response_alg: "none"
-        userinfo_signed_response_alg: "none"
-        token_endpoint_auth_method: "client_secret_basic"
+        access_token_signed_response_alg: none
+        userinfo_signed_response_alg: none
+        token_endpoint_auth_method: client_secret_basic
 
       - client_name: Mealie
         client_id: mealie
         client_secret: '{{ secret "/config/secret/MEALIE_OAUTH_CLIENT_SECRET_DIGEST" }}'
         public: false
-        authorization_policy: "two_factor"
+        authorization_policy: two_factor
         require_pkce: true
-        pkce_challenge_method: "S256"
+        pkce_challenge_method: ""
         redirect_uris: ["https://eat.stevewm.dev/login"]
         scopes: ["openid", "email", "profile", "groups"]
         response_types: ["code"]
         grant_types: ["authorization_code"]
-        access_token_signed_response_alg: "none"
-        userinfo_signed_response_alg: "none"
-        token_endpoint_auth_method: "client_secret_basic"
+        access_token_signed_response_alg: none
+        userinfo_signed_response_alg: none
+        token_endpoint_auth_method: client_secret_basic
+
+      - client_name: Actual Budget
+        client_id: actual-budget
+        client_secret: '{{ secret "/config/secret/ACTUAL_OAUTH_CLIENT_SECRET_DIGEST" }}'
+        public: false
+        authorization_policy: two_factor
+        require_pkce: false
+        pkce_challenge_method: ""
+        redirect_uris: ["https://actual.stevewm.dev/openid/callback"]
+        scopes: ["openid", "profile", "groups", "email"]
+        response_types: ["code"]
+        grant_types: ["authorization_code"]
+        access_token_signed_response_alg: none
+        userinfo_signed_response_alg: none
+        token_endpoint_auth_method: client_secret_basic
