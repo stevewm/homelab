@@ -13,13 +13,13 @@ spec:
     name: external-dns
   install:
     remediation:
-      retries: 3
+      retries: -1
   upgrade:
     cleanupOnFail: true
     crds: Skip # installed in ../external-dns/cloudflare/helmrelease.yaml
     remediation:
       strategy: rollback
-      retries: 3
+      retries: -1
   uninstall:
     keepHistory: false
   driftDetection:

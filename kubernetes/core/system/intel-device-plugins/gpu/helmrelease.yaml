@@ -12,12 +12,12 @@ spec:
     name: intel-device-plugins-gpu
   install:
     remediation:
-      retries: 3
+      retries: -1
   upgrade:
     cleanupOnFail: true
     remediation:
       strategy: rollback
-      retries: 3
+      retries: -1
   uninstall:
     keepHistory: false
   driftDetection:

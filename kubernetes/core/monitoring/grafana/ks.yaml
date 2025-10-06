@@ -9,7 +9,7 @@ spec:
   targetNamespace: *namespace
   commonMetadata:
     labels:
-      app.kubernetes.io/name: grafana
+      app.kubernetes.io/name: &app grafana
   interval: 30m
   timeout: 5m
   path: ./kubernetes/core/monitoring/grafana/app
@@ -26,5 +26,5 @@ spec:
     - ../../../../flux/components/sso-secret
   postBuild:
     substitute:
-      APP: grafana
+      APP: *app
       OAUTH_SECRET_KEY_NAME: GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET
