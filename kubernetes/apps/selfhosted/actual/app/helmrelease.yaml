@@ -43,6 +43,15 @@ spec:
               tag: 25.10.0
             env:
               ACTUAL_PORT: &httpPort 5006
+              ACTUAL_OPENID_DISCOVERY_URL: https://sso.stevewm.dev
+              ACTUAL_OPENID_CLIENT_ID: actual-budget
+              ACTUAL_OPENID_CLIENT_SECRET:
+                valueFrom:
+                  secretKeyRef:
+                    name: actual-sso
+                    key: client_secret
+              ACTUAL_OPENID_SERVER_HOSTNAME: https://actual.stevewm.dev
+              ACTUAL_OPENID_AUTH_METHOD: oauth2
             probes:
               liveness:
                 enabled: true
