@@ -11,11 +11,11 @@ HOMEBREW_BREWFILE="{{ config_root }}/.github/Brewfile"
 _.path = ['{{config_root}}/node_modules/.bin']
 
 [tools]
-uv = "0.8.22"
+uv = "0.8.23"
 python = "3"
 
 # Flux
-"flux2" = "2.7.0"
+"flux2" = "2.7.1"
 "pipx:flux-local" = "7.5.6"
 
 # Kube
@@ -45,13 +45,13 @@ cosign = "2.6.1"
 "github:authelia/authelia" = "latest"
 
 # hk
-hk = "1.16.0"
+hk = "1.18.1"
 pkl = "0.29.1"
 ruff = "0.13.3"
 yamlfmt = "0.17.2"
 "npm:markdownlint-cli2" = "0.18.1"
 "npm:dclint" = "3.1.0"
-"npm:renovate" = "41.132.5"
+"npm:renovate" = "41.137.0"
 "pipx:yamllint" = "1.37.1"
 actionlint = "1.7.7"
 "npm:prettier" = "3.6.2"
