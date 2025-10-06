@@ -30,7 +30,7 @@ session:
   remember_me: 1M
   secret: '{{ secret "/config/secret/AUTHELIA_REDIS_ENCRYPTION_KEY" }}'
   cookies:
-    - name: authelia_sessio
+    - name: authelia_session
       domain: stevewm.dev
       authelia_url: https://sso.stevewm.dev
       default_redirection_url: https://home.stevewm.dev
@@ -110,6 +110,7 @@ identity_providers:
 
       - client_name: Karakeep
         client_id: karakeep
+        claims_policy: "karakeep"
         client_secret: '{{ secret "/config/secret/KARAKEEP_OAUTH_CLIENT_SECRET_DIGEST" }}'
         public: false
         authorization_policy: "two_factor"
