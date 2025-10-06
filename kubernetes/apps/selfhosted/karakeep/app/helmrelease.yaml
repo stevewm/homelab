@@ -73,7 +73,7 @@ spec:
                   secretKeyRef:
                     name: karakeep-sso
                     key: client_secret
-              OAUTH_PROVIDER_NAME: "Authelia"
+              OAUTH_PROVIDER_NAME: "SSO"
             probes:
               liveness:
                 enabled: true

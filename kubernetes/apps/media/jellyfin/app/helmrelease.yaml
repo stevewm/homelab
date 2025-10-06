@@ -152,3 +152,10 @@ spec:
           - path: /exporter/jellyfin.yaml
             subPath: jellyfin.yaml
             readOnly: true
+      sso:
+        type: secret
+        name: jellyfin-sso-config
+        globalMounts:
+          - path: /config/plugins/configurations/SSO-Auth.xml
+            subPath: SSO-Auth.xml
+            readOnly: false
