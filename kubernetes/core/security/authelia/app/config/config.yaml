@@ -154,3 +154,18 @@ identity_providers:
         access_token_signed_response_alg: none
         userinfo_signed_response_alg: none
         token_endpoint_auth_method: client_secret_basic
+
+      - client_name: Jellyfin
+        client_id: jellyfin
+        client_secret: '{{ secret "/config/secret/JELLYFIN_OAUTH_CLIENT_SECRET_DIGEST" }}'
+        public: false
+        authorization_policy: two_factor
+        require_pkce: true
+        pkce_challenge_method: S256
+        redirect_uris: ["https://watch.stevewm.dev/sso/OID/redirect/authelia"]
+        scopes: ["openid", "profile", "groups"]
+        response_types: ["code"]
+        grant_types: ["authorization_code"]
+        access_token_signed_response_alg: none
+        userinfo_signed_response_alg: none
+        token_endpoint_auth_method: client_secret_post
