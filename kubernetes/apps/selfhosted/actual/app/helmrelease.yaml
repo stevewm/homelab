@@ -18,7 +18,7 @@ spec:
     cleanupOnFail: true
     remediation:
       strategy: rollback
-      retries: 3
+      retries: -1
   uninstall:
     keepHistory: false
   driftDetection:
