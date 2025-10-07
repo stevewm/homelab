@@ -11,7 +11,7 @@ HOMEBREW_BREWFILE="{{ config_root }}/.github/Brewfile"
 _.path = ['{{config_root}}/node_modules/.bin']
 
 [tools]
-uv = "0.8.23"
+uv = "0.8.24"
 python = "3"
 
 # Flux
@@ -30,7 +30,7 @@ python = "3"
 
 # Talos
 "talos" = "1.9.3"
-"talhelper" = "3.0.36"
+"talhelper" = "3.0.37"
 
 # Tools
 task = "3.44.0"
@@ -44,13 +44,13 @@ cosign = "2.6.1"
 "github:authelia/authelia" = "latest"
 
 # hk
-hk = "1.18.1"
+hk = "1.18.2"
 pkl = "0.29.1"
 ruff = "0.13.3"
 yamlfmt = "0.17.2"
 "npm:markdownlint-cli2" = "0.18.1"
 "npm:dclint" = "3.1.0"
-"npm:renovate" = "41.137.0"
+"npm:renovate" = "41.138.2"
 "pipx:yamllint" = "1.37.1"
 actionlint = "1.7.7"
 "npm:prettier" = "3.6.2"
