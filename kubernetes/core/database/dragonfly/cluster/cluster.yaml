@@ -11,6 +11,11 @@ spec:
     - "--maxmemory=$(MAX_MEMORY)Mi"
     - "--proactor_threads=2"
     - "--cluster_mode=emulated"
+  authentication:
+    passwordFromSecret:
+      name: dragonfly-auth
+      key: password
+
   env:
     - name: MAX_MEMORY
       valueFrom:
