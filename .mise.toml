@@ -41,7 +41,6 @@ task = "3.44.0"
 "ubi:gorcon/rcon-cli" = { version = "0.10.3", exe = "rcon" }
 slsa-verifier = "2.7.1"
 cosign = "2.6.1"
-"github:authelia/authelia" = "latest"
 
 # hk
 hk = "1.18.3"
