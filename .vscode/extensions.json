@@ -6,7 +6,7 @@
     "eamodio.gitlens",
     "mrmlnc.vscode-json5",
     "redhat.vscode-yaml",
-    "tamasfe.even-better-toml",
+    "tamasfe.even-better-toml"
   ],
   "unwantedRecommendations": []
 }
