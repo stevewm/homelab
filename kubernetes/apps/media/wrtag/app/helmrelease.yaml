@@ -48,7 +48,7 @@ spec:
           app:
             image:
               repository: ghcr.io/sentriz/wrtag
-              tag: v0.18.0@sha256:b31ed97f5573ab9a141046135da9c80d30d0601ab47dadb02408a136e94d621f
+              tag: v0.19.0@sha256:99a3760e6f54b6fe9fb09d9334c8c55d30f1f828a1d68c3caabeced5133169a9
             env:
               WRTAG_WEB_API_KEY:
                 valueFrom:
