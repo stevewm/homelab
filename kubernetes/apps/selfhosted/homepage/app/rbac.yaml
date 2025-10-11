@@ -21,6 +21,7 @@ rules:
       - gateway.networking.k8s.io
     resources:
       - httproutes
+      - gateways
     verbs:
       - get
       - list
