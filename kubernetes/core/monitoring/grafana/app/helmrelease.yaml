@@ -367,7 +367,7 @@ spec:
           gethomepage.dev/name: *app
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: monitoring
-          gethomepage.dev/icon: grafana.png
+          gethomepage.dev/icon: sh-grafana-light.png
 
     persistence:
       enabled: false

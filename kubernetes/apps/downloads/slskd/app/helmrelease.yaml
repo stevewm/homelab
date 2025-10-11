@@ -112,7 +112,7 @@ spec:
           gethomepage.dev/name: *app
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: downloads
-          gethomepage.dev/icon: soulseek.png
+          gethomepage.dev/icon: sh-slskd-light.png
 
     persistence:
       config:

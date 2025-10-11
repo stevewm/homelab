@@ -88,7 +88,7 @@ spec:
           gethomepage.dev/name: *app
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: selfhosted
-          gethomepage.dev/icon: stirling-pdf.png
+          gethomepage.dev/icon: sh-stirling-pdf-light.png
 
     persistence:
       temporary:

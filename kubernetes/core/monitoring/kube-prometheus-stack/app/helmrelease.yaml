@@ -72,7 +72,7 @@ spec:
             gethomepage.dev/name: alertmanager
             gethomepage.dev/enabled: "true"
             gethomepage.dev/group: monitoring
-            gethomepage.dev/icon: alertmanager.png
+            gethomepage.dev/icon: sh-prometheus-light.png
             gethomepage.dev/pod-selector: alertmanager=kube-prometheus-stack
 
     # https://grafana.com/grafana/dashboards/14588-vpa-recommendations/
@@ -123,5 +123,5 @@ spec:
             gethomepage.dev/name: prometheus
             gethomepage.dev/enabled: "true"
             gethomepage.dev/group: monitoring
-            gethomepage.dev/icon: prometheus.png
+            gethomepage.dev/icon: sh-prometheus-light.png
             gethomepage.dev/pod-selector: app.kubernetes.io/name=prometheus
