@@ -6,6 +6,7 @@ namespace: system
 resources:
   - ./intel-device-plugins/ks.yaml
   - ./k8tz/ks.yaml
+  - ./ksgate/ks.yaml
   - ./node-feature-discovery/ks.yaml
   - ./reloader/ks.yaml
 components:
