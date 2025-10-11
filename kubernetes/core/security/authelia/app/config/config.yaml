@@ -36,9 +36,9 @@ session:
       authelia_url: https://sso.stevewm.dev
       default_redirection_url: https://home.stevewm.dev
   redis:
-    database_index: 1
-    host: dragonfly.database.svc.cluster.local
-    password: '{{ secret "/config/secret/DRAGONFLY_PASSWORD" }}'
+    database_index: 0
+    host: authelia-dragonfly.security.svc.cluster.local
+    password: '{{ secret "/config/dragonfly/password" }}'
 
 storage:
   encryption_key: |
