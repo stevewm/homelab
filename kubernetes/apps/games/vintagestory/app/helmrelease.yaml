@@ -161,7 +161,7 @@ spec:
           gethomepage.dev/name: *app
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: games
-          gethomepage.dev/icon: mdi-map
+          gethomepage.dev/icon: mdi-map-#ffffff
 
     persistence:
       data:

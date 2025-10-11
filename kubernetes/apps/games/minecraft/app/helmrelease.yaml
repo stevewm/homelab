@@ -191,7 +191,7 @@ spec:
           gethomepage.dev/name: *app
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: games
-          gethomepage.dev/icon: minecraft.png
+          gethomepage.dev/icon: mdi-map-#ffffff
 
     persistence:
       data:

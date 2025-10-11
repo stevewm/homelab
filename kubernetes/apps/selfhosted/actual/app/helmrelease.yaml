@@ -100,4 +100,4 @@ spec:
           gethomepage.dev/name: *app
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: selfhosted
-          gethomepage.dev/icon: actual-budget.png
+          gethomepage.dev/icon: sh-actual-budget-light.png

@@ -113,7 +113,7 @@ spec:
           gethomepage.dev/name: *app
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: downloads
-          gethomepage.dev/icon: bazarr.png
+          gethomepage.dev/icon: sh-bazarr-light.png
           gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_BAZARR_API_KEY}}` }}"
           gethomepage.dev/widget.type: *app
           gethomepage.dev/widget.url: "http://bazarr.downloads.svc.cluster.local"

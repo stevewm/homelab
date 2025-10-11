@@ -145,7 +145,7 @@ spec:
           gethomepage.dev/name: *app
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: home
-          gethomepage.dev/icon: home-assistant.png
+          gethomepage.dev/icon: sh-home-assistant-light.png
 
     persistence:
       config:

@@ -102,11 +102,11 @@ spec:
           - backendRefs:
               - identifier: app
                 port: *http
-        annotations:
-          gethomepage.dev/name: *app
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/group: media
-          gethomepage.dev/icon: musicbrainz.png
+        # annotations:
+        #   gethomepage.dev/name: *app
+        #   gethomepage.dev/enabled: "true"
+        #   gethomepage.dev/group: media
+        #   gethomepage.dev/icon: si-musicbrainz.png
 
     persistence:
       data:

@@ -85,7 +85,7 @@ spec:
           gethomepage.dev/name: *app
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: selfhosted
-          gethomepage.dev/icon: cyberchef.png
+          gethomepage.dev/icon: sh-cyberchef-light.png
 
     persistence:
       cache:
