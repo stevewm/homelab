@@ -128,7 +128,7 @@ spec:
           gethomepage.dev/icon: jellyfin.png
           gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_JELLYFIN_API_KEY}}` }}"
           gethomepage.dev/widget.type: *app
-          gethomepage.dev/widget.url: "http://jellyfin.media.svc.cluster.local"
+          gethomepage.dev/widget.url: "http://jellyfin.media.svc.cluster.local:8096"
 
     persistence:
       config:
