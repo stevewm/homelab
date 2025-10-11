@@ -22,5 +22,4 @@
     givenname = "cl"
     uidnumber = 5002
     primarygroup = 6502
-    othergroups = [6502]
     passbcrypt = "{{ .GLAUTH_CL_PSW_BCRYPT }}"
