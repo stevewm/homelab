@@ -3,7 +3,7 @@
 apiVersion: dragonflydb.io/v1alpha1
 kind: Dragonfly
 metadata:
-  name: dragonfly
+  name: ${APP}-dragonfly
 spec:
   image: docker.dragonflydb.io/dragonflydb/dragonfly:v1.34.1@sha256:99eb2dd14ca00b983c302d0a15d15176dccd5a9e85a375bcc5157e1cadd73099
   replicas: 1
@@ -13,7 +13,7 @@ spec:
     - "--cluster_mode=emulated"
   authentication:
     passwordFromSecret:
-      name: dragonfly-auth
+      name: ${APP}-dragonfly
       key: password
 
   env:
@@ -34,4 +34,5 @@ spec:
       whenUnsatisfiable: "DoNotSchedule"
       labelSelector:
         matchLabels:
-          app.kubernetes.io/part-of: dragonfly
+          app.kubernetes.io/part-of: ${APP}
+          app.kubernetes.io/component: database

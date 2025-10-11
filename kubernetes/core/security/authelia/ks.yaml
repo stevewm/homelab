@@ -25,6 +25,7 @@ spec:
       namespace: network
   components:
     - ../../../../flux/components/postgres
+    - ../../../../flux/components/dragonfly
   postBuild:
     substitute:
       APP: authelia

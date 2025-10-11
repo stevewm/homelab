@@ -155,6 +155,12 @@ spec:
         name: authelia
         globalMounts:
           - path: /config/secret
+      dragonfly-secret-files:
+        enabled: true
+        type: secret
+        name: authelia-dragonfly
+        globalMounts:
+          - path: /config/dragonfly
       db-secret-files:
         enabled: true
         type: secret
