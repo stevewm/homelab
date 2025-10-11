@@ -23,4 +23,9 @@ spec:
     keepHistory: false
   driftDetection:
     mode: warn
-  values: []
+  values:
+    conditionResources:
+      apiGroups:
+        - "apps/v1"
+      resources:
+        - "Deployment"
