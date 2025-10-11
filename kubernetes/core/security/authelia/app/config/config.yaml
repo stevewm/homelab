@@ -76,7 +76,7 @@ access_control:
     - domain:
         - "*.stevewm.dev"
       policy: one_factor
-      subject: [group:admins, group:users]
+      subject: [group:admins, group:people]
       networks:
         - internal
 

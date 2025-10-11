@@ -13,7 +13,7 @@
     givenname = "steve"
     uidnumber = 5001
     primarygroup = 6502
-    othergroups = [ 6501 ]
+    othergroups = [6501]
     passbcrypt = "{{ .GLAUTH_STEVE_PSW_BCRYPT }}"
 
 [[users]]
@@ -22,4 +22,5 @@
     givenname = "cl"
     uidnumber = 5002
     primarygroup = 6502
+    othergroups = [6502]
     passbcrypt = "{{ .GLAUTH_CL_PSW_BCRYPT }}"
