@@ -43,6 +43,7 @@ spec:
               tag: 25.10.0
             env:
               ACTUAL_PORT: &port 80
+              # openid-grant-failed: https://github.com/actualbudget/actual/issues/5469
               ACTUAL_OPENID_DISCOVERY_URL: https://sso.stevewm.dev
               ACTUAL_OPENID_CLIENT_ID: actual-budget
               ACTUAL_OPENID_CLIENT_SECRET:
