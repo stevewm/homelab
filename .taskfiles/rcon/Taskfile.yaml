@@ -23,6 +23,9 @@ tasks:
 
   _rcon:
     desc: Open an rcon CLI connection
+    preconditions:
+      - test -f "${KUBECONFIG}"
+      - which rcon kubectl doppler
     internal: true
     interactive: true
     silent: true
@@ -36,9 +39,6 @@ tasks:
       vars:
         - NAME
     dir: "{{ .ROOT_DIR }}"
-    preconditions:
-      - test -f "${KUBECONFIG}"
-      - which rcon kubectl
     cmds:
       - echo "Opening rcon for {{ upper .NAME }} ({{ .RCON_ADDRESS }}:{{ .RCON_PORT }})"
       - rcon --address {{ .RCON_ADDRESS }}:{{ .RCON_PORT }} --password $(doppler secrets get {{ upper .NAME }}_RCON_PASSWORD -p {{ .DOPPLER_PROJECT }} --plain) --type {{ .TYPE }}
