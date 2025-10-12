@@ -36,6 +36,9 @@ data:
   services.yaml: |
     ---
     - network:
+        - router:
+            icon: mdi-router-network-wireless-#ffffff
+            href: http://10.0.0.1
         - pihole:
             icon: sh-pi-hole-light.png
             href: http://lilnas.home.arpa:3001/admin/login
@@ -98,6 +101,9 @@ data:
         icon: mdi-nas-#ffffff
       network:
         icon: mdi-lan-connect-#ffffff
+        columns: 2
+        style: row
+        useEqualHeights: true
       security:
         icon: mdi-security-#ffffff
 
