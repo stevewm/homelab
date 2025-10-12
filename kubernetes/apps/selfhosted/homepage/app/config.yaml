@@ -11,19 +11,24 @@ data:
         - doppler:
             - abbr: dplr
               href: https://dashboard.doppler.com/
+              icon: sh-doppler-light.png
         - cloudflare:
             - abbr: cf
               href: https://dash.cloudflare.com
+              icon: sh-cloudflare-light.png
         - repo:
             - abbr: gh
               href: https://github.com/stevewm/homelab
+              icon: sh-github-light.png
     - dev:
         - github:
             - abbr: gh
               href: https://github.com/
+              icon: sh-github-light.png
         - hacker news:
             - abbr: hn
               href: https://news.ycombinator.com/
+              icon: sh-hacker-news-light.png
   docker.yaml: |
     ---
   kubernetes.yaml: |
@@ -49,7 +54,7 @@ data:
               key: "{{HOMEPAGE_VAR_PIHOLE_API_KEY}}"
     - nas:
         - portal:
-            icon: asustor.png
+            icon: mdi-monitor-dashboard-#ffffff
             href: https://lilnas.home.arpa:8000
         - portainer:
             icon: sh-portainer-light.png
@@ -125,7 +130,6 @@ data:
           show: true
           cpu: true
           memory: true
-          showLabel: true
-          label: mini-cluster
+          showLabel: false
         nodes:
           show: false
