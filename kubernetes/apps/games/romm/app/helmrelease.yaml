@@ -1,0 +1,160 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app romm
+spec:
+  interval: 30m
+  maxHistory: 3
+  chartRef:
+    kind: OCIRepository
+    name: app-template
+    namespace: flux-system
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: -1
+  uninstall:
+    keepHistory: false
+  driftDetection:
+    mode: warn
+  values:
+    defaultPodOptions:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        runAsGroup: 100
+        fsGroup: 100
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+
+    controllers:
+      romm:
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+        defaultContainerOptionsStrategy: merge
+
+        annotations:
+          reloader.stakater.com/auto: "true"
+
+        containers:
+          app:
+            image:
+              repository: ghcr.io/rommapp/romm
+              tag: 4.3.1@sha256:de7e935df66fb7c3222ca2ff4936273a71b2cc72714a5bc87be2c979b7a45b78
+            probes:
+              liveness: &probes
+                enabled: true
+              readiness: *probes
+            env:
+              # General
+              ROMM_PORT: &port 80
+              ROMM_BASE_PATH: /data/roms
+              ENABLE_RESCAN_ON_FILESYSTEM_CHANGE: "true"
+              # DB
+              DB_HOST:
+                valueFrom:
+                  secretKeyRef:
+                    name: romm-pguser-romm
+                    key: pgbouncer-host
+              DB_PORT:
+                valueFrom:
+                  secretKeyRef:
+                    name: romm-pguser-romm
+                    key: pgbouncer-port
+              DB_NAME:
+                valueFrom:
+                  secretKeyRef:
+                    name: romm-pguser-romm
+                    key: dbname
+              DB_USER:
+                valueFrom:
+                  secretKeyRef:
+                    name: romm-pguser-romm
+                    key: user
+              DB_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: romm-pguser-romm
+                    key: password
+              ROMM_DB_DRIVER: postgres
+              # Redis
+              REDIS_HOST: romm-dragonfly.games.svc.cluster.local
+              REDIS_PORT: 6379
+              # REDIS_USERNAME: ""
+              REDIS_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: romm-dragonfly
+                    key: password
+              REDIS_DB: "0"
+              # SSO
+              DISABLE_USERPASS_LOGIN: "true"
+              OIDC_ENABLED: "true"
+              OIDC_PROVIDER: authelia
+              OIDC_CLIENT_ID: romm
+              OIDC_CLIENT_SECRET:
+              OIDC_REDIRECT_URI: https://romm.stevewm.dev/api/oauth/openid
+              OIDC_SERVER_APPLICATION_URL: https://sso.stevewm.dev
+            envFrom:
+              - secretRef:
+                  name: romm
+            resources:
+              requests:
+                cpu: 10m
+                memory: 256Mi
+              limits:
+                memory: 1Gi
+            securityContext:
+              readOnlyRootFilesystem: false
+
+    service:
+      app:
+        controller: *app
+        ports:
+          web:
+            port: *port
+
+    route:
+      app:
+        hostnames: ["romm.stevewm.dev"]
+        parentRefs:
+          - name: internal
+            namespace: network
+            sectionName: https
+        rules:
+          - backendRefs:
+              - identifier: app
+                port: *port
+        annotations:
+          gethomepage.dev/name: *app
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: games
+          gethomepage.dev/icon: sh-romm-light.png
+
+    persistence:
+      roms:
+        type: nfs
+        server: lilnas.home.arpa
+        path: /volume1/Games/ROMs
+        globalMounts:
+          - path: /data/roms
+
+      config:
+        type: configMap
+        name: romm-config
+        globalMounts:
+          - path: /romm/config/config.yml
+            subPath: config.yml
+            readOnly: true
