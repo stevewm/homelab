@@ -91,6 +91,15 @@ identity_providers:
     claims_policies:
       karakeep:
         id_token: ["email"]
+      romm:
+        id_token:
+          [
+            "email",
+            "email_verified",
+            "alt_emails",
+            "preferred_username",
+            "name",
+          ]
 
     clients:
       - client_name: Grafana
@@ -165,3 +174,19 @@ identity_providers:
         access_token_signed_response_alg: none
         userinfo_signed_response_alg: none
         token_endpoint_auth_method: client_secret_post
+
+      - client_name: "ROM Manager"
+        client_id: "romm"
+        claims_policy: "romm"
+
+        client_secret: '{{ secret "/config/secret/ROMM_OAUTH_CLIENT_SECRET_DIGEST" }}'
+        public: false
+        require_pkce: false
+        pkce_challenge_method: ""
+        redirect_uris: ["https://romm.stevewm.dev/api/oauth/openid"]
+        scopes: ["openid", "profile", "email"]
+        response_types: ["code"]
+        grant_types: ["authorization_code"]
+        access_token_signed_response_alg: "none"
+        userinfo_signed_response_alg: "none"
+        token_endpoint_auth_method: "client_secret_basic"
