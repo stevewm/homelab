@@ -57,9 +57,9 @@ data:
     title: Cluster Home
     theme: dark
     color: stone
-    # Photo credit: https://unsplash.com/@adrienolichon
+    # Photo credit: https://unsplash.com/@a_sobotyak
     # Right click image and "Copy image address" to get direct link
-    background: https://images.unsplash.com/photo-1533135091724-62cc5402aa20?auto=format&fit=crop&w=2560&q=80
+    background: https://images.unsplash.com/photo-1721549369164-2fd07f795ce4?auto=format&fit=crop&w=2560&q=80
 
     logpath: /logs
 
