@@ -70,9 +70,10 @@ spec:
                   secretKeyRef:
                     name: mealie-sso
                     key: client_secret
-              OIDC_AUTO_REDIRECT: "false"
+              OIDC_AUTO_REDIRECT: "true"
               OIDC_ADMIN_GROUP: "admins"
               OIDC_USER_GROUP: "people"
+              ALLOW_PASSWORD_LOGIN: "false"
 
             probes:
               liveness:
