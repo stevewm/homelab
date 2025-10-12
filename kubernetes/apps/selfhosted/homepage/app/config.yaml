@@ -66,7 +66,7 @@ data:
 
     logpath: /logs
 
-    cardBlur: sm
+    cardBlur: xl
     disableCollapse: true
     statusStyle: dot
     headerStyle: boxed
@@ -99,6 +99,8 @@ data:
         icon: mdi-magnify-#ffffff
       nas:
         icon: mdi-nas-#ffffff
+        columns: 2
+        style: row
       network:
         icon: mdi-lan-connect-#ffffff
         columns: 2
@@ -110,9 +112,8 @@ data:
   widgets.yaml: |
     ---
     - search:
-        provider:
-          - google
-          - duckduckgo
+        provider: duckduckgo
+        showSearchSuggestions: true
     - openmeteo:
         label: Home
         latitude: {{HOMEPAGE_VAR_HOME_LATITUDE}}
