@@ -3,16 +3,16 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: core-ksgate
+  name: core-runo
   namespace: flux-system
 spec:
   targetNamespace: system
   commonMetadata:
     labels:
-      app.kubernetes.io/name: ksgate
+      app.kubernetes.io/name: runo
   interval: 30m
   timeout: 5m
-  path: ./kubernetes/core/system/ksgate/app
+  path: ./kubernetes/core/system/runo/app
   prune: true
   sourceRef:
     kind: GitRepository

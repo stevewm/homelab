@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: &app ksgate
+  name: &app runo
 spec:
   releaseName: *app
   interval: 30m
