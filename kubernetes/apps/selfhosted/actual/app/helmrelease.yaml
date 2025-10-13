@@ -53,7 +53,7 @@ spec:
                     key: client_secret
               ACTUAL_OPENID_SERVER_HOSTNAME: https://actual.stevewm.dev
               ACTUAL_OPENID_AUTH_METHOD: oauth2
-              # ACTUAL_OPENID_ENFORCE: "true"
+              ACTUAL_OPENID_ENFORCE: "true"
             probes:
               liveness:
                 enabled: true
