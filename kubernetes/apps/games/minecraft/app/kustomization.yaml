@@ -5,7 +5,6 @@ kind: Kustomization
 resources:
   - ./helmrelease.yaml
   - ./externalsecret.yaml
-  - ./secret.yaml
   - ./probe.yaml
 configMapGenerator:
   - name: minecraft-bluemap
