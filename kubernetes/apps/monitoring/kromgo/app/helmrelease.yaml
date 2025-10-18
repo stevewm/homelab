@@ -50,8 +50,6 @@ spec:
           reloader.stakater.com/auto: "true"
 
         pod:
-          labels:
-            ingress.home.arpa/nginx-external: allow
           topologySpreadConstraints:
             - maxSkew: 1
               topologyKey: kubernetes.io/hostname

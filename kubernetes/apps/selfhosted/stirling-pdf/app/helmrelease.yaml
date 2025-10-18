@@ -43,9 +43,6 @@ spec:
             readOnlyRootFilesystem: true
             capabilities:
               drop: [ALL]
-        pod:
-          labels:
-            ingress.home.arpa/nginx-internal: allow
 
         containers:
           app:
