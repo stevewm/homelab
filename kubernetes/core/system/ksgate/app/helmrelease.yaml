@@ -26,6 +26,6 @@ spec:
   values:
     conditionResources:
       apiGroups:
-        - "apps/v1"
+        - "apps"
       resources:
-        - "Deployment"
+        - "deployments"
