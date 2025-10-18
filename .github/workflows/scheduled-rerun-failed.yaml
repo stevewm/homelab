@@ -20,7 +20,7 @@ jobs:
               echo "[INFO] $*" >&2
           }
 
-          d=$(date +%Y-%m-%d -d "4 day ago")
+          d=$(date +%Y-%m-%d -d "30 day ago")
           info "date: $d"
 
           bot=app/botty-hill
