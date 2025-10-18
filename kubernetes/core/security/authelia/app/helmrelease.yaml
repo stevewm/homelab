@@ -63,6 +63,16 @@ spec:
           reloader.stakater.com/auto: "true"
 
         pod:
+          annotations:
+            k8s.ksgate.org/postgres: |
+              {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "authelia-pgbouncer",
+                "expression": "resource.status.updatedReplicas >= 1"
+              }
+          schedulingGates:
+            - name: k8s.ksgate.org/postgres
           securityContext:
             runAsUser: 65534
             runAsGroup: 65534
