@@ -1,0 +1,20 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: ksgate-rules
+spec:
+  groups:
+    - name: ksgate
+      rules:
+        - alert: PodGatedTooLong
+          expr: |
+            scheduler_pending_pods{queue="gated"} > 0
+          for: 1h
+          labels:
+            severity: warning
+          annotations:
+            description: |
+              Pod {{ $labels.pod }} in namespace {{ $labels.namespace }} has been in the
+              scheduler's gated queue for more than 1 hours.
+            summary: "Pod {{ $labels.pod }} in {{ $labels.namespace }} gated for >6h"
