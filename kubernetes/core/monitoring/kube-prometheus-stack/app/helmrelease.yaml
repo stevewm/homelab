@@ -108,9 +108,6 @@ spec:
           - new-service-discovery-manager
         externalLabels:
           cluster: mini
-        podMetadata:
-          labels:
-            ingress.home.arpa/nginx-internal: allow
       route:
         main:
           enabled: true

@@ -61,10 +61,6 @@ spec:
         annotations:
           reloader.stakater.com/auto: "true"
 
-        pod:
-          labels:
-            ingress.home.arpa/playit: allow
-
         initContainers:
           init:
             image:
