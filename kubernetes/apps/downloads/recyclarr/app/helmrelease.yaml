@@ -65,6 +65,9 @@ spec:
 
         pod:
           restartPolicy: Never
+          schedulingGates:
+            - name: k8s.ksgate.org/radarr
+            - name: k8s.ksgate.org/sonarr
 
         cronjob:
           schedule: "@daily"
