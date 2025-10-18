@@ -13,7 +13,7 @@ _.path = ['{{config_root}}/node_modules/.bin']
 [tools]
 uv = "0.9.3"
 python = "3"
-node = "23.11.0"
+node = "23.11.1"
 
 # Flux
 "flux2" = "2.7.2"
