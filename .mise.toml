@@ -41,7 +41,6 @@ task = "3.44.0"
 "cargo:minijinja-cli" = "2.7.0"
 "ubi:gorcon/rcon-cli" = { version = "0.10.3", exe = "rcon" }
 slsa-verifier = "2.7.1"
-cosign = "3.0.2"
 hurl = "7.0.0"
 
 # hk
