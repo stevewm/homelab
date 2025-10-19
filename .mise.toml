@@ -11,7 +11,7 @@ HOMEBREW_BREWFILE="{{ config_root }}/.github/Brewfile"
 _.path = ['{{config_root}}/node_modules/.bin']
 
 [tools]
-uv = "0.9.3"
+uv = "0.9.4"
 python = "3"
 node = "23.11.1"
 
@@ -50,7 +50,7 @@ ruff = "0.14.1"
 yamlfmt = "0.19.0"
 "npm:markdownlint-cli2" = "0.18.1"
 "npm:dclint" = "3.1.0"
-"npm:renovate" = "41.152.3"
+"npm:renovate" = "41.152.7"
 "pipx:yamllint" = "1.37.1"
 actionlint = "1.7.8"
 "npm:prettier" = "3.6.2"
