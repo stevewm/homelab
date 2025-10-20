@@ -62,22 +62,18 @@ spec:
               JELLYFIN_FFmpeg__analyzeduration: 50000000
               JELLYFIN_PublishedServerUrl: jellyfin.media.svc.cluster.local:8096
             probes:
-              liveness:
-                enabled: false
-              readiness:
-                enabled: false
-              # liveness: &probes
-              #   enabled: true
-              #   custom: true
-              #   spec:
-              #     httpGet:
-              #       path: /health
-              #       port: 8096
-              #     initialDelaySeconds: 0
-              #     periodSeconds: 10
-              #     timeoutSeconds: 1
-              #     failureThreshold: 3
-              # readiness: *probes
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /health
+                    port: 8096
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
               startup:
                 enabled: false
             resources:
