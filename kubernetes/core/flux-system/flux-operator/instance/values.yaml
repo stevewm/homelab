@@ -1,8 +1,8 @@
 ---
 instance:
   distribution:
-    # renovate: datasource=github-releases depName=controlplaneio-fluxcd/distribution
-    version: 2.7.2
+    artifact: oci://ghcr.io/controlplaneio-fluxcd/flux-operator-manifests:v0.32.0
+    version: 2.x
   cluster:
     networkPolicy: true
   components:
@@ -16,11 +16,16 @@ instance:
     url: https://github.com/stevewm/homelab.git
     ref: refs/heads/main
     path: kubernetes/flux/cluster
+    interval: 1h
+
+  commonMetadata:
+  labels:
+    app.kubernetes.io/name: flux
 
   kustomize:
     patches:
-      - # Increase the number of workers
-        patch: |-
+      # Increase the number of workers
+      - patch: |
           - op: add
             path: /spec/template/spec/containers/0/args/-
             value: --concurrent=10
@@ -30,8 +35,8 @@ instance:
         target:
           kind: Deployment
           name: (kustomize-controller|helm-controller|source-controller)
-      - # Increase the memory limits
-        patch: |-
+      # Increase the memory limits
+      - patch: |
           apiVersion: apps/v1
           kind: Deployment
           metadata:
@@ -47,8 +52,8 @@ instance:
         target:
           kind: Deployment
           name: (kustomize-controller|helm-controller|source-controller)
-      - # Enable in-memory kustomize builds
-        patch: |-
+      # Enable in-memory kustomize builds
+      - patch: |
           - op: add
             path: /spec/template/spec/containers/0/args/-
             value: --concurrent=20
@@ -61,8 +66,8 @@ instance:
         target:
           kind: Deployment
           name: kustomize-controller
-      - # Enable Helm repositories caching
-        patch: |-
+      # Enable Helm repositories caching
+      - patch: |
           - op: add
             path: /spec/template/spec/containers/0/args/-
             value: --helm-cache-max-size=10
@@ -75,8 +80,8 @@ instance:
         target:
           kind: Deployment
           name: source-controller
-      - # Flux near OOM detection for Helm
-        patch: |-
+      # Flux near OOM detection for Helm
+      - patch: |
           - op: add
             path: /spec/template/spec/containers/0/args/-
             value: --feature-gates=OOMWatch=true
@@ -89,24 +94,16 @@ instance:
         target:
           kind: Deployment
           name: helm-controller
-      - # Disable chart digest tracking
-        patch: |-
+      # Disable chart digest tracking
+      - patch: |
           - op: add
             path: /spec/template/spec/containers/0/args/-
             value: --feature-gates=DisableChartDigestTracking=true
         target:
           kind: Deployment
           name: helm-controller
-      - # Watch configmaps and secrets attached to HelmReleases and Kustomizations
-        patch: |-
-          - op: add
-            path: /spec/template/spec/containers/0/args/-
-            value: --watch-configs-label-selector=owner!=helm
-        target:
-          kind: Deployment
-          name: (helm-controller|kustomize-controller)
-      - # Cancel health checks on new Kustomizations revisions
-        patch: |-
+      # Cancel health checks on new Kustomizations revisions
+      - patch: |-
           - op: add
             path: /spec/template/spec/containers/0/args/-
             value: --feature-gates=CancelHealthCheckOnNewRevision=true
