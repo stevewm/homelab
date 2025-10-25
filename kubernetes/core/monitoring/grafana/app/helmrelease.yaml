@@ -168,7 +168,7 @@ spec:
         minecraft:
           # renovate: dashboardName="Minecraft Fabric"
           gnetId: 14492
-          revision: 4
+          revision: 5
           datasource:
             - name: DS_PROMETHEUS
               value: Prometheus
