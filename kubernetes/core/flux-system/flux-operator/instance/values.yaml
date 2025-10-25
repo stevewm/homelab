@@ -2,7 +2,7 @@
 instance:
   distribution:
     artifact: oci://ghcr.io/controlplaneio-fluxcd/flux-operator-manifests:v0.32.0
-    version: 2.x
+    version: 2.7.x
   cluster:
     networkPolicy: true
   components:
@@ -10,6 +10,7 @@ instance:
     - kustomize-controller
     - helm-controller
     - notification-controller
+    - source-watcher
   sync:
     name: homelab
     kind: GitRepository
