@@ -52,8 +52,8 @@ spec:
         containers:
           app:
             image:
-              repository: ghcr.io/phasecorex/ut2004-server
-              tag: latest@sha256:dce7a6893251f51711933eeff0c60d038b22167f4672d8244ed37b74381d667d
+              repository: lacledeslan/gamesvr-ut2004
+              tag: latest@sha256:7b8d28febf359f781c09ba659e4a33c3fd8cb5d9b86493d8047efd62ccdbf733
             # probes:
             #   liveness:
             #     enabled: true
@@ -97,23 +97,6 @@ spec:
             protocol: UDP
           # admin:
           #   port: 80
-
-    # route:
-    #   app:
-    #     hostnames: ["ut2004.stevewm.dev"]
-    #     parentRefs:
-    #       - name: internal
-    #         namespace: network
-    #         sectionName: https
-    #     rules:
-    #       - backendRefs:
-    #           - identifier: app
-    #             port: *map
-    #     annotations:
-    #       gethomepage.dev/name: ut2004 admin panel
-    #       gethomepage.dev/enabled: "true"
-    #       gethomepage.dev/group: games
-    #       gethomepage.dev/icon: mdi-map
 
     persistence:
       data:
