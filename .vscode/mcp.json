@@ -1,0 +1,15 @@
+{
+  "servers": {
+    "flux-operator-mcp": {
+      "command": "flux-operator",
+      "args": [
+        "serve",
+        "--read-only"
+      ],
+      "env": {
+        "PATH": "${env:PATH}:${env:HOME}/.local/share/mise/shims",
+        "KUBECONFIG": "${workspaceFolder}/kubeconfig"
+      }
+    }
+  }
+}
