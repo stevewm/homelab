@@ -9,7 +9,6 @@ resources:
   - ./ksgate/ks.yaml
   - ./node-feature-discovery/ks.yaml
   - ./reloader/ks.yaml
-  - ./runo/ks.yaml
 components:
   - ../../flux/components/namespace
 patches:
