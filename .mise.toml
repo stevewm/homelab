@@ -10,50 +10,53 @@ MINIJINJA_CONFIG_FILE="{{ config_root }}/.github/.minijinja.toml"
 HOMEBREW_BREWFILE="{{ config_root }}/.github/Brewfile"
 _.path = ['{{config_root}}/node_modules/.bin']
 
+[hooks]
+postinstall = "helm plugin install https://github.com/databus23/helm-diff || true"
+
 [tools]
 uv = "0.9.5"
 python = "3"
 node = "23.11.1"
 
 # Flux
-"flux2" = "2.7.2"
+"aqua:flux2" = "2.7.2"
 "pipx:flux-local" = "7.5.6"
 
 # Kube
-"kubectl" = "1.34.1"
+"aqua:kubectl" = "1.34.1"
 "ubi:kubecolor/kubecolor" = "0.5.2"
 "aqua:CrunchyData/postgres-operator-client" = "0.5.3"
-"kustomize" = "5.7.1"
-"helm" = "3.19.0"
-"helmfile" = "1.1.7"
-k9s = "0.32.7"
-"stern" = "1.31.0"
+"aqua:kustomize" = "5.7.1"
+"aqua:helm" = "3.19.0"
+"aqua:helmfile" = "1.1.8"
+"aqua:k9s" = "0.32.7"
+"aqua:stern" = "1.31.0"
 
 # Talos
-"talos" = "1.9.3"
-"talhelper" = "3.0.38"
+"aqua:talos" = "1.9.3"
+"aqua:talhelper" = "3.0.38"
 
 # Tools
-task = "3.44.0"
-"yq" = "4.48.1"
-"jq" = "1.8.1"
-"doppler" = "3.75.1"
+"aqua:task" = "3.44.0"
+"aqua:yq" = "4.48.1"
+"aqua:jq" = "1.8.1"
+"github:DopplerHQ/cli" = "3.75.1"
 "cargo:minijinja-cli" = "2.7.0"
 "ubi:gorcon/rcon-cli" = { version = "0.10.3", exe = "rcon" }
-slsa-verifier = "2.7.1"
-hurl = "7.0.0"
+"github:slsa-framework/slsa-verifier" = "2.7.1"
+"aqua:hurl" = "7.0.0"
 
 # hk
-hk = "1.19.0"
-pkl = "0.29.1"
-ruff = "0.14.2"
-yamlfmt = "0.20.0"
+"aqua:hk" = "1.19.0"
+"aqua:pkl" = "0.29.1"
+"aqua:ruff" = "0.14.2"
+"aqua:yamlfmt" = "0.20.0"
 "npm:markdownlint-cli2" = "0.18.1"
 "npm:dclint" = "3.1.0"
 "npm:renovate" = "41.159.4"
 "pipx:yamllint" = "1.37.1"
-actionlint = "1.7.8"
+"aqua:actionlint" = "1.7.8"
 "npm:prettier" = "3.6.2"
-shellcheck = "0.11.0"
+"aqua:shellcheck" = "0.11.0"
 "ubi:controlplaneio-fluxcd/flux-operator" = "latest"
 "npm:kubernetes-mcp-server" = "0.0.53"
