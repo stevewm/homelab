@@ -10,6 +10,7 @@
     },
     "kubernetes-mcp": {
       "command": "kubernetes-mcp-server",
+      "args": ["--read-only"],
       "env": {
         "PATH": "${env:PATH}:${env:HOME}/.local/share/mise/shims",
         "KUBECONFIG": "${workspaceFolder}/kubeconfig"
