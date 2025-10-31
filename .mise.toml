@@ -16,7 +16,7 @@ postinstall = "helm plugin install https://github.com/databus23/helm-diff || tru
 [tools]
 uv = "0.9.7"
 python = "3"
-node = "23.11.1"
+node = "24.11.0"
 
 # Flux
 "aqua:flux2" = "2.7.3"
