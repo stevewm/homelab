@@ -14,12 +14,12 @@ _.path = ['{{config_root}}/node_modules/.bin']
 postinstall = "helm plugin install https://github.com/databus23/helm-diff || true"
 
 [tools]
-uv = "0.9.5"
+uv = "0.9.7"
 python = "3"
 node = "23.11.1"
 
 # Flux
-"aqua:flux2" = "2.7.2"
+"aqua:flux2" = "2.7.3"
 "pipx:flux-local" = "7.5.6"
 
 # Kube
@@ -28,7 +28,7 @@ node = "23.11.1"
 "aqua:CrunchyData/postgres-operator-client" = "0.5.3"
 "aqua:kustomize" = "5.7.1"
 "aqua:helm" = "3.19.0"
-"aqua:helmfile" = "1.1.8"
+"aqua:helmfile" = "1.1.9"
 "aqua:k9s" = "0.32.7"
 "aqua:stern" = "1.31.0"
 
@@ -47,13 +47,13 @@ node = "23.11.1"
 "aqua:hurl" = "7.0.0"
 
 # hk
-"aqua:hk" = "1.19.0"
+"aqua:hk" = "1.20.0"
 "aqua:pkl" = "0.29.1"
-"aqua:ruff" = "0.14.2"
+"aqua:ruff" = "0.14.3"
 "aqua:yamlfmt" = "0.20.0"
 "npm:markdownlint-cli2" = "0.18.1"
 "npm:dclint" = "3.1.0"
-"npm:renovate" = "41.159.4"
+"npm:renovate" = "41.167.2"
 "pipx:yamllint" = "1.37.1"
 "aqua:actionlint" = "1.7.8"
 "npm:prettier" = "3.6.2"
