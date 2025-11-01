@@ -12,23 +12,23 @@
       separateMinorPatch: true,
     },
     {
-      "description": "Cert-Manager group",
-      "groupName": "Cert-Manager",
-      "matchDatasources": ["docker"],
-      "matchPackageNames": ["/cert-manager/"],
-      "group": {
-        "commitMessageTopic": "{{{groupName}}} group"
-      }
+      description: "Cert-Manager group",
+      groupName: "Cert-Manager",
+      matchDatasources: ["docker"],
+      matchPackageNames: ["/cert-manager/"],
+      group: {
+        commitMessageTopic: "{{{groupName}}} group",
+      },
     },
 
     {
-      "description": "Cilium group",
-      "groupName": "Cilium",
-      "matchDatasources": ["helm", "docker"],
-      "matchPackageNames": ["/cilium/"],
-      "group": {
-        "commitMessageTopic": "{{{groupName}}} group"
-      }
+      description: "Cilium group",
+      groupName: "Cilium",
+      matchDatasources: ["helm", "docker"],
+      matchPackageNames: ["/cilium/"],
+      group: {
+        commitMessageTopic: "{{{groupName}}} group",
+      },
     },
     {
       description: "Actions Runner Controller group",
@@ -110,7 +110,7 @@
       groupName: "Prometheus Operator CRDs",
       matchPackageNames: ["/prometheus-operator-crds/"],
       group: {
-        commitMessageTopic: "{{{groupName}}} group"
+        commitMessageTopic: "{{{groupName}}} group",
       },
     },
     {

@@ -7,28 +7,28 @@
       defaultRegistryUrlTemplate: "https://mods.vintagestory.at/api/mod/{{packageName}}",
       format: "json",
       transformTemplates: [
-        '{"releases":[{"version": mod.releases[0].modversion, "releaseTimestamp": mod.releases[0].created}], "sourceUrl": "https://mods.vintagestory.at/" & mod.urlalias & "#tab-files"}'
-        ],
+        '{"releases":[{"version": mod.releases[0].modversion, "releaseTimestamp": mod.releases[0].created}], "sourceUrl": "https://mods.vintagestory.at/" & mod.urlalias & "#tab-files"}',
+      ],
     },
     "vintagestory-stable": {
       defaultRegistryUrlTemplate: "https://api.vintagestory.at/stable.json",
       format: "json",
       transformTemplates: [
-        '{"releases": $map($keys(), function($ver) {{ "version": $ver }})}'
-      ]
-    }
+        '{"releases": $map($keys(), function($ver) {{ "version": $ver }})}',
+      ],
+    },
   },
-  "customManagers": [
+  customManagers: [
     {
       customType: "regex",
       description: "Process Vintage Story mods",
       fileMatch: ["(^|/)vintagestory(-\\w+)?/.*/mods\\.yaml$"],
       matchStrings: [
-        "- id: (?<packageName>\\S+)\\n(?<indentation>\\s+)version: (?<currentValue>\\S+)"
+        "- id: (?<packageName>\\S+)\\n(?<indentation>\\s+)version: (?<currentValue>\\S+)",
       ],
       autoReplaceStringTemplate: "- id: {{{packageName}}}\n{{{indentation}}}version: {{{newValue}}}",
       datasourceTemplate: "custom.vintagestory-mod",
-      versioningTemplate: "semver-coerced"
+      versioningTemplate: "semver-coerced",
     },
   ],
   packageRules: [
