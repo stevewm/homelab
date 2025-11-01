@@ -55,7 +55,7 @@ spec:
           app:
             image:
               repository: ghcr.io/chrisbenincasa/tunarr:0.22.11
-              tag: 0.22.11sha256:dcd11875c089e85c75d5e6b38177f04f4836c435084f00cc1a6827e6c4644588
+              tag: 0.22.11@sha256:dcd11875c089e85c75d5e6b38177f04f4836c435084f00cc1a6827e6c4644588
             env:
               TUNARR_SERVER_PORT: &http 80
               TUNARR_SERVER_TRUST_PROXY: "true"
