@@ -59,7 +59,7 @@ spec:
             env:
               TUNARR_SERVER_PORT: &http 80
               TUNARR_SERVER_TRUST_PROXY: "true"
-              TUNARR_DATABASE_PATH: /config/tunarr
+              CONTAINER: podman # https://github.com/chrisbenincasa/tunarr/blob/dev/server/src/util/containerUtil.ts#L44
             probes:
               liveness: &probes
                 enabled: true
@@ -117,7 +117,3 @@ spec:
         type: emptyDir
         globalMounts:
           - path: /.dizquetv
-      tunarr:
-        type: emptyDir
-        globalMounts:
-          - path: /root/.local/share/tunarr
