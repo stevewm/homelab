@@ -116,3 +116,7 @@ spec:
         type: emptyDir
         globalMounts:
           - path: /.dizquetv
+      tunarr:
+        type: emptyDir
+        globalMounts:
+          - path: /root/.local/share/tunarr
