@@ -48,20 +48,6 @@ spec:
 
         annotations:
           reloader.stakater.com/auto: "true"
-          k8s.ksgate.org/sonarr: |
-            {
-              "apiVersion": "apps/v1",
-              "kind": "Deployment",
-              "name": "sonarr",
-              "expression": "resource.status.updatedReplicas >= 1"
-            }
-          k8s.ksgate.org/radarr: |
-            {
-              "apiVersion": "apps/v1",
-              "kind": "Deployment",
-              "name": "radarr",
-              "expression": "resource.status.updatedReplicas >= 1"
-            }
 
         pod:
           restartPolicy: Never
@@ -81,8 +67,8 @@ spec:
                 "expression": "resource.status.updatedReplicas >= 1"
               }
           schedulingGates:
-            - name: k8s.ksgate.org/radarr
             - name: k8s.ksgate.org/sonarr
+            - name: k8s.ksgate.org/radarr
 
         cronjob:
           schedule: "@daily"
