@@ -67,6 +67,7 @@ hooks {
     stash = "git"
     steps = linters
   }
+
   ["commit-msg"] {
     steps {
       ["validate-commit-msg"] {
@@ -74,12 +75,13 @@ hooks {
       }
     }
   }
+
   // "fix" and "check" are special steps for `hk fix` and `hk check` commands
   ["fix"] {
-      fix = true
-      steps = linters
+    fix = true
+    steps = linters
   }
   ["check"] {
-      steps = linters
+    steps = linters
   }
 }
