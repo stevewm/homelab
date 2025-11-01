@@ -1,0 +1,121 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/helm.toolkit.fluxcd.io/helmrelease_v2.json
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app tunarr
+spec:
+  interval: 30m
+  maxHistory: 3
+  chartRef:
+    kind: OCIRepository
+    name: app-template
+    namespace: flux-system
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: -1
+  uninstall:
+    keepHistory: false
+  driftDetection:
+    mode: warn
+  values:
+    defaultPodOptions:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        runAsGroup: 100
+        fsGroup: 100
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+
+    controllers:
+      jellyfin:
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+
+        annotations:
+          reloader.stakater.com/auto: "true"
+
+        pod:
+          nodeSelector:
+            intel.feature.node.kubernetes.io/gpu: "true"
+
+        containers:
+          app:
+            image:
+              repository: ghcr.io/chrisbenincasa/tunarr:0.22.11
+              tag: 0.22.11sha256:dcd11875c089e85c75d5e6b38177f04f4836c435084f00cc1a6827e6c4644588
+            env:
+              TUNARR_SERVER_PORT: &http 80
+              TUNARR_SERVER_TRUST_PROXY: "true"
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /health
+                    port: 8096
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+              startup:
+                enabled: false
+            resources:
+              requests:
+                gpu.intel.com/i915: 1
+                cpu: 10
+                memory: 512Mi
+              limits:
+                gpu.intel.com/i915: 1
+                memory: 2Gi
+
+    service:
+      app:
+        controller: *app
+        ports:
+          http:
+            port: *http
+
+    route:
+      app:
+        hostnames: ["channel.stevewm.dev"]
+        parentRefs:
+          - name: internal
+            namespace: network
+            sectionName: https
+        rules:
+          - backendRefs:
+              - identifier: app
+                port: *http
+        annotations:
+          gethomepage.dev/name: *app
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: media
+          gethomepage.dev/icon: sh-jellyfin-light.png
+          gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_JELLYFIN_API_KEY}}` }}"
+          gethomepage.dev/widget.type: *app
+          gethomepage.dev/widget.url: "http://tunarr.media.svc.cluster.local"
+
+    persistence:
+      config:
+        existingClaim: tunarr-config
+        globalMounts:
+          - path: /config/tunarr
+      dizquetv:
+        type: emptyDir
+        globalMounts:
+          - path: /.dizquetv
