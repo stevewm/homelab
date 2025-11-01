@@ -92,7 +92,7 @@ spec:
 
     route:
       app:
-        hostnames: ["channel.stevewm.dev"]
+        hostnames: ["channels.stevewm.dev"]
         parentRefs:
           - name: internal
             namespace: network
