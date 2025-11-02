@@ -22,7 +22,7 @@ spec:
   uninstall:
     keepHistory: false
   driftDetection:
-    mode: warn
+    mode: enabled
   values:
     defaultPodOptions:
       automountServiceAccountToken: false
