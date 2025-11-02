@@ -1,6 +1,6 @@
 ---
 game_version: "~1.21.0"
-mods_dir: /data/mods
+mods_dir: /data/Mods
 hooks:
   download:
     pre_run: "rm -rf {{.ModsDir}}/*.zip" # clear out old mods
