@@ -229,7 +229,7 @@ spec:
         scraparr:
           # renovate: dashboardName="Scraparr"
           gnetId: 22934
-          revision: 3
+          revision: 4
           datasource:
             - name: DS_MIMIR
               value: Prometheus
