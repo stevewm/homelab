@@ -48,7 +48,7 @@ node = "24.11.1"
 "aqua:Orange-OpenSource/hurl" = "7.0.0"
 
 # hk
-"aqua:hk" = "1.20.0"
+"aqua:hk" = "1.21.0"
 "aqua:pkl" = "0.30.0"
 "aqua:ruff" = "0.14.5"
 "aqua:yamlfmt" = "0.20.0"
