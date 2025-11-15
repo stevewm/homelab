@@ -39,7 +39,7 @@ node = "24.11.1"
 
 # Tools
 "aqua:go-task/task" = "3.45.5"
-"aqua:yq" = "4.48.1"
+"aqua:yq" = "4.48.2"
 "aqua:jq" = "1.8.1"
 "github:DopplerHQ/cli" = "3.75.1"
 "cargo:minijinja-cli" = "2.7.0"
