@@ -27,7 +27,5 @@ spec:
     mode: warn
   values:
     alertmanagerAddress: http://alertmanager-operated.monitoring.svc.cluster.local:9093
-    image:
-      registry: quay.io
     networkPolicy:
       enabled: false
