@@ -217,10 +217,17 @@ spec:
           - path: /data/config/bluemap/maps/end.conf
             subPath: end.conf
             readOnly: true
-      geyser:
-        type: configMap
-        name: geyser-config
-        globalMounts:
-          - path: /data/config/Geyser-Fabric/config.yml
-            subPath: config.yml
-            readOnly: true
+      config-geyser:
+        type: emptyDir
+        advancedMounts:
+          minecraft:
+            app:
+              - path: /config/Geyser-Fabric
+
+      # geyser:
+      #   type: configMap
+      #   name: geyser-config
+      #   globalMounts:
+      #     - path: /data/config/Geyser-Fabric/config.yml
+      #       subPath: config.yml
+      #       readOnly: true
