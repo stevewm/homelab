@@ -53,7 +53,7 @@ spec:
           app:
             image:
               repository: lacledeslan/gamesvr-ut2004
-              tag: latest@sha256:da424bf64064ebfbb109997d9ede7d25e8e76e77317734e9d6569cbcf256cf63
+              tag: latest@sha256:cfbf9367a33c5d98f68c0d7f7f3a886c410654405884e538f194bbd70a444ee0
             # probes:
             #   liveness:
             #     enabled: true
