@@ -6,7 +6,7 @@ hooks:
     pre_run: "rm -rf {{.ModsDir}}/*.zip" # clear out old mods
 mods:
   - id: primitivesurvival
-    version: 4.0.1
+    version: 4.0.2
   # - id: ExpandedFoods
   #   version: 1.7.4
   # - id: ACulinaryArtillery
