@@ -6,6 +6,7 @@
 [backend]
     datastore = "config"
     baseDN = "dc=home,dc=arpa"
+    anonymousdse = true
 
 [ldap]
     enabled = true
