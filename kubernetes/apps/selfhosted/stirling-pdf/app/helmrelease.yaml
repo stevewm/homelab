@@ -104,3 +104,5 @@ spec:
             subPath: tmp
           - path: /usr/share/tessdata
             subPath: tessdata
+          - path: /home/stirlingpdfuser
+            subPath: stirlingpdfuser
