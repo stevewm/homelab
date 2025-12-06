@@ -48,7 +48,7 @@ spec:
           app:
             image:
               repository: ghcr.io/stirling-tools/stirling-pdf
-              tag: 1.6.0-fat@sha256:6a98563e829ac87bc54e116ba0003f4a4379febc6745608132d48f4fb22b6c02
+              tag: 2.1.1-fat@sha256:f353f33dd762d2f764e3bbc289972feb72fd4a3bcbbb62b486a1d59867ace6a8
             env:
               DOCKER_ENABLE_SECURITY: "false"
               SYSTEM_SHOWUPDATE: "false"
