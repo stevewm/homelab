@@ -44,7 +44,7 @@ spec:
           app:
             image:
               repository: ghcr.io/gethomepage/homepage
-              tag: v1.7.0@sha256:5dbdd600047df70ba4b227a3fa4d3e999cb22f25f5eb3ad1b415245bc59c347c
+              tag: v1.8.0@sha256:a543b3b044b2fa349dfe319c9e9b256c4eb5b4f6923361045aa468be4d2ba990
             probes:
               startup:
                 enabled: true
