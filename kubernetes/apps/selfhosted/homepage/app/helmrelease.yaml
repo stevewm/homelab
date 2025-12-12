@@ -108,3 +108,49 @@ spec:
 
     serviceAccount:
       homepage: {}
+
+    rbac:
+      bindings:
+        homepage:
+          roleRef:
+            kind: ClusterRole
+            name: homepage
+          subjects:
+            - identifier: homepage
+          type: ClusterRoleBinding
+      roles:
+        homepage:
+          rules:
+            - apiGroups:
+                - ""
+              resources:
+                - namespaces
+                - pods
+                - nodes
+              verbs:
+                - get
+                - list
+            - apiGroups:
+                - extensions
+                - gateway.networking.k8s.io
+              resources:
+                - httproutes
+                - gateways
+              verbs:
+                - get
+                - list
+            - apiGroups:
+                - metrics.k8s.io
+              resources:
+                - nodes
+                - pods
+              verbs:
+                - get
+                - list
+            - apiGroups:
+                - apiextensions.k8s.io
+              resources:
+                - customresourcedefinitions/status
+              verbs:
+                - get
+          type: ClusterRole
