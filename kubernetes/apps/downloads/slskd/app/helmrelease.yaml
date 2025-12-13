@@ -114,6 +114,10 @@ spec:
           gethomepage.dev/group: downloads
           gethomepage.dev/icon: sh-slskd-light.png
 
+    configMapsFromFolder:
+      enabled: true
+      basePath: ./resources/configmaps
+
     persistence:
       config:
         type: persistentVolumeClaim

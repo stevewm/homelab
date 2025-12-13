@@ -102,10 +102,14 @@ spec:
             namespace: network
             sectionName: https
 
+    configMapsFromFolder:
+      enabled: true
+      basePath: ./resources/configmaps
+
     persistence:
       config-file:
         type: configMap
-        name: kromgo-configmap
+        name: kromgo
         globalMounts:
           - path: /kromgo/config.yaml
             subPath: config.yaml

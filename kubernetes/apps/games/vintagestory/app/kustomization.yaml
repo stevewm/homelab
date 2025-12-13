@@ -6,18 +6,3 @@ resources:
   - ./helmrelease.yaml
   - ./externalsecret.yaml
   #- ./probe.yaml
-configMapGenerator:
-  - name: vintagestory
-    files:
-      - serverconfig.json=./config/server/serverconfig.json
-      - servermagicnumbers.json=./config/server/servermagicnumbers.json
-      # Mod downloader
-      - mods.yaml=./config/init/mods.yaml
-      # Mod config
-      - betterruins.yaml=./config/mods/betterruins.yaml
-      - primitivesurvival119.json=./config/mods/primitivesurvival119.json
-      - WebCartographerConfig.json=./config/mods/WebCartographerConfig.json
-generatorOptions:
-  disableNameSuffixHash: true
-  annotations:
-    kustomize.toolkit.fluxcd.io/substitute: disabled

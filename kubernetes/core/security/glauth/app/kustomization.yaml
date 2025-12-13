@@ -5,11 +5,3 @@ kind: Kustomization
 resources:
   - ./helmrelease.yaml
   - ./externalsecret.yaml
-configMapGenerator:
-  - name: glauth-config-tpl
-    files:
-      - ./config/groups.toml
-      - ./config/server.toml
-      - ./config/users.toml
-generatorOptions:
-  disableNameSuffixHash: true

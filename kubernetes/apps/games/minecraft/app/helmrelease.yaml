@@ -193,6 +193,10 @@ spec:
           gethomepage.dev/group: games
           gethomepage.dev/icon: mdi-map-#ffffff
 
+    configMapsFromFolder:
+      enabled: true
+      basePath: ./resources/configmaps
+
     persistence:
       data:
         existingClaim: minecraft-server

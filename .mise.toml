@@ -10,6 +10,9 @@ MINIJINJA_CONFIG_FILE="{{ config_root }}/.github/.minijinja.toml"
 HOMEBREW_BREWFILE="{{ config_root }}/.github/Brewfile"
 _.path = ['{{config_root}}/node_modules/.bin']
 
+[plugins]
+krew="https://github.com/soupglasses/mise-krew"
+
 [hooks]
 postinstall = "helm plugin install https://github.com/databus23/helm-diff || true"
 
@@ -32,6 +35,10 @@ node = "24.12.0"
 "aqua:helmfile" = "1.2.2"
 "aqua:derailed/k9s" = "0.50.16"
 "aqua:stern/stern" = "1.33.1"
+"npm:kubernetes-mcp-server" = "0.0.55"
+"ubi:kubernetes-sigs/krew" = "0.4.5"
+# krew backend doesn't support versioning
+"krew:browse-pvc" = "latest"
 
 # Talos
 "aqua:siderolabs/talos" = "1.11.5"
@@ -60,4 +67,3 @@ node = "24.12.0"
 "npm:prettier" = "3.7.4"
 "aqua:shellcheck" = "0.11.0"
 "ubi:controlplaneio-fluxcd/flux-operator" = "latest"
-"npm:kubernetes-mcp-server" = "0.0.55"

@@ -97,6 +97,10 @@ spec:
             interval: 1m
             scrapeTimeout: 10s
 
+    configMapsFromFolder:
+      enabled: true
+      basePath: ./resources/configmaps
+
     persistence:
       config:
         type: configMap
