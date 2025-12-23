@@ -49,7 +49,7 @@ spec:
 
     controllers:
       vintagestory:
-        #replicas: 0
+        replicas: 0
         defaultContainerOptions:
           securityContext:
             allowPrivilegeEscalation: false
