@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: &app jellyseerr
+  name: &app seerr
 spec:
   interval: 30m
   maxHistory: 3
@@ -36,7 +36,7 @@ spec:
           type: RuntimeDefault
 
     controllers:
-      jellyseerr:
+      seerr:
         defaultContainerOptions:
           securityContext:
             allowPrivilegeEscalation: false
@@ -47,8 +47,8 @@ spec:
         containers:
           app:
             image:
-              repository: ghcr.io/fallenbagel/jellyseerr
-              tag: 2.7.3@sha256:9cc9e9ee6cd5cf5a23feb45c37742ba34cfd6314d81d259cddb373a97ac92cdd
+              repository: ghcr.io/seerr-team/seerr
+              tag: develop@sha256:36cd35d318b092fb87fcefd36553d14391798754709260324cfe5479b11e38c7
             env:
               LOG_LEVEL: info
               PORT: &port 80
@@ -59,7 +59,7 @@ spec:
                 custom: true
                 spec:
                   httpGet:
-                    path: /status
+                    path: /api/v1/status
                     port: *port
                   initialDelaySeconds: 0
                   periodSeconds: 10
@@ -91,7 +91,7 @@ spec:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: media
           gethomepage.dev/icon: sh-jellyseerr-light.png
-          gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_JELLYSEERR_API_KEY}}` }}"
+          gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_SEERR_API_KEY}}` }}"
           gethomepage.dev/widget.type: *app
           gethomepage.dev/widget.url: "http://jellyseerr.media.svc.cluster.local"
 
