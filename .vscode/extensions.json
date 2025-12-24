@@ -1,8 +1,10 @@
 {
   "recommendations": [
+    "DavidAnson.vscode-markdownlint",
     "EditorConfig.EditorConfig",
     "Tyriar.sort-lines",
     "eamodio.gitlens",
+    "esbenp.prettier-vscode",
     "mrmlnc.vscode-json5",
     "redhat.vscode-yaml",
     "tamasfe.even-better-toml"
