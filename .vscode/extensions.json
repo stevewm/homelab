@@ -1,7 +1,6 @@
 {
   "recommendations": [
     "EditorConfig.EditorConfig",
-    "Pkl.pkl-vscode",
     "Tyriar.sort-lines",
     "eamodio.gitlens",
     "mrmlnc.vscode-json5",

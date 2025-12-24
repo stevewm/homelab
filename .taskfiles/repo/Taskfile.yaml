@@ -2,6 +2,9 @@
 ---
 version: "3"
 
+includes:
+  talos: ../talos
+
 tasks:
   setup:
     desc: Setup environment
@@ -18,7 +21,7 @@ tasks:
       - hk install
       - for:
           var: VSCODE_EXTENSIONS
-        cmd: code --install-extension {{ .ITEM }}
+        cmd: code --install-extension {{ .ITEM }} --force
 
   schemas:
     desc: Show YAML files without a schema
