@@ -13,5 +13,4 @@ spec:
   rules:
     - backendRefs:
         - name: renovate-operator
-          namespace: renovate
           port: 8081
