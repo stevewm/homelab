@@ -68,14 +68,6 @@ hooks {
     steps = linters
   }
 
-  ["commit-msg"] {
-    steps {
-      ["validate-commit-msg"] {
-        check = "grep -q '^(fix|feat|chore):' {{commit_msg_file}} || exit 1"
-      }
-    }
-  }
-
   // "fix" and "check" are special steps for `hk fix` and `hk check` commands
   ["fix"] {
     fix = true
