@@ -77,12 +77,12 @@ spec:
                   secretKeyRef:
                     name: bazarr
                     key: api_key
-              JELLYSEERR_URL: http://jellyseerr.media.svc.cluster.local
+              JELLYSEERR_URL: http://seerr.media.svc.cluster.local
               JELLYSEERR_API_KEY:
                 valueFrom:
                   secretKeyRef:
                     name: scraparr
-                    key: jellyseerr_api_key
+                    key: seerr_api_key
 
             probes:
               liveness: &probes
