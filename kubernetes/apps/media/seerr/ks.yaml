@@ -30,4 +30,4 @@ spec:
   postBuild:
     substitute:
       APP: *app
-      VOLSYNC_CLAIM: seerr-config
+      VOLSYNC_CLAIM: jellyseerr-config
