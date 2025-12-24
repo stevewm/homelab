@@ -5,6 +5,7 @@ kind: Kustomization
 namespace: ci
 resources:
   - ./actions-runner-controller/ks.yaml
+  - ./renovate-operator/ks.yaml
 components:
   - ../../flux/components/namespace
-  #- ../../flux/components/networkpolicy/default-deny
+  # - ../../flux/components/networkpolicy/default-deny

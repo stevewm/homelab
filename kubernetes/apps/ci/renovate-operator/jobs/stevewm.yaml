@@ -1,0 +1,76 @@
+---
+apiVersion: renovate-operator.mogenius.com/v1alpha1
+kind: RenovateJob
+metadata:
+  name: renovate-stevewm
+spec:
+  discoveryFilter: stevewm/*
+  extraEnv:
+    - name: RENOVATE_PLATFORM
+      value: github
+    - name: RENOVATE_ENDPOINT
+      value: https://api.github.com/
+  image: ghcr.io/renovatebot/renovate:42.59.1
+  parallelism: 5
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+  schedule: 0 * * * *
+  secretRef: renovate-secret
+
+---
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: botty-hill-pem
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: doppler
+  target:
+    name: botty-hill-pem
+  data:
+    - secretKey: private_key_pem
+      remoteRef:
+        key: BOTTY_HILL_PRIVATE_KEY
+---
+apiVersion: generators.external-secrets.io/v1alpha1
+kind: GithubAccessToken
+metadata:
+  name: botty-hill-auth-token
+spec:
+  appID: "963455"
+  installID: "53550287"
+  permissions:
+    contents: read
+    pull_requests: write
+    issues: write
+  auth:
+    privateKey:
+      secretRef:
+        name: botty-hill-pem
+        key: private_key_pem
+---
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: botty-hill-auth-token
+spec:
+  refreshInterval: 30m
+  target:
+    name: renovate-secret
+    template: # template secret to use GITHUB_COM_TOKEN
+      type: Opaque
+      engineVersion: v2
+      data:
+        GITHUB_COM_TOKEN: "{{ .token }}"
+        GITHUB_COM_USER: c3RldmV3bQ==
+        RENOVATE_TOKEN: "{{ .token }}"
+  dataFrom:
+    - sourceRef:
+        generatorRef:
+          apiVersion: generators.external-secrets.io/v1alpha1
+          kind: GithubAccessToken
+          name: botty-hill-auth-token
