@@ -43,10 +43,6 @@ metadata:
 spec:
   appID: "963455"
   installID: "53550287"
-  permissions:
-    contents: read
-    pull_requests: write
-    issues: write
   auth:
     privateKey:
       secretRef:
