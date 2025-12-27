@@ -93,7 +93,7 @@ spec:
           gethomepage.dev/icon: sh-jellyseerr-light.png
           gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_SEERR_API_KEY}}` }}"
           gethomepage.dev/widget.type: jellyseerr
-          gethomepage.dev/widget.url: "http://jellyseerr.media.svc.cluster.local"
+          gethomepage.dev/widget.url: "http://seerr.media.svc.cluster.local"
 
     persistence:
       config:
