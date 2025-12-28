@@ -7,4 +7,3 @@ resources:
   - ./externalsecret.yaml
 components:
   - ../../flux/components/namespace
-  #- ../../flux/components/networkpolicy/default-allow

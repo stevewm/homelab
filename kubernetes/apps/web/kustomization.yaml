@@ -6,4 +6,3 @@ namespace: web
 resources: []
 components:
   - ../../flux/components/namespace
-  #- ../../flux/components/networkpolicy/default-deny
