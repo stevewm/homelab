@@ -11,4 +11,3 @@ resources:
   - ./smtp-relay/ks.yaml
 components:
   - ../../flux/components/namespace
-  #- ../../flux/components/networkpolicy/default-deny
