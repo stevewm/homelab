@@ -12,4 +12,3 @@ resources:
   - ./stirling-pdf/ks.yaml
 components:
   - ../../flux/components/namespace
-  #- ../../flux/components/networkpolicy/default-deny

@@ -8,4 +8,3 @@ resources:
   - ./renovate-operator/ks.yaml
 components:
   - ../../flux/components/namespace
-  # - ../../flux/components/networkpolicy/default-deny

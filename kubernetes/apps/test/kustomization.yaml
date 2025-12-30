@@ -5,4 +5,3 @@ kind: Kustomization
 namespace: test
 components:
   - ../../flux/components/namespace
-  #- ../../flux/components/networkpolicy/default-allow
