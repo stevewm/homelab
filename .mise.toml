@@ -15,7 +15,7 @@ postinstall = "helm plugin install https://github.com/databus23/helm-diff || tru
 
 [tools]
 # https://docs.renovatebot.com/modules/manager/mise/#supported-default-registry-tool-short-names
-uv = "0.9.18"
+uv = "0.9.21"
 python = "3"
 node = "24.12.0"
 
@@ -35,7 +35,7 @@ node = "24.12.0"
 
 # Talos
 "aqua:siderolabs/talos" = "1.12.0"
-"aqua:talhelper" = "3.0.43"
+"aqua:talhelper" = "3.0.44"
 
 # Tools
 "aqua:go-task/task" = "3.46.4"
@@ -54,9 +54,9 @@ node = "24.12.0"
 "aqua:yamlfmt" = "0.20.0"
 "npm:markdownlint-cli2" = "0.20.0"
 "npm:dclint" = "3.1.0"
-"npm:renovate" = "42.66.11"
+"npm:renovate" = "42.68.5"
 "pipx:yamllint" = "1.37.1"
-"aqua:actionlint" = "1.7.9"
+"aqua:actionlint" = "1.7.10"
 "npm:prettier" = "3.7.4"
 "aqua:shellcheck" = "0.11.0"
 "ubi:controlplaneio-fluxcd/flux-operator" = "latest"
