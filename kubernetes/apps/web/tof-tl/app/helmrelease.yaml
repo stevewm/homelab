@@ -1,0 +1,96 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app tof-tl
+spec:
+  interval: 30m
+  maxHistory: 3
+  chartRef:
+    kind: OCIRepository
+    name: app-template
+    namespace: flux-system
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: -1
+  uninstall:
+    keepHistory: false
+  driftDetection:
+    mode: warn
+  values:
+    defaultPodOptions:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534
+        runAsGroup: 65534
+        fsGroup: 65534
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+
+    controllers:
+      tof-tl:
+        replicas: 1
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+        defaultContainerOptionsStrategy: merge
+
+        annotations:
+          reloader.stakater.com/auto: "true"
+
+        containers:
+          app:
+            image:
+              repository: ghcr.io/stevewm/tof-tl
+              tag: latest@sha256:8f1dc4fb966b663553de9c0da94d11f945482d0a84281c6341878a540a4cf2cc
+            probes:
+              liveness: &probes
+                enabled: true
+              readiness: *probes
+            env: []
+            resources:
+              requests:
+                cpu: 10m
+                memory: 64Mi
+              limits:
+                memory: 128Mi
+            securityContext:
+              readOnlyRootFilesystem: false
+
+    service:
+      app:
+        controller: *app
+        ports:
+          web:
+            port: &port 8080
+
+    route:
+      app:
+        hostnames: ["tl.stevewm.dev"]
+        parentRefs:
+          - name: internal
+            namespace: network
+            sectionName: https
+        rules:
+          - backendRefs:
+              - identifier: app
+                port: *port
+
+    persistence:
+      html:
+        type: emptyDir
+        globalMounts:
+          - path: /usr/share/nginx/html
+      tmp:
+        type: emptyDir
