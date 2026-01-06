@@ -88,9 +88,5 @@ spec:
                 port: *port
 
     persistence:
-      html:
-        type: emptyDir
-        globalMounts:
-          - path: /usr/share/nginx/html
       tmp:
         type: emptyDir
