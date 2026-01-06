@@ -79,7 +79,7 @@ spec:
       app:
         hostnames: ["tl.stevewm.dev"]
         parentRefs:
-          - name: internal
+          - name: external
             namespace: network
             sectionName: https
         rules:
