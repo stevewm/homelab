@@ -53,7 +53,7 @@ spec:
           app:
             image:
               repository: ghcr.io/stevewm/tof-tl
-              tag: latest@sha256:b1319d51cdf7c1561e5bf7a7e9df36e6d561bb4b6949fa3ac6e2f7aff6ce40ac
+              tag: latest@sha256:a7ed880879978602242ade0b8e77947fbf2353165e84ca8c476c95ed1f0ad95e
             probes:
               liveness: &probes
                 enabled: true
