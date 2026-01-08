@@ -89,5 +89,5 @@ spec:
         type: emptyDir
       html:
         type: emptyDir
-        advancedMounts:
-          - /usr/share/nginx/html
+        globalMounts:
+          - path: /usr/share/nginx/html
