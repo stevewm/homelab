@@ -49,22 +49,6 @@ spec:
         annotations:
           reloader.stakater.com/auto: "true"
 
-        initContainers:
-          linker:
-            image:
-              repository: alpine
-              tag: 3.23@sha256:865b95f46d98cf867a156fe4a135ad3fe50d2056aa3f25ed31662dff6da4eb62
-            # https://github.com/kubernetes/git-sync/issues/908
-            command:
-              - sh
-              - -c
-              - ln -sf /tmp/git/head/* /usr/share/nginx/html/data
-            resources:
-              requests:
-                cpu: 5m
-                memory: 64Mi
-              limits:
-                memory: 128Mi
         containers:
           app:
             image:
@@ -86,7 +70,7 @@ spec:
               tag: v4.5.1
             args:
               - --repo=https://github.com/stevewm/tof-tl
-              - --root=/tmp/git
+              - --root=/tmp/sync
               - --link=head
               - --period=300s
 
@@ -110,13 +94,22 @@ spec:
                 port: *port
 
     persistence:
+      poi-conf:
+        type: configMap
+        name: tof-tl-nginx-conf
+        advancedMounts:
+          tof-tl:
+            app:
+              - path: /etc/nginx/conf.d/default.conf
+                subPath: default.conf
+                readOnly: true
       tmp:
         type: emptyDir
-      html:
+      log:
         type: emptyDir
         globalMounts:
-          - path: /usr/share/nginx/html/data
+          - path: /var/log/nginx
       sync:
         type: emptyDir
         globalMounts:
-          - path: /tmp/git
+          - path: /tmp/sync
