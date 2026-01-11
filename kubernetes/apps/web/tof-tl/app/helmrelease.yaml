@@ -109,6 +109,8 @@ spec:
                 port: *port
 
     persistence:
+      tmp:
+        type: emptyDir
       html:
         type: emptyDir
         globalMounts:
