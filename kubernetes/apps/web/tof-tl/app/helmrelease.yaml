@@ -88,6 +88,7 @@ spec:
               - --repo=https://github.com/stevewm/tof-tl
               - --root=/tmp/git
               - --link=head
+              - --period=300s
 
     service:
       app:
