@@ -49,11 +49,27 @@ spec:
         annotations:
           reloader.stakater.com/auto: "true"
 
+        initContainers:
+          linker:
+            image:
+              repository: alpine
+              tag: 3.23@sha256:865b95f46d98cf867a156fe4a135ad3fe50d2056aa3f25ed31662dff6da4eb62
+            # https://github.com/kubernetes/git-sync/issues/908
+            command:
+              - sh
+              - -c
+              - ln -s /tmp/git/head/data /usr/share/nginx/html/public
+            resources:
+              requests:
+                cpu: 5m
+                memory: 64Mi
+              limits:
+                memory: 128Mi
         containers:
           app:
             image:
-              repository: ghcr.io/nginx/nginx-unprivileged
-              tag: 1.29.3-alpine@sha256:c2351965a68a252c32e0c03a5a7b2144087df078de199a3a67d35d41a41f4760
+              repository: ghcr.io/stevewm/vsmap
+              tag: latest
             probes:
               liveness: &probes
                 enabled: true
@@ -64,6 +80,14 @@ spec:
                 memory: 64Mi
               limits:
                 memory: 128Mi
+          git-sync:
+            image:
+              repository: registry.k8s.io/git-sync/git-sync
+              tag: v4.5.1
+            args:
+              - --repo=https://github.com/stevewm/tof-tl
+              - --root=/tmp/git
+              - --link=head
 
     service:
       app:
@@ -85,9 +109,11 @@ spec:
                 port: *port
 
     persistence:
-      tmp:
-        type: emptyDir
       html:
         type: emptyDir
         globalMounts:
           - path: /usr/share/nginx/html
+      sync:
+        type: emptyDir
+        globalMounts:
+          - path: /tmp/git
