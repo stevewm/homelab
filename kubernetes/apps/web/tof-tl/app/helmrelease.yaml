@@ -58,7 +58,7 @@ spec:
             command:
               - sh
               - -c
-              - ln -s /tmp/git/head/data /usr/share/nginx/html/data
+              - ln -sf /tmp/git/head/* /usr/share/nginx/html/data
             resources:
               requests:
                 cpu: 5m
