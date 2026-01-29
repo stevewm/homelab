@@ -39,7 +39,6 @@ Documentation can be found [on GitHub Pages](https://stevewm.github.io/homelab/)
 | [FluxCD](https://fluxcd.io/)                                    | GitOps                                  |
 | [Renovate](https://github.com/renovatebot/renovate)             | Automated dependency upgrades           |
 | [GitHub Actions](https://docs.github.com/en/actions)            | Automation                              |
-| [mkdocs-material](https://squidfunk.github.io/mkdocs-material/) | Documentation                           |
 | [mise](https://mise.jdx.dev/)                                   | Project tools and environment variables |
 | [hk](https://hk.jdx.dev)                                        | Linting and validation                  |
 | [Doppler](https://www.doppler.com/)                             | Secrets management                      |
