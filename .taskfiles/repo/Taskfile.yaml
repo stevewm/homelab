@@ -29,12 +29,3 @@ tasks:
     dir: "{{ .K8S_DIR }}"
     cmds:
       - find . -type f -name '*.yaml' -exec grep -L '^# yaml-language-server:' {} \;
-
-  docs:
-    desc: Serve docs locally
-    silent: true
-    dir: "{{ .ROOT_DIR }}"
-    preconditions:
-      - mkdocs
-    cmds:
-      - mkdocs serve --config-file .github/mkdocs/mkdocs.yaml

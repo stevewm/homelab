@@ -45,11 +45,6 @@ local linters = new Mapping<String, Step> {
     check = "renovate-config-validator {{ files }}"
   }
 
-  ["mkdocs"] {
-    glob = List(".github/mkdocs/mkdocs.yaml", "docs/*.md")
-    check = "mkdocs build --strict --config-file .github/mkdocs/mkdocs.yaml"
-  }
-
   ["yamllint"] {
     glob = "*.{yml,yaml}"
     check = "yamllint --config-file "+config+"/yamllint.yaml {{ files }}"
