@@ -56,7 +56,7 @@ jobs:
       - id: success_gif
         if: |
           needs.lint.result == 'success'
-        uses: ddradar/choose-random-action@e03eee4a2f0ab6948c8e28eb71693c48c78c1a76 # v4
+        uses: ddradar/choose-random-action@2f8c9e83a050d024dcf842016fbb2c7479a4f7fc # v4
         with:
           contents: |
             https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzBqYjExNzAwZWJoaXA4Y2EybXowbHF4eWVsa3czOG1kNDNlcWxlciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2QpH5Khv9ooec/giphy.gif
@@ -70,7 +70,7 @@ jobs:
       - id: failure_gif
         if: |
           needs.lint.result == 'failure'
-        uses: ddradar/choose-random-action@e03eee4a2f0ab6948c8e28eb71693c48c78c1a76 # v4
+        uses: ddradar/choose-random-action@2f8c9e83a050d024dcf842016fbb2c7479a4f7fc # v4
         with:
           contents: |
             https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbTBvczJvbGhnOWZ0NXJ0ZWJ1NWphN256dmRzZTBtMDF1MWgwcHhnNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7Zesyac4CuSN5rsA/giphy.gif
