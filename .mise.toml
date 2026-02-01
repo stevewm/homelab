@@ -15,7 +15,7 @@ postinstall = "helm plugin install https://github.com/databus23/helm-diff || tru
 
 [tools]
 # https://docs.renovatebot.com/modules/manager/mise/#supported-default-registry-tool-short-names
-uv = "0.9.26"
+uv = "0.9.28"
 python = "3"
 node = "24.13.0"
 
@@ -38,8 +38,8 @@ node = "24.13.0"
 "aqua:talhelper" = "3.1.3"
 
 # Tools
-"aqua:go-task/task" = "3.47.0"
-"aqua:yq" = "4.50.1"
+"aqua:go-task/task" = "3.48.0"
+"aqua:yq" = "4.52.2"
 "aqua:jq" = "1.8.1"
 "github:DopplerHQ/cli" = "3.75.1"
 "cargo:minijinja-cli" = "2.7.0"
@@ -48,7 +48,7 @@ node = "24.13.0"
 "aqua:Orange-OpenSource/hurl" = "7.1.0"
 
 # hk
-"aqua:hk" = "1.32.0"
+"aqua:hk" = "1.35.0"
 "aqua:pkl" = "0.30.2"
 "aqua:ruff" = "0.14.14"
 "aqua:yamlfmt" = "0.21.0"
@@ -60,5 +60,5 @@ node = "24.13.0"
 "npm:prettier" = "3.8.1"
 "aqua:shellcheck" = "0.11.0"
 "ubi:controlplaneio-fluxcd/flux-operator" = "latest"
-"npm:kubernetes-mcp-server" = "0.0.56"
+"npm:kubernetes-mcp-server" = "0.0.57"
 rust = "1.93.0"
