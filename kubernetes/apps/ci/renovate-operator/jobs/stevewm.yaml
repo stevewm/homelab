@@ -10,7 +10,7 @@ spec:
       value: github
     - name: RENOVATE_ENDPOINT
       value: https://api.github.com/
-  image: ghcr.io/renovatebot/renovate:42.92.4
+  image: ghcr.io/renovatebot/renovate:43.0.9
   parallelism: 5
   resources:
     requests:
