@@ -27,10 +27,6 @@ Welcome to the repository for my home infrastructure, otherwise known as my home
 
 ---
 
-## 📚 Docs 📚
-
-Documentation can be found [on GitHub Pages](https://stevewm.github.io/homelab/).
-
 ## 🛠️ Built With
 
 | Name                                                            | Purpose                                 |
