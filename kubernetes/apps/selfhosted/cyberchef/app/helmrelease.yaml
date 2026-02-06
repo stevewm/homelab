@@ -48,7 +48,7 @@ spec:
           app:
             image:
               repository: ghcr.io/gchq/cyberchef
-              tag: 10.20.0@sha256:c3013e479e3657103c864433969008845356f3b726bf99cb1606f56a10d5946f
+              tag: 10.21.0@sha256:9b9a97107b8522778def9b213b534e0ebf00f14a54889b7ee5b02b9fdbf45b92
             probes:
               liveness:
                 enabled: true
