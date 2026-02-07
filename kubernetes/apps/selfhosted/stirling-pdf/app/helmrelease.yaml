@@ -102,7 +102,11 @@ spec:
             subPath: pipeline
           - path: /tmp
             subPath: tmp
+          - path: /tmp/stirling-pdf
+            subPath: stirling-pdf
           - path: /usr/share/tessdata
             subPath: tessdata
           - path: /home/stirlingpdfuser
             subPath: stirlingpdfuser
+          - path: /usr/local/bin/diagnostics
+            subPath: diagnostics
