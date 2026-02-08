@@ -52,8 +52,8 @@ spec:
         containers:
           app:
             image:
-              repository: ghcr.io/stevewm/vsmap
-              tag: latest
+              repository: ghcr.io/stevewm/tof-map
+              tag: latest@sha256:9b9b7efc26b13eab2d6c1fb3fae26684c4de10b970f79aa1b8d5ce0682f52c09
             probes:
               liveness: &probes
                 enabled: true
@@ -64,15 +64,6 @@ spec:
                 memory: 64Mi
               limits:
                 memory: 128Mi
-          git-sync:
-            image:
-              repository: registry.k8s.io/git-sync/git-sync
-              tag: v4.5.1
-            args:
-              - --repo=https://github.com/stevewm/tof-tl
-              - --root=/tmp/sync
-              - --link=head
-              - --period=300s
 
     service:
       app:
