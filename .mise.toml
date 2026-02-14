@@ -33,7 +33,7 @@ node = "24.13.1"
 
 # Talos
 "aqua:siderolabs/talos" = "1.12.4"
-"aqua:talhelper" = "3.1.4"
+"aqua:talhelper" = "3.1.5"
 
 # Tools
 "aqua:go-task/task" = "3.48.0"
@@ -52,7 +52,7 @@ node = "24.13.1"
 "aqua:yamlfmt" = "0.21.0"
 "npm:markdownlint-cli2" = "0.20.0"
 "npm:dclint" = "3.1.0"
-"npm:renovate" = "43.12.1"
+"npm:renovate" = "43.14.1"
 "pipx:yamllint" = "1.38.0"
 "aqua:actionlint" = "1.7.10"
 "npm:prettier" = "3.8.1"
