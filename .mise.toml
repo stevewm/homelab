@@ -37,9 +37,9 @@ node = "24.13.1"
 
 # Tools
 "aqua:go-task/task" = "3.48.0"
-"aqua:yq" = "4.52.2"
+"aqua:yq" = "4.52.4"
 "aqua:jq" = "1.8.1"
-"github:DopplerHQ/cli" = "3.75.1"
+"github:DopplerHQ/cli" = "3.75.2"
 "cargo:minijinja-cli" = "2.7.0"
 "ubi:gorcon/rcon-cli" = { version = "0.10.3", exe = "rcon" }
 "github:slsa-framework/slsa-verifier" = "2.7.1"
