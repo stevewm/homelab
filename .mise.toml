@@ -15,7 +15,7 @@ postinstall = "helm plugin install https://github.com/databus23/helm-diff || tru
 
 [tools]
 # https://docs.renovatebot.com/modules/manager/mise/#supported-default-registry-tool-short-names
-uv = "0.10.2"
+uv = "0.10.4"
 python = "3"
 node = "24.13.1"
 
@@ -39,7 +39,7 @@ node = "24.13.1"
 "aqua:go-task/task" = "3.48.0"
 "aqua:yq" = "4.52.4"
 "aqua:jq" = "1.8.1"
-"github:DopplerHQ/cli" = "3.75.2"
+"github:DopplerHQ/cli" = "3.75.3"
 "cargo:minijinja-cli" = "2.7.0"
 "ubi:gorcon/rcon-cli" = { version = "0.10.3", exe = "rcon" }
 "github:slsa-framework/slsa-verifier" = "2.7.1"
@@ -50,11 +50,11 @@ node = "24.13.1"
 "aqua:pkl" = "0.30.2"
 "aqua:ruff" = "0.15.1"
 "aqua:yamlfmt" = "0.21.0"
-"npm:markdownlint-cli2" = "0.20.0"
+"npm:markdownlint-cli2" = "0.21.0"
 "npm:dclint" = "3.1.0"
-"npm:renovate" = "43.14.1"
+"npm:renovate" = "43.25.6"
 "pipx:yamllint" = "1.38.0"
-"aqua:actionlint" = "1.7.10"
+"aqua:actionlint" = "1.7.11"
 "npm:prettier" = "3.8.1"
 "aqua:shellcheck" = "0.11.0"
 "ubi:controlplaneio-fluxcd/flux-operator" = "latest"
