@@ -9,9 +9,13 @@ controller := `talosctl config info -o yaml | yq -e '.endpoints[0]'`
 default:
     just -l talos
 
-[doc('Download latest Talos installer')]
+[doc('Download latest Talos machine image')]
 download-latest-image:
     just talos download-image "$(just talos latest-talos)" "$(just talos gen-schematic-id)"
+
+[doc('Print URI to latest Talos machine image')]
+latest-image-url:
+  just talos machine-img-url "$(just talos latest-talos)" "$(just talos gen-schematic-id)"
 
 [doc('Apply Talos config to a node')]
 apply-node node *args:
@@ -69,3 +73,7 @@ machine-controller node:
 [private]
 machine-image:
     just template talos "{{ talos_dir }}/machineconfig.yaml.j2" | yq -e 'select(.machine) | .machine.install.image'
+
+[private]
+machine-img-url version schematic:
+    echo "https://factory.talos.dev/image/{{ schematic }}/{{ version }}/metal-amd64.iso"
