@@ -40,7 +40,7 @@ node = "24.14.0"
 "aqua:jq" = "1.8.1"
 "github:DopplerHQ/cli" = "3.75.3"
 "cargo:minijinja-cli" = "2.7.0"
-"ubi:gorcon/rcon-cli" = { version = "0.10.3", exe = "rcon" }
+"github:gorcon/rcon-cli" = { version = "0.10.3", exe = "rcon" }
 "github:slsa-framework/slsa-verifier" = "2.7.1"
 "aqua:Orange-OpenSource/hurl" = "7.1.0"
 
@@ -56,7 +56,7 @@ node = "24.14.0"
 "aqua:actionlint" = "1.7.11"
 "npm:prettier" = "3.8.1"
 "aqua:shellcheck" = "0.11.0"
-"ubi:controlplaneio-fluxcd/flux-operator" = "latest"
+"github:controlplaneio-fluxcd/flux-operator" = "0.43.0"
 rust = "1.93.1"
 kubecolor = "latest"
 kubens = "0.9.5"
