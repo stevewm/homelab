@@ -8,4 +8,4 @@ resources:
   - ./romm/ks.yaml
   - ./vintagestory/ks.yaml
 components:
-  - ../../componentsnamespace
+  - ../../components/namespace

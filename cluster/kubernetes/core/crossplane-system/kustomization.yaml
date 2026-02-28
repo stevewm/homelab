@@ -6,4 +6,4 @@ namespace: crossplane-system
 resources:
   - ./crossplane/ks.yaml
 components:
-  - ../../componentsnamespace
+  - ../../components/namespace

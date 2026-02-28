@@ -8,4 +8,4 @@ resources:
   - ./external-secrets/ks.yaml
   - ./glauth/ks.yaml
 components:
-  - ../../componentsnamespace
+  - ../../components/namespace

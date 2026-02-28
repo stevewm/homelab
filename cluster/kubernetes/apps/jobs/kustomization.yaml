@@ -6,4 +6,4 @@ namespace: jobs
 resources:
   - ./lge-dev-renew/ks.yaml
 components:
-  - ../../componentsnamespace
+  - ../../components/namespace

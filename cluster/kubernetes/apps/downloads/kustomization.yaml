@@ -14,4 +14,4 @@ resources:
   - ./slskd/ks.yaml
   - ./sonarr/ks.yaml
 components:
-  - ../../componentsnamespace
+  - ../../components/namespace

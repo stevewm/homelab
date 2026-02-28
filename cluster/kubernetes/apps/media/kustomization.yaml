@@ -8,4 +8,4 @@ resources:
   - ./seerr/ks.yaml
   - ./wrtag/ks.yaml
 components:
-  - ../../componentsnamespace
+  - ../../components/namespace

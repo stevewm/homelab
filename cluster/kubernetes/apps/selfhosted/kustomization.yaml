@@ -11,4 +11,4 @@ resources:
   - ./mealie/ks.yaml
   - ./stirling-pdf/ks.yaml
 components:
-  - ../../componentsnamespace
+  - ../../components/namespace

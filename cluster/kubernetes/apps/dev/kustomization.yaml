@@ -6,4 +6,4 @@ namespace: dev
 resources:
   - ./externalsecret.yaml
 components:
-  - ../../componentsnamespace
+  - ../../components/namespace

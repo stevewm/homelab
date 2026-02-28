@@ -6,4 +6,4 @@ namespace: web
 resources:
   - tof-tl/ks.yaml
 components:
-  - ../../componentsnamespace
+  - ../../components/namespace

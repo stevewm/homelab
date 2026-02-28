@@ -7,4 +7,4 @@ resources:
   - ./go-tapo-exporter/ks.yaml
   - ./home-assistant/ks.yaml
 components:
-  - ../../componentsnamespace
+  - ../../components/namespace
