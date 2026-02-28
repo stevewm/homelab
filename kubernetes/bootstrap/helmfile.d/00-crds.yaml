@@ -1,5 +1,5 @@
----
 # yaml-language-server: $schema=https://json.schemastore.org/helmfile
+---
 helmDefaults:
   cleanupOnFail: true
   wait: true
@@ -7,16 +7,12 @@ helmDefaults:
   args:
     - --include-crds
     - --no-hooks
-  postRenderer: bash
-  postRendererArgs:
-    - -c
-    - yq ea --exit-status 'select(.kind == "CustomResourceDefinition")' -
 
 releases:
   - name: envoy-gateway
-    namespace: networking
+    namespace: network
     chart: oci://docker.io/envoyproxy/gateway-helm
-    version: 1.6.3
+    version: 1.7.0
 
   - name: external-dns
     namespace: network
@@ -26,9 +22,9 @@ releases:
   - name: keda
     namespace: kube-system
     chart: oci://ghcr.io/home-operations/charts-mirror/keda
-    version: 2.18.3
+    version: 2.19.0
 
   - name: kube-prometheus-stack
     namespace: observability
     chart: oci://ghcr.io/prometheus-community/charts/kube-prometheus-stack
-    version: 81.4.2
+    version: 82.4.3
