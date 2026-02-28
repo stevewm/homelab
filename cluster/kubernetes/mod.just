@@ -1,7 +1,8 @@
 set quiet := true
 set shell := ['bash', '-euo', 'pipefail', '-c']
 
-kubernetes_dir := justfile_dir() + '/cluster/kubernetes'
+cluster_dir := justfile_dir() + '/cluster'
+kubernetes_dir := cluster_dir + '/kubernetes'
 scripts_dir := justfile_dir() + '/scripts'
 
 [private]

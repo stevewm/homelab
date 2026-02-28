@@ -3,7 +3,17 @@ machine:
   install:
     diskSelector:
       model: Patriot M.2 P320 256GB
+  nodeLabels:
+    node.kubernetes.io/gpu: "true"
   type: controlplane
+---
+apiVersion: v1alpha1
+kind: UserVolumeConfig
+name: local-hostpath
+provisioning:
+  diskSelector:
+    match: disk.dev_path == "/dev/nvme1n1" && !system_disk # TODO: use model instead of dev_path
+  minSize: 1TB
 ---
 apiVersion: v1alpha1
 kind: HostnameConfig
