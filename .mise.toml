@@ -8,6 +8,7 @@ KUBECONFIG = "{{ config_root }}/cluster/kubernetes/kubeconfig"
 TALOSCONFIG = "{{ config_root }}/cluster/talos/talosconfig"
 MINIJINJA_CONFIG_FILE="{{ config_root }}/.github/.minijinja.toml"
 HOMEBREW_BREWFILE="{{ config_root }}/.github/Brewfile"
+#DOPPLER_CONFIG_DIR= "{{ config_root }}"
 _.path = ['{{config_root}}/node_modules/.bin']
 
 [tools]
