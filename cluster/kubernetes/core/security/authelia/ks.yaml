@@ -24,8 +24,8 @@ spec:
     - name: core-smtp-relay
       namespace: network
   components:
-    - ../../../../componentspostgres
-    - ../../../../componentsdragonfly
+    - ../../../../components/postgres
+    - ../../../../components/dragonfly
   postBuild:
     substitute:
       APP: authelia

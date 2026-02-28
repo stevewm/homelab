@@ -20,8 +20,8 @@ spec:
     namespace: flux-system
   wait: true
   components:
-    - ../../../../componentsvolsync/hetzner
-    - ../../../../componentssso-secret
+    - ../../../../components/volsync/hetzner
+    - ../../../../components/sso-secret
   postBuild:
     substitute:
       APP: *app

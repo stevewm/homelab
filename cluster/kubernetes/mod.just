@@ -87,11 +87,7 @@ keda-all state:
 [doc('Create OIDC secrets')]
 create-oidc-secrets app:
     export APP="{{ app }}"; \
-    "{{ scripts_dir }}/create-oidc-secrets.sh
-
-[doc ('Run flux-local test')]
-flux-local:
-    flux-local test --enable-helm --all-namespaces --path {{ kubernetes_dir }}/flux/cluster -v
+    "{{ scripts_dir }}/create-oidc-secrets.sh"
 
 [private]
 render-local-ks ns ks:

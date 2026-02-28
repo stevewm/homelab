@@ -23,8 +23,8 @@ spec:
     - name: app-sabnzbd
     - name: app-prowlarr
   components:
-    - ../../../../componentsvolsync/hetzner
-    - ../../../../componentskeda/nas-nfs-scaler
+    - ../../../../components/volsync/hetzner
+    - ../../../../components/keda/nas-nfs-scaler
   postBuild:
     substitute:
       APP: *app

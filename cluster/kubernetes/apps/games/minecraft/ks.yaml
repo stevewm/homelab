@@ -21,7 +21,7 @@ spec:
     namespace: flux-system
   wait: true
   components:
-    - ../../../../componentsvolsync/hetzner
+    - ../../../../components/volsync/hetzner
   postBuild:
     substitute:
       APP: *app

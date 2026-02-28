@@ -2,10 +2,6 @@
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: system
+namespace: system-upgrade
 resources:
   - ./namespace.yaml
-  - ./k8tz/ks.yaml
-  - ./keda/ks.yaml
-  - ./ksgate/ks.yaml
-  - ./reloader/ks.yaml

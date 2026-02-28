@@ -20,7 +20,7 @@ spec:
     namespace: flux-system
   wait: true
   components:
-    - ../../../../componentskeda/nas-nfs-scaler
+    - ../../../../components/keda/nas-nfs-scaler
   postBuild:
     substitute:
       APP: slskd

@@ -20,11 +20,11 @@ spec:
     namespace: flux-system
   wait: true
   components:
-    - ../../../../componentssso-secret
-    - ../../../../componentsdragonfly
-    - ../../../../componentspostgres
-    - ../../../../componentsvolsync/hetzner
-    - ../../../../componentskeda/nas-nfs-scaler
+    - ../../../../components/sso-secret
+    - ../../../../components/dragonfly
+    - ../../../../components/postgres
+    - ../../../../components/volsync/hetzner
+    - ../../../../components/keda/nas-nfs-scaler
   postBuild:
     substitute:
       APP: *app

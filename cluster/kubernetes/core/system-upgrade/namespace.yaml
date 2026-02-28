@@ -6,4 +6,3 @@ metadata:
   labels:
     kustomize.toolkit.fluxcd.io/prune: disabled
     goldilocks.fairwinds.com/enabled: "true"
-    pod-security.kubernetes.io~1enforce: privileged

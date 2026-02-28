@@ -10,9 +10,6 @@ MINIJINJA_CONFIG_FILE="{{ config_root }}/.github/.minijinja.toml"
 HOMEBREW_BREWFILE="{{ config_root }}/.github/Brewfile"
 _.path = ['{{config_root}}/node_modules/.bin']
 
-[hooks]
-postinstall = "helm plugin install https://github.com/databus23/helm-diff || true"
-
 [tools]
 # https://docs.renovatebot.com/modules/manager/mise/#supported-default-registry-tool-short-names
 uv = "0.10.7"
@@ -21,7 +18,7 @@ node = "24.14.0"
 
 # Flux
 "aqua:flux2" = "2.8.1"
-"pipx:flux-local" = "7.5.6"
+# "uvx:flux-local" = "7.5.6"
 
 # Kube
 "aqua:CrunchyData/postgres-operator-client" = "0.5.3"

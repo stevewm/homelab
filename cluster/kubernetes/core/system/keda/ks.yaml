@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/name: keda
   interval: 30m
   timeout: 5m
-  path: ./cluster/kubernetes/core/observability/keda/app
+  path: ./cluster/kubernetes/core/system/keda/app
   prune: true
   sourceRef:
     kind: GitRepository

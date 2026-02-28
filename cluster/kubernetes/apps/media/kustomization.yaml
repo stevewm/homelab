@@ -8,5 +8,3 @@ resources:
   - ./jellyfin/ks.yaml
   - ./seerr/ks.yaml
   - ./wrtag/ks.yaml
-components:
-  - ../../components/namespace
