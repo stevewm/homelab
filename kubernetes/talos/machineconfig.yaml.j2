@@ -1,0 +1,188 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/siderolabs/talos/refs/heads/release-1.10/website/content/v1.10/schemas/config.schema.json
+---
+version: v1alpha1
+machine:
+  ca:
+    crt: {{ MACHINE_CA_CRT }}
+    {% if ENV.IS_CONTROLLER %}
+    key: {{ MACHINE_CA_KEY }}
+    {% endif %}
+  features:
+    apidCheckExtKeyUsage: true
+    diskQuotaSupport: true
+    hostDNS:
+      enabled: true
+      forwardKubeDNSToHost: true
+      resolveMemberNames: true
+    kubePrism:
+      enabled: true
+      port: 7445
+    {% if ENV.IS_CONTROLLER %}
+    kubernetesTalosAPIAccess:
+      enabled: true
+      allowedRoles:
+        - os:admin
+      allowedKubernetesNamespaces:
+        - actions-runner-system
+        - system-upgrade
+    {% endif %}
+    rbac: true
+  files:
+    - op: create
+      path: /etc/cri/conf.d/20-customization.part
+      content: |-
+        [plugins]
+          [plugins."io.containerd.grpc.v1.cri"]
+            enable_unprivileged_ports = true
+            enable_unprivileged_icmp = true
+        [plugins."io.containerd.cri.v1.images"]
+          discard_unpacked_layers = false
+        [plugins."io.containerd.cri.v1.runtime"]
+          cdi_spec_dirs = ["/var/cdi/static", "/var/cdi/dynamic"]
+          device_ownership_from_security_context = true
+    - op: overwrite
+      path: /etc/nfsmount.conf
+      permissions: 0o644
+      content: |
+        [ NFSMount_Global_Options ]
+        nfsvers=4.2
+        hard=True
+        nconnect=8
+        noatime=True
+        rsize=1048576
+        wsize=1048576
+  install:
+    image: factory.talos.dev/metal-installer/a30c16a32db3c99cb35f22401fad96807f80896dfc86aa4ec716ed6b4aff09de:v1.12.4
+  kernel:
+    modules:
+      - name: nbd
+      - name: thunderbolt
+      - name: thunderbolt_net
+  kubelet:
+    defaultRuntimeSeccompProfileEnabled: true
+    disableManifestsDirectory: true
+    extraConfig:
+      maxPods: 150
+      serializeImagePulls: false
+    image: ghcr.io/siderolabs/kubelet:v1.35.2
+    nodeIP:
+      validSubnets:
+        - 10.0.0.0/24
+  sysctls:
+    fs.inotify.max_user_instances: "8192"
+    fs.inotify.max_user_watches: "1048576"
+    net.core.default_qdisc: fq
+    net.core.rmem_max: "67108864"
+    net.core.wmem_max: "67108864"
+    net.ipv4.neigh.default.gc_thresh1: "4096"
+    net.ipv4.neigh.default.gc_thresh2: "8192"
+    net.ipv4.neigh.default.gc_thresh3: "16384"
+    net.ipv4.ping_group_range: 0 2147483647
+    net.ipv4.tcp_congestion_control: bbr
+    net.ipv4.tcp_fastopen: "3"
+    net.ipv4.tcp_mtu_probing: "1"
+    net.ipv4.tcp_notsent_lowat: "131072"
+    net.ipv4.tcp_rmem: 4096 87380 33554432
+    net.ipv4.tcp_slow_start_after_idle: "0"
+    net.ipv4.tcp_window_scaling: "1"
+    net.ipv4.tcp_wmem: 4096 65536 33554432
+    sunrpc.tcp_max_slot_table_entries: "128"
+    sunrpc.tcp_slot_table_entries: "128"
+    user.max_user_namespaces: "11255"
+    vm.nr_hugepages: "1024"
+  token: {{ ENV.MACHINE_TOKEN }}
+cluster:
+  {% if ENV.IS_CONTROLLER %}
+  aggregatorCA:
+    crt: {{ CLUSTER_AGGREGATORCA_CRT }}
+    key: {{ CLUSTER_AGGREGATORCA_KEY }}
+  allowSchedulingOnControlPlanes: true
+  apiServer:
+    image: registry.k8s.io/kube-apiserver:v1.35.2
+    extraArgs:
+      enable-aggregator-routing: "true"
+      feature-gates: MutatingAdmissionPolicy=true
+      runtime-config: admissionregistration.k8s.io/v1beta1=true
+    certSANs:
+      - 127.0.0.1 # KubePrism
+      - 10.0.0.31
+    disablePodSecurityPolicy: true
+  controllerManager:
+    image: registry.k8s.io/kube-controller-manager:v1.35.2
+    extraArgs:
+      bind-address: 0.0.0.0
+  coreDNS:
+    disabled: true
+  etcd:
+    advertisedSubnets:
+      - 10.0.0.0/24
+    ca:
+      crt: {{ CLUSTER_ETCD_CA_CRT }}
+      key: {{ CLUSTER_ETCD_CA_KEY }}
+    extraArgs:
+      listen-metrics-urls: http://0.0.0.0:2381
+  proxy:
+    disabled: true
+    image: registry.k8s.io/kube-proxy:v1.35.2
+  scheduler:
+    config:
+      apiVersion: kubescheduler.config.k8s.io/v1
+      kind: KubeSchedulerConfiguration
+      profiles:
+        - pluginConfig:
+            - args:
+                defaultConstraints:
+                  - maxSkew: 1
+                    topologyKey: kubernetes.io/hostname
+                    whenUnsatisfiable: ScheduleAnyway
+                defaultingType: List
+              name: PodTopologySpread
+          plugins:
+            score:
+              disabled:
+                - name: ImageLocality
+          schedulerName: default-scheduler
+    extraArgs:
+      bind-address: 0.0.0.0
+    image: registry.k8s.io/kube-scheduler:v1.35.2
+  secretboxEncryptionSecret: {{ CLUSTER_SECRETBOXENCRYPTIONSECRET }}
+  serviceAccount:
+    key: {{ CLUSTER_SERVICEACCOUNT_KEY }}
+  {% endif %}
+  ca:
+    crt: {{ CLUSTER_CA_CRT }}
+    {% if ENV.IS_CONTROLLER %}
+    key: {{ CLUSTER_CA_KEY }}
+    {% endif %}
+  controlPlane:
+    endpoint: https://10.0.0.31:6443 # single node chode mode
+  clusterName: main
+  discovery:
+    enabled: true
+    registries:
+      kubernetes: { disabled: true }
+      service: { disabled: false }
+  id: {{ CLUSTER_ID }}
+  network:
+    cni:
+      name: none
+    dnsDomain: cluster.local
+    podSubnets:
+      - 10.244.0.0/16
+    serviceSubnets:
+      - 10.96.0.0/12
+  secret: {{ CLUSTER_SECRET }}
+  token: {{ CLUSTER_TOKEN }}
+---
+apiVersion: v1alpha1
+kind: WatchdogTimerConfig
+device: /dev/watchdog0
+timeout: 5m
+---
+apiVersion: v1alpha1
+kind: UserVolumeConfig
+name: local-hostpath
+provisioning:
+  diskSelector:
+    match: disk.dev_path == "/dev/nvme1n1" && !system_disk # TODO: use model instead of dev_path
+  minSize: 1TB

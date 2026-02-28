@@ -1,0 +1,16 @@
+---
+machine:
+  install:
+    diskSelector:
+      model: Patriot M.2 P320 256GB
+  type: controlplane
+---
+apiVersion: v1alpha1
+kind: HostnameConfig
+hostname: control01
+---
+apiVersion: v1alpha1
+kind: LinkAliasConfig
+name: net0
+selector:
+    match: link.driver == "igc" && mac(link.permanent_addr).startsWith("58:47:ca:7a:")
