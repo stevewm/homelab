@@ -9,6 +9,10 @@ controller := `talosctl config info -o yaml | yq -e '.endpoints[0]'`
 default:
     just -l talos
 
+[doc('Download latest Talos installer')]
+download-latest-image:
+    just talos download-image "$(just talos latest-talos)" "$(just talos gen-schematic-id)"
+
 [doc('Apply Talos config to a node')]
 apply-node node *args:
     just talos render-config "{{ node }}" | talosctl -n "{{ node }}" apply-config -f /dev/stdin {{ args }}
@@ -20,6 +24,10 @@ download-image version schematic:
         -o "{{ talos_dir }}/talos-{{ version }}-{{ replace_regex(schematic, '^(.{8}).*', '$1') }}.iso" \
         "https://factory.talos.dev/image/{{ schematic }}/{{ version }}/metal-amd64.iso"
     just log info "Downloaded Talos" version "{{ version }}" schematic "{{ schematic }}"
+
+[doc('Get latest Talos stable release')]
+latest-talos:
+    curl -s https://api.github.com/repos/siderolabs/talos/releases/latest | jq -r '.tag_name'
 
 [doc('Generate schematic ID from Talos schematic')]
 gen-schematic-id:
