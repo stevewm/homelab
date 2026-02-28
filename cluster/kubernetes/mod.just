@@ -2,6 +2,7 @@ set quiet := true
 set shell := ['bash', '-euo', 'pipefail', '-c']
 
 kubernetes_dir := justfile_dir() + '/cluster/kubernetes'
+scripts_dir := justfile_dir() + '/scripts'
 
 [private]
 default:
@@ -84,8 +85,8 @@ keda-all state:
 
 [doc('Create OIDC secrets')]
 create-oidc-secrets app:
-    export APP="{{ app | upper }}"; \
-    {{ script_dir() }}/create-oidc-secrets.sh
+    export APP="{{ app }}"; \
+    "{{ scripts_dir }}/create-oidc-secrets.sh
 
 [doc ('Run flux-local test')]
 flux-local:
