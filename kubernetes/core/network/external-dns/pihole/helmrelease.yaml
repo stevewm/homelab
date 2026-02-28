@@ -37,7 +37,6 @@ spec:
 
     serviceMonitor:
       enabled: true
-      namespace: observability
 
     logLevel: debug
     triggerLoopOnEvent: true

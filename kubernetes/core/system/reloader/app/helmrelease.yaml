@@ -27,7 +27,6 @@ spec:
     reloader:
       podMonitor:
         enabled: true
-        namespace: observability
     resources:
       requests:
         cpu: 50m

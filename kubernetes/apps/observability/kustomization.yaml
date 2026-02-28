@@ -7,4 +7,3 @@ resources:
   - ./goldilocks/ks.yaml
   - ./kromgo/ks.yaml
   - ./speedtest-exporter/ks.yaml
-components:
