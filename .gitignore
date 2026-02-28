@@ -1,5 +1,6 @@
 # General
 kubeconfig
+talosconfig
 Brewfile.lock.json
 *.log
 
