@@ -1,11 +1,11 @@
 set quiet := true
 set shell := ['bash', '-euo', 'pipefail', '-c']
 
-kubernetes_dir := justfile_dir() + '/kubernetes'
+kubernetes_dir := justfile_dir() + '/cluster/kubernetes'
 
 [private]
 default:
-    just -l talos
+    just -l k8s
 
 [doc('Browse a PVC')]
 browse-pvc namespace claim:
@@ -81,6 +81,15 @@ keda-all state:
     kubectl get scaledobjects --no-headers -A | while read -r ns name _; do \
       just k8s keda "{{ state }}" "$ns" "$name"; \
     done
+
+[doc('Create OIDC secrets')]
+create-oidc-secrets app:
+    export APP="{{ app | upper }}"; \
+    {{ script_dir() }}/create-oidc-secrets.sh
+
+[doc ('Run flux-local test')]
+flux-local:
+    flux-local test --enable-helm --all-namespaces --path {{ kubernetes_dir }}/flux/cluster -v
 
 [private]
 render-local-ks ns ks:

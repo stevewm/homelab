@@ -2,7 +2,8 @@ set quiet := true
 set shell := ['bash', '-euo', 'pipefail', '-c']
 
 scripts_dir := justfile_dir() + '/scripts'
-talos_dir := justfile_dir() + '/cluster/talos'
+cluster_dir := justfile_dir() + '/cluster'
+talos_dir := cluster_dir + '/talos'
 controller := `talosctl config info -o yaml | yq -e '.endpoints[0]'`
 
 [private]
@@ -28,10 +29,6 @@ download-image version schematic:
         -o "{{ talos_dir }}/talos-{{ version }}-{{ replace_regex(schematic, '^(.{8}).*', '$1') }}.iso" \
         "https://factory.talos.dev/image/{{ schematic }}/{{ version }}/metal-amd64.iso"
     just log info "Downloaded Talos" version "{{ version }}" schematic "{{ schematic }}"
-
-[doc('Get latest Talos stable release')]
-latest-talos:
-    curl -s https://api.github.com/repos/siderolabs/talos/releases/latest | jq -r '.tag_name'
 
 [doc('Generate schematic ID from Talos schematic')]
 gen-schematic-id:
@@ -77,3 +74,7 @@ machine-image:
 [private]
 machine-img-url version schematic:
     echo "https://factory.talos.dev/image/{{ schematic }}/{{ version }}/metal-amd64.iso"
+
+[private]
+latest-talos:
+    curl -s https://api.github.com/repos/siderolabs/talos/releases/latest | jq -r '.tag_name'

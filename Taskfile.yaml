@@ -25,9 +25,6 @@ tasks:
       - task --list
 
 includes:
-  bootstrap: ./.taskfiles/bootstrap/Taskfile.yaml
-  flux: ./.taskfiles/flux/Taskfile.yaml
-  k8s: ./.taskfiles/k8s/Taskfile.yaml
   rcon: ./.taskfiles/rcon/Taskfile.yaml
   repo: ./.taskfiles/repo/Taskfile.yaml
   volsync: ./.taskfiles/volsync/Taskfile.yaml
