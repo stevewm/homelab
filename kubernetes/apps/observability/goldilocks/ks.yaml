@@ -3,17 +3,16 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: core-external-dns-pihole
-  namespace: &namespace network
+  name: app-goldilocks
+  namespace: &namespace observability
 spec:
   targetNamespace: *namespace
   commonMetadata:
     labels:
-      app.kubernetes.io/name: external-dns
-      app.kubernetes.io/instance: pihole
+      app.kubernetes.io/name: goldilocks
   interval: 30m
   timeout: 5m
-  path: ./kubernetes/core/network/external-dns/pihole
+  path: ./kubernetes/apps/observability/goldilocks/app
   prune: true
   sourceRef:
     kind: GitRepository
@@ -21,37 +20,27 @@ spec:
     namespace: flux-system
   wait: true
   dependsOn:
-    - name: core-external-secrets-secretstore
-      namespace: security
-    - name: core-prometheus-operator-crds
-      namespace: observability
-    - name: core-external-dns-cloudflare
-
+    - name: app-goldilocks-vpa
 
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: core-external-dns-cloudflare
-  namespace: &namespace network
+  name: app-goldilocks-vpa
+  namespace: flux-system
 spec:
-  targetNamespace: *namespace
+  targetNamespace: observability
   commonMetadata:
     labels:
-      app.kubernetes.io/name: external-dns
-      app.kubernetes.io/instance: cloudflare
+      app.kubernetes.io/name: vertical-pod-autoscaler
+      app.kubernetes.io/part-of: goldilocks
   interval: 30m
   timeout: 5m
-  path: ./kubernetes/core/network/external-dns/cloudflare
+  path: ./kubernetes/apps/observability/goldilocks/vpa
   prune: true
   sourceRef:
     kind: GitRepository
     name: homelab
     namespace: flux-system
   wait: true
-  dependsOn:
-    - name: core-external-secrets-secretstore
-      namespace: security
-    - name: core-prometheus-operator-crds
-      namespace: observability

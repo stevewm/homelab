@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: &app reloader
+  name: &app silence-operator
 spec:
   releaseName: *app
   interval: 30m
@@ -12,9 +12,11 @@ spec:
     kind: OCIRepository
     name: *app
   install:
+    crds: CreateReplace
     remediation:
       retries: -1
   upgrade:
+    crds: CreateReplace
     cleanupOnFail: true
     remediation:
       strategy: rollback
@@ -24,13 +26,6 @@ spec:
   driftDetection:
     mode: warn
   values:
-    reloader:
-      podMonitor:
-        enabled: true
-        namespace: observability
-    resources:
-      requests:
-        cpu: 50m
-        memory: 64Mi
-      limits:
-        memory: 128Mi
+    alertmanagerAddress: http://alertmanager-operated.observability.svc.cluster.local:9093
+    networkPolicy:
+      enabled: false

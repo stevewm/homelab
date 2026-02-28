@@ -1,0 +1,133 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/helm.toolkit.fluxcd.io/helmrelease_v2.json
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app kube-prometheus-stack
+spec:
+  releaseName: *app
+  interval: 30m
+  maxHistory: 3
+  chartRef:
+    kind: OCIRepository
+    name: *app
+  install:
+    crds: Skip
+    remediation:
+      retries: -1
+  upgrade:
+    crds: Skip
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: -1
+  uninstall:
+    keepHistory: false
+  driftDetection:
+    mode: warn
+  values:
+    crds:
+      enabled: false
+    cleanPrometheusOperatorObjectNames: true
+
+    kubeControllerManager:
+      enabled: false
+
+    kubeEtcd:
+      enabled: false
+
+    kubelet:
+      enabled: true
+
+    kubeProxy:
+      enabled: false
+
+    kubeScheduler:
+      enabled: false
+
+    grafana:
+      enabled: false
+
+    alertmanager:
+      alertmanagerSpec:
+        alertmanagerConfiguration:
+          name: alertmanager
+          global:
+            resolveTimeout: 5m
+        resources:
+          requests:
+            cpu: 10m
+            memory: 50Mi
+          limits:
+            memory: 100Mi
+      route:
+        main:
+          enabled: true
+          hostnames: ["am.stevewm.dev"]
+          parentRefs:
+            - name: internal
+              namespace: network
+              sectionName: https
+          annotations:
+            gethomepage.dev/name: alertmanager
+            gethomepage.dev/enabled: "true"
+            gethomepage.dev/group: observability
+            gethomepage.dev/icon: sh-prometheus-light.png
+            gethomepage.dev/pod-selector: alertmanager=kube-prometheus-stack
+
+    # https://grafana.com/grafana/dashboards/14588-vpa-recommendations/
+    kube-state-metrics:
+      rbac:
+        extraRules:
+          - apiGroups: ["autoscaling.k8s.io"]
+            resources: ["verticalpodautoscalers"]
+            verbs: ["list", "watch"]
+      prometheus:
+        monitor:
+          enabled: true
+
+    prometheus:
+      selfMonitor:
+        enabled: true
+      prometheusSpec:
+        resources:
+          requests:
+            cpu: 100m
+            memory: 2Gi
+          limits:
+            memory: 4Gi
+        retention: 14d
+        retentionSize: 50GB
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: local-hostpath
+              resources:
+                requests:
+                  storage: 55Gi
+        podMonitorSelectorNilUsesHelmValues: false
+        serviceMonitorSelectorNilUsesHelmValues: false
+        scrapeConfigSelectorNilUsesHelmValues: false
+        probeSelectorNilUsesHelmValues: false
+        ruleSelectorNilUsesHelmValues: false
+        enableAdminAPI: true
+        enableFeatures:
+          - auto-gomaxprocs
+          - memory-snapshot-on-shutdown
+          - new-service-discovery-manager
+        externalLabels:
+          cluster: mini
+      route:
+        main:
+          enabled: true
+          hostnames: ["prom.stevewm.dev"]
+          parentRefs:
+            - name: internal
+              namespace: network
+              sectionName: https
+          annotations:
+            gethomepage.dev/name: prometheus
+            gethomepage.dev/enabled: "true"
+            gethomepage.dev/group: observability
+            gethomepage.dev/icon: sh-prometheus-light.png
+            gethomepage.dev/pod-selector: app.kubernetes.io/name=prometheus

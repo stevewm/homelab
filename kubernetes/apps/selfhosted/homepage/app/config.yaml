@@ -100,7 +100,7 @@ data:
         icon: mdi-home-automation-#ffffff
       games:
         icon: mdi-controller-classic-#ffffff
-      monitoring:
+      observability:
         icon: mdi-magnify-#ffffff
       nas:
         icon: mdi-nas-#ffffff
