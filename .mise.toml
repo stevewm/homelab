@@ -4,14 +4,12 @@ experimental = true # for uv_venv_auto
 python.uv_venv_auto = true
 
 [env]
-KUBECONFIG = "{{ config_root }}/kubernetes/kubeconfig"
-TALOSCONFIG = "{{ config_root }}/kubernetes/talos/clusterconfig/talosconfig"
+KUBECONFIG = "{{ config_root }}/cluster/kubernetes/kubeconfig"
+TALOSCONFIG = "{{ config_root }}/cluster/talos/talosconfig"
 MINIJINJA_CONFIG_FILE="{{ config_root }}/.github/.minijinja.toml"
 HOMEBREW_BREWFILE="{{ config_root }}/.github/Brewfile"
+#DOPPLER_CONFIG_DIR= "{{ config_root }}"
 _.path = ['{{config_root}}/node_modules/.bin']
-
-[hooks]
-postinstall = "helm plugin install https://github.com/databus23/helm-diff || true"
 
 [tools]
 # https://docs.renovatebot.com/modules/manager/mise/#supported-default-registry-tool-short-names
@@ -21,7 +19,7 @@ node = "24.14.0"
 
 # Flux
 "aqua:flux2" = "2.8.1"
-"pipx:flux-local" = "7.5.6"
+# "uvx:flux-local" = "7.5.6"
 
 # Kube
 "aqua:CrunchyData/postgres-operator-client" = "0.5.3"
@@ -33,7 +31,6 @@ node = "24.14.0"
 
 # Talos
 "aqua:siderolabs/talos" = "1.12.4"
-"aqua:talhelper" = "3.1.5"
 
 # Tools
 "aqua:go-task/task" = "3.48.0"
@@ -41,7 +38,7 @@ node = "24.14.0"
 "aqua:jq" = "1.8.1"
 "github:DopplerHQ/cli" = "3.75.3"
 "cargo:minijinja-cli" = "2.7.0"
-"ubi:gorcon/rcon-cli" = { version = "0.10.3", exe = "rcon" }
+"github:gorcon/rcon-cli" = { version = "0.10.3", exe = "rcon" }
 "github:slsa-framework/slsa-verifier" = "2.7.1"
 "aqua:Orange-OpenSource/hurl" = "7.1.0"
 
@@ -57,7 +54,10 @@ node = "24.14.0"
 "aqua:actionlint" = "1.7.11"
 "npm:prettier" = "3.8.1"
 "aqua:shellcheck" = "0.11.0"
-"ubi:controlplaneio-fluxcd/flux-operator" = "latest"
+"github:controlplaneio-fluxcd/flux-operator" = "0.43.0"
 rust = "1.93.1"
 kubecolor = "latest"
 kubens = "0.9.5"
+just = "1.46.0"
+gum = "0.17.0"
+"cargo:just-lsp" = "0.3.4"

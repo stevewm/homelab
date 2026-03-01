@@ -1,0 +1,38 @@
+# yaml-language-server: $schema=https://lds-schemas.pages.dev/dragonflydb.io/dragonfly_v1alpha1.json
+---
+apiVersion: dragonflydb.io/v1alpha1
+kind: Dragonfly
+metadata:
+  name: ${APP}-dragonfly
+spec:
+  image: docker.dragonflydb.io/dragonflydb/dragonfly:v1.37.0@sha256:7bfeaf1b733e9f8410b958deacd9a1c3ba9ebd89c767efa31c9bdb2f0e832e77
+  replicas: 1
+  args:
+    - "--maxmemory=$(MAX_MEMORY)Mi"
+    - "--proactor_threads=2"
+    - "--cluster_mode=emulated"
+  authentication:
+    passwordFromSecret:
+      name: ${APP}-dragonfly
+      key: password
+
+  env:
+    - name: MAX_MEMORY
+      valueFrom:
+        resourceFieldRef:
+          resource: limits.memory
+          divisor: 1Mi
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      memory: 512Mi
+  topologySpreadConstraints:
+    - maxSkew: 1
+      topologyKey: "kubernetes.io/hostname"
+      whenUnsatisfiable: "DoNotSchedule"
+      labelSelector:
+        matchLabels:
+          app.kubernetes.io/part-of: ${APP}
+          app.kubernetes.io/component: database

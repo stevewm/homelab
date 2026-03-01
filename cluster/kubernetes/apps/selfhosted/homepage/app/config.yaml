@@ -1,0 +1,135 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: homepage
+  labels:
+    app.kubernetes.io/name: homepage
+data:
+  bookmarks.yaml: |
+    - homelab:
+        - doppler:
+            - abbr: dplr
+              href: https://dashboard.doppler.com/
+              icon: sh-doppler-light.png
+        - cloudflare:
+            - abbr: cf
+              href: https://dash.cloudflare.com
+              icon: sh-cloudflare-light.png
+        - repo:
+            - abbr: gh
+              href: https://github.com/stevewm/homelab
+              icon: sh-github-light.png
+    - dev:
+        - github:
+            - abbr: gh
+              href: https://github.com/
+              icon: sh-github-light.png
+        - hacker news:
+            - abbr: hn
+              href: https://news.ycombinator.com/
+              icon: sh-hacker-news-light.png
+  docker.yaml: |
+    ---
+  kubernetes.yaml: |
+    ---
+    mode: cluster
+    gateway: true
+    ingress: false
+    traefik: false
+
+  services.yaml: |
+    ---
+    - network:
+        - router:
+            icon: mdi-router-network-wireless-#ffffff
+            href: http://10.0.0.1
+        - pihole:
+            icon: sh-pi-hole-light.png
+            href: http://lilnas.home.arpa:3001/admin/login
+            widget:
+              type: pihole
+              url: http://lilnas.home.arpa:3001
+              version: 6
+              key: "{{HOMEPAGE_VAR_PIHOLE_API_KEY}}"
+    - nas:
+        - portal:
+            icon: mdi-monitor-dashboard-#ffffff
+            href: https://lilnas.home.arpa:8000
+        - portainer:
+            icon: sh-portainer-light.png
+            href: https://lilnas.home.arpa:19443
+
+  settings.yaml: |
+    ---
+    title: Cluster Home
+    theme: dark
+    color: stone
+    # Photo credit: https://unsplash.com/@a_sobotyak
+    # Right click image and "Copy image address" to get direct link
+    background: https://images.unsplash.com/photo-1721549369164-2fd07f795ce4?auto=format&fit=crop&w=2560&q=80
+
+    logpath: /logs
+
+    cardBlur: xl
+    disableCollapse: true
+    statusStyle: dot
+    headerStyle: boxed
+    iconStyle: flat
+
+    hideVersion: true
+    disableUpdateCheck: true
+
+    layout:
+      media:
+        icon: mdi-television-classic-#ffffff
+        columns: 2
+        style: row
+        useEqualHeights: true
+      selfhosted:
+        icon: mdi-server-#ffffff
+        style: row
+        columns: 5
+        useEqualHeights: true
+      downloads:
+        icon: mdi-download-box-#ffffff
+        columns: 3
+        style: row
+        useEqualHeights: true
+      home:
+        icon: mdi-home-automation-#ffffff
+      games:
+        icon: mdi-controller-classic-#ffffff
+      observability:
+        icon: mdi-magnify-#ffffff
+      nas:
+        icon: mdi-nas-#ffffff
+        columns: 2
+        style: row
+      network:
+        icon: mdi-lan-connect-#ffffff
+        columns: 2
+        style: row
+        useEqualHeights: true
+      security:
+        icon: mdi-security-#ffffff
+
+  widgets.yaml: |
+    ---
+    - search:
+        provider: duckduckgo
+        showSearchSuggestions: true
+    - openmeteo:
+        label: Home
+        latitude: {{HOMEPAGE_VAR_HOME_LATITUDE}}
+        longitude: {{HOMEPAGE_VAR_HOME_LONGITUDE}}
+        units: metric
+        cache: 5
+    - kubernetes:
+        cluster:
+          show: true
+          cpu: true
+          memory: true
+          showLabel: false
+        nodes:
+          show: false

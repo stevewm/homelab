@@ -1,0 +1,8 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: doppler
+  namespace: security
+stringData:
+  token: {{ DOPPLER_API_TOKEN }}

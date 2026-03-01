@@ -1,7 +1,9 @@
 # General
 kubeconfig
+talosconfig
 Brewfile.lock.json
 *.log
+TODO.md
 
 # node
 node_modules

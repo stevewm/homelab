@@ -1,9 +1,13 @@
 ---
 setup:
   - project: talos
-    path: kubernetes/talos
+    path: cluster/talos
     config: prd
 
   - project: homelab
-    path: kubernetes/
+    path: cluster/kubernetes
+    config: prd
+
+  - project: homelab
+    path: cluster/bootstrap
     config: prd
