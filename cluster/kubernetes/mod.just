@@ -91,4 +91,4 @@ create-oidc-secrets app:
 
 [private]
 render-local-ks ns ks:
-    flux-local build ks --namespace "{{ ns }}" --path "{{ kubernetes_dir }}/flux/cluster" "{{ ks }}"
+    flux-local build ks --namespace "{{ ns }}" --path "{{ kubernetes_dir }}/flux/" "{{ ks }}"

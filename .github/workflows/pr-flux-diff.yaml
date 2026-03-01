@@ -38,7 +38,7 @@ jobs:
       - name: Run flux-local test
         uses: docker://ghcr.io/allenporter/flux-local:v8.1.0@sha256:37c3c4309a351830b04f93c323adfcb0e28c368001818cd819cbce3e08828261
         with:
-          args: test --enable-helm --all-namespaces --path /github/workspace/cluster/kubernetes/flux/cluster -v
+          args: test --enable-helm --all-namespaces --path /github/workspace/cluster/kubernetes/cluster -v
 
   diff:
     name: Flux Local Diff
@@ -77,8 +77,8 @@ jobs:
           args: >-
             diff ${{ matrix.resources }}
             --unified 6
-            --path /github/workspace/pull/cluster/kubernetes/flux/cluster
-            --path-orig /github/workspace/default/cluster/kubernetes/flux/cluster
+            --path /github/workspace/pull/cluster/kubernetes/flux
+            --path-orig /github/workspace/default/cluster/kubernetes/flux
             --strip-attrs "helm.sh/chart,checksum/config,app.kubernetes.io/version,chart"
             --limit-bytes 10000
             --all-namespaces
