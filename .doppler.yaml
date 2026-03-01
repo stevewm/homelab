@@ -1,9 +1,0 @@
----
-setup:
-  - project: talos
-    path: kubernetes/talos
-    config: prd
-
-  - project: homelab
-    path: kubernetes/
-    config: prd
