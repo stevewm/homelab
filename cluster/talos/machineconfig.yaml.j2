@@ -90,7 +90,7 @@ machine:
     sunrpc.tcp_slot_table_entries: "128"
     user.max_user_namespaces: "11255"
     vm.nr_hugepages: "1024"
-  token: {{ ENV.MACHINE_TOKEN }}
+  token: {{ MACHINE_TOKEN }}
 cluster:
   {% if ENV.IS_CONTROLLER %}
   aggregatorCA:
