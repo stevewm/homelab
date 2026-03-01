@@ -9,6 +9,8 @@ spec:
   parentRefs:
     - name: internal
       port: 80
+    - name: external
+      port: 80
   rules:
     - filters:
         - type: RequestRedirect
