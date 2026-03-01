@@ -55,18 +55,23 @@ def get_value_from_path(data, path):
         data = data[key]
     return data
 
-
+count = len(secrets)
+success_count = 0
+logger.info(f"Processing {count} secrets from {TALSECRET}...")
 for path, secret_name in secrets.items():
     try:
         value = get_value_from_path(config, path)
         if not DEBUG:
             logger.info(f"Setting {secret_name}")
             os.system(
-                f"doppler secrets set {secret_name} '{value}' --silent --no-interactive"
+                f"doppler secrets set {secret_name} '{value}' --silent --no-interactive --project talos"
             )
+            success_count += 1
         elif DEBUG:
             logger.debug(f"DEBUG: Would set {secret_name} to: [REDACTED]")
     except KeyError as e:
         logger.error(f"Error: Path '{path}' not found in the configuration. {e}")
     except Exception as e:
         logger.error(f"An error occurred: {e}")
+
+logger.info(f"Successfully processed {success_count}/{count} secrets.")
