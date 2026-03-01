@@ -3,13 +3,18 @@
   packageRules: [
     {
       description: "kubernetes cluster",
-      matchFileNames: ["**/kubernetes/**"],
+      matchFileNames: ["**/cluster/**"],
       additionalBranchPrefix: "cluster-",
     },
     {
       description: "NAS",
       matchFileNames: ["**/nas/**"],
       additionalBranchPrefix: "nas-",
+    },
+    {
+      description: "VPS",
+      matchFileNames: ["**/vps/**"],
+      additionalBranchPrefix: "vps-",
     },
   ],
 }

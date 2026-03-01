@@ -29,4 +29,4 @@ jobs:
       - name: Check mod compatibility
         uses: docker://ghcr.io/stevewm/vsmod:v0.4.3
         with:
-          args: download --file kubernetes/apps/games/vintagestory/app/config/init/mods.yaml --force-compatibility-check --debug --hooks=false
+          args: download --file cluster/kubernetes/apps/games/vintagestory/app/config/init/mods.yaml --force-compatibility-check --debug --hooks=false
