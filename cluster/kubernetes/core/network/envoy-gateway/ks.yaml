@@ -1,0 +1,52 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: core-envoy-gateway
+  namespace: &namespace network
+spec:
+  targetNamespace: *namespace
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: envoy-gateway
+      app.kubernetes.io/part-of: envoy-gateway
+  interval: 30m
+  retryInterval: 2m
+  timeout: 5m
+  prune: true
+  path: ./cluster/kubernetes/core/network/envoy-gateway/app
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+    namespace: flux-system
+  dependsOn:
+    - name: core-cilium
+      namespace: kube-system
+
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: core-envoy-gateway-gateway
+  namespace: &namespace network
+spec:
+  targetNamespace: *namespace
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: envoy-gateway-gateway
+      app.kubernetes.io/part-of: envoy-gateway
+      app.kubernetes.io/component: gateway
+  interval: 30m
+  retryInterval: 2m
+  timeout: 5m
+  prune: true
+  path: ./cluster/kubernetes/core/network/envoy-gateway/gateway
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+    namespace: flux-system
+  dependsOn:
+    - name: core-envoy-gateway
