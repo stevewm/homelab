@@ -21,4 +21,3 @@ spec:
   wait: true
   dependsOn:
     - name: core-flux-operator
-
