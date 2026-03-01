@@ -24,6 +24,22 @@ spec:
     keepHistory: false
   driftDetection:
     mode: warn
-  valuesFrom:
-    - kind: ConfigMap
-      name: cert-manager-helm-values
+  values:
+    crds:
+      enabled: true
+    enableCertificateOwnerRef: true
+
+    deploymentAnnotations:
+      reloader.stakater.com/auto: "true"
+
+    prometheus:
+      enabled: true
+      servicemonitor:
+        enabled: true
+
+    resources:
+      requests:
+        cpu: 10m
+        memory: 32Mi
+      limits:
+        memory: 92Mi
