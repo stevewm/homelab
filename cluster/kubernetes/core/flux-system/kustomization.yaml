@@ -6,3 +6,4 @@ namespace: flux-system
 resources:
   - ./namespace.yaml
   - ./flux-operator/ks.yaml
+  - ./flux-instance/ks.yaml

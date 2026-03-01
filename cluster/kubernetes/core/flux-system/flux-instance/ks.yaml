@@ -12,10 +12,13 @@ spec:
       app.kubernetes.io/name: flux-instance
   interval: 30m
   timeout: 5m
-  path: ./cluster/kubernetes/core/flux-system/flux-operator/instance
+  path: ./cluster/kubernetes/core/flux-system/flux-instance
   prune: false # bad idea to prune this
   sourceRef:
     kind: GitRepository
     name: homelab
     namespace: flux-system
   wait: true
+  dependsOn:
+    - name: core-flux-operator
+
