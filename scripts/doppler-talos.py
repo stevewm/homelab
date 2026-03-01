@@ -18,41 +18,27 @@ import logging
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 
-DEBUG = os.environ.get("TALOS_SECRETS_DRYRUN", False).lower == "true"
-TALSECRET = f"{os.environ.get('TALCONFIG')}/talsecret.yaml"
+DEBUG = os.environ.get("TALOS_SECRETS_DRYRUN", "false").lower() == "true"
+TALSECRET = f"{os.environ.get('TALOS_SECRETS_DIR')}/secrets.yaml"
 
 if DEBUG:
     logger.setLevel(logging.DEBUG)
 
 secrets = {
-    "machine.ca.crt:": "MACHINE_CA_CRT",
-    "machine.ca.key": "MACHINE_CA_KEY",
-    "machine.token": "MACHINE_TOKEN",
-    "cluster.aggregatorCA.crt": "CLUSTER_AGGREGATORCA_CRT",
-    "cluster.aggregatorCA.key": "CLUSTER_AGGREGATORCA_KEY",
-    "cluster.etcd.crt": "CLUSTER_ETCD_CA_CRT",
-    "cluster.etcd.key": "CLUSTER_ETCD_CA_KEY",
-    "cluster.secretboxEncryptionSecret": "CLUSTER_SECRETBOXENCRYPTIONSECRET",
-    "cluster.serviceAccount.key": "CLUSTER_SERVICEACCOUNT_KEY",
-    "cluster.ca.crt": "CLUSTER_CA_CRT",
-    "cluster.ca.key": "CLUSTER_CA_KEY",
+    "certs.os.crt": "MACHINE_CA_CRT",
+    "certs.os.key": "MACHINE_CA_KEY",
+    "trustdinfo.token": "MACHINE_TOKEN",
+    "certs.k8saggregator.crt": "CLUSTER_AGGREGATORCA_CRT",
+    "certs.k8saggregator.key": "CLUSTER_AGGREGATORCA_KEY",
+    "certs.etcd.crt": "CLUSTER_ETCD_CA_CRT",
+    "certs.etcd.key": "CLUSTER_ETCD_CA_KEY",
+    "secrets.secretboxencryptionsecret": "CLUSTER_SECRETBOXENCRYPTIONSECRET",
+    "certs.k8sserviceaccount.key": "CLUSTER_SERVICEACCOUNT_KEY",
+    "certs.k8s.crt": "CLUSTER_CA_CRT",
+    "certs.k8s.key": "CLUSTER_CA_KEY",
     "cluster.id": "CLUSTER_ID",
     "cluster.secret": "CLUSTER_SECRET",
-    "cluster.token": "CLUSTER_TOKEN",
-    # "cluster.id": "CLUSTERNAME",
-    # "cluster.secret": "CLUSTERSECRET",
-    # "secrets.bootstraptoken": "BOOTSTRAPTOKEN",
-    # "secrets.secretboxencryptionsecret": "AESCBCENCYPTIONKEY",
-    # "trustdinfo.token": "TRUSTDTOKEN",
-    # "certs.etcd.crt": "ETCDCERT",
-    # "certs.etcd.key": "ETCDKEY",
-    # "certs.k8s.crt": "K8SCERT",
-    # "certs.k8s.key": "K8SKEY",
-    # "certs.k8saggregator.crt": "K8SAGGCERT",
-    # "certs.k8saggregator.key": "K8SAGGKEY",
-    # "certs.k8sserviceaccount.key": "K8SSAKEY",
-    # "certs.os.crt": "OSCERT",
-    # "certs.os.key": "OSKEY",
+    "secrets.bootstraptoken": "CLUSTER_TOKEN",
 }
 
 with open(TALSECRET, "r") as f:
@@ -76,10 +62,10 @@ for path, secret_name in secrets.items():
         if not DEBUG:
             logger.info(f"Setting {secret_name}")
             os.system(
-                f"doppler secrets set {secret_name} {value} --silent --no-interactive"
+                f"doppler secrets set {secret_name} '{value}' --silent --no-interactive"
             )
         elif DEBUG:
-            logger.debug(f"DEBUG: Would set {secret_name} to: {value}")
+            logger.debug(f"DEBUG: Would set {secret_name} to: [REDACTED]")
     except KeyError as e:
         logger.error(f"Error: Path '{path}' not found in the configuration. {e}")
     except Exception as e:

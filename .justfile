@@ -24,8 +24,8 @@ log lvl msg *args:
   gum log -t rfc3339 -s -l "{{ lvl }}" "{{ msg }}" {{ args }}
 
 [private]
-template file *args:
-    doppler secrets download --no-fallback --no-file --format json | minijinja-cli -f json "{{ absolute_path(file) }}" - {{ args }}
+template doppler_proj file *args:
+    doppler secrets download --no-fallback --no-file --format json --project "{{ doppler_proj }}" | minijinja-cli -f json "{{ absolute_path(file) }}" - {{ args }}
 
 [doc('Set up environment')]
 setup:
