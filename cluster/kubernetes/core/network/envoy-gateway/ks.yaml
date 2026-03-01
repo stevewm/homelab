@@ -43,7 +43,7 @@ spec:
   retryInterval: 2m
   timeout: 5m
   prune: true
-  path: ./cluster/kubernetes/core/network/envoy-gateway/gateways
+  path: ./cluster/kubernetes/core/network/envoy-gateway/gateway
   sourceRef:
     kind: GitRepository
     name: homelab
