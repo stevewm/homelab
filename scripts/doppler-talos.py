@@ -25,20 +25,20 @@ if DEBUG:
     logger.setLevel(logging.DEBUG)
 
 secrets = {
-    "certs.os.crt": "MACHINE_CA_CRT",
-    "certs.os.key": "MACHINE_CA_KEY",
-    "trustdinfo.token": "MACHINE_TOKEN",
-    "certs.k8saggregator.crt": "CLUSTER_AGGREGATORCA_CRT",
-    "certs.k8saggregator.key": "CLUSTER_AGGREGATORCA_KEY",
-    "certs.etcd.crt": "CLUSTER_ETCD_CA_CRT",
-    "certs.etcd.key": "CLUSTER_ETCD_CA_KEY",
-    "secrets.secretboxencryptionsecret": "CLUSTER_SECRETBOXENCRYPTIONSECRET",
-    "certs.k8sserviceaccount.key": "CLUSTER_SERVICEACCOUNT_KEY",
-    "certs.k8s.crt": "CLUSTER_CA_CRT",
-    "certs.k8s.key": "CLUSTER_CA_KEY",
     "cluster.id": "CLUSTER_ID",
     "cluster.secret": "CLUSTER_SECRET",
-    "secrets.bootstraptoken": "CLUSTER_TOKEN",
+    "secrets.bootstraptoken": "BOOTSTRAP_TOKEN",
+    "secrets.secretboxencryptionsecret": "SECRETBOX_ENCRYPTION_SECRET",
+    "trustdinfo.token": "TRUSTDINFO_TOKEN",
+    "certs.etcd.crt": "ETCD_CERT",
+    "certs.etcd.key": "ETCD_KEY",
+    "certs.k8s.crt": "K8S_CERT",
+    "certs.k8s.key": "K8S_KEY",
+    "certs.k8saggregator.crt": "K8S_AGGREGATOR_CERT",
+    "certs.k8saggregator.key": "K8S_AGGREGATOR_KEY",
+    "certs.k8sserviceaccount.key": "K8S_SERVICEACCOUNT_KEY",
+    "certs.os.crt": "OS_CERT",
+    "certs.os.key": "OS_KEY",
 }
 
 with open(TALSECRET, "r") as f:
@@ -47,7 +47,6 @@ with open(TALSECRET, "r") as f:
     except yaml.YAMLError as exc:
         logger.error(f"Error loading {TALSECRET}: {exc}")
         sys.exit(1)
-
 
 def get_value_from_path(data, path):
     keys = path.split(".")

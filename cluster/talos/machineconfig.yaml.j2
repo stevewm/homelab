@@ -3,9 +3,9 @@
 version: v1alpha1
 machine:
   ca:
-    crt: {{ MACHINE_CA_CRT }}
+    crt: {{ OS_CERT }}
     {% if ENV.IS_CONTROLLER %}
-    key: {{ MACHINE_CA_KEY }}
+    key: {{ OS_KEY }}
     {% endif %}
   features:
     apidCheckExtKeyUsage: true
@@ -90,12 +90,12 @@ machine:
     sunrpc.tcp_slot_table_entries: "128"
     user.max_user_namespaces: "11255"
     vm.nr_hugepages: "1024"
-  token: {{ MACHINE_TOKEN }}
+  token: {{ TRUSTDINFO_TOKEN }}
 cluster:
   {% if ENV.IS_CONTROLLER %}
   aggregatorCA:
-    crt: {{ CLUSTER_AGGREGATORCA_CRT }}
-    key: {{ CLUSTER_AGGREGATORCA_KEY }}
+    crt: {{ K8S_AGGREGATOR_CERT }}
+    key: {{ K8S_AGGREGATOR_KEY }}
   allowSchedulingOnControlPlanes: true
   apiServer:
     image: registry.k8s.io/kube-apiserver:v1.35.2
@@ -117,8 +117,8 @@ cluster:
     advertisedSubnets:
       - 10.0.0.0/24
     ca:
-      crt: {{ CLUSTER_ETCD_CA_CRT }}
-      key: {{ CLUSTER_ETCD_CA_KEY }}
+      crt: {{ ETCD_CERT }}
+      key: {{ ETCD_KEY }}
     extraArgs:
       listen-metrics-urls: http://0.0.0.0:2381
   proxy:
@@ -145,14 +145,14 @@ cluster:
     extraArgs:
       bind-address: 0.0.0.0
     image: registry.k8s.io/kube-scheduler:v1.35.2
-  secretboxEncryptionSecret: {{ CLUSTER_SECRETBOXENCRYPTIONSECRET }}
+  secretboxEncryptionSecret: {{ SECRETBOX_ENCRYPTION_SECRET }}
   serviceAccount:
-    key: {{ CLUSTER_SERVICEACCOUNT_KEY }}
+    key: {{ K8S_SERVICEACCOUNT_KEY }}
   {% endif %}
   ca:
-    crt: {{ CLUSTER_CA_CRT }}
+    crt: {{ K8S_CERT }}
     {% if ENV.IS_CONTROLLER %}
-    key: {{ CLUSTER_CA_KEY }}
+    key: {{ K8S_KEY }}
     {% endif %}
   controlPlane:
     endpoint: https://10.0.0.31:6443 # single node chode mode
@@ -172,7 +172,7 @@ cluster:
     serviceSubnets:
       - 10.96.0.0/12
   secret: {{ CLUSTER_SECRET }}
-  token: {{ CLUSTER_TOKEN }}
+  token: {{ BOOTSTRAP_TOKEN }}
 ---
 apiVersion: v1alpha1
 kind: WatchdogTimerConfig

@@ -10,6 +10,10 @@ controller := `talosctl config info -o yaml | yq -e '.endpoints[0]'`
 default:
     just -l talos
 
+[doc('Generate talosconfig')] # FIXME: hardcoded string
+talosconfig:
+    talosctl gen config control01 https://10.0.0.31:6443 --output-types talosconfig --with-secrets <(just template talos "{{ talos_dir }}/secrets.yaml.j2")
+
 [doc('Download latest Talos machine image')]
 download-latest-image:
     just talos download-image "$(just talos latest-talos)" "$(just talos gen-schematic-id)"
