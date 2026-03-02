@@ -57,7 +57,7 @@ wait:
 [doc('Apply Kubernetes namespaces')]
 namespaces:
     just log info "Running stage..." "stage" "$0"
-    find "{{ kubernetes_dir }}/core" -mindepth 1 -maxdepth 1 -type d -printf "%f\n" | while IFS= read -r ns; do \
+    find "{{ kubernetes_dir }}/core" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | while IFS= read -r ns; do \
       if ! kubectl create namespace "$ns" --dry-run=client -o yaml | kubectl apply --server-side -f -; then \
         just log fatal "Failed to apply namespace" "stage" "create_namespaces" "namespace" "$ns"; \
       fi; \
@@ -66,7 +66,7 @@ namespaces:
 [doc('Apply Kubernetes resources')]
 resources:
     just log info "Running stage..." "stage" "$0"
-    if ! just template homelab "{{ bootstrap_dir }}/resources.yaml.j2" | kubectl apply --server-side -f -; then \
+    if ! just template homelab "{{ bootstrap_dir }}/bootstrap.yaml.j2" | kubectl apply --server-side -f -; then \
       just log fatal "Failed to apply resources" "stage" "$0"; \
     fi;
 
