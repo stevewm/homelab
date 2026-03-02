@@ -39,7 +39,7 @@ spec:
           grafana_folder: Network
 
     bandwidthManager:
-      enabled: true
+      enabled: false
       bbr: true
 
     localRedirectPolicy: true
@@ -48,7 +48,6 @@ spec:
     bpf:
       datapathMode: netkit
       masquerade: true
-      tproxy: true
 
     bgp:
       enabled: false
