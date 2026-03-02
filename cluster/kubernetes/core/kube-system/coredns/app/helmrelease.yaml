@@ -66,4 +66,4 @@ spec:
         whenUnsatisfiable: DoNotSchedule
         labelSelector:
           matchLabels:
-        app.kubernetes.io/instance: coredns
+            app.kubernetes.io/instance: coredns
