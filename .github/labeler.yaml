@@ -7,15 +7,15 @@ ci:
 # Clusters
 cluster:
   - changed-files:
-      - any-glob-to-any-file: kubernetes/**
+      - any-glob-to-any-file: cluster/kubernetes/**
 
 # Area
 core:
   - changed-files:
-      - any-glob-to-any-file: kubernetes/core/**
+      - any-glob-to-any-file: cluster/kubernetes/core/**
 apps:
   - changed-files:
-      - any-glob-to-any-file: kubernetes/apps/**
+      - any-glob-to-any-file: cluster/kubernetes/apps/**
 flux:
   - changed-files:
       - any-glob-to-any-file: kubernetes/flux/**
@@ -24,6 +24,11 @@ flux:
 nas:
   - changed-files:
       - any-glob-to-any-file: nas/**
+
+# VPS
+vps:
+  - changed-files:
+      - any-glob-to-any-file: vps/**
 
 # General
 docs:

@@ -1,0 +1,149 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/helm.toolkit.fluxcd.io/helmrelease_v2.json
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app cilium
+spec:
+  interval: 30m
+  maxHistory: 3
+  chartRef:
+    kind: OCIRepository
+    name: *app
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: -1
+  uninstall:
+    keepHistory: false
+  driftDetection:
+    mode: warn
+  valuesFrom:
+    - kind: ConfigMap
+      name: cilium-values
+  values:
+    operator:
+      replicas: 1
+      rollOutPods: true
+      prometheus:
+        enabled: true
+        serviceMonitor:
+          enabled: true
+      dashboards:
+        enabled: true
+        annotations:
+          grafana_folder: Network
+
+    bandwidthManager:
+      enabled: true
+      bbr: true
+
+    localRedirectPolicy: true
+    rollOutCiliumPods: true
+
+    bpf:
+      datapathMode: netkit
+      hostLegacyRouting: true
+      masquerade: true
+      tproxy: true
+
+    bgp:
+      enabled: false
+      announce:
+        loadbalancerIP: true
+        podCIDR: false
+
+    bgpControlPlane:
+      enabled: true
+
+    dnsProxy:
+      endpointMaxIpPerHostname: 100
+      maxDeferredConnectionDeletes: 15000
+      minTtl: 300
+
+    envoy:
+      enabled: false
+
+    cni:
+      exclusive: false
+    devices: enp+
+
+    l2announcements:
+      enabled: true
+
+    externalIPs:
+      enabled: true
+
+    prometheus:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+        trustCRDsExist: true
+    dashboards:
+      enabled: true
+      annotations:
+        grafana_folder: Network
+
+    # -- from talos docs --
+    ipam:
+      mode: kubernetes
+
+    kubeProxyReplacement: true
+    k8sServiceHost: 127.0.0.1
+    k8sServicePort: 7445
+    kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
+
+    policyAuditMode: true
+
+    securityContext:
+      capabilities:
+        ciliumAgent:
+          - CHOWN
+          - KILL
+          - NET_ADMIN
+          - NET_RAW
+          - IPC_LOCK
+          - SYS_ADMIN
+          - SYS_RESOURCE
+          - PERFMON
+          - BPF
+          - DAC_OVERRIDE
+          - FOWNER
+          - SETGID
+          - SETUI
+        cleanCiliumState:
+          - NET_ADMIN
+          - SYS_ADMIN
+          - SYS_RESOURCE
+          - PERFMON
+          - BPF
+
+    cgroup:
+      autoMount:
+        enabled: false
+      hostRoot: /sys/fs/cgroup
+    # -- end of talos settings --
+
+    hubble:
+      ui:
+        ingress:
+          enabled: false # Use the HTTPRoute instead
+      dashboards:
+        enabled: true
+      relay:
+        enabled: true
+      metrics:
+        enabled:
+          - dns:query
+          - drop
+          - tcp
+          - flow
+          - port-distribution
+          - icmp
+          - http
+        serviceMonitor:
+          enabled: true

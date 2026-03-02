@@ -1,0 +1,162 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app jellyfin
+spec:
+  interval: 30m
+  maxHistory: 3
+  chartRef:
+    kind: OCIRepository
+    name: app-template
+    namespace: flux-system
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: -1
+  uninstall:
+    keepHistory: false
+  driftDetection:
+    mode: warn
+  values:
+    defaultPodOptions:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1001
+        runAsGroup: 100
+        fsGroup: 100
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+
+    controllers:
+      jellyfin:
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+
+        annotations:
+          reloader.stakater.com/auto: "true"
+
+        pod:
+          resourceClaims:
+            - name: gpu
+              resourceClaimTemplateName: jellyfin-gpu
+
+        containers:
+          app:
+            image:
+              repository: ghcr.io/jellyfin/jellyfin
+              tag: 10.11.6@sha256:25db4eb10143c1c12adb79ed978e31d94fc98dc499fbae2d38b2c935089ced3e
+            env:
+              DOTNET_SYSTEM_IO_DISABLEFILELOCKING: "true"
+              JELLYFIN_FFmpeg__probesize: 50000000
+              JELLYFIN_FFmpeg__analyzeduration: 50000000
+              JELLYFIN_PublishedServerUrl: jellyfin.media.svc.cluster.local:8096
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /health
+                    port: 8096
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+              startup:
+                enabled: false
+            resources:
+              claims:
+                - name: gpu
+              requests:
+                cpu: 100m
+                memory: 512Mi
+              limits:
+                memory: 6Gi
+
+          exporter:
+            image:
+              repository: quay.io/prometheuscommunity/json-exporter
+              tag: v0.7.0@sha256:3a777171d39ad435cb39519e84e0a8b5c63c7e716cc06011f8140cfaabfc1baf
+            args:
+              - --config.file=/exporter/jellyfin.yaml
+            resources:
+              requests:
+                cpu: 10m
+                memory: 50Mi
+              limits:
+                memory: 225Mi
+
+    service:
+      app:
+        controller: *app
+        type: LoadBalancer
+        annotations:
+          "lbipam.cilium.io/ips": "10.0.0.80"
+        ports:
+          http:
+            port: &http 8096
+          exporter:
+            port: 7979
+
+    route:
+      app:
+        hostnames: ["watch.stevewm.dev"]
+        parentRefs:
+          - name: external
+            namespace: network
+            sectionName: https
+        rules:
+          - backendRefs:
+              - identifier: app
+                port: *http
+        annotations:
+          gethomepage.dev/name: *app
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: media
+          gethomepage.dev/icon: sh-jellyfin-light.png
+          gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_JELLYFIN_API_KEY}}` }}"
+          gethomepage.dev/widget.type: *app
+          gethomepage.dev/widget.url: "http://jellyfin.media.svc.cluster.local:8096"
+
+    persistence:
+      config:
+        existingClaim: jellyfin-config
+      cache:
+        type: emptyDir
+      transcode:
+        type: emptyDir
+      tmp:
+        type: emptyDir
+      media:
+        type: nfs
+        server: lilnas.home.arpa
+        path: /volume1/Media
+        globalMounts:
+          - path: /data/media
+      exporter: # Config for json exporter
+        type: secret
+        name: jellyfin-exporter
+        globalMounts:
+          - path: /exporter/jellyfin.yaml
+            subPath: jellyfin.yaml
+            readOnly: true
+      sso:
+        type: secret
+        name: jellyfin-sso-config
+        globalMounts:
+          - path: /config/plugins/configurations/SSO-Auth.xml
+            subPath: SSO-Auth.xml
+            readOnly: false

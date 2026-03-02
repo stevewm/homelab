@@ -21,6 +21,10 @@
 - name: nas
   color: b3ccff
 
+# VPS
+- name: vps
+  color: ffb3ff
+
 # General
 - name: docs
   color: a8a8a8

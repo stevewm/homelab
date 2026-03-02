@@ -13,14 +13,14 @@
     "* 0-23 * * 6",
     "* 0-23 * * 7",
   ],
-  ignorePaths: ["**kubernetes/**/.archive/**", "**nas/.archive/**"],
+  ignorePaths: ["**cluster/**/.archive/**", "**nas/.archive/**"],
   flux: {
-    managerFilePatterns: ["/(^|/)kubernetes/.+\\.ya?ml$/"],
+    managerFilePatterns: ["/(^|/)cluster/kubernetes/.+\\.ya?ml$/"],
   },
   "helm-values": {
-    managerFilePatterns: ["/(^|/)kubernetes/.+\\.ya?ml$/"],
+    managerFilePatterns: ["/(^|/)cluster/kubernetes/.+\\.ya?ml$/"],
   },
   kubernetes: {
-    managerFilePatterns: ["/(^|/)kubernetes/.+\\.ya?ml$/"],
+    managerFilePatterns: ["/(^|/)cluster/kubernetes/.+\\.ya?ml$/"],
   },
 }
