@@ -18,7 +18,7 @@ apps:
       - any-glob-to-any-file: cluster/kubernetes/apps/**
 flux:
   - changed-files:
-      - any-glob-to-any-file: kubernetes/flux/**
+      - any-glob-to-any-file: cluster/kubernetes/flux/**
 
 # NAS
 nas:
