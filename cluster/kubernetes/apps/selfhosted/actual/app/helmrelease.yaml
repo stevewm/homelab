@@ -92,7 +92,7 @@ spec:
       app:
         hostnames: ["actual.stevewm.dev"]
         parentRefs:
-          - name: internal
+          - name: envoy-internal
             namespace: network
             sectionName: https
         annotations:

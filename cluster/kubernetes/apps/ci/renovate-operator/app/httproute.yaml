@@ -8,7 +8,7 @@ spec:
   hostnames:
     - renovate.stevewm.dev
   parentRefs:
-    - name: internal
+    - name: envoy-internal
       namespace: network
   rules:
     - backendRefs:

@@ -95,7 +95,7 @@ spec:
       app:
         hostnames: ["rdr.stevewm.dev"]
         parentRefs:
-          - name: internal
+          - name: envoy-internal
             namespace: network
             sectionName: https
         annotations:

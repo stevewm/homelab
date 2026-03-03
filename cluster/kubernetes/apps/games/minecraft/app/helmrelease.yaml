@@ -179,7 +179,7 @@ spec:
       app:
         hostnames: ["mcmap.stevewm.dev"]
         parentRefs:
-          - name: external
+          - name: envoy-external
             namespace: network
             sectionName: https
         rules:
