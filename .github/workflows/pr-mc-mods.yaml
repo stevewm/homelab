@@ -24,7 +24,7 @@ jobs:
     env:
       MC_HR: ${{ github.workspace }}/cluster/kubernetes/apps/games/minecraft/app/helmrelease.yaml
       # renovate: depName=itzg/mc-image-helper datasource=github-releases
-      MC_IMAGE_HELPER_VERSION: "1.55.0"
+      MC_IMAGE_HELPER_VERSION: "1.55.2"
 
     steps:
       - name: Checkout
