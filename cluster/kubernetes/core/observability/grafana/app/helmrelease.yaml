@@ -356,7 +356,7 @@ spec:
         enabled: true
         hostnames: ["graf.stevewm.dev"]
         parentRefs:
-          - name: internal
+          - name: envoy-internal
             namespace: network
             sectionName: https
         annotations:

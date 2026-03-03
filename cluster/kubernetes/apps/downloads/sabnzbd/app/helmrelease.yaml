@@ -96,7 +96,7 @@ spec:
       app:
         hostnames: ["nzb.stevewm.dev"]
         parentRefs:
-          - name: internal
+          - name: envoy-internal
             namespace: network
             sectionName: https
         annotations:

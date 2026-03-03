@@ -97,7 +97,7 @@ spec:
       app:
         hostnames: ["kg.stevewm.dev"]
         parentRefs:
-          - name: external
+          - name: envoy-external
             namespace: network
             sectionName: https
 

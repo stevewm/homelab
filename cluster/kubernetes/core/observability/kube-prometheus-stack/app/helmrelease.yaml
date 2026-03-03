@@ -65,7 +65,7 @@ spec:
           enabled: true
           hostnames: ["am.stevewm.dev"]
           parentRefs:
-            - name: internal
+            - name: envoy-internal
               namespace: network
               sectionName: https
           annotations:
@@ -122,7 +122,7 @@ spec:
           enabled: true
           hostnames: ["prom.stevewm.dev"]
           parentRefs:
-            - name: internal
+            - name: envoy-internal
               namespace: network
               sectionName: https
           annotations:
