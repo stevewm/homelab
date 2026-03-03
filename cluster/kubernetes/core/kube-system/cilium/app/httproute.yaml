@@ -6,7 +6,7 @@ metadata:
 spec:
   hostnames: ["cni.stevewm.dev"]
   parentRefs:
-    - name: internal
+    - name: envoy-internal
       namespace: network
       sectionName: https
   rules:

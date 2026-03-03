@@ -60,7 +60,7 @@ spec:
             key: password
 
     extraArgs:
-      - --gateway-name=internal
+      - --gateway-name=envoy-internal
 
     resources:
       requests:

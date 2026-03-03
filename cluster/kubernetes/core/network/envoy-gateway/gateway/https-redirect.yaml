@@ -7,9 +7,9 @@ metadata:
     external-dns.alpha.kubernetes.io/controller: none
 spec:
   parentRefs:
-    - name: internal
+    - name: envoy-internal
       port: 80
-    - name: external
+    - name: envoy-external
       port: 80
   rules:
     - filters:

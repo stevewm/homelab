@@ -6,7 +6,7 @@ metadata:
   annotations:
     external-dns.alpha.kubernetes.io/target: ext.stevewm.dev
 spec:
-  gatewayClassName: envoy
+  gatewayClassName: envoy-external
   infrastructure:
     annotations:
       external-dns.alpha.kubernetes.io/hostname: ext.stevewm.dev
