@@ -65,7 +65,7 @@ spec:
               DOMAIN: stevewm.dev
               CF_API_TOKEN:
                 secretKeyRef:
-                  name: cloudflare
+                  name: cloudflare-dyndns
                   key: api_token
 
             resources:
