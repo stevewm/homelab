@@ -22,9 +22,6 @@ spec:
     keepHistory: false
   driftDetection:
     mode: warn
-  valuesFrom:
-    - kind: ConfigMap
-      name: cilium-values
   values:
     operator:
       replicas: 1
