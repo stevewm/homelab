@@ -41,7 +41,5 @@ spec:
       name: cluster-core
     - kind: Kustomization
       name: cluster-apps
-    - kind: Kustomization
-      name: cluster-repos
   exclusionList:
     - waiting.*socket

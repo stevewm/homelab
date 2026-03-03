@@ -18,10 +18,6 @@ spec:
       namespace: flux-system
     - apiVersion: kustomize.toolkit.fluxcd.io/v1
       kind: Kustomization
-      name: cluster-repos
-      namespace: flux-system
-    - apiVersion: kustomize.toolkit.fluxcd.io/v1
-      kind: Kustomization
       name: cluster-core
       namespace: flux-system
     - apiVersion: kustomize.toolkit.fluxcd.io/v1
