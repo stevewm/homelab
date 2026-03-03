@@ -10,8 +10,7 @@ spec:
   maxHistory: 3
   chartRef:
     kind: OCIRepository
-    name: app-template
-    namespace: flux-system
+    name: minecraft
   install:
     remediation:
       retries: -1
