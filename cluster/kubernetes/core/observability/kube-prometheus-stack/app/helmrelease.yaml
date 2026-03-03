@@ -27,7 +27,7 @@ spec:
     mode: warn
   values:
     crds:
-      enabled: false
+      enabled: true
     cleanPrometheusOperatorObjectNames: true
 
     kubeControllerManager:
