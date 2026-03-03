@@ -26,5 +26,4 @@ tasks:
 
 includes:
   rcon: ./.taskfiles/rcon/Taskfile.yaml
-  repo: ./.taskfiles/repo/Taskfile.yaml
   volsync: ./.taskfiles/volsync/Taskfile.yaml
