@@ -46,6 +46,7 @@ spec:
     rollOutCiliumPods: true
 
     bpf:
+      hostLegacyRouting: true
       datapathMode: netkit
       masquerade: true
 
