@@ -6,9 +6,7 @@ on:
   pull_request:
     branches: ["main"]
     paths:
-      - cluster/kubernetes/apps/**
-      - cluster/kubernetes/core/**
-      - cluster/kubernetes/flux/**
+      - cluster/kubernetes/**
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
