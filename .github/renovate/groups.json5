@@ -44,18 +44,30 @@
       separateMinorPatch: false,
     },
     {
-      description: "Talos group",
-      groupName: "Talos",
-      matchPackageNames: [
-        "ghcr.io/siderolabs/installer",
-        "ghcr.io/siderolabs/talosctl",
-        "ghcr.io/siderolabs/kubelet",
-      ],
+      description: "Kubernetes group",
+      groupName: "Kubernetes",
       matchDatasources: ["docker"],
+      matchPackageNames: [
+        "/kube-apiserver/",
+        "/kube-controller-manager/",
+        "/kube-proxy/",
+        "/kube-scheduler/",
+        "/kubelet/",
+      ],
       group: {
         commitMessageTopic: "{{{groupName}}} group",
       },
-      separateMinorPatch: false,
+      minimumGroupSize: 5,
+    },
+    {
+      description: "Talos group",
+      groupName: "Talos",
+      matchDatasources: ["docker"],
+      matchPackageNames: ["/installer/", "/talosctl/"],
+      group: {
+        commitMessageTopic: "{{{groupName}}} group",
+      },
+      minimumGroupSize: 2,
     },
     {
       description: "Dragonfly Operator group",
@@ -66,19 +78,6 @@
         commitMessageTopic: "{{{groupName}}} group",
       },
       separateMinorPatch: true,
-    },
-    {
-      description: "Intel Device Plugins group",
-      groupName: "Intel Device Plugins",
-      matchPackageNames: [
-        "intel-device-plugins-operator",
-        "intel-device-plugins-gpu",
-      ],
-      matchDatasources: ["helm", "docker"],
-      group: {
-        commitMessageTopic: "{{{groupName}}} group",
-      },
-      separateMinorPatch: false,
     },
     {
       description: "Flux Local",
@@ -92,23 +91,16 @@
       description: "Flux Operator group",
       groupName: "Flux Operator",
       matchDatasources: ["docker"],
-      matchPackageNames: ["/flux-operator/", "/flux-instance/"],
+      matchPackageNames: ["/flux-operator/", "/flux-instance/", "/flux-operator-manifests/"],
       group: {
         commitMessageTopic: "{{{groupName}}} group",
       },
+      minimumGroupSize: 3,
     },
     {
       description: "CoreDNS group",
       groupName: "CoreDNS",
       matchPackageNames: ["/coredns/"],
-      group: {
-        commitMessageTopic: "{{{groupName}}} group",
-      },
-    },
-    {
-      description: "Prometheus Operator CRDs group",
-      groupName: "Prometheus Operator CRDs",
-      matchPackageNames: ["/prometheus-operator-crds/"],
       group: {
         commitMessageTopic: "{{{groupName}}} group",
       },
