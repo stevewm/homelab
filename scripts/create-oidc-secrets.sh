@@ -2,6 +2,12 @@
 
 set -eou pipefail
 
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 <app-name>"
+    exit 1
+fi
+APP=$(echo "$1" | tr '[:lower:]' '[:upper:]')
+
 AUTHELIA_OUTPUT=$(container run --rm authelia/authelia:latest authelia crypto hash generate pbkdf2 \
     --variant sha512 \
     --random \
