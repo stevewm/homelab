@@ -2,7 +2,7 @@
 
 set -eou pipefail
 
-AUTHELIA_OUTPUT=$(docker run --rm authelia/authelia:latest authelia crypto hash generate pbkdf2 \
+AUTHELIA_OUTPUT=$(container run --rm authelia/authelia:latest authelia crypto hash generate pbkdf2 \
     --variant sha512 \
     --random \
     --random.length 72 \
