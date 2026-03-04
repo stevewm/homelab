@@ -8,20 +8,17 @@ Welcome to the repository for my home infrastructure, otherwise known as my home
 
 <div align="center">
 
-![Kubernetes Version](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fstevewm%2Fhomelab%2Fmain%2Fkubernetes%2Ftalos%2Ftalconfig.yaml&query=%24.kubernetesVersion&style=for-the-badge&logo=kubernetes&label=K8S)
-![Talos Version](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fstevewm%2Fhomelab%2Fmain%2Fkubernetes%2Ftalos%2Ftalconfig.yaml&query=%24.talosVersion&style=for-the-badge&logo=talos&label=talos&color=%23FA640A&link=https%3A%2F%2Ftalos.dev%2F)
+[![Talos](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.stevewm.dev%2Ftalos_version&style=for-the-badge&logo=talos&logoColor=white&color=orange&label=talos)](https://talos.dev)&nbsp;
+[![Kubernetes](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.stevewm.dev%2Fkubernetes_version&style=for-the-badge&logo=kubernetes&logoColor=white&color=blue&label=k8s)](https://kubernetes.io)&nbsp;&nbsp;
+[![Flux](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.stevewm.dev%2Fflux_version&style=for-the-badge&logo=flux&logoColor=white&color=blue&label=flux)](https://fluxcd.io)
 
-</div>
-
-<div align="center">
-
-![Cluster Age](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.stevewm.dev%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_age_days&style=for-the-badge&logo=kubernetes&label=Age)
-![Uptime](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.stevewm.dev%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_uptime_days&style=for-the-badge&logo=kubernetes&label=Uptime)
-
-![Nodes](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.stevewm.dev%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_node_count&style=for-the-badge&logo=kubernetes&label=Nodes)
-![Pods](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.stevewm.dev%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_pod_count&style=for-the-badge&logo=talos&label=Pods)
-![CPU Usage](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.stevewm.dev%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_cpu_usage&style=for-the-badge&logo=kubernetes&label=CPU)
-![Memory Usage](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.stevewm.dev%2Fquery%3Fformat%3Dendpoint%26metric%3Dcluster_memory_usage&style=for-the-badge&logo=kubernetes&label=Memory)
+[![Age](https://kg.stevewm.dev/cluster_age_days?format=badge)](https://github.com/kashalls/kromgo/)&nbsp;
+[![Uptime](https://kg.stevewm.dev/cluster_uptime_days?format=badge)](https://github.com/kashalls/kromgo/)&nbsp;
+[![Nodes](https://kg.stevewm.dev/cluster_node_count?format=badge)](https://github.com/kashalls/kromgo/)&nbsp;
+[![Alerts](https://kg.stevewm.dev/cluster_alert_count?format=badge)](https://github.com/kashalls/kromgo/)&nbsp;
+[![Pods](https://kg.stevewm.dev/cluster_pod_count?format=badge)](https://github.com/kashalls/kromgo/)&nbsp;
+[![CPU](https://kg.stevewm.dev/cluster_cpu_usage?format=badge)](https://github.com/kashalls/kromgo/)&nbsp;
+[![Memory](https://kg.stevewm.dev/cluster_memory_usage?format=badge)](https://github.com/kashalls/kromgo/)
 
 </div>
 
@@ -34,11 +31,11 @@ Welcome to the repository for my home infrastructure, otherwise known as my home
 | [Talos](https://www.talos.dev/)                                 | Kubernetes distribution                 |
 | [FluxCD](https://fluxcd.io/)                                    | GitOps                                  |
 | [Renovate](https://github.com/renovatebot/renovate)             | Automated dependency upgrades           |
-| [GitHub Actions](https://docs.github.com/en/actions)            | Automation                              |
+| [GitHub Actions](https://docs.github.com/en/actions)            | CI/CD                                   |
 | [mise](https://mise.jdx.dev/)                                   | Project tools and environment variables |
 | [hk](https://hk.jdx.dev)                                        | Linting and validation                  |
 | [Doppler](https://www.doppler.com/)                             | Secrets management                      |
-| [go-task](https://github.com/go-task/task)                      | Task runner                             |
+| [just](https://github.com/casey/just)                           | Task runner                             |
 
 ## 🤝 Acknowledgements
 
