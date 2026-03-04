@@ -7,4 +7,4 @@ resources:
   - ./namespace.yaml
   - ./minecraft/ks.yaml
   - ./romm/ks.yaml
-  - ./vintagestory/ks.yaml
+  #- ./vintagestory/ks.yaml
