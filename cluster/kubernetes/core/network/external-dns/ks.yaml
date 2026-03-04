@@ -23,8 +23,6 @@ spec:
   dependsOn:
     - name: core-external-secrets-secretstore
       namespace: security
-    - name: core-prometheus-operator-crds
-      namespace: observability
     - name: core-external-dns-cloudflare
 
 
@@ -53,5 +51,3 @@ spec:
   dependsOn:
     - name: core-external-secrets-secretstore
       namespace: security
-    - name: core-prometheus-operator-crds
-      namespace: observability

@@ -21,7 +21,6 @@ spec:
   wait: true
   dependsOn:
     - name: core-kube-prometheus-stack
-    - name: core-prometheus-operator-crds
   components:
     - ../../../../components/sso-secret
   postBuild:
