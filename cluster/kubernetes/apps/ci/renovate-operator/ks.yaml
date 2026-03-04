@@ -21,6 +21,9 @@ spec:
   wait: true
   components:
     - ../../../../components/sso-secret
+  postBuild:
+    substitute:
+      APP: renovate
 
 
 # yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/kustomize.toolkit.fluxcd.io/kustomization_v1.json
