@@ -23,6 +23,13 @@ spec:
     mode: warn
   values:
     fullnameOverride: *app
+    auth:
+      oidc:
+        enabled: true
+        issuerUrl: https://sso.stevewm.dev
+        clientId: renovate
+        existingSecret: renovate-sso
+        secretKey: client_secret
     route:
       enabled: true
       hostnames:
