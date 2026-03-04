@@ -103,6 +103,7 @@ cluster:
       enable-aggregator-routing: "true"
       feature-gates: MutatingAdmissionPolicy=true
       runtime-config: admissionregistration.k8s.io/v1beta1=true
+      service-node-port-range: 30000-42767
     certSANs:
       - 127.0.0.1 # KubePrism
       - 10.0.0.31
