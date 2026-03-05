@@ -12,13 +12,13 @@ Welcome to the repository for my home infrastructure, otherwise known as my home
 [![Kubernetes](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.stevewm.dev%2Fkubernetes_version&style=for-the-badge&logo=kubernetes&logoColor=white&color=blue&label=k8s)](https://kubernetes.io)&nbsp;&nbsp;
 [![Flux](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.stevewm.dev%2Fflux_version&style=for-the-badge&logo=flux&logoColor=white&color=blue&label=flux)](https://fluxcd.io)
 
-[![Age](https://kg.stevewm.dev/cluster_age_days?format=badge)](https://github.com/kashalls/kromgo/)&nbsp;
-[![Uptime](https://kg.stevewm.dev/cluster_uptime_days?format=badge)](https://github.com/kashalls/kromgo/)&nbsp;
-[![Nodes](https://kg.stevewm.dev/cluster_node_count?format=badge)](https://github.com/kashalls/kromgo/)&nbsp;
-[![Alerts](https://kg.stevewm.dev/cluster_alert_count?format=badge)](https://github.com/kashalls/kromgo/)&nbsp;
-[![Pods](https://kg.stevewm.dev/cluster_pod_count?format=badge)](https://github.com/kashalls/kromgo/)&nbsp;
-[![CPU](https://kg.stevewm.dev/cluster_cpu_usage?format=badge)](https://github.com/kashalls/kromgo/)&nbsp;
-[![Memory](https://kg.stevewm.dev/cluster_memory_usage?format=badge)](https://github.com/kashalls/kromgo/)
+[![Age](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.stevewm.dev%2Fcluster_age_days%3Fformat%3Dendpoint)](https://github.com/kashalls/kromgo/)&nbsp;
+[![Uptime](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.stevewm.dev%2Fcluster_uptime_days%3Fformat%3Dendpoint)](https://github.com/kashalls/kromgo/)&nbsp;
+[![Nodes](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.stevewm.dev%2Fcluster_node_count%3Fformat%3Dendpoint)](https://github.com/kashalls/kromgo/)&nbsp;
+[![Alerts](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.stevewm.dev%2Fcluster_alert_count%3Fformat%3Dendpoint)](https://github.com/kashalls/kromgo/)&nbsp;
+[![Pods](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.stevewm.dev%2Fcluster_pod_count%3Fformat%3Dendpoint)](https://github.com/kashalls/kromgo/)&nbsp;
+[![CPU](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.stevewm.dev%2Fcluster_cpu_usage%3Fformat%3Dendpoint)](https://github.com/kashalls/kromgo/)&nbsp;
+[![Memory](https://img.shields.io/endpoint?url=https%3A%2F%2Fkg.stevewm.dev%2Fcluster_memory_usage%3Fformat%3Dendpoint)](https://github.com/kashalls/kromgo/)
 
 </div>
 
