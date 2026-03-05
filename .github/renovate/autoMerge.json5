@@ -12,11 +12,16 @@
       ignoreTests: false,
     },
     {
-      description: "Raise PRs any time",
+      description: "Raise and automerge tof-map digests any time",
+      matchUpdateTypes: ["digest"],
+      automerge: true,
+      automergeType: "pr",
+      matchDatasources: ["docker"],
       matchPackageNames: [
-        "ghcr.io/stevewm",
+        "ghcr.io/stevewm/tof-map",
       ],
       schedule: [],
+      ignoreTests: false,
     },
     {
       description: "Auto merge minors and patches",
