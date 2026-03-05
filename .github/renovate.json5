@@ -2,7 +2,7 @@
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   extends: [
     "github>stevewm/renovate-config:default.json5",
-    "github>stevewm/homelab//.github/renovate/automerge.json5",
+    "github>stevewm/homelab//.github/renovate/autoMerge.json5",
     "github>stevewm/homelab//.github/renovate/branchPrefixes.json5",
     "github>stevewm/homelab//.github/renovate/customDatasources.json5",
     "github>stevewm/homelab//.github/renovate/grafanaDashboards.json5",
@@ -15,7 +15,6 @@
     "* 0-23 * * 6",
     "* 0-23 * * 7",
   ],
-  ignorePaths: ["**cluster/**/.archive/**", "**nas/.archive/**"],
   flux: {
     managerFilePatterns: ["/(^|/)cluster/kubernetes/.+\\.ya?ml$/"],
   },
