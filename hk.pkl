@@ -48,6 +48,7 @@ local linters = new Mapping<String, Step> {
   ["yamllint"] {
     glob = "*.{yml,yaml}"
     check = "yamllint --config-file "+config+"/yamllint.yaml {{ files }}"
+    fix = "yamlfmt -conf "+config+"/yamfmt.yaml {{ files }}"
   }
 
   ["pkl"] {
