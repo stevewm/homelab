@@ -26,16 +26,16 @@ Welcome to the repository for my home infrastructure, otherwise known as my home
 
 ## 🛠️ Built With
 
-| Name                                                            | Purpose                                 |
-| --------------------------------------------------------------- | --------------------------------------- |
-| [Talos](https://www.talos.dev/)                                 | Kubernetes distribution                 |
-| [FluxCD](https://fluxcd.io/)                                    | GitOps                                  |
-| [Renovate](https://github.com/renovatebot/renovate)             | Automated dependency upgrades           |
-| [GitHub Actions](https://docs.github.com/en/actions)            | CI/CD                                   |
-| [mise](https://mise.jdx.dev/)                                   | Project tools and environment variables |
-| [hk](https://hk.jdx.dev)                                        | Linting and validation                  |
-| [Doppler](https://www.doppler.com/)                             | Secrets management                      |
-| [just](https://github.com/casey/just)                           | Task runner                             |
+| Name                                                 | Purpose                                 |
+| ---------------------------------------------------- | --------------------------------------- |
+| [Talos](https://www.talos.dev/)                      | Kubernetes distribution                 |
+| [FluxCD](https://fluxcd.io/)                         | GitOps                                  |
+| [Renovate](https://github.com/renovatebot/renovate)  | Automated dependency upgrades           |
+| [GitHub Actions](https://docs.github.com/en/actions) | CI/CD                                   |
+| [mise](https://mise.jdx.dev/)                        | Project tools and environment variables |
+| [hk](https://hk.jdx.dev)                             | Linting and validation                  |
+| [Doppler](https://www.doppler.com/)                  | Secrets management                      |
+| [just](https://github.com/casey/just)                | Task runner                             |
 
 ## 🤝 Acknowledgements
 

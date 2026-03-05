@@ -1,13 +1,13 @@
 [settings]
 pipx_uvx = true
-experimental = true # for uv_venv_auto
+experimental = true        # for uv_venv_auto
 python.uv_venv_auto = true
 
 [env]
 KUBECONFIG = "{{ config_root }}/kubeconfig"
 TALOSCONFIG = "{{ config_root }}/talosconfig"
-MINIJINJA_CONFIG_FILE="{{ config_root }}/.github/.minijinja.toml"
-HOMEBREW_BREWFILE="{{ config_root }}/.github/Brewfile"
+MINIJINJA_CONFIG_FILE = "{{ config_root }}/.github/.minijinja.toml"
+HOMEBREW_BREWFILE = "{{ config_root }}/.github/Brewfile"
 _.path = ['{{config_root}}/node_modules/.bin']
 
 [tools]
@@ -56,3 +56,4 @@ just = "1.46.0"
 gum = "0.17.0"
 "cargo:just-lsp" = "0.3.4"
 rumdl = "0.1.40"
+shfmt = "3.12.0"

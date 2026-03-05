@@ -3,16 +3,16 @@
 set -eou pipefail
 
 if [ "$#" -ne 1 ]; then
-    echo "Usage: $0 <app-name>"
-    exit 1
+  echo "Usage: $0 <app-name>"
+  exit 1
 fi
 APP=$(echo "$1" | tr '[:lower:]' '[:upper:]')
 
 AUTHELIA_OUTPUT=$(container run --rm authelia/authelia:latest authelia crypto hash generate pbkdf2 \
-    --variant sha512 \
-    --random \
-    --random.length 72 \
-    --random.charset rfc3986 | tr '\n' ',' | sed 's/,$//')
+  --variant sha512 \
+  --random \
+  --random.length 72 \
+  --random.charset rfc3986 | tr '\n' ',' | sed 's/,$//')
 
 APP_CLIENT_SECRET=$(echo "$AUTHELIA_OUTPUT" | awk -F'Random Password: |,Digest:' '{print $2}')
 APP_CLIENT_SECRET_DIGEST=$(echo "$AUTHELIA_OUTPUT" | awk -F'Digest: ' '{print $2}')
