@@ -34,9 +34,10 @@ spec:
       enabled: true
       hostnames:
         - renovate.stevewm.dev
+      parentRefs:
+        - name: envoy-internal
+          namespace: network
     webhook:
       enabled: true
-    parentRefs:
-      - name: envoy-internal
-        namespace: network
+
     jobTTLSecondsAfterFinished: 86400 # 1 day
