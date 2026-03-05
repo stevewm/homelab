@@ -13,10 +13,10 @@
     },
     {
       description: "Raise and automerge tof-map digests any time",
-      matchUpdateTypes: ["digest"],
+      matchDatasources: ["docker"],
       automerge: true,
       automergeType: "pr",
-      matchDatasources: ["docker"],
+      matchUpdateTypes: ["digest"],
       matchPackageNames: [
         "ghcr.io/stevewm/tof-map",
       ],
