@@ -1,0 +1,23 @@
+[global]
+disable = [
+  "MD013",  # Line length
+  "MD033",  # Inline HTML
+  "MD041",  # First line in file should be a top-level heading
+]
+
+exclude = [
+    ".git",
+    ".github",
+    "node_modules",
+    "vendor",
+    "dist",
+    "build",
+    "CHANGELOG.md",
+    "LICENSE.md",
+]
+
+respect-gitignore = true
+
+[MD044]
+names = ["rumdl", "Markdown", "GitHub"]
+code-blocks = false

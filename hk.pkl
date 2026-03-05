@@ -30,8 +30,8 @@ local linters = new Mapping<String, Step> {
   ["markdownlint"] {
     glob = "*.md"
     stage = "*.md"
-    check = "markdownlint-cli2 --config "+config+"/conf.markdownlint.yaml {{ files }}"
-    fix = "markdownlint-cli2 --config "+config+"/conf.markdownlint.yaml --fix {{ files }}"
+    check = "rumdl check --config "+config+"/rumdl.toml {{ files }}"
+    fix = "rumdl fmt --config "+config+"/rumdl.toml {{ files }}"
   }
 
   ["dclint"] {
@@ -47,13 +47,16 @@ local linters = new Mapping<String, Step> {
 
   ["yamllint"] {
     glob = "*.{yml,yaml}"
+    stage = "*.{yml,yaml}"
     check = "yamllint --config-file "+config+"/yamllint.yaml {{ files }}"
     fix = "yamlfmt -conf "+config+"/yamfmt.yaml {{ files }}"
   }
 
   ["pkl"] {
     glob = "*.pkl"
+    stage = "*.pkl"
     check = "pkl eval {{ files }} >/dev/null"
+    fix = "pkl format --write {{ files }}"
   }
 }
 
