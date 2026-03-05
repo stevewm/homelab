@@ -1,5 +1,5 @@
-amends "package://github.com/jdx/hk/releases/download/v1.27.0/hk@1.27.0#/Config.pkl"
-import "package://github.com/jdx/hk/releases/download/v1.27.0/hk@1.27.0#/Builtins.pkl"
+amends "package://github.com/jdx/hk/releases/download/v1.37.0/hk@1.37.0#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v1.37.0/hk@1.37.0#/Builtins.pkl"
 
 local config = ".github/linters"
 local linters = new Mapping<String, Step> {
@@ -27,7 +27,7 @@ local linters = new Mapping<String, Step> {
     fix = "ruff check --config ruff check --config "+config+"/ruff.toml --fix {{ files }}"
   }
 
-  ["markdownlint"] {
+  ["rumdl"] {
     glob = "*.md"
     stage = "*.md"
     check = "rumdl check --config "+config+"/rumdl.toml {{ files }}"
@@ -43,13 +43,6 @@ local linters = new Mapping<String, Step> {
   ["renovate-config"] {
     glob = List(".github/renovate.json5", ".github/renovate/*.json5")
     check = "renovate-config-validator {{ files }}"
-  }
-
-  ["yamllint"] {
-    glob = "*.{yml,yaml}"
-    stage = "*.{yml,yaml}"
-    check = "yamllint --config-file "+config+"/yamllint.yaml {{ files }}"
-    fix = "yamlfmt -conf "+config+"/yamfmt.yaml {{ files }}"
   }
 
   ["pkl"] {
