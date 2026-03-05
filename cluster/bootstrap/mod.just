@@ -9,6 +9,7 @@ controller := `talosctl config info --output json | jq --raw-output '.endpoints[
 nodes := `talosctl config info -o yaml | yq -e '.nodes | join (" ")'`
 
 [private]
+[confirm("Proceed to bootstrap?")]
 default: talos kubernetes (kubeconfig "node") wait namespaces resources crds apps kubeconfig
 
 [doc('Install Talos')]
@@ -35,11 +36,11 @@ kubernetes:
 [doc('Fetch kubeconfig')]
 kubeconfig lb="cilium":
     just log info "Running stage..." "stage" "$0"
-    if ! talosctl kubeconfig -n "{{ controller }}" -f --force-context-name homelab {{ justfile_dir() }}; then \
+    if ! talosctl kubeconfig -n "{{ controller }}" -f --force-context-name main {{ justfile_dir() }}; then \
       just log fatal "Failed to fetch kubeconfig" "stage" "$0"; \
     fi
     if [[ "{{ lb }}" != "cilium" ]]; then \
-      if ! kubectl config set-cluster homelab --server "https://{{ controller }}:6443"; then \
+      if ! kubectl config set-cluster main --server "https://{{ controller }}:6443"; then \
         just log fatal "Failed to set kubectl cluster server address" "stage" "$0"; \
       fi; \
     fi

@@ -8,7 +8,6 @@ KUBECONFIG = "{{ config_root }}/kubeconfig"
 TALOSCONFIG = "{{ config_root }}/talosconfig"
 MINIJINJA_CONFIG_FILE="{{ config_root }}/.github/.minijinja.toml"
 HOMEBREW_BREWFILE="{{ config_root }}/.github/Brewfile"
-#DOPPLER_CONFIG_DIR= "{{ config_root }}"
 _.path = ['{{config_root}}/node_modules/.bin']
 
 [tools]
@@ -19,7 +18,6 @@ node = "24.14.0"
 
 # Flux
 "aqua:flux2" = "2.8.1"
-# "uvx:flux-local" = "7.5.6"
 
 # Kube
 "aqua:CrunchyData/postgres-operator-client" = "0.5.3"
@@ -33,7 +31,6 @@ node = "24.14.0"
 "aqua:siderolabs/talos" = "1.12.4"
 
 # Tools
-"aqua:go-task/task" = "3.48.0"
 "aqua:yq" = "4.52.4"
 "aqua:jq" = "1.8.1"
 "github:DopplerHQ/cli" = "3.75.3"

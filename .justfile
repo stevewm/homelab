@@ -13,6 +13,8 @@ mod talos "cluster/talos"
 mod nas "nas"
 # VPS management
 mod? vps "vps"
+# game server rcon
+mod? rcon "cluster/kubernetes/apps/games"
 
 [private]
 default:
@@ -21,7 +23,7 @@ default:
 
 [private]
 log lvl msg *args:
-  gum log -t rfc3339 -s -l "{{ lvl }}" "{{ msg }}" {{ args }}
+    gum log -t rfc3339 -s -l "{{ lvl }}" "{{ msg }}" {{ args }}
 
 [private]
 template doppler_proj file *args:

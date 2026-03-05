@@ -64,6 +64,10 @@ sync-all-es:
       just k8s sync-es "$ns" "$name"; \
     done
 
+[doc('Unlock restic repo')]
+unlock ns app dest="hetzner":
+    kubectl -n "{{ ns }}" patch --field-manager=flux-client-side-apply replicationsources "{{ app }}"-backup-"{{ dest }}" --type merge --patch "{\"spec\":{\"restic\":{\"unlock\":\"{{now | unixEpoch}}\"}}}"
+
 [doc('Snapshot all VolSync ReplicationSource')]
 snapshot ns name:
     kubectl -n "{{ ns }}" patch replicationsources "{{ name }}" --type merge -p '{"spec":{"trigger":{"manual":"$(date +%s)"}}}'; \
@@ -86,8 +90,7 @@ keda-all state:
 
 [doc('Create OIDC secrets')]
 create-oidc-secrets app:
-    export APP="{{ app }}"; \
-    "{{ scripts_dir }}/create-oidc-secrets.sh"
+    "{{ scripts_dir }}/create-oidc-secrets.sh {{ app }}"
 
 [private]
 render-local-ks ns ks:
