@@ -12,11 +12,19 @@
       ignoreTests: false,
     },
     {
+      description: "Raise PRs any time",
+      matchPackageNames: [
+        "ghcr.io/stevewm",
+      ],
+      schedule: [],
+    },
+    {
       description: "Auto merge minors and patches",
       matchDatasources: ["docker"],
       automerge: true,
       automergeType: "pr",
       matchUpdateTypes: ["minor", "patch"],
+      schedule: [],
       matchPackageNames: [
         "/kube-prometheus-stack/",
         "ghcr.io/mogenius/helm-charts/renovate-operator",
