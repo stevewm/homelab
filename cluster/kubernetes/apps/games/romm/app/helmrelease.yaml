@@ -103,6 +103,7 @@ spec:
               REDIS_DB: "0"
               # SSO
               DISABLE_USERPASS_LOGIN: "true"
+              OIDC_AUTOLOGIN: "true"
               OIDC_ENABLED: "true"
               OIDC_PROVIDER: authelia
               OIDC_CLIENT_ID: romm
