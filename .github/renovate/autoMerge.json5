@@ -30,6 +30,7 @@
         "ghcr.io/mogenius/helm-charts/renovate-operator",
         "ghcr.io/stevewm",
       ],
+      schedule: [],
       ignoreTests: false,
     },
     {
