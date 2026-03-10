@@ -37,7 +37,7 @@ spec:
       app.kubernetes.io/name: &app grafana-operator
   interval: 30m
   timeout: 5m
-  path: ./cluster/kubernetes/core/observability/grafana-operator/app
+  path: ./cluster/kubernetes/core/observability/grafana-operator/instance
   prune: true
   sourceRef:
     kind: GitRepository
