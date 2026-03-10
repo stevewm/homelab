@@ -7,6 +7,7 @@ resources:
   - ./dns-endpoint.yaml
   - ./externalsecret.yaml
   - ./helmrelease.yaml
+  - ./grafanadashboard.yaml
 configMapGenerator:
   - name: cloudflared-config
     files:

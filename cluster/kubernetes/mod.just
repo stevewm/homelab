@@ -66,7 +66,7 @@ sync-all-es:
 
 [doc('Unlock restic repo')]
 unlock ns app dest="hetzner":
-    kubectl -n "{{ ns }}" patch --field-manager=flux-client-side-apply replicationsources "{{ app }}"-backup-"{{ dest }}" --type merge --patch "{\"spec\":{\"restic\":{\"unlock\":\"{{now | unixEpoch}}\"}}}"
+    kubectl -n "{{ ns }}" patch --field-manager=flux-client-side-apply replicationsources "{{ app }}"-backup-"{{ dest }}" --type merge --patch "{\"spec\":{\"restic\":{\"unlock\":\"$(date +%s)\"}}}"
 
 [doc('Snapshot all VolSync ReplicationSource')]
 snapshot ns name:

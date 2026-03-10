@@ -7,5 +7,6 @@ resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
   - ./prometheusrule.yaml
+  - ./grafanadashboard.yaml
   - ./le-prod-issuer.yaml
   # - ./le-staging-issuer.yaml
