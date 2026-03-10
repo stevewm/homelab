@@ -6,6 +6,7 @@ resources:
   - ./ocirepository.yaml
   - ./helmrelease.yaml
   - ./externalsecret.yaml
+  - ./grafanadashboard.yaml
 configMapGenerator:
   - name: tapo
     files:

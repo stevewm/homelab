@@ -7,3 +7,12 @@ resources:
   - ./helmrelease.yaml
   - ./externalsecret.yaml
   - ./scrapeconfig.yaml
+  - ./grafanadashboard.yaml
+configMapGenerator:
+  - name: jellyfin-grafana-dashboard
+    files:
+      - dashboard.json=./resources/dashboard.json
+generatorOptions:
+  disableNameSuffixHash: true
+  annotations:
+    kustomize.toolkit.fluxcd.io/substitute: disabled

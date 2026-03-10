@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/grafana.integreatly.org/grafanadashboard_v1beta1.json
+---
+apiVersion: grafana.integreatly.org/v1beta1
+kind: GrafanaDashboard
+metadata:
+  name: cloudflared
+spec:
+  allowCrossNamespaceImport: true
+  instanceSelector:
+    matchLabels:
+      grafana.internal/instance: grafana
+  datasources:
+    - datasourceName: prometheus
+      inputName: DS_PROMETHEUS
+  envs:
+    - name: VAR_KWHPRICE
+      value: "0.0507" # https://kwhprice.eu/en/netherlands
+  url: "https://grafana.com/api/dashboards/21982/revisions/3/download"
