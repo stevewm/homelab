@@ -50,5 +50,5 @@ spec:
     - ../../../../components/sso-secret
   postBuild:
     substitute:
-      APP: *app
+      APP: grafana
       OAUTH_SECRET_KEY_NAME: GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET
