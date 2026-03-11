@@ -1,0 +1,24 @@
+{
+  customManagers: [
+    {
+      customType: "regex",
+      fileMatch: ["hk\\.pkl$"],
+      matchStrings: [
+        "github\\.com/jdx/hk/releases/download/v(?<currentValue>[\\d.]+)/hk@[\\d.]+",
+      ],
+      depNameTemplate: "jdx/hk",
+      datasourceTemplate: "github-releases",
+      extractVersionTemplate: "^v(?<version>.*)$",
+    },
+  ],
+  packageRules: [
+    {
+      description: "hk",
+      groupName: "hk",
+      matchPackageNames: ["/hk/"],
+      group: {
+        commitMessageTopic: "{{{groupName}}}",
+      },
+    },
+  ],
+}
