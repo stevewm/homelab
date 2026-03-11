@@ -23,7 +23,7 @@ spec:
       icon: signin
       client_id: grafana
       scopes: openid profile email groups
-      allow_sign_up: "false"
+      allow_sign_up: "true"
       email_attribute_name: email
       email_attribute_path: email
       login_attribute_path: email
