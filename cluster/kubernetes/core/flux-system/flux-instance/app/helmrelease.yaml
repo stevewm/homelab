@@ -12,6 +12,7 @@ spec:
   values:
     instance:
       distribution:
+        version: 2.x
         artifact: oci://ghcr.io/controlplaneio-fluxcd/flux-operator-manifests:v0.32.0
       cluster:
         networkPolicy: true
