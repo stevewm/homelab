@@ -4,7 +4,7 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: app-actions-runner-controller
-  namespace: &namespace ci
+  namespace: &namespace actions-runner
 spec:
   targetNamespace: *namespace
   commonMetadata:
@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/name: actions-runner-controller
   interval: 30m
   timeout: 5m
-  path: ./cluster/kubernetes/apps/ci/actions-runner-controller/app
+  path: ./cluster/kubernetes/apps/actions-runner/actions-runner-controller/app
   prune: true
   sourceRef:
     kind: GitRepository
@@ -27,7 +27,7 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: app-actions-runner-controller-runners
-  namespace: &namespace ci
+  namespace: &namespace actions-runner
 spec:
   targetNamespace: *namespace
   commonMetadata:
@@ -36,7 +36,7 @@ spec:
       app.kubernetes.io/part-of: actions-runner-controller
   interval: 30m
   timeout: 5m
-  path: ./cluster/kubernetes/apps/ci/actions-runner-controller/runners
+  path: ./cluster/kubernetes/apps/actions-runner/actions-runner-controller/runners
   prune: true
   sourceRef:
     kind: GitRepository
