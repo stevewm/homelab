@@ -4,6 +4,8 @@ kind: RenovateJob
 metadata:
   name: renovate-stevewm
 spec:
+  provider:
+    name: github
   discoveryFilter: stevewm/*
   extraEnv:
     - name: RENOVATE_PLATFORM
