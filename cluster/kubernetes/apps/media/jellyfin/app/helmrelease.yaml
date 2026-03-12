@@ -137,6 +137,8 @@ spec:
         type: emptyDir
       transcode:
         type: emptyDir
+        medium: Memory
+        sizeLimit: 2Gi
       tmp:
         type: emptyDir
       media:
