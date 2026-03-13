@@ -17,18 +17,18 @@ python = "3"
 node = "24.14.0"
 
 # Flux
-"aqua:flux2" = "2.8.1"
+"aqua:flux2" = "2.8.2"
 
 # Kube
 "aqua:CrunchyData/postgres-operator-client" = "0.5.3"
 "aqua:kustomize" = "5.8.1"
-"aqua:helm" = "4.1.1"
+"aqua:helm" = "4.1.3"
 "github:helmfile/helmfile" = "1.4.1"
 "aqua:derailed/k9s" = "0.50.18"
 "aqua:stern/stern" = "1.33.1"
 
 # Talos
-"aqua:siderolabs/talos" = "1.12.4"
+"aqua:siderolabs/talos" = "1.12.5"
 
 # Tools
 "aqua:yq" = "4.52.4"
@@ -42,9 +42,9 @@ node = "24.14.0"
 # hk
 "aqua:hk" = "1.38.0"
 "aqua:pkl" = "0.31.0"
-"aqua:ruff" = "0.15.5"
+"aqua:ruff" = "0.15.6"
 "npm:dclint" = "3.1.0"
-"npm:renovate" = "43.59.3"
+"npm:renovate" = "43.66.4"
 "aqua:actionlint" = "1.7.11"
 "npm:prettier" = "3.8.1"
 "aqua:shellcheck" = "0.11.0"
@@ -55,4 +55,4 @@ just = "1.46.0"
 gum = "0.17.0"
 "cargo:just-lsp" = "0.3.4"
 rumdl = "0.1.40"
-shfmt = "3.12.0"
+shfmt = "3.13.0"
