@@ -12,7 +12,7 @@ _.path = ['{{config_root}}/node_modules/.bin']
 
 [tools]
 # https://docs.renovatebot.com/modules/manager/mise/#supported-default-registry-tool-short-names
-uv = "0.10.9"
+uv = "0.10.10"
 python = "3"
 node = "24.14.0"
 
@@ -44,7 +44,7 @@ node = "24.14.0"
 "aqua:pkl" = "0.31.0"
 "aqua:ruff" = "0.15.6"
 "npm:dclint" = "3.1.0"
-"npm:renovate" = "43.70.0"
+"npm:renovate" = "43.71.0"
 "aqua:actionlint" = "1.7.11"
 "npm:prettier" = "3.8.1"
 "aqua:shellcheck" = "0.11.0"
