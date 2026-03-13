@@ -33,7 +33,7 @@ spec:
       app.kubernetes.io/name: tuppr
   interval: 30m
   timeout: 5m
-  path: ./cluster/kubernetes/core/system-upgrade/tuppr/app
+  path: ./cluster/kubernetes/core/system-upgrade/tuppr/upgrades
   prune: true
   sourceRef:
     kind: GitRepository
