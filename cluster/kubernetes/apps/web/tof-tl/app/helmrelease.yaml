@@ -36,7 +36,8 @@ spec:
 
     controllers:
       tof-tl:
-        replicas: 1
+        strategy: RollingUpdate
+        replicas: 2
         defaultContainerOptionsStrategy: merge
         defaultContainerOptions:
           securityContext:
