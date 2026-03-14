@@ -83,6 +83,11 @@ spec:
           - backendRefs:
               - identifier: app
                 port: *port
+        annotations:
+          gethomepage.dev/name: ToF Map
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: games
+          gethomepage.dev/icon: mdi-map-search-outline-#ffffff
 
     persistence:
       poi-conf:
