@@ -89,7 +89,7 @@ spec:
           gethomepage.dev/name: *app
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: media
-          gethomepage.dev/icon: sh-jellyseerr-light.png
+          gethomepage.dev/icon: sh-seerr-light.png
           gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_SEERR_API_KEY}}` }}"
           gethomepage.dev/widget.type: jellyseerr
           gethomepage.dev/widget.url: "http://seerr.media.svc.cluster.local"
