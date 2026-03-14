@@ -9,7 +9,7 @@ metadata:
     gethomepage.dev/enabled: "true"
     gethomepage.dev/group: observability
     gethomepage.dev/icon: sh-grafana-light.png
-
+    gethomepage.dev/pod-selector: grafana.internal/instance=grafana
 spec:
   hostnames:
     - graf.stevewm.dev
