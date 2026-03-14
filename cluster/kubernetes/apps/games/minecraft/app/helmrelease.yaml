@@ -151,11 +151,6 @@ spec:
         type: LoadBalancer
         annotations:
           lbipam.cilium.io/ips: "10.0.0.69"
-          gethomepage.dev/name: minecraft
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/group: games
-          gethomepage.dev/widget.type: minecraft
-          gethomepage.dev/widget.url: "tcp://mc.stevewm.dev:25565"
         ports:
           java:
             port: 25565
