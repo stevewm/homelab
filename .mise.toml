@@ -12,12 +12,12 @@ _.path = ['{{config_root}}/node_modules/.bin']
 
 [tools]
 # https://docs.renovatebot.com/modules/manager/mise/#supported-default-registry-tool-short-names
-uv = "0.10.10"
+uv = "0.10.11"
 python = "3"
 node = "24.14.0"
 
 # Flux
-"aqua:flux2" = "2.8.2"
+"aqua:flux2" = "2.8.3"
 
 # Kube
 "aqua:CrunchyData/postgres-operator-client" = "0.5.3"
@@ -44,14 +44,14 @@ node = "24.14.0"
 "aqua:pkl" = "0.31.0"
 "aqua:ruff" = "0.15.6"
 "npm:dclint" = "3.1.0"
-"npm:renovate" = "43.76.3"
+"npm:renovate" = "43.77.8"
 "aqua:actionlint" = "1.7.11"
 "npm:prettier" = "3.8.1"
 "aqua:shellcheck" = "0.11.0"
 rust = "1.94.0"
 kubecolor = "latest"
 kubens = "0.9.5"
-just = "1.47.0"
+just = "1.47.1"
 gum = "0.17.0"
 "cargo:just-lsp" = "0.4.0"
 rumdl = "0.1.40"
