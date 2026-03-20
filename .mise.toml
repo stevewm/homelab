@@ -12,7 +12,7 @@ _.path = ['{{config_root}}/node_modules/.bin']
 
 [tools]
 # https://docs.renovatebot.com/modules/manager/mise/#supported-default-registry-tool-short-names
-uv = "0.10.11"
+uv = "0.10.12"
 python = "3"
 node = "24.14.0"
 
@@ -28,7 +28,7 @@ node = "24.14.0"
 "aqua:stern/stern" = "1.33.1"
 
 # Talos
-"aqua:siderolabs/talos" = "1.12.5"
+"aqua:siderolabs/talos" = "1.12.6"
 
 # Tools
 "aqua:yq" = "4.52.4"
@@ -42,9 +42,9 @@ node = "24.14.0"
 # hk
 "aqua:hk" = "1.38.0"
 "aqua:pkl" = "0.31.0"
-"aqua:ruff" = "0.15.6"
+"aqua:ruff" = "0.15.7"
 "npm:dclint" = "3.1.0"
-"npm:renovate" = "43.77.8"
+"npm:renovate" = "43.84.0"
 "aqua:actionlint" = "1.7.11"
 "npm:prettier" = "3.8.1"
 "aqua:shellcheck" = "0.11.0"
