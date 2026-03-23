@@ -40,11 +40,11 @@ node = "24.14.0"
 "aqua:Orange-OpenSource/hurl" = "7.1.0"
 
 # hk
-"aqua:hk" = "1.38.0"
+"aqua:hk" = "1.39.0"
 "aqua:pkl" = "0.31.0"
 "aqua:ruff" = "0.15.7"
 "npm:dclint" = "3.1.0"
-"npm:renovate" = "43.84.0"
+"npm:renovate" = "43.86.0"
 "aqua:actionlint" = "1.7.11"
 "npm:prettier" = "3.8.1"
 "aqua:shellcheck" = "0.11.0"
