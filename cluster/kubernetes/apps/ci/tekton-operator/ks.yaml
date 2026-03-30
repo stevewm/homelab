@@ -12,7 +12,7 @@ spec:
       app.kubernetes.io/name: tekton-operator
   interval: 30m
   timeout: 5m
-  path: ./cluster/kubernetes/apps/ci/tekton/operator/
+  path: ./cluster/kubernetes/apps/ci/tekton/app/
   prune: true
   sourceRef:
     kind: GitRepository
