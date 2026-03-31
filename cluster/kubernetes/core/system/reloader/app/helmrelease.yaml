@@ -25,11 +25,13 @@ spec:
     mode: warn
   values:
     reloader:
+      readOnlyRootFileSystem: true
       podMonitor:
         enabled: true
-    resources:
-      requests:
-        cpu: 50m
-        memory: 64Mi
-      limits:
-        memory: 128Mi
+      deployment:
+        resources:
+          requests:
+            cpu: 5m
+            memory: 64Mi
+          limits:
+            memory: 128Mi
