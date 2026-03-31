@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://crds.stevewm.dev/crds/external-secrets.io/clustersecretstore_v1.json
 ---
 apiVersion: external-secrets.io/v1
 kind: ClusterSecretStore
