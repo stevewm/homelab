@@ -34,9 +34,9 @@ spec:
       limits:
         memory: 48Mi
     initContainerResources:
-      limits:
+      requests:
         cpu: 10m
         memory: 64Mi
-      requests:
+      limits:
         cpu: 10m
         memory: 92Mi
