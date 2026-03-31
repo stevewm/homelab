@@ -76,8 +76,8 @@ spec:
                 value: /tmp/sync
               - name: GITSYNC_LINK
                 value: /var/www/crds
-              # - name: GITSYNC_PERIOD
-              #   value: "30m"
+              - name: GITSYNC_PERIOD
+                value: "30m"
               - name: GITSYNC_SUBMODULES
                 value: "off"
               - name: GITSYNC_SPARSE_CHECKOUT_FILE
