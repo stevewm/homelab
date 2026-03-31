@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://crds.stevewm.dev/crds/monitoring.coreos.com/probe_v1.json
+---
+apiVersion: monitoring.coreos.com/v1
+kind: Probe
+metadata:
+  name: devices
+spec:
+  module: icmp
+  prober:
+    url: blackbox-exporter.observability.svc.cluster.local:9115
+  targets:
+    staticConfig:
+      static:
+        - lilnas.home.arpa # nas
+        - P115.home.arpa # rack plug
