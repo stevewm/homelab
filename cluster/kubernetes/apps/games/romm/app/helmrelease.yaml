@@ -36,7 +36,6 @@ spec:
 
     controllers:
       romm:
-        replicas: 0
         defaultContainerOptions:
           securityContext:
             allowPrivilegeEscalation: false

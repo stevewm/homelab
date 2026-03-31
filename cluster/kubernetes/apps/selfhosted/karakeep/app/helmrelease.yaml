@@ -24,6 +24,7 @@ spec:
     mode: warn
   values:
     defaultPodOptions:
+      automountServiceAccountToken: false
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000
@@ -33,6 +34,12 @@ spec:
 
     controllers:
       karakeep:
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+            capabilities:
+              drop: [ALL]
         forceRename: karakeep
         annotations:
           reloader.stakater.com/auto: "true"
