@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CRDs Catalog</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        max-width: 700px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+      }
+      input {
+        width: 100%;
+        font-size: 1rem;
+        padding: 0.5rem;
+        box-sizing: border-box;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 0.5rem;
+      }
+      li a {
+        display: block;
+        padding: 0.3rem 0;
+        text-decoration: none;
+        color: #0070f3;
+      }
+      li a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>CRDs Catalog</h2>
+    <input id="q" type="search" placeholder="Loading…" disabled autofocus />
+    <ul id="results"></ul>
+    <script>
+      let index = []
+
+      fetch("/search-index.json")
+        .then((r) => r.json())
+        .then((paths) => {
+          index = paths
+          const q = document.getElementById("q")
+          q.placeholder = `Search ${index.length} schemas…`
+          q.disabled = false
+          q.focus()
+        })
+        .catch(() => {
+          document.getElementById("q").placeholder =
+            "Failed to load search index"
+        })
+
+      document.getElementById("q").addEventListener("input", ({ target }) => {
+        const q = target.value.toLowerCase().trim()
+        const ul = document.getElementById("results")
+        if (!q) {
+          ul.innerHTML = ""
+          return
+        }
+        ul.innerHTML = index
+          .filter((p) => p.toLowerCase().includes(q))
+          .slice(0, 30)
+          .map(
+            (p) =>
+              `<li><a href="/${p}" target="_blank">${p.replace("crds/", "")}</a></li>`
+          )
+          .join("")
+      })
+    </script>
+  </body>
+</html>

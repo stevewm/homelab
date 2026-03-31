@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://json.schemastore.org/kustomization.json
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ./ocirepository.yaml
+  - ./helmrelease.yaml
+configMapGenerator:
+  - name: crds-catalog-caddy
+    files:
+      - index.html=./resources/index.html
+      - sparse-checkout=./resources/sparse-checkout
+      - exechook.sh=./resources/exechook.sh
+    options:
+      disableNameSuffixHash: true
