@@ -24,6 +24,13 @@ spec:
   values:
     fullnameOverride: *app
 
+    resources:
+      requests:
+        cpu: 10m
+        memory: 32Mi
+      limits:
+        memory: 64Mi
+
     config:
       jobTTLSecondsAfterFinished: 86400 # 1 day
 
