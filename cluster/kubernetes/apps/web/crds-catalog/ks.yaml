@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://crds.stevewm.dev/crds/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: app-crds-catalog
+  namespace: flux-system
+spec:
+  targetNamespace: web
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: crds-catalog
+  interval: 30m
+  timeout: 5m
+  path: ./cluster/kubernetes/apps/web/crds-catalog/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+    namespace: flux-system
+  wait: true

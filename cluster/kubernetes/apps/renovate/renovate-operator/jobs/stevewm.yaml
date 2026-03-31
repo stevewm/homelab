@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://crds.stevewm.dev/crds/renovate-operator.mogenius.com/renovatejob_v1alpha1.json
 ---
 apiVersion: renovate-operator.mogenius.com/v1alpha1
 kind: RenovateJob
@@ -19,6 +20,7 @@ spec:
   secretRef: renovate-secret
 
 ---
+# yaml-language-server: $schema=https://crds.stevewm.dev/crds/external-secrets.io/externalsecret_v1.json
 apiVersion: external-secrets.io/v1
 kind: ExternalSecret
 metadata:
@@ -34,7 +36,9 @@ spec:
     - secretKey: private_key_pem
       remoteRef:
         key: BOTTY_HILL_PRIVATE_KEY
+
 ---
+# yaml-language-server: $schema=https://crds.stevewm.dev/crds/generators.external-secrets.io/githubaccesstoken_v1alpha1.json
 apiVersion: generators.external-secrets.io/v1alpha1
 kind: GithubAccessToken
 metadata:
@@ -47,7 +51,9 @@ spec:
       secretRef:
         name: botty-hill-pem
         key: private_key_pem
+
 ---
+# yaml-language-server: $schema=https://crds.stevewm.dev/crds/external-secrets.io/externalsecret_v1.json
 apiVersion: external-secrets.io/v1
 kind: ExternalSecret
 metadata:
