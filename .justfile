@@ -13,7 +13,7 @@ mod talos "cluster/talos"
 mod nas "nas"
 # VPS management
 mod? vps "vps"
-# game server rcon
+# Game server rcon
 mod? rcon "cluster/kubernetes/apps/games"
 
 [private]
