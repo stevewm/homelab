@@ -10,6 +10,14 @@ spec:
     name: kguardian
   interval: 30m
   values:
+    broker:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      resources:
+        limits:
+        # cpu: 500m
+        memory: 1Gi
     controller:
       excludedNamespaces:
         - kguardian
