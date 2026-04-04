@@ -3,7 +3,7 @@ name: node-exporter
 
 services:
   node-exporter:
-    image: prom/node-exporter:v1.10.2@sha256:3ac34ce007accad95afed72149e0d2b927b7e42fd1c866149b945b84737c62c3
+    image: prom/node-exporter:v1.11.0@sha256:d375b27b61ea3233524bb12ce5f2de05bdc80cbce4c6806a45617d4f5bc7b1b1
     container_name: node-exporter
     volumes:
       - /proc:/host/proc:ro
