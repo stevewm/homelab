@@ -119,6 +119,14 @@
       },
     },
     {
+      description: "hk",
+      groupName: "repo tools",
+      matchPackageNames: ["jdx/hk"],
+      group: {
+        commitMessageTopic: "{{{groupName}}}",
+      },
+    },
+    {
       description: "vsmod",
       groupName: "vsmod",
       matchPackageNames: ["ghcr.io/stevewm/vsmod"],
