@@ -21,14 +21,17 @@
         padding: 0;
         margin-top: 0.5rem;
       }
-      li a {
+      li span {
         display: block;
         padding: 0.3rem 0;
-        text-decoration: none;
         color: #0070f3;
+        cursor: pointer;
       }
-      li a:hover {
+      li span:hover {
         text-decoration: underline;
+      }
+      li span.copied {
+        color: #16a34a;
       }
     </style>
   </head>
@@ -38,6 +41,19 @@
     <ul id="results"></ul>
     <script>
       let index = []
+
+      function copyDirective(el, path) {
+        const text = `# yaml-language-server: $schema=https://crds.stevewm.dev/${path}`
+        navigator.clipboard.writeText(text).then(() => {
+          const orig = el.textContent
+          el.textContent = "Copied!"
+          el.classList.add("copied")
+          setTimeout(() => {
+            el.textContent = orig
+            el.classList.remove("copied")
+          }, 1500)
+        })
+      }
 
       fetch("/search-index.json")
         .then((r) => r.json())
@@ -65,7 +81,7 @@
           .slice(0, 30)
           .map(
             (p) =>
-              `<li><a href="/${p}" target="_blank">${p.replace("crds/", "")}</a></li>`
+              `<li><span onclick="copyDirective(this, '${p}')">${p.replace("crds/", "")}</span></li>`
           )
           .join("")
       })
