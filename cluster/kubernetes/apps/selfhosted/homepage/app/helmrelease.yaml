@@ -93,6 +93,10 @@ spec:
             sectionName: https
 
     persistence:
+      app-config:
+        type: emptyDir
+        globalMounts:
+          - path: /app/config
       logs:
         type: emptyDir
       config:
