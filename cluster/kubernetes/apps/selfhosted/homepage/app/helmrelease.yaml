@@ -24,6 +24,14 @@ spec:
   values:
     defaultPodOptions:
       automountServiceAccountToken: true
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 2000
+        runAsGroup: 2000
+        fsGroup: 2000
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
 
     controllers:
       homepage:
@@ -43,7 +51,7 @@ spec:
           app:
             image:
               repository: ghcr.io/gethomepage/homepage
-              tag: v1.11.0@sha256:a59cc1f3368f4485805951ea91e74f2f3cae75fadc8147259aec7e4dd4912dc4
+              tag: v1.12.3@sha256:b650754d464cc72393e0ac411fcb1147b7748c34427ac606bff9f85fb6521a72
             probes:
               startup:
                 enabled: true
@@ -85,6 +93,10 @@ spec:
             sectionName: https
 
     persistence:
+      app-config:
+        type: emptyDir
+        globalMounts:
+          - path: /app/config
       logs:
         type: emptyDir
       config:

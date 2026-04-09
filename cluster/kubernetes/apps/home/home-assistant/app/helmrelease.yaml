@@ -65,7 +65,7 @@ spec:
           app:
             image:
               repository: ghcr.io/home-operations/home-assistant
-              tag: 2026.3.4
+              tag: 2026.4.1
             env:
               VENV_FOLDER: /venv
               HASS_HTTP_TRUSTED_PROXY: 10.244.0.0/24
@@ -79,7 +79,7 @@ spec:
           code-server:
             image:
               repository: ghcr.io/coder/code-server
-              tag: 4.112.0@sha256:ddd9b0b854fec5a3c65ec0095b5c59fb8505ad44d8a18d00d6fcf6a3179692dd
+              tag: 4.115.0@sha256:cbd5e05849367e521f774b760602cb9e0a8da1f159eaf89600490eec34129fe5
             args:
               - --auth
               - none

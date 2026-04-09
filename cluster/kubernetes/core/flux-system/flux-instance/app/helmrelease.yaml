@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+# yaml-language-server: $schema=https://crds.stevewm.dev/crds/helm.toolkit.fluxcd.io/helmrelease_v2.json
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -13,7 +13,7 @@ spec:
     instance:
       distribution:
         version: 2.x
-        artifact: oci://ghcr.io/controlplaneio-fluxcd/flux-operator-manifests:v0.45.1
+        artifact: oci://ghcr.io/controlplaneio-fluxcd/flux-operator-manifests:v0.46.0
       cluster:
         networkPolicy: true
       components:

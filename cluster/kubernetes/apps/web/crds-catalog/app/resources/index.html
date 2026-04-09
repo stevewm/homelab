@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CRDs Catalog</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        max-width: 700px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+      }
+      input {
+        width: 100%;
+        font-size: 1rem;
+        padding: 0.5rem;
+        box-sizing: border-box;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 0.5rem;
+      }
+      li span {
+        display: block;
+        padding: 0.3rem 0;
+        color: #0070f3;
+        cursor: pointer;
+      }
+      li span:hover {
+        text-decoration: underline;
+      }
+      li span.copied {
+        color: #16a34a;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>CRDs Catalog</h2>
+    <input id="q" type="search" placeholder="Loading…" disabled autofocus />
+    <ul id="results"></ul>
+    <script>
+      let index = []
+
+      function copyDirective(el, path) {
+        const text = `# yaml-language-server: $schema=https://crds.stevewm.dev/${path}`
+        navigator.clipboard.writeText(text).then(() => {
+          const orig = el.textContent
+          el.textContent = "Copied!"
+          el.classList.add("copied")
+          setTimeout(() => {
+            el.textContent = orig
+            el.classList.remove("copied")
+          }, 1500)
+        })
+      }
+
+      fetch("/search-index.json")
+        .then((r) => r.json())
+        .then((paths) => {
+          index = paths
+          const q = document.getElementById("q")
+          q.placeholder = `Search ${index.length} schemas…`
+          q.disabled = false
+          q.focus()
+        })
+        .catch(() => {
+          document.getElementById("q").placeholder =
+            "Failed to load search index"
+        })
+
+      document.getElementById("q").addEventListener("input", ({ target }) => {
+        const q = target.value.toLowerCase().trim()
+        const ul = document.getElementById("results")
+        if (!q) {
+          ul.innerHTML = ""
+          return
+        }
+        ul.innerHTML = index
+          .filter((p) => p.toLowerCase().includes(q))
+          .slice(0, 30)
+          .map(
+            (p) =>
+              `<li><span onclick="copyDirective(this, '${p}')">${p.replace("crds/", "")}</span></li>`
+          )
+          .join("")
+      })
+    </script>
+  </body>
+</html>

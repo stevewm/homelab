@@ -1,5 +1,5 @@
-# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/grafana.integreatly.org/grafanadashboard_v1beta1.json
 ---
+# yaml-language-server: $schema=https://crds.stevewm.dev/crds/grafana.integreatly.org/grafanadashboard_v1beta1.json
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
 metadata:
@@ -14,9 +14,8 @@ spec:
       inputName: DS_PROMETHEUS
   url: "https://grafana.com/api/dashboards/10176/revisions/3/download"
 
-
-# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/grafana.integreatly.org/grafanadashboard_v1beta1.json
 ---
+# yaml-language-server: $schema=https://crds.stevewm.dev/crds/grafana.integreatly.org/grafanadashboard_v1beta1.json
 apiVersion: grafana.integreatly.org/v1beta1
 kind: GrafanaDashboard
 metadata:

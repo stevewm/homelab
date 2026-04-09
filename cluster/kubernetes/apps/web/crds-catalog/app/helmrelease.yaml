@@ -1,0 +1,135 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app crds-catalog
+spec:
+  interval: 30m
+  maxHistory: 3
+  chartRef:
+    kind: OCIRepository
+    name: crds-catalog
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: -1
+  uninstall:
+    keepHistory: false
+  driftDetection:
+    mode: warn
+  values:
+    defaultPodOptions:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 2000
+        runAsGroup: 2000
+        fsGroup: 2000
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+
+    controllers:
+      crds-catalog:
+        strategy: RollingUpdate
+        defaultContainerOptionsStrategy: merge
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          app:
+            image:
+              repository: ghcr.io/bjw-s-labs/caddy-scratch
+              tag: 2.10.2@sha256:7849984c9270f4445ab7afaad47017cf3129ea8c02fa7c5b1afa5862b83260e3
+            args: ["file-server", "--listen", ":80", "--root", "/var/www"]
+            probes:
+              liveness: &probes
+                enabled: true
+              readiness: *probes
+            resources:
+              requests:
+                cpu: 10m
+                memory: 64Mi
+              limits:
+                memory: 128Mi
+          git-sync:
+            image:
+              repository: registry.k8s.io/git-sync/git-sync
+              tag: v4.6.0
+            env:
+              - name: GITSYNC_REPO
+                value: "https://github.com/datreeio/CRDs-catalog"
+              - name: GITSYNC_REF
+                value: "main"
+              - name: GITSYNC_ROOT
+                value: /tmp/sync
+              - name: GITSYNC_LINK
+                value: /var/www/crds
+              - name: GITSYNC_PERIOD
+                value: "30m"
+              - name: GITSYNC_SUBMODULES
+                value: "off"
+              - name: GITSYNC_SPARSE_CHECKOUT_FILE
+                value: /etc/git-sync/sparse-checkout
+              - name: GITSYNC_EXECHOOK_COMMAND
+                value: /etc/git-sync/exechook.sh
+            resources:
+              requests:
+                cpu: 10m
+                memory: 64Mi
+              limits:
+                memory: 128Mi
+
+    service:
+      app:
+        controller: *app
+        ports:
+          web:
+            port: &port 80
+
+    route:
+      app:
+        hostnames: ["crds.stevewm.dev"]
+        parentRefs:
+          - name: envoy-external
+            namespace: network
+            sectionName: https
+        rules:
+          - backendRefs:
+              - identifier: app
+                port: *port
+
+    persistence:
+      tmp:
+        type: emptyDir
+        globalMounts:
+          - path: /tmp
+      www:
+        type: emptyDir
+        globalMounts:
+          - path: /var/www
+      search:
+        type: configMap
+        name: crds-catalog-caddy
+        defaultMode: 0755
+        advancedMounts:
+          crds-catalog:
+            app:
+              - path: /var/www/index.html
+                subPath: index.html
+            git-sync:
+              - path: /etc/git-sync/sparse-checkout
+                subPath: sparse-checkout
+              - path: /etc/git-sync/exechook.sh
+                subPath: exechook.sh
