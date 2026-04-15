@@ -63,6 +63,11 @@ spec:
                     name: tapo
                     key: password
               TAPO_CONFIG_LOCATION: /config/tapo.json
+            probes:
+              liveness:
+                enabled: true
+              readiness:
+                enabled: true
             resources:
               requests:
                 cpu: 10m
