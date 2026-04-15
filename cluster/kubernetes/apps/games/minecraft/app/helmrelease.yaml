@@ -93,7 +93,6 @@ spec:
               DIFFICULTY: hard
               SPAWN_PROTECTION: 0
               SEED: "-2135836821937050197"
-              FORCE_REDOWLOAD: "true"
               ENABLE_WHITELIST: "true"
               # Logging
               ENABLE_ROLLING_LOGS: "true"
