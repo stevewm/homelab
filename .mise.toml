@@ -12,9 +12,9 @@ _.path = ['{{config_root}}/node_modules/.bin']
 
 [tools]
 # https://docs.renovatebot.com/modules/manager/mise/#supported-default-registry-tool-short-names
-uv = "0.11.6"
+uv = "0.11.7"
 python = "3"
-node = "24.14.1"
+node = "24.15.0"
 
 # Flux
 "aqua:flux2" = "2.8.5"
@@ -31,7 +31,7 @@ node = "24.14.1"
 "aqua:siderolabs/talos" = "1.12.6"
 
 # Tools
-"aqua:yq" = "4.52.5"
+"aqua:yq" = "4.53.2"
 "aqua:jq" = "1.8.1"
 "github:DopplerHQ/cli" = "3.75.3"
 "cargo:minijinja-cli" = "2.7.0"
@@ -40,19 +40,19 @@ node = "24.14.1"
 "aqua:Orange-OpenSource/hurl" = "7.1.0"
 
 # hk
-"aqua:hk" = "1.42.0"
+"aqua:hk" = "1.43.0"
 "aqua:pkl" = "0.31.1"
-"aqua:ruff" = "0.15.10"
+"aqua:ruff" = "0.15.11"
 "npm:dclint" = "3.1.0"
-"npm:renovate" = "43.115.0"
+"npm:renovate" = "43.128.0"
 "aqua:actionlint" = "1.7.12"
-"npm:prettier" = "3.8.2"
+"npm:prettier" = "3.8.3"
 "aqua:shellcheck" = "0.11.0"
-rust = "1.94.1"
+rust = "1.95.0"
 kubecolor = "latest"
 kubens = "0.9.5"
 just = "1.49.0"
 gum = "0.17.0"
 "cargo:just-lsp" = "0.4.0"
-rumdl = "0.1.71"
+rumdl = "0.1.73"
 shfmt = "3.13.1"
