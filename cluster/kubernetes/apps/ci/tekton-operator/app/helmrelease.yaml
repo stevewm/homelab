@@ -1,0 +1,36 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/datreeio/CRDs-catalog/refs/heads/main/helm.toolkit.fluxcd.io/helmrelease_v2.json
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: tekton-operator
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: ./charts/tekton-operator
+      sourceRef:
+        kind: GitRepository
+        name: tekton-operator
+  install:
+    crds: CreateReplace
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    crds: CreateReplace
+    remediation:
+      strategy: rollback
+      retries: -1
+  values:
+    installCRDs: true
+    operator:
+      defaultTargetNamespace: ci
+      resources:
+        requests:
+          cpu: 10m
+          memory: 128Mi
+        limits:
+          memory: 256Mi
+    service:
+      createServiceMonitor: true
