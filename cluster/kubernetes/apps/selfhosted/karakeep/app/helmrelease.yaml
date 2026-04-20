@@ -195,7 +195,7 @@ spec:
       run:
         type: emptyDir
         advancedMounts:
-          karakeep:
+          app:
             karakeep:
               - path: /run
 
