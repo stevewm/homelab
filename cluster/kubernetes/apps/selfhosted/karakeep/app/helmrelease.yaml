@@ -192,6 +192,12 @@ spec:
             app:
               - path: /meili_data
                 subPath: meilisearch
+      run:
+        type: emptyDir
+        advancedMounts:
+          karakeep:
+            karakeep:
+              - path: /run
 
     route:
       app:
