@@ -72,6 +72,8 @@ spec:
               # Authelia
               DISABLE_PASSWORD_AUTH: true
               OAUTH_ALLOW_DANGEROUS_EMAIL_ACCOUNT_LINKING: true
+              S6_YES_I_WANT_A_WORLD_WRITABLE_RUN_BECAUSE_KUBERNETES: 1
+              S6_READ_ONLY_ROOT: 1
               OAUTH_WELLKNOWN_URL: "https://sso.stevewm.dev/.well-known/openid-configuration"
               OAUTH_CLIENT_ID: "karakeep"
               OAUTH_CLIENT_SECRET:
