@@ -17,7 +17,7 @@ python = "3"
 node = "24.15.0"
 
 # Flux
-"aqua:flux2" = "2.8.5"
+"aqua:flux2" = "2.8.6"
 
 # Kube
 "aqua:CrunchyData/postgres-operator-client" = "0.5.3"
@@ -28,23 +28,23 @@ node = "24.15.0"
 "aqua:stern/stern" = "1.33.1"
 
 # Talos
-"aqua:siderolabs/talos" = "1.12.6"
+"aqua:siderolabs/talos" = "1.12.7"
 
 # Tools
 "aqua:yq" = "4.53.2"
 "aqua:jq" = "1.8.1"
-"github:DopplerHQ/cli" = "3.75.3"
+"github:DopplerHQ/cli" = "3.76.0"
 "cargo:minijinja-cli" = "2.7.0"
 "github:gorcon/rcon-cli" = { version = "0.10.3", exe = "rcon" }
 "github:slsa-framework/slsa-verifier" = "2.7.1"
 "aqua:Orange-OpenSource/hurl" = "7.1.0"
 
 # hk
-"aqua:hk" = "1.43.0"
+"aqua:hk" = "1.44.1"
 "aqua:pkl" = "0.31.1"
-"aqua:ruff" = "0.15.11"
+"aqua:ruff" = "0.15.12"
 "npm:dclint" = "3.1.0"
-"npm:renovate" = "43.132.1"
+"npm:renovate" = "43.141.5"
 "aqua:actionlint" = "1.7.12"
 "npm:prettier" = "3.8.3"
 "aqua:shellcheck" = "0.11.0"
@@ -54,5 +54,5 @@ kubens = "0.9.5"
 just = "1.50.0"
 gum = "0.17.0"
 "cargo:just-lsp" = "0.4.0"
-rumdl = "0.1.76"
+rumdl = "0.1.81"
 shfmt = "3.13.1"
