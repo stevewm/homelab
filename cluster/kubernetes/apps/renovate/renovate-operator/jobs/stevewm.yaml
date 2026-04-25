@@ -8,7 +8,7 @@ spec:
   provider:
     name: github
   discoveryFilters: ["stevewm/*"]
-  image: ghcr.io/renovatebot/renovate:43.141.0
+  image: ghcr.io/renovatebot/renovate:43.141.5
   parallelism: 5
   resources:
     requests:
