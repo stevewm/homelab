@@ -37,7 +37,7 @@ node = "24.15.0"
 "cargo:minijinja-cli" = "2.7.0"
 "github:gorcon/rcon-cli" = { version = "0.10.3", exe = "rcon" }
 "github:slsa-framework/slsa-verifier" = "2.7.1"
-"aqua:Orange-OpenSource/hurl" = "7.1.0"
+"aqua:Orange-OpenSource/hurl" = "8.0.0"
 
 # hk
 "aqua:hk" = "1.44.2"
