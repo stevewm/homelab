@@ -36,6 +36,7 @@ spec:
 
     controllers:
       slskd:
+        replicas: 0
         defaultContainerOptions:
           securityContext:
             allowPrivilegeEscalation: false
