@@ -53,7 +53,7 @@ spec:
           app:
             image:
               repository: ghcr.io/stevewm/tof-map
-              tag: latest@sha256:a3c030969bd883898e66db394ecb4945ac980fa15968f9c5c217e927e58a34eb
+              tag: latest@sha256:9d23db173d14f0f446279b906e80f8526e32cde492b8ced5f146d9810ad72f0f
             probes:
               liveness: &probes
                 enabled: true
