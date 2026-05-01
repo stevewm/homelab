@@ -56,7 +56,7 @@ spec:
           app:
             image:
               repository: ghcr.io/orange-opensource/hurl
-              tag: 7.1.0@sha256:d7727dcc0166de8aea88916e73ea435ee09bfecb8ba0c281200206b6cf37cf64
+              tag: 8.0.1@sha256:49a02dc39d7084e5a6e8c57e2d4754ef102e4ee3761a02ef6dc0e305ab1a832d
             command:
               - hurl
               - /hurlfile
