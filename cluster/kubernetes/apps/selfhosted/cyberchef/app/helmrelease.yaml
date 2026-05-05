@@ -83,6 +83,12 @@ spec:
           gethomepage.dev/icon: sh-cyberchef-light.png
 
     persistence:
+      tmp:
+        type: emptyDir
+        advancedMounts:
+          cyberchef:
+            app:
+              - path: /tmp
       cache:
         type: emptyDir
         advancedMounts:
