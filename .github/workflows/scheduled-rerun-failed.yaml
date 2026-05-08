@@ -1,5 +1,10 @@
 ---
 name: "Scheduled: Rerun Failed Workflows"
+
+permissions:
+  actions: write # To rerun workflow runs
+  pull-requests: read # To list pull requests
+
 on:
   workflow_dispatch: {}
   schedule:
@@ -9,9 +14,6 @@ jobs:
   rerun:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    permissions:
-      actions: write # To rerun workflow runs
-      pull-requests: read # To list pull requests
     steps:
       - run: |
           set -eu
