@@ -151,6 +151,10 @@ spec:
               resources: ["pods", "services"]
               verbs:
                 ["create", "delete", "get", "list", "patch", "update", "watch"]
+            - apiGroups: ["networking.k8s.io"]
+              resources: ["networkpolicies"]
+              verbs:
+                ["create", "delete", "get", "list", "patch", "update", "watch"]
             - apiGroups: ["apps"]
               resources: ["statefulsets"]
               verbs:
