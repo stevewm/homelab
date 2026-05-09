@@ -121,6 +121,9 @@ spec:
         accessMode: ReadWriteOnce
       config-data:
         type: emptyDir
+        globalMounts:
+          - path: /config/data
+            subPath: data
       config-file:
         type: configMap
         name: "{{ .Release.Name }}"
