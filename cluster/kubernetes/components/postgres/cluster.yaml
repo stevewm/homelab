@@ -30,7 +30,7 @@ spec:
       metadata:
         labels:
           app.kubernetes.io/name: ${APP}-crunchy-postgres
-      replicas: "${POSTGRES_REPLICAS:=3}"
+      replicas: "${POSTGRES_REPLICAS:=1}"
       dataVolumeClaimSpec:
         storageClassName: local-hostpath
         accessModes: ["ReadWriteOnce"]
