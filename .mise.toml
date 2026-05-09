@@ -1,7 +1,6 @@
 [settings]
-pipx_uvx = true
-experimental = true        # for uv_venv_auto
-python.uv_venv_auto = true
+experimental = true                   # for uv_venv_auto
+python.uv_venv_auto = "create|source"
 
 [env]
 KUBECONFIG = "{{ config_root }}/kubeconfig"
