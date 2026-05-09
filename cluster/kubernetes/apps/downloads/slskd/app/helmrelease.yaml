@@ -119,6 +119,8 @@ spec:
         type: persistentVolumeClaim
         size: 256Mi
         accessMode: ReadWriteOnce
+      config-data:
+        type: emptyDir
       config-file:
         type: configMap
         name: "{{ .Release.Name }}"
