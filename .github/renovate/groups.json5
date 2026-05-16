@@ -113,7 +113,7 @@
       description: "mise group",
       groupName: "repo tools",
       matchManagers: ["mise"],
-      ignoreDeps: ["pipx:flux-local"],
+      ignoreDeps: ["pipx:flux-local", "aqua:siderolabs/talos"],
       group: {
         commitMessageTopic: "{{{groupName}}}",
       },
