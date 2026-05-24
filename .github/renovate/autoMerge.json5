@@ -29,7 +29,6 @@
         "/kube-prometheus-stack/",
         "ghcr.io/prometheus-community/charts/prometheus-blackbox-exporter",
         "ghcr.io/mogenius/helm-charts/renovate-operator",
-        "ghcr.io/stevewm",
         "ghcr.io/home-operations",
       ],
       schedule: [],
