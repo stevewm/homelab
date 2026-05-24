@@ -33,7 +33,7 @@ spec:
         memory: 64Mi
 
     extraEnv:
-      - name: LOG_LEVEL
+      - name: RENOVATE_LOG_LEVEL
         value: debug
 
     config:
