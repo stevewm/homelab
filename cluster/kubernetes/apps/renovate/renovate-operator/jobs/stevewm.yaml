@@ -8,6 +8,9 @@ spec:
   provider:
     name: github
   discoveryFilters: ["stevewm/*"]
+  extraEnv:
+    - name: LOG_LEVEL
+      value: debug
   image: ghcr.io/renovatebot/renovate:43.181.2
   parallelism: 5
   resources:
