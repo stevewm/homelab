@@ -5,5 +5,4 @@ kind: Kustomization
 namespace: web
 resources:
   - ./namespace.yaml
-  - ./crds-catalog/ks.yaml
   - ./tof-tl/ks.yaml
