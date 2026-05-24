@@ -32,6 +32,10 @@ spec:
       limits:
         memory: 64Mi
 
+    extraEnv:
+      - name: LOG_LEVEL
+        value: debug
+
     config:
       jobTTLSecondsAfterFinished: 86400 # 1 day
 
