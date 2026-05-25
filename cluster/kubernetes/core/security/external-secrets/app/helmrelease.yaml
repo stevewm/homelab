@@ -25,6 +25,12 @@ spec:
     mode: warn
   values:
     installCRDs: true
+    crds:
+      createClusterExternalSecret: false
+      processClusterExternalSecret: false
+
+      createClusterPushSecret: false
+      processClusterPushSecret: false
     replicaCount: 2
 
     deploymentAnnotations:
