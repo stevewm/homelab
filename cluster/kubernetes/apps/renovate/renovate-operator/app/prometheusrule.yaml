@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/monitoring.coreos.com/prometheusrule_v1.json
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: renovate-operator-rules
+  namespace: renovate
+spec:
+  groups:
+    - name: renovate-operator.rules
+      rules:
+        - alert: RenovateDependencyIssue
+          expr: |
+            renovate_operator_dependency_issues{
+              renovate_namespace=~"renovate",
+              renovate_job=~"renovate-stevewm"
+            } == 1
+          for: 5m
+          labels:
+            severity: warning
+          annotations:
+            summary: Renovate project {{ $labels.project }} has dependency issues
+            description: >-
+              Renovate job {{ $labels.renovate_job }} in namespace
+              {{ $labels.renovate_namespace }} for project {{ $labels.project }}
+              reported dependency issues.
