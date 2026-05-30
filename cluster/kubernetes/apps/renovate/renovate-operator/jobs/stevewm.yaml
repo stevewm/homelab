@@ -18,6 +18,9 @@ spec:
       cpu: 100m
       memory: 128Mi
   schedule: 0 * * * *
+  securityContext:
+    container:
+      readOnlyRootFilesystem: true
   secretRef: renovate-secret
 
 ---
