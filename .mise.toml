@@ -10,7 +10,7 @@ _.path = ['{{config_root}}/node_modules/.bin']
 
 [tools]
 # https://docs.renovatebot.com/modules/manager/mise/#supported-default-registry-tool-short-names
-uv = "0.11.16"
+uv = "0.11.17"
 python = "3"
 node = "24.16.0"
 
@@ -18,7 +18,7 @@ node = "24.16.0"
 "aqua:flux2" = "2.8.8"
 
 # Kube
-kubecolor = "0.5.3"
+kubecolor = "0.6.0"
 kubens = "0.11.0"
 "aqua:CrunchyData/postgres-operator-client" = "0.5.3"
 "aqua:kustomize" = "5.8.1"
@@ -28,7 +28,7 @@ kubens = "0.11.0"
 "aqua:stern/stern" = "1.34.0"
 
 # Talos
-"aqua:siderolabs/talos" = "1.13.0"
+"aqua:siderolabs/talos" = "1.13.3"
 
 # Tools
 "aqua:yq" = "4.53.2"
@@ -40,17 +40,17 @@ kubens = "0.11.0"
 "aqua:Orange-OpenSource/hurl" = "8.0.1"
 
 # hk
-"aqua:hk" = "1.45.0"
+"aqua:hk" = "1.46.0"
 "aqua:pkl" = "0.31.1"
-"aqua:ruff" = "0.15.14"
+"aqua:ruff" = "0.15.15"
 "npm:dclint" = "3.1.0"
-"npm:renovate" = "43.150.0"
+"npm:renovate" = "43.205.1"
 "aqua:actionlint" = "1.7.12"
 "npm:prettier" = "3.8.3"
 "aqua:shellcheck" = "0.11.0"
-rust = "1.95.0"
+rust = "1.96.0"
 just = "1.51.0"
 gum = "0.17.0"
 "cargo:just-lsp" = "0.4.0"
-rumdl = "0.2.0"
+rumdl = "0.2.4"
 shfmt = "3.13.1"
