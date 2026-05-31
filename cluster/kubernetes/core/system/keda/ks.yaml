@@ -4,7 +4,7 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: core-keda
-  namespace: &namespace observability
+  namespace: &namespace system
 spec:
   targetNamespace: *namespace
   commonMetadata:
