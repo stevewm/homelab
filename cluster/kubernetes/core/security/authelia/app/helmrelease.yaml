@@ -72,10 +72,6 @@ spec:
               }
           schedulingGates:
             - name: k8s.ksgate.org/postgres
-          securityContext:
-            runAsUser: 65534
-            runAsGroup: 65534
-            runAsNonRoot: true
           topologySpreadConstraints:
             - maxSkew: 1
               topologyKey: kubernetes.io/hostname
