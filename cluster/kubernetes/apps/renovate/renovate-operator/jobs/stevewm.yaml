@@ -21,6 +21,9 @@ spec:
   securityContext:
     container:
       readOnlyRootFilesystem: true
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop: ["ALL"]
   secretRef: renovate-secret
 
 ---
