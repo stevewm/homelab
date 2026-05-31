@@ -26,6 +26,12 @@ spec:
   values:
     reloader:
       readOnlyRootFileSystem: true
+      containerSecurityContext:
+        capabilities:
+          drop:
+            - ALL
+        allowPrivilegeEscalation: false
+        readOnlyRootFilesystem: true
       podMonitor:
         enabled: true
       deployment:
