@@ -27,10 +27,10 @@ spec:
     installCRDs: true
     crds:
       createClusterExternalSecret: false
-      processClusterExternalSecret: false
-
       createClusterPushSecret: false
-      processClusterPushSecret: false
+    processClusterPushSecret: false
+    processClusterExternalSecret: false
+
     replicaCount: 2
 
     deploymentAnnotations:
