@@ -1,0 +1,53 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+---
+name: "Build mise container"
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/labels.yaml
+
+  schedule:
+    - cron: "0 0 * * *"
+
+permissions:
+  issues: write
+
+jobs:
+  build:
+    name: Build container
+    runs-on: ubuntu-latest
+    env:
+      IMAGE: ghcr.io/stevewm/tools
+    steps:
+      - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3
+        id: app-token
+        with:
+          app-id: "${{ secrets.BOTTY_HILL_APP_ID }}"
+          private-key: "${{ secrets.BOTTY_HILL_PRIVATE_KEY }}"
+
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          token: "${{ steps.app-token.outputs.token }}"
+          fetch-depth: 0
+
+      - run: crane auth login ghcr.io -u "${{ github.actor }}" -p "${{ secrets.GITHUB_TOKEN }}"
+
+      - uses: jdx/mise-action@1648a7812b9aeae629881980618f079932869151 # v4
+        env:
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+
+      - run: echo "TAG=${{ env.IMAGE }}:${{ github.sha }}" >> "$GITHUB_ENV"
+
+      - name: Build and push container
+        run: mise oci push --tool crane --image-dir "${{ runner.temp }}/img" "${{ env.TAG }}"
+
+      - name: Clean up old images
+        uses: actions/delete-package-versions@v5
+        with:
+          package-name: tools
+          package-type: container
+          min-versions-to-keep: 5
+          delete-only-untagged-versions: "true"

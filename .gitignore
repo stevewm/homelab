@@ -47,3 +47,6 @@ talsecret.yaml
 uv.lock
 .python-version
 .ruff-cache
+
+# mise
+mise-oci/
