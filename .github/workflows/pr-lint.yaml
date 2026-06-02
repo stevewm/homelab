@@ -19,6 +19,8 @@ jobs:
   lint:
     name: Linting
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/stevewm/tools:fbe874b77d0d401a2f4e15ee4a02929450371274
     steps:
       - name: Generate Token
         uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3
@@ -32,9 +34,6 @@ jobs:
           token: "${{ steps.app-token.outputs.token }}"
           fetch-depth: 0
 
-      - uses: jdx/mise-action@1648a7812b9aeae629881980618f079932869151 # v4
-        env:
-          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
       - name: Run hk checks
         run: hk check --from-ref ${{ github.event.pull_request.base.sha }} --to-ref ${{ github.event.pull_request.head.sha }}
 
