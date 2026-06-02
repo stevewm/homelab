@@ -30,13 +30,12 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
           token: "${{ steps.app-token.outputs.token }}"
-          fetch-depth: 0
-
-      - run: crane auth login ghcr.io -u "${{ github.actor }}" -p "${{ secrets.GITHUB_TOKEN }}"
 
       - uses: jdx/mise-action@1648a7812b9aeae629881980618f079932869151 # v4
         env:
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+
+      - run: crane auth login ghcr.io -u "${{ github.actor }}" -p "${{ secrets.GITHUB_TOKEN }}"
 
       - run: echo "TAG=${{ env.IMAGE }}:${{ github.sha }}" >> "$GITHUB_ENV"
 
