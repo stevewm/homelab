@@ -1,5 +1,6 @@
 [settings]
 python.uv_venv_auto = "create|source"
+experimental = true
 
 [env]
 KUBECONFIG = "{{ config_root }}/kubeconfig"
