@@ -50,7 +50,7 @@ spec:
           app:
             image:
               repository: tess1o/go-tapo-exporter
-              tag: 0.0.1@sha256:5183c593832e5c1293106853923858303ed1e5818e0335fb6701d9c738d4db8d
+              tag: 0.0.2@sha256:3478890776535f11c8c9ddc73bfe3f62a591688995896d8f11f710cb1407fc8e
             env:
               TAPO_EMAIL:
                 valueFrom:
