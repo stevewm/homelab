@@ -43,7 +43,7 @@ jobs:
         run: mise oci push --tool crane "${{ env.TAG }}"
 
       - name: Clean up old images
-        uses: actions/delete-package-versions@v5
+        uses: actions/delete-package-versions@e5bc658cc4c965c472efe991f8beea3981499c55 # v5
         with:
           package-name: tools
           package-type: container
