@@ -15,6 +15,9 @@ TALOSCONFIG = ""
 MINIJINJA_CONFIG_FILE = ""
 HOMEBREW_BREWFILE = ""
 
+[oci]
+from = "v2.52.0"
+
 [tools]
 # https://docs.renovatebot.com/modules/manager/mise/#supported-default-registry-tool-short-names
 uv = "0.11.17"
