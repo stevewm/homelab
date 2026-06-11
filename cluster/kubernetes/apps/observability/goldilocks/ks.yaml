@@ -13,7 +13,7 @@ spec:
   interval: 30m
   timeout: 5m
   path: ./cluster/kubernetes/apps/observability/goldilocks/app
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: homelab
@@ -39,7 +39,7 @@ spec:
   interval: 30m
   timeout: 5m
   path: ./cluster/kubernetes/apps/observability/goldilocks/vpa
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: homelab

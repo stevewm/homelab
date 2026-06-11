@@ -13,7 +13,7 @@ spec:
   interval: 30m
   timeout: 5m
   path: ./cluster/kubernetes/apps/games/romm/app
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: homelab

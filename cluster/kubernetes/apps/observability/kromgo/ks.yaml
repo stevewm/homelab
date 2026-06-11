@@ -13,7 +13,7 @@ spec:
   interval: 30m
   timeout: 5m
   path: ./cluster/kubernetes/apps/observability/kromgo/app
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: homelab

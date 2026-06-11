@@ -14,7 +14,7 @@ spec:
   interval: 30m
   timeout: 5m
   path: ./cluster/kubernetes/apps/games/minecraft/app
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: homelab
