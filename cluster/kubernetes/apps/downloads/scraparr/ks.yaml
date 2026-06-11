@@ -3,7 +3,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: app-scraparr
+  name: apps-scraparr
   namespace: &namespace downloads
 spec:
   targetNamespace: *namespace
@@ -20,8 +20,8 @@ spec:
     namespace: flux-system
   wait: true
   dependsOn:
-    - name: app-sabnzbd
-    - name: app-prowlarr
-    - name: app-sonarr
-    - name: app-radarr
-    - name: app-bazarr
+    - name: apps-sabnzbd
+    - name: apps-prowlarr
+    - name: apps-sonarr
+    - name: apps-radarr
+    - name: apps-bazarr
