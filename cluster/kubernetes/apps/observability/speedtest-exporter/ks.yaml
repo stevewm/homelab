@@ -13,7 +13,7 @@ spec:
   interval: 30m
   timeout: 5m
   path: ./cluster/kubernetes/apps/observability/speedtest-exporter/app
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: homelab

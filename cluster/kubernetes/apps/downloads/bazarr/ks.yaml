@@ -13,7 +13,7 @@ spec:
   interval: 30m
   timeout: 5m
   path: ./cluster/kubernetes/apps/downloads/bazarr/app
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: homelab

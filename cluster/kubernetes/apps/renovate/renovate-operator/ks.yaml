@@ -13,7 +13,7 @@ spec:
   interval: 30m
   timeout: 5m
   path: ./cluster/kubernetes/apps/renovate/renovate-operator/app
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: homelab
@@ -41,7 +41,7 @@ spec:
   interval: 30m
   timeout: 5m
   path: ./cluster/kubernetes/apps/renovate/renovate-operator/jobs
-  prune: false
+  prune: true
   sourceRef:
     kind: GitRepository
     name: homelab

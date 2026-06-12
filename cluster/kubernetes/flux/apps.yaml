@@ -8,7 +8,7 @@ metadata:
 spec:
   interval: 10m
   path: ./cluster/kubernetes/apps
-  prune: false
+  prune: true
   wait: true
   force: true
   sourceRef:
