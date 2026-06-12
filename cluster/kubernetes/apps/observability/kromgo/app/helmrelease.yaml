@@ -87,14 +87,14 @@ spec:
                 memory: 64Mi
 
     service:
-      app:
+      kromgo:
         controller: *app
         ports:
           http:
             port: 8080
 
     route:
-      app:
+      kromgo:
         hostnames: ["kg.stevewm.dev"]
         parentRefs:
           - name: envoy-external

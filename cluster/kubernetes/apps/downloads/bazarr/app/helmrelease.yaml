@@ -47,7 +47,7 @@ spec:
           reloader.stakater.com/auto: "true"
 
         containers:
-          app:
+          bazarr:
             image:
               repository: ghcr.io/home-operations/bazarr
               tag: 1.5.6@sha256:79fc37491f55c7e24427bcd669bce3df2d7415ca432a47ce9d53cc5988af8411
@@ -95,14 +95,14 @@ spec:
                 memory: 128Mi
 
     service:
-      app:
+      bazarr:
         controller: *app
         ports:
           http:
             port: *port
 
     route:
-      app:
+      bazarr:
         hostnames: ["bzr.stevewm.dev"]
         parentRefs:
           - name: envoy-internal

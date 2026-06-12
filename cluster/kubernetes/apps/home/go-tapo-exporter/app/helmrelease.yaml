@@ -47,7 +47,7 @@ spec:
           reloader.stakater.com/auto: "true"
 
         containers:
-          app:
+          exporter:
             image:
               repository: tess1o/go-tapo-exporter
               tag: 0.0.2@sha256:3478890776535f11c8c9ddc73bfe3f62a591688995896d8f11f710cb1407fc8e
@@ -76,7 +76,7 @@ spec:
                 memory: 128Mi
 
     service:
-      app:
+      exporter:
         ports:
           metrics:
             port: 8086

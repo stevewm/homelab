@@ -46,7 +46,7 @@ spec:
           reloader.stakater.com/auto: "true"
 
         containers:
-          app:
+          actual:
             image:
               repository: ghcr.io/actualbudget/actual-server
               tag: 26.6.0
@@ -85,7 +85,7 @@ spec:
                 memory: 512M
 
     service:
-      app:
+      actual:
         ports:
           http:
             port: *port
@@ -95,11 +95,11 @@ spec:
         existingClaim: actual-data
         advancedMounts:
           actual:
-            app:
+            actual:
               - path: /data
 
     route:
-      app:
+      actual:
         hostnames: ["actual.stevewm.dev"]
         parentRefs:
           - name: envoy-internal

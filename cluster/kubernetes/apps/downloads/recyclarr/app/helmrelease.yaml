@@ -77,7 +77,7 @@ spec:
           successfulJobsHistory: 0
 
         containers:
-          app:
+          recyclarr:
             image:
               repository: ghcr.io/recyclarr/recyclarr
               tag: 8.6.0@sha256:3c38ceeb54438dd8327e4e65c9b48ba601a6d20fff833342d93c9b0bc4b1930b
@@ -104,7 +104,7 @@ spec:
         existingClaim: recyclarr-config
         advancedMounts:
           recyclarr:
-            app:
+            recyclarr:
               - path: /config
       config-file:
         type: configMap

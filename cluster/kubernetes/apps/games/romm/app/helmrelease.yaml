@@ -48,7 +48,7 @@ spec:
           reloader.stakater.com/auto: "true"
 
         containers:
-          app:
+          romm:
             image:
               repository: ghcr.io/rommapp/romm
               tag: 4.9.0@sha256:c3ce38b883e763bdd9377a39cf13397c84eca9ace9b19c51a0858095e27363fd
@@ -126,14 +126,14 @@ spec:
               readOnlyRootFilesystem: false
 
     service:
-      app:
+      romm:
         controller: *app
         ports:
           web:
             port: *port
 
     route:
-      app:
+      romm:
         hostnames: ["romm.stevewm.dev"]
         parentRefs:
           - name: envoy-internal
@@ -171,7 +171,7 @@ spec:
         existingClaim: *app
         advancedMounts:
           romm:
-            app:
+            romm:
               - subPath: resources
                 path: /romm/resources
               - subPath: assets

@@ -52,7 +52,7 @@ spec:
               resourceClaimTemplateName: jellyfin-gpu
 
         containers:
-          app:
+          jellyfin:
             image:
               repository: ghcr.io/jellyfin/jellyfin
               tag: 10.11.11@sha256:45f648c382a0c8b552582fcea40e95cb17c5d475473a891cba0eb7523fb92112
@@ -99,7 +99,7 @@ spec:
                 memory: 225Mi
 
     service:
-      app:
+      jellyfin:
         controller: *app
         type: LoadBalancer
         annotations:
@@ -111,7 +111,7 @@ spec:
             port: 7979
 
     route:
-      app:
+      jellyfin:
         hostnames: ["watch.stevewm.dev"]
         parentRefs:
           - name: envoy-external

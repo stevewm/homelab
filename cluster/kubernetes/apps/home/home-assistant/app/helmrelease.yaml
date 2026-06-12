@@ -62,7 +62,7 @@ spec:
             fsGroupChangePolicy: OnRootMismatch
 
         containers:
-          app:
+          home-assistant:
             image:
               repository: ghcr.io/home-operations/home-assistant
               tag: 2026.6.2
@@ -111,7 +111,7 @@ spec:
                 memory: 1Gi
 
     service:
-      app:
+      home-assistant:
         controller: home-assistant
         ports:
           http:
@@ -126,7 +126,7 @@ spec:
             port: 12321
 
     route:
-      app:
+      home-assistant:
         hostnames:
           - hass.stevewm.dev
         parentRefs:
@@ -161,7 +161,7 @@ spec:
         existingClaim: home-assistant-config
         advancedMounts:
           home-assistant:
-            app:
+            home-assistant:
               - path: /config
             code-server:
               - path: /config
@@ -169,14 +169,14 @@ spec:
         existingClaim: hass-cache
         advancedMounts:
           home-assistant:
-            app:
+            home-assistant:
               - path: /venv
                 subPath: hass-venv
       tmpfs:
         type: emptyDir
         advancedMounts:
           home-assistant:
-            app:
+            home-assistant:
               - path: /tmp
                 subPath: hass-tmp
             code-server:

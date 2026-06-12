@@ -47,7 +47,7 @@ spec:
           reloader.stakater.com/auto: "true"
 
         containers:
-          app:
+          radarr:
             image:
               repository: ghcr.io/home-operations/radarr
               tag: 6.2.1.10461@sha256:0756fffa75b30219e3dbac8d027a5389f53cbb34ae83fa4b0976c1b0524c8eb1
@@ -85,14 +85,14 @@ spec:
                 memory: 512Mi
 
     service:
-      app:
+      radarr:
         controller: *app
         ports:
           http:
             port: *port
 
     route:
-      app:
+      radarr:
         hostnames: ["rdr.stevewm.dev"]
         parentRefs:
           - name: envoy-internal
@@ -124,7 +124,7 @@ spec:
         defaultMode: 0755
         advancedMounts:
           radarr:
-            app:
+            radarr:
               - path: /scripts/jellyfin-refresh.sh
                 subPath: jellyfin-refresh.sh
                 readOnly: true

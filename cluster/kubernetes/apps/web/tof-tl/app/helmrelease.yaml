@@ -50,7 +50,7 @@ spec:
           reloader.stakater.com/auto: "true"
 
         containers:
-          app:
+          tof-tl:
             image:
               repository: ghcr.io/stevewm/tof-map
               tag: latest@sha256:8916406bf8365426b5cec2db9c3a49830d7912019b34c93c4f0c3c6ab1fa4a52
@@ -66,14 +66,14 @@ spec:
                 memory: 128Mi
 
     service:
-      app:
+      tof-tl:
         controller: *app
         ports:
           web:
             port: &port 3000
 
     route:
-      app:
+      tof-tl:
         hostnames: ["tl.stevewm.dev"]
         parentRefs:
           - name: envoy-external
@@ -95,7 +95,7 @@ spec:
         name: tof-tl-nginx-conf
         advancedMounts:
           tof-tl:
-            app:
+            tof-tl:
               - path: /etc/nginx/conf.d/default.conf
                 subPath: default.conf
                 readOnly: true

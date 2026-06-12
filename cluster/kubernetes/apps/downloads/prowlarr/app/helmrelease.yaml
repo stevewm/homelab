@@ -49,7 +49,7 @@ spec:
         strategy: Recreate
 
         containers:
-          app:
+          prowlarr:
             image:
               repository: ghcr.io/home-operations/prowlarr
               tag: 2.4.0.5397@sha256:8a140c9104c754a272f5e0d1dfcb32a06f07946a431a45c1083a16344f531748
@@ -87,14 +87,14 @@ spec:
                 memory: 220Mi
 
     service:
-      app:
+      prowlarr:
         controller: *app
         ports:
           http:
             port: *port
 
     route:
-      app:
+      prowlarr:
         hostnames: ["plr.stevewm.dev"]
         parentRefs:
           - name: envoy-internal

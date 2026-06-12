@@ -47,7 +47,7 @@ spec:
           reloader.stakater.com/auto: "true"
 
         containers:
-          app:
+          sonarr:
             image:
               repository: ghcr.io/home-operations/sonarr
               tag: 4.0.17.2969@sha256:6806001ccc2ec95d941c9c0de012dbcb59c6a33932cfc17f71e300bdd48cabfe
@@ -85,14 +85,14 @@ spec:
                 memory: 420Mi
 
     service:
-      app:
+      sonarr:
         controller: *app
         ports:
           http:
             port: *port
 
     route:
-      app:
+      sonarr:
         hostnames: ["snr.stevewm.dev"]
         parentRefs:
           - name: envoy-internal
@@ -122,7 +122,7 @@ spec:
         defaultMode: 0755
         advancedMounts:
           sonarr:
-            app:
+            sonarr:
               - path: /scripts/jellyfin-refresh.sh
                 subPath: jellyfin-refresh.sh
                 readOnly: true

@@ -48,7 +48,7 @@ spec:
             secret.reloader.stakater.com/reload: homepage-app-secrets
 
         containers:
-          app:
+          homepage:
             image:
               repository: ghcr.io/gethomepage/homepage
               tag: v1.13.2@sha256:c881120b024d6a8e2f3c9664efc568984e4352e47df459d6b32e225374c71955
@@ -78,14 +78,14 @@ spec:
           identifier: homepage
 
     service:
-      app:
+      homepage:
         controller: homepage
         ports:
           http:
             port: 3000
 
     route:
-      app:
+      homepage:
         hostnames: ["home.stevewm.dev"]
         parentRefs:
           - name: envoy-internal

@@ -81,7 +81,7 @@ spec:
                   app.kubernetes.io/name: *app
 
         containers:
-          app:
+          authelia:
             image:
               repository: ghcr.io/authelia/authelia
               tag: 4.39.20@sha256:1b363e9279e742397966333f364e0876ae02bf5c876de73e83af6d48c57ff51b
@@ -123,7 +123,7 @@ spec:
                 memory: 128Mi
 
     service:
-      app:
+      authelia:
         controller: *app
         ports:
           http:
@@ -133,13 +133,13 @@ spec:
             port: 8080
 
     serviceMonitor:
-      app:
+      authelia:
         serviceName: *app
         endpoints:
           - port: metrics
 
     route:
-      app:
+      authelia:
         hostnames: ["sso.stevewm.dev"]
         parentRefs:
           - name: envoy-internal

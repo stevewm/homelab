@@ -47,7 +47,7 @@ spec:
           reloader.stakater.com/auto: "true"
 
         containers:
-          app:
+          scraparr:
             image:
               repository: ghcr.io/thecfu/scraparr
               tag: 3.0.3@sha256:47ae07184e9d35ed7c25ed378e79a423b6f9da15056c9299d517af2bbe6f5e96
@@ -115,7 +115,7 @@ spec:
             scrapeTimeout: 10s
 
     service:
-      app:
+      scraparr:
         controller: *app
         ports:
           metrics:

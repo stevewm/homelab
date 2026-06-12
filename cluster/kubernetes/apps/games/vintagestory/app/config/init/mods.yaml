@@ -1,9 +1,6 @@
 ---
-game_version: "~1.21.0"
+game_version: "1.22.6"
 mods_dir: /mods
-hooks:
-  download:
-    pre_run: "rm -rf {{.ModsDir}}/*.zip" # clear out old mods
 mods:
   - id: primitivesurvival
     version: 5.0.6
@@ -25,3 +22,5 @@ mods:
     version: 0.0.2
   # - id: chiseltoolslite
   #   version: 1.15.1
+  - name: vsexporter
+    version: 1.0.6
