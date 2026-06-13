@@ -93,7 +93,7 @@ spec:
     k8sServicePort: 7445
     kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
 
-    policyAuditMode: true
+    policyAuditMode: false
 
     securityContext:
       capabilities:
