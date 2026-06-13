@@ -5,4 +5,5 @@ kind: Kustomization
 namespace: web
 resources:
   - ./namespace.yaml
+  - ./networkpolicy.yaml
   - ./tof-tl/ks.yaml

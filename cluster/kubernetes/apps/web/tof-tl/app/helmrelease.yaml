@@ -46,9 +46,6 @@ spec:
             capabilities:
               drop: [ALL]
 
-        annotations:
-          reloader.stakater.com/auto: "true"
-
         containers:
           tof-tl:
             image:
