@@ -9,7 +9,7 @@ spec:
   maxHistory: 3
   chartRef:
     kind: OCIRepository
-    name: home-assistant
+    name: &app home-assistant
   install:
     remediation:
       retries: -1
@@ -112,7 +112,7 @@ spec:
 
     service:
       home-assistant:
-        controller: home-assistant
+        controller: *app
         ports:
           http:
             port: &port 8123
@@ -145,10 +145,10 @@ spec:
                     type: ReplacePrefixMatch
                     replacePrefixMatch: /
             backendRefs:
-              - identifier: app
+              - identifier: *app
                 port: 12321
           - backendRefs:
-              - identifier: app
+              - identifier: *app
                 port: *port
         annotations:
           gethomepage.dev/name: *app

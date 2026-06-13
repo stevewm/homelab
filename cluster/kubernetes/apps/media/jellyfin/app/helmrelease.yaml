@@ -119,7 +119,7 @@ spec:
             sectionName: https
         rules:
           - backendRefs:
-              - identifier: app
+              - identifier: *app
                 port: *http
         annotations:
           gethomepage.dev/name: *app
