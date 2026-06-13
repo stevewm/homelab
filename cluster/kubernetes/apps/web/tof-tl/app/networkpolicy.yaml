@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/cilium.io/ciliumnetworkpolicy_v2.json
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: allow-cloudflared-ingress
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: tof-tl
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            k8s:io.kubernetes.pod.namespace: network
+            app.kubernetes.io/name: cloudflared
+      toPorts:
+        - ports:
+            - port: "3000"
+              protocol: TCP

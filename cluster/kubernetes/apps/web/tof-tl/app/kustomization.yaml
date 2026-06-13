@@ -5,9 +5,4 @@ kind: Kustomization
 resources:
   - ./ocirepository.yaml
   - ./helmrelease.yaml
-configMapGenerator:
-  - name: tof-tl-nginx-conf
-    files:
-      - ./config/default.conf
-generatorOptions:
-  disableNameSuffixHash: true
+  - ./networkpolicy.yaml

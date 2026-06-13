@@ -88,24 +88,3 @@ spec:
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: games
           gethomepage.dev/icon: mdi-map-search-outline-#ffffff
-
-    persistence:
-      poi-conf:
-        type: configMap
-        name: tof-tl-nginx-conf
-        advancedMounts:
-          tof-tl:
-            tof-tl:
-              - path: /etc/nginx/conf.d/default.conf
-                subPath: default.conf
-                readOnly: true
-      tmp:
-        type: emptyDir
-      log:
-        type: emptyDir
-        globalMounts:
-          - path: /var/log/nginx
-      sync:
-        type: emptyDir
-        globalMounts:
-          - path: /tmp/sync
