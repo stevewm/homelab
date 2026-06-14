@@ -12,7 +12,7 @@ spec:
     - fromEndpoints:
         - matchLabels:
             k8s:io.kubernetes.pod.namespace: network
-            app.kubernetes.io/name: cloudflared
+            app.kubernetes.io/name: envoy
       toPorts:
         - ports:
             - port: "3000"
