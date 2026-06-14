@@ -124,23 +124,22 @@ spec:
       hostRoot: /sys/fs/cgroup
     # -- end of talos settings --
 
-    # hubble:
-    #   enabled: true
-    #   ui:
-    #     ingress:
-    #       enabled: false # Use the HTTPRoute instead
-    #   dashboards:
-    #     enabled: true
-    #   relay:
-    #     enabled: true
-    #   metrics:
-    #     enabled:
-    #       - dns:query
-    #       - drop
-    #       - tcp
-    #       - flow
-    #       - port-distribution
-    #       - icmp
-    #       - http
-    #     serviceMonitor:
-    #       enabled: true
+    hubble:
+      enabled: true
+      ui:
+        enabled: true
+      dashboards:
+        enabled: true
+      relay:
+        enabled: true
+      metrics:
+        enabled:
+          - dns:query
+          - drop
+          - tcp
+          - flow
+          - port-distribution
+          - icmp
+          - http
+        serviceMonitor:
+          enabled: true
