@@ -32,7 +32,7 @@ spec:
         - kube-apiserver
     - toFQDNs:
         - matchName: github.com
-        - matchName: api.github.com
+        - matchPattern: "*.github.com"
       toPorts:
         - ports:
             - port: "443"
