@@ -21,8 +21,8 @@ spec:
     - fromEndpoints:
         - matchLabels:
             k8s:io.kubernetes.pod.namespace: observability
-            name: prometheus
-            instance: kube-prometheus-stack
+            app.kubernetes.io/name: prometheus
+            app.kubernetes.io/instance: kube-prometheus-stack
       toPorts:
         - ports:
             - port: "8080"
@@ -32,8 +32,12 @@ spec:
         - kube-apiserver
     - toFQDNs:
         - matchName: github.com
+        - matchName: api.github.com
         - matchPattern: "*.github.com"
       toPorts:
         - ports:
             - port: "443"
               protocol: TCP
+          rules:
+            dns:
+              - matchPattern: "*"

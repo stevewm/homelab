@@ -57,7 +57,7 @@ spec:
       enabled: true
 
     dnsProxy:
-      endpointMaxIpPerHostname: 100
+      endpointMaxIpPerHostname: 1500
       maxDeferredConnectionDeletes: 15000
       minTtl: 300
 
