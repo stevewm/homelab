@@ -18,7 +18,15 @@ spec:
         - ports:
             - port: "8081"
               protocol: TCP
-
+    - fromEndpoints:
+        - matchLabels:
+            k8s:io.kubernetes.pod.namespace: observability
+            name: prometheus
+            instance: kube-prometheus-stack
+      toPorts:
+        - ports:
+            - port: "8080"
+              protocol: TCP
   egress:
     - toEntities:
         - kube-apiserver
