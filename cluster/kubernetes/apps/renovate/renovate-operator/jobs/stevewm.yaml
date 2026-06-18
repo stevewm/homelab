@@ -5,6 +5,9 @@ kind: RenovateJob
 metadata:
   name: renovate-stevewm
 spec:
+  metadata:
+    labels:
+      app: renovate-operator
   provider:
     name: github
   discoveryFilters: ["stevewm/*"]
