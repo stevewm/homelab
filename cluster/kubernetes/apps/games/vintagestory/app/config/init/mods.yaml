@@ -17,7 +17,7 @@ mods:
   # - id: VintageRCon
   #   version: 1.0.0
   - id: webcartographer
-    version: 0.10.1
+    version: 0.11.2
   - id: pspeltpatch
     version: 0.0.2
   # - id: chiseltoolslite
