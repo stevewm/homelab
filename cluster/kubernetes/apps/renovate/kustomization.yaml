@@ -5,5 +5,5 @@ kind: Kustomization
 namespace: renovate
 resources:
   - ./namespace.yaml
-  - ./networkpolicy.yaml
+  # - ./networkpolicy.yaml
   - ./renovate-operator/ks.yaml
