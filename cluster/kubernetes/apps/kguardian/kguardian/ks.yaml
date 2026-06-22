@@ -3,7 +3,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: app-kguardian
+  name: apps-kguardian
   namespace: &namespace kguardian
 spec:
   targetNamespace: *namespace

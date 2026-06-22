@@ -46,14 +46,11 @@ spec:
             capabilities:
               drop: [ALL]
 
-        annotations:
-          reloader.stakater.com/auto: "true"
-
         containers:
-          app:
+          tof-tl:
             image:
               repository: ghcr.io/stevewm/tof-map
-              tag: latest@sha256:8e5f6e5c73458b9f40768d49a5f182ed7ac1b4bdeed6408a7d078ceb6b7f628e
+              tag: latest@sha256:8916406bf8365426b5cec2db9c3a49830d7912019b34c93c4f0c3c6ab1fa4a52
             probes:
               liveness: &probes
                 enabled: true
@@ -66,14 +63,14 @@ spec:
                 memory: 128Mi
 
     service:
-      app:
+      tof-tl:
         controller: *app
         ports:
           web:
             port: &port 3000
 
     route:
-      app:
+      tof-tl:
         hostnames: ["tl.stevewm.dev"]
         parentRefs:
           - name: envoy-external
@@ -81,31 +78,10 @@ spec:
             sectionName: https
         rules:
           - backendRefs:
-              - identifier: app
+              - identifier: *app
                 port: *port
         annotations:
           gethomepage.dev/name: ToF Map
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: games
           gethomepage.dev/icon: mdi-map-search-outline-#ffffff
-
-    persistence:
-      poi-conf:
-        type: configMap
-        name: tof-tl-nginx-conf
-        advancedMounts:
-          tof-tl:
-            app:
-              - path: /etc/nginx/conf.d/default.conf
-                subPath: default.conf
-                readOnly: true
-      tmp:
-        type: emptyDir
-      log:
-        type: emptyDir
-        globalMounts:
-          - path: /var/log/nginx
-      sync:
-        type: emptyDir
-        globalMounts:
-          - path: /tmp/sync

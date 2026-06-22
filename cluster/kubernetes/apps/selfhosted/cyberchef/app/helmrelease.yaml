@@ -44,7 +44,7 @@ spec:
               drop: [ALL]
 
         containers:
-          app:
+          cyberchef:
             image:
               repository: ghcr.io/gchq/cyberchef
               tag: 10.24.0@sha256:c60691af71c84a2bb34d8a89119808555b6c09070583868443e5fa6f250701b6
@@ -63,14 +63,14 @@ spec:
                 memory: 64Mi
 
     service:
-      app:
+      cyberchef:
         controller: *app
         ports:
           http:
             port: 80
 
     route:
-      app:
+      cyberchef:
         hostnames: ["cc.stevewm.dev"]
         parentRefs:
           - name: envoy-internal
@@ -87,17 +87,17 @@ spec:
         type: emptyDir
         advancedMounts:
           cyberchef:
-            app:
+            cyberchef:
               - path: /tmp
       cache:
         type: emptyDir
         advancedMounts:
           cyberchef:
-            app:
+            cyberchef:
               - path: /var/cache/nginx
       run:
         type: emptyDir
         advancedMounts:
           cyberchef:
-            app:
+            cyberchef:
               - path: /var/run # nginx.pid

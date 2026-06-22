@@ -52,7 +52,7 @@ spec:
                   app.kubernetes.io/name: *app
 
         containers:
-          app:
+          smtp-relay:
             image:
               repository: ghcr.io/foxcpp/maddy
               tag: 0.9.5@sha256:de42151adff6388edb5e4ee88f60334fa1ab85e309485193ecb1c2db20203315
@@ -77,7 +77,7 @@ spec:
                 memory: 128Mi
 
     service:
-      app:
+      smtp-relay:
         controller: smtp-relay
         ports:
           http:
@@ -87,7 +87,7 @@ spec:
             port: *port
 
     serviceMonitor:
-      app:
+      smtp-relay:
         serviceName: smtp-relay
         endpoints:
           - port: http

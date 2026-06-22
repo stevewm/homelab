@@ -6,4 +6,4 @@ resources:
   - ./ocirepository.yaml
   - ./helmrelease.yaml
   - ./dashboards
-  # - ./httproute.yaml
+  - ./httproute.yaml

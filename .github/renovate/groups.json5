@@ -110,10 +110,21 @@
       },
     },
     {
-      description: "mise group",
+      description: "repo tools",
       groupName: "repo tools",
       matchManagers: ["mise"],
       ignoreDeps: ["pipx:flux-local"],
+      group: {
+        commitMessageTopic: "{{{groupName}}}",
+        semanticCommitScope: "mise",
+        semanticCommitType: "chore",
+      },
+    },
+    {
+      description: "repo tools - hk",
+      groupName: "repo tools",
+      matchManagers: ["regex"],
+      matchPackageNames: ["jdx/hk"],
       group: {
         commitMessageTopic: "{{{groupName}}}",
         semanticCommitScope: "mise",

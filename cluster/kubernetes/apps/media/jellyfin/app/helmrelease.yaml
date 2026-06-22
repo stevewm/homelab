@@ -52,10 +52,10 @@ spec:
               resourceClaimTemplateName: jellyfin-gpu
 
         containers:
-          app:
+          jellyfin:
             image:
               repository: ghcr.io/jellyfin/jellyfin
-              tag: 10.11.10@sha256:6497f0245de93fac642926c065b427362ca5e626e659f690516599c8c3817a38
+              tag: 10.11.11@sha256:45f648c382a0c8b552582fcea40e95cb17c5d475473a891cba0eb7523fb92112
             env:
               DOTNET_SYSTEM_IO_DISABLEFILELOCKING: "true"
               JELLYFIN_FFmpeg__probesize: 50000000
@@ -99,7 +99,7 @@ spec:
                 memory: 225Mi
 
     service:
-      app:
+      jellyfin:
         controller: *app
         type: LoadBalancer
         annotations:
@@ -111,7 +111,7 @@ spec:
             port: 7979
 
     route:
-      app:
+      jellyfin:
         hostnames: ["watch.stevewm.dev"]
         parentRefs:
           - name: envoy-external
@@ -119,7 +119,7 @@ spec:
             sectionName: https
         rules:
           - backendRefs:
-              - identifier: app
+              - identifier: *app
                 port: *http
         annotations:
           gethomepage.dev/name: *app

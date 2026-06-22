@@ -20,9 +20,9 @@ from = "chainguard/git"
 
 [tools]
 # https://docs.renovatebot.com/modules/manager/mise/#supported-default-registry-tool-short-names
-uv = "0.11.17"
+uv = "0.11.23"
 python = "3"
-node = "24.16.0"
+node = "24.17.0"
 
 # Flux
 "aqua:flux2" = "2.8.8"
@@ -32,17 +32,17 @@ kubecolor = "0.6.0"
 kubens = "0.11.0"
 "aqua:CrunchyData/postgres-operator-client" = "0.5.3"
 "aqua:kustomize" = "5.8.1"
-"aqua:helm" = "4.2.0"
-"github:helmfile/helmfile" = "1.5.2"
-"aqua:derailed/k9s" = "0.50.18"
+"aqua:helm" = "4.2.2"
+"github:helmfile/helmfile" = "1.5.5"
+"aqua:derailed/k9s" = "0.51.0"
 "aqua:stern/stern" = "1.34.0"
 
 # Talos
-"aqua:siderolabs/talos" = "1.13.3"
+"aqua:siderolabs/talos" = "1.13.4"
 
 # Tools
-"aqua:yq" = "4.53.2"
-"aqua:jq" = "1.8.1"
+"aqua:yq" = "4.53.3"
+"aqua:jq" = "1.8.2"
 "github:DopplerHQ/cli" = "3.76.0"
 "cargo:minijinja-cli" = "2.7.0"
 "github:gorcon/rcon-cli" = { version = "0.10.3", exe = "rcon" }
@@ -50,19 +50,19 @@ kubens = "0.11.0"
 "aqua:Orange-OpenSource/hurl" = "8.0.1"
 
 # hk
-"aqua:hk" = "1.46.0"
+"aqua:hk" = "1.48.0"
 "aqua:pkl" = "0.31.1"
-"aqua:ruff" = "0.15.15"
+"aqua:ruff" = "0.15.18"
 "npm:dclint" = "3.1.0"
-"npm:renovate" = "43.205.2"
+"npm:renovate" = "43.234.0"
 "aqua:actionlint" = "1.7.12"
-"npm:prettier" = "3.8.3"
+"npm:prettier" = "3.8.4"
 "aqua:shellcheck" = "0.11.0"
 rust = "1.96.0"
-just = "1.51.0"
+just = "1.53.0"
 gum = "0.17.0"
 "cargo:just-lsp" = "0.4.0"
-rumdl = "0.2.4"
+rumdl = "0.2.20"
 shfmt = "3.13.1"
 popeye = "0.22.1"
-crane = "0.21.6"
+crane = "0.21.7"

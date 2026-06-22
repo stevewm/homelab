@@ -10,6 +10,7 @@ spec:
   path: ./cluster/kubernetes/apps
   prune: true
   wait: true
+  force: true
   sourceRef:
     kind: GitRepository
     name: homelab

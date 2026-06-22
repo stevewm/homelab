@@ -53,7 +53,7 @@ spec:
           successfulJobsHistory: 0
 
         containers:
-          app:
+          hurl:
             image:
               repository: ghcr.io/orange-opensource/hurl
               tag: 8.0.1@sha256:49a02dc39d7084e5a6e8c57e2d4754ef102e4ee3761a02ef6dc0e305ab1a832d
@@ -74,6 +74,6 @@ spec:
         name: lge
         advancedMounts:
           renew:
-            app:
+            hurl:
               - path: /hurlfile
                 subPath: hurlfile

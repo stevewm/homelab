@@ -55,7 +55,7 @@ spec:
           successfulJobsHistory: 0
 
         containers:
-          app:
+          cf-dyndns:
             image:
               repository: ghcr.io/pascaliske/cloudflare-dyndns
               tag: 0.2.0@sha256:f3246c2b7454ce16f69eab00cec133c9b046059cda98a8affc1825816bc21e42

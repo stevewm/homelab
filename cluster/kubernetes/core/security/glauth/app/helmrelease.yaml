@@ -54,7 +54,7 @@ spec:
           reloader.stakater.com/auto: "true"
 
         containers:
-          app:
+          glauth:
             image:
               repository: docker.io/glauth/glauth
               tag: v2.5.0@sha256:7c67e00d7e491a42b23972c9dc0863e517b3c2401d73ff79a8f15254b77be902
@@ -80,7 +80,7 @@ spec:
                 memory: 128Mi
 
     service:
-      app:
+      glauth:
         controller: *app
         ports:
           http:
@@ -91,7 +91,7 @@ spec:
             protocol: TCP
 
     serviceMonitor:
-      app:
+      glauth:
         serviceName: *app
         endpoints:
           - port: http

@@ -57,7 +57,7 @@ spec:
       enabled: true
 
     dnsProxy:
-      endpointMaxIpPerHostname: 100
+      endpointMaxIpPerHostname: 1500
       maxDeferredConnectionDeletes: 15000
       minTtl: 300
 
@@ -93,7 +93,7 @@ spec:
     k8sServicePort: 7445
     kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
 
-    policyAuditMode: true
+    policyAuditMode: false
 
     securityContext:
       capabilities:
@@ -124,23 +124,22 @@ spec:
       hostRoot: /sys/fs/cgroup
     # -- end of talos settings --
 
-    # hubble:
-    #   enabled: true
-    #   ui:
-    #     ingress:
-    #       enabled: false # Use the HTTPRoute instead
-    #   dashboards:
-    #     enabled: true
-    #   relay:
-    #     enabled: true
-    #   metrics:
-    #     enabled:
-    #       - dns:query
-    #       - drop
-    #       - tcp
-    #       - flow
-    #       - port-distribution
-    #       - icmp
-    #       - http
-    #     serviceMonitor:
-    #       enabled: true
+    hubble:
+      enabled: true
+      ui:
+        enabled: true
+      dashboards:
+        enabled: true
+      relay:
+        enabled: true
+      metrics:
+        enabled:
+          - dns:query
+          - drop
+          - tcp
+          - flow
+          - port-distribution
+          - icmp
+          - http
+        serviceMonitor:
+          enabled: true

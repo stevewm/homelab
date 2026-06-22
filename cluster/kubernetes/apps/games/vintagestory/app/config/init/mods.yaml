@@ -1,12 +1,9 @@
 ---
-game_version: "~1.21.0"
+game_version: "1.22.6"
 mods_dir: /mods
-hooks:
-  download:
-    pre_run: "rm -rf {{.ModsDir}}/*.zip" # clear out old mods
 mods:
   - id: primitivesurvival
-    version: 5.0.5
+    version: 5.0.6
   # - id: ExpandedFoods
   #   version: 1.7.4
   # - id: ACulinaryArtillery
@@ -14,14 +11,16 @@ mods:
   - id: CarryOn
     version: 1.14.2
   - id: BetterRuins
-    version: 0.6.2
+    version: 0.6.3
   - id: th3dungeon
-    version: 0.5.0
+    version: 1.0.1
   # - id: VintageRCon
   #   version: 1.0.0
   - id: webcartographer
-    version: 0.10.1
+    version: 0.11.2
   - id: pspeltpatch
     version: 0.0.2
   # - id: chiseltoolslite
   #   version: 1.15.1
+  - name: vsexporter
+    version: 1.0.6

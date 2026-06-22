@@ -5,13 +5,16 @@ kind: RenovateJob
 metadata:
   name: renovate-stevewm
 spec:
+  metadata:
+    labels:
+      app: renovate-operator
   provider:
     name: github
   discoveryFilters: ["stevewm/*"]
   extraEnv:
     - name: LOG_LEVEL
       value: debug
-  image: ghcr.io/renovatebot/renovate:43.200.0
+  image: ghcr.io/renovatebot/renovate:43.233.4
   parallelism: 5
   resources:
     requests:

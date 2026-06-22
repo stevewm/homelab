@@ -60,10 +60,10 @@ spec:
                   app.kubernetes.io/name: cloudflared
 
         containers:
-          app:
+          cloudflared:
             image:
               repository: docker.io/cloudflare/cloudflared
-              tag: 2026.5.2@sha256:12ff5c6992a9863db4da270746af7c244bcaee49353039af8104268a18d6c4f0
+              tag: 2026.6.1@sha256:6d91c121b803126f7a5344005d17a9324788fc09d305b6e2560ec6040a7ae283
             args:
               - tunnel
               - --config
@@ -120,14 +120,14 @@ spec:
                 memory: 150Mi
 
     service:
-      app:
+      cloudflared:
         controller: cloudflared
         ports:
           http:
             port: 8080
 
     serviceMonitor:
-      app:
+      cloudflared:
         serviceName: cloudflared
         endpoints:
           - port: http

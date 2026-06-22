@@ -3,7 +3,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: app-goldilocks
+  name: apps-goldilocks
   namespace: &namespace observability
 spec:
   targetNamespace: *namespace
@@ -20,7 +20,7 @@ spec:
     namespace: flux-system
   wait: true
   dependsOn:
-    - name: app-goldilocks-vpa
+    - name: apps-goldilocks-vpa
 
 
 # yaml-language-server: $schema=https://k8s-schemas.home-operations.com/kustomize.toolkit.fluxcd.io/kustomization_v1.json
@@ -28,7 +28,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: app-goldilocks-vpa
+  name: apps-goldilocks-vpa
   namespace: flux-system
 spec:
   targetNamespace: observability

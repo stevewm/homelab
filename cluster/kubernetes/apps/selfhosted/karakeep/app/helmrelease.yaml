@@ -44,7 +44,7 @@ spec:
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
-          app:
+          karakeep:
             image:
               repository: ghcr.io/karakeep-app/karakeep
               tag: 0.32.0@sha256:64d6a9bbf2d37b5c808cf06b5d87f1f1c7846fdd3844724145a9741aeb06fd31
@@ -97,7 +97,7 @@ spec:
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
-          app:
+          chrome:
             image:
               repository: gcr.io/zenika-hub/alpine-chrome
               tag: 124@sha256:1a0046448e0bb6c275c88f86e01faf0de62b02ec8572901256ada0a8c08be23f
@@ -140,10 +140,10 @@ spec:
                           - karakeep
                   topologyKey: kubernetes.io/hostname
         containers:
-          app:
+          meilisearch:
             image:
               repository: mirror.gcr.io/getmeili/meilisearch
-              tag: v1.45.1@sha256:ac40212f9e5a7526d8007586e3e46fb0441d29dd36c7b02fa2341d2c9a1f6493
+              tag: v1.47.0@sha256:4931c0afd68b12d3db4a608268c6785bba26d3f3b43a228eff62ec38d5a47d8d
             args:
               - /bin/meilisearch
               - --experimental-dumpless-upgrade
@@ -162,7 +162,7 @@ spec:
                 memory: 4Gi
 
     service:
-      app:
+      karakeep:
         forceRename: karakeep
         primary: true
         controller: karakeep
@@ -185,22 +185,22 @@ spec:
         existingClaim: karakeep-data
         advancedMounts:
           karakeep:
-            app:
+            karakeep:
               - path: /data
                 subPath: karakeep
           meilisearch:
-            app:
+            meilisearch:
               - path: /meili_data
                 subPath: meilisearch
       run:
         type: emptyDir
         advancedMounts:
           karakeep:
-            app:
+            karakeep:
               - path: /run
 
     route:
-      app:
+      karakeep:
         hostnames:
           - kk.stevewm.dev
         parentRefs:
@@ -209,7 +209,7 @@ spec:
             sectionName: https
         rules:
           - backendRefs:
-              - identifier: app
+              - identifier: karakeep
                 port: *httpPort
         annotations:
           gethomepage.dev/name: *app
