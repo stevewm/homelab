@@ -37,28 +37,28 @@ jobs:
         id: mc_version
         with:
           cmd: |
-            yq -r '.spec.values.controllers.minecraft.containers.app.env.VERSION' $MC_HR
+            yq -r '.spec.values.controllers.minecraft.containers.minecraft.env.VERSION' $MC_HR
 
       - name: Extract MODRINTH_PROJECTS
         uses: mikefarah/yq@1b9b4ac5187171d2e5e3129be0cfa827c7f9d53d # v4.53.3
         id: modrinth_projects
         with:
           cmd: |
-            yq -r '.spec.values.controllers.minecraft.containers.app.env.MODRINTH_PROJECTS' $MC_HR
+            yq -r '.spec.values.controllers.minecraft.containers.minecraft.env.MODRINTH_PROJECTS' $MC_HR
 
       - name: Extract MODRINTH_ALLOWED_VERSION_TYPE
         uses: mikefarah/yq@1b9b4ac5187171d2e5e3129be0cfa827c7f9d53d # v4.53.3
         id: modrinth_allowed_version_type
         with:
           cmd: |
-            yq -r '.spec.values.controllers.minecraft.containers.app.env.MODRINTH_DEFAULT_VERSION_TYPE' $MC_HR
+            yq -r '.spec.values.controllers.minecraft.containers.minecraft.env.MODRINTH_DEFAULT_VERSION_TYPE' $MC_HR
 
       - name: Extract TYPE
         uses: mikefarah/yq@1b9b4ac5187171d2e5e3129be0cfa827c7f9d53d # v4.53.3
         id: type
         with:
           cmd: |
-            yq -r '.spec.values.controllers.minecraft.containers.app.env.TYPE' $MC_HR
+            yq -r '.spec.values.controllers.minecraft.containers.minecraft.env.TYPE' $MC_HR
 
       - name: Print extracted values
         run: |
