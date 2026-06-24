@@ -40,7 +40,7 @@ jobs:
       - run: echo "TAG=${{ env.IMAGE }}:${{ github.sha }}" >> "$GITHUB_ENV"
 
       - name: Build and push container
-        run: mise oci push --tool crane "${{ env.TAG }}"
+        run: mise oci push --tool crane --no-mise "${{ env.TAG }}"
 
       - name: Clean up old images
         uses: actions/delete-package-versions@e5bc658cc4c965c472efe991f8beea3981499c55 # v5
