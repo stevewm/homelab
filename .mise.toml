@@ -16,7 +16,7 @@ MINIJINJA_CONFIG_FILE = ""
 HOMEBREW_BREWFILE = ""
 
 [oci]
-from = "chainguard/git"
+from = "cleanstart/git"
 
 [tools]
 # https://docs.renovatebot.com/modules/manager/mise/#supported-default-registry-tool-short-names
