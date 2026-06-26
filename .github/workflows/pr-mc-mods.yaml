@@ -11,7 +11,7 @@ on:
     branches:
       - main
     paths:
-      - kubernetes/apps/games/minecraft/**
+      - cluster/kubernetes/apps/games/minecraft/**
       - .github/workflows/pr-mc-mods.yaml
 
 concurrency:
