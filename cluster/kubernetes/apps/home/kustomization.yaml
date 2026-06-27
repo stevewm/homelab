@@ -6,4 +6,3 @@ namespace: home
 resources:
   - ./namespace.yaml
   - ./go-tapo-exporter/ks.yaml
-  - ./home-assistant/ks.yaml
