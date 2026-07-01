@@ -17,12 +17,12 @@ HOMEBREW_BREWFILE = ""
 
 [tools]
 # https://docs.renovatebot.com/modules/manager/mise/#supported-default-registry-tool-short-names
-uv = "0.11.25"
+uv = "0.11.26"
 python = "3"
 node = "24.18.0"
 
 # Flux
-"aqua:flux2" = "2.8.8"
+"aqua:flux2" = "2.9.0"
 
 # Kube
 kubecolor = "0.6.0"
@@ -51,15 +51,15 @@ kubens = "0.11.0"
 "aqua:pkl" = "0.31.1"
 "aqua:ruff" = "0.15.20"
 "npm:dclint" = "3.1.0"
-"npm:renovate" = "43.246.0"
+"npm:renovate" = "43.249.5"
 "aqua:actionlint" = "1.7.12"
-"npm:prettier" = "3.9.1"
+"npm:prettier" = "3.9.4"
 "aqua:shellcheck" = "0.11.0"
-rust = "1.96.0"
-just = "1.54.0"
+rust = "1.96.1"
+just = "1.55.1"
 gum = "0.17.0"
 "cargo:just-lsp" = "0.4.0"
-rumdl = "0.2.25"
+rumdl = "0.2.27"
 shfmt = "3.13.1"
 popeye = "0.22.1"
 crane = "0.21.7"
