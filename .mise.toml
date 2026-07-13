@@ -2,6 +2,9 @@
 python.uv_venv_auto = "create|source"
 experimental = true
 
+[hooks]
+postinstall = "hk install"
+
 [env]
 KUBECONFIG = "{{ config_root }}/kubeconfig"
 TALOSCONFIG = "{{ config_root }}/talosconfig"
