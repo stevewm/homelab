@@ -25,11 +25,11 @@ jobs:
         uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3
         id: app-token
         with:
-          app-id: "${{ secrets.BOTTY_HILL_APP_ID }}"
+          client-id: "${{ secrets.BOTTY_HILL_CLIENT_ID }}"
           private-key: "${{ secrets.BOTTY_HILL_PRIVATE_KEY }}"
 
       - name: Checkout
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           token: "${{ steps.app-token.outputs.token }}"
 
@@ -53,17 +53,17 @@ jobs:
         uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3
         id: app-token
         with:
-          app-id: "${{ secrets.BOTTY_HILL_APP_ID }}"
+          client-id: "${{ secrets.BOTTY_HILL_CLIENT_ID }}"
           private-key: "${{ secrets.BOTTY_HILL_PRIVATE_KEY }}"
 
       - name: Checkout Pull Request Branch
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           token: "${{ steps.app-token.outputs.token }}"
           path: pull
 
       - name: Checkout Default Branch
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           token: "${{ steps.app-token.outputs.token }}"
           ref: "${{ github.event.repository.default_branch }}"

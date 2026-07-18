@@ -47,7 +47,7 @@ spec:
           stirling-pdf:
             image:
               repository: ghcr.io/stirling-tools/stirling-pdf
-              tag: 2.13.1@sha256:d5ff678ecacdb26b4b7892534540de64a04458b8aaa0a4f9daf2852221646f71
+              tag: 2.14.2@sha256:7ed4d9681d18e4fbc3aa6a63647c4b5c2bcc4b75841df7c05d7e3d2320f5c9a1
             env:
               DOCKER_ENABLE_SECURITY: false
               LANGS: &lang en_GB

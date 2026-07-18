@@ -143,7 +143,7 @@ spec:
           meilisearch:
             image:
               repository: mirror.gcr.io/getmeili/meilisearch
-              tag: v1.47.0@sha256:4931c0afd68b12d3db4a608268c6785bba26d3f3b43a228eff62ec38d5a47d8d
+              tag: v1.49.0@sha256:bdc7d7e7939911c40d88d6bcd01f9c72c81f7293135916d48bce241569f721bd
             args:
               - /bin/meilisearch
               - --experimental-dumpless-upgrade
