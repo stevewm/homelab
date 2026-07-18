@@ -10,6 +10,10 @@ on:
       - .mise.toml
       - .github/workflows/push-mise-container.yaml
 
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
 permissions:
   packages: write
   contents: read
@@ -37,7 +41,7 @@ jobs:
 
       - run: crane auth login ghcr.io -u "${{ github.actor }}" -p "${{ secrets.GITHUB_TOKEN }}"
 
-      - run: echo "TAG=${{ env.IMAGE }}:${{ github.sha }}" >> "$GITHUB_ENV"
+      - run: echo "TAG=${{ env.IMAGE }}:$(date '+%Y-%m-%d-%H.%M.%S')" >> "$GITHUB_ENV"
 
       - name: Build and push container
         run: mise oci push --tool crane --no-mise "${{ env.TAG }}"
