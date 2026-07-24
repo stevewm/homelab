@@ -3,7 +3,7 @@ game_version: "1.22.6"
 mods_dir: /mods
 mods:
   - id: primitivesurvival
-    version: 5.0.6
+    version: 5.0.7
   # - id: ExpandedFoods
   #   version: 1.7.4
   # - id: ACulinaryArtillery
