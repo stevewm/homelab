@@ -15,7 +15,7 @@ spec:
     passwordFromSecret:
       name: ${APP}-dragonfly
       key: password
-
+  networkPolicyEnabled: false
   env:
     - name: MAX_MEMORY
       valueFrom:
