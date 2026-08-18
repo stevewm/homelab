@@ -95,9 +95,9 @@ spec:
             resources:
               requests:
                 cpu: 10m
-                memory: 37Mi
+                memory: 92Mi
               limits:
-                memory: 220Mi
+                memory: 512Mi
 
     persistence:
       config:
