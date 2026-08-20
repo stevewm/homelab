@@ -6,7 +6,7 @@ resources:
   - ./ocirepository.yaml
   - ./helmrelease.yaml
   - ./externalsecret.yaml
-  - ./probe.yaml
+  #- ./probe.yaml
 configMapGenerator:
   - name: minecraft-bluemap
     files:
