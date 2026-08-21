@@ -20,51 +20,51 @@ HOMEBREW_BREWFILE = ""
 
 [tools]
 # https://docs.renovatebot.com/modules/manager/mise/#supported-default-registry-tool-short-names
-uv = "0.12.1"
+uv = "0.12.5"
 python = "3"
 node = "24.19.0"
 
 # Flux
-"aqua:flux2" = "2.9.3"
+"aqua:flux2" = "2.9.4"
 
 # Kube
 kubecolor = "0.6.0"
 kubens = "0.11.0"
 "aqua:CrunchyData/postgres-operator-client" = "0.5.3"
 "aqua:kustomize" = "5.8.1"
-"aqua:helm" = "4.2.3"
-"github:helmfile/helmfile" = "1.7.2"
+"aqua:helm" = "4.2.4"
+"github:helmfile/helmfile" = "1.7.4"
 "aqua:derailed/k9s" = "0.51.0"
 "aqua:stern/stern" = "1.34.0"
 
 # Talos
-"aqua:siderolabs/talos" = "1.13.7"
+"aqua:siderolabs/talos" = "1.13.9"
 
 # Tools
-"aqua:yq" = "4.53.3"
+"aqua:yq" = "4.53.6"
 "aqua:jq" = "1.8.2"
-"github:DopplerHQ/cli" = "3.76.1"
-"cargo:minijinja-cli" = "2.7.0"
+"github:DopplerHQ/cli" = "3.76.5"
+"cargo:minijinja-cli" = "2.24.0"
 "github:gorcon/rcon-cli" = { version = "0.10.3", exe = "rcon" }
 "github:slsa-framework/slsa-verifier" = "2.7.1"
 "aqua:Orange-OpenSource/hurl" = "8.0.1"
 
 # hk
-"aqua:hk" = "1.54.0"
+"aqua:hk" = "1.56.0"
 "aqua:pkl" = "0.32.1"
-"aqua:ruff" = "0.16.1"
+"aqua:ruff" = "0.16.4"
 "npm:dclint" = "3.1.0"
 "npm:renovate" = { version = "43.288.0", trust_policy_excludes = [
   "@yarnpkg/libzip",
 ] }
 "aqua:actionlint" = "1.7.12"
 "aqua:shellcheck" = "0.11.0"
-rust = "1.97.1"
-just = "1.57.0"
+rust = "1.98.0"
+just = "1.58.0"
 gum = "0.17.0"
-"cargo:just-lsp" = "0.6.0"
-rumdl = "0.2.49"
+"cargo:just-lsp" = "0.6.2"
+rumdl = "0.2.58"
 shfmt = "3.13.1"
 popeye = "0.22.1"
-crane = "0.21.8"
+crane = "0.21.9"
 oxfmt = "latest"
