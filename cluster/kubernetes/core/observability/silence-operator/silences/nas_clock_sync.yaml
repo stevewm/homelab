@@ -8,7 +8,7 @@ spec: # it's definitely synced ¯\_(ツ)_/¯
   matchers:
     - name: alertname
       value: NodeClockNotSynchronising
-      matchType: "="
+      matchType: '='
     - name: instance
       value: lilnas.home.arpa:9100
-      matchType: "="
+      matchType: '='

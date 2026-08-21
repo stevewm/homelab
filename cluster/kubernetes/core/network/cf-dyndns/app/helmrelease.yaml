@@ -47,7 +47,7 @@ spec:
               drop: [ALL]
 
         cronjob:
-          schedule: "*/5 * * * *" # every 5mins
+          schedule: '*/5 * * * *' # every 5mins
 
           concurrencyPolicy: Replace
           backoffLimit: 0

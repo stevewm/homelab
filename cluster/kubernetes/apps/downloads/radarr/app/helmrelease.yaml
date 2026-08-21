@@ -44,7 +44,7 @@ spec:
               drop: [ALL]
 
         annotations:
-          reloader.stakater.com/auto: "true"
+          reloader.stakater.com/auto: 'true'
 
         containers:
           radarr:
@@ -52,7 +52,7 @@ spec:
               repository: ghcr.io/home-operations/radarr
               tag: 6.4.0.10540@sha256:d380d69c729b4116d224ebb0b4909ff22395fc7b78e8a1976c43ae09430ffc5a
             env:
-              COMPlus_EnableDiagnostics: "0"
+              COMPlus_EnableDiagnostics: '0'
               RADARR__APP__INSTANCENAME: Radarr
               RADARR__AUTH__APIKEY:
                 valueFrom:
@@ -61,7 +61,7 @@ spec:
                     key: api_key
               RADARR__AUTH__METHOD: External
               RADARR__AUTH__REQUIRED: DisabledForLocalAddresses
-              RADARR__LOG__DBENABLED: "False"
+              RADARR__LOG__DBENABLED: 'False'
               RADARR__LOG__LEVEL: info
               RADARR__SERVER__PORT: &port 80
             probes:
@@ -93,19 +93,19 @@ spec:
 
     route:
       radarr:
-        hostnames: ["rdr.stevewm.dev"]
+        hostnames: ['rdr.stevewm.dev']
         parentRefs:
           - name: envoy-internal
             namespace: network
             sectionName: https
         annotations:
           gethomepage.dev/name: *app
-          gethomepage.dev/enabled: "true"
+          gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: downloads
           gethomepage.dev/icon: sh-radarr-light.png
-          gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_RADARR_API_KEY}}` }}"
+          gethomepage.dev/widget.key: '{{ `{{HOMEPAGE_VAR_RADARR_API_KEY}}` }}'
           gethomepage.dev/widget.type: *app
-          gethomepage.dev/widget.url: "http://radarr.downloads.svc.cluster.local"
+          gethomepage.dev/widget.url: 'http://radarr.downloads.svc.cluster.local'
 
     persistence:
       config:

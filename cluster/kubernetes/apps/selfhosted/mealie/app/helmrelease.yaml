@@ -53,22 +53,22 @@ spec:
             env:
               BASE_URL: https://eat.stevewm.dev
               DAILY_SCHEDULE_TIME: 05:00
-              ALLOW_SIGNUP: "false"
+              ALLOW_SIGNUP: 'false'
               LOG_LEVEL: debug
               # Authelia
-              OIDC_AUTH_ENABLED: "true"
-              OIDC_SIGNUP_ENABLED: "true"
-              OIDC_CONFIGURATION_URL: "https://sso.stevewm.dev/.well-known/openid-configuration"
-              OIDC_CLIENT_ID: "mealie"
+              OIDC_AUTH_ENABLED: 'true'
+              OIDC_SIGNUP_ENABLED: 'true'
+              OIDC_CONFIGURATION_URL: 'https://sso.stevewm.dev/.well-known/openid-configuration'
+              OIDC_CLIENT_ID: 'mealie'
               OIDC_CLIENT_SECRET:
                 valueFrom:
                   secretKeyRef:
                     name: mealie-sso
                     key: client_secret
-              OIDC_AUTO_REDIRECT: "true"
-              OIDC_ADMIN_GROUP: "admins"
-              OIDC_USER_GROUP: "people"
-              ALLOW_PASSWORD_LOGIN: "false"
+              OIDC_AUTO_REDIRECT: 'true'
+              OIDC_ADMIN_GROUP: 'admins'
+              OIDC_USER_GROUP: 'people'
+              ALLOW_PASSWORD_LOGIN: 'false'
 
             probes:
               liveness:
@@ -93,14 +93,14 @@ spec:
 
     route:
       mealie:
-        hostnames: ["eat.stevewm.dev"]
+        hostnames: ['eat.stevewm.dev']
         parentRefs:
           - name: envoy-internal
             namespace: network
             sectionName: https
         annotations:
           gethomepage.dev/name: *app
-          gethomepage.dev/enabled: "true"
+          gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: selfhosted
           gethomepage.dev/icon: sh-mealie-light.png
 

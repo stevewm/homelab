@@ -51,14 +51,14 @@ spec:
 
         strategy: RollingUpdate
         annotations:
-          reloader.stakater.com/auto: "true"
+          reloader.stakater.com/auto: 'true'
 
         containers:
           glauth:
             image:
               repository: docker.io/glauth/glauth
               tag: v2.5.2@sha256:93b1fffc865ce137ff7630a573ae413b85c45568cd63d2860971fe5ed121e0f8
-            command: ["/app/glauth", "-c", "/config"]
+            command: ['/app/glauth', '-c', '/config']
             probes:
               liveness: &probes
                 enabled: true

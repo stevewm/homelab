@@ -24,10 +24,10 @@ bedrock:
   clone-remote-port: false
   # The MOTD that will be broadcasted to Minecraft: Bedrock Edition clients. This is irrelevant if "passthrough-motd" is set to true
   # If either of these are empty, the respective string will default to "Geyser"
-  motd1: "Geyser"
-  motd2: "Another Geyser server."
+  motd1: 'Geyser'
+  motd2: 'Another Geyser server.'
   # The Server Name that will be sent to Minecraft: Bedrock Edition clients. This is visible in both the pause menu and the settings menu.
-  server-name: "MPOF"
+  server-name: 'MPOF'
   # How much to compress network traffic to the Bedrock client. The higher the number, the more CPU usage used, but
   # the smaller the bandwidth used. Does not have any effect below -1 or above 9. Set to -1 to disable.
   compression-level: 3
@@ -130,7 +130,7 @@ disable-bedrock-scaffolding: false
 # disabled - the default/fallback, which doesn't apply this workaround
 # no-emotes - emotes will NOT be sent to other Bedrock clients and offhand will be swapped. This effectively disables all emotes from being seen.
 # emotes-and-offhand - emotes will be sent to Bedrock clients and offhand will be swapped
-emote-offhand-workaround: "disabled"
+emote-offhand-workaround: 'disabled'
 
 # The default locale if we dont have the one the client requested. Uncomment to not use the default system language.
 # default-locale: en_us

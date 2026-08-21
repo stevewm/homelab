@@ -44,7 +44,7 @@ spec:
               drop: [ALL]
 
         annotations:
-          reloader.stakater.com/auto: "true"
+          reloader.stakater.com/auto: 'true'
 
         containers:
           sonarr:
@@ -52,7 +52,7 @@ spec:
               repository: ghcr.io/home-operations/sonarr
               tag: 4.0.19.2995@sha256:e679d9abf64f7a1edaf340f5c3fea20efed55fb1489ef8ba42f3404caed43590
             env:
-              COMPlus_EnableDiagnostics: "0"
+              COMPlus_EnableDiagnostics: '0'
               SONARR__APP_INSTANCENAME: Sonarr
               SONARR__AUTH__APIKEY:
                 valueFrom:
@@ -61,7 +61,7 @@ spec:
                     key: api_key
               SONARR__AUTH__METHOD: External
               SONARR__AUTH_REQUIRED: DisabledForLocalAddresses
-              SONARR__LOG__DBENABLED: "False"
+              SONARR__LOG__DBENABLED: 'False'
               SONARR__LOG__LEVEL: info
               SONARR__SERVER__PORT: &port 80
             probes:
@@ -93,19 +93,19 @@ spec:
 
     route:
       sonarr:
-        hostnames: ["snr.stevewm.dev"]
+        hostnames: ['snr.stevewm.dev']
         parentRefs:
           - name: envoy-internal
             namespace: network
             sectionName: https
         annotations:
           gethomepage.dev/name: *app
-          gethomepage.dev/enabled: "true"
+          gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: downloads
           gethomepage.dev/icon: sh-sonarr-light.png
-          gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_SONARR_API_KEY}}` }}"
+          gethomepage.dev/widget.key: '{{ `{{HOMEPAGE_VAR_SONARR_API_KEY}}` }}'
           gethomepage.dev/widget.type: *app
-          gethomepage.dev/widget.url: "http://sonarr.downloads.svc.cluster.local"
+          gethomepage.dev/widget.url: 'http://sonarr.downloads.svc.cluster.local'
 
     persistence:
       media:

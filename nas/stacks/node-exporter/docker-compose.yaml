@@ -17,4 +17,4 @@ services:
       - --collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)
     restart: unless-stopped
     expose:
-      - "9100"
+      - '9100'

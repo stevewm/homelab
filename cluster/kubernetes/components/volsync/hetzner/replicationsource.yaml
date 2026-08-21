@@ -13,7 +13,7 @@ spec:
     copyMethod: ${VOLSYNC_COPY_METHOD:-Snapshot}
     storageClassName: ${VOLSYNC_STORAGECLASS:-local-hostpath}
     capacity: ${VOLSYNC_CAPACITY:-1Gi}
-    accessModes: ["${VOLSYNC_ACCESSMODES:-ReadWriteOnce}"]
+    accessModes: ['${VOLSYNC_ACCESSMODES:-ReadWriteOnce}']
     volumeSnapshotClassName: ${VOLSYNC_STORAGECLASS:-local-hostpath}
     moverSecurityContext:
       runAsUser: ${APP_UID:-1001}

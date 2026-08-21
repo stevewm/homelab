@@ -18,4 +18,4 @@ spec:
             description: |
               Pod {{ $labels.pod }} in namespace {{ $labels.namespace }} has been in the
               scheduler's gated queue for more than 1 hours.
-            summary: "Pod {{ $labels.pod }} in {{ $labels.namespace }} gated for >6h"
+            summary: 'Pod {{ $labels.pod }} in {{ $labels.namespace }} gated for >6h'

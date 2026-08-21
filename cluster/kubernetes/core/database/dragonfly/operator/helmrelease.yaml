@@ -44,7 +44,7 @@ spec:
               drop: [ALL]
 
         annotations:
-          reloader.stakater.com/auto: "true"
+          reloader.stakater.com/auto: 'true'
 
         pod:
           topologySpreadConstraints:
@@ -61,11 +61,11 @@ spec:
               repository: docker.dragonflydb.io/dragonflydb/operator
               tag: v1.6.1@sha256:b11411142935f92ed0ec30a5ddeb31680e09ab66beecb827cb0224f1c4238638
             args:
-              - "--health-probe-bind-address=:8081"
-              - "--metrics-bind-address=:8080"
-              - "--leader-elect"
+              - '--health-probe-bind-address=:8081'
+              - '--metrics-bind-address=:8080'
+              - '--leader-elect'
             command:
-              - "/manager"
+              - '/manager'
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
@@ -140,40 +140,34 @@ spec:
       roles:
         dragonfly-operator:
           rules:
-            - apiGroups: ["coordination.k8s.io"]
-              resources: ["leases"]
-              verbs:
-                ["get", "list", "watch", "create", "update", "patch", "delete"]
-            - apiGroups: [""]
-              resources: ["events"]
-              verbs: ["create", "patch"]
-            - apiGroups: [""]
-              resources: ["configmaps"]
-              verbs: ["list", "watch"]
-            - apiGroups: [""]
-              resources: ["pods", "services"]
-              verbs:
-                ["create", "delete", "get", "list", "patch", "update", "watch"]
-            - apiGroups: ["networking.k8s.io"]
-              resources: ["networkpolicies"]
-              verbs:
-                ["create", "delete", "get", "list", "patch", "update", "watch"]
-            - apiGroups: ["apps"]
-              resources: ["statefulsets"]
-              verbs:
-                ["create", "delete", "get", "list", "patch", "update", "watch"]
-            - apiGroups: ["policy"]
-              resources: ["poddisruptionbudgets"]
-              verbs:
-                ["create", "delete", "get", "list", "patch", "update", "watch"]
-            - apiGroups: ["dragonflydb.io"]
-              resources: ["dragonflies"]
-              verbs:
-                ["create", "delete", "get", "list", "patch", "update", "watch"]
-            - apiGroups: ["dragonflydb.io"]
-              resources: ["dragonflies/finalizers"]
-              verbs: ["update"]
-            - apiGroups: ["dragonflydb.io"]
-              resources: ["dragonflies/status"]
-              verbs: ["get", "patch", "update"]
+            - apiGroups: ['coordination.k8s.io']
+              resources: ['leases']
+              verbs: ['get', 'list', 'watch', 'create', 'update', 'patch', 'delete']
+            - apiGroups: ['']
+              resources: ['events']
+              verbs: ['create', 'patch']
+            - apiGroups: ['']
+              resources: ['configmaps']
+              verbs: ['list', 'watch']
+            - apiGroups: ['']
+              resources: ['pods', 'services']
+              verbs: ['create', 'delete', 'get', 'list', 'patch', 'update', 'watch']
+            - apiGroups: ['networking.k8s.io']
+              resources: ['networkpolicies']
+              verbs: ['create', 'delete', 'get', 'list', 'patch', 'update', 'watch']
+            - apiGroups: ['apps']
+              resources: ['statefulsets']
+              verbs: ['create', 'delete', 'get', 'list', 'patch', 'update', 'watch']
+            - apiGroups: ['policy']
+              resources: ['poddisruptionbudgets']
+              verbs: ['create', 'delete', 'get', 'list', 'patch', 'update', 'watch']
+            - apiGroups: ['dragonflydb.io']
+              resources: ['dragonflies']
+              verbs: ['create', 'delete', 'get', 'list', 'patch', 'update', 'watch']
+            - apiGroups: ['dragonflydb.io']
+              resources: ['dragonflies/finalizers']
+              verbs: ['update']
+            - apiGroups: ['dragonflydb.io']
+              resources: ['dragonflies/status']
+              verbs: ['get', 'patch', 'update']
           type: ClusterRole

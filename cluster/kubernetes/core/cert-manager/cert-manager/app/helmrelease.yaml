@@ -30,7 +30,7 @@ spec:
     enableCertificateOwnerRef: true
 
     deploymentAnnotations:
-      reloader.stakater.com/auto: "true"
+      reloader.stakater.com/auto: 'true'
 
     prometheus:
       enabled: true

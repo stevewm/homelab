@@ -31,7 +31,7 @@ spec:
       - stevewm.dev
 
     podAnnotations:
-      reloader.stakater.com/auto: "true"
+      reloader.stakater.com/auto: 'true'
 
     serviceMonitor:
       enabled: true
@@ -47,7 +47,7 @@ spec:
       - gateway-httproute
 
     txtOwnerId: main
-    txtPrefix: "k8s."
+    txtPrefix: 'k8s.'
 
     env:
       - name: CF_API_TOKEN

@@ -6,7 +6,7 @@ metadata:
   name: &app grafana
   annotations:
     gethomepage.dev/name: *app
-    gethomepage.dev/enabled: "true"
+    gethomepage.dev/enabled: 'true'
     gethomepage.dev/group: observability
     gethomepage.dev/icon: sh-grafana-light.png
     gethomepage.dev/pod-selector: app=grafana

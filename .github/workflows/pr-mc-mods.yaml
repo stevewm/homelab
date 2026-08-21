@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 ---
-name: "PR: Minecraft Mod Compatibility Check"
+name: 'PR: Minecraft Mod Compatibility Check'
 
 permissions:
   contents: read
@@ -24,7 +24,7 @@ jobs:
     env:
       MC_HR: ${{ github.workspace }}/cluster/kubernetes/apps/games/minecraft/app/helmrelease.yaml
       # renovate: depName=itzg/mc-image-helper datasource=github-releases
-      MC_IMAGE_HELPER_VERSION: "1.55.2"
+      MC_IMAGE_HELPER_VERSION: '1.55.2'
 
     steps:
       - name: Checkout
@@ -82,7 +82,7 @@ jobs:
           VERSION: ${{ steps.mc_version.outputs.result }}
           TYPE: ${{ steps.type.outputs.result }}
           MODRINTH_ALLOWED_VERSION_TYPE: ${{ steps.modrinth_allowed_version_type.outputs.result }}
-          MODRINTH_DOWNLOAD_DEPENDENCIES: "none"
+          MODRINTH_DOWNLOAD_DEPENDENCIES: 'none'
         run: |
           set -e
           if [[ $MODRINTH_PROJECTS ]]; then

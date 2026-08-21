@@ -44,7 +44,7 @@ spec:
               drop: [ALL]
 
         annotations:
-          reloader.stakater.com/auto: "true"
+          reloader.stakater.com/auto: 'true'
 
         containers:
           sabnzbd:
@@ -94,19 +94,19 @@ spec:
 
     route:
       sabnzbd:
-        hostnames: ["nzb.stevewm.dev"]
+        hostnames: ['nzb.stevewm.dev']
         parentRefs:
           - name: envoy-internal
             namespace: network
             sectionName: https
         annotations:
           gethomepage.dev/name: *app
-          gethomepage.dev/enabled: "true"
+          gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: downloads
           gethomepage.dev/icon: sh-sabnzbd-light.png
-          gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_SABNZBD_API_KEY}}` }}"
+          gethomepage.dev/widget.key: '{{ `{{HOMEPAGE_VAR_SABNZBD_API_KEY}}` }}'
           gethomepage.dev/widget.type: *app
-          gethomepage.dev/widget.url: "http://sabnzbd.downloads.svc.cluster.local"
+          gethomepage.dev/widget.url: 'http://sabnzbd.downloads.svc.cluster.local'
 
     persistence:
       media:

@@ -10,7 +10,7 @@ spec:
       app: renovate-operator
   provider:
     name: github
-  discoveryFilters: ["stevewm/*"]
+  discoveryFilters: ['stevewm/*']
   extraEnv:
     - name: LOG_LEVEL
       value: debug
@@ -26,7 +26,7 @@ spec:
       readOnlyRootFilesystem: true
       allowPrivilegeEscalation: false
       capabilities:
-        drop: ["ALL"]
+        drop: ['ALL']
   secretRef: renovate-secret
 
 ---
@@ -54,8 +54,8 @@ kind: GithubAccessToken
 metadata:
   name: botty-hill-auth-token
 spec:
-  appID: "963455"
-  installID: "53550287"
+  appID: '963455'
+  installID: '53550287'
   auth:
     privateKey:
       secretRef:
@@ -76,9 +76,9 @@ spec:
       type: Opaque
       engineVersion: v2
       data:
-        GITHUB_COM_TOKEN: "{{ .token }}"
+        GITHUB_COM_TOKEN: '{{ .token }}'
         GITHUB_COM_USER: c3RldmV3bQ==
-        RENOVATE_TOKEN: "{{ .token }}"
+        RENOVATE_TOKEN: '{{ .token }}'
   dataFrom:
     - sourceRef:
         generatorRef:

@@ -43,7 +43,7 @@ spec:
             capabilities:
               drop: [ALL]
         annotations:
-          reloader.stakater.com/auto: "true"
+          reloader.stakater.com/auto: 'true'
 
         containers:
           actual:
@@ -62,7 +62,7 @@ spec:
                     key: client_secret
               ACTUAL_OPENID_SERVER_HOSTNAME: https://actual.stevewm.dev
               ACTUAL_OPENID_AUTH_METHOD: oauth2
-              ACTUAL_OPENID_ENFORCE: "true"
+              ACTUAL_OPENID_ENFORCE: 'true'
             probes:
               liveness:
                 enabled: true
@@ -100,13 +100,13 @@ spec:
 
     route:
       actual:
-        hostnames: ["actual.stevewm.dev"]
+        hostnames: ['actual.stevewm.dev']
         parentRefs:
           - name: envoy-internal
             namespace: network
             sectionName: https
         annotations:
           gethomepage.dev/name: *app
-          gethomepage.dev/enabled: "true"
+          gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: selfhosted
           gethomepage.dev/icon: sh-actual-budget-light.png

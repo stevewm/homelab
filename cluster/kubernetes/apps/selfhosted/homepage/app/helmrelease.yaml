@@ -72,7 +72,7 @@ spec:
               - secretRef:
                   name: homepage-app-secrets
             env:
-              HOMEPAGE_ALLOWED_HOSTS: "home.stevewm.dev"
+              HOMEPAGE_ALLOWED_HOSTS: 'home.stevewm.dev'
 
         serviceAccount:
           identifier: homepage
@@ -86,7 +86,7 @@ spec:
 
     route:
       homepage:
-        hostnames: ["home.stevewm.dev"]
+        hostnames: ['home.stevewm.dev']
         parentRefs:
           - name: envoy-internal
             namespace: network
@@ -133,7 +133,7 @@ spec:
         homepage:
           rules:
             - apiGroups:
-                - ""
+                - ''
               resources:
                 - namespaces
                 - pods

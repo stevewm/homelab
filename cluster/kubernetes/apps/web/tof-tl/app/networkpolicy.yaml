@@ -15,5 +15,5 @@ spec:
             app.kubernetes.io/name: envoy
       toPorts:
         - ports:
-            - port: "3000"
+            - port: '3000'
               protocol: TCP

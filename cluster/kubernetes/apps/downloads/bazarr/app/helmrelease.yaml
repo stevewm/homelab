@@ -44,7 +44,7 @@ spec:
               drop: [ALL]
 
         annotations:
-          reloader.stakater.com/auto: "true"
+          reloader.stakater.com/auto: 'true'
 
         containers:
           bazarr:
@@ -103,19 +103,19 @@ spec:
 
     route:
       bazarr:
-        hostnames: ["bzr.stevewm.dev"]
+        hostnames: ['bzr.stevewm.dev']
         parentRefs:
           - name: envoy-internal
             namespace: network
             sectionName: https
         annotations:
           gethomepage.dev/name: *app
-          gethomepage.dev/enabled: "true"
+          gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: downloads
           gethomepage.dev/icon: sh-bazarr-light.png
-          gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_BAZARR_API_KEY}}` }}"
+          gethomepage.dev/widget.key: '{{ `{{HOMEPAGE_VAR_BAZARR_API_KEY}}` }}'
           gethomepage.dev/widget.type: *app
-          gethomepage.dev/widget.url: "http://bazarr.downloads.svc.cluster.local"
+          gethomepage.dev/widget.url: 'http://bazarr.downloads.svc.cluster.local'
 
     persistence:
       config:

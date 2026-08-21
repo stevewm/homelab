@@ -29,7 +29,7 @@ spec:
   postBuild:
     substitute:
       APP: authelia
-      POSTGRES_REPLICAS: "1"
+      POSTGRES_REPLICAS: '1'
   patches:
     - patch: |-
         apiVersion: postgres-operator.crunchydata.com/v1beta1

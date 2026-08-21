@@ -5,7 +5,7 @@ kind: HTTPRoute
 metadata:
   name: hubble
 spec:
-  hostnames: ["cni.stevewm.dev"]
+  hostnames: ['cni.stevewm.dev']
   parentRefs:
     - name: envoy-internal
       namespace: network

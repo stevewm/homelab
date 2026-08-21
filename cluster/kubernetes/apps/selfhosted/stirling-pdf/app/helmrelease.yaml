@@ -80,14 +80,14 @@ spec:
 
     route:
       stirling-pdf:
-        hostnames: ["pdf.stevewm.dev"]
+        hostnames: ['pdf.stevewm.dev']
         parentRefs:
           - name: envoy-internal
             namespace: network
             sectionName: https
         annotations:
           gethomepage.dev/name: *app
-          gethomepage.dev/enabled: "true"
+          gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: selfhosted
           gethomepage.dev/icon: sh-stirling-pdf-light.png
 

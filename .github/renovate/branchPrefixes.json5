@@ -1,20 +1,20 @@
 {
-  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
   packageRules: [
     {
-      description: "kubernetes cluster",
-      matchFileNames: ["**/cluster/**"],
-      additionalBranchPrefix: "cluster-",
+      description: 'kubernetes cluster',
+      matchFileNames: ['**/cluster/**'],
+      additionalBranchPrefix: 'cluster-',
     },
     {
-      description: "NAS",
-      matchFileNames: ["**/nas/**"],
-      additionalBranchPrefix: "nas-",
+      description: 'NAS',
+      matchFileNames: ['**/nas/**'],
+      additionalBranchPrefix: 'nas-',
     },
     {
-      description: "VPS",
-      matchFileNames: ["**/vps/**"],
-      additionalBranchPrefix: "vps-",
+      description: 'VPS',
+      matchFileNames: ['**/vps/**'],
+      additionalBranchPrefix: 'vps-',
     },
   ],
 }

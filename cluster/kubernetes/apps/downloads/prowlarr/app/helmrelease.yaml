@@ -44,7 +44,7 @@ spec:
               drop: [ALL]
 
         annotations:
-          reloader.stakater.com/auto: "true"
+          reloader.stakater.com/auto: 'true'
 
         strategy: Recreate
 
@@ -54,7 +54,7 @@ spec:
               repository: ghcr.io/home-operations/prowlarr
               tag: 2.6.0.5494@sha256:f2db7fc93c2c26476de74695b565bfced0f39255cdba30fedf6d1ec45789f818
             env:
-              COMPlus_EnableDiagnostics: "0"
+              COMPlus_EnableDiagnostics: '0'
               PROWLARR__APP__INSTANCENAME: Prowlarr
               PROWLARR__AUTH__APIKEY:
                 valueFrom:
@@ -63,7 +63,7 @@ spec:
                     key: api_key
               PROWLARR__AUTH__REQUIRED: DisabledForLocalAddresses
               PROWLARR__AUTH__METHOD: External
-              PROWLARR__LOG__DBENABLED: "False"
+              PROWLARR__LOG__DBENABLED: 'False'
               PROWLARR__LOG__LEVEL: info
               PROWLARR__SERVER__PORT: &port 80
             probes:
@@ -95,19 +95,19 @@ spec:
 
     route:
       prowlarr:
-        hostnames: ["plr.stevewm.dev"]
+        hostnames: ['plr.stevewm.dev']
         parentRefs:
           - name: envoy-internal
             namespace: network
             sectionName: https
         annotations:
           gethomepage.dev/name: *app
-          gethomepage.dev/enabled: "true"
+          gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: downloads
           gethomepage.dev/icon: sh-prowlarr-light.png
-          gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_PROWLARR_API_KEY}}` }}"
+          gethomepage.dev/widget.key: '{{ `{{HOMEPAGE_VAR_PROWLARR_API_KEY}}` }}'
           gethomepage.dev/widget.type: *app
-          gethomepage.dev/widget.url: "http://prowlarr.downloads.svc.cluster.local"
+          gethomepage.dev/widget.url: 'http://prowlarr.downloads.svc.cluster.local'
 
     persistence:
       config:

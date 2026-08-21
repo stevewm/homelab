@@ -14,5 +14,5 @@ spec:
       inputName: DS_PROMETHEUS
   envs:
     - name: VAR_KWHPRICE
-      value: "0.0507" # https://kwhprice.eu/en/netherlands
-  url: "https://grafana.com/api/dashboards/21982/revisions/3/download"
+      value: '0.0507' # https://kwhprice.eu/en/netherlands
+  url: 'https://grafana.com/api/dashboards/21982/revisions/3/download'

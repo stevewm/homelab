@@ -10,4 +10,4 @@ spec:
       value: KubeHpaMaxedOut
     - name: horizontalpodautoscaler
       value: keda-hpa-.*
-      matchType: "=~"
+      matchType: '=~'

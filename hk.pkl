@@ -15,10 +15,10 @@ local linters = new Mapping<String, Step> {
   ["pkl"] = Builtins.pkl
   ["pkl-format"] = Builtins.pkl_format
 
-  ["prettier"] = (Builtins.prettier) {
-    check = "prettier --config " + config + "/prettierrc.yaml --check {{ files }}"
-    check_list_files = "prettier --list-different {{ files }}"
-    fix = "prettier --config " + config + "/prettierrc.yaml --write {{ files }}"
+  ["oxfmt"] = (Builtins.prettier) {
+    check = "oxfmt --config " + config + "/.oxfmtrc.json --check {{ files }}"
+    check_list_files = "oxfmt --list-different {{ files }}"
+    fix = "oxfmt --config " + config + "/.oxfmtrc.json --write {{ files }}"
   }
 
   ["ruff"] = (Builtins.ruff) {

@@ -23,6 +23,6 @@ rules:
   line-length: disable
 
   truthy:
-    allowed-values: ["true", "false", "on"]
+    allowed-values: ['true', 'false', 'on']
 
   indentation: enable

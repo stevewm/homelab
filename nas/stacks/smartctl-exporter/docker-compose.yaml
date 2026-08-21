@@ -8,5 +8,5 @@ services:
     restart: always
     user: root
     ports:
-      - "9633:9633/tcp"
+      - '9633:9633/tcp'
     privileged: true

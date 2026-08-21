@@ -46,7 +46,7 @@ spec:
         strategy: RollingUpdate
 
         annotations:
-          reloader.stakater.com/auto: "true"
+          reloader.stakater.com/auto: 'true'
 
         pod:
           topologySpreadConstraints:
@@ -78,7 +78,7 @@ spec:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
               capabilities:
-                drop: ["ALL"]
+                drop: ['ALL']
             resources:
               requests:
                 cpu: 5m
@@ -95,7 +95,7 @@ spec:
 
     route:
       kromgo:
-        hostnames: ["kg.stevewm.dev"]
+        hostnames: ['kg.stevewm.dev']
         parentRefs:
           - name: envoy-external
             namespace: network

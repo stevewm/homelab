@@ -63,14 +63,14 @@ spec:
       route:
         main:
           enabled: true
-          hostnames: ["am.stevewm.dev"]
+          hostnames: ['am.stevewm.dev']
           parentRefs:
             - name: envoy-internal
               namespace: network
               sectionName: https
           annotations:
             gethomepage.dev/name: alertmanager
-            gethomepage.dev/enabled: "true"
+            gethomepage.dev/enabled: 'true'
             gethomepage.dev/group: observability
             gethomepage.dev/icon: sh-prometheus-light.png
             gethomepage.dev/pod-selector: alertmanager=kube-prometheus-stack
@@ -79,9 +79,9 @@ spec:
     kube-state-metrics:
       rbac:
         extraRules:
-          - apiGroups: ["autoscaling.k8s.io"]
-            resources: ["verticalpodautoscalers"]
-            verbs: ["list", "watch"]
+          - apiGroups: ['autoscaling.k8s.io']
+            resources: ['verticalpodautoscalers']
+            verbs: ['list', 'watch']
       prometheus:
         monitor:
           enabled: true
@@ -120,14 +120,14 @@ spec:
       route:
         main:
           enabled: true
-          hostnames: ["prom.stevewm.dev"]
+          hostnames: ['prom.stevewm.dev']
           parentRefs:
             - name: envoy-internal
               namespace: network
               sectionName: https
           annotations:
             gethomepage.dev/name: prometheus
-            gethomepage.dev/enabled: "true"
+            gethomepage.dev/enabled: 'true'
             gethomepage.dev/group: observability
             gethomepage.dev/icon: sh-prometheus-light.png
             gethomepage.dev/pod-selector: app.kubernetes.io/name=prometheus

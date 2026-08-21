@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 ---
-name: "Build tool container"
+name: 'Build tool container'
 on:
   workflow_dispatch:
   push:
@@ -24,12 +24,12 @@ jobs:
       - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3
         id: app-token
         with:
-          client-id: "${{ secrets.BOTTY_HILL_CLIENT_ID }}"
-          private-key: "${{ secrets.BOTTY_HILL_PRIVATE_KEY }}"
+          client-id: '${{ secrets.BOTTY_HILL_CLIENT_ID }}'
+          private-key: '${{ secrets.BOTTY_HILL_PRIVATE_KEY }}'
 
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
-          token: "${{ steps.app-token.outputs.token }}"
+          token: '${{ steps.app-token.outputs.token }}'
 
       - uses: jdx/mise-action@7e36c90d9ab29c415a2384db3006f3ec8a8cc654 # v4
         env:
@@ -48,4 +48,4 @@ jobs:
           package-name: tools
           package-type: container
           min-versions-to-keep: 5
-          delete-only-untagged-versions: "true"
+          delete-only-untagged-versions: 'true'

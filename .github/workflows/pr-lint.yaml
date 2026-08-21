@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 ---
-name: "PR: Lint"
+name: 'PR: Lint'
 
 on:
   pull_request:
@@ -24,12 +24,12 @@ jobs:
         uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3
         id: app-token
         with:
-          client-id: "${{ secrets.BOTTY_HILL_CLIENT_ID }}"
-          private-key: "${{ secrets.BOTTY_HILL_PRIVATE_KEY }}"
+          client-id: '${{ secrets.BOTTY_HILL_CLIENT_ID }}'
+          private-key: '${{ secrets.BOTTY_HILL_PRIVATE_KEY }}'
 
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
-          token: "${{ steps.app-token.outputs.token }}"
+          token: '${{ steps.app-token.outputs.token }}'
           fetch-depth: 0
 
       - uses: jdx/mise-action@7e36c90d9ab29c415a2384db3006f3ec8a8cc654 # v4
@@ -50,8 +50,8 @@ jobs:
         if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
         id: app-token
         with:
-          client-id: "${{ secrets.BOTTY_HILL_CLIENT_ID }}"
-          private-key: "${{ secrets.BOTTY_HILL_PRIVATE_KEY }}"
+          client-id: '${{ secrets.BOTTY_HILL_CLIENT_ID }}'
+          private-key: '${{ secrets.BOTTY_HILL_PRIVATE_KEY }}'
 
       - id: success_gif
         if: |
@@ -98,4 +98,4 @@ jobs:
           repo-token: ${{ steps.app-token.outputs.token }}
           message-id: ${{ github.event.pull_request.number }}-linting
           message: ${{ steps.set_message.outputs.message }}
-          refresh-message-position: "true"
+          refresh-message-position: 'true'

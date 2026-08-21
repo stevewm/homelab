@@ -4,10 +4,10 @@ kind: Namespace
 metadata:
   name: _
   annotations:
-    k8tz.io/inject: "false"
+    k8tz.io/inject: 'false'
   labels:
     kustomize.toolkit.fluxcd.io/prune: disabled
-    goldilocks.fairwinds.com/enabled: "true"
+    goldilocks.fairwinds.com/enabled: 'true'
     pod-security.kubernetes.io/enforce: baseline
     pod-security.kubernetes.io/enforce-version: latest
     pod-security.kubernetes.io/warn: restricted

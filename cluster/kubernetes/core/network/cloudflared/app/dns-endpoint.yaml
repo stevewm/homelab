@@ -8,4 +8,4 @@ spec:
   endpoints:
     - dnsName: ext.stevewm.dev
       recordType: CNAME
-      targets: ["163683c9-9cf7-4d26-8c63-df0986d1d87c.cfargotunnel.com"]
+      targets: ['163683c9-9cf7-4d26-8c63-df0986d1d87c.cfargotunnel.com']

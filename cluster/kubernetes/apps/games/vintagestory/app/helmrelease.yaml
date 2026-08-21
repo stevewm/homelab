@@ -48,7 +48,7 @@ spec:
 
     controllers:
       vintagestory:
-        replicas: 0
+        # replicas: 0
         defaultContainerOptions:
           securityContext:
             allowPrivilegeEscalation: false
@@ -58,15 +58,29 @@ spec:
         defaultContainerOptionsStrategy: merge
 
         annotations:
-          reloader.stakater.com/auto: "true"
+          reloader.stakater.com/auto: 'true'
 
         initContainers:
-          init:
+          mods:
             image:
               repository: ghcr.io/stevewm/vsmod
               tag: v0.4.3@sha256:b53dd4fbb5f0ed1b1ac088ca8a4c6ecbd243a07f8847cde175da223f5354fdd2
-            command: ["/vsmod"]
-            args: ["download", "--file", "/init/mods.yaml", "--debug"]
+            command: ['/vsmod']
+            args: ['download', '--file', '/init/mods.yaml', '--debug']
+          config:
+            image:
+              repository: busybox
+              tag: latest
+            command: ['/bin/sh', '-c']
+            args:
+              - |
+                mkdir -p /data/ModConfig &&
+                cp /init/serverconfig.json /data/serverconfig.json &&
+                cp /init/servermagicnumbers.json /data/servermagicnumbers.json &&
+                cp /init/primitivesurvival119.json /tmp/ModConfig/primitivesurvival119.json &&
+                cp /init/betterruins.yaml /tmp/ModConfig/betterruins.yaml &&
+                cp /init/WebCartographerConfig.json /tmp/ModConfig/WebCartographerConfig.json &&
+                cp /init/vsrcon.json /data/ModConfig/vsrcon.json
 
         containers:
           vintagestory:
@@ -87,7 +101,7 @@ spec:
                   failureThreshold: 3
               readiness: *game-probes
             env:
-              COMPlus_EnableDiagnostics: "0"
+              COMPlus_EnableDiagnostics: '0'
               VS_DATA_PATH: /data
             resources:
               requests:
@@ -102,7 +116,7 @@ spec:
             image:
               repository: ghcr.io/bjw-s-labs/caddy-scratch
               tag: 2.10.2@sha256:7849984c9270f4445ab7afaad47017cf3129ea8c02fa7c5b1afa5862b83260e3
-            args: ["file-server", "--listen", ":80", "--root", "/map/html"]
+            args: ['file-server', '--listen', ':80', '--root', '/map/html']
             probes:
               liveness: &map-probes
                 enabled: true
@@ -131,7 +145,7 @@ spec:
         type: LoadBalancer
         controller: *app
         annotations:
-          "lbipam.cilium.io/ips": "10.0.0.70"
+          'lbipam.cilium.io/ips': '10.0.0.70'
         ports:
           game:
             port: &game 42420
@@ -157,9 +171,9 @@ spec:
 
     route:
       vintagestory:
-        hostnames: ["vsmap.stevewm.dev"]
+        hostnames: ['vsmap.stevewm.dev']
         parentRefs:
-          - name: envoy-internal
+          - name: envoy-external
             namespace: network
             sectionName: https
         rules:
@@ -168,7 +182,7 @@ spec:
                 port: *map
         annotations:
           gethomepage.dev/name: *app
-          gethomepage.dev/enabled: "true"
+          gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: games
           gethomepage.dev/icon: mdi-map-#ffffff
 
@@ -179,29 +193,21 @@ spec:
         type: configMap
         name: vintagestory
         globalMounts:
-          - path: /data/serverconfig.json
+          - path: /init/serverconfig.json
             subPath: serverconfig.json
             readOnly: false
-          - path: /data/servermagicnumbers.json
+          - path: /init/servermagicnumbers.json
             subPath: servermagicnumbers.json
             readOnly: true
-          - path: /tmp/ModConfig/primitivesurvival119.json
+          - path: /init/ModConfig/primitivesurvival119.json
             subPath: primitivesurvival119.json
             readOnly: true
-          - path: /tmp/ModConfig/betterruins.yaml
+          - path: /init/ModConfig/betterruins.yaml
             subPath: betterruins.yaml
             readOnly: true
-          - path: /tmp/ModConfig/WebCartographerConfig.json
+          - path: /init/ModConfig/WebCartographerConfig.json
             subPath: WebCartographerConfig.json
             readOnly: true
-
-      map:
-        type: persistentVolumeClaim
-        accessMode: ReadWriteOnce
-        size: 10Gi
-        # FIXME: workaround until vsmod supports cleaning target directory
-      mods:
-        type: emptyDir
       modsconfig:
         type: configMap
         name: vintagestory
@@ -215,6 +221,13 @@ spec:
         advancedMounts:
           vintagestory:
             vintagestory:
-              - path: /data/ModConfig/vsrcon.json
+              - path: /init/ModConfig/vsrcon.json
                 subPath: vsrcon.json
                 readOnly: true
+
+      map:
+        type: persistentVolumeClaim
+        accessMode: ReadWriteOnce
+        size: 5Gi
+      mods:
+        type: emptyDir

@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 ---
-name: "Meta: Sync labels"
+name: 'Meta: Sync labels'
 on:
   workflow_dispatch:
   push:
@@ -10,7 +10,7 @@ on:
       - .github/labels.yaml
 
   schedule:
-    - cron: "0 0 * * *"
+    - cron: '0 0 * * *'
 
 permissions:
   issues: write
@@ -25,5 +25,5 @@ jobs:
       - uses: EndBug/label-sync@52074158190acb45f3077f9099fea818aa43f97a # v2
         with:
           config-file: .github/labels.yaml
-          delete-other-labels: "true"
+          delete-other-labels: 'true'
           token: ${{ secrets.GITHUB_TOKEN }}

@@ -45,7 +45,7 @@ spec:
         defaultContainerOptionsStrategy: merge
 
         annotations:
-          reloader.stakater.com/auto: "true"
+          reloader.stakater.com/auto: 'true'
 
         containers:
           romm:
@@ -59,8 +59,8 @@ spec:
             env:
               # General
               ROMM_PORT: &port 8080
-              ENABLE_RESCAN_ON_FILESYSTEM_CHANGE: "true"
-              HASHEOUS_API_ENABLED: "true"
+              ENABLE_RESCAN_ON_FILESYSTEM_CHANGE: 'true'
+              HASHEOUS_API_ENABLED: 'true'
               FLASHPOINT_API_ENABLED: true
               HLTB_API_ENABLED: true
               # DB
@@ -99,11 +99,11 @@ spec:
                   secretKeyRef:
                     name: romm-dragonfly
                     key: password
-              REDIS_DB: "0"
+              REDIS_DB: '0'
               # SSO
-              DISABLE_USERPASS_LOGIN: "true"
-              OIDC_AUTOLOGIN: "true"
-              OIDC_ENABLED: "true"
+              DISABLE_USERPASS_LOGIN: 'true'
+              OIDC_AUTOLOGIN: 'true'
+              OIDC_ENABLED: 'true'
               OIDC_PROVIDER: authelia
               OIDC_CLIENT_ID: romm
               OIDC_CLIENT_SECRET:
@@ -134,7 +134,7 @@ spec:
 
     route:
       romm:
-        hostnames: ["romm.stevewm.dev"]
+        hostnames: ['romm.stevewm.dev']
         parentRefs:
           - name: envoy-internal
             namespace: network
@@ -145,7 +145,7 @@ spec:
                 port: *port
         annotations:
           gethomepage.dev/name: *app
-          gethomepage.dev/enabled: "true"
+          gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: games
           gethomepage.dev/icon: sh-romm-light.png
 

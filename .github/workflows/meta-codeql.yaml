@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 ---
-name: "Meta: CodeQL check"
+name: 'Meta: CodeQL check'
 
 on:
   workflow_dispatch:
@@ -11,7 +11,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: "30 6 * * *"
+    - cron: '30 6 * * *'
 
 permissions:
   contents: read
@@ -57,4 +57,4 @@ jobs:
         id: analyze
         uses: github/codeql-action/analyze@e4fba868fa4b1b91e1fdab776edc8cfbe6e9fb81 # v4.37.3
         with:
-          category: "/language:${{matrix.language}}"
+          category: '/language:${{matrix.language}}'

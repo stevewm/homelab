@@ -12,7 +12,7 @@ spec:
   datasources:
     - datasourceName: prometheus
       inputName: DS_PROMETHEUS
-  url: "https://grafana.com/api/dashboards/10176/revisions/3/download"
+  url: 'https://grafana.com/api/dashboards/10176/revisions/3/download'
 
 ---
 # yaml-language-server: $schema=https://k8s-schemas.home-operations.com/grafana.integreatly.org/grafanadashboard_v1beta1.json
@@ -25,4 +25,4 @@ spec:
   instanceSelector:
     matchLabels:
       grafana.internal/instance: grafana
-  url: "https://grafana.com/api/dashboards/15038/revisions/3/download"
+  url: 'https://grafana.com/api/dashboards/15038/revisions/3/download'

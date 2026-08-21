@@ -1,5 +1,5 @@
 ---
-game_version: "1.22.6"
+game_version: '1.22.6'
 mods_dir: /mods
 mods:
   - id: primitivesurvival

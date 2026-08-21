@@ -65,7 +65,7 @@ spec:
     volumeSnapshotClasses:
       - name: local-hostpath
         annotations:
-          snapshot.storage.kubernetes.io/is-default-class: "true"
+          snapshot.storage.kubernetes.io/is-default-class: 'true'
         deletionPolicy: Delete
         parameters: {}
     driver:
@@ -74,7 +74,7 @@ spec:
         local-hostpath:
           shareBasePath: &storagePath /var/mnt/local-hostpath
           controllerBasePath: *storagePath
-          dirPermissionsMode: "0770"
+          dirPermissionsMode: '0770'
           dirPermissionsUser: 0
           dirPermissionsGroup: 0
     node:

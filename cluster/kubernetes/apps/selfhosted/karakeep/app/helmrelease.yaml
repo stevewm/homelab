@@ -30,7 +30,7 @@ spec:
         runAsGroup: 1000
         runAsNonRoot: true
         fsGroup: 1000
-        fsGroupChangePolicy: "OnRootMismatch"
+        fsGroupChangePolicy: 'OnRootMismatch'
 
     controllers:
       karakeep:
@@ -42,7 +42,7 @@ spec:
               drop: [ALL]
         forceRename: karakeep
         annotations:
-          reloader.stakater.com/auto: "true"
+          reloader.stakater.com/auto: 'true'
         containers:
           karakeep:
             image:
@@ -74,14 +74,14 @@ spec:
               OAUTH_ALLOW_DANGEROUS_EMAIL_ACCOUNT_LINKING: true
               S6_YES_I_WANT_A_WORLD_WRITABLE_RUN_BECAUSE_KUBERNETES: 1
               S6_READ_ONLY_ROOT: 1
-              OAUTH_WELLKNOWN_URL: "https://sso.stevewm.dev/.well-known/openid-configuration"
-              OAUTH_CLIENT_ID: "karakeep"
+              OAUTH_WELLKNOWN_URL: 'https://sso.stevewm.dev/.well-known/openid-configuration'
+              OAUTH_CLIENT_ID: 'karakeep'
               OAUTH_CLIENT_SECRET:
                 valueFrom:
                   secretKeyRef:
                     name: karakeep-sso
                     key: client_secret
-              OAUTH_PROVIDER_NAME: "SSO"
+              OAUTH_PROVIDER_NAME: 'SSO'
             probes:
               liveness:
                 enabled: true
@@ -95,7 +95,7 @@ spec:
 
       chrome:
         annotations:
-          reloader.stakater.com/auto: "true"
+          reloader.stakater.com/auto: 'true'
         containers:
           chrome:
             image:
@@ -123,7 +123,7 @@ spec:
 
       meilisearch:
         annotations:
-          reloader.stakater.com/auto: "true"
+          reloader.stakater.com/auto: 'true'
         pod:
           affinity:
             podAffinity:
@@ -212,6 +212,6 @@ spec:
                 port: *httpPort
         annotations:
           gethomepage.dev/name: *app
-          gethomepage.dev/enabled: "true"
+          gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: selfhosted
           gethomepage.dev/icon: sh-karakeep-light.png

@@ -33,7 +33,7 @@ spec:
 
     dashboard:
       flags:
-        enable-cost: "false"
+        enable-cost: 'false'
 
       ingress:
         enabled: false # Use HTTPRoute instead

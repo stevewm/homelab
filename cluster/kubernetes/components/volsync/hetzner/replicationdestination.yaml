@@ -15,7 +15,7 @@ spec:
     cleanupCachePVC: true
     cleanupTempPVC: true
     enableFileDeletion: true
-    accessModes: ["${VOLSYNC_ACCESSMODES:-ReadWriteOnce}"]
+    accessModes: ['${VOLSYNC_ACCESSMODES:-ReadWriteOnce}']
     volumeSnapshotClassName: ${VOLSYNC_STORAGECLASS:-local-hostpath}
     moverSecurityContext:
       runAsUser: ${APP_UID:-1001}

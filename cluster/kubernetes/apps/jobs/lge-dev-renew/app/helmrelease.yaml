@@ -46,7 +46,7 @@ spec:
               drop: [ALL]
 
         cronjob:
-          schedule: "@daily"
+          schedule: '@daily'
           concurrencyPolicy: Forbid
           backoffLimit: 0
           failedJobsHistory: 1

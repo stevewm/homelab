@@ -1,10 +1,10 @@
 ---
 ingress:
-  - hostname: "stevewm.dev"
+  - hostname: 'stevewm.dev'
     service: https://envoy-external.network.svc.cluster.local:443
     originRequest:
       originServerName: ext.stevewm.dev
-  - hostname: "*.stevewm.dev"
+  - hostname: '*.stevewm.dev'
     service: https://envoy-external.network.svc.cluster.local:443
     originRequest:
       originServerName: ext.stevewm.dev

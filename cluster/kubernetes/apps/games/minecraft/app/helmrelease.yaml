@@ -57,7 +57,7 @@ spec:
               drop: [ALL]
 
         annotations:
-          reloader.stakater.com/auto: "true"
+          reloader.stakater.com/auto: 'true'
 
         containers:
           minecraft:
@@ -70,7 +70,7 @@ spec:
                 custom: true
                 spec:
                   periodSeconds: 60
-                  exec: &mc-health { command: ["mc-health"] }
+                  exec: &mc-health { command: ['mc-health'] }
               readiness: *probes
               startup:
                 <<: *probes
@@ -83,7 +83,7 @@ spec:
             env:
               # Server Configuration
               ## General
-              EULA: "true"
+              EULA: 'true'
               SERVER_NAME: MPOF
               TYPE: FABRIC
               FORCE_REDOWNLOAD: true
@@ -92,19 +92,19 @@ spec:
               MOTD: be nice
               DIFFICULTY: hard
               SPAWN_PROTECTION: 0
-              SEED: "-2135836821937050197"
-              ENABLE_WHITELIST: "true"
+              SEED: '-2135836821937050197'
+              ENABLE_WHITELIST: 'true'
               # Logging
-              ENABLE_ROLLING_LOGS: "true"
-              LOG_TIMESTAMP: "true"
+              ENABLE_ROLLING_LOGS: 'true'
+              LOG_TIMESTAMP: 'true'
               # Performance
               JVM_XX_OPTS: -XX:MaxRAMPercentage=75
               MAX_MEMORY: 14G
-              USE_AIKAR_FLAGS: "true"
-              SNOOPER_ENABLED: "false"
+              USE_AIKAR_FLAGS: 'true'
+              SNOOPER_ENABLED: 'false'
               VIEW_DISTANCE: 14
               ## Mods
-              REMOVE_OLD_MODS: "true"
+              REMOVE_OLD_MODS: 'true'
               MODRINTH_DEFAULT_VERSION_TYPE: release
               MODRINTH_PROJECTS: >
                 bluemap,
@@ -122,7 +122,7 @@ spec:
                   secretKeyRef:
                     name: minecraft
                     key: rcon_password
-              ENABLE_QUERY: "true"
+              ENABLE_QUERY: 'true'
               # Whitelist / Ops
               WHITELIST:
                 valueFrom:
@@ -149,7 +149,7 @@ spec:
         controller: *app
         type: LoadBalancer
         annotations:
-          lbipam.cilium.io/ips: "10.0.0.69"
+          lbipam.cilium.io/ips: '10.0.0.69'
         ports:
           java:
             port: 25565
@@ -176,7 +176,7 @@ spec:
 
     route:
       minecraft:
-        hostnames: ["mcmap.stevewm.dev"]
+        hostnames: ['mcmap.stevewm.dev']
         parentRefs:
           - name: envoy-external
             namespace: network
@@ -187,7 +187,7 @@ spec:
                 port: *map
         annotations:
           gethomepage.dev/name: *app
-          gethomepage.dev/enabled: "true"
+          gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: games
           gethomepage.dev/icon: mdi-map-#ffffff
 

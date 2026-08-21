@@ -44,7 +44,7 @@ spec:
               drop: [ALL]
 
         annotations:
-          reloader.stakater.com/auto: "true"
+          reloader.stakater.com/auto: 'true'
 
         pod:
           resourceClaims:
@@ -57,7 +57,7 @@ spec:
               repository: ghcr.io/jellyfin/jellyfin
               tag: 10.11.11@sha256:45f648c382a0c8b552582fcea40e95cb17c5d475473a891cba0eb7523fb92112
             env:
-              DOTNET_SYSTEM_IO_DISABLEFILELOCKING: "true"
+              DOTNET_SYSTEM_IO_DISABLEFILELOCKING: 'true'
               JELLYFIN_FFmpeg__probesize: 50000000
               JELLYFIN_FFmpeg__analyzeduration: 50000000
               JELLYFIN_PublishedServerUrl: jellyfin.media.svc.cluster.local:8096
@@ -103,7 +103,7 @@ spec:
         controller: *app
         type: LoadBalancer
         annotations:
-          "lbipam.cilium.io/ips": "10.0.0.80"
+          'lbipam.cilium.io/ips': '10.0.0.80'
         ports:
           http:
             port: &http 8096
@@ -112,7 +112,7 @@ spec:
 
     route:
       jellyfin:
-        hostnames: ["watch.stevewm.dev"]
+        hostnames: ['watch.stevewm.dev']
         parentRefs:
           - name: envoy-external
             namespace: network
@@ -123,12 +123,12 @@ spec:
                 port: *http
         annotations:
           gethomepage.dev/name: *app
-          gethomepage.dev/enabled: "true"
+          gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: media
           gethomepage.dev/icon: sh-jellyfin-light.png
-          gethomepage.dev/widget.key: "{{ `{{HOMEPAGE_VAR_JELLYFIN_API_KEY}}` }}"
+          gethomepage.dev/widget.key: '{{ `{{HOMEPAGE_VAR_JELLYFIN_API_KEY}}` }}'
           gethomepage.dev/widget.type: *app
-          gethomepage.dev/widget.url: "http://jellyfin.media.svc.cluster.local:8096"
+          gethomepage.dev/widget.url: 'http://jellyfin.media.svc.cluster.local:8096'
 
     persistence:
       config:

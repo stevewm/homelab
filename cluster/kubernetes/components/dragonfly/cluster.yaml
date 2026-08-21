@@ -8,9 +8,9 @@ spec:
   image: docker.dragonflydb.io/dragonflydb/dragonfly:v1.39.0@sha256:665ee58607d035881384be45b20025490ecf87069418f61f715c19117ed5fb7d
   replicas: 1
   args:
-    - "--maxmemory=$(MAX_MEMORY)Mi"
-    - "--proactor_threads=2"
-    - "--cluster_mode=emulated"
+    - '--maxmemory=$(MAX_MEMORY)Mi'
+    - '--proactor_threads=2'
+    - '--cluster_mode=emulated'
   authentication:
     passwordFromSecret:
       name: ${APP}-dragonfly
@@ -30,8 +30,8 @@ spec:
       memory: 512Mi
   topologySpreadConstraints:
     - maxSkew: 1
-      topologyKey: "kubernetes.io/hostname"
-      whenUnsatisfiable: "DoNotSchedule"
+      topologyKey: 'kubernetes.io/hostname'
+      whenUnsatisfiable: 'DoNotSchedule'
       labelSelector:
         matchLabels:
           app.kubernetes.io/part-of: ${APP}

@@ -71,7 +71,7 @@ spec:
 
     route:
       tof-tl:
-        hostnames: ["tl.stevewm.dev"]
+        hostnames: ['tl.stevewm.dev']
         parentRefs:
           - name: envoy-external
             namespace: network
@@ -82,6 +82,6 @@ spec:
                 port: *port
         annotations:
           gethomepage.dev/name: ToF Map
-          gethomepage.dev/enabled: "true"
+          gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: games
           gethomepage.dev/icon: mdi-map-search-outline-#ffffff

@@ -16,7 +16,7 @@ spec:
             gateway.networking.k8s.io/gateway-name: envoy-internal
       toPorts:
         - ports:
-            - port: "8081"
+            - port: '8081'
               protocol: TCP
     - fromEndpoints:
         - matchLabels:
@@ -25,7 +25,7 @@ spec:
             app.kubernetes.io/instance: kube-prometheus-stack
       toPorts:
         - ports:
-            - port: "8080"
+            - port: '8080'
               protocol: TCP
   egress:
     - toEntities:
@@ -33,4 +33,4 @@ spec:
     - toFQDNs:
         - matchName: github.com
         - matchName: api.github.com
-        - matchPattern: "*.github.com"
+        - matchPattern: '*.github.com'
