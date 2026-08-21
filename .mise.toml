@@ -54,7 +54,9 @@ kubens = "0.11.0"
 "aqua:pkl" = "0.32.1"
 "aqua:ruff" = "0.16.1"
 "npm:dclint" = "3.1.0"
-"npm:renovate" = "43.288.0"
+"npm:renovate" = { version = "43.288.0", trust_policy_excludes = [
+  "@yarnpkg/libzip",
+] }
 "aqua:actionlint" = "1.7.12"
 "aqua:shellcheck" = "0.11.0"
 rust = "1.97.1"
