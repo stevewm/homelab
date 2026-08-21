@@ -5,7 +5,7 @@ kind: Dragonfly
 metadata:
   name: ${APP}-dragonfly
 spec:
-  image: docker.dragonflydb.io/dragonflydb/dragonfly:v1.39.0@sha256:665ee58607d035881384be45b20025490ecf87069418f61f715c19117ed5fb7d
+  image: docker.dragonflydb.io/dragonflydb/dragonfly:v1.40.1@sha256:26893a7d1f8697e343b462dee82ef5cb836c58f123c0e1dfc0fe9bae33081d49
   replicas: 1
   args:
     - '--maxmemory=$(MAX_MEMORY)Mi'
