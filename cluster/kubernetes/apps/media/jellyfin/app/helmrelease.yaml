@@ -88,7 +88,7 @@ spec:
           exporter:
             image:
               repository: quay.io/prometheuscommunity/json-exporter
-              tag: v0.7.0@sha256:3a777171d39ad435cb39519e84e0a8b5c63c7e716cc06011f8140cfaabfc1baf
+              tag: v0.8.0@sha256:3aad20d41a0b31dfaaf7ab1a091440e92a82a61ef68b76750eac0ad50a983652
             args:
               - --config.file=/exporter/jellyfin.yaml
             resources:
