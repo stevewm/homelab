@@ -50,7 +50,7 @@ kubens = "0.11.0"
 "aqua:Orange-OpenSource/hurl" = "8.0.1"
 
 # hk
-"aqua:hk" = "1.56.0"
+"aqua:hk" = "1.56.1"
 "aqua:pkl" = "0.32.1"
 "aqua:ruff" = "0.16.4"
 "npm:dclint" = "3.1.0"
