@@ -20,9 +20,9 @@ HOMEBREW_BREWFILE = ""
 
 [tools]
 # https://docs.renovatebot.com/modules/manager/mise/#supported-default-registry-tool-short-names
-uv = "0.12.5"
+uv = "0.12.6"
 python = "3"
-node = "24.19.0"
+node = "24.20.0"
 
 # Flux
 "aqua:flux2" = "2.9.4"
@@ -54,7 +54,7 @@ kubens = "0.11.0"
 "aqua:pkl" = "0.32.1"
 "aqua:ruff" = "0.16.4"
 "npm:dclint" = "3.1.0"
-"npm:renovate" = { version = "44.39.2", trust_policy_excludes = [
+"npm:renovate" = { version = "44.46.4", trust_policy_excludes = [
   "@yarnpkg/libzip",
 ] }
 "aqua:actionlint" = "1.7.12"
@@ -63,7 +63,7 @@ rust = "1.98.0"
 just = "1.58.0"
 gum = "2.0.0"
 "cargo:just-lsp" = "0.6.2"
-rumdl = "0.2.60"
+rumdl = "0.2.61"
 shfmt = "3.13.1"
 popeye = "0.22.1"
 crane = "0.21.9"
