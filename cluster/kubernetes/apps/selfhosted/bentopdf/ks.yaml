@@ -3,16 +3,16 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: apps-stirling-pdf
+  name: apps-bentopdf
   namespace: &namespace selfhosted
 spec:
   targetNamespace: *namespace
   commonMetadata:
     labels:
-      app.kubernetes.io/name: stirling-pdf
+      app.kubernetes.io/name: bentopdf
   interval: 30m
   timeout: 5m
-  path: ./cluster/kubernetes/apps/selfhosted/stirling-pdf/app
+  path: ./cluster/kubernetes/apps/selfhosted/bentopdf/app
   prune: true
   sourceRef:
     kind: GitRepository

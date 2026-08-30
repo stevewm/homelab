@@ -6,8 +6,8 @@ namespace: selfhosted
 resources:
   - ./namespace.yaml
   - ./actual/ks.yaml
+  - ./bentopdf/ks.yaml
   - ./cyberchef/ks.yaml
   - ./homepage/ks.yaml
   - ./karakeep/ks.yaml
   - ./mealie/ks.yaml
-  - ./stirling-pdf/ks.yaml
