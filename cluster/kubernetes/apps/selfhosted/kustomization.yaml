@@ -6,7 +6,7 @@ namespace: selfhosted
 resources:
   - ./namespace.yaml
   - ./actual/ks.yaml
-  - ./bento/ks.yaml
+  - ./bentopdf/ks.yaml
   - ./cyberchef/ks.yaml
   - ./homepage/ks.yaml
   - ./karakeep/ks.yaml
