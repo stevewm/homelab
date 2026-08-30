@@ -3,13 +3,13 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: &app stirling-pdf
+  name: &app bentopdf
 spec:
   interval: 30m
   maxHistory: 3
   chartRef:
     kind: OCIRepository
-    name: stirling-pdf
+    name: bentopdf
   install:
     remediation:
       retries: -1
@@ -35,7 +35,7 @@ spec:
           type: RuntimeDefault
 
     controllers:
-      stirling-pdf:
+      bentopdf:
         defaultContainerOptions:
           securityContext:
             allowPrivilegeEscalation: false
@@ -44,10 +44,10 @@ spec:
               drop: [ALL]
 
         containers:
-          stirling-pdf:
+          bentopdf:
             image:
-              repository: ghcr.io/stirling-tools/stirling-pdf
-              tag: 2.14.3@sha256:3b3670fce70b396ec56ba380a3cc7858e0abf83fe13f31c88f7737847763a396
+              repository: ghcr.io/alam00000/bentopdf-simple
+              tag: 2.8.8@sha256:3d62b8f8eece5fe947026ac3925ff08fda245b3d6ba2c3916b94da91e0010c74
             env:
               DOCKER_ENABLE_SECURITY: false
               LANGS: &lang en_GB
@@ -72,14 +72,14 @@ spec:
                 memory: 2Gi
 
     service:
-      stirling-pdf:
+      bentopdf:
         controller: *app
         ports:
           http:
             port: 8080
 
     route:
-      stirling-pdf:
+      bentopdf:
         hostnames: ['pdf.stevewm.dev']
         parentRefs:
           - name: envoy-internal
@@ -89,26 +89,15 @@ spec:
           gethomepage.dev/name: *app
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: selfhosted
-          gethomepage.dev/icon: sh-stirling-pdf-light.png
+          gethomepage.dev/icon: sh-bentopdf-light.png
 
     persistence:
-      temporary:
+      tmpfs:
         type: emptyDir
-        medium: Memory
         globalMounts:
-          - path: /configs
-            subPath: configs
-          - path: /customFiles
-            subPath: customFiles
-          - path: /logs
-            subPath: logs
-          - path: /pipeline
-            subPath: pipeline
-          - path: /tmp
-            subPath: tmp
-          - path: /usr/share/tessdata
-            subPath: tessdata
-          - path: /home/stirlingpdfuser
-            subPath: home
-          - path: /usr/local/bin
-            subPath: usrLocalBin
+          - path: /var/cache/nginx
+            subPath: cache
+          - path: /etc/nginx/tmp
+            subPath: etc-tmp
+          - path: /var/lib/nginx/tmp
+            subPath: var-tmp
