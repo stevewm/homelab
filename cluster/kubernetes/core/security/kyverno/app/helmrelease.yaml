@@ -33,6 +33,8 @@ spec:
       grafanaDashboard:
         create: true
         folder: security
+        matchLabels:
+          grafana.internal/instance: grafana
     prometheusRule:
       enabled: true
     admissionController:
