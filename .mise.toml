@@ -20,12 +20,12 @@ HOMEBREW_BREWFILE = ""
 
 [tools]
 # https://docs.renovatebot.com/modules/manager/mise/#supported-default-registry-tool-short-names
-uv = "0.12.7"
+uv = "0.12.10"
 python = "3"
 node = "24.20.0"
 
 # Flux
-"aqua:flux2" = "2.9.4"
+"aqua:flux2" = "2.9.5"
 
 # Kube
 kubecolor = "0.7.1"
@@ -38,7 +38,7 @@ kubens = "0.11.0"
 "aqua:stern/stern" = "1.34.0"
 
 # Talos
-"aqua:siderolabs/talos" = "1.13.9"
+"aqua:siderolabs/talos" = "1.14.0"
 
 # Tools
 "aqua:yq" = "4.53.6"
@@ -50,21 +50,21 @@ kubens = "0.11.0"
 "aqua:Orange-OpenSource/hurl" = "8.0.1"
 
 # hk
-"aqua:hk" = "1.56.1"
+"aqua:hk" = "1.57.0"
 "aqua:pkl" = "0.32.1"
-"aqua:ruff" = "0.16.5"
+"aqua:ruff" = "0.16.6"
 "npm:dclint" = "3.1.0"
-"npm:renovate" = { version = "44.52.0", trust_policy_excludes = [
+"npm:renovate" = { version = "44.65.5", trust_policy_excludes = [
   "@yarnpkg/libzip",
 ] }
 "aqua:actionlint" = "1.7.12"
 "aqua:shellcheck" = "0.11.0"
-rust = "1.98.0"
+rust = "1.98.1"
 just = "1.58.0"
 gum = "2.0.0"
 "cargo:just-lsp" = "0.7.1"
-rumdl = "0.2.62"
+rumdl = "0.2.65"
 shfmt = "3.14.0"
 popeye = "0.22.1"
-crane = "0.22.0"
+crane = "0.22.1"
 oxfmt = "latest"
