@@ -51,7 +51,7 @@ spec:
           homepage:
             image:
               repository: ghcr.io/gethomepage/homepage
-              tag: v2.1.2@sha256:00b7ece02a2771c2101bee964323b2a79b7c03240e3b2cf5af4a34d8417c8aac
+              tag: v2.2.0@sha256:a53cc29a838858950ad3f2e93b2dbfebacbae1c1718cc7b78b1e598867f9dbc1
             probes:
               startup:
                 enabled: true
