@@ -5,12 +5,12 @@ kind: Gateway
 metadata:
   name: envoy-external
   annotations:
-    external-dns.kubernetes.io/target: ext.stevewm.dev
+    external-dns.alpha.kubernetes.io/target: ext.stevewm.dev
 spec:
   gatewayClassName: envoy
   infrastructure:
     annotations:
-      external-dns.kubernetes.io/hostname: ext.stevewm.dev
+      external-dns.alpha.kubernetes.io/hostname: ext.stevewm.dev
   listeners:
     - name: http
       protocol: HTTP
