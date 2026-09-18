@@ -84,7 +84,7 @@ spec:
           authelia:
             image:
               repository: ghcr.io/authelia/authelia
-              tag: 4.39.26@sha256:16b804fbf6704b456ffb6e474c8e9d2406f9544ca0fecfeca7b4dcbed647deb4
+              tag: 4.39.28@sha256:bd97cff4fcbf715b5ff1f9ae286afbe6033afce385302520b0368122d43a6f54
             envFrom: # TODO: Move to file secrets
               - secretRef:
                   name: *app
