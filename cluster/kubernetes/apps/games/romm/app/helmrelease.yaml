@@ -51,7 +51,7 @@ spec:
           romm:
             image:
               repository: ghcr.io/rommapp/romm
-              tag: 5.2.0@sha256:6a2a16f74ce55c4d528eafda5f49993357731cb638a55932abec8dde14e3a93f
+              tag: 5.3.1@sha256:11705517fd018590daeb71d21b0c255335206ec3c2984caa7adc3468ca34a862
             probes:
               liveness: &probes
                 enabled: true
