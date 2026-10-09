@@ -20,7 +20,7 @@ HOMEBREW_BREWFILE = ""
 
 [tools]
 # https://docs.renovatebot.com/modules/manager/mise/#supported-default-registry-tool-short-names
-uv = "0.12.24"
+uv = "0.13.0"
 python = "3"
 node = "24.21.0"
 
@@ -44,7 +44,7 @@ kubens = "0.11.0"
 "aqua:yq" = "4.54.1"
 "aqua:jq" = "1.8.2"
 "github:DopplerHQ/cli" = "3.77.0"
-"cargo:minijinja-cli" = "2.24.0"
+"cargo:minijinja-cli" = "3.0.0"
 "github:gorcon/rcon-cli" = { version = "0.10.3", exe = "rcon" }
 "github:slsa-framework/slsa-verifier" = "2.7.1"
 "aqua:Orange-OpenSource/hurl" = "8.0.1"
@@ -52,7 +52,7 @@ kubens = "0.11.0"
 # hk
 "aqua:hk" = "2.5.0"
 "aqua:pkl" = "0.32.1"
-"aqua:ruff" = "0.16.10"
+"aqua:ruff" = "0.17.0"
 "npm:dclint" = "3.1.0"
 "npm:renovate" = { version = "44.149.0", trust_policy_excludes = [
   "@yarnpkg/libzip",
@@ -62,7 +62,7 @@ kubens = "0.11.0"
 rust = "1.99.0"
 just = "1.58.0"
 gum = "2.0.2"
-"cargo:just-lsp" = "0.9.0"
+"cargo:just-lsp" = "0.10.0"
 rumdl = "0.2.79"
 shfmt = "3.14.1"
 popeye = "0.22.1"
