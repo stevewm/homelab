@@ -24,6 +24,7 @@ spec:
     - ../../../../components/sso-secret
     - ../../../../components/dragonfly
     - ../../../../components/postgres
+    - ../../../../components/smtp
   postBuild:
     substitute:
       APP: *app

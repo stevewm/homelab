@@ -63,6 +63,31 @@ spec:
               VIKUNJA_SERVICE_ENABLEEMAILREMINDERS: 'true'
               VIKUNJA_SERVICE_ENABLETOTP: 'true'
 
+              # Email
+              VIKUNJA_MAILER_ENABLED: 'true'
+              VIKUNJA_MAILER_HOST: smtp-relay.network.svc.cluster.local
+              VIKUNJA_MAILER_PORT: '25'
+              VIKUNJA_MAILER_USERNAME:
+                secretKeyRef:
+                  name: smtp-relay
+                  key: SMTP_RELAY_USERNAME
+              VIKUNJA_MAILER_PASSWORD:
+                secretKeyRef:
+                  name: smtp-relay
+                  key: SMTP_RELAY_PASSWORD
+              VIKUNJA_MAILER_FROM: 'todo@stevewm.dev'
+
+              # SSO
+              VIKUNJA_AUTH_OPENID_ENABLED: 'true'
+              VIKUNJA_AUTH_OPENID_PROVIDERS_AUTHELIA_NAME: 'Authelia'
+              VIKUNJA_AUTH_OPENID_PROVIDERS_AUTHELIA_AUTHURL: 'https://sso.stevewm.dev'
+              VIKUNJA_AUTH_OPENID_PROVIDERS_AUTHELIA_SCOPE: 'openid profile email'
+              VIKUNJA_AUTH_OPENID_PROVIDERS_AUTHELIA_CLIENTID: 'Vikunja'
+              VIKUNJA_AUTH_OPENID_PROVIDERS_AUTHELIA_CLIENTSECRET:
+                secretKeyRef:
+                  name: vikunja-sso
+                  key: client_secret
+
               # Redis Configuration
               VIKUNJA_REDIS_ENABLED: 'true'
               VIKUNJA_REDIS_HOST: 'vikunja-dragonfly.cluster.local:6379'
