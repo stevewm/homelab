@@ -90,7 +90,7 @@ keda-all state:
 
 [doc('Create OIDC secrets')]
 create-oidc-secrets app:
-    "{{ scripts_dir }}/create-oidc-secrets.sh {{ app }}"
+    "{{ scripts_dir }}/create-oidc-secrets.sh" "{{ app }}"
 
 [private]
 render-local-ks ns ks:

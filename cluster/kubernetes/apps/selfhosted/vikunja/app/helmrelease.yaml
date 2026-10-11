@@ -1,0 +1,174 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app vikunja
+spec:
+  interval: 30m
+  maxHistory: 3
+  chartRef:
+    kind: OCIRepository
+    name: vikunja
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: -1
+  uninstall:
+    keepHistory: false
+  driftDetection:
+    mode: warn
+  values:
+    defaultPodOptions:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 2000
+        runAsGroup: 2000
+        fsGroup: 2000
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+
+    controllers:
+      actual:
+        defaultContainerOptions:
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+        annotations:
+          reloader.stakater.com/auto: 'true'
+
+        containers:
+          actual:
+            image:
+              repository: vikunja/vikunja
+              tag: 2.6.0@sha256:417ada6f94e81f0267aa2f007d0a811fc82d38dd2aa58351e3ea520ca01c2ea5
+              pullPolicy: IfNotPresent
+            command: [./vikunja]
+            env:
+              VIKUNJA_SERVICE_PUBLICURL: https://todo.stevewm.dev
+              VIKUNJA_SERVICE_INTERFACE: ':80'
+              VIKUNJA_DEFAULTSETTINGS_TIMEZONE: Europe/Amsterdam
+
+              VIKUNJA_SERVICE_ENABLEREGISTRATION: 'false'
+              VIKUNJA_SERVICE_ENABLECALDAV: 'true'
+              VIKUNJA_SERVICE_ENABLETASKATTACHMENTS: 'true'
+              VIKUNJA_SERVICE_ENABLEEMAILREMINDERS: 'true'
+              VIKUNJA_SERVICE_ENABLETOTP: 'true'
+
+              # Email
+              VIKUNJA_MAILER_ENABLED: 'true'
+              VIKUNJA_MAILER_HOST: smtp-relay.network.svc.cluster.local
+              VIKUNJA_MAILER_PORT: '25'
+              VIKUNJA_MAILER_USERNAME:
+                secretKeyRef:
+                  name: smtp-relay
+                  key: SMTP_RELAY_USERNAME
+              VIKUNJA_MAILER_PASSWORD:
+                secretKeyRef:
+                  name: smtp-relay
+                  key: SMTP_RELAY_PASSWORD
+              VIKUNJA_MAILER_FROM: 'todo@stevewm.dev'
+
+              # SSO
+              VIKUNJA_AUTH_OPENID_ENABLED: 'true'
+              VIKUNJA_AUTH_OPENID_PROVIDERS_AUTHELIA_NAME: 'Authelia'
+              VIKUNJA_AUTH_OPENID_PROVIDERS_AUTHELIA_AUTHURL: 'https://sso.stevewm.dev'
+              VIKUNJA_AUTH_OPENID_PROVIDERS_AUTHELIA_SCOPE: 'openid profile email'
+              VIKUNJA_AUTH_OPENID_PROVIDERS_AUTHELIA_CLIENTID: 'Vikunja'
+              VIKUNJA_AUTH_OPENID_PROVIDERS_AUTHELIA_CLIENTSECRET:
+                secretKeyRef:
+                  name: vikunja-sso
+                  key: client_secret
+
+              # Redis Configuration
+              VIKUNJA_REDIS_ENABLED: 'true'
+              VIKUNJA_REDIS_HOST: 'vikunja-dragonfly.cluster.local:6379'
+
+              # Week Configuration
+              VIKUNJA_SERVICE_WEEKSTART: '1' # Monday
+              VIKUNJA_DATABASE_TYPE: postgres
+              VIKUNJA_DATABASE_HOST:
+                secretKeyRef:
+                  name: vikunja-pguser-vikunja
+                  key: pgbouncer-host
+              VIKUNJA_DATABASE_PORT:
+                secretKeyRef:
+                  name: vikunja-pguser-vikunja
+                  key: pgbouncer-port
+              VIKUNJA_DATABASE_DATABASE:
+                secretKeyRef:
+                  name: vikunja-pguser-vikunja
+                  key: dbname
+              VIKUNJA_DATABASE_USER:
+                secretKeyRef:
+                  name: vikunja-pguser-vikunja
+                  key: user
+              VIKUNJA_DATABASE_PASSWORD:
+                secretKeyRef:
+                  name: vikunja-pguser-vikunja
+                  key: password
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /health
+                    port: &port 80
+                  initialDelaySeconds: 10
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+              startup:
+                enabled: true
+                spec:
+                  httpGet:
+                    path: /health
+                    port: *port
+                  failureThreshold: 30
+                  periodSeconds: 5
+
+            resources:
+              requests:
+                cpu: 100m
+                memory: 128Mi
+              limits:
+                memory: 512Mi
+
+    service:
+      actual:
+        ports:
+          http:
+            port: *port
+
+    persistence:
+      data:
+        existingClaim: *app
+        globalMounts:
+          - path: /app/vikunja/files
+      tmp:
+        type: emptyDir
+        globalMounts:
+          - path: /tmp
+
+    route:
+      actual:
+        hostnames: ['todo.stevewm.dev']
+        parentRefs:
+          - name: envoy-internal
+            namespace: network
+            sectionName: https
+        annotations:
+          gethomepage.dev/name: *app
+          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/group: selfhosted
+          gethomepage.dev/icon: sh-vikunja-light.png
