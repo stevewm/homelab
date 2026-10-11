@@ -5,6 +5,8 @@
     'github>stevewm/homelab//.github/renovate/autoMerge.json5',
     'github>stevewm/homelab//.github/renovate/branchPrefixes.json5',
     'github>stevewm/homelab//.github/renovate/groups.json5',
+    'github>home-operations/renovate-presets//apps/talosFactory.json5#8.1.0',
+    '',
   ],
   schedule: [
     '* 17-23 * * 5', // https://youtu.be/kfVsfOSbJY0
