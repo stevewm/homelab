@@ -1,5 +1,11 @@
 # yaml-language-server: $schema=https://www.authelia.com/schemas/latest/json-schema/configuration.json
 ---
+server:
+  endpoints:
+    authz:
+      ext-authz:
+        implementation: ExtAuthz
+
 authentication_backend:
   password_reset:
     disable: true
@@ -72,6 +78,24 @@ access_control:
     - name: internal
       networks: ['10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16']
   rules:
+    - domain:
+        - bzr.stevewm.dev
+        - plr.stevewm.dev
+        - rdr.stevewm.dev
+        - nzb.stevewm.dev
+        - snr.stevewm.dev
+      policy: two_factor
+      subject:
+        - group:admins
+
+    - domain:
+        - bzr.stevewm.dev
+        - plr.stevewm.dev
+        - rdr.stevewm.dev
+        - nzb.stevewm.dev
+        - snr.stevewm.dev
+      policy: deny
+
     # This just reduces logging noise in authelia
     - domain:
         - '*.stevewm.dev'
