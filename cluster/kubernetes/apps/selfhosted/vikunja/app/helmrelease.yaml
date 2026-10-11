@@ -82,7 +82,7 @@ spec:
               VIKUNJA_AUTH_OPENID_PROVIDERS_AUTHELIA_NAME: 'Authelia'
               VIKUNJA_AUTH_OPENID_PROVIDERS_AUTHELIA_AUTHURL: 'https://sso.stevewm.dev'
               VIKUNJA_AUTH_OPENID_PROVIDERS_AUTHELIA_SCOPE: 'openid profile email'
-              VIKUNJA_AUTH_OPENID_PROVIDERS_AUTHELIA_CLIENTID: 'Vikunja'
+              VIKUNJA_AUTH_OPENID_PROVIDERS_AUTHELIA_CLIENTID: 'vikunja'
               VIKUNJA_AUTH_OPENID_PROVIDERS_AUTHELIA_CLIENTSECRET:
                 secretKeyRef:
                   name: vikunja-sso
