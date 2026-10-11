@@ -99,6 +99,7 @@ spec:
               # Week Configuration
               VIKUNJA_SERVICE_WEEKSTART: '1' # Monday
               VIKUNJA_DATABASE_TYPE: postgres
+              VIKUNJA_DATABASE_SCHEMA: vikunja
               VIKUNJA_DATABASE_HOST:
                 secretKeyRef:
                   name: vikunja-pguser-vikunja
