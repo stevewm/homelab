@@ -11,3 +11,4 @@ resources:
   - ./homepage/ks.yaml
   - ./karakeep/ks.yaml
   - ./mealie/ks.yaml
+  - ./vikunja/ks.yaml
