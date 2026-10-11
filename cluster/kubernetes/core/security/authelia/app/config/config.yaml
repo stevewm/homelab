@@ -84,6 +84,10 @@ access_control:
         - rdr.stevewm.dev
         - nzb.stevewm.dev
         - snr.stevewm.dev
+        - am.stevewm.dev
+        - prom.stevewm.dev
+        - goldilocks.stevewm.dev
+        - kguardian.stevewm.dev
       policy: two_factor
       subject:
         - group:admins
@@ -94,6 +98,10 @@ access_control:
         - rdr.stevewm.dev
         - nzb.stevewm.dev
         - snr.stevewm.dev
+        - am.stevewm.dev
+        - prom.stevewm.dev
+        - goldilocks.stevewm.dev
+        - kguardian.stevewm.dev
       policy: deny
 
     # This just reduces logging noise in authelia
