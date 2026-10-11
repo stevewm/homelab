@@ -107,3 +107,4 @@ spec:
           client_tls_sslmode: prefer
           default_pool_size: '100'
           max_client_conn: '500'
+          track_extra_parameters: search_path
