@@ -91,6 +91,10 @@ spec:
               # Redis Configuration
               VIKUNJA_REDIS_ENABLED: 'true'
               VIKUNJA_REDIS_HOST: 'vikunja-dragonfly.selfhosted.svc.cluster.local:6379'
+              VIKUNJA_REDIS_PASSWORD:
+                secretKeyRef:
+                  name: vikunja-dragonfly
+                  key: password
 
               # Week Configuration
               VIKUNJA_SERVICE_WEEKSTART: '1' # Monday
