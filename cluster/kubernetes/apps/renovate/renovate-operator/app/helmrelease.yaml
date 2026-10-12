@@ -42,13 +42,23 @@ spec:
     rbac:
       ownNamespaceOnly: true
 
-    # auth:
-    #   oidc:
-    #     enabled: true
-    #     issuerUrl: https://sso.stevewm.dev
-    #     clientId: renovate
-    #     existingSecret: renovate-sso
-    #     secretKey: client_secret
+    authorization:
+      enabled: false
+
+    auth:
+      oidc:
+        enabled: true
+        issuerUrl: https://sso.stevewm.dev
+        clientId: renovate
+        existingSecret: renovate-sso
+        secretKey: client_secret
+        # redirectUrl: ""
+        redirectScheme: https
+        # logoutUrl: ""
+        # allowedGroupPrefix: ""
+        allowedGroupPattern: 'admin'
+        additionalScopes: ['groups']
+        fetchUserInfoGroups: false
 
     route:
       enabled: true
