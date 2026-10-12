@@ -56,7 +56,7 @@ spec:
         redirectScheme: https
         # logoutUrl: ""
         # allowedGroupPrefix: ""
-        allowedGroupPattern: 'admins'
+        # allowedGroupPattern: 'admins'
         additionalScopes: ['groups']
         fetchUserInfoGroups: false
 
