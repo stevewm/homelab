@@ -6,6 +6,7 @@ resources:
   - ./ocirepository.yaml
   - ./externalsecret.yaml
   - ./helmrelease.yaml
+  - ./clusternetworkpolicy.yaml
 configMapGenerator:
   - name: smtp-relay
     files:
