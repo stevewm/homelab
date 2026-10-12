@@ -1469,7 +1469,8 @@ version = "3.9.6"
 backend = "npm:prettier"
 
 [[tools."npm:renovate"]]
-version = "44.149.3"
+version = "44.151.2"
+aube = { path = ".mise/locks/npm-renovate/44.151.2~dd67d2de", digest = "sha256:f964ab7bfb78f4a1c206d6966a8c4729f82d0d6ccc8ec1433d678a25715e2c43" }
 backend = "npm:renovate"
 
 [tools."npm:renovate".options]
