@@ -836,7 +836,7 @@ url = "https://nodejs.org/dist/v24.21.0/node-v24.21.0-win-x64.zip"
 
 [[tools."npm:dclint"]]
 version = "3.1.0"
-aube = { path = ".mise/locks/npm-dclint/3.1.0", digest = "sha256:29757c8842f983241f24f4c4eb484a779db1a70e636fb09fa9db408ce5cb6f24" }
+aube = { path = ".mise/locks/npm-dclint/3.1.0", digest = "sha256:561631a7f7224e19e485dd910c921c54c9b336b9308d034b70b5fdae88946e6e" }
 backend = "npm:dclint"
 specifiers = ["3.1.0"]
 
@@ -851,7 +851,7 @@ trust_policy_excludes = '["@yarnpkg/libzip"]'
 
 [[tools.oxfmt]]
 version = "0.64.0"
-aube = { path = ".mise/locks/oxfmt/0.64.0", digest = "sha256:682d7ac19d455f781f7ab346c175b96bb5cb8622a45ece836b21a6aaeca4c491" }
+aube = { path = ".mise/locks/oxfmt/0.64.0", digest = "sha256:de904023d6568888da35bd9db18f736e00c40b84a14f7833ccc5664dc9897933" }
 backend = "npm:oxfmt"
 specifiers = ["latest"]
 
