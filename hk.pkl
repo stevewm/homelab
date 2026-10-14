@@ -23,7 +23,7 @@ local linters = new Mapping<String, Step> {
 
   ["ruff"] = (Builtins.ruff) {
     check = "ruff check --config " + config + "/ruff.toml {{ files }}"
-    fix = "ruff check --config ruff check --config " + config + "/ruff.toml --fix {{ files }}"
+    fix = "ruff check --config " + config + "/ruff.toml --fix {{ files }}"
   }
 
   ["rumdl"] {
