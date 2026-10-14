@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/helm.toolkit.fluxcd.io/helmrelease_v2.json
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: tofu-controller
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: tofu-controller
+  interval: 15m
+  dependsOn: []
+  values:
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+        interval: 1m
+    runner:
+      image:
+        repository: ghcr.io/home-operations/opentofu-runner:1.13.1
+        tag: 1.13.1@sha256:3df808853d76695a2014b96b8770dd674e150b7bbceb0d9e15a7e28988f8af89
+    branchPlanner:
+      enabled: true
