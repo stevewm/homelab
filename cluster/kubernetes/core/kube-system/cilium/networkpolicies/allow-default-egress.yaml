@@ -13,9 +13,9 @@ spec:
         operator: DoesNotExist
       - key: egress.policy.home.arpa/kube-api
         operator: DoesNotExist
-      - key: egress.policy.home.arpa/envoy-internal
+      - key: ingress.policy.home.arpa/envoy-internal
         operator: DoesNotExist
-      - key: egress.policy.home.arpa/envoy-external
+      - key: ingress.policy.home.arpa/envoy-external
         operator: DoesNotExist
   egress:
     - toEndpoints:

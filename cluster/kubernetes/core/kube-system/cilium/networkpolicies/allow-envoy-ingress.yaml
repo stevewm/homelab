@@ -7,7 +7,7 @@ metadata:
 spec:
   endpointSelector:
     matchLabels:
-      egress.policy.home.arpa/envoy-internal: 'true'
+      ingress.policy.home.arpa/envoy-internal: 'true'
   ingress:
     - fromEndpoints:
         - matchLabels:
@@ -26,7 +26,7 @@ metadata:
 spec:
   endpointSelector:
     matchLabels:
-      egress.policy.home.arpa/envoy-external: 'true'
+      ingress.policy.home.arpa/envoy-external: 'true'
   ingress:
     - fromEndpoints:
         - matchLabels:
