@@ -853,7 +853,10 @@ trust_policy_excludes = '["@yarnpkg/libzip"]'
 version = "0.64.0"
 aube = { path = ".mise/locks/oxfmt/0.64.0", digest = "sha256:de904023d6568888da35bd9db18f736e00c40b84a14f7833ccc5664dc9897933" }
 backend = "npm:oxfmt"
-specifiers = ["latest"]
+specifiers = [
+    "0.64.0",
+    "latest",
+]
 
 [[tools.pkl]]
 version = "0.32.1"
