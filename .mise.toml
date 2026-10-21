@@ -40,7 +40,7 @@ yq = "4.54.1"
 jq = "1.8.2"
 "github:DopplerHQ/cli" = "3.77.0"
 "cargo:minijinja-cli" = "3.0.0"
-"github:gorcon/rcon-cli" = { version = "0.10.3", exe = "rcon" }
+"github:gorcon/rcon-cli" = "0.10.3"
 "github:Orange-OpenSource/hurl" = "8.0.1"
 
 # Linting
