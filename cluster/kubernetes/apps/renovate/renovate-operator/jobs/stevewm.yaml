@@ -33,6 +33,20 @@ spec:
       allowPrivilegeEscalation: false
       capabilities:
         drop: ['ALL']
+  extraVolumes:
+    - name: mise-bin
+      image:
+        # renovate: datasource=docker
+        reference: ghcr.io/jdx/mise:2026.10.17
+        pullPolicy: IfNotPresent
+  extraVolumeMounts:
+    - name: mise-bin
+      # /home/ubuntu/bin is the first entry on PATH and is empty in the base
+      # image, so mounting mise's bin dir there makes `mise` resolvable
+      # without touching PATH or shadowing anything else on it.
+      mountPath: /home/ubuntu/bin
+      subPath: usr/local/bin
+      readOnly: true
   secretRef: renovate-secret
 
 ---
