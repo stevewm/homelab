@@ -50,7 +50,7 @@ spec:
           tof-tl:
             image:
               repository: ghcr.io/stevewm/tof-map
-              tag: latest@sha256:b2d2292c0dd848ab5c9fd0e233c298a05dcd095d322c6096d84724d60a1de720
+              tag: latest@sha256:c3479d8031f9bcfcb1e154bbc3b42c2989c21691521ff5c4d42e9ea93b6af291
             probes:
               liveness: &probes
                 enabled: true
