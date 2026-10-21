@@ -16,11 +16,11 @@ spec:
       value: debug
     - name: RENOVATE_ALLOWED_COMMANDS
       value: |-
-        ["pnpm run bundle", "mise install", "mise lock"]
+        ["pnpm run bundle", "^mise install && mise lock$"]
     - name: RENOVATE_ALLOWED_UNSAFE_EXECUTIONS
       value: |-
         ["mise"]
-  image: ghcr.io/renovatebot/renovate:44.166.0
+  image: ghcr.io/renovatebot/renovate:44.175.0-full@sha256:39f2a271a521bfc5068f1320137ba4cd8ec3ed55120366e3dc710b69fad6438e
   parallelism: 5
   resources:
     requests:
