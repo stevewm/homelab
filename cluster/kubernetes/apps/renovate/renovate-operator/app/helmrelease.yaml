@@ -45,6 +45,16 @@ spec:
     authorization:
       enabled: false
 
+    policy:
+      enabled: true
+      allowedHosts:
+        - api.github.com
+        - github.com
+      allowedServiceAccounts:
+        - renovate-job
+      allowedImages:
+        - ghcr.io/renovatebot/renovate
+
     auth:
       oidc:
         enabled: true

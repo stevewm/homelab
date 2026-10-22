@@ -8,6 +8,8 @@ spec:
   metadata:
     labels:
       app: renovate-operator
+  serviceAccount:
+    name: renovate-job
   provider:
     name: github
   discoveryFilters: ['stevewm/*']
@@ -105,3 +107,8 @@ spec:
           apiVersion: generators.external-secrets.io/v1alpha1
           kind: GithubAccessToken
           name: botty-hill-auth-token
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: renovate-job
