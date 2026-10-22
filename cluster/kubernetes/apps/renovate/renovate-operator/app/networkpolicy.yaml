@@ -38,6 +38,17 @@ spec:
         - ports:
             - port: '53'
               protocol: ANY
+    - toEndpoints:
+        - matchLabels:
+            k8s:io.kubernetes.pod.namespace: network
+            app.kubernetes.io/name: envoy
+            gateway.networking.k8s.io/gateway-name: envoy-internal
+      toPorts:
+        - ports:
+            - port: '10443'
+              protocol: TCP
+          serverNames:
+            - sso.stevewm.dev
     - toCIDRSet:
         - cidr: 0.0.0.0/0
           except:
