@@ -85,3 +85,10 @@ spec:
           gethomepage.dev/enabled: 'true'
           gethomepage.dev/group: games
           gethomepage.dev/icon: mdi-map-search-outline-#ffffff
+
+    persistence:
+      cache:
+        type: emptyDir
+        medium: Memory
+        globalMounts:
+          - path: /app/.next/cache
