@@ -7,6 +7,7 @@ spec:
   endpointSelector:
     matchLabels:
       app.kubernetes.io/name: scraparr
+      app.kubernetes.io/instance: scraparr
   ingress:
     - fromEndpoints:
         - matchLabels:
