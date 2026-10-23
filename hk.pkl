@@ -1,40 +1,33 @@
-amends "package://github.com/jdx/hk/releases/download/v1.56.1/hk@1.56.1#/Config.pkl"
+amends "package://github.com/jdx/hk/releases/download/v2.5.0/hk@2.5.0#/Config.pkl"
 
-import "package://github.com/jdx/hk/releases/download/v1.56.1/hk@1.56.1#/Builtins.pkl"
+import "package://github.com/jdx/hk/releases/download/v2.5.0/hk@2.5.0#/Builtins.pkl"
 
 local config = ".github/linters"
 local linters = new Mapping<String, Step> {
   // builtins
   ["actionlint"] = Builtins.actionlint
   ["hadolint"] = Builtins.hadolint
-  ["shellcheck"] = Builtins.shellcheck
-  ["shfmt"] = Builtins.shfmt
-  ["newlines"] = Builtins.newlines
-  ["shebangs"] = Builtins.check_executables_have_shebangs
   ["mise"] = Builtins.mise
+  ["newlines"] = Builtins.newlines
   ["pkl"] = Builtins.pkl
   ["pkl-format"] = Builtins.pkl_format
+  ["ruff"] = Builtins.ruff
+  ["shebangs"] = Builtins.check_executables_have_shebangs
+  ["shellcheck"] = Builtins.shellcheck
+  ["shfmt"] = Builtins.shfmt
+  ["tofu"] = Builtins.tofu
+  ["zizmor"] = Builtins.zizmor
 
-  ["oxfmt"] = (Builtins.prettier) {
-    check = "oxfmt --config " + config + "/.oxfmtrc.json --check {{ files }}"
-    check_list_files = "oxfmt --list-different {{ files }}"
-    fix = "oxfmt --config " + config + "/.oxfmtrc.json --write {{ files }}"
+  ["oxfmt"] = (Builtins.oxfmt) {
+    exclude = List(".mise.toml", ".mise/**") // Clashes with mise fmt
   }
 
-  ["ruff"] = (Builtins.ruff) {
-    check = "ruff check --config " + config + "/ruff.toml {{ files }}"
-    fix = "ruff check --config ruff check --config " + config + "/ruff.toml --fix {{ files }}"
-  }
-
-  ["rumdl"] {
-    glob = "*.md"
-    stage = "*.md"
+  ["rumdl"] = (Builtins.rumdl) {
     check = "rumdl check --config " + config + "/rumdl.toml {{ files }}"
     fix = "rumdl fmt --config " + config + "/rumdl.toml {{ files }}"
   }
 
-  ["dclint"] {
-    glob = "docker-compose.yaml"
+  ["dclint"] = (Builtins.dclint) {
     check = "dclint {{ files }} --config " + config + "/dclint.yaml"
     fix = "dclint {{ files }} --config " + config + "/dclint.yaml --fix"
   }

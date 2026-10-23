@@ -31,37 +31,38 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Extract MC_VERSION
-        uses: mikefarah/yq@c14f446382944492701b16c1ddb48bb9dbe683e3 # v4.53.6
+        uses: mikefarah/yq@504fc38780cc46be8444ea1b72fb55919fc0bfb0 # v4.54.1
         id: mc_version
         with:
           cmd: |
             yq -r '.spec.values.controllers.minecraft.containers.minecraft.env.VERSION' $MC_HR
 
       - name: Extract MODRINTH_PROJECTS
-        uses: mikefarah/yq@c14f446382944492701b16c1ddb48bb9dbe683e3 # v4.53.6
+        uses: mikefarah/yq@504fc38780cc46be8444ea1b72fb55919fc0bfb0 # v4.54.1
         id: modrinth_projects
         with:
           cmd: |
             yq -r '.spec.values.controllers.minecraft.containers.minecraft.env.MODRINTH_PROJECTS' $MC_HR
 
       - name: Extract MODRINTH_ALLOWED_VERSION_TYPE
-        uses: mikefarah/yq@c14f446382944492701b16c1ddb48bb9dbe683e3 # v4.53.6
+        uses: mikefarah/yq@504fc38780cc46be8444ea1b72fb55919fc0bfb0 # v4.54.1
         id: modrinth_allowed_version_type
         with:
           cmd: |
             yq -r '.spec.values.controllers.minecraft.containers.minecraft.env.MODRINTH_DEFAULT_VERSION_TYPE' $MC_HR
 
       - name: Extract TYPE
-        uses: mikefarah/yq@c14f446382944492701b16c1ddb48bb9dbe683e3 # v4.53.6
+        uses: mikefarah/yq@504fc38780cc46be8444ea1b72fb55919fc0bfb0 # v4.54.1
         id: type
         with:
           cmd: |
             yq -r '.spec.values.controllers.minecraft.containers.minecraft.env.TYPE' $MC_HR
 
       - name: Print extracted values
-        run: |
+        run: | # zizmor: ignore[template-injection]
           echo "MC_VERSION: ${{ steps.mc_version.outputs.result }}"
           echo "TYPE: ${{ steps.type.outputs.result }}"
           echo "MODRINTH_PROJECTS: ${{ steps.modrinth_projects.outputs.result }}"

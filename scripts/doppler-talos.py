@@ -10,10 +10,11 @@
 # Reads secrets from `talsecret.yaml` and push them to Doppler for use
 # in bootstrapping a cluster.
 
+import logging
 import os
 import sys
+
 import yaml
-import logging
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO, format="%(message)s")
@@ -70,7 +71,7 @@ for path, secret_name in secrets.items():
             logger.debug(f"DEBUG: Would set {secret_name} to: [REDACTED]")
     except KeyError as e:
         logger.error(f"Error: Path '{path}' not found in the configuration. {e}")
-    except Exception as e:
+    except TypeError as e:
         logger.error(f"An error occurred: {e}")
 
 logger.info(f"Successfully processed {success_count}/{count} secrets.")

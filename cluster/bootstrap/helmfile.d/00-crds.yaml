@@ -27,9 +27,9 @@ releases:
   - name: keda
     namespace: kube-system
     chart: oci://ghcr.io/home-operations/charts-mirror/keda
-    version: 2.20.2
+    version: 2.21.0
 
   - name: kube-prometheus-stack
     namespace: observability
     chart: oci://ghcr.io/prometheus-community/charts/kube-prometheus-stack
-    version: 88.6.2
+    version: 92.11.0

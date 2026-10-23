@@ -3,7 +3,7 @@ game_version: '1.22.6'
 mods_dir: /mods
 mods:
   - id: primitivesurvival
-    version: 5.1.3
+    version: 5.1.4
   # - id: ExpandedFoods
   #   version: 1.7.4
   # - id: ACulinaryArtillery
@@ -11,7 +11,7 @@ mods:
   - id: CarryOn
     version: 1.14.3
   - id: BetterRuins
-    version: 0.6.3
+    version: 0.6.4
   - id: th3dungeon
     version: 1.0.2
   # - id: VintageRCon

@@ -8,13 +8,21 @@ spec:
   metadata:
     labels:
       app: renovate-operator
+  serviceAccount:
+    name: renovate-job
   provider:
     name: github
   discoveryFilters: ['stevewm/*']
   extraEnv:
     - name: LOG_LEVEL
       value: debug
-  image: ghcr.io/renovatebot/renovate:44.51.2
+    - name: RENOVATE_ALLOWED_COMMANDS
+      value: |-
+        ["pnpm run bundle", "^mise install && mise lock$"]
+    - name: RENOVATE_ALLOWED_UNSAFE_EXECUTIONS
+      value: |-
+        ["mise"]
+  image: ghcr.io/renovatebot/renovate:44.175.0-full@sha256:39f2a271a521bfc5068f1320137ba4cd8ec3ed55120366e3dc710b69fad6438e
   parallelism: 5
   resources:
     requests:
@@ -27,6 +35,20 @@ spec:
       allowPrivilegeEscalation: false
       capabilities:
         drop: ['ALL']
+  extraVolumes:
+    - name: mise-bin
+      image:
+        # renovate: datasource=docker
+        reference: ghcr.io/jdx/mise:2026.10.17
+        pullPolicy: IfNotPresent
+  extraVolumeMounts:
+    - name: mise-bin
+      # /home/ubuntu/bin is the first entry on PATH and is empty in the base
+      # image, so mounting mise's bin dir there makes `mise` resolvable
+      # without touching PATH or shadowing anything else on it.
+      mountPath: /home/ubuntu/bin
+      subPath: usr/local/bin
+      readOnly: true
   secretRef: renovate-secret
 
 ---
@@ -85,3 +107,8 @@ spec:
           apiVersion: generators.external-secrets.io/v1alpha1
           kind: GithubAccessToken
           name: botty-hill-auth-token
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: renovate-job

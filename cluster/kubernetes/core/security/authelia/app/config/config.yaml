@@ -1,5 +1,11 @@
 # yaml-language-server: $schema=https://www.authelia.com/schemas/latest/json-schema/configuration.json
 ---
+server:
+  endpoints:
+    authz:
+      ext-authz:
+        implementation: ExtAuthz
+
 authentication_backend:
   password_reset:
     disable: true
@@ -72,6 +78,32 @@ access_control:
     - name: internal
       networks: ['10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16']
   rules:
+    - domain:
+        - bzr.stevewm.dev
+        - plr.stevewm.dev
+        - rdr.stevewm.dev
+        - nzb.stevewm.dev
+        - snr.stevewm.dev
+        - am.stevewm.dev
+        - prom.stevewm.dev
+        - goldilocks.stevewm.dev
+        - kguardian.stevewm.dev
+      policy: two_factor
+      subject:
+        - group:admins
+
+    - domain:
+        - bzr.stevewm.dev
+        - plr.stevewm.dev
+        - rdr.stevewm.dev
+        - nzb.stevewm.dev
+        - snr.stevewm.dev
+        - am.stevewm.dev
+        - prom.stevewm.dev
+        - goldilocks.stevewm.dev
+        - kguardian.stevewm.dev
+      policy: deny
+
     # This just reduces logging noise in authelia
     - domain:
         - '*.stevewm.dev'
@@ -187,8 +219,8 @@ identity_providers:
         client_id: renovate
         client_secret: '{{ secret "/config/secret/RENOVATE_OAUTH_CLIENT_SECRET_DIGEST" }}'
         public: false
-        require_pkce: false
-        pkce_challenge_method: ''
+        require_pkce: true
+        pkce_challenge_method: S256
         redirect_uris: ['https://renovate.stevewm.dev/auth/callback']
         scopes: ['openid', 'email', 'profile', 'groups']
         response_types: ['code']
@@ -196,3 +228,24 @@ identity_providers:
         access_token_signed_response_alg: none
         userinfo_signed_response_alg: none
         token_endpoint_auth_method: client_secret_basic
+
+      - client_name: 'Vikunja'
+        client_id: 'vikunja'
+        client_secret: '{{ secret "/config/secret/VIKUNJA_OAUTH_CLIENT_SECRET_DIGEST" }}'
+        public: false
+        authorization_policy: 'two_factor'
+        require_pkce: false
+        pkce_challenge_method: ''
+        redirect_uris:
+          - 'https://todo.stevewm.dev/auth/openid/authelia'
+        scopes:
+          - 'openid'
+          - 'profile'
+          - 'email'
+        response_types:
+          - 'code'
+        grant_types:
+          - 'authorization_code'
+        access_token_signed_response_alg: 'none'
+        userinfo_signed_response_alg: 'none'
+        token_endpoint_auth_method: 'client_secret_basic'

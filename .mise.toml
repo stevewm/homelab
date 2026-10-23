@@ -1,70 +1,65 @@
 [settings]
 python.uv_venv_auto = "create|source"
 experimental = true
+lockfile = true
 
 [hooks]
 postinstall = "hk install"
 
 [env]
-KUBECONFIG = "{{ config_root }}/kubeconfig"
-TALOSCONFIG = "{{ config_root }}/talosconfig"
-MINIJINJA_CONFIG_FILE = "{{ config_root }}/.github/.minijinja.toml"
 HOMEBREW_BREWFILE = "{{ config_root }}/.github/Brewfile"
-_.path = ['{{config_root}}/node_modules/.bin']
-
-[oci.env]
-KUBECONFIG = ""
-TALOSCONFIG = ""
-MINIJINJA_CONFIG_FILE = ""
-HOMEBREW_BREWFILE = ""
+KUBECONFIG = "{{ config_root }}/kubeconfig"
+MINIJINJA_CONFIG_FILE = "{{ config_root }}/.github/.minijinja.toml"
+TALOSCONFIG = "{{ config_root }}/talosconfig"
+_.path = ['{{ config_root }}/node_modules/.bin']
 
 [tools]
 # https://docs.renovatebot.com/modules/manager/mise/#supported-default-registry-tool-short-names
-uv = "0.12.7"
-python = "3"
-node = "24.20.0"
+node = "24.21.0"
+python = "3.14.0"
+uv = "0.13.0"
 
 # Flux
-"aqua:flux2" = "2.9.4"
+"github:fluxcd/flux2" = "2.9.6"
 
 # Kube
-kubecolor = "0.7.1"
+"github:CrunchyData/postgres-operator-client" = "0.5.3"
+"github:derailed/k9s" = "0.51.0"
+"github:helmfile/helmfile" = "1.8.1"
+"github:stern/stern" = "1.34.0"
+helm = "4.3.0"
+kubecolor = "0.8.0"
 kubens = "0.11.0"
-"aqua:CrunchyData/postgres-operator-client" = "0.5.3"
-"aqua:kustomize" = "5.8.1"
-"aqua:helm" = "4.2.4"
-"github:helmfile/helmfile" = "1.7.4"
-"aqua:derailed/k9s" = "0.51.0"
-"aqua:stern/stern" = "1.34.0"
+kustomize = "5.8.3"
 
 # Talos
-"aqua:siderolabs/talos" = "1.13.9"
+"github:siderolabs/talos" = "1.14.2"
 
 # Tools
-"aqua:yq" = "4.53.6"
-"aqua:jq" = "1.8.2"
-"github:DopplerHQ/cli" = "3.76.5"
-"cargo:minijinja-cli" = "2.24.0"
-"github:gorcon/rcon-cli" = { version = "0.10.3", exe = "rcon" }
-"github:slsa-framework/slsa-verifier" = "2.7.1"
-"aqua:Orange-OpenSource/hurl" = "8.0.1"
+"cargo:minijinja-cli" = "3.0.0"
+"github:DopplerHQ/cli" = "3.77.0"
+"github:Orange-OpenSource/hurl" = "8.0.1"
+"github:gorcon/rcon-cli" = "0.10.3"
+gum = "2.0.2"
+jq = "1.8.2"
+just = "1.58.0"
+opentofu = "1.13.1"
+yq = "4.54.1"
 
-# hk
-"aqua:hk" = "1.56.1"
-"aqua:pkl" = "0.32.1"
-"aqua:ruff" = "0.16.5"
-"npm:dclint" = "3.1.0"
-"npm:renovate" = { version = "44.52.0", trust_policy_excludes = [
+# Linting
+actionlint = "1.7.12"
+crane = "0.22.1"
+"github:guarnz/deadvalues" = "0.1.7"
+"github:terror/just-lsp" = "0.10.0"
+"github:zavoloklom/docker-compose-linter" = "3.1.0"
+hk = "2.5.0"
+"npm:renovate" = { version = "44.151.2", trust_policy_excludes = [
   "@yarnpkg/libzip",
 ] }
-"aqua:actionlint" = "1.7.12"
-"aqua:shellcheck" = "0.11.0"
-rust = "1.98.0"
-just = "1.58.0"
-gum = "2.0.0"
-"cargo:just-lsp" = "0.6.2"
-rumdl = "0.2.62"
-shfmt = "3.14.0"
-popeye = "0.22.1"
-crane = "0.22.0"
-oxfmt = "latest"
+oxfmt = "0.64.0"
+pkl = "0.32.1"
+ruff = "0.17.0"
+rumdl = "0.2.79"
+shellcheck = "0.11.0"
+shfmt = "3.14.1"
+zizmor = "1.31.1"

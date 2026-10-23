@@ -80,7 +80,7 @@ spec:
           recyclarr:
             image:
               repository: ghcr.io/recyclarr/recyclarr
-              tag: 8.7.1@sha256:73303ba5ee647b6492fee917d3a781c6e59b6cab08f9dfce9482a950846f564f
+              tag: 8.8.0@sha256:b1fbb929ba718fdbdac2c1fc25b32b0ae916d7a5a0892c2068c9bfae6f1a9209
             env:
               COMPlus_EnableDiagnostics: '0'
               RADARR_API_KEY:
