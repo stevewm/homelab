@@ -1,0 +1,45 @@
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: sonarr
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: sonarr
+      app.kubernetes.io/instance: sonarr
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: scraparr
+            app.kubernetes.io/instance: scraparr
+        - matchLabels:
+            app.kubernetes.io/name: homepage
+            app.kubernetes.io/instance: homepage
+            k8s:io.kubernetes.pod.namespace: selfhosted
+        - matchLabels:
+            app.kubernetes.io/name: bazarr
+            app.kubernetes.io/instance: bazarr
+        - matchLabels:
+            app.kubernetes.io/name: seerr
+            app.kubernetes.io/instance: seerr
+            k8s:io.kubernetes.pod.namespace: media
+        - matchLabels:
+            app.kubernetes.io/name: prowlarr
+            app.kubernetes.io/instance: prowlarr
+      toPorts:
+        - ports:
+            - port: '80'
+              protocol: TCP
+  egress:
+    - toEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: sabnzbd
+            app.kubernetes.io/instance: sabnzbd
+        - matchLabels:
+            app.kubernetes.io/name: prowlarr
+            app.kubernetes.io/instance: prowlarr
+      toPorts:
+        - ports:
+            - port: '80'
+              protocol: TCP
