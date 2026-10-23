@@ -158,7 +158,6 @@ spec:
 
     service:
       karakeep:
-        primary: true
         controller: karakeep
         ports:
           http:

@@ -26,8 +26,6 @@ spec:
   driftDetection:
     mode: warn
   values:
-    crds:
-      enabled: true
     cleanPrometheusOperatorObjectNames: true
 
     kubeControllerManager:
@@ -35,9 +33,6 @@ spec:
 
     kubeEtcd:
       enabled: false
-
-    kubelet:
-      enabled: true
 
     kubeProxy:
       enabled: false
@@ -82,13 +77,8 @@ spec:
           - apiGroups: ['autoscaling.k8s.io']
             resources: ['verticalpodautoscalers']
             verbs: ['list', 'watch']
-      prometheus:
-        monitor:
-          enabled: true
 
     prometheus:
-      selfMonitor:
-        enabled: true
       prometheusSpec:
         resources:
           requests:

@@ -79,7 +79,6 @@ spec:
       smtp-relay:
         ports:
           http:
-            primary: true
             port: *metricsPort
           smtp:
             port: *port

@@ -22,7 +22,3 @@ spec:
       retries: -1
   uninstall:
     keepHistory: false
-  values:
-    install:
-      clusterLabels:
-        app.kubernetes.io/name: pgo
