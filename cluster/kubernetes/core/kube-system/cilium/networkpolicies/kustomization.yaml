@@ -5,7 +5,8 @@ kind: Kustomization
 resources:
   - ./allow-default-egress.yaml
   - ./allow-dns-egress.yaml
-  - ./allow-envoy-ingress.yaml
+  - ./allow-envoy-internal-ingress.yaml
+  - ./allow-envoy-external-ingress.yaml
   - ./allow-internet-egress.yaml
   - ./allow-kube-api-egress.yaml
   - ./deny-all-egress.yaml
