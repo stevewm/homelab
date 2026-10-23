@@ -90,6 +90,7 @@ spec:
               - --ref=master
               - --period=24h
               - --root=/addons
+              - --git-config=safe.directory:/addons
             resources:
               requests:
                 cpu: 10m
