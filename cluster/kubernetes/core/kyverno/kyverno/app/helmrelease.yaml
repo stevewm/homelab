@@ -23,8 +23,6 @@ spec:
   driftDetection:
     mode: warn
   values:
-    crds:
-      install: true
     global:
       image:
         registry: ghcr.io
@@ -35,8 +33,6 @@ spec:
         folder: security
         matchLabels:
           grafana.internal/instance: grafana
-    prometheusRule:
-      enabled: true
     admissionController:
       serviceMonitor:
         enabled: true

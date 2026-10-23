@@ -24,7 +24,6 @@ spec:
     mode: warn
   values:
     defaultPodOptions:
-      automountServiceAccountToken: false
       securityContext:
         runAsNonRoot: true
         runAsUser: 2000
@@ -50,7 +49,6 @@ spec:
             image:
               repository: vikunja/vikunja
               tag: 2.7.0@sha256:e2204a1c1c6a81e833c2b3a5442be182ca2335b54c2e7e37578cc3fe12a27cfc
-              pullPolicy: IfNotPresent
             command: [./vikunja]
             env:
               VIKUNJA_SERVICE_PUBLICURL: https://todo.stevewm.dev
@@ -135,12 +133,6 @@ spec:
               readiness: *probes
               startup:
                 enabled: true
-                spec:
-                  httpGet:
-                    path: /health
-                    port: *port
-                  failureThreshold: 30
-                  periodSeconds: 5
 
             resources:
               requests:
@@ -162,8 +154,6 @@ spec:
           - path: /app/vikunja/files
       tmp:
         type: emptyDir
-        globalMounts:
-          - path: /tmp
 
     route:
       vikunja:

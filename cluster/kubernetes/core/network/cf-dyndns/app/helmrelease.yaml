@@ -24,8 +24,6 @@ spec:
     mode: warn
   values:
     defaultPodOptions:
-      restartPolicy: Always
-      automountServiceAccountToken: false
       securityContext:
         runAsNonRoot: true
         runAsUser: 65534

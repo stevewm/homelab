@@ -26,15 +26,14 @@ spec:
   values:
     reloader:
       readOnlyRootFileSystem: true
-      containerSecurityContext:
-        capabilities:
-          drop:
-            - ALL
-        allowPrivilegeEscalation: false
-        readOnlyRootFilesystem: true
       podMonitor:
         enabled: true
       deployment:
+        containerSecurityContext:
+          capabilities:
+            drop:
+              - ALL
+          allowPrivilegeEscalation: false
         resources:
           requests:
             cpu: 5m

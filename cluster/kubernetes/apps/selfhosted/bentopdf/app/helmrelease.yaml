@@ -24,7 +24,6 @@ spec:
     mode: warn
   values:
     defaultPodOptions:
-      automountServiceAccountToken: false
       securityContext:
         runAsNonRoot: true
         runAsUser: 1001
@@ -64,7 +63,6 @@ spec:
 
     service:
       bentopdf:
-        controller: *app
         ports:
           http:
             port: 8080

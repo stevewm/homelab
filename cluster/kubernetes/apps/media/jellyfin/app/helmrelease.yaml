@@ -24,7 +24,6 @@ spec:
     mode: warn
   values:
     defaultPodOptions:
-      automountServiceAccountToken: false
       securityContext:
         runAsNonRoot: true
         runAsUser: 1001
@@ -74,8 +73,6 @@ spec:
                   timeoutSeconds: 1
                   failureThreshold: 3
               readiness: *probes
-              startup:
-                enabled: false
             resources:
               claims:
                 - name: gpu
@@ -100,7 +97,6 @@ spec:
 
     service:
       jellyfin:
-        controller: *app
         type: LoadBalancer
         annotations:
           'lbipam.cilium.io/ips': '10.0.0.80'

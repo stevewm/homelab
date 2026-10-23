@@ -24,6 +24,5 @@ spec:
   driftDetection:
     mode: warn
   values:
-    manageCRDs: true
     metrics:
       disableAuth: true

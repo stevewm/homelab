@@ -23,7 +23,6 @@ spec:
     mode: warn
   values:
     defaultPodOptions:
-      automountServiceAccountToken: false
       securityContext:
         runAsNonRoot: true
         runAsUser: 65534
@@ -42,7 +41,6 @@ spec:
             capabilities:
               drop: [ALL]
 
-        replicas: 1
         strategy: RollingUpdate
 
         annotations:
@@ -74,11 +72,6 @@ spec:
                 spec:
                   failureThreshold: 30
                   periodSeconds: 5
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities:
-                drop: ['ALL']
             resources:
               requests:
                 cpu: 5m
@@ -88,7 +81,6 @@ spec:
 
     service:
       kromgo:
-        controller: *app
         ports:
           http:
             port: 8080

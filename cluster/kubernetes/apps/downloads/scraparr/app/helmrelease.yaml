@@ -26,7 +26,6 @@ spec:
     defaultPodOptions:
       labels:
         egress.policy.home.arpa/deny-all: 'true'
-      automountServiceAccountToken: false
       securityContext:
         runAsNonRoot: true
         runAsUser: 1000
@@ -107,8 +106,6 @@ spec:
 
     serviceMonitor:
       metrics:
-        enabled: true
-        serviceName: *app
         endpoints:
           - port: metrics
             scheme: http
@@ -118,7 +115,6 @@ spec:
 
     service:
       scraparr:
-        controller: *app
         ports:
           metrics:
             port: *port

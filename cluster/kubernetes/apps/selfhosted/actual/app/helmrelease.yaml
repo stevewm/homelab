@@ -24,7 +24,6 @@ spec:
     mode: warn
   values:
     defaultPodOptions:
-      automountServiceAccountToken: false
       securityContext:
         runAsNonRoot: true
         runAsUser: 2000
@@ -93,10 +92,6 @@ spec:
     persistence:
       data:
         existingClaim: actual-data
-        advancedMounts:
-          actual:
-            actual:
-              - path: /data
 
     route:
       actual:

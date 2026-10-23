@@ -68,7 +68,6 @@ spec:
         # allowedGroupPrefix: ""
         # allowedGroupPattern: 'admins'
         additionalScopes: ['groups']
-        fetchUserInfoGroups: false
 
     route:
       enabled: true
@@ -82,7 +81,6 @@ spec:
       enabled: true
 
     metrics:
-      enabled: true
       serviceMonitor:
         enabled: true
 
@@ -90,6 +88,3 @@ spec:
         enabled: true
         grafanaDashboard:
           allowCrossNamespaceImport: true
-          instanceSelector:
-            matchLabels:
-              grafana.internal/instance: grafana
