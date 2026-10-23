@@ -24,7 +24,6 @@ spec:
     mode: warn
   values:
     defaultPodOptions:
-      automountServiceAccountToken: false
       securityContext:
         runAsNonRoot: true
         runAsUser: 65534
@@ -55,7 +54,7 @@ spec:
             capabilities:
               drop: [ALL]
 
-        replicas: 1
+        replicas: 2
         strategy: RollingUpdate
 
         annotations:
@@ -124,7 +123,6 @@ spec:
 
     service:
       authelia:
-        controller: *app
         ports:
           http:
             port: *port
@@ -134,7 +132,6 @@ spec:
 
     serviceMonitor:
       authelia:
-        serviceName: *app
         endpoints:
           - port: metrics
 
@@ -155,19 +152,16 @@ spec:
             subPath: config.yaml
             readOnly: true
       secret-files:
-        enabled: true
         type: secret
         name: authelia
         globalMounts:
           - path: /config/secret
       dragonfly-secret-files:
-        enabled: true
         type: secret
         name: authelia-dragonfly
         globalMounts:
           - path: /config/dragonfly
       db-secret-files:
-        enabled: true
         type: secret
         name: authelia-pguser-authelia
         globalMounts:

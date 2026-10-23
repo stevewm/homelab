@@ -15,7 +15,6 @@ spec:
       enabled: true
       serviceMonitor:
         enabled: true
-        interval: 1m
     runner:
       image:
         repository: ghcr.io/home-operations/opentofu-runner:1.13.1

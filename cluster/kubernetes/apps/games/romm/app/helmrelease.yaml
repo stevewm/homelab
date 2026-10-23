@@ -38,8 +38,8 @@ spec:
       romm:
         defaultContainerOptions:
           securityContext:
-            allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
             capabilities:
               drop: [ALL]
         defaultContainerOptionsStrategy: merge

@@ -27,17 +27,12 @@ spec:
       replicas: 1
       rollOutPods: true
       prometheus:
-        enabled: true
         serviceMonitor:
           enabled: true
       dashboards:
         enabled: true
         annotations:
           grafana_folder: Network
-
-    bandwidthManager:
-      enabled: false
-      bbr: true
 
     localRedirectPolicy: true
     rollOutCiliumPods: true
@@ -46,12 +41,6 @@ spec:
       masquerade: true
       preallocateMaps: true
       datapathMode: netkit
-
-    bgp:
-      enabled: false
-      announce:
-        loadbalancerIP: true
-        podCIDR: false
 
     bgpControlPlane:
       enabled: true
@@ -69,9 +58,6 @@ spec:
     devices: enp+
 
     l2announcements:
-      enabled: true
-
-    externalIPs:
       enabled: true
 
     prometheus:
@@ -125,11 +111,6 @@ spec:
     # -- end of talos settings --
 
     hubble:
-      enabled: true
-      ui:
-        enabled: true
-      dashboards:
-        enabled: true
       relay:
         enabled: true
       metrics:
@@ -142,4 +123,6 @@ spec:
           - icmp
           - http
         serviceMonitor:
+          enabled: true
+        dashboards:
           enabled: true

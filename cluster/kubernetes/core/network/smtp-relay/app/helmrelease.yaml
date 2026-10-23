@@ -19,7 +19,6 @@ spec:
       retries: -1
   values:
     defaultPodOptions:
-      automountServiceAccountToken: false
       securityContext:
         runAsNonRoot: true
         runAsUser: 65534
@@ -78,7 +77,6 @@ spec:
 
     service:
       smtp-relay:
-        controller: smtp-relay
         ports:
           http:
             primary: true
@@ -88,7 +86,6 @@ spec:
 
     serviceMonitor:
       smtp-relay:
-        serviceName: smtp-relay
         endpoints:
           - port: http
             scheme: http
@@ -106,5 +103,3 @@ spec:
             readOnly: true
       cache:
         type: emptyDir
-        globalMounts:
-          - path: /cache

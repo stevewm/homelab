@@ -36,13 +36,6 @@ spec:
 
     controllers:
       dragonfly-operator:
-        defaultContainerOptions:
-          securityContext:
-            allowPrivilegeEscalation: false
-            readOnlyRootFilesystem: true
-            capabilities:
-              drop: [ALL]
-
         annotations:
           reloader.stakater.com/auto: 'true'
 
@@ -95,8 +88,6 @@ spec:
                   periodSeconds: 10
                   timeoutSeconds: 1
                   failureThreshold: 3
-              startup:
-                enabled: false
             resources:
               requests:
                 cpu: 10m
@@ -104,12 +95,8 @@ spec:
               limits:
                 memory: 128Mi
 
-        serviceAccount:
-          identifier: dragonfly-operator
-
     service:
       operator:
-        controller: dragonfly-operator
         ports:
           http:
             port: *port
@@ -118,7 +105,6 @@ spec:
 
     serviceMonitor:
       operator:
-        serviceName: *app
         endpoints:
           - port: metrics
             scheme: http
@@ -126,8 +112,6 @@ spec:
             interval: 1m
             scrapeTimeout: 10s
 
-    serviceAccount:
-      dragonfly-operator: {}
     rbac:
       bindings:
         dragonfly-operator:

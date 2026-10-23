@@ -135,12 +135,7 @@ spec:
               readiness: *probes
               startup:
                 enabled: true
-                spec:
-                  httpGet:
-                    path: /health
-                    port: *port
-                  failureThreshold: 30
-                  periodSeconds: 5
+                path: /health
 
             resources:
               requests:

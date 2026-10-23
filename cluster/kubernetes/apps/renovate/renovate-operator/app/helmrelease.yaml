@@ -68,7 +68,6 @@ spec:
         # allowedGroupPrefix: ""
         # allowedGroupPattern: 'admins'
         additionalScopes: ['groups']
-        fetchUserInfoGroups: false
 
     route:
       enabled: true
