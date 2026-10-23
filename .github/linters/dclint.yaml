@@ -13,4 +13,4 @@ rules:
   # https://github.com/zavoloklom/docker-compose-linter/blob/main/docs/rules/require-quotes-in-ports-rule.md
   require-quotes-in-ports:
     - 2
-    - quoteType: double
+    - quoteType: single

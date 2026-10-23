@@ -11,9 +11,7 @@ concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
   cancel-in-progress: true
 
-permissions:
-  contents: read
-  pull-requests: write
+permissions: {}
 
 jobs:
   lint:
@@ -26,11 +24,13 @@ jobs:
         with:
           client-id: '${{ secrets.BOTTY_HILL_CLIENT_ID }}'
           private-key: '${{ secrets.BOTTY_HILL_PRIVATE_KEY }}'
+          permission-contents: read
 
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           token: '${{ steps.app-token.outputs.token }}'
           fetch-depth: 0
+          persist-credentials: false
 
       - uses: jdx/mise-action@08ae2a091c038e1e05ec6f5115dc5c69d5a2a6b8 # v5.1.2
         env:
@@ -44,6 +44,8 @@ jobs:
       always()
     name: Linting comment
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
       - name: Generate Token
         uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
@@ -52,6 +54,7 @@ jobs:
         with:
           client-id: '${{ secrets.BOTTY_HILL_CLIENT_ID }}'
           private-key: '${{ secrets.BOTTY_HILL_PRIVATE_KEY }}'
+          permission-pull-requests: write
 
       - id: success_gif
         if: |
@@ -83,7 +86,7 @@ jobs:
             https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDJveWtyeXVtMzQ5aGUycDJsa2p5ODJ1cGNmcGMwZzNpd2ZveWs5dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Nx3PN1kaLGe94CJb2A/giphy.gif
 
       - id: set_message
-        run: |
+        run: | # zizmor: ignore[template-injection]
           if [ "${{ needs.lint.result }}" == "success" ]; then
             echo "message=✅ Linting **PASSED!** ✅<br /><br /> ![pass](${{ steps.success_gif.outputs.selected }})" >> "$GITHUB_OUTPUT"
           else

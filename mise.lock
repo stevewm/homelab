@@ -338,6 +338,49 @@ url_api = "https://api.github.com/repos/gorcon/rcon-cli/releases/assets/98965258
 url = "https://github.com/gorcon/rcon-cli/releases/download/v0.10.3/rcon-0.10.3-win32.zip"
 url_api = "https://api.github.com/repos/gorcon/rcon-cli/releases/assets/98965263"
 
+[[tools."github:guarnz/deadvalues"]]
+version = "0.1.7"
+backend = "github:guarnz/deadvalues"
+specifiers = [
+    "0.1.7",
+    "latest",
+]
+
+[tools."github:guarnz/deadvalues"."platforms.linux-arm64"]
+checksum = "sha256:3b9ae28141f824d5fba2e4ad05d05b3cd15cc978120d320fa090fd6eaa7b1c14"
+url = "https://github.com/guarnz/deadvalues/releases/download/v0.1.7/deadvalues_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/guarnz/deadvalues/releases/assets/657853020"
+
+[tools."github:guarnz/deadvalues"."platforms.linux-arm64-musl"]
+checksum = "sha256:3b9ae28141f824d5fba2e4ad05d05b3cd15cc978120d320fa090fd6eaa7b1c14"
+url = "https://github.com/guarnz/deadvalues/releases/download/v0.1.7/deadvalues_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/guarnz/deadvalues/releases/assets/657853020"
+
+[tools."github:guarnz/deadvalues"."platforms.linux-x64"]
+checksum = "sha256:a5e08ae01d0b8a62f4351ba2b653abf5cb76e194adfdd809d61241680fa74bae"
+url = "https://github.com/guarnz/deadvalues/releases/download/v0.1.7/deadvalues_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/guarnz/deadvalues/releases/assets/657852955"
+
+[tools."github:guarnz/deadvalues"."platforms.linux-x64-musl"]
+checksum = "sha256:a5e08ae01d0b8a62f4351ba2b653abf5cb76e194adfdd809d61241680fa74bae"
+url = "https://github.com/guarnz/deadvalues/releases/download/v0.1.7/deadvalues_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/guarnz/deadvalues/releases/assets/657852955"
+
+[tools."github:guarnz/deadvalues"."platforms.macos-arm64"]
+checksum = "sha256:ed8a74e4a616178e86379714dc77cb368c0860a7eafe5052f41fbf0e2f84f9d0"
+url = "https://github.com/guarnz/deadvalues/releases/download/v0.1.7/deadvalues_darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/guarnz/deadvalues/releases/assets/657852962"
+
+[tools."github:guarnz/deadvalues"."platforms.macos-x64"]
+checksum = "sha256:17662fd44c5324a9da9ed6f35540dd1aaf27d59a9a356bd5fc8ca9d59e642e07"
+url = "https://github.com/guarnz/deadvalues/releases/download/v0.1.7/deadvalues_darwin_amd64.tar.gz"
+url_api = "https://api.github.com/repos/guarnz/deadvalues/releases/assets/657853016"
+
+[tools."github:guarnz/deadvalues"."platforms.windows-x64"]
+checksum = "sha256:8b786f4d8e23c4ce2b1693f81dc82097c921e2e3a783eb61a2dfd440c1336146"
+url = "https://github.com/guarnz/deadvalues/releases/download/v0.1.7/deadvalues_windows_amd64.zip"
+url_api = "https://api.github.com/repos/guarnz/deadvalues/releases/assets/657852961"
+
 [[tools."github:helmfile/helmfile"]]
 version = "1.8.1"
 backend = "github:helmfile/helmfile"
@@ -849,6 +892,49 @@ specifiers = ["44.151.2"]
 [tools."npm:renovate".options]
 trust_policy_excludes = '["@yarnpkg/libzip"]'
 
+[[tools.opentofu]]
+version = "1.13.1"
+backend = "aqua:opentofu/opentofu"
+specifiers = [
+    "1.13.1",
+    "latest",
+]
+
+[tools.opentofu."platforms.linux-arm64"]
+checksum = "sha256:9c1ef375aa1852db0b2888aa921b640c71f8140d4682aa4fec99378a64fa7dc3"
+url = "https://github.com/opentofu/opentofu/releases/download/v1.13.1/tofu_1.13.1_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/opentofu/opentofu/releases/assets/603708055"
+
+[tools.opentofu."platforms.linux-arm64-musl"]
+checksum = "sha256:9c1ef375aa1852db0b2888aa921b640c71f8140d4682aa4fec99378a64fa7dc3"
+url = "https://github.com/opentofu/opentofu/releases/download/v1.13.1/tofu_1.13.1_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/opentofu/opentofu/releases/assets/603708055"
+
+[tools.opentofu."platforms.linux-x64"]
+checksum = "sha256:378ada19d4bc70c43732004e8159be771b23b9a5afdf059e5f8a2b3fa2c70a69"
+url = "https://github.com/opentofu/opentofu/releases/download/v1.13.1/tofu_1.13.1_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/opentofu/opentofu/releases/assets/603708017"
+
+[tools.opentofu."platforms.linux-x64-musl"]
+checksum = "sha256:378ada19d4bc70c43732004e8159be771b23b9a5afdf059e5f8a2b3fa2c70a69"
+url = "https://github.com/opentofu/opentofu/releases/download/v1.13.1/tofu_1.13.1_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/opentofu/opentofu/releases/assets/603708017"
+
+[tools.opentofu."platforms.macos-arm64"]
+checksum = "sha256:be78f659f04ef06a9dbd9b3934d46af95d787a3aa38396d459dea395261816a9"
+url = "https://github.com/opentofu/opentofu/releases/download/v1.13.1/tofu_1.13.1_darwin_arm64.tar.gz"
+url_api = "https://api.github.com/repos/opentofu/opentofu/releases/assets/603708059"
+
+[tools.opentofu."platforms.macos-x64"]
+checksum = "sha256:a73720443ba38712d7d96dc1e857add02c15a790919c653ad07492e9952f8c27"
+url = "https://github.com/opentofu/opentofu/releases/download/v1.13.1/tofu_1.13.1_darwin_amd64.tar.gz"
+url_api = "https://api.github.com/repos/opentofu/opentofu/releases/assets/603708142"
+
+[tools.opentofu."platforms.windows-x64"]
+checksum = "sha256:6825ae311e9a15747ce2ede7b7e97c8bb744a4d271fa8113259eeeee3d09438c"
+url = "https://github.com/opentofu/opentofu/releases/download/v1.13.1/tofu_1.13.1_windows_amd64.tar.gz"
+url_api = "https://api.github.com/repos/opentofu/opentofu/releases/assets/603708102"
+
 [[tools.oxfmt]]
 version = "0.64.0"
 aube = { path = ".mise/locks/oxfmt/0.64.0", digest = "sha256:de904023d6568888da35bd9db18f736e00c40b84a14f7833ccc5664dc9897933" }
@@ -1205,3 +1291,53 @@ checksum = "sha256:b645f47ebb3a0d2fbab52998550bbd0a1706f23b5ca5f5b48e638c580bb70
 url = "https://github.com/mikefarah/yq/releases/download/v4.54.1/yq_windows_amd64.exe"
 url_api = "https://api.github.com/repos/mikefarah/yq/releases/assets/597222575"
 provenance = "cosign"
+
+[[tools.zizmor]]
+version = "1.31.1"
+backend = "aqua:zizmorcore/zizmor"
+specifiers = [
+    "1.31.1",
+    "latest",
+]
+
+[tools.zizmor."platforms.linux-arm64"]
+checksum = "sha256:37eebbd5762a44f262d94875431b14a6d2402991e90a685113ea97b8b41be833"
+url = "https://github.com/zizmorcore/zizmor/releases/download/v1.31.1/zizmor-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/zizmorcore/zizmor/releases/assets/645467282"
+provenance = "github-attestations"
+
+[tools.zizmor."platforms.linux-arm64-musl"]
+checksum = "sha256:37eebbd5762a44f262d94875431b14a6d2402991e90a685113ea97b8b41be833"
+url = "https://github.com/zizmorcore/zizmor/releases/download/v1.31.1/zizmor-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/zizmorcore/zizmor/releases/assets/645467282"
+provenance = "github-attestations"
+
+[tools.zizmor."platforms.linux-x64"]
+checksum = "sha256:d185f726bdaf92df78273217dfdd24ebcd6b0ef48cf3ce776ff5762b6e138c99"
+url = "https://github.com/zizmorcore/zizmor/releases/download/v1.31.1/zizmor-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/zizmorcore/zizmor/releases/assets/645467284"
+provenance = "github-attestations"
+
+[tools.zizmor."platforms.linux-x64-musl"]
+checksum = "sha256:d185f726bdaf92df78273217dfdd24ebcd6b0ef48cf3ce776ff5762b6e138c99"
+url = "https://github.com/zizmorcore/zizmor/releases/download/v1.31.1/zizmor-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/zizmorcore/zizmor/releases/assets/645467284"
+provenance = "github-attestations"
+
+[tools.zizmor."platforms.macos-arm64"]
+checksum = "sha256:ad5aa633cd56215b11e6c51d51f90c7e6b22904a75047d1215abbd422f61d698"
+url = "https://github.com/zizmorcore/zizmor/releases/download/v1.31.1/zizmor-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/zizmorcore/zizmor/releases/assets/645467283"
+provenance = "github-attestations"
+
+[tools.zizmor."platforms.macos-x64"]
+checksum = "sha256:72ae63bb85b67229c06242f04195cb43927e9fab5f43803c6434dc701a517d61"
+url = "https://github.com/zizmorcore/zizmor/releases/download/v1.31.1/zizmor-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/zizmorcore/zizmor/releases/assets/645467287"
+provenance = "github-attestations"
+
+[tools.zizmor."platforms.windows-x64"]
+checksum = "sha256:4de30371c8a3b483aecbcf0dec1fd6a2b6aae65051ca226b4f6527baac6a8c7a"
+url = "https://github.com/zizmorcore/zizmor/releases/download/v1.31.1/zizmor-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/zizmorcore/zizmor/releases/assets/645467286"
+provenance = "github-attestations"

@@ -48,4 +48,4 @@ jobs:
               done
           done
         env:
-          GITHUB_TOKEN: ${{github.token}}
+          GITHUB_TOKEN: ${{ github.token }}

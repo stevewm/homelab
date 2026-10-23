@@ -14,27 +14,27 @@ local linters = new Mapping<String, Step> {
   ["mise"] = Builtins.mise
   ["pkl"] = Builtins.pkl
   ["pkl-format"] = Builtins.pkl_format
-
-  ["oxfmt"] = (Builtins.prettier) {
-    check = "oxfmt --config " + config + "/.oxfmtrc.json --check {{ files }}"
-    check_list_files = "oxfmt --list-different {{ files }}"
-    fix = "oxfmt --config " + config + "/.oxfmtrc.json --write {{ files }}"
-  }
+  ["tofu"] = Builtins.tofu
+  ["zizmor"] = Builtins.zizmor
 
   ["ruff"] = (Builtins.ruff) {
     check = "ruff check --config " + config + "/ruff.toml {{ files }}"
     fix = "ruff check --config " + config + "/ruff.toml --fix {{ files }}"
   }
 
-  ["rumdl"] {
-    glob = "*.md"
-    stage = "*.md"
+  ["oxfmt"] = (Builtins.oxfmt) {
+    check = "oxfmt --config " + config + "/.oxfmtrc.json --check {{ files }}"
+    check_list_files = "oxfmt --list-different {{ files }}"
+    fix = "oxfmt --config " + config + "/.oxfmtrc.json --write {{ files }}"
+    exclude = ".mise.toml" // Clashes with mise fmt
+  }
+
+  ["rumdl"] = (Builtins.rumdl) {
     check = "rumdl check --config " + config + "/rumdl.toml {{ files }}"
     fix = "rumdl fmt --config " + config + "/rumdl.toml {{ files }}"
   }
 
-  ["dclint"] {
-    glob = "docker-compose.yaml"
+  ["dclint"] = (Builtins.dclint) {
     check = "dclint {{ files }} --config " + config + "/dclint.yaml"
     fix = "dclint {{ files }} --config " + config + "/dclint.yaml --fix"
   }

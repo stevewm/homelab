@@ -1,16 +1,16 @@
 [api]
-    enabled = true
-    tls = false
-    listen = "0.0.0.0:80"
+enabled = true
+tls = false
+listen = "0.0.0.0:80"
 
 [backend]
-    datastore = "config"
-    baseDN = "dc=home,dc=arpa"
-    anonymousdse = true
+datastore = "config"
+baseDN = "dc=home,dc=arpa"
+anonymousdse = true
 
 [ldap]
-    enabled = true
-    listen = "0.0.0.0:389"
+enabled = true
+listen = "0.0.0.0:389"
 
 [ldaps]
-    enabled = false
+enabled = false
