@@ -24,7 +24,6 @@ spec:
     mode: warn
   values:
     defaultPodOptions:
-      automountServiceAccountToken: false
       securityContext:
         runAsNonRoot: true
         runAsUser: 1001
@@ -38,7 +37,6 @@ spec:
       romm:
         defaultContainerOptions:
           securityContext:
-            readOnlyRootFilesystem: true
             allowPrivilegeEscalation: false
             capabilities:
               drop: [ALL]
@@ -127,7 +125,6 @@ spec:
 
     service:
       romm:
-        controller: *app
         ports:
           web:
             port: *port
@@ -139,10 +136,6 @@ spec:
           - name: envoy-internal
             namespace: network
             sectionName: https
-        rules:
-          - backendRefs:
-              - identifier: *app
-                port: *port
         annotations:
           gethomepage.dev/name: *app
           gethomepage.dev/enabled: 'true'

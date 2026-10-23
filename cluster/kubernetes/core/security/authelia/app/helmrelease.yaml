@@ -126,7 +126,6 @@ spec:
         ports:
           http:
             port: *port
-            primary: true
           metrics:
             port: 8080
 
