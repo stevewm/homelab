@@ -26,7 +26,7 @@ local linters = new Mapping<String, Step> {
     check = "oxfmt --config " + config + "/.oxfmtrc.json --check {{ files }}"
     check_list_files = "oxfmt --list-different {{ files }}"
     fix = "oxfmt --config " + config + "/.oxfmtrc.json --write {{ files }}"
-    exclude = ".mise.toml" // Clashes with mise fmt
+    exclude = List(".mise.toml", ".mise/**") // Clashes with mise fmt
   }
 
   ["rumdl"] = (Builtins.rumdl) {
