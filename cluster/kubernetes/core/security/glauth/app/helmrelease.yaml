@@ -24,7 +24,6 @@ spec:
     mode: warn
   values:
     defaultPodOptions:
-      automountServiceAccountToken: false
       securityContext:
         runAsNonRoot: true
         runAsUser: 65534
@@ -81,18 +80,14 @@ spec:
 
     service:
       glauth:
-        controller: *app
         ports:
           http:
             port: *port
           ldap:
-            enabled: true
             port: 389
-            protocol: TCP
 
     serviceMonitor:
       glauth:
-        serviceName: *app
         endpoints:
           - port: http
             scheme: http

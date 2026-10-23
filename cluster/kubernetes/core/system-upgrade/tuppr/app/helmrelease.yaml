@@ -9,5 +9,3 @@ spec:
     kind: OCIRepository
     name: tuppr
   interval: 30m
-  values:
-    replicaCount: 1

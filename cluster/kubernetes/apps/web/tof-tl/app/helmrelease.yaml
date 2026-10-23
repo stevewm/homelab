@@ -24,7 +24,6 @@ spec:
     mode: warn
   values:
     defaultPodOptions:
-      automountServiceAccountToken: false
       securityContext:
         runAsNonRoot: true
         runAsUser: 65534
@@ -38,7 +37,6 @@ spec:
       tof-tl:
         strategy: RollingUpdate
         replicas: 2
-        defaultContainerOptionsStrategy: merge
         defaultContainerOptions:
           securityContext:
             allowPrivilegeEscalation: false
@@ -64,7 +62,6 @@ spec:
 
     service:
       tof-tl:
-        controller: *app
         ports:
           web:
             port: &port 3000
@@ -76,10 +73,6 @@ spec:
           - name: envoy-external
             namespace: network
             sectionName: https
-        rules:
-          - backendRefs:
-              - identifier: *app
-                port: *port
         annotations:
           gethomepage.dev/name: ToF Map
           gethomepage.dev/enabled: 'true'

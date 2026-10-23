@@ -24,7 +24,6 @@ spec:
     mode: warn
   values:
     defaultPodOptions:
-      automountServiceAccountToken: false
       securityContext:
         runAsNonRoot: true
         runAsUser: 65534
@@ -86,7 +85,6 @@ spec:
 
     service:
       mealie:
-        controller: *app
         ports:
           http:
             port: 9000

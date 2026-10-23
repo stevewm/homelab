@@ -27,7 +27,6 @@ spec:
       labels:
         egress.policy.home.arpa/internet: 'true'
         egress.policy.home.arpa/deny-all: 'true'
-      automountServiceAccountToken: false
       securityContext:
         runAsNonRoot: true
         runAsUser: 2000
@@ -52,7 +51,6 @@ spec:
           reloader.stakater.com/auto: 'true'
 
         pod:
-          restartPolicy: Never
           annotations:
             k8s.ksgate.org/sonarr: |
               {
@@ -74,9 +72,7 @@ spec:
 
         cronjob:
           schedule: '@daily'
-          concurrencyPolicy: Forbid
           backoffLimit: 0
-          failedJobsHistory: 1
           successfulJobsHistory: 0
 
         containers:
@@ -105,10 +101,6 @@ spec:
     persistence:
       config:
         existingClaim: recyclarr-config
-        advancedMounts:
-          recyclarr:
-            recyclarr:
-              - path: /config
       config-file:
         type: configMap
         name: recyclarr

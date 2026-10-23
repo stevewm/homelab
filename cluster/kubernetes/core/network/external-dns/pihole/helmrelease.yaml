@@ -25,7 +25,6 @@ spec:
   driftDetection:
     mode: warn
   values:
-    fullnameOverride: external-dns-pihole
     domainFilters:
       - stevewm.dev
 
@@ -38,7 +37,6 @@ spec:
     logLevel: debug
     triggerLoopOnEvent: true
 
-    policy: upsert-only
     registry: noop
     provider: pihole
 

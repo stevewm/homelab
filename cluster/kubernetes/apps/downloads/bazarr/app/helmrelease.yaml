@@ -28,7 +28,6 @@ spec:
         ingress.policy.home.arpa/envoy-internal: 'true'
         egress.policy.home.arpa/internet: 'true'
         egress.policy.home.arpa/deny-all: 'true'
-      automountServiceAccountToken: false
       securityContext:
         runAsNonRoot: true
         runAsUser: 1001
@@ -100,7 +99,6 @@ spec:
 
     service:
       bazarr:
-        controller: *app
         ports:
           http:
             port: *port
@@ -123,14 +121,12 @@ spec:
 
     persistence:
       config:
-        enabled: true
         existingClaim: bazarr-config
       config-cache:
         type: emptyDir
         globalMounts:
           - path: /config/cache
       media:
-        enabled: true
         type: nfs
         server: lilnas.home.arpa
         path: /volume1/Media

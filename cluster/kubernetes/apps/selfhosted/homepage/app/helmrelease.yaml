@@ -74,12 +74,8 @@ spec:
             env:
               HOMEPAGE_ALLOWED_HOSTS: 'home.stevewm.dev'
 
-        serviceAccount:
-          identifier: homepage
-
     service:
       homepage:
-        controller: homepage
         ports:
           http:
             port: 3000
@@ -100,7 +96,6 @@ spec:
       logs:
         type: emptyDir
       config:
-        enabled: true
         type: configMap
         name: *config
         globalMounts:
@@ -116,9 +111,6 @@ spec:
             path: /app/config/settings.yaml
           - subPath: widgets.yaml
             path: /app/config/widgets.yaml
-
-    serviceAccount:
-      homepage: {}
 
     rbac:
       bindings:

@@ -24,7 +24,6 @@ spec:
   driftDetection:
     mode: warn
   values:
-    installCRDs: true
     crds:
       createClusterExternalSecret: false
       createClusterPushSecret: false

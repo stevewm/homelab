@@ -28,12 +28,6 @@ spec:
   driftDetection:
     mode: warn
   values:
-    vpa:
-      enabled: false
-
     dashboard:
       flags:
         enable-cost: 'false'
-
-      ingress:
-        enabled: false # Use HTTPRoute instead
