@@ -1,0 +1,34 @@
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: prowlarr
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: bazarr
+      app.kubernetes.io/instance: bazarr
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: scraparr
+        - matchLabels:
+            app.kubernetes.io/name: homepage
+            app.kubernetes.io/instance: homepage
+            k8s:io.kubernetes.pod.namespace: selfhosted
+      toPorts:
+        - ports:
+            - port: '80'
+              protocol: TCP
+  egress:
+    - toEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: sonarr
+            app.kubernetes.io/instance: sonarr
+        - matchLabels:
+            app.kubernetes.io/name: radarr
+            app.kubernetes.io/instance: radarr
+      toPorts:
+        - ports:
+            - port: '80'
+              protocol: TCP
