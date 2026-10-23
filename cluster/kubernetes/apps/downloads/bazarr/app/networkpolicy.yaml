@@ -1,0 +1,30 @@
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: bazarr
+spec:
+  endpointSelector:
+    matchLabels:
+      k8s:app: bazarr
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            k8s:app: scraparr
+        - matchLabels:
+            k8s:io.kubernetes.pod.namespace: selfhosted
+            k8s:app: homepage
+      toPorts:
+        - ports:
+            - port: '80'
+              protocol: TCP
+  egress:
+    - toEndpoints:
+        - matchLabels:
+            k8s:app: sonarr
+        - matchLabels:
+            k8s:app: radarr
+      toPorts:
+        - ports:
+            - port: '80'
+              protocol: TCP

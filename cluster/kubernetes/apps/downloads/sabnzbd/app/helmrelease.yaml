@@ -43,6 +43,10 @@ spec:
             capabilities:
               drop: [ALL]
 
+        labels:
+          ingress.policy.home.arpa/envoy-internal: 'true'
+          egress.policy.home.arpa/internet: 'true'
+
         annotations:
           reloader.stakater.com/auto: 'true'
 

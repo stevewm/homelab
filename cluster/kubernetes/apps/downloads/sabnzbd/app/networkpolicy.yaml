@@ -1,0 +1,46 @@
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: sabnzbd
+spec:
+  endpointSelector:
+    matchLabels:
+      k8s:app: sabnzbd
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            k8s:app: sonarr
+        - matchLabels:
+            k8s:io.kubernetes.pod.namespace: selfhosted
+            k8s:app: homepage
+      toPorts:
+        - ports:
+            - port: '80'
+              protocol: TCP
+    - fromEndpoints:
+        - matchLabels:
+            k8s:app: radarr
+      toPorts:
+        - ports:
+            - port: '80'
+              protocol: TCP
+  egress:
+    - toCIDR:
+        - 104.26.0.12/32
+      toPorts:
+        - ports:
+            - port: '443'
+              protocol: TCP
+    - toCIDR:
+        - 104.26.1.12/32
+      toPorts:
+        - ports:
+            - port: '443'
+              protocol: TCP
+    - toCIDR:
+        - 104.26.2.117/32
+      toPorts:
+        - ports:
+            - port: '443'
+              protocol: TCP
