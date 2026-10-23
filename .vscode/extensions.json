@@ -1,6 +1,5 @@
 {
   "recommendations": [
-    "DavidAnson.vscode-markdownlint",
     "EditorConfig.EditorConfig",
     "Tyriar.sort-lines",
     "eamodio.gitlens",

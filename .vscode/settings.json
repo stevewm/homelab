@@ -4,10 +4,6 @@
   "prettier.configPath": ".github/linters/prettierrc.yaml",
   "prettier.ignorePath": ".github/linters/prettierignore",
 
-  "markdownlint.config": {
-    "extends": ".github/linters/conf.markdownlint.yaml"
-  },
-
   "yaml.schemas": {
     "kubernetes": ["kubernetes/*.yaml"]
   },
