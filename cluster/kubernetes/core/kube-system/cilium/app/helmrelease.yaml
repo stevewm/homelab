@@ -124,5 +124,3 @@ spec:
           - http
         serviceMonitor:
           enabled: true
-        dashboards:
-          enabled: true
