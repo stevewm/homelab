@@ -27,6 +27,9 @@ spec:
       externalAttacher:
         enabled: false
       externalProvisioner:
+        image:
+          registry: registry.k8s.io/sig-storage/csi-provisioner
+          tag: v5.2.0@sha256:d5e46da8aff7d73d6f00c761dae94472bcda6e78f4f17b3802dc89d44de0111b
         extraArgs:
           - --leader-election=false
           - --node-deployment=true
