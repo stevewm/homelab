@@ -71,7 +71,7 @@ for path, secret_name in secrets.items():
             logger.debug(f"DEBUG: Would set {secret_name} to: [REDACTED]")
     except KeyError as e:
         logger.error(f"Error: Path '{path}' not found in the configuration. {e}")
-    except Exception as e:
+    except TypeError as e:
         logger.error(f"An error occurred: {e}")
 
 logger.info(f"Successfully processed {success_count}/{count} secrets.")

@@ -7,25 +7,18 @@ local linters = new Mapping<String, Step> {
   // builtins
   ["actionlint"] = Builtins.actionlint
   ["hadolint"] = Builtins.hadolint
-  ["shellcheck"] = Builtins.shellcheck
-  ["shfmt"] = Builtins.shfmt
-  ["newlines"] = Builtins.newlines
-  ["shebangs"] = Builtins.check_executables_have_shebangs
   ["mise"] = Builtins.mise
+  ["newlines"] = Builtins.newlines
   ["pkl"] = Builtins.pkl
   ["pkl-format"] = Builtins.pkl_format
+  ["ruff"] = Builtins.ruff
+  ["shebangs"] = Builtins.check_executables_have_shebangs
+  ["shellcheck"] = Builtins.shellcheck
+  ["shfmt"] = Builtins.shfmt
   ["tofu"] = Builtins.tofu
   ["zizmor"] = Builtins.zizmor
 
-  ["ruff"] = (Builtins.ruff) {
-    check = "ruff check --config " + config + "/ruff.toml {{ files }}"
-    fix = "ruff check --config " + config + "/ruff.toml --fix {{ files }}"
-  }
-
   ["oxfmt"] = (Builtins.oxfmt) {
-    check = "oxfmt --config " + config + "/.oxfmtrc.json --check {{ files }}"
-    check_list_files = "oxfmt --list-different {{ files }}"
-    fix = "oxfmt --config " + config + "/.oxfmtrc.json --write {{ files }}"
     exclude = List(".mise.toml", ".mise/**") // Clashes with mise fmt
   }
 
