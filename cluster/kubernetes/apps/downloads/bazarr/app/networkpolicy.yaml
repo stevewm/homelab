@@ -6,14 +6,16 @@ metadata:
 spec:
   endpointSelector:
     matchLabels:
-      k8s:app: bazarr
+      app.kubernetes.io/name: bazarr
+      app.kubernetes.io/instance: bazarr
   ingress:
     - fromEndpoints:
         - matchLabels:
-            k8s:app: scraparr
+            app.kubernetes.io/name: scraparr
         - matchLabels:
+            app.kubernetes.io/name: homepage
+            app.kubernetes.io/instance: homepage
             k8s:io.kubernetes.pod.namespace: selfhosted
-            k8s:app: homepage
       toPorts:
         - ports:
             - port: '80'
@@ -21,9 +23,11 @@ spec:
   egress:
     - toEndpoints:
         - matchLabels:
-            k8s:app: sonarr
+            app.kubernetes.io/name: sonarr
+            app.kubernetes.io/instance: sonarr
         - matchLabels:
-            k8s:app: radarr
+            app.kubernetes.io/name: radarr
+            app.kubernetes.io/instance: radarr
       toPorts:
         - ports:
             - port: '80'
