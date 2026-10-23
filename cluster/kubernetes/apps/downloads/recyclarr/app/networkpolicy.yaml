@@ -1,0 +1,22 @@
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: recyclarr
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: recyclarr
+      app.kubernetes.io/instance: recyclarr
+  egress:
+    - toEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: sonarr
+            app.kubernetes.io/instance: sonarr
+        - matchLabels:
+            app.kubernetes.io/name: radarr
+            app.kubernetes.io/instance: radarr
+      toPorts:
+        - ports:
+            - port: '80'
+              protocol: TCP
