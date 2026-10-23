@@ -49,11 +49,6 @@ url = "https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_
 url_api = "https://api.github.com/repos/rhysd/actionlint/releases/assets/384924919"
 provenance = "github-attestations"
 
-[[tools."cargo:just-lsp"]]
-version = "0.10.0"
-backend = "cargo:just-lsp"
-specifiers = ["0.10.0"]
-
 [[tools."cargo:minijinja-cli"]]
 version = "3.0.0"
 backend = "cargo:minijinja-cli"
@@ -515,6 +510,92 @@ checksum = "sha256:a7a1a06e16d98ec2b99deb7578bd2c8b95f4e6ba75cc580a30ece98d8a639
 url = "https://github.com/stern/stern/releases/download/v1.34.0/stern_1.34.0_windows_amd64.zip"
 url_api = "https://api.github.com/repos/stern/stern/releases/assets/410516138"
 
+[[tools."github:terror/just-lsp"]]
+version = "0.10.0"
+backend = "github:terror/just-lsp"
+specifiers = [
+    "0.10.0",
+    "latest",
+]
+
+[tools."github:terror/just-lsp"."platforms.linux-arm64"]
+checksum = "sha256:0b48cbf1dfa2efb95348b751a1be6f4837e61ace5dd156daef2c2719f650883c"
+url = "https://github.com/terror/just-lsp/releases/download/0.10.0/just-lsp-0.10.0-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/terror/just-lsp/releases/assets/595782204"
+
+[tools."github:terror/just-lsp"."platforms.linux-arm64-musl"]
+checksum = "sha256:88d83e1bfb29f5cf41be1d4056d56311bcdcad81aec57b7737cdd98147547478"
+url = "https://github.com/terror/just-lsp/releases/download/0.10.0/just-lsp-0.10.0-aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/terror/just-lsp/releases/assets/595782567"
+
+[tools."github:terror/just-lsp"."platforms.linux-x64"]
+checksum = "sha256:9a801d9dd90a2ac06500903b5a8038881f07f1b0e856590d6f91191a305bc305"
+url = "https://github.com/terror/just-lsp/releases/download/0.10.0/just-lsp-0.10.0-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/terror/just-lsp/releases/assets/595781494"
+
+[tools."github:terror/just-lsp"."platforms.linux-x64-musl"]
+checksum = "sha256:3c35e10e76db6cc1931495bb3abdaef02576eaeb406c217420f4fd37e1ebe22c"
+url = "https://github.com/terror/just-lsp/releases/download/0.10.0/just-lsp-0.10.0-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/terror/just-lsp/releases/assets/595781977"
+
+[tools."github:terror/just-lsp"."platforms.macos-arm64"]
+checksum = "sha256:eeca52c7da21b5b04f059a5e23b99575f77ab9b448bdb84911f6b185d386e9c4"
+url = "https://github.com/terror/just-lsp/releases/download/0.10.0/just-lsp-0.10.0-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/terror/just-lsp/releases/assets/595783983"
+
+[tools."github:terror/just-lsp"."platforms.macos-x64"]
+checksum = "sha256:b177bfb271dac7ce9e181f06e83d61edc87debbe05ae50f27f8c2fb40ac8ec95"
+url = "https://github.com/terror/just-lsp/releases/download/0.10.0/just-lsp-0.10.0-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/terror/just-lsp/releases/assets/595783817"
+
+[tools."github:terror/just-lsp"."platforms.windows-x64"]
+checksum = "sha256:4465270a43bc71e9ed917320b780a80b53ce632fac83aeafadb689ab8f056f1d"
+url = "https://github.com/terror/just-lsp/releases/download/0.10.0/just-lsp-0.10.0-x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/terror/just-lsp/releases/assets/595785502"
+
+[[tools."github:zavoloklom/docker-compose-linter"]]
+version = "3.1.0"
+backend = "github:zavoloklom/docker-compose-linter"
+specifiers = [
+    "3.1.0",
+    "latest",
+]
+
+[tools."github:zavoloklom/docker-compose-linter"."platforms.linux-arm64"]
+checksum = "sha256:2a27fcc4677d0a51b3a0a6a019e94dfcc8fb46c02a446f416f6b9cc4f3c6f5fc"
+url = "https://github.com/zavoloklom/docker-compose-linter/releases/download/v3.1.0/dclint-alpine-arm64"
+url_api = "https://api.github.com/repos/zavoloklom/docker-compose-linter/releases/assets/275983087"
+
+[tools."github:zavoloklom/docker-compose-linter"."platforms.linux-arm64-musl"]
+checksum = "sha256:2a27fcc4677d0a51b3a0a6a019e94dfcc8fb46c02a446f416f6b9cc4f3c6f5fc"
+url = "https://github.com/zavoloklom/docker-compose-linter/releases/download/v3.1.0/dclint-alpine-arm64"
+url_api = "https://api.github.com/repos/zavoloklom/docker-compose-linter/releases/assets/275983087"
+
+[tools."github:zavoloklom/docker-compose-linter"."platforms.linux-x64"]
+checksum = "sha256:6ac50660c3ac5b8ef3d453edbe5fe22c82875c4cd0173074ff87be69c391b852"
+url = "https://github.com/zavoloklom/docker-compose-linter/releases/download/v3.1.0/dclint-alpine-amd64"
+url_api = "https://api.github.com/repos/zavoloklom/docker-compose-linter/releases/assets/275983094"
+
+[tools."github:zavoloklom/docker-compose-linter"."platforms.linux-x64-musl"]
+checksum = "sha256:6ac50660c3ac5b8ef3d453edbe5fe22c82875c4cd0173074ff87be69c391b852"
+url = "https://github.com/zavoloklom/docker-compose-linter/releases/download/v3.1.0/dclint-alpine-amd64"
+url_api = "https://api.github.com/repos/zavoloklom/docker-compose-linter/releases/assets/275983094"
+
+[tools."github:zavoloklom/docker-compose-linter"."platforms.macos-arm64"]
+checksum = "sha256:ea58b5392e8c47c849b93028455d6df1a711b361ef49a870defa6b77b178e8ff"
+url = "https://github.com/zavoloklom/docker-compose-linter/releases/download/v3.1.0/dclint-bullseye-arm64"
+url_api = "https://api.github.com/repos/zavoloklom/docker-compose-linter/releases/assets/275983083"
+
+[tools."github:zavoloklom/docker-compose-linter"."platforms.macos-x64"]
+checksum = "sha256:5834586af5d3a5d3721dbb781cd87b4193e498f53671562864ca15567d1d42ac"
+url = "https://github.com/zavoloklom/docker-compose-linter/releases/download/v3.1.0/dclint-bullseye-amd64"
+url_api = "https://api.github.com/repos/zavoloklom/docker-compose-linter/releases/assets/275983090"
+
+[tools."github:zavoloklom/docker-compose-linter"."platforms.windows-x64"]
+checksum = "sha256:5834586af5d3a5d3721dbb781cd87b4193e498f53671562864ca15567d1d42ac"
+url = "https://github.com/zavoloklom/docker-compose-linter/releases/download/v3.1.0/dclint-bullseye-amd64"
+url_api = "https://api.github.com/repos/zavoloklom/docker-compose-linter/releases/assets/275983090"
+
 [[tools.gum]]
 version = "2.0.2"
 backend = "aqua:charmbracelet/gum"
@@ -877,12 +958,6 @@ url = "https://nodejs.org/dist/v24.21.0/node-v24.21.0-darwin-x64.tar.gz"
 checksum = "sha256:158f7685b44de51f6c0df1d153526cbcd3e1bc739a8dfc607721cef75de9e541"
 url = "https://nodejs.org/dist/v24.21.0/node-v24.21.0-win-x64.zip"
 
-[[tools."npm:dclint"]]
-version = "3.1.0"
-aube = { path = ".mise/locks/npm-dclint/3.1.0", digest = "sha256:561631a7f7224e19e485dd910c921c54c9b336b9308d034b70b5fdae88946e6e" }
-backend = "npm:dclint"
-specifiers = ["3.1.0"]
-
 [[tools."npm:renovate"]]
 version = "44.151.2"
 aube = { path = ".mise/locks/npm-renovate/44.151.2~dd67d2de", digest = "sha256:c7860ed2cb85df861e1e3f0ea1d46d6c6c47710f3744fb63b904c53d433fb3a6" }
@@ -1010,7 +1085,7 @@ url = "https://github.com/astral-sh/python-build-standalone/releases/download/20
 provenance = "github-attestations"
 
 [tools.python."platforms.macos-arm64"]
-checksum = "blake3:aa8e9dd1a3389120d3514a115b4baa792f75c075c02b880bc0301cc45a1e18bb"
+checksum = "sha256:5995f024e9c95ccbc87b9bb97152ad1ec9efcf9d76e0574cd37dd946afbea3c6"
 url = "https://github.com/astral-sh/python-build-standalone/releases/download/20251120/cpython-3.14.0+20251120-aarch64-apple-darwin-install_only_stripped.tar.gz"
 provenance = "github-attestations"
 
