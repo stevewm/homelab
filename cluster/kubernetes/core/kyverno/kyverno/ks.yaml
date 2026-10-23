@@ -1,0 +1,48 @@
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: core-kyverno
+  namespace: &namespace kyverno
+spec:
+  targetNamespace: *namespace
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: kyverno
+  interval: 30m
+  timeout: 5m
+  path: ./cluster/kubernetes/core/kyverno/kyverno/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+    namespace: flux-system
+  wait: true
+  postBuild:
+    substitute:
+      APP: kyverno
+
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: core-kyverno-policies
+  namespace: &namespace kyverno
+spec:
+  targetNamespace: *namespace
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: kyverno
+  interval: 30m
+  timeout: 5m
+  path: ./cluster/kubernetes/core/kyverno/kyverno/policies
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+    namespace: flux-system
+  wait: true
+  dependsOn:
+    - name: core-kyverno
