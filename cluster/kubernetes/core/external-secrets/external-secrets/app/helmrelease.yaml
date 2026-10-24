@@ -22,13 +22,16 @@ spec:
   uninstall:
     keepHistory: false
   driftDetection:
-    mode: warn
+    mode: enabled
   values:
     crds:
       createClusterExternalSecret: false
       createClusterPushSecret: false
     processClusterPushSecret: false
     processClusterExternalSecret: false
+
+    rbac:
+      serviceAccountTokenCreate: false
 
     replicaCount: 2
 
@@ -37,6 +40,20 @@ spec:
 
     serviceMonitor:
       enabled: true
+
+    podLabels:
+      egress.policy.home.arpa/kube-api: 'true'
+      egress.policy.home.arpa/deny-all: 'true'
+
+    certController:
+      podLabels:
+        egress.policy.home.arpa/kube-api: 'true'
+        egress.policy.home.arpa/deny-all: 'true'
+
+    webhook:
+      podLabels:
+        egress.policy.home.arpa/kube-api: 'true'
+        egress.policy.home.arpa/deny-all: 'true'
 
     resources:
       requests:

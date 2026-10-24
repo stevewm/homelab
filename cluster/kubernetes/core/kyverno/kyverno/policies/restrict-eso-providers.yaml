@@ -1,0 +1,17 @@
+---
+apiVersion: policies.kyverno.io/v1
+kind: ValidatingPolicy
+metadata:
+  name: restrict-eso-providers
+spec:
+  validationActions:
+    - Deny
+  matchConstraints:
+    resourceRules:
+      - apiGroups: ['external-secrets.io']
+        apiVersions: [v1]
+        operations: [CREATE, UPDATE]
+        resources: [clustersecretstores, secretstores]
+  validations:
+    - message: Only the Doppler secret provider is permitted
+      expression: has(object.spec.provider.doppler)
