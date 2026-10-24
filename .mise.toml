@@ -53,7 +53,7 @@ crane = "0.22.1"
 "github:terror/just-lsp" = "0.10.0"
 "github:zavoloklom/docker-compose-linter" = "3.1.0"
 hk = "2.8.1"
-"npm:renovate" = { version = "44.181.0", trust_policy_excludes = [
+"npm:renovate" = { version = "44.181.1", trust_policy_excludes = [
   "@yarnpkg/libzip",
 ] }
 oxfmt = "0.64.0"
