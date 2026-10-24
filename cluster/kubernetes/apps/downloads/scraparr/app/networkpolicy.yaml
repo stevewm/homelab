@@ -29,13 +29,13 @@ spec:
             app.kubernetes.io/instance: prowlarr
         - matchLabels:
             app.kubernetes.io/name: radarr
-            app.kubernetes.io/instance: prowlarr
+            app.kubernetes.io/instance: radarr
         - matchLabels:
             app.kubernetes.io/name: seerr
-            app.kubernetes.io/instance: prowlarr
+            app.kubernetes.io/instance: seerr
         - matchLabels:
             app.kubernetes.io/name: sonarr
-            app.kubernetes.io/instance: prowlarr
+            app.kubernetes.io/instance: sonarr
       toPorts:
         - ports:
             - port: '80'
