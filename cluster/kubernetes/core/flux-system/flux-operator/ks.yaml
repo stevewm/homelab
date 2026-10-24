@@ -44,4 +44,4 @@ spec:
   dependsOn:
     - name: core-flux-instance
     - name: core-external-secrets
-      namespace: security
+      namespace: external-secrets

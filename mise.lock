@@ -228,6 +228,49 @@ url = "https://github.com/Orange-OpenSource/hurl/releases/download/8.0.1/hurl-8.
 url_api = "https://api.github.com/repos/Orange-OpenSource/hurl/releases/assets/407509632"
 provenance = "github-attestations"
 
+[[tools."github:cilium/hubble"]]
+version = "1.20.2"
+backend = "github:cilium/hubble"
+specifiers = [
+    "1.20.2",
+    "latest",
+]
+
+[tools."github:cilium/hubble"."platforms.linux-arm64"]
+checksum = "sha256:0711ae8bc3100a2c985bf8fb5c7d006ae6e31f4c9f3dc53ebc7d8504d76dc60d"
+url = "https://github.com/cilium/hubble/releases/download/v1.20.2/hubble-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/cilium/hubble/releases/assets/616830259"
+
+[tools."github:cilium/hubble"."platforms.linux-arm64-musl"]
+checksum = "sha256:0711ae8bc3100a2c985bf8fb5c7d006ae6e31f4c9f3dc53ebc7d8504d76dc60d"
+url = "https://github.com/cilium/hubble/releases/download/v1.20.2/hubble-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/cilium/hubble/releases/assets/616830259"
+
+[tools."github:cilium/hubble"."platforms.linux-x64"]
+checksum = "sha256:03f248a50cad11e728bf9383382392c57148fd6a19853ad359fb7598dae29312"
+url = "https://github.com/cilium/hubble/releases/download/v1.20.2/hubble-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/cilium/hubble/releases/assets/616830266"
+
+[tools."github:cilium/hubble"."platforms.linux-x64-musl"]
+checksum = "sha256:03f248a50cad11e728bf9383382392c57148fd6a19853ad359fb7598dae29312"
+url = "https://github.com/cilium/hubble/releases/download/v1.20.2/hubble-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/cilium/hubble/releases/assets/616830266"
+
+[tools."github:cilium/hubble"."platforms.macos-arm64"]
+checksum = "sha256:c335849370f8528a3987fa3810d2972a3ce0182067fb8fb2174bcdfeecda38de"
+url = "https://github.com/cilium/hubble/releases/download/v1.20.2/hubble-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/cilium/hubble/releases/assets/616830269"
+
+[tools."github:cilium/hubble"."platforms.macos-x64"]
+checksum = "sha256:6fd44fe891cedb95c58ea21a46235fae5ee8ce0b8540ab7e39c09937a343c67e"
+url = "https://github.com/cilium/hubble/releases/download/v1.20.2/hubble-darwin-amd64.tar.gz"
+url_api = "https://api.github.com/repos/cilium/hubble/releases/assets/616830270"
+
+[tools."github:cilium/hubble"."platforms.windows-x64"]
+checksum = "sha256:16cc33bd3314c8fc9781dee7002a24761e8f7a115f65d4b76b1f8445af5569fc"
+url = "https://github.com/cilium/hubble/releases/download/v1.20.2/hubble-windows-amd64.tar.gz"
+url_api = "https://api.github.com/repos/cilium/hubble/releases/assets/616830263"
+
 [[tools."github:derailed/k9s"]]
 version = "0.51.0"
 backend = "github:derailed/k9s"

@@ -22,7 +22,7 @@ spec:
   wait: true
   dependsOn:
     - name: core-external-secrets-secretstore
-      namespace: security
+      namespace: external-secrets
     - name: core-external-dns-cloudflare
 
 # yaml-language-server: $schema=https://k8s-schemas.home-operations.com/kustomize.toolkit.fluxcd.io/kustomization_v1.json
@@ -49,4 +49,4 @@ spec:
   wait: true
   dependsOn:
     - name: core-external-secrets-secretstore
-      namespace: security
+      namespace: external-secrets
