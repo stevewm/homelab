@@ -90,7 +90,7 @@ spec:
                 secretKeyRef:
                   name: sonarr
                   key: api_key
-            args: ['sync']
+            args: ['sync', '--log', 'debug']
             resources:
               requests:
                 cpu: 10m
