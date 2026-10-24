@@ -36,6 +36,10 @@ spec:
         - matchLabels:
             app.kubernetes.io/name: sonarr
             app.kubernetes.io/instance: sonarr
+        - matchLabels:
+            app.kubernetes.io/name: seerr
+            app.kubernetes.io/instance: seerr
+            k8s:io.kubernetes.pod.namespace: media
       toPorts:
         - ports:
             - port: '80'
