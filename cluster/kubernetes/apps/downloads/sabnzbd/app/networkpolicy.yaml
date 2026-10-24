@@ -6,21 +6,18 @@ metadata:
 spec:
   endpointSelector:
     matchLabels:
-      k8s:app: sabnzbd
+      app.kubernetes.io/name: sabnzbd
   ingress:
     - fromEndpoints:
         - matchLabels:
-            k8s:app: sonarr
+            app.kubernetes.io/name: sonarr
+            app.kubernetes.io/instance: sonarr
         - matchLabels:
+            app.kubernetes.io/name: radarr
+            app.kubernetes.io/instance: radarr
+        - matchLabels:
+            app.kubernetes.io/name: homepage
             k8s:io.kubernetes.pod.namespace: selfhosted
-            k8s:app: homepage
-      toPorts:
-        - ports:
-            - port: '80'
-              protocol: TCP
-    - fromEndpoints:
-        - matchLabels:
-            k8s:app: radarr
       toPorts:
         - ports:
             - port: '80'
