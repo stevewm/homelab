@@ -22,7 +22,8 @@ spec:
 
   egress:
     - toFQDNs:
-        - matchPattern: '*.doppler.com'
+        - matchName: api.doppler.com
+        - matchName: api.github.com
       toPorts:
         - ports:
             - port: '443'

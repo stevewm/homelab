@@ -79,8 +79,6 @@ spec:
     k8sServicePort: 7445
     kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
 
-    policyAuditMode: false
-
     securityContext:
       capabilities:
         ciliumAgent:
@@ -111,6 +109,18 @@ spec:
     # -- end of talos settings --
 
     hubble:
+      ui:
+        enabled: true
+        rollOutPods: true
+        httpRoute:
+          enabled: true
+          parentRefs:
+            - name: envoy-internal
+              namespace: network
+              sectionName: https
+          hostnames:
+            - cni.stevewm.dev
+
       relay:
         enabled: true
       metrics:
