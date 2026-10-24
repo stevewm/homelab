@@ -65,7 +65,7 @@ spec:
       cyberchef:
         ports:
           http:
-            port: 80
+            port: 8080
 
     route:
       cyberchef:
