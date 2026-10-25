@@ -33,15 +33,26 @@ spec:
         folder: security
         matchLabels:
           grafana.internal/instance: grafana
+
     admissionController:
+      podLabels:
+        egress.policy.home.arpa/kube-api: 'true'
+        egress.policy.home.arpa/deny-all: 'true'
       serviceMonitor:
         enabled: true
+
     backgroundController:
+      podLabels:
+        egress.policy.home.arpa/kube-api: 'true'
+        egress.policy.home.arpa/deny-all: 'true'
       serviceMonitor:
         enabled: true
+
     cleanupController:
-      serviceMonitor:
-        enabled: true
+      enabled: false
+
     reportsController:
-      serviceMonitor:
-        enabled: true
+      enabled: false
+
+    migration:
+      enabled: false
