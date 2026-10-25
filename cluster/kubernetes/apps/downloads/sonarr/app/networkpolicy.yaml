@@ -14,6 +14,9 @@ spec:
             app.kubernetes.io/name: scraparr
             app.kubernetes.io/instance: scraparr
         - matchLabels:
+            app.kubernetes.io/name: recyclarr
+            app.kubernetes.io/instance: recyclarr
+        - matchLabels:
             app.kubernetes.io/name: homepage
             app.kubernetes.io/instance: homepage
             k8s:io.kubernetes.pod.namespace: selfhosted
