@@ -28,6 +28,7 @@ spec:
         ingress.policy.home.arpa/envoy-external: 'true'
         egress.policy.home.arpa/internet: 'true'
         egress.policy.home.arpa/deny-all: 'true'
+        egress.policy.home.arpa/homepage: 'true'
       securityContext:
         runAsNonRoot: true
         runAsUser: 1001
