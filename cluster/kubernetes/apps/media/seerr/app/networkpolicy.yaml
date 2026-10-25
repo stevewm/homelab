@@ -46,6 +46,7 @@ spec:
         - matchLabels:
             app.kubernetes.io/name: sonarr
             app.kubernetes.io/instance: sonarr
+            k8s:io.kubernetes.pod.namespace: downloads
         - matchLabels:
             app.kubernetes.io/name: radarr
             app.kubernetes.io/instance: radarr
