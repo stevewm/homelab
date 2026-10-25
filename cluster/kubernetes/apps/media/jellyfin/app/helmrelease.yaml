@@ -24,6 +24,10 @@ spec:
     mode: warn
   values:
     defaultPodOptions:
+      labels:
+        ingress.policy.home.arpa/envoy-external: 'true'
+        egress.policy.home.arpa/internet: 'true'
+        egress.policy.home.arpa/deny-all: 'true'
       securityContext:
         runAsNonRoot: true
         runAsUser: 1001

@@ -8,6 +8,7 @@ resources:
   - ./externalsecret.yaml
   - ./scrapeconfig.yaml
   - ./grafanadashboard.yaml
+  - ./networkpolicy.yaml
 configMapGenerator:
   - name: jellyfin-grafana-dashboard
     files:

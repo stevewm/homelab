@@ -11,7 +11,7 @@ spec:
     module: [jellyfin]
   staticConfigs:
     - targets:
-        - 'http://jellyfin.media.svc.cluster.local:8096/Sessions'
+        - 'http://jellyfin.media.svc.cluster.local/Sessions'
   relabelings:
     - sourceLabels: [__address__]
       targetLabel: __param_target
