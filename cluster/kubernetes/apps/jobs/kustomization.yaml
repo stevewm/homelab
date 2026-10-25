@@ -5,4 +5,3 @@ kind: Kustomization
 namespace: jobs
 resources:
   - ./namespace.yaml
-  - ./lge-dev-renew/ks.yaml
