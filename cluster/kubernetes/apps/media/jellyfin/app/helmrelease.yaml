@@ -59,7 +59,7 @@ spec:
               DOTNET_SYSTEM_IO_DISABLEFILELOCKING: 'true'
               JELLYFIN_FFmpeg__probesize: 50000000
               JELLYFIN_FFmpeg__analyzeduration: 50000000
-              JELLYFIN_PublishedServerUrl: jellyfin.media.svc.cluster.local:8096
+              JELLYFIN_PublishedServerUrl: jellyfin.media.svc.cluster.local
             probes:
               liveness: &probes
                 enabled: true
@@ -97,12 +97,10 @@ spec:
 
     service:
       jellyfin:
-        type: LoadBalancer
-        annotations:
-          'lbipam.cilium.io/ips': '10.0.0.80'
         ports:
           http:
-            port: &http 8096
+            port: &http 80
+            targetPort: 8096
           exporter:
             port: 7979
 
@@ -124,7 +122,7 @@ spec:
           gethomepage.dev/icon: sh-jellyfin-light.png
           gethomepage.dev/widget.key: '{{ `{{HOMEPAGE_VAR_JELLYFIN_API_KEY}}` }}'
           gethomepage.dev/widget.type: *app
-          gethomepage.dev/widget.url: 'http://jellyfin.media.svc.cluster.local:8096'
+          gethomepage.dev/widget.url: 'http://jellyfin.media.svc.cluster.local'
 
     persistence:
       config:
