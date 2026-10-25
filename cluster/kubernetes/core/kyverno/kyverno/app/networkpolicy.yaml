@@ -13,7 +13,6 @@ spec:
   ingress:
     - fromEntities:
         - kube-apiserver
-        - host
       toPorts:
         - ports:
             - port: '9443'
