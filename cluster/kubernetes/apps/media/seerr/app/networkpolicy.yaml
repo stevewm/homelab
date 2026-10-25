@@ -44,6 +44,14 @@ spec:
   egress:
     - toEndpoints:
         - matchLabels:
+            app.kubernetes.io/name: jellyfin
+            app.kubernetes.io/instance: jellyfin
+      toPorts:
+        - ports:
+            - port: '8096'
+              protocol: TCP
+    - toEndpoints:
+        - matchLabels:
             app.kubernetes.io/name: sonarr
             app.kubernetes.io/instance: sonarr
             k8s:io.kubernetes.pod.namespace: downloads
