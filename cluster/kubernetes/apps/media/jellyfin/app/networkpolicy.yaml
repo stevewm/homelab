@@ -37,5 +37,5 @@ spec:
             k8s:io.kubernetes.pod.namespace: downloads
       toPorts:
         - ports:
-            - port: '80'
+            - port: '8096'
               protocol: TCP
