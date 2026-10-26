@@ -27,10 +27,18 @@ spec:
   values:
     crds:
       enabled: true
+
     enableCertificateOwnerRef: true
 
-    deploymentAnnotations:
+    global:
+      priorityClassName: system-cluster-critical
+
+    podAnnotations:
       reloader.stakater.com/auto: 'true'
+
+    podLabels:
+      egress.policy.home.arpa/kube-api: 'true'
+      egress.policy.home.arpa/deny-all: 'true'
 
     prometheus:
       servicemonitor:
