@@ -50,3 +50,12 @@ spec:
         - ports:
             - port: '80'
               protocol: TCP
+    - toEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: jellyfin
+            app.kubernetes.io/instance: jellyfin
+            k8s:io.kubernetes.pod.namespace: media
+      toPorts:
+        - ports:
+            - port: '8096'
+              protocol: TCP
