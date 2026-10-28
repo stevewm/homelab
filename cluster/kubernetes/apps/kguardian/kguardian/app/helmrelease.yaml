@@ -11,6 +11,11 @@ spec:
   interval: 30m
   values:
     broker:
+      metrics:
+        serviceMonitor:
+          enabled: true
+        prometheusRule:
+          enabled: true
       resources:
         limits:
           memory: 2Gi
