@@ -23,6 +23,19 @@ spec:
     keepHistory: false
   driftDetection:
     mode: warn
+  postRenderers:
+    - kustomize:
+        patches:
+          - target:
+              group: apps
+              version: v1
+              kind: Deployment
+              name: ksgate
+            patch: |
+              - op: add
+                path: /spec/template/spec/securityContext/seccompProfile
+                value:
+                  type: RuntimeDefault
   values:
     conditionResources:
       apiGroups:
