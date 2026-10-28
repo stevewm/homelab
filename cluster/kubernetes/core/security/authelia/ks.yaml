@@ -32,7 +32,7 @@ spec:
       POSTGRES_REPLICAS: '1'
   patches:
     - patch: |-
-        apiVersion: postgres-operator.crunchydata.com/v1beta1
+        apiVersion: postgres-operator.crunchydata.com/v1
         kind: PostgresCluster
         metadata:
           name: ${APP}
