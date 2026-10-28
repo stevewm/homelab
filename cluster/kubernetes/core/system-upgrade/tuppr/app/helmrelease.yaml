@@ -9,3 +9,19 @@ spec:
     kind: OCIRepository
     name: tuppr
   interval: 30m
+  values:
+    podLabels: {}
+    monitoring:
+      serviceMonitor:
+        enabled: true
+        prometheusRule:
+          enabled: true
+        dashboards:
+          grafanaOperator:
+            enabled: true
+    resources:
+      requests:
+        cpu: 10m
+        memory: 64Mi
+      limits:
+        memory: 192Mi
