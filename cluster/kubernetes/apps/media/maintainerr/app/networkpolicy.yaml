@@ -26,6 +26,9 @@ spec:
             app.kubernetes.io/name: radarr
             app.kubernetes.io/instance: radarr
             k8s:io.kubernetes.pod.namespace: downloads
+        - matchLabels:
+            app.kubernetes.io/name: seerr
+            app.kubernetes.io/instance: seerr
       toPorts:
         - ports:
             - port: '80'
