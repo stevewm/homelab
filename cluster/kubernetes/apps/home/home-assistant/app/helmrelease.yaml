@@ -1,0 +1,233 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app home-assistant
+spec:
+  interval: 30m
+  maxHistory: 3
+  chartRef:
+    kind: OCIRepository
+    name: home-assistant
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: -1
+  uninstall:
+    keepHistory: false
+  driftDetection:
+    mode: warn
+  values:
+    defaultPodOptions:
+      securityContext:
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
+        runAsGroup: 1000
+        runAsNonRoot: true
+        runAsUser: 1000
+        seccompProfile:
+          type: RuntimeDefault
+    controllers:
+      home-assistant:
+        containers:
+          home-assistant:
+            image:
+              repository: ghcr.io/home-operations/home-assistant
+              tag: &hass-image 2026.9.1@sha256:1bcf770d15bd91a55491d04f12494febb35da68b025e1f6612a167a2e190a8c7
+            # envFrom:
+            #   - secretRef:
+            #       name: home-assistant-secret
+
+            probes:
+              liveness:
+                enabled: true
+              readiness:
+                enabled: true
+              startup:
+                enabled: true
+                spec:
+                  periodSeconds: 10
+                  failureThreshold: 60
+
+            resources:
+              requests:
+                cpu: 50m
+                memory: 512M
+              limits:
+                memory: 2Gi
+            securityContext:
+              allowPrivilegeEscalation: false
+              capabilities:
+                drop:
+                  - ALL
+              readOnlyRootFilesystem: true
+
+          code-server:
+            image:
+              repository: ghcr.io/coder/code-server
+              tag: 4.137.0@sha256:57ac684d44deb6fa94317b3e8f3e128dd7fb897fffd95b4efcd16f56ce607971
+            args:
+              - --auth
+              - none
+              - --disable-telemetry
+              - --disable-update-check
+              - --user-data-dir
+              - /config/.vscode
+              - --extensions-dir
+              - /config/.vscode
+              - --port
+              - '12321'
+              - /config
+            env:
+              HASS_SERVER: http://localhost:8123
+            resources:
+              requests:
+                cpu: 10m
+              limits:
+                memory: 1Gi
+
+        initContainers:
+          venv-reset:
+            image:
+              repository: ghcr.io/home-operations/home-assistant
+              tag: *hass-image
+            command: ['/bin/bash', '-c']
+            args:
+              - |
+                set -eu
+                marker=/config/.hass-image-version
+                current="$(python3 -c 'from homeassistant.const import __version__; print(__version__)')"
+                previous="$(cat "$marker" 2>/dev/null || true)"
+                if [ "$current" != "$previous" ]; then
+                  echo "HA image changed ($previous -> $current); wiping /config/.venv"
+                  rm -rf /config/.venv/* /config/.venv/.[!.]* 2>/dev/null || true
+                  printf '%s' "$current" > "$marker"
+                else
+                  echo "HA image unchanged ($current); keeping /config/.venv cache"
+                fi
+            securityContext:
+              allowPrivilegeEscalation: false
+              capabilities:
+                drop:
+                  - ALL
+              readOnlyRootFilesystem: true
+
+    persistence:
+      config:
+        existingClaim: home-assistant-config
+        advancedMounts:
+          home-assistant:
+            app:
+              - path: /config
+            code-server:
+              - path: /config
+            venv-reset:
+              - path: /config
+      hass-cache:
+        storageClass: local-hostpath
+        accessMode: ReadWriteOnce
+        size: '1Gi'
+        advancedMounts:
+          home-assistant:
+            app:
+              - path: /config/.venv
+                subPath: hass-venv
+            venv-reset:
+              - path: /config/.venv
+                subPath: hass-venv
+      tmpfs:
+        type: emptyDir
+        advancedMounts:
+          home-assistant:
+            app:
+              - path: /tmp
+                subPath: hass-tmp
+            code-server:
+              - path: /tmp
+                subPath: code-server-tmp
+              - path: /nonexistent
+                subPath: nonexistent
+      docker-env-empty:
+        type: emptyDir
+        globalMounts:
+          - path: /.dockerenv
+            subPath: .dockerenv
+            readOnly: true
+
+    route:
+      home-assistant:
+        hostnames: [&host hass.stevewm.dev]
+        parentRefs:
+          - name: envoy-internal
+            namespace: network
+            sectionName: https
+        annotations:
+          gethomepage.dev/name: *app
+          gethomepage.dev/enabled: 'true'
+          gethomepage.dev/group: downloads
+          gethomepage.dev/icon: sh-home-assistant.png
+          gethomepage.dev/widget.key: '{{ `{{HOMEPAGE_VAR_PROWLARR_API_KEY}}` }}'
+          gethomepage.dev/widget.type: *app
+          gethomepage.dev/widget.url: 'http://prowlarr.downloads.svc.cluster.local'
+        rules:
+          - backendRefs:
+              - identifier: gateway
+                port: 8123
+      internal:
+        parentRefs:
+          - name: envoy-internal
+            namespace: network
+            sectionName: https
+        hostnames:
+          - *host
+        rules:
+          - backendRefs:
+              - identifier: gateway
+                port: 8123
+      code:
+        annotations:
+          external-dns.kubernetes.io/internal: 'true'
+          external-dns.kubernetes.io/target: '10.0.6.151'
+        parentRefs:
+          - name: envoy-internal
+            namespace: network
+            sectionName: https
+        hostnames:
+          - hass-vscode.stevewm.dev
+        rules:
+          - matches:
+              - path:
+                  type: PathPrefix
+                  value: /
+            backendRefs:
+              - name: home-assistant-code
+                port: 12321
+
+    service:
+      main:
+        controller: home-assistant
+        externalTrafficPolicy: Local
+        forceRename: home-assistant
+        ports:
+          http:
+            port: 8123
+        primary: true
+        type: LoadBalancer
+      # Separate ClusterIP service for Gateway API routing
+      gateway:
+        controller: home-assistant
+        ports:
+          http:
+            port: 8123
+        type: ClusterIP
+      code:
+        controller: home-assistant
+        ports:
+          http:
+            port: 12321
+        type: ClusterIP
