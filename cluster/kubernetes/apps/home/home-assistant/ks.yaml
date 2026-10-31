@@ -9,7 +9,7 @@ spec:
   targetNamespace: *namespace
   commonMetadata:
     labels:
-      app.kubernetes.io/name: home-assistant
+      app.kubernetes.io/name: &app home-assistant
   interval: 30m
   timeout: 5m
   path: ./cluster/kubernetes/apps/home/home-assistant/app
@@ -19,3 +19,9 @@ spec:
     name: homelab
     namespace: flux-system
   wait: true
+  components:
+    - ../../../../components/volsync/hetzner
+  postBuild:
+    substitute:
+      APP: *app
+      VOLSYNC_CLAIM: home-assistant-config
