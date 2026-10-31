@@ -8,3 +8,4 @@ resources:
   - ./flux-operator/ks.yaml
   - ./flux-instance/ks.yaml
   - ./tofu-controller/ks.yaml
+  - ./konflate/ks.yaml
