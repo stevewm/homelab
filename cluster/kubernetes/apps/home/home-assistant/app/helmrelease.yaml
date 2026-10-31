@@ -105,11 +105,8 @@ spec:
         annotations:
           gethomepage.dev/name: *app
           gethomepage.dev/enabled: 'true'
-          gethomepage.dev/group: downloads
-          gethomepage.dev/icon: sh-home-assistant.png
-          gethomepage.dev/widget.key: '{{ `{{HOMEPAGE_VAR_PROWLARR_API_KEY}}` }}'
-          gethomepage.dev/widget.type: *app
-          gethomepage.dev/widget.url: 'http://prowlarr.downloads.svc.cluster.local'
+          gethomepage.dev/group: selfhosted
+          gethomepage.dev/icon: sh-home-assistant-light.png
       codeserver:
         hostnames: ['hass-code.stevewm.dev']
         parentRefs:
