@@ -39,7 +39,6 @@ kustomize = "5.8.3"
 # Tools
 "cargo:minijinja-cli" = "3.0.3"
 "github:DopplerHQ/cli" = "3.77.1"
-"github:Orange-OpenSource/hurl" = "8.0.1"
 "github:gorcon/rcon-cli" = "0.10.3"
 gum = "2.0.2"
 jq = "1.8.2"
