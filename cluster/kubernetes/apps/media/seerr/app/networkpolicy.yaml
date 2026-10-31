@@ -1,0 +1,68 @@
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: seerr
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: seerr
+      app.kubernetes.io/instance: seerr
+
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: prometheus
+            app.kubernetes.io/instance: kube-prometheus-stack
+            k8s:io.kubernetes.pod.namespace: observability
+      toPorts:
+        - ports:
+            - port: '7979'
+              protocol: TCP
+    - fromEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: homepage
+            app.kubernetes.io/instance: homepage
+            k8s:io.kubernetes.pod.namespace: selfhosted
+        - matchLabels:
+            app.kubernetes.io/name: maintainerr
+            app.kubernetes.io/instance: maintainerr
+        - matchLabels:
+            app.kubernetes.io/name: scraparr
+            app.kubernetes.io/instance: scraparr
+            k8s:io.kubernetes.pod.namespace: downloads
+        - matchLabels:
+            app.kubernetes.io/name: sonarr
+            app.kubernetes.io/instance: sonarr
+            k8s:io.kubernetes.pod.namespace: downloads
+        - matchLabels:
+            app.kubernetes.io/name: radarr
+            app.kubernetes.io/instance: radarr
+            k8s:io.kubernetes.pod.namespace: downloads
+      toPorts:
+        - ports:
+            - port: '80'
+              protocol: TCP
+
+  egress:
+    - toEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: jellyfin
+            app.kubernetes.io/instance: jellyfin
+      toPorts:
+        - ports:
+            - port: '8096'
+              protocol: TCP
+    - toEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: sonarr
+            app.kubernetes.io/instance: sonarr
+            k8s:io.kubernetes.pod.namespace: downloads
+        - matchLabels:
+            app.kubernetes.io/name: radarr
+            app.kubernetes.io/instance: radarr
+            k8s:io.kubernetes.pod.namespace: downloads
+      toPorts:
+        - ports:
+            - port: '80'
+              protocol: TCP

@@ -8,5 +8,6 @@ resources:
   - ./helmrelease.yaml
   - ./prometheusrule.yaml
   - ./grafanadashboard.yaml
+  - ./networkpolicy.yaml
   - ./le-prod-issuer.yaml
   # - ./le-staging-issuer.yaml

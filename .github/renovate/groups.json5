@@ -80,14 +80,6 @@
       separateMinorPatch: true,
     },
     {
-      description: 'Flux Local',
-      groupName: 'flux-local',
-      matchPackageNames: ['/flux-local/'],
-      group: {
-        commitMessageTopic: '{{{groupName}}} group',
-      },
-    },
-    {
       description: 'Flux Operator group',
       groupName: 'Flux Operator',
       matchDatasources: ['docker'],
@@ -109,7 +101,6 @@
       description: 'repo tools',
       groupName: 'repo tools',
       matchManagers: ['mise'],
-      ignoreDeps: ['pipx:flux-local'],
       group: {
         commitMessageTopic: '{{{groupName}}}',
         semanticCommitScope: 'mise',

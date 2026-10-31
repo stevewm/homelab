@@ -1,11 +1,12 @@
-# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/postgres-operator.crunchydata.com/postgrescluster_v1beta1.json
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/postgres-operator.crunchydata.com/postgrescluster_v1.json
 ---
-apiVersion: postgres-operator.crunchydata.com/v1beta1
+apiVersion: postgres-operator.crunchydata.com/v1
 kind: PostgresCluster
 metadata:
   name: ${APP}
   annotations:
     postgres-operator.crunchydata.com/autoCreateUserSchema: true
+    kustomize.toolkit.fluxcd.io/prune: disabled
 spec:
   postgresVersion: 17
   monitoring:
@@ -36,7 +37,11 @@ spec:
         accessModes: ['ReadWriteOnce']
         resources:
           requests:
+            cpu: 10m
+            memory: 128Mi
             storage: 5Gi
+          limits:
+            memory: 256Mi
       topologySpreadConstraints:
         - maxSkew: 1
           topologyKey: 'kubernetes.io/hostname'
@@ -108,3 +113,9 @@ spec:
           default_pool_size: '100'
           max_client_conn: '500'
           track_extra_parameters: search_path
+      resources:
+        requests:
+          cpu: 10m
+          memory: 20Mi
+        limits:
+          memory: 140Mi

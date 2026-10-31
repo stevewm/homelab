@@ -24,6 +24,11 @@ spec:
     mode: warn
   values:
     defaultPodOptions:
+      labels:
+        ingress.policy.home.arpa/envoy-external: 'true'
+        egress.policy.home.arpa/internet: 'true'
+        egress.policy.home.arpa/deny-all: 'true'
+        egress.policy.home.arpa/homepage: 'true'
       securityContext:
         runAsNonRoot: true
         runAsUser: 1001
@@ -97,9 +102,6 @@ spec:
 
     service:
       jellyfin:
-        type: LoadBalancer
-        annotations:
-          'lbipam.cilium.io/ips': '10.0.0.80'
         ports:
           http:
             port: &http 8096

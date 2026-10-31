@@ -2,12 +2,12 @@
 python.uv_venv_auto = "create|source"
 experimental = true
 lockfile = true
+pin = true
 
 [hooks]
 postinstall = "hk install"
 
 [env]
-HOMEBREW_BREWFILE = "{{ config_root }}/.github/Brewfile"
 KUBECONFIG = "{{ config_root }}/kubeconfig"
 MINIJINJA_CONFIG_FILE = "{{ config_root }}/.github/.minijinja.toml"
 TALOSCONFIG = "{{ config_root }}/talosconfig"
@@ -39,7 +39,6 @@ kustomize = "5.8.3"
 # Tools
 "cargo:minijinja-cli" = "3.0.3"
 "github:DopplerHQ/cli" = "3.77.1"
-"github:Orange-OpenSource/hurl" = "8.0.1"
 "github:gorcon/rcon-cli" = "0.10.3"
 gum = "2.0.2"
 jq = "1.8.2"
@@ -49,7 +48,6 @@ yq = "4.54.1"
 
 # Linting
 actionlint = "1.7.12"
-crane = "0.22.1"
 "github:guarnz/deadvalues" = "v0.1.8"
 "github:terror/just-lsp" = "0.10.0"
 "github:zavoloklom/docker-compose-linter" = "3.1.0"
@@ -65,3 +63,4 @@ shellcheck = "0.11.0"
 shfmt = "3.14.1"
 zizmor = "1.31.1"
 cosign = "3.1.4"
+"npm:dclint" = "3.1.0"

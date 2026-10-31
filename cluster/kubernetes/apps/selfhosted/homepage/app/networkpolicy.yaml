@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/cilium.io/ciliumclusterwidenetworkpolicy_v2.json
+---
+apiVersion: cilium.io/v2
+kind: CiliumClusterwideNetworkPolicy
+metadata:
+  name: allow-homepage-services-egress
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: homepage
+      app.kubernetes.io/instance: homepage
+  egress:
+    - toCIDR:
+        - 10.0.0.10/32
+      toPorts:
+        - ports:
+            - port: '3001'
+              protocol: TCP
+    - toEndpoints:
+        - matchLabels:
+            egress.policy.home.arpa/homepage: 'true'

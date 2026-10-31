@@ -3,7 +3,7 @@ name: pihole
 
 services:
   pihole:
-    image: ghcr.io/pi-hole/pihole:2026.10.0@sha256:d34134716fc32038b052a8674c7c6879e0ff21f0e6d8af345166fffa2c27c113
+    image: ghcr.io/pi-hole/pihole:2026.10.1@sha256:30f803ad5dd60ff96cc0a63008a2e9271af481c1b0399a182192b2e91152c1f9
     container_name: pihole
     volumes:
       - /share/Docker/pihole-docker/etc-pihole/:/etc/pihole/
@@ -25,7 +25,7 @@ services:
       - 1.1.1.1
 
   pihole-exporter:
-    image: ekofr/pihole-exporter:v1.2.0@sha256:242c53ef3c24b88fcbe8184390b456d05604bd50de5732ca3fd3eb24395585b3
+    image: ekofr/pihole-exporter:v1.3.0@sha256:67dd0ec8c0fbc2f4edeffd6b0c6768f2b962dcc983b230bedd933a33e5a05cd9
     container_name: pihole-exporter
     depends_on:
       - pihole

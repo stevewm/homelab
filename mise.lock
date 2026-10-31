@@ -104,46 +104,6 @@ url = "https://github.com/sigstore/cosign/releases/download/v3.1.4/cosign-window
 url_api = "https://api.github.com/repos/sigstore/cosign/releases/assets/660070803"
 provenance = "cosign"
 
-[[tools.crane]]
-version = "0.22.1"
-backend = "aqua:google/go-containerregistry"
-specifiers = ["0.22.1"]
-
-[tools.crane."platforms.linux-arm64"]
-checksum = "sha256:898c0cff975f898a33e8c4580bdafb0e7c02c7faa33374e946762f97c4ab7110"
-url = "https://github.com/google/go-containerregistry/releases/download/v0.22.1/go-containerregistry_Linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/google/go-containerregistry/releases/assets/543544372"
-
-[tools.crane."platforms.linux-arm64-musl"]
-checksum = "sha256:898c0cff975f898a33e8c4580bdafb0e7c02c7faa33374e946762f97c4ab7110"
-url = "https://github.com/google/go-containerregistry/releases/download/v0.22.1/go-containerregistry_Linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/google/go-containerregistry/releases/assets/543544372"
-
-[tools.crane."platforms.linux-x64"]
-checksum = "sha256:0ab7a1d6932a213aed964ce97666c3077fe691c8606413674a8b3e0b9ec4cda0"
-url = "https://github.com/google/go-containerregistry/releases/download/v0.22.1/go-containerregistry_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/google/go-containerregistry/releases/assets/543544389"
-
-[tools.crane."platforms.linux-x64-musl"]
-checksum = "sha256:0ab7a1d6932a213aed964ce97666c3077fe691c8606413674a8b3e0b9ec4cda0"
-url = "https://github.com/google/go-containerregistry/releases/download/v0.22.1/go-containerregistry_Linux_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/google/go-containerregistry/releases/assets/543544389"
-
-[tools.crane."platforms.macos-arm64"]
-checksum = "sha256:2231fc8df8806d20d680ff1225db44e095a55dd6ac1ae8eced4faf4b278b78fb"
-url = "https://github.com/google/go-containerregistry/releases/download/v0.22.1/go-containerregistry_Darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/google/go-containerregistry/releases/assets/543544436"
-
-[tools.crane."platforms.macos-x64"]
-checksum = "sha256:6fedd06a648c11335f0e8b9547e4783002c30e9336047fec292942cd518bb799"
-url = "https://github.com/google/go-containerregistry/releases/download/v0.22.1/go-containerregistry_Darwin_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/google/go-containerregistry/releases/assets/543544434"
-
-[tools.crane."platforms.windows-x64"]
-checksum = "sha256:0e073ea8192c3b8442ec8aaf44d53c1050a09084669fae3a6ceb0f2026cf8b21"
-url = "https://github.com/google/go-containerregistry/releases/download/v0.22.1/go-containerregistry_Windows_x86_64.tar.gz"
-url_api = "https://api.github.com/repos/google/go-containerregistry/releases/assets/543544437"
-
 [[tools."github:CrunchyData/postgres-operator-client"]]
 version = "0.5.3"
 backend = "github:CrunchyData/postgres-operator-client"
@@ -229,53 +189,6 @@ provenance = "github-attestations"
 checksum = "sha256:d647b53549b126b9820d35e6001569aed0ddcdc788ceb7826395ca34506ef95c"
 url = "https://github.com/DopplerHQ/cli/releases/download/3.77.1/doppler_3.77.1_windows_amd64.zip"
 url_api = "https://api.github.com/repos/DopplerHQ/cli/releases/assets/666340960"
-provenance = "github-attestations"
-
-[[tools."github:Orange-OpenSource/hurl"]]
-version = "8.0.1"
-backend = "github:Orange-OpenSource/hurl"
-specifiers = ["8.0.1"]
-
-[tools."github:Orange-OpenSource/hurl"."platforms.linux-arm64"]
-checksum = "sha256:bc4732df4754748e9bf296aa3832ec019f798afb399f1279b72ed37b6e04525c"
-url = "https://github.com/Orange-OpenSource/hurl/releases/download/8.0.1/hurl-8.0.1-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/Orange-OpenSource/hurl/releases/assets/407509616"
-provenance = "github-attestations"
-
-[tools."github:Orange-OpenSource/hurl"."platforms.linux-arm64-musl"]
-checksum = "sha256:bc4732df4754748e9bf296aa3832ec019f798afb399f1279b72ed37b6e04525c"
-url = "https://github.com/Orange-OpenSource/hurl/releases/download/8.0.1/hurl-8.0.1-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/Orange-OpenSource/hurl/releases/assets/407509616"
-provenance = "github-attestations"
-
-[tools."github:Orange-OpenSource/hurl"."platforms.linux-x64"]
-checksum = "sha256:cac7c4670d69444db120edb21fe06c97ba8c80dcc52279957c8dd18f05fb0c06"
-url = "https://github.com/Orange-OpenSource/hurl/releases/download/8.0.1/hurl-8.0.1-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/Orange-OpenSource/hurl/releases/assets/407509607"
-provenance = "github-attestations"
-
-[tools."github:Orange-OpenSource/hurl"."platforms.linux-x64-musl"]
-checksum = "sha256:cac7c4670d69444db120edb21fe06c97ba8c80dcc52279957c8dd18f05fb0c06"
-url = "https://github.com/Orange-OpenSource/hurl/releases/download/8.0.1/hurl-8.0.1-x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/Orange-OpenSource/hurl/releases/assets/407509607"
-provenance = "github-attestations"
-
-[tools."github:Orange-OpenSource/hurl"."platforms.macos-arm64"]
-checksum = "sha256:b57928e246617df73cb1b2157f31f507dcbde6ae12e828cc53dde0e40e05bbbb"
-url = "https://github.com/Orange-OpenSource/hurl/releases/download/8.0.1/hurl-8.0.1-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/Orange-OpenSource/hurl/releases/assets/407509621"
-provenance = "github-attestations"
-
-[tools."github:Orange-OpenSource/hurl"."platforms.macos-x64"]
-checksum = "sha256:55e95bb7a8d61ae6919eaaf96f260f0836f5b34c1b0f7731e38be803f6984367"
-url = "https://github.com/Orange-OpenSource/hurl/releases/download/8.0.1/hurl-8.0.1-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/Orange-OpenSource/hurl/releases/assets/407509619"
-provenance = "github-attestations"
-
-[tools."github:Orange-OpenSource/hurl"."platforms.windows-x64"]
-checksum = "sha256:2bb8c64ea3dbde464b92432cedd48aaa0fafdff4a39cb9c05c271c306bc8f124"
-url = "https://github.com/Orange-OpenSource/hurl/releases/download/8.0.1/hurl-8.0.1-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/Orange-OpenSource/hurl/releases/assets/407509632"
 provenance = "github-attestations"
 
 [[tools."github:cilium/hubble"]]
@@ -1047,6 +960,15 @@ url = "https://nodejs.org/dist/v24.22.1/node-v24.22.1-darwin-x64.tar.gz"
 [tools.node."platforms.windows-x64"]
 checksum = "sha256:d2046d28c2c3dcd211ac5145c0bf30e2047ef9dfb306693c8c6e2eccd8b95fa5"
 url = "https://nodejs.org/dist/v24.22.1/node-v24.22.1-win-x64.zip"
+
+[[tools."npm:dclint"]]
+version = "3.1.0"
+aube = { path = ".mise/locks/npm-dclint/3.1.0", digest = "sha256:fdd7f5d874f045366b816477a36e48890895e7aa73315109be4167a83dd4d09f" }
+backend = "npm:dclint"
+specifiers = [
+    "3.1.0",
+    "latest",
+]
 
 [[tools."npm:renovate"]]
 version = "44.181.1"

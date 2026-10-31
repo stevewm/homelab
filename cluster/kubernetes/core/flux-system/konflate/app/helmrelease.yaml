@@ -1,0 +1,48 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: konflate
+spec:
+  interval: 30m
+  maxHistory: 3
+  chartRef:
+    kind: OCIRepository
+    name: konflate
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: -1
+  uninstall:
+    keepHistory: false
+  driftDetection:
+    mode: warn
+  values:
+    config:
+      repo: github://stevewm/homelab
+      statusChecks: true
+      prComments: true
+      verifyImages: true
+      publicUrl: https://kf.stevewm.dev
+      mcp: false
+      clusterPath: 'cluster/kubernetes'
+    secret:
+      existingSecret: konflate
+    httpRoute:
+      enabled: true
+      hostnames:
+        - kf.stevewm.dev
+      parentRefs:
+        - name: envoy-external
+          namespace: network
+    resources:
+      requests:
+        cpu: 50m
+        memory: 256Mi
+      limits:
+        memory: 2Gi

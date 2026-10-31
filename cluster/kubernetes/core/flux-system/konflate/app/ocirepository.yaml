@@ -3,12 +3,9 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: OCIRepository
 metadata:
-  name: lge-dev-renew
+  name: konflate
 spec:
-  interval: 1h
-  layerSelector:
-    mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
-    operation: copy
+  interval: 15m
   ref:
-    tag: 5.3.0
-  url: oci://ghcr.io/bjw-s-labs/helm/app-template
+    tag: 0.6.6
+  url: oci://ghcr.io/home-operations/charts/konflate
