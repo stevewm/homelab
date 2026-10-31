@@ -15,7 +15,7 @@ _.path = ['{{ config_root }}/node_modules/.bin']
 
 [tools]
 # https://docs.renovatebot.com/modules/manager/mise/#supported-default-registry-tool-short-names
-node = "24.22.1"
+node = "26.13.0"
 python = "3.15.1"
 uv = "0.13.5"
 
@@ -49,13 +49,13 @@ yq = "4.54.1"
 # Linting
 actionlint = "1.7.12"
 "github:guarnz/deadvalues" = "v0.1.8"
-"github:terror/just-lsp" = "0.10.0"
+"github:terror/just-lsp" = "0.11.0"
 "github:zavoloklom/docker-compose-linter" = "3.1.0"
 hk = "2.8.1"
 "npm:renovate" = { version = "44.181.1", trust_policy_excludes = [
   "@yarnpkg/libzip",
 ] }
-oxfmt = "0.74.0"
+oxfmt = "0.75.0"
 pkl = "0.32.2"
 ruff = "0.17.2"
 rumdl = "v0.3.0"
