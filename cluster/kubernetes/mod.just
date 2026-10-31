@@ -24,16 +24,6 @@ prune-pods:
       kubectl delete pods -A --field-selector status.phase="$phase" --ignore-not-found=true; \
     done
 
-[doc('Apply local Flux Kustomization')]
-apply-ks ns ks:
-    just k8s render-local-ks "{{ ns }}" "{{ ks }}" \
-    | kubectl apply --server-side --force-conflicts --field-manager=kustomize-controller -f /dev/stdin
-
-[doc('Delete local Flux Kustomization')]
-delete-ks ns ks:
-    just k8s render-local-ks "{{ ns }}" "{{ ks }}" \
-    | kubectl delete -f /dev/stdin
-
 [doc('Sync single Flux HelmRelease')]
 sync-hr ns name:
     kubectl -n "{{ ns }}" annotate --field-manager flux-client-side-apply --overwrite hr "{{ name }}" reconcile.fluxcd.io/requestedAt="$(date +%s)" reconcile.fluxcd.io/forceAt="$(date +%s)"; \
@@ -91,7 +81,3 @@ keda-all state:
 [doc('Create OIDC secrets')]
 create-oidc-secrets app:
     "{{ scripts_dir }}/create-oidc-secrets.sh" "{{ app }}"
-
-[private]
-render-local-ks ns ks:
-    flux-local build ks --namespace "{{ ns }}" --path "{{ kubernetes_dir }}/flux/" "{{ ks }}"
