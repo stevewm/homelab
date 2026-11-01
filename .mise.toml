@@ -15,12 +15,12 @@ _.path = ['{{ config_root }}/node_modules/.bin']
 
 [tools]
 # https://docs.renovatebot.com/modules/manager/mise/#supported-default-registry-tool-short-names
-node = "24.22.1"
-python = "3.15.1"
-uv = "0.13.5"
+node = "24.22.2"
+python = "3.15.2"
+uv = "0.13.6"
 
 # Flux
-"github:fluxcd/flux2" = "2.9.6"
+"github:fluxcd/flux2" = "v2.10.0"
 
 # Kube
 "github:CrunchyData/postgres-operator-client" = "0.5.3"
@@ -34,10 +34,10 @@ kustomize = "5.8.3"
 "github:cilium/hubble" = "1.20.2"
 
 # Talos
-"github:siderolabs/talos" = "v1.14.4"
+"github:siderolabs/talos" = "v1.14.5"
 
 # Tools
-"cargo:minijinja-cli" = "3.0.3"
+"cargo:minijinja-cli" = "3.0.5"
 "github:DopplerHQ/cli" = "3.77.1"
 "github:gorcon/rcon-cli" = "0.10.3"
 gum = "2.0.2"
@@ -48,17 +48,17 @@ yq = "4.54.1"
 
 # Linting
 actionlint = "1.7.12"
-"github:guarnz/deadvalues" = "v0.1.8"
+"github:guarnz/deadvalues" = "v0.1.9"
 "github:terror/just-lsp" = "0.10.0"
 "github:zavoloklom/docker-compose-linter" = "3.1.0"
-hk = "2.8.1"
-"npm:renovate" = { version = "44.181.1", trust_policy_excludes = [
+hk = "2.11.0"
+"npm:renovate" = { version = "44.199.2", trust_policy_excludes = [
   "@yarnpkg/libzip",
 ] }
 oxfmt = "0.74.0"
 pkl = "0.32.2"
-ruff = "0.17.2"
-rumdl = "v0.3.0"
+ruff = "0.17.3"
+rumdl = "v0.3.2"
 shellcheck = "0.11.0"
 shfmt = "3.14.1"
 zizmor = "1.31.1"
