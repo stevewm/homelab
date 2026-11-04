@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://k8s-schemas.home-operations.com/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: kanidm-operator
+  namespace: &namespace security
+spec:
+  targetNamespace: *namespace
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: kanidm-operator
+  interval: 30m
+  timeout: 5m
+  path: ./cluster/kubernetes/core/security/kanidm-operator/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: homelab
+    namespace: flux-system
+  wait: true
