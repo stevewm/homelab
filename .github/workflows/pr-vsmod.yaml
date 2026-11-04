@@ -20,6 +20,8 @@ concurrency:
 jobs:
   vsmod:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -28,6 +30,6 @@ jobs:
           persist-credentials: false
 
       - name: Check mod compatibility
-        uses: docker://ghcr.io/stevewm/vsmod:v0.4.3
+        uses: docker://ghcr.io/stevewm/vsmod:v0.4.3@sha256:b53dd4fbb5f0ed1b1ac088ca8a4c6ecbd243a07f8847cde175da223f5354fdd2
         with:
           args: download --file cluster/kubernetes/apps/games/vintagestory/app/config/init/mods.yaml --force-compatibility-check --debug --hooks=false

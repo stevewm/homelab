@@ -21,6 +21,8 @@ concurrency:
 jobs:
   modrinth:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+
     env:
       MC_HR: ${{ github.workspace }}/cluster/kubernetes/apps/games/minecraft/app/helmrelease.yaml
       # renovate: depName=itzg/mc-image-helper datasource=github-releases
@@ -62,7 +64,7 @@ jobs:
             yq -r '.spec.values.controllers.minecraft.containers.minecraft.env.TYPE' $MC_HR
 
       - name: Print extracted values
-        run: | # zizmor: ignore[template-injection]
+        run: |
           echo "MC_VERSION: ${{ steps.mc_version.outputs.result }}"
           echo "TYPE: ${{ steps.type.outputs.result }}"
           echo "MODRINTH_PROJECTS: ${{ steps.modrinth_projects.outputs.result }}"

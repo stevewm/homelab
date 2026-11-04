@@ -5,7 +5,7 @@ import "package://github.com/jdx/hk/releases/download/v2.8.1/hk@2.8.1#/Builtins.
 local config = ".github/linters"
 local linters = new Mapping<String, Step> {
   // builtins
-  ["actionlint"] = Builtins.actionlint
+  ["jactionlint"] = Builtins.jactionlint
   ["hadolint"] = Builtins.hadolint
   ["mise"] = Builtins.mise
   ["newlines"] = Builtins.newlines
@@ -16,7 +16,6 @@ local linters = new Mapping<String, Step> {
   ["shellcheck"] = Builtins.shellcheck
   ["shfmt"] = Builtins.shfmt
   ["tofu"] = Builtins.tofu
-  ["zizmor"] = Builtins.zizmor
 
   ["oxfmt"] = (Builtins.oxfmt) {
     exclude = List(".mise.toml", ".mise/**") // Clashes with mise fmt

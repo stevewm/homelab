@@ -47,7 +47,6 @@ opentofu = "1.13.2"
 yq = "4.54.1"
 
 # Linting
-actionlint = "1.7.12"
 "github:guarnz/deadvalues" = "v0.1.8"
 "github:terror/just-lsp" = "0.10.0"
 "github:zavoloklom/docker-compose-linter" = "3.1.0"
@@ -61,6 +60,6 @@ ruff = "0.17.2"
 rumdl = "v0.3.0"
 shellcheck = "0.11.0"
 shfmt = "3.14.1"
-zizmor = "1.31.1"
 cosign = "3.1.4"
 "npm:dclint" = "3.1.0"
+jactionlint = { version = "2.4.0", workflow = "release.yaml" }

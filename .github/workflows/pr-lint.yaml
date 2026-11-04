@@ -17,6 +17,8 @@ jobs:
   lint:
     name: Linting
     runs-on: ubuntu-latest
+    timeout-minutes: 60
+
     steps:
       - name: Generate Token
         uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
@@ -44,8 +46,11 @@ jobs:
       always()
     name: Linting comment
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+
     permissions:
       pull-requests: write
+
     steps:
       - name: Generate Token
         uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
@@ -86,7 +91,7 @@ jobs:
             https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDJveWtyeXVtMzQ5aGUycDJsa2p5ODJ1cGNmcGMwZzNpd2ZveWs5dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Nx3PN1kaLGe94CJb2A/giphy.gif
 
       - id: set_message
-        run: | # zizmor: ignore[template-injection]
+        run: |
           if [ "${{ needs.lint.result }}" == "success" ]; then
             echo "message=✅ Linting **PASSED!** ✅<br /><br /> ![pass](${{ steps.success_gif.outputs.selected }})" >> "$GITHUB_OUTPUT"
           else
