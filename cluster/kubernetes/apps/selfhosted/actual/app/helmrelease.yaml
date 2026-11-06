@@ -51,7 +51,7 @@ spec:
           actual:
             image:
               repository: ghcr.io/actualbudget/actual-server
-              tag: 26.10.0
+              tag: 26.11.0
             env:
               ACTUAL_PORT: &port 80
               # openid-grant-failed: https://github.com/actualbudget/actual/issues/5469
