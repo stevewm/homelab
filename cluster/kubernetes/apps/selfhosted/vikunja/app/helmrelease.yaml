@@ -101,11 +101,11 @@ spec:
               VIKUNJA_DATABASE_HOST:
                 secretKeyRef:
                   name: vikunja-pguser-vikunja
-                  key: pgbouncer-host
+                  key: host
               VIKUNJA_DATABASE_PORT:
                 secretKeyRef:
                   name: vikunja-pguser-vikunja
-                  key: pgbouncer-port
+                  key: port
               VIKUNJA_DATABASE_DATABASE:
                 secretKeyRef:
                   name: vikunja-pguser-vikunja
