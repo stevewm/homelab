@@ -1,0 +1,40 @@
+---
+name: pihole
+
+services:
+  pihole:
+    image: ghcr.io/pi-hole/pihole:2026.10.1@sha256:30f803ad5dd60ff96cc0a63008a2e9271af481c1b0399a182192b2e91152c1f9
+    container_name: pihole
+    volumes:
+      - /share/Docker/pihole-docker/etc-pihole/:/etc/pihole/
+      - /share/Docker/pihole-docker/etc-dnsmasq.d/:/etc/dnsmasq.d/
+    environment:
+      TZ: &tz Europe/Amsterdam
+      FTLCONF_dns_revServers: 'true,10.0.0.0/24,10.0.0.1,home.arpa'
+      FTLCONF_dns_upstreams: '8.8.8.8;8.8.4.4'
+      FTLCONF_webserver_api_password: $WEBPASSWORD
+      FTLCONF_webserver_port: &port '3001'
+    ports:
+      - '53:53/tcp'
+      - '53:53/udp'
+      - '3001:3001/tcp'
+    network_mode: host
+    restart: always
+    dns:
+      - 127.0.0.1
+      - 1.1.1.1
+
+  pihole-exporter:
+    image: ekofr/pihole-exporter:v1.3.0@sha256:67dd0ec8c0fbc2f4edeffd6b0c6768f2b962dcc983b230bedd933a33e5a05cd9
+    container_name: pihole-exporter
+    depends_on:
+      - pihole
+    environment:
+      TZ: *tz
+      PIHOLE_PROTOCOL: http
+      PIHOLE_HOSTNAME: localhost
+      PIHOLE_PORT: *port
+      PIHOLE_API_TOKEN: $WEBPASSWORD
+    ports:
+      - '9617:9617/tcp'
+    restart: unless-stopped
