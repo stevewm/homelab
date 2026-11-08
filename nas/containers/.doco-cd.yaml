@@ -1,0 +1,6 @@
+---
+working_dir: ./nas/containers
+auto_discovery:
+  enabled: true
+  depth: 1
+  delete: false

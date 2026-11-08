@@ -1,0 +1,28 @@
+---
+services:
+  doco-cd:
+    image: ghcr.io/kimdre/doco-cd:0.125.1@sha256:38198abbda1b55da7a7f37a7924b2ccdcc0583bd24466b7c2103ef6cd2ffc828
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - data:/data
+
+    environment:
+      TZ: Europe/Amsterdam
+      SELF_UPDATE_ENABLED: 'true'
+      SELF_UPDATE_STRATEGY: auto
+      DEPLOY_CONFIG_BASE_DIR: ./nas/containers
+      POLL_CONFIG: |
+        - url: https://github.com/stevewm/homelab.git
+          reference: main
+          interval: 300
+    restart: unless-stopped
+
+    healthcheck:
+      interval: 10s
+      timeout: 5s
+      start_period: 15s
+      retries: 3
+
+volumes:
+  data:
