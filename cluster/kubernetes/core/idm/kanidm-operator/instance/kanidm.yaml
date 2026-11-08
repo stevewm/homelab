@@ -1,0 +1,42 @@
+---
+apiVersion: kaniop.rs/v1beta1
+kind: Kanidm
+metadata:
+  name: idm
+spec:
+  domain: idm.stevewm.dev
+  origin: https://idm.stevewm.dev
+  replicaGroups:
+    - name: default
+      replicas: 1
+      primaryNode: true
+      resources:
+        requests:
+          cpu: 10m
+        limits:
+          memory: 512Mi
+  image: kanidm/server:1.12.0
+  logLevel: info
+  groupNamespaceSelector: {}
+  oauth2ClientNamespaceSelector: {}
+  serviceAccountNamespaceSelector: {}
+  storage:
+    volumeClaimTemplate:
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
+        storageClassName: local-path
+  tlsSecretName: idm-stevewm-dev-tls
+  gateway:
+    parentRefs:
+      - name: envoy-external
+        namespace: network
+    hostnames:
+      - idm.stevewm.dev
+    backendTlsPolicy:
+      validation:
+        hostname: idm.stevewm.dev
+        wellKnownCaCertificates: System
