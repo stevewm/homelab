@@ -47,6 +47,14 @@ spec:
   egress:
     - toEndpoints:
         - matchLabels:
+            k8s:io.kubernetes.pod.namespace: kube-system
+            k8s-app: kube-dns
+      icmps:
+        - fields:
+            - family: IPv4
+              type: 8
+    - toEndpoints:
+        - matchLabels:
             app.kubernetes.io/name: jellyfin
             app.kubernetes.io/instance: jellyfin
       toPorts:
