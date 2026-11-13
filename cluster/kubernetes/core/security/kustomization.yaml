@@ -7,3 +7,4 @@ resources:
   - ./namespace.yaml
   - ./authelia/ks.yaml
   - ./glauth/ks.yaml
+  - ./kanidm-operator/ks.yaml
