@@ -36,28 +36,28 @@ jobs:
           persist-credentials: false
 
       - name: Extract MC_VERSION
-        uses: mikefarah/yq@504fc38780cc46be8444ea1b72fb55919fc0bfb0 # v4.54.1
+        uses: mikefarah/yq@a4330671f17776618660a419ab2531e4f4dc48b6 # v4.54.2
         id: mc_version
         with:
           cmd: |
             yq -r '.spec.values.controllers.minecraft.containers.minecraft.env.VERSION' $MC_HR
 
       - name: Extract MODRINTH_PROJECTS
-        uses: mikefarah/yq@504fc38780cc46be8444ea1b72fb55919fc0bfb0 # v4.54.1
+        uses: mikefarah/yq@a4330671f17776618660a419ab2531e4f4dc48b6 # v4.54.2
         id: modrinth_projects
         with:
           cmd: |
             yq -r '.spec.values.controllers.minecraft.containers.minecraft.env.MODRINTH_PROJECTS' $MC_HR
 
       - name: Extract MODRINTH_ALLOWED_VERSION_TYPE
-        uses: mikefarah/yq@504fc38780cc46be8444ea1b72fb55919fc0bfb0 # v4.54.1
+        uses: mikefarah/yq@a4330671f17776618660a419ab2531e4f4dc48b6 # v4.54.2
         id: modrinth_allowed_version_type
         with:
           cmd: |
             yq -r '.spec.values.controllers.minecraft.containers.minecraft.env.MODRINTH_DEFAULT_VERSION_TYPE' $MC_HR
 
       - name: Extract TYPE
-        uses: mikefarah/yq@504fc38780cc46be8444ea1b72fb55919fc0bfb0 # v4.54.1
+        uses: mikefarah/yq@a4330671f17776618660a419ab2531e4f4dc48b6 # v4.54.2
         id: type
         with:
           cmd: |
