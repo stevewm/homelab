@@ -25,7 +25,7 @@ spec:
   values:
     defaultPodOptions:
       labels:
-        ingress.policy.home.arpa/envoy-external: 'true'
+        ingress.policy.home.arpa/envoy-internal: 'true'
         egress.policy.home.arpa/internet: 'true'
         egress.policy.home.arpa/deny-all: 'true'
         egress.policy.home.arpa/homepage: 'true'
@@ -87,7 +87,7 @@ spec:
       seerr:
         hostnames: ['req.stevewm.dev']
         parentRefs:
-          - name: envoy-external
+          - name: envoy-internal
             namespace: network
             sectionName: https
         annotations:
