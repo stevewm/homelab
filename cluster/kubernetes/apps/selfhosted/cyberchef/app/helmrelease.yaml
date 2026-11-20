@@ -49,7 +49,7 @@ spec:
           cyberchef:
             image:
               repository: ghcr.io/gchq/cyberchef
-              tag: 11.5.0@sha256:fa74354a9c5dd014c8dacee843eb9218fb13465d678d8b049e97bc26a69a1640
+              tag: 11.6.0@sha256:f1c28b80e0f9b81e6eae186a4b36a6cea522b7a70ae8fceed8cf157da4cc62f1
             probes:
               liveness:
                 enabled: true
