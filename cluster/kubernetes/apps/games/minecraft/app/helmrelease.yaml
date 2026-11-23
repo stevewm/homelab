@@ -48,6 +48,7 @@ spec:
 
     controllers:
       minecraft:
+        replicas: 0
         defaultContainerOptions:
           securityContext:
             allowPrivilegeEscalation: false
