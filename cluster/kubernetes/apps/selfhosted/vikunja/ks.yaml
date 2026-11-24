@@ -25,6 +25,18 @@ spec:
     - ../../../../components/dragonfly
     - ../../../../components/postgres
     - ../../../../components/smtp
+  patches:
+    - patch: |-
+        apiVersion: postgres-operator.crunchydata.com/v1
+        kind: PostgresCluster
+        metadata:
+          name: ${APP}
+        spec:
+          proxy:
+            pgBouncer:
+              config:
+                global:
+                  ignore_startup_parameters: default_transaction_isolation
   postBuild:
     substitute:
       APP: *app
