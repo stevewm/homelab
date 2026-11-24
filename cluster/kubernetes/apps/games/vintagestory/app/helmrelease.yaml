@@ -85,7 +85,7 @@ spec:
           vintagestory:
             image:
               repository: devidian/vintagestory # FIXME: Docker Hub
-              tag: latest@sha256:7a5ea3b8aadd2271b17150343c6534a3e6635c31ba84acdef4c8d829e2b6d741
+              tag: latest@sha256:cd6b3e61854fd086d75c807b9d9bc51d9c72f38916d2ce7e6acc20571d79998b
             probes:
               liveness: &game-probes
                 enabled: true
