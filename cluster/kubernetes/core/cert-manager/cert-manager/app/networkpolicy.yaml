@@ -27,7 +27,14 @@ spec:
         - ports:
             - port: '443'
               protocol: TCP
-
+    - toFQDNs:
+        - matchPattern: '*.ns.cloudflare.com'
+      toPorts:
+        - ports:
+            - port: '53'
+              protocol: TCP
+            - port: '53'
+              protocol: UDP
 ---
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
