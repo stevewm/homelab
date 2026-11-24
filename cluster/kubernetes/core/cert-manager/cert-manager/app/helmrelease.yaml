@@ -43,7 +43,7 @@ spec:
     podDnsConfig:
       options:
         - name: ndots
-          value: '1'
+          value: '2'
 
     prometheus:
       servicemonitor:
