@@ -45,6 +45,11 @@ spec:
       egress.policy.home.arpa/kube-api: 'true'
       egress.policy.home.arpa/deny-all: 'true'
 
+    dnsConfig:
+      options:
+        - name: ndots
+          value: '1'
+
     certController:
       podLabels:
         egress.policy.home.arpa/kube-api: 'true'

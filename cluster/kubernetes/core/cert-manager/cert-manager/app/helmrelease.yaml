@@ -40,6 +40,11 @@ spec:
       egress.policy.home.arpa/kube-api: 'true'
       egress.policy.home.arpa/deny-all: 'true'
 
+    podDnsConfig:
+      options:
+        - name: ndots
+          value: '1'
+
     prometheus:
       servicemonitor:
         enabled: true
