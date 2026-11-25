@@ -83,6 +83,7 @@ spec:
           name: alertmanager
           global:
             resolveTimeout: 5m
+        externalUrl: https://am.stevewm.dev
         resources:
           requests:
             cpu: 10m
