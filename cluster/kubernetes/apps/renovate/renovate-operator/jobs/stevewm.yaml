@@ -22,7 +22,7 @@ spec:
     - name: RENOVATE_ALLOWED_UNSAFE_EXECUTIONS
       value: |-
         ["mise"]
-  image: ghcr.io/renovatebot/renovate:44.257.9-full@sha256:2a5f5bb9d5cd9c3dd737d76e22ebd7ea3cf7146dd862e0a0d65ee5aa05c490cb
+  image: ghcr.io/renovatebot/renovate:45.3.2-full@sha256:6fde98271ba942ed3fae592267f3affd7fcab4b132fdc84511b4cdf3027011cf
   parallelism: 5
   resources:
     requests:
