@@ -98,7 +98,7 @@ spec:
           chrome:
             image:
               repository: ghcr.io/karakeep-app/karakeep-chrome
-              tag: 157.0.8103.78-r1-amd64@sha256:679062564518ec35e7b842b93cb9509bc65dc8c353f472a7f8d3b7fe004b242f
+              tag: 158.0.8127.88-r1-amd64@sha256:910f5bf8f49c27cf7a1f2cb24369c9680fe3e0221d47965048f9fa0dc438f679
             args:
               - --headless
               - --disable-gpu
