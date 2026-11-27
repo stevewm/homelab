@@ -1,7 +1,7 @@
 ---
 services:
   doco-cd:
-    image: ghcr.io/kimdre/doco-cd:0.136.0@sha256:fa55a3a431e479163a06dd42b8d59ceb90483e958056fd8f325b304aaf3d2a97
+    image: ghcr.io/kimdre/doco-cd:0.138.0@sha256:9d8d10b795f7ef4372088475fd16277d7b79a0e85434fbfc34270e26fb90ddea
 
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
