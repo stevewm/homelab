@@ -8,9 +8,12 @@ spec:
   interval: 30m
   timeout: 20m
   maxHistory: 3
-  chartRef:
+  chart:
     kind: OCIRepository
-    name: *app
+    spec:
+      url: oci://ghcr.io/grafana/helm-charts/grafana-operator
+      ref:
+        tag: 5.26.0
   install:
     remediation:
       retries: -1

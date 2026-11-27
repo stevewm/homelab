@@ -7,9 +7,12 @@ metadata:
 
 spec:
   interval: 30m
-  chartRef:
+  chart:
     kind: OCIRepository
-    name: democratic-csi
+    spec:
+      url: oci://ghcr.io/democratic-csi/charts/democratic-csi
+      ref:
+        tag: 0.15.1
   install:
     remediation:
       retries: -1

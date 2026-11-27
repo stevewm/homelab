@@ -7,9 +7,12 @@ metadata:
 spec:
   interval: 30m
   maxHistory: 3
-  chartRef:
+  chart:
     kind: OCIRepository
-    name: konflate
+    spec:
+      url: oci://ghcr.io/home-operations/charts/konflate
+      ref:
+        tag: 0.6.6
   install:
     remediation:
       retries: -1

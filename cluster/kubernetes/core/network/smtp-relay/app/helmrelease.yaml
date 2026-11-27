@@ -6,9 +6,12 @@ metadata:
   name: &app smtp-relay
 spec:
   interval: 30m
-  chartRef:
+  chart:
     kind: OCIRepository
-    name: smtp-relay
+    spec:
+      url: oci://ghcr.io/bjw-s-labs/helm/app-template
+      ref:
+        tag: 5.3.0
   install:
     remediation:
       retries: -1

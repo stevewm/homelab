@@ -7,9 +7,12 @@ metadata:
 spec:
   interval: 30m
   maxHistory: 3
-  chartRef:
+  chart:
     kind: OCIRepository
-    name: renovate-operator
+    spec:
+      url: oci://ghcr.io/mogenius/helm-charts/renovate-operator
+      ref:
+        tag: 7.0.0
   install:
     remediation:
       retries: -1

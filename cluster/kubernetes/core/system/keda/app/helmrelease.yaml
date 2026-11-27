@@ -8,9 +8,12 @@ spec:
   releaseName: *app
   interval: 30m
   maxHistory: 3
-  chartRef:
+  chart:
     kind: OCIRepository
-    name: keda
+    spec:
+      url: oci://ghcr.io/home-operations/charts-mirror/keda
+      ref:
+        tag: 2.21.1
   install:
     remediation:
       retries: -1

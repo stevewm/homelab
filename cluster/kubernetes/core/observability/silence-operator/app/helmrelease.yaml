@@ -8,9 +8,12 @@ spec:
   releaseName: *app
   interval: 30m
   maxHistory: 3
-  chartRef:
+  chart:
     kind: OCIRepository
-    name: *app
+    spec:
+      url: oci://gsoci.azurecr.io/charts/giantswarm/silence-operator
+      ref:
+        tag: 0.22.0
   install:
     crds: CreateReplace
     remediation:
