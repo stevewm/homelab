@@ -5,9 +5,12 @@ kind: HelmRelease
 metadata:
   name: kguardian
 spec:
-  chartRef:
+  chart:
     kind: OCIRepository
-    name: kguardian
+    spec:
+      url: oci://ghcr.io/kguardian-dev/charts/kguardian
+      ref:
+        tag: 1.29.2
   interval: 30m
   values:
     broker:

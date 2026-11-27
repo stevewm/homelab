@@ -5,9 +5,12 @@ kind: HelmRelease
 metadata:
   name: tofu-controller
 spec:
-  chartRef:
+  chart:
     kind: OCIRepository
-    name: tofu-controller
+    spec:
+      url: oci://ghcr.io/flux-iac/charts/tofu-controller
+      ref:
+        tag: 0.17.0
   interval: 15m
   dependsOn: []
   values:

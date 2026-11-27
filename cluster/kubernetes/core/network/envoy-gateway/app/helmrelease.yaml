@@ -7,9 +7,12 @@ metadata:
 spec:
   interval: 1h
   timeout: 5m
-  chartRef:
+  chart:
     kind: OCIRepository
-    name: envoy-gateway
+    spec:
+      url: oci://mirror.gcr.io/envoyproxy/gateway-helm
+      ref:
+        tag: 1.10.0
   install:
     crds: CreateReplace
     remediation:

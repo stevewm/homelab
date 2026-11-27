@@ -7,9 +7,12 @@ metadata:
 spec:
   interval: 30m
   maxHistory: 3
-  chartRef:
+  chart:
     kind: OCIRepository
-    name: cert-manager
+    spec:
+      url: oci://quay.io/jetstack/charts/cert-manager
+      ref:
+        tag: v1.21.3
   install:
     crds: CreateReplace
     remediation:

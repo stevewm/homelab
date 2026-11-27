@@ -8,9 +8,12 @@ spec:
   releaseName: *app
   interval: 30m
   maxHistory: 3
-  chartRef:
+  chart:
     kind: OCIRepository
-    name: *app
+    spec:
+      url: oci://ghcr.io/prometheus-community/charts/prometheus-blackbox-exporter
+      ref:
+        tag: 12.0.0
   install:
     remediation:
       retries: -1

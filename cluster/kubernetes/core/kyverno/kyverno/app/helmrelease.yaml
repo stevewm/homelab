@@ -7,9 +7,12 @@ metadata:
 spec:
   interval: 30m
   maxHistory: 3
-  chartRef:
+  chart:
     kind: OCIRepository
-    name: kyverno
+    spec:
+      url: oci://ghcr.io/kyverno/charts/kyverno
+      ref:
+        tag: 3.10.0
   install:
     remediation:
       retries: -1
