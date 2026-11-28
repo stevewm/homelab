@@ -25,7 +25,7 @@ uv = "0.13.10"
 # Kube
 "github:CrunchyData/postgres-operator-client" = "0.5.3"
 "github:derailed/k9s" = "0.51.0"
-"github:helmfile/helmfile" = "v1.8.5"
+"github:helmfile/helmfile" = "v1.8.6"
 "github:stern/stern" = "v1.35.0"
 helm = "4.3.2"
 kubecolor = "0.8.0"
@@ -62,4 +62,4 @@ shellcheck = "0.11.0"
 shfmt = "3.14.1"
 cosign = "3.1.6"
 "npm:dclint" = "3.1.0"
-jactionlint = { version = "v2.6.0", workflow = "release.yaml" }
+jactionlint = { version = "v2.7.0", workflow = "release.yaml" }
